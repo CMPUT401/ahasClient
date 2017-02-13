@@ -26,6 +26,7 @@ a {
 }
 
 body {
+
     background: #f2e9e6;
 }
 
@@ -47,6 +48,7 @@ p {
     max-width: 1024px;
     min-height: 100vh;
     background: #f2e9e6;
+
     margin: 0 auto;
 }
 
