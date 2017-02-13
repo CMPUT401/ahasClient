@@ -1,9 +1,9 @@
-<div class="container">
 <nav>
-  <p> Don't have an account yet? </p>
-  {{#link-to "create-user"}}create-user{{/link-to}}
+  <p> Back to the login page: </p>
+  {{#link-to "login"}}Login{{/link-to}}
 </nav>
-<form {{action 'authenticate' on='submit'}}>  
+<p> Please enter your email and a password to create an account: </p>
+<form >  
   <label for="identification">Username</label>
   {{input id='identification' value=identification}}
   <br>
@@ -12,8 +12,6 @@
   {{input id='password' value=password}}
   <br>
   <br>
-  <button type="submit">Login</button>
+  <button type="submit" {{action 'createUser'}}>Create</button>
  </form>
 {{outlet}}
-</div>
-

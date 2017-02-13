@@ -1,0 +1,81 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,300italic,400,700,700italic);
+
+/**
+ * Base Elements
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+span,
+a {
+    font-family: 'Lato', 'Open Sans', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+body {
+    background: #f2e9e6;
+}
+
+a {
+    color: #2185D0;
+    text-decoration: none;
+}
+
+p {
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+
+/**
+ * Body Container
+ */
+.container {
+    max-width: 1024px;
+    min-height: 100vh;
+    background: #f2e9e6;
+    margin: 0 auto;
+}
+
+/**
+ * Content Area
+ */
+.body {
+    padding: 15px;
+}
+/**
+ * Utilities
+ */
+.light {
+    font-weight: 300;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.hidden {
+    display: none;
+}
+
+.relative {
+    position: relative;
+}
+
