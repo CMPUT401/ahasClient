@@ -4,14 +4,15 @@
 </nav>
 <p> Please enter your email and a password to create an account: </p>
 <form >  
-  <label for="identification">Username</label>
-  {{input id='identification' value=identification}}
+  <label for="id">Username</label>
+  {{input id='id' value=identification}}
   <br>
   <br>
-  <label for="password">Password</label>
-  {{input id='password' value=password}}
+  <label for="pass">Password</label>
+  {{input id='pass' value=password}}
   <br>
   <br>
-  <button type="submit" {{action 'createUser'}}>Create</button>
+  <button type="submit" {{action 'createUser'}} id="create-user-button">Create</button>
  </form>
+ {{textarea value="" readonly="" id="status"}}
 {{outlet}}
