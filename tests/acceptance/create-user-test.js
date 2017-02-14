@@ -13,11 +13,31 @@ test('visiting /create-user', function(assert) {
 
 test('adding new user valid', function(assert){
   visit('/create-user');
-  fillIn("identification-creation", "user@gmail.ca");
-  fillIn("password-creation", "password");
-  click("create-user-button");
+  fillIn('#id', "user@gmail.ca");
+  fillIn('#pass', "password");
+  click('#create-user-button');
   andThen(function(){
-    assert.equal("status", "Account created!");
+    assert.equal(find('#status').val(), "Account created!");
+  });
+});
+
+  test('adding invalid user, too short password', function(assert){
+  visit('/create-user');
+  fillIn('#id', "user@gmail.ca");
+  fillIn('#pass', "pass");
+  click('#create-user-button');
+  andThen(function(){
+    assert.equal(find('#status').val(), "Password too short, must be at least 7 characters!");
+  });
+  });
+
+  test('adding invalid user, incorrect format email', function(assert){
+  visit('/create-user');
+  fillIn('#id', "usermail.ca");
+  fillIn('#pass', "password");
+  click('#create-user-button');
+  andThen(function(){
+    assert.equal(find('#status').val(), "Incorrect email format");
   });
 
 });

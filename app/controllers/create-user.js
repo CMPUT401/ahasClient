@@ -5,24 +5,22 @@ export default Ember.Controller.extend({
      createUser: function() { 
 
         document.getElementById('status').value = "";
-
+    
         var store = this.get('store');
         var email= document.getElementById('id').value;
         var password = document.getElementById('pass').value;
-
-
+        var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+         // /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i //couldnt get this one to work for some reason...
+        
         if (password.length < 7){
             document.getElementById('status').value = "Password too short, must be at least 7 characters!";
-        }
-
-        var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-            // /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i //couldnt get this one to work for some reason...
+        }   
         
-        if ( re.test(email) != true ) {
-            document.getElementById('status').value = "Incorrect email format";
+        else if ( re.test(email) !== true ) {
+            document.getElementById('status').value += "Incorrect email format";
         }
 
-        else{
+        else {
         var user = store.createRecord('user', {
             email,
             password
