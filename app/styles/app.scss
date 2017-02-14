@@ -7,7 +7,8 @@
 
 * {
     margin: 0;
-    padding: 0;
+    margin-left: 1%;
+    padding: .5%;
     box-sizing: border-box;
 }
 
@@ -59,26 +60,8 @@ p {
 .body {
     padding: 15px;
 }
-/**
- * Utilities
- */
-.light {
-    font-weight: 300;
-}
 
-.left {
-    float: left;
+//user-creation page textarea
+.usertextarea {
+    margin-top: .5%;
 }
-
-.right {
-    float: right;
-}
-
-.hidden {
-    display: none;
-}
-
-.relative {
-    position: relative;
-}
-
