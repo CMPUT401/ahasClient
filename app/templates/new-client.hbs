@@ -3,16 +3,16 @@
 		<h3>Please fill in the client's contact information</h3>
 
 		<label for = "clientName">Client's name</label>
-		{{input id='clientName' value=clientName}}
+		{{input id='clientName' value=clientName required='true'}}
 		<br>
 		<label for = "clientAddress">Client's Address</label>
-		{{input id='clientAdress' value=clientAddress}}
+		{{input id='clientAdress' value=clientAddress required='true'}}
 		<br>
 		<label for = "clientPhone">Client's Phone Number</label>
-		{{input id='clientPhone' value=clientPhone}}
+		{{input id='clientPhone' value=clientPhone required='true'}}
 		<br>
 		<label for = "clientEmail">Client's Email</label>
-		{{input id='clienEmail' value=clientEmail}}
+		{{input id='clienEmail' value=clientEmail required='true'}}
 		<br>
 		<br>
 
@@ -28,24 +28,25 @@
 		{{input id='saDocumentation' value=saDocumentation}}
 		<br>
 		<label for = "notesDocumentation">Notes</label>
-		{{input id='notesDocumentation' value=notesDocumentation}}
+		{{textarea id='notesDocumentation' value=notesDocumentation cols="80" rows="6"}}
 		<br>
 
 		<h3>Please fill in the alternative contact's contact information</h3>
 
 		<label for = "alternativeName">Alternative Contact's Name</label>
-		{{input id='alternativName' value=alternativeName}}
+		{{input id='alternativName' value=alternativeName required='true'}}
 		<br>
 		<label for = "alternativeAddress">Alternative Contact's Address</label>
-		{{input id='alternativeAdress' value=alternativeAddress}}
+		{{input id='alternativeAdress' value=alternativeAddress required='true'}}
 		<br>
 		<label for = "alternativePhone">Alternative Contact's Phone Number</label>
-		{{input id='alternativPhone' value=alternativePhone}}
+		{{input id='alternativPhone' value=alternativePhone required='true'}}
 		<br>
 		<label for = "alternativeEmail">Alternative Contact's Email</label>
-		{{input id='alternativEmail' value=alternativeEmail}}
+		{{input id='alternativEmail' value=alternativeEmail required='true'}}
 		<br>
 		<br>
+		<button type = "submit">Create Client</button>
 
 	</form>
 </div>
