@@ -7,26 +7,17 @@ export default Ember.Controller.extend({
         document.getElementById('status').value = "";
     
         var store = this.get('store');
-        var email= document.getElementById('id').value;
-        var password = document.getElementById('pass').value;
-        var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-         // /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i //couldnt get this one to work for some reason...
+        var email= document.getElementById('username').value;
+        var password = document.getElementById('password').value;
         
-        if (password.length < 7){
-            document.getElementById('status').value = "Password too short, must be at least 7 characters!";
-        }   
-        
-        else if ( re.test(email) !== true ) {
-            document.getElementById('status').value += "Incorrect email format";
-        }
-
-        else {
+        if (checkFormat(password, email) === true ){
+         
         var user = store.createRecord('user', {
             email,
             password
         });
     
-
+//check return for success key
         user.save().then(function(){
             console.log("twas success");
             document.getElementById('status').value = "Account created!";
@@ -35,7 +26,25 @@ export default Ember.Controller.extend({
         document.getElementById('status').value = "Problem encountered creating account on the server end, please try again";
         
         });
-        }
       }
     }
+},
+
 });
+
+function checkFormat(password, email) {
+
+        var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+        if (password.length < 7){
+            document.getElementById('status').value = "Password too short, must be at least 7 characters!";
+            return false;
+        }   
+        
+        else if ( re.test(email) !== true ) {
+            document.getElementById('status').value += "Incorrect email format";
+            return false;
+        }
+
+        return true;
+    }
