@@ -7,7 +7,7 @@ export default Ember.Route.extend({
 	actions:{
 		createNewClient(){
 			let clientInfo = this.modelFor(this.routeName);
-			newClient.save().then(function () {
+			clientInfo.save().then(function () {
 
 				//this.transitionTo('new-client');
 			}).catch(function (reason){
