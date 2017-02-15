@@ -9,7 +9,10 @@ export default Ember.Controller.extend({
         ('identification', 'password'),
         authenticator = 'authenticator:jwt';
       this.get('session').authenticate(authenticator, 
-        credentials).catch((reason)=>{
+        credentials).then(()=>{
+        this.transitionToRoute('/afterlogin');
+        },
+          (reason) => {
         this.set('errorMessage', reason.error || reason);
       });
     }
