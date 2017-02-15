@@ -6,27 +6,28 @@ export default Ember.Controller.extend({
      createUser: function() { 
 
         //reset status displayed on every button press
-        document.getElementById('status').value = "";
+        document.getElementById('statusgood').value = "";
 
         var email= document.getElementById('username').value;
         var password = document.getElementById('password').value;
         
         if (checkFormat(password, email) === true ){
          
-        //this will need to be actual but otherwise breaks tests at the moment... 
-        var user = this.get('ajax').request('/api/user', {
+        var user = this.get('ajax').request('/api/signup', {
         method: 'POST',
         data: {
           email: email,
           password: password
         }
     });
-    
-//check return for success key
-        user.then(function(err){
-            document.getElementById('status').value = "Account created!";
-        }, function() {
-        document.getElementById('status').value = "Problem encountered creating account on the server end, please try again";
+
+////http://stackoverflow.com/questions/10082330/dynamically-create-bootstrap-alerts-box-through-javascript
+
+//need to checkup on this.
+        user.then(function(){
+            document.getElementById('statusgood').value = "Account created!";
+        }, function(response) {
+        document.getElementById('statusbad').value = "Problem" + response + "encountered creating account on the server end, please try again";
         
         });
       }
@@ -43,12 +44,12 @@ function checkFormat(password, email) {
         var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
         if (password.length < 7){
-            document.getElementById('status').value = "Password too short, must be at least 7 characters!";
+            document.getElementById('statusbad').value = "Password too short, must be at least 7 characters!";
             return false;
         }   
         
         else if ( re.test(email) !== true ) {
-            document.getElementById('status').value += "Incorrect email format";
+            document.getElementById('statusbad').innerHTML = "Incorrect email format";
             return false;
         }
 

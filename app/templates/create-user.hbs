@@ -12,7 +12,12 @@
   {{input id='password' value=password}}
   <br>
   <br>
+  <label for="passwordConfirm">Confirm Password</label>
+  {{input id='passwordConfirm' value=confirmpassword}}
+  <br>
+  <br>
   <button type="submit" {{action 'createUser'}} id="create-user-button">Create</button>
  </form>
- {{textarea class="usertextarea" value="" readonly="" id="status"}}
+<div class="alert alert-success usertextare" role="alert" id="statusgood" value=""><p id="inner"></p></div>
+<div class="alert alert-danger usertextare" role="alert" id="statusbad" value="startval"></div>
 {{outlet}}
