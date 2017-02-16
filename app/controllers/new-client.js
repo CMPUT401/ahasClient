@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
 		sendRequest(){
 			return this.get('ajax').request('/api/client' ,{
 				method: 'POST',
+				contentType: 'application/json',
 				client: {
 					// name: model.clientName,
 					// address: model.clientAddress,

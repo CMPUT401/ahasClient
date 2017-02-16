@@ -6,6 +6,10 @@ export default Ember.Route.extend({
 	model() {
 		//return this.store.createRecord('newClient');
 		//return this.get('ajax').request('/api/client');
+		
+		/*
+
+		///// Will cause 406
 		const ajax = this.get('ajax');
 
 		return ajax.request('/api/client').catch(function(error){
@@ -27,6 +31,7 @@ export default Ember.Route.extend({
 	        // other errors are handled elsewhere 
 	        throw error;
 		});
+*/
 	}
 	// actions:{
 	// 	createNewClient(){
