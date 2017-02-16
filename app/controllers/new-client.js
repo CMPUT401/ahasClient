@@ -4,10 +4,9 @@ export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
 	actions: {
 		sendRequest(){
-			return this.get('ajax').request('/api/client' ,{
-				method: 'POST',
-				contentType: 'application/json',
-				client: {
+			return this.get('ajax').post('/api/client' , {
+				type: 'application/json',
+				data: {client: {
 					// name: model.clientName,
 					// address: model.clientAddress,
 					// phoneNumber: model.clientPhone,
@@ -21,7 +20,7 @@ export default Ember.Controller.extend({
 					licos: '12345',
 					socialAssistance: '4313',
 					pets: ''
-				}
+				}}
 			});
 		}
 	}
