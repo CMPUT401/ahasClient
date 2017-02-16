@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import {isAjaxError, isNotFoundError, isForbiddenError} from 'ember-ajax/errors';
 
 export default Ember.Route.extend({
 	ajax: Ember.inject.service(),
