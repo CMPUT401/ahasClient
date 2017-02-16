@@ -13,15 +13,14 @@ test('visiting /create-user', function(assert) {
 
 test('adding new user valid', function(assert){
   visit('/create-user');
-  server.create('user');
+
+  fillIn('#name', "kristy");
   fillIn('#username', "user@gmail.ca");
   fillIn('#password', "password");
   fillIn('#passwordConfirm', "password");
   click('#create-user-button');
-  var checkup = server.db.users.find(1);
   andThen(function(){
-    assert.equal(find('#statusBad').text(), 'Problem encountered creating account on the server end, please try again');
-    assert.equal(checkup.email, "user@gmail.ca");
+    assert.equal(find('#statusGood').text(), 'Account created!');
   });
 });
 

@@ -7,30 +7,32 @@ export default Ember.Controller.extend({
      createUser: function() { 
 
         //reset status displayed on every button press
+        var name= document.getElementById('name').value;
         var email= document.getElementById('username').value;
         var password = document.getElementById('password').value;
         var passwordConfirm = document.getElementById('passwordConfirm').value;
         
         if (checkFormat(password, email, passwordConfirm) === true ){
          
-        var user = this.get('ajax').request('/api/signup', {
-        method: 'POST',
-        data: {
+        var user = this.get('ajax').post('/api/signup', {
+        type: 'application/json',
+        data: { user: {
+          name: name, 
           email: email,
-          password: password
+          password: password,
+          password_confirmation: passwordConfirm
         }
+    }
     });
 
         user.then(function(response){
             if(response.success){
                 showAlert("Account created!", true);
             }
-            else{
-                showAlert("Problem encountered creating account on the server end, please try again", false);
-            }
-        }, function() {
-            //console.log(response.errors[0]);
-            showAlert("Problem encountered creating account on the server end, please try again", false);
+        //this is error from server condition
+        }, function(response) {
+            console.log(response.errors[0]);
+            showAlert(response.errors[0].title, false);
         
         });
       }
