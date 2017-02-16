@@ -3,7 +3,7 @@ import Base from 'ember-simple-auth/authenticators/base';
 import config from '../config/environment';
 const { RSVP: { Promise }, $: { ajax }, run } = Ember;
 export default Base.extend({  
-  tokenEndpoint: `${config.host}/api/login`,
+  tokenEndpoint: `${config.server}/api/user_token`,
   restore(data) {
     return new Promise((resolve, reject) => {
       if (!Ember.isEmpty(data.token)) {
@@ -23,7 +23,7 @@ export default Base.extend({
     });
     const requestOptions = {
       url: this.tokenEndpoint,
-      type: 'POST',
+      type: 'application/json',
       data,
       contentType: 'application/json',
       dataType: 'json'
