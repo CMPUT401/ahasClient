@@ -16,9 +16,11 @@ test('adding new user valid', function(assert){
   server.create('user');
   fillIn('#username', "user@gmail.ca");
   fillIn('#password', "password");
+  fillIn('#passwordConfirm', "password");
   click('#create-user-button');
   var checkup = server.db.users.find(1);
   andThen(function(){
+    assert.equal(find('#statusBad').text(), 'Problem encountered creating account on the server end, please try again');
     assert.equal(checkup.email, "user@gmail.ca");
   });
 });
@@ -27,9 +29,10 @@ test('adding new user valid', function(assert){
   visit('/create-user');
   fillIn('#username', "user@gmail.ca");
   fillIn('#password', "pass");
+  fillIn('#passwordConfirm', "pass");
   click('#create-user-button');
   andThen(function(){
-    assert.equal(find('#status').val(), "Password too short, must be at least 7 characters!");
+    assert.equal(find('#statusBad').text(), "Password too short, must be at least 7 characters!");
   });
   });
 
@@ -37,9 +40,10 @@ test('adding new user valid', function(assert){
   visit('/create-user');
   fillIn('#username', "usermail.ca");
   fillIn('#password', "password");
+  fillIn('#passwordConfirm', "password");
   click('#create-user-button');
   andThen(function(){
-    assert.equal(find('#status').val(), "Incorrect email format");
+    assert.equal(find('#statusBad').text(), "Incorrect email format");
   });
 
 });
