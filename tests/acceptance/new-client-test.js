@@ -3,7 +3,7 @@ import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
 
 import Pretender from 'pretender';
 
-let server; 
+let serv; 
 
 // moduleForAcceptance('Acceptance | new client');
 
@@ -17,10 +17,10 @@ let server;
 
 moduleForAcceptance('ajax-get component', {
 	beforeEach(){
-		server = new Pretender();
+		serv = new Pretender();
 	},
 	afterEach(){
-		server.shutdown();
+		serv.shutdown();
 	}
 });
 
@@ -38,7 +38,7 @@ test('waiting for a route with async widget', function (assert){
 	// 				licos: '125235',
 	// 				socialAssistance: '5555'}];
 	const PAYLOAD = [{ title: 'Foo' }, { title: 'Bar' }, { title: 'Baz' }];
-	server.get('/api/client', function(){
+	serv.get('/api/client', function(){
 		return [200, {"Content-Type": "application/json"}, JSON.stringyfy(PAYLOAD)];
 	}, 300);
 
@@ -55,5 +55,5 @@ test('waiting for a route with async widget', function (assert){
 		assert.equal($('.ajax-get li:eq(0)').text(), 'Foo');
 		assert.equal($('.ajax-get li:eq(1)').text(), 'Bar');
     	assert.equal($('.ajax-get li:eq(2)').text(), 'Baz');
-	})
-})
+	});
+});
