@@ -21,12 +21,15 @@ export default Ember.Controller.extend({
         }
     });
 
-////http://stackoverflow.com/questions/10082330/dynamically-create-bootstrap-alerts-box-through-javascript
-
-//need to checkup on this.
-        user.then(function(){
-            showAlert("Account created!", true);
+        user.then(function(response){
+            if(response.success){
+                showAlert("Account created!", true);
+            }
+            else{
+                showAlert("Problem encountered creating account on the server end, please try again", false);
+            }
         }, function() {
+            //console.log(response.errors[0]);
             showAlert("Problem encountered creating account on the server end, please try again", false);
         
         });
