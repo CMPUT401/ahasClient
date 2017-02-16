@@ -3,7 +3,7 @@
 		<h3>Please fill in the client's contact information</h3>
 
 		<label for = "clientName">Client's name</label>
-		{{input id='clientName' value=model.clientName required='true'}}
+		{{input id='clientName' value=model.clientName required='true'}}{
 		<br>
 		<label for = "clientAddress">Client's Address</label>
 		{{textarea id='clientAddress' value=clientInfo.clientAddress required='true' cols="50" rows="4"}}
@@ -22,13 +22,13 @@
 		<h3>Please fill in the client's documentation</h3>
 
 		<label for = "licoDocumentation">LICO</label>
-		{{input id='licoDocumentation' value=licoDocumentation}}
+		{{input id='licoDocumentation' value=model.clientLICO}}
 		<br>
 		<label for = "aishDocumentation">AISH</label>
-		{{input id='aishDocumentation' value=aishDocumentation}}
+		{{input id='aishDocumentation' value=model.clientAISH}}
 		<br>
 		<label for = "saDocumentation">SA</label>
-		{{input id='saDocumentation' value=saDocumentation}}
+		{{input id='saDocumentation' value=model.clientSA}}
 		<br>
 		<label for = "notesDocumentation">Notes</label>
 		{{textarea id='notesDocumentation' value=notesDocumentation cols="80" rows="6"}}

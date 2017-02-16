@@ -3,8 +3,8 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 	ajax: Ember.inject.service(),
 	model() {
-		//return this.store.createRecord('newClient');
-		return this.get('ajax').request('/posts');
+		return this.store.createRecord('newClient');
+		//return this.get('ajax').request('/api/client');
 	},
 	actions:{
 		createNewClient(){

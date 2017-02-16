@@ -7,13 +7,18 @@ export default Ember.Controller.extend({
 			return this.get('ajax').request('/api/client' ,{
 				method: 'POST',
 				client: {
-					name:  ,
-					address:  ,
-					phoneNumber:  ,
-					email:  ,
-					licos:  ,
-					socialAssistance:  ,
-					pets:  
+					// name: model.clientName,
+					// address: model.clientAddress,
+					// phoneNumber: model.clientPhone,
+					// email: model.clientEmail,
+					// licos: model.clientLICO,
+					// socialAssistance: model.clientAS
+					name: 'bob',
+					address: '123 somewehere st, Edmonton',
+					phoneNumber: '780-555-1234',
+					email: 'some@email.com',
+					licos: '12345',
+					socialAssistance: '4313'
 				}
 			});
 		}
