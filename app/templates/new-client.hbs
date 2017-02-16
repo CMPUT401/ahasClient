@@ -1,21 +1,22 @@
 <div class = "container">
-	<form>
+
+	<form {{action "submitNewCient" on="submit"}}>
 		<h3>Please fill in the client's contact information</h3>
 
 		<label for = "clientName">Client's name</label>
-		{{input id='clientName' value=clientName required='false'}}
+		{{input id='clientName' value=clientName required='true'}}
 		<br>
 		<label for = "clientAddress">Client's Address</label>
-		{{textarea id='clientAddress' value=clientAddress required='false' cols="50" rows="4"}}
+		{{textarea id='clientAddress' value=clientAddress required='true' cols="50" rows="4"}}
 		<br>
 		<label for = "clientPhone">Client's Phone Number</label>
-		{{input id='clientPhone' value=clientPhone required='false'}}
+		{{input id='clientPhone' value=clientPhone required='true'}}
 		<br>
 		<label for = "clientEmail">Client's Email</label>
-		{{input id='clienEmail' value=clientEmail required='false'}}
+		{{input id='clienEmail' value=clientEmail required='true'}}
 		<br>
 		<label for = "clientID">Client's ID</label>
-		{{input id='clienID' value=clientID required='false'}}
+		{{input id='clienID' value=clientID required='true'}}
 		<br>
 		<br>
 
@@ -37,25 +38,25 @@
 		<h3>Please fill in the alternative contact's contact information</h3>
 
 		<label for = "alternativeName">Alternative Contact's Name</label>
-		{{input id='alternativName' value=alternativeName required='false'}}
+		{{input id='alternativName' value=alternativeName required='true'}}
 		<br>
 		<label for = "alternativeAddress">Alternative Contact's Address</label>
-		{{textarea id='alternativeAdress' value=alternativeAddress required='false'  cols="50" rows="4"}}
+		{{textarea id='alternativeAdress' value=alternativeAddress required='true'  cols="50" rows="4"}}
 		<br>
 		<label for = "alternativeHomePhone">Alternative Contact's Home Phone Number</label>
 		{{input id='alternativeHomePhone' value=alternativeHomePhone}}
 		<br>
 		<label for = "alternativeCellPhone">Alternative Contact's Cell Phone Number</label>
-		{{input id='alternativeCellPhone' value=alternativeCellPhone required='false'}}
+		{{input id='alternativeCellPhone' value=alternativeCellPhone required='true'}}
 		<br>
 		<label for = "alternativeOtherPhone">Alternative Contact's Other Phone Number</label>
 		{{input id='alternativeOtherPhone' value=alternativeOtherPhone}}
 		<br>
 		<label for = "alternativeEmail">Alternative Contact's Email</label>
-		{{input id='alternativEmail' value=alternativeEmail required='false'}}
+		{{input id='alternativEmail' value=alternativeEmail required='true'}}
 		<br>
 		<br>
-		<button {{action "sendRequest"}} type = "submit">Create Client</button>
+		<button type = "submit">Create Client</button>
 
 	</form>
 </div>
