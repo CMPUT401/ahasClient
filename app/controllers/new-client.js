@@ -18,7 +18,8 @@ export default Ember.Controller.extend({
 					phoneNumber: '780-555-1234',
 					email: 'some@email.com',
 					licos: '12345',
-					socialAssistance: '4313'
+					socialAssistance: '4313',
+					pets: ''
 				}
 			});
 		}
