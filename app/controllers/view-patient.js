@@ -1,6 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	ajax: Ember.inject.service(),
+	model:function(){
+		self = this;
+		let ajaxPost=this.get('ajax').post('/api/patients/1'
+			).then(function(data){
+				console.log("status is " + JSON.stringify(data));
+				self.transitionToRoute('login');
+			},
+			function(data){
+				console.log("status is " + JSON.stringify(data));
+			});
+	}
+
 
 	clientLastName: 'Bobbertson',
 	clientFirstName: 'Fred',
