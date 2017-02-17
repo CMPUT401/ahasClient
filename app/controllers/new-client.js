@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
 					licos: this.get('clientLICO'),
 					aish: this.get('clientAISH'),
 					socialAssistance: this.get('clientAS'),
-					created_at: new Date(day, month, year),
+					created_at: new Date(),
 					clientID: this.get('clientID'),
 					alternativeContactName: this.get('alternativeName'),
 					alternativeContactPhoneNumber: this.get('alternativePrimaryPhone'),

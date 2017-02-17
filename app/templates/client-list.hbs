@@ -1,6 +1,11 @@
 <div class = "container">
 	<!--TODO: add header with tabs -->
-	<div class = "clientList">
-		
+	<div class = "nameList" style="height: 200px; width: 300px">
+		{{#ember-scrollable autoHide=false}}
+			{{#each model as |client|}}
+				<!-- TODO: onclick, GET client info and display it -->
+				<p>{{client.name}}</p>
+			{{/each}}
+		{{/ember-scrollable}}
 	</div>
 </div>
