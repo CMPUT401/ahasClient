@@ -43,4 +43,4 @@ export default Ember.Controller.extend({
 	patientTatoo: '12352',
 	patientMicrochip: '11102'
 
-})
+});
