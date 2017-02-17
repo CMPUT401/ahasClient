@@ -13,14 +13,16 @@ export default Ember.Controller.extend({
 				data: {patient:
 					{
 					client: "1",
-					name: 		this.get('patientName'),
 					species: 	this.get('patientSpecies'),
+					name: 		this.get('patientName'),
 					age: 		this.get('patientAge'),
-					color: 		this.get('patientColor'),
+					colour: 	this.get('patientColor'),
 					tattoo: 	this.get('patientTatoo'),
 					microchip: 	this.get('patientMicrochip'),
 					gender: 	this.get('patientGender'),
-					status: 	this.get('patientStatus')
+					reproductive_status: 	this.get('patientStatus')
+					//what: "is",
+					//this: "huh?"
 				}},
 			}).then(function(data){
 				console.log("statis is " + JSON.stringify(data));
