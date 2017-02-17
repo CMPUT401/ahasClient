@@ -1,0 +1,59 @@
+<div class = "container">
+
+	<form {{action "submitNewCient" on="submit"}}>
+		<h3>Please fill in the client's contact information</h3>
+
+		<label for = "clientName">Client's name</label>
+		{{input id='clientName' value=clientName required='true'}}
+		<br>
+		<label for = "clientAddress">Client's Address</label>
+		{{textarea id='clientAddress' value=clientAddress required='true' cols="50" rows="4"}}
+		<br>
+		<label for = "clientPhone">Client's Phone Number</label>
+		{{input id='clientPhone' value=clientPhone required='true'}}
+		<br>
+		<label for = "clientEmail">Client's Email</label>
+		{{input id='clienEmail' value=clientEmail required='true'}}
+		<br>
+		<label for = "clientID">Client's ID</label>
+		{{input id='clienID' value=clientID required='true'}}
+		<br>
+		<br>
+
+		<h3>Please fill in the client's documentation</h3>
+
+		<label for = "licoDocumentation">LICO</label>
+		{{input id='clientLICO' value=clientLICO}}
+		<br>
+		<label for = "aishDocumentation">AISH</label>
+		{{input id='clientAISH' value=clientAISH}}
+		<br>
+		<label for = "saDocumentation">SA</label>
+		{{input id='clientSA' value=clientSA}}
+		<br>
+		<label for = "notesDocumentation">Notes</label>
+		{{textarea id='clientNotes' value=clientNotes cols="80" rows="6"}}
+		<br>
+
+		<h3>Please fill in the alternative contact's contact information</h3>
+
+		<label for = "alternativeName">Alternative Contact's Name</label>
+		{{input id='alternativName' value=alternativeName required='true'}}
+		<br>
+		<label for = "alternativeAddress">Alternative Contact's Address</label>
+		{{textarea id='alternativeAdress' value=alternativeAddress required='true'  cols="50" rows="4"}}
+		<br>
+		<label for = "alternativePrimaryPhone">Alternative Contact's Primary Phone Number</label>
+		{{input id='alternativePrimaryPhone' value=alternativePrimaryPhone}}
+		<br>
+		<label for = "alternativeSecondaryPhone">Alternative Contact's Secondary Phone Number</label>
+		{{input id='alternativeSecondaryPhone' value=alternativeSecondaryPhone}}
+		<br>
+		<label for = "alternativeEmail">Alternative Contact's Email</label>
+		{{input id='alternativEmail' value=alternativeEmail required='true'}}
+		<br>
+		<br>
+		<button type = "submit">Create Client</button>
+
+	</form>
+</div>
