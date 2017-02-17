@@ -66,12 +66,13 @@ test('should fill in form with correct data', function (assert){
 
 	andThen(function(){
 		assert.equal(currentURL(), '/new-client');
-		assert.equal(find('clientName').text(), '');		
+		assert.equal(find('#clientName').text(), '');		
 	});
 
 	
-	fillIn('#clientName', 'Alice').then(function(){
-		assert.equal(find('clientName').text(), 'Alice');
+	fillIn('#clientName', 'Alice');
+	andThen(function(){
+		assert.equal(find('#clientName').text(), 'Alice');
 	});
 	//find('#clientName').change();
 

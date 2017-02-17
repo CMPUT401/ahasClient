@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('login');
   this.route('afterlogin');
   this.route('create-user');
+  this.route('new-client');
 });
 
 export default Router;
