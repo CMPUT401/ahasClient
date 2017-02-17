@@ -1,5 +1,7 @@
-<div class="container">
+{{#if session.isAuthenticated}}
 <li>< a href="#" {{action 'invalidateSession'}}>Logout</ a></li> 
-</div>
+{{/if}}
 {{outlet}}
+
+
 

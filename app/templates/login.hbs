@@ -1,15 +1,16 @@
-<div class="container">
+<div>
 <form {{action 'authenticate' on='submit'}}>  
-  <label for="identification">Username</label>
-  {{input id='identification' value=identification}}
+  <label for="username">Username</label>
+  {{input id='username' value=username}}
   <br>
   <br>
   <label for="password">Password</label>
   {{input id='password' value=password}}
   <br>
   <br>
-  <button type="submit">Login</button>
+  <button type="submit" id="login-button">Login</button>
  </form>
-
+ <br>
+ <div id = "alert_placeholder"></div>
 </div>
 
