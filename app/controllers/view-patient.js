@@ -2,7 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
-	model:function(){
+	model:function()
+	{
 		self = this;
 		let ajaxPost=this.get('ajax').post('/api/patients/1'
 			).then(function(data){
@@ -12,7 +13,8 @@ export default Ember.Controller.extend({
 			function(data){
 				console.log("status is " + JSON.stringify(data));
 			});
-	}
+		return ajaxPost;
+	},
 
 
 	clientLastName: 'Bobbertson',
