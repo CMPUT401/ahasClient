@@ -6,15 +6,21 @@ export default Ember.Controller.extend({
   actions: {
     authenticate: function() {
       var credentials = this.getProperties
-        ('identification', 'password'),
+        ('username', 'password'),
         authenticator = 'authenticator:jwt';
       this.get('session').authenticate(authenticator, 
-        credentials).then(()=>{
+        credentials).catch((reason)=>{
+        this.set('errorMessage', reason.error || reason);
+      });
+       this.transitionToRoute('/afterlogin');
+        /*.then(()=>{
+        console.log("we get here", jwt);
+        console.log("we get here yay");
         this.transitionToRoute('/afterlogin');
         },
           (reason) => {
         this.set('errorMessage', reason.error || reason);
-      });
+      });*/
     }
   }
 });
