@@ -1,6 +1,30 @@
 <div class = "container">
 	<h1>{{patientFirstName}} {{clientLastName}}</h1>
+	<p>
+		<h3>Client's Basic Information</h3>
+		Client's Name: {{clientFirstName}} {{clientLastName}}
+		<br>
+		Client's Address: {{clientAddress}}
+		<br>
+		Client's Phone Number: {{clientPhoneNumber}}
+		<br>
+		Client's Email Address: {{clientEmail}}
+		<br>
+		<br>
 
-	<h3>Client Information</h3>
-	<p>Client's Name: {{clientFirstName}} {{clientLastName}}</p>
+		<h3>Client's Documentation</h3>
+		LICO: {{clientDocumentLICO}}
+		<br>
+		AISH: {{clientDocumentAISH}}
+		<br>
+		SA: {{clientDocumentSA}}
+		<br>
+		Notes: {{clientNotes}}
+		<br>
+		Client's Name: {{clientFirstName}} {{clientLastName}}
+		<br>
+		<br>
+		<button type = "button">Edit Info</button>
+	</p>
+
 </div>
