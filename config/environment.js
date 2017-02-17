@@ -43,6 +43,7 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
+    ENV.server = 'https://ahas.herokuapp.com'; //wont actually post bc mirage will intercept
     ENV.locationType = 'none';
 
     // keep test console output quieter

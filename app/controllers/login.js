@@ -5,12 +5,13 @@ export default Ember.Controller.extend({
 
   actions: {
     authenticate: function() {
-      var credentials = this.getProperties
-        ('username', 'password'),
-        authenticator = 'authenticator:jwt';
+      var credentials = this.getProperties('username', 'password');
+      const { username, password } = credentials;
+      var inputFilled = checkFields(username, password);
+      if(inputFilled){
+        var authenticator = 'authenticator:jwt';
       this.get('session').authenticate(authenticator, 
         credentials).catch((reason)=>{
-        console.log("ahh", reason.error, reason);
         this.set('errorMessage', reason.error || reason);
       });
        if (this.get('session.isAuthenticated')){
@@ -18,4 +19,13 @@ export default Ember.Controller.extend({
         }
     }
   }
+}
 });
+
+//make sure that we dont post undefined to server
+function checkFields(username, password){
+  if(username === undefined || password === undefined){
+    return false;
+  }
+  return true;
+}

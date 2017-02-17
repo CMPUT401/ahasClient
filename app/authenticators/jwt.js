@@ -17,20 +17,30 @@ export default Base.extend({
   authenticate(creds) {
     const { username, password } = creds;
 
-    return this.get('ajax').post(this.tokenEndpoint, {
+    return new Promise((resolve, reject) =>
+    this.get('ajax').post(this.tokenEndpoint, {
         type: 'application/json',
         data: { auth: {
           email: username,
           password: password,
         }
     }
-    }).then(function(response){
-        console.log("our response", response, response.jwt);
-        const { jwt } = response.jwt;
+    }).then((response) => {
+    const { jwt } = response;
+    Ember.run(() => {
+      resolve({
         token: jwt
-      }, function(){
-          //maybe want to display something
+      });
     });
+    }, function(response) {
+        console.log("firstcheck", response.errors[0]);
+   
+    }, (error) => {
+        console.log("secondcheck", error);
+        Ember.run(() => {
+          reject(error);
+        });
+    }));
   }, 
   invalidate(data) {
     return Promise.resolve(data);
