@@ -23,16 +23,16 @@
 		<h3>Please fill in the client's documentation</h3>
 
 		<label for = "licoDocumentation">LICO</label>
-		{{input id='licoDocumentation' value=model.clientLICO}}
+		{{input id='clientLICO' value=clientLICO}}
 		<br>
 		<label for = "aishDocumentation">AISH</label>
-		{{input id='aishDocumentation' value=model.clientAISH}}
+		{{input id='clientAISH' value=clientAISH}}
 		<br>
 		<label for = "saDocumentation">SA</label>
-		{{input id='saDocumentation' value=model.clientSA}}
+		{{input id='clientSA' value=clientSA}}
 		<br>
 		<label for = "notesDocumentation">Notes</label>
-		{{textarea id='notesDocumentation' value=notesDocumentation cols="80" rows="6"}}
+		{{textarea id='clientNotes' value=clientNotes cols="80" rows="6"}}
 		<br>
 
 		<h3>Please fill in the alternative contact's contact information</h3>
@@ -43,14 +43,11 @@
 		<label for = "alternativeAddress">Alternative Contact's Address</label>
 		{{textarea id='alternativeAdress' value=alternativeAddress required='true'  cols="50" rows="4"}}
 		<br>
-		<label for = "alternativeHomePhone">Alternative Contact's Home Phone Number</label>
-		{{input id='alternativeHomePhone' value=alternativeHomePhone}}
+		<label for = "alternativePrimaryPhone">Alternative Contact's Primary Phone Number</label>
+		{{input id='alternativePrimaryPhone' value=alternativePrimaryPhone}}
 		<br>
-		<label for = "alternativeCellPhone">Alternative Contact's Cell Phone Number</label>
-		{{input id='alternativeCellPhone' value=alternativeCellPhone required='true'}}
-		<br>
-		<label for = "alternativeOtherPhone">Alternative Contact's Other Phone Number</label>
-		{{input id='alternativeOtherPhone' value=alternativeOtherPhone}}
+		<label for = "alternativeSecondaryPhone">Alternative Contact's Secondary Phone Number</label>
+		{{input id='alternativeSecondaryPhone' value=alternativeSecondaryPhone}}
 		<br>
 		<label for = "alternativeEmail">Alternative Contact's Email</label>
 		{{input id='alternativEmail' value=alternativeEmail required='true'}}

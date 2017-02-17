@@ -6,9 +6,8 @@ export default Ember.Controller.extend({
 	actions: {
 		submitNewCient(){
 			self = this;
-			let cName = this.get('clientName');
-			// cAddress = clientAddress,
-			// cPhone = clientPhone,
+			//let cName = this.get('clientName');
+			//TODO check inputs
 			let ajaxPost = this.get('ajax').post('/api/client' , {
 				type: 'application/json',
 				data: {client: {
@@ -17,7 +16,16 @@ export default Ember.Controller.extend({
 					phoneNumber: this.get('clientPhone'),
 					email: this.get('clientEmail'),
 					licos: this.get('clientLICO'),
-					socialAssistance: this.get('clientAS')
+					aish: this.get('clientAISH'),
+					socialAssistance: this.get('clientAS'),
+					created_at: new Date(day, month, year),
+					clientID: this.get('clientID'),
+					alternativeContactName: this.get('alternativeName'),
+					alternativeContactPhoneNumber: this.get('alternativePrimaryPhone'),
+					alternativeContactAddress: this.get('alternativeAddress'),
+					notes: this.get('clientNotes'),
+					alternativeContact2ndPhone: this.get('alternativeSecondaryPhone'),
+					alternativeContactEmail: this.get('alternativeEmail')
 					// name: 'Boby',
 					// address: '123 somewehere st, Edmonton',
 					// phoneNumber: '780-555-1234',
