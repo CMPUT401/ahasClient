@@ -11,6 +11,8 @@ Router.map(function() {
   this.route('afterlogin');
   this.route('create-user');
   this.route('new-client');
+  this.route('one-contact');
+  this.route('all-contacts');
 });
 
 export default Router;
