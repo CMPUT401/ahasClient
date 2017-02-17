@@ -4,7 +4,15 @@ export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
 	model:function()
 	{
-		return this.get('ajax').request('/api/patients/1');
+		return this.get('ajax').request('/api/patients/1',{
+			method: 'GET'
+		}).then(function(data){
+				console.log("status is " + JSON.stringify(data));
+				self.transitionToRoute('login');
+			},
+			function(data){
+				console.log("status is " + JSON.stringify(data));
+		});
 	},
 
 
