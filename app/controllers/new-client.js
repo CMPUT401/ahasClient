@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
 					aish: this.get('clientAISH'),
 					socialAssistance: this.get('clientAS'),
 					pets: "",
-					created_at: new Date(day, month, year),
+					created_at: new Date(),
 					updated_at: "",
 					clientID: this.get('clientID'),
 					alternativeContactName: this.get('alternativeName'),
@@ -38,6 +38,8 @@ export default Ember.Controller.extend({
 				}}, 
 			}).then(function(data){
 					//console.log("name is " + cName);
+					// TODO display confrimation page
+					// TODO prevent user from going back into this page
 					console.log("status is " + JSON.stringify(data));
 					self.transitionToRoute('login');
 				},
