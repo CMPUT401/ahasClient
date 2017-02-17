@@ -1,2 +1,23 @@
-{{outlet}}
-Hello, <strong>{{firstName}} {{lastName}} </strong>!
+<div class ="container">
+	<form {{action "submitNewPatient" on="submit"}}>
+		<h3>Please fill in the patient's current status</h3>
+		{{input id = 'patientName' value=patientName required='true'}}
+		<br>
+		{{input id = 'patientSpecies' value=patientSpecies required='true'}}
+		<br>
+		{{input id = 'patientGender' value=patientGender required='true'}}
+		<br>
+		{{input id = 'patientStatus' value=patientStatus required='true'}}
+		<br>
+		{{input id = 'patientAge' value=patientAge required='false'}}
+		<br>
+		{{input id = 'patientColor' value=patientColor required='true'}}
+		<br>
+		{{input id = 'patientTatoo' value=patientTatoo required='false'}}
+		<br>
+		{{input id = 'patientMicrochip' value=patientMicrochip required='false'}}
+		<br>
+		<br>
+		<button type = "submit">Create Patient</button>
+	</form>
+</div>
