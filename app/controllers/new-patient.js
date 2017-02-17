@@ -25,11 +25,11 @@ export default Ember.Controller.extend({
 					//this: "huh?"
 				}},
 			}).then(function(data){
-				console.log("statis is " + JSON.stringify(data));
+				console.log("status is " + JSON.stringify(data));
 				self.transitionToRoute('login');
 			},
 			function(data){
-				console.log("statis is " + JSON.stringify(data));
+				console.log("status is " + JSON.stringify(data));
 			});
 		return ajaxPost;
 		}
