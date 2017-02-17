@@ -32,11 +32,11 @@ export default Base.extend({
         token: jwt
       });
     });
-    }, function(response) {
-        console.log("firstcheck", response.errors[0]);
-   
+    }, function() {
+        showAlert("The username and password you entered do not match");
     }, (error) => {
-        console.log("secondcheck", error);
+      //not sure if we will ever need this or if it is the appropriate message for whatever this condition will be
+        showAlert("There was an error logging in");
         Ember.run(() => {
           reject(error);
         });
@@ -46,3 +46,9 @@ export default Base.extend({
     return Promise.resolve(data);
   }
 });
+
+function showAlert(message) {
+
+     Ember.$('#alert_placeholder').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
+ 
+}
