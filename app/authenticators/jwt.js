@@ -1,7 +1,7 @@
 import Ember from 'ember';  
 import Base from 'ember-simple-auth/authenticators/base';  
 import config from '../config/environment';
-const { RSVP: { Promise }, $: { ajax }, run } = Ember;
+const { RSVP: { Promise } } = Ember;
 export default Base.extend({  
   ajax: Ember.inject.service(),
   tokenEndpoint: `${config.server}/api/user_token`,
@@ -24,20 +24,13 @@ export default Base.extend({
           password: password,
         }
     }
-    }).then((response) => {
-        const { jwt } = response;
-        // Wrapping aync operation in Ember.run
-        run(() => {
-          resolve({
-            token: jwt
-          });
-        });
-      }, (error) => {
-        // Wrapping aync operation in Ember.run
-        run(() => {
-          reject(error);
-        });
-    })
+    }).then(function(response){
+        console.log("our response", response, response.jwt);
+        const { jwt } = response.jwt;
+        token: jwt
+      }, function(){
+          //maybe want to display something
+    });
   }, 
   invalidate(data) {
     return Promise.resolve(data);
