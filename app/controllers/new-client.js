@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 	//let cName, let cAddress, let cPhone,
 	actions: {
 		submitNewCient(){
-			self = this;
+			var self = this;
 			//let cName = this.get('clientName');
 			//TODO check inputs
 			let ajaxPost = this.get('ajax').post('/api/client' , {

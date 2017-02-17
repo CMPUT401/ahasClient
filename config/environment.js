@@ -24,12 +24,13 @@ module.exports = function(environment) {
   };
   
   ENV['ember-simple-auth'] = {  
-    authorizer: 'authorizer:custom',
-    routeAfterAuthentication: '/'
+    store: 'session-store:local-storage',
+    authorizer: 'authorizer:custom'
 };
 
     if (environment === 'development') {
 	ENV.host = 'http://localhost:4200';
+  ENV.server = 'https://ahas.herokuapp.com';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -42,6 +43,7 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
+    ENV.server = 'https://ahas.herokuapp.com'; //wont actually post bc mirage will intercept
     ENV.locationType = 'none';
 
     // keep test console output quieter
