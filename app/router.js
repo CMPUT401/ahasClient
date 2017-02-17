@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('afterlogin');
   this.route('create-user');
   this.route('new-client');
+  this.route('view-patient');
 });
 
 export default Router;
