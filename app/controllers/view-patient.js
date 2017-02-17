@@ -2,9 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
-	model:function()
-	{
-		self = this;
+	model() {
+		console.log("do we even get here");
+		var self = this;
 		let ajaxGet=this.get('ajax').get('/api/patients/1'
 			).then(function(data){
 				console.log("status is " + JSON.stringify(data));
@@ -12,10 +12,10 @@ export default Ember.Controller.extend({
 			function(data){
 				console.log("status is " + JSON.stringify(data));
 			});
-		return ajaxGet;
+		return [ajaxGet];
 	},
 
-
+/*
 	clientLastName: 'Bobbertson',
 	clientFirstName: 'Fred',
 	clientAddress: '22554 48th Ave NW Edmonton Alberta, Canada',
@@ -40,6 +40,6 @@ export default Ember.Controller.extend({
 	patientAge: '10',
 	patientColor: 'Brown spotted',
 	patientTatoo: '12352',
-	patientMicrochip: '11102'
+	patientMicrochip: '11102'*/
 
 });
