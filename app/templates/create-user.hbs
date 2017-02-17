@@ -1,0 +1,32 @@
+<nav>
+  <p> Back to the login page: </p>
+  {{#link-to "login"}}Login{{/link-to}}
+</nav>
+<p> Please enter your email and a password to create an account: </p>
+<form > 
+  <label for="name">Name</label>
+  <br>
+  {{input id='name' value=name}}
+  <br>
+  <br> 
+  <label for="username">Username</label>
+  <br>
+  {{input id='username' value=identification}}
+  <br>
+  <br>
+  <label for="password">Password</label>
+  <br>
+  {{input id='password' value=password}}
+  <br>
+  <br>
+  <label for="passwordConfirm">Confirm Password</label>
+  <br>
+  {{input id='passwordConfirm' value=confirmpassword}}
+  <br>
+  <br>
+  <button type="submit" {{action 'createUser'}} id="create-user-button">Create</button>
+ </form>
+ <br>
+ <div id = "alert_placeholder"></div>
+
+{{outlet}}

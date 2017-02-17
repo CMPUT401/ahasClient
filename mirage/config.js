@@ -13,6 +13,8 @@ export default function() {
   // this.timing = 400;      // delay for each request, automatically set to 0 during testing
 
    this.post('/user_token' , {"jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"});
+   this.post('/signup', { success: true }, 201);
+
   /*
     Shorthand cheatsheet:
 
