@@ -10,5 +10,7 @@ export default ActiveModelAdapter.extend(DataAdapterMixin, {
 	    authorizer: 'authorizer:custom'
 	    });
 
-export default DS.JSONAPIAdapter.extend(AjaxServiceSupport);
+export default DS.JSONAPIAdapter.extend(AjaxServiceSupport, {
+	
+});
 

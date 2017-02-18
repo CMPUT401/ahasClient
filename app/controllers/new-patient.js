@@ -2,15 +2,21 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
+	session: Ember.inject.service(),
 	actions: 
 	{
 		submitNewPatient()
 		{
-			self = this;
-			let ajaxPost=this.get('ajax').post('/api/patients',
+			//var theController = config.App.application.create();
+			//console.log("is this defined", application)
+			//var authorizer = 'authorizer:custom';
+			var jwt = this.get('session.token'); 
+
+			//this.get('session').authorize(authorizer,  (headerName, headerValue) => {
+				let ajaxPost = this.get('ajax').post('/api/patients',
 			{
-				type: 'application/json',
-				data: {patient:
+				contentType: 'application/json',
+				data: { patient:
 					{
 					client: "1",
 					species: 	this.get('patientSpecies'),
@@ -23,8 +29,16 @@ export default Ember.Controller.extend({
 					reproductive_status: 	this.get('patientStatus')
 					//what: "is",
 					//this: "huh?"
-				}},
-			}).then(function(data){
+				}
+			},
+			headers: {
+					//'Authorization': "Bearer"+ jwt
+				},
+			});
+
+			console.log("why is it undefined", this.get('session.token'), jwt);
+			//this.send('setHeader', ajaxPost );
+			ajaxPost.then(function(data){
 				console.log("status is " + JSON.stringify(data));
 				self.transitionToRoute('login');
 			},
@@ -32,6 +46,13 @@ export default Ember.Controller.extend({
 				console.log("status is " + JSON.stringify(data));
 			});
 		return ajaxPost;
-		}
+	},
+		setHeader(request){
+		var authorizer = 'authorizer:custom';
+		var jwt = this.get('session.token'); //ember_simple_auth-session'); 
+		//console.log('our jwt', jwt);
+	  this.get('session').authorize(authorizer, request);
 	}
+}
+	
 });
