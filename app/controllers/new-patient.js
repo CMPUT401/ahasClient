@@ -32,7 +32,8 @@ export default Ember.Controller.extend({
 				}
 			},
 			//headers: {
-			//	Authorization: 'Bearer' + this.get('session.data.authenticated.token')
+				//'Authorization': 'Bearer' + this.get('session.data.authenticated.token')
+			///	'Authorization': 'testval'
 			//}
 		
 			});
