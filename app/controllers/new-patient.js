@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
 			//var theController = config.App.application.create();
 			//console.log("is this defined", application)
 			//var authorizer = 'authorizer:custom';
-			//var jwt = this.get('session.token'); 
+			var jwt = this.get('session.data.authenticated.token'); 
 
 			//this.get('session').authorize(authorizer,  (headerName, headerValue) => {
 				let ajaxPost = this.get('ajax').request('/api/patients',
@@ -27,9 +27,10 @@ export default Ember.Controller.extend({
 					tattoo: 	this.get('patientTatoo'),
 					microchip: 	this.get('patientMicrochip'),
 					gender: 	this.get('patientGender'),
-					reproductive_status: 	this.get('patientStatus')
+					reproductive_status: 	this.get('patientStatus'),
 				
 				}
+				// token:  "Bearer " + jwt 
 			}, 
 		
 			});
