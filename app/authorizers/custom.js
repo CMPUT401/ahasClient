@@ -14,6 +14,7 @@ export default Base.extend({
       request.setRequestHeader('Authorization', `Bearer ${token}`);
       //this is how to add a field to preexisting header which is what we want. but how to get request to here?
       // all amber-ajax ever returns is promises, not request before sending.....
+      //therefore currently not used.
     }
   }
 });

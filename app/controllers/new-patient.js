@@ -13,8 +13,9 @@ export default Ember.Controller.extend({
 			//var jwt = this.get('session.token'); 
 
 			//this.get('session').authorize(authorizer,  (headerName, headerValue) => {
-				let ajaxPost = this.get('ajax').post('/api/patients',
+				let ajaxPost = this.get('ajax').request('/api/patients',
 			{
+				method: 'POST',
 				type: 'application/json',
 				data: { patient:
 					{
@@ -27,14 +28,9 @@ export default Ember.Controller.extend({
 					microchip: 	this.get('patientMicrochip'),
 					gender: 	this.get('patientGender'),
 					reproductive_status: 	this.get('patientStatus')
-					//what: "is",
-					//this: "huh?"
+				
 				}
-			},
-			//headers: {
-				//'Authorization': 'Bearer' + this.get('session.data.authenticated.token')
-			///	'Authorization': 'testval'
-			//}
+			}, 
 		
 			});
 			ajaxPost.then(function(data){
