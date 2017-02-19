@@ -10,12 +10,12 @@ export default Ember.Controller.extend({
 			//var theController = config.App.application.create();
 			//console.log("is this defined", application)
 			//var authorizer = 'authorizer:custom';
-			var jwt = this.get('session.token'); 
+			//var jwt = this.get('session.token'); 
 
 			//this.get('session').authorize(authorizer,  (headerName, headerValue) => {
 				let ajaxPost = this.get('ajax').post('/api/patients',
 			{
-				contentType: 'application/json',
+				type: 'application/json',
 				data: { patient:
 					{
 					client: "1",
@@ -31,13 +31,11 @@ export default Ember.Controller.extend({
 					//this: "huh?"
 				}
 			},
-			headers: {
-					//'Authorization': "Bearer"+ jwt
-				},
+			//headers: {
+			//	Authorization: 'Bearer' + this.get('session.data.authenticated.token')
+			//}
+		
 			});
-
-			console.log("why is it undefined", this.get('session.token'), jwt);
-			//this.send('setHeader', ajaxPost );
 			ajaxPost.then(function(data){
 				console.log("status is " + JSON.stringify(data));
 				self.transitionToRoute('login');
