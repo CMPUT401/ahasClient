@@ -12,8 +12,8 @@ Router.map(function() {
   this.route('afterlogin');
   this.route('create-user');
   this.route('new-client');
-  this.route('one-contact');
-  this.route('all-contacts');
+  this.route('view-contact');
+  this.route('search-contacts');
   this.route('view-patient');
 });
 

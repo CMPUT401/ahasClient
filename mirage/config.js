@@ -14,6 +14,20 @@ export default function() {
 
    this.post('/user_token' , {"jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"});
    this.post('/signup', { success: true }, 201);
+   this.get('/contact/1', function(){
+     return {
+       data: [{
+        type: 'person',
+         attributes: {
+            name: "Joe",
+            email: "joe@gmail.ca",
+            address: "123 st",
+            phoneNumber: 123-123-1234,
+            faxNumber: 123-321-1234
+         }
+       }]
+     };
+   }); //id for now TODO flexible?
 
   /*
     Shorthand cheatsheet:
