@@ -19,7 +19,7 @@ test('visiting /afterlogin while not authenticated', function(assert) {
   visit('/afterlogin');
 
   andThen(function() {
-    assert.equal(currentURL(), '/afterlogin');
+    assert.notEqual(currentURL(), '/afterlogin');
   });
 });
 
