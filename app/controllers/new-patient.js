@@ -7,12 +7,6 @@ export default Ember.Controller.extend({
 	{
 		submitNewPatient()
 		{
-			//var theController = config.App.application.create();
-			//console.log("is this defined", application)
-			//var authorizer = 'authorizer:custom';
-			var jwt = this.get('session.data.authenticated.token'); 
-
-			//this.get('session').authorize(authorizer,  (headerName, headerValue) => {
 				let ajaxPost = this.get('ajax').request('/api/patients',
 			{
 				method: 'POST',
@@ -27,27 +21,20 @@ export default Ember.Controller.extend({
 					tattoo: 	this.get('patientTatoo'),
 					microchip: 	this.get('patientMicrochip'),
 					gender: 	this.get('patientGender'),
-					reproductive_status: 	this.get('patientStatus'),
+					reproductive_status: 	this.get('patientStatus')
 				
 				}
-				// token:  "Bearer " + jwt 
+			
 			}, 
 		
 			});
 			ajaxPost.then(function(data){
 				console.log("status is " + JSON.stringify(data));
-				self.transitionToRoute('login');
 			},
 			function(data){
 				console.log("status is " + JSON.stringify(data));
 			});
 		return ajaxPost;
-	},
-		setHeader(request){
-		var authorizer = 'authorizer:custom';
-		var jwt = this.get('session.token'); //ember_simple_auth-session'); 
-		//console.log('our jwt', jwt);
-	  this.get('session').authorize(authorizer, request);
 	}
 }
 	
