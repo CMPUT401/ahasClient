@@ -6,10 +6,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 
 	ajax: Ember.inject.service(),
 	model() {
+		var self = this;
 		return new RSVP.Promise(function(resolve) {
 			Ember.run.later(function() {
 				resolve({
-					msg: 'hold your hoses'
+					this.get('ajax').request('/api/patients/1');
 					/*
 					var self = this;
 					var ajaxGet = this.get('ajax').request('/api/patients/1'
