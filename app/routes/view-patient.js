@@ -10,7 +10,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 		return new RSVP.Promise(function(resolve) {
 			Ember.run.later(function() {
 				resolve({
-					this.get('ajax').request('/api/patients/1');
+					msg: 'hold'
+					//this.get('ajax').request('/api/patients/1');
 					/*
 					var self = this;
 					var ajaxGet = this.get('ajax').request('/api/patients/1'

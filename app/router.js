@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('create-user');
   this.route('new-client');
   this.route('view-patient');
+  this.route('search-patient');
 });
 
 export default Router;
