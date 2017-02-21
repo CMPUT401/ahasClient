@@ -6,11 +6,18 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 
 	ajax: Ember.inject.service(),
 	model() {
-		var self = this;
+		//var self = this;
+		console.log("heh");
 		return new RSVP.Promise(function(resolve) {
+			console.log('heh2');
+
+
 			Ember.run.later(function() {
-				resolve({
-					msg: 'hold'
+				var self = this;
+				let ajaxGet=this.get('ajax').get('/api/patients/1')
+				return [ajaxGet];
+				//resolve({
+				//	msg: 'hold'
 					//this.get('ajax').request('/api/patients/1');
 					/*
 					var self = this;
@@ -24,7 +31,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 						});
        				console.log("patient extracted", ajaxGet);
 					return [ajaxGet];*/
-				});
+				//});
 			}, 3000);
 		});
 	},
