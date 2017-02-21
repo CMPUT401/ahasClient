@@ -11,8 +11,10 @@ export default Ember.Controller.extend({
         var email= document.getElementById('username').value;
         var password = document.getElementById('password').value;
         var passwordConfirm = document.getElementById('passwordConfirm').value;
+
+        console.log('the name' , name);
         
-        if (checkFormat(password, email, passwordConfirm) === true ){
+        if (checkFormat(name, password, email, passwordConfirm) === true ){
          
         var user = this.get('ajax').post('/api/signup', {
         type: 'application/json',
@@ -44,11 +46,16 @@ export default Ember.Controller.extend({
 /* 
  * checks the format of the email and password provided on the createUser form
  */
-function checkFormat(password, email, passwordConfirm) {
+function checkFormat(name , password, email, passwordConfirm) {
 
         var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-        if (password !== passwordConfirm){
+        if (name === "" ||name === " "){
+            showAlert("Name cannot be blank", false);
+            return false;
+        }
+
+        else if (password !== passwordConfirm){
             showAlert("Password and password confirmation do not match", false);
             return false;
         }
