@@ -3,14 +3,18 @@
     <br>
     <br>
     <div class="row">
-            <textarea class="col-md-13 searchbartextarea "> </textarea>
+            <form {{action "getContact" contact.id on="submit"}}>
+        <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+        <input class="form-control" placeholder="Search" autofocus="autofocus"/>
+        </div>
+        </form>
     </div>
     <br>
     <br>
     <div class="row">
-            <p class="col-md-4 ">Veterinarians</p>
-             <p class="col-md-4 col-md-offset-4">Volunteers</p>
-              <p class="col-md-4 col-md-offset-8">LabSupply </p>
+            <p class="col-sm-4 col-sm-4 col-sm-4">Veterinarians a a</p>
+             <p class="col-sm-10 col-md-offset-2">Volunteers</p>
+              <p class="col-sm-10 col-md-offset-2">LabSupply </p>
             <textarea class="col-md-4 searchbartextarea "> </textarea>
             <textarea class="col-md-4 searchbartextarea "> </textarea>
             <textarea class="col-md-4 searchbartextarea "> </textarea>
