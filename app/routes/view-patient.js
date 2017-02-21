@@ -13,7 +13,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 				//return(data.patient); //need to find way to extract patient portion of request....
 			},
 			function(data){
+				if (data === false){
+				self.transitionTo('/unauthorized');
 				console.log("status is " + JSON.stringify(data));
+				}
 			});
         console.log("patient extracted", ajaxGet);
 		return [ajaxGet];
