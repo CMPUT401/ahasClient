@@ -4,18 +4,16 @@ import RSVP from 'rsvp';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin,{
 
-	ajax: Ember.inject.service(),
+	/*ajax: Ember.inject.service(),
 	model() {
 		//var self = this;
 		console.log("heh");
 		return new RSVP.Promise(function(resolve) {
 			console.log('heh2');
-
-
+			var self = this;
 			Ember.run.later(function() {
-				var self = this;
-				let ajaxGet=this.get('ajax').get('/api/patients/1')
-				return [ajaxGet];
+				
+				return[self.get('ajax').request('/api/patients/1')];
 				//resolve({
 				//	msg: 'hold'
 					//this.get('ajax').request('/api/patients/1');
@@ -30,7 +28,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 							console.log("status is " + JSON.stringify(data));
 						});
        				console.log("patient extracted", ajaxGet);
-					return [ajaxGet];*/
+					return [ajaxGet];
 				//});
 			}, 3000);
 		});
@@ -40,10 +38,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 		console.log(model.msg);
 	}
 
-});
+});*/
 
 
-/*
+
     ajax: Ember.inject.service(),
 	model() {
 		var self = this;
@@ -64,4 +62,4 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 	}
 
 });
-*/
+
