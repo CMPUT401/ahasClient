@@ -60,12 +60,6 @@ p {
     padding: 15px;
 }
 
-//user-creation page textarea
-.usertextarea {
-    margin-top: 5%;
-    margin-right: 1%;
-}
-
 //inputboxes
 .nonalignbox{
     margin-left: 10%;
@@ -74,3 +68,17 @@ p {
 .status{
     padding: 15px;
 }
+
+//on searchcontacts.hbs
+.searchbartextarea {
+    resize: none;
+    margin-right: 20%;
+    margin-left: 15%;
+    width: 75%;
+    line-height: 10px;
+}
+.headingsForContactTypes{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
