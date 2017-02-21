@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { test } from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
 
@@ -109,3 +110,4 @@ test('should transition to another page', function (assert){
 		assert.equal(currentURL(), '/login');
 	});
 });
+

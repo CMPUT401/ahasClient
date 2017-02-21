@@ -4,9 +4,12 @@ import config from '../config/environment';
 import DS from 'ember-data';
 import AjaxServiceSupport from 'ember-ajax/mixins/ajax-support';
 
+
 export default ActiveModelAdapter.extend(DataAdapterMixin, {  
 	host: `${config.host}`,
-	    authorizer: 'authorizer:custom'
-	    });
+});
 
-export default DS.JSONAPIAdapter.extend(AjaxServiceSupport);
+export default DS.JSONAPIAdapter.extend(AjaxServiceSupport, {
+
+});
+
