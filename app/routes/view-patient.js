@@ -9,6 +9,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 		return new RSVP.Promise(function(resolve) {
 			Ember.run.later(function() {
 				resolve({
+					msg: 'hold your hoses'
+					/*
 					var self = this;
 					var ajaxGet = this.get('ajax').request('/api/patients/1'
 						).then(function(data){
@@ -19,13 +21,13 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 							console.log("status is " + JSON.stringify(data));
 						});
        				console.log("patient extracted", ajaxGet);
-					return [ajaxGet];
+					return [ajaxGet];*/
 				});
 			}, 3000);
 		});
 	},
 
-	setupControler(controller,model){
+	setupController(controller,model){
 		console.log(model.msg);
 	}
 
