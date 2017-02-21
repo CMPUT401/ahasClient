@@ -26,23 +26,38 @@ test('adding new user valid', function(assert){
 
   test('adding invalid user, too short password', function(assert){
   visit('/create-user');
+  fillIn('#name', "test");
   fillIn('#username', "user@gmail.ca");
   fillIn('#password', "pass");
   fillIn('#passwordConfirm', "pass");
   click('#create-user-button');
   andThen(function(){
     assert.equal(find('#statusBad').text(), "Password too short, must be at least 7 characters!");
+    assert.notEqual(find('#statusGood').text(), "Password too short, must be at least 7 characters!");
   });
   });
 
   test('adding invalid user, incorrect format email', function(assert){
   visit('/create-user');
+  fillIn('#name', "test");
   fillIn('#username', "usermail.ca");
   fillIn('#password', "password");
   fillIn('#passwordConfirm', "password");
   click('#create-user-button');
   andThen(function(){
     assert.equal(find('#statusBad').text(), "Incorrect email format");
+  });
+  });
+
+
+  test('adding invalid user, name is blank', function(assert){
+  visit('/create-user');
+  fillIn('#username', "usermail.ca");
+  fillIn('#password', "password");
+  fillIn('#passwordConfirm', "password");
+  click('#create-user-button');
+  andThen(function(){
+    assert.equal(find('#statusBad').text(), "Name cannot be blank");
   });
 
 });
