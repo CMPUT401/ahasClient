@@ -1,8 +1,8 @@
-<<<<<<< HEAD
 import { test } from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
+import { authenticateSession, invalidateSession } from '../helpers/ember-simple-auth';
 
-import Pretender from 'pretender';
+//import Pretender from 'pretender';
 
 let serv; 
 
@@ -61,34 +61,48 @@ moduleForAcceptance('ajax-get component', {
 // 	});
 // });
 
-test('should fill in form with correct data', function (assert){
+// test('should fill in form with correct data', function (assert){
 
-	visit('/new-client');
+// 	authenticateSession(this.application);
+// 	visit('/new-client');
 
-	andThen(function(){
-		assert.equal(currentURL(), '/new-client');
-		assert.equal(find('#clientName').text(), '');		
-	});
+// 	andThen(function(){
+// 		assert.equal(currentURL(), '/new-client');
+// 		assert.equal(find('#clientName').text(), '');		
+// 	});
 
 	
-	fillIn('#clientName', 'Alice');
-	//fillIn("input:contains(Client's Name)")
-	//find('#clientName').change();
-	//fillIn('#clientAddress', 'Wonderland');
-	andThen(function(){
-		assert.equal(find('#clientName').text(), 'Alice');
-	});
-	//find('#clientName').change();
+// 	fillIn('#clientName', 'Alice');
+// 	//fillIn("input:contains(Client's Name)")
+// 	//find('#clientName').change();
+// 	//fillIn('#clientAddress', 'Wonderland');
+// 	andThen(function(){
+// 		assert.equal(find('#clientName').text(), 'Alice');
+// 	});
+// 	//find('#clientName').change();
 
-	// andThen(function(){
-	// 	assert.equal(find('clientName')., 'Alice');
-	// });
+// 	// andThen(function(){
+// 	// 	assert.equal(find('clientName')., 'Alice');
+// 	// });
 	
-	
-});
+// });
 
 test('should transition to another page', function (assert){
+	
+	// visit('/login');
+	// fillIn('#username', 'malajeun@ualberta.ca');
+	// fillIn('#password', '1234567');
+	// click('#login-button');
+	// // andThen(function(){
+	// // 	click('button:contains(Login)');
+	// // });
+	// andThen(function(){
+	// 	assert.equal(currentURL(), '/afterlogin');
+	// });
+	authenticateSession(this.application);
+
 	visit('/new-client');
+	
 	andThen(function(){
 		assert.equal(currentURL(), '/new-client');
 		
@@ -97,7 +111,7 @@ test('should transition to another page', function (assert){
 	fillIn('#clientName', 'Alice');
 	fillIn('#clientAddress', 'Wonderland');
 	fillIn('#clientPhone', '555-555-5555');
-	fillIn('#clientEmail', 'alice@wonderlnad.com');
+	fillIn('#clientEmail', 'alice@wonderland.com');
 	fillIn('#clientID', '12512');
 
 	fillIn('#alternativeName', 'Bob McKenzie');
@@ -105,9 +119,19 @@ test('should transition to another page', function (assert){
 	fillIn('#alternativeEmail', 'bob@email.com');
 
 	click('button:contains(Create Client)');
+	//click('#create-client-button');
 	andThen(function(){
 		assert.notEqual(currentURL(), '/new-client');
-		assert.equal(currentURL(), '/login');
+		assert.equal(currentURL(), '/afterlogin');
 	});
 });
+
+// function loginToTest(){
+// 	visit('/login');
+// 	fillIn('#username', 'malajeun@ualberta.ca');
+// 	fillin('#password', '1234567');
+// 	andThen(function(){
+// 		click('button:contains(Login)');
+// 	});
+// }
 

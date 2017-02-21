@@ -41,7 +41,7 @@ export default Ember.Controller.extend({
 					// TODO display confrimation page
 					// TODO prevent user from going back into this page
 					console.log("status is " + JSON.stringify(data));
-					self.transitionToRoute('login');
+					self.transitionToRoute('afterlogin');
 				},
 				function(data){
 					console.log("status is " + JSON.stringify(data));
