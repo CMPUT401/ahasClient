@@ -45,6 +45,9 @@ export default Ember.Controller.extend({
 				},
 				function(data){
 					console.log("status is " + JSON.stringify(data));
+					if (data === false){
+					self.transitionToRoute('/unauthorized');
+					}
 				});
 			//createNewCLient();
 			//this.transitionToRoute('/login');

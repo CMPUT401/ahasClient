@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
 	{
 		submitNewPatient()
 		{
+			var self = this;
 				let ajaxPost = this.get('ajax').request('/api/patients',
 			{
 				method: 'POST',
@@ -32,7 +33,9 @@ export default Ember.Controller.extend({
 				console.log("status is " + JSON.stringify(data));
 			},
 			function(data){
-				console.log("status is " + JSON.stringify(data));
+				if (data === false){
+					self.transitionToRoute('/unauthorized');
+				}
 			});
 		return ajaxPost;
 	}

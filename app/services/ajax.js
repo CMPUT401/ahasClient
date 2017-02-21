@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import AjaxService from 'ember-ajax/services/ajax';
+import { isUnauthorizedError } from 'ember-ajax/errors';
 
 
 export default AjaxService.extend({
@@ -16,6 +17,14 @@ export default AjaxService.extend({
       }
 	  return(headers);
     }
-  })
+  }),
+	handleResponse() {
+    const result = this._super(...arguments);
+    if ( isUnauthorizedError(result) ){
+			return(false);
+    } else {
+      return result;
+    }
+	}
 });
 
