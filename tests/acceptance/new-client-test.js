@@ -71,7 +71,9 @@ test('should fill in form with correct data', function (assert){
 
 	
 	fillIn('#clientName', 'Alice');
-	find('#clientName').change();
+	//fillIn("input:contains(Client's Name)")
+	//find('#clientName').change();
+	//fillIn('#clientAddress', 'Wonderland');
 	andThen(function(){
 		assert.equal(find('#clientName').text(), 'Alice');
 	});
@@ -82,4 +84,28 @@ test('should fill in form with correct data', function (assert){
 	// });
 	
 	
+});
+
+test('should transition to another page', function (assert){
+	visit('/new-client');
+	andThen(function(){
+		assert.equal(currentURL(), '/new-client');
+		
+	});
+
+	fillIn('#clientName', 'Alice');
+	fillIn('#clientAddress', 'Wonderland');
+	fillIn('#clientPhone', '555-555-5555');
+	fillIn('#clientEmail', 'alice@wonderlnad.com');
+	fillIn('#clientID', '12512');
+
+	fillIn('#alternativeName', 'Bob McKenzie');
+	fillIn('#alternativeAddress', 'Dougs place');
+	fillIn('#alternativeEmail', 'bob@email.com');
+
+	click('button:contains(Create Client)');
+	andThen(function(){
+		assert.notEqual(currentURL(), '/new-client');
+		assert.equal(currentURL(), '/login');
+	});
 });
