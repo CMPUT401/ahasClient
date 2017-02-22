@@ -8,6 +8,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 		var self = this;
 		let ajaxGet = this.get('ajax').request('/api/client' , {
 			//type: 'application/json'
+			//method: 'GET'
 		}).then(function(data){
 			//console.log("name is " + cName);
 			console.log("status is " + JSON.stringify(data));
