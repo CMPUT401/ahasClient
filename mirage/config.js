@@ -12,7 +12,7 @@ export default function() {
    this.namespace = '/api';    // make this `/api`, for example, if your API is namespaced
   // this.timing = 400;      // delay for each request, automatically set to 0 during testing
 
-   this.post('/user_token' , {"jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"});
+   this.post('/user_token' , { success: false }, 404);
    this.post('/signup', { success: true }, 201);
    this.get('/contact/1', function(){
      return {

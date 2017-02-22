@@ -1,6 +1,7 @@
 import { test} from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
 import { authenticateSession, invalidateSession } from '../helpers/ember-simple-auth';
+import Mirage from 'ember-cli-mirage';
 
 
 moduleForAcceptance('Acceptance | login');
@@ -49,14 +50,22 @@ test('login with valid user, incorrect password', function(assert) {
   });
 });
 
+//ugh need to figure how to fake diff server reponses, this currently doesnt work
 test('login with valid user, correct password', function(assert) {
-  authenticateSession(this.application);
   
   visit('/login');
+
+  server.post('/api/user_token', () => {
+
+    return new Mirage.Response(201, { jwt: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0ODc4MTgzMTYsInN1YiI6M30.kEfDcSJAVhtM7hQrmw1EPL1YoFx5iPQCzxyIA_rOSHQ'});
+  
+});
+  //server.post('api/user_token' , { success: true}, 201);
 
   fillIn('#username','valid@email.ca');
   fillIn('#password','validpassword');
   click('#login-button');
+   //server.post('/user_token' , { success: true}, 201);
 
   andThen(function() {
     assert.equal(currentURL(), '/afterlogin');

@@ -4,7 +4,7 @@ import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
 moduleForAcceptance('Acceptance | view contact');
 
 test('visiting /view-contact/1', function(assert) {
-  visit('/view-contact');
+  visit('/view-contact/1');
 
   andThen(function() {
     assert.equal(currentURL(), '/view-contact/1');
