@@ -7,7 +7,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 		// TODO GET model with AJAX instead of using dummy data
 		var self = this;
 		let ajaxGet = this.get('ajax').request('/api/client' , {
-			type: 'application/json',
+			// type: 'application/json',
+			dataType: 'application/json',
 			// data: {client: {
 			// 	name: '',
 			// 	id: ''
@@ -15,11 +16,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 			//method: 'GET'
 		}).then(function(data){
 			//console.log("name is " + cName);
-			console.log("status is " + JSON.stringify(data));
-			self.transitionToRoute('login');
+			console.log("success status is " + JSON.stringify(data));
 		},
 		function(data){
-			console.log("status is " + JSON.stringify(data));
+			console.log("error status is " + JSON.stringify(data));
 			// if (data === false){
 			// 	if (self.get('session.isAuthenticated')){
 			// 		self.get('session').invalidate();
@@ -27,6 +27,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 			// 	self.transitionToRoute('/unauthorized');
 			// }
 		});
+		console.log("ajax is " + ajaxGet);
 		return ajaxGet;
 		
 		// return [{
