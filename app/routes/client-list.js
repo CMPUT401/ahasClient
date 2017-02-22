@@ -7,7 +7,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 		// TODO GET model with AJAX instead of using dummy data
 		var self = this;
 		let ajaxGet = this.get('ajax').request('/api/client' , {
-			//type: 'application/json'
+			type: 'application/json',
+			// data: {client: {
+			// 	name: '',
+			// 	id: ''
+			// }}
 			//method: 'GET'
 		}).then(function(data){
 			//console.log("name is " + cName);
