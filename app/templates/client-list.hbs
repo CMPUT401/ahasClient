@@ -1,7 +1,7 @@
 <div class = "container">
 	<!--TODO: add header with tabs -->
 	<div class = "nameList" style="height: 200px; width: 300px">
-		{{#client-list-filter filter=(action 'filterClientName')}}
+		
 			{{#ember-scrollable autoHide=false}}
 				{{#each model as |client|}}
 					<!-- TODO: onclick, GET client info and display it -->
@@ -10,6 +10,6 @@
 					</div>
 				{{/each}}
 			{{/ember-scrollable}}
-		{{/client-list-filter}}
+		
 	</div>
 </div>
