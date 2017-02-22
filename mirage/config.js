@@ -19,6 +19,7 @@ export default function() {
        data: [{
         type: 'person',
          attributes: {
+            id: "1",
             name: "Joe",
             email: "joe@gmail.ca",
             address: "123 st",

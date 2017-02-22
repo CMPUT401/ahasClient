@@ -24,6 +24,7 @@ test('visiting /afterlogin while not authenticated', function(assert) {
 });
 
 test('login with invalid user', function(assert) {
+  invalidateSession(this.application);
   visit('/login');
 
   fillIn('#username','invalid@email.ca');
@@ -36,6 +37,7 @@ test('login with invalid user', function(assert) {
 });
 
 test('login with valid user, incorrect password', function(assert) {
+  invalidateSession(this.application);
   visit('/login');
 
   fillIn('#username','valid@email.ca');
@@ -48,6 +50,8 @@ test('login with valid user, incorrect password', function(assert) {
 });
 
 test('login with valid user, correct password', function(assert) {
+  authenticateSession(this.application);
+  
   visit('/login');
 
   fillIn('#username','valid@email.ca');
@@ -55,7 +59,7 @@ test('login with valid user, correct password', function(assert) {
   click('#login-button');
 
   andThen(function() {
-    assert.equal(currentURL(), '/login');
-    assert.notEqual(currentURL(), '/afterlogin');
+    assert.equal(currentURL(), '/afterlogin');
+    assert.notEqual(currentURL(), '/login');
   });
 });

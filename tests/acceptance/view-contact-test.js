@@ -3,16 +3,16 @@ import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | view contact');
 
-test('visiting /view-contact', function(assert) {
+test('visiting /view-contact/1', function(assert) {
   visit('/view-contact');
 
   andThen(function() {
-    assert.equal(currentURL(), '/view-contact');
+    assert.equal(currentURL(), '/view-contact/1');
   });
 });
 
 test('checking info added correctly', function(assert) {
-  visit('/view-contact');
+  visit('/view-contact/1');
 
   andThen(function() {
     assert.equal(find('#contactName').text(), 'Contact information for: Joe');
