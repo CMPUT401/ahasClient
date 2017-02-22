@@ -15,6 +15,7 @@ Router.map(function() {
   this.route('view-contact', { path: '/view-contact/:contact_id' });
   this.route('search-contacts');
   this.route('view-patient');
+  this.route('unauthorized');
 });
 
 export default Router;

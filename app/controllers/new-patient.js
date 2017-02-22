@@ -2,15 +2,17 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
+	session: Ember.inject.service(),
 	actions: 
 	{
 		submitNewPatient()
 		{
-			self = this;
-			let ajaxPost=this.get('ajax').post('/api/patients',
+			var self = this;
+				let ajaxPost = this.get('ajax').request('/api/patients',
 			{
+				method: 'POST',
 				type: 'application/json',
-				data: {patient:
+				data: { patient:
 					{
 					client: "1",
 					species: 	this.get('patientSpecies'),
@@ -21,17 +23,22 @@ export default Ember.Controller.extend({
 					microchip: 	this.get('patientMicrochip'),
 					gender: 	this.get('patientGender'),
 					reproductive_status: 	this.get('patientStatus')
-					//what: "is",
-					//this: "huh?"
-				}},
-			}).then(function(data){
+				
+				}
+			
+			}, 
+		
+			});
+			ajaxPost.then(function(data){
 				console.log("status is " + JSON.stringify(data));
-				self.transitionToRoute('login');
 			},
 			function(data){
-				console.log("status is " + JSON.stringify(data));
+				if (data === false){
+					self.transitionToRoute('/unauthorized');
+				}
 			});
 		return ajaxPost;
-		}
 	}
+}
+	
 });
