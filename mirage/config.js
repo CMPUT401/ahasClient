@@ -14,18 +14,15 @@ export default function() {
 
    this.post('/user_token' , { success: false }, 404);
    this.post('/signup', { success: true }, 201);
-   this.get('/contact/1', function(){
+   this.get('/contact/1', () => {
      return {
-       data: [{
-        type: 'person',
-         attributes: {
-            id: "1",
+      contact: [{
+            id: '1',
             name: "Joe",
             email: "joe@gmail.ca",
             address: "123 st",
             phoneNumber: 123-123-1234,
-            faxNumber: 123-321-1234
-         }
+            faxNumber: 123-321-1234,
        }]
      };
    }); //id for now TODO flexible?

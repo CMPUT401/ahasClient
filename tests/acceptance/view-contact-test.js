@@ -1,9 +1,11 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
+import { authenticateSession} from '../helpers/ember-simple-auth';
 
 moduleForAcceptance('Acceptance | view contact');
 
 test('visiting /view-contact/1', function(assert) {
+  authenticateSession(this.application);
   visit('/view-contact/1');
 
   andThen(function() {
@@ -12,6 +14,7 @@ test('visiting /view-contact/1', function(assert) {
 });
 
 test('checking info added correctly', function(assert) {
+  authenticateSession(this.application);
   visit('/view-contact/1');
 
   andThen(function() {

@@ -1,8 +1,10 @@
 <div class = "container">
     {{#each model as |person|}}
+    <h1 id="contactName">Contact id: {{person.id}}</h1>
+    <br>
     <h1 id="contactName">Contact information for: {{person.name}}</h1>
     <br>
-    <p id="contactPhoneNumber" >Phone Number: {{person.phoneNumber}} </p>
+    <p  >Phone Number: <p id="contactPhoneNumber">{{person.phoneNumber}} </p></p>
     <br>
     <p id="contactEmail" >Email: {{person.email}}</p>
     <br>

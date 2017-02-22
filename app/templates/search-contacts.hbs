@@ -3,13 +3,13 @@
     <br>
     <br>
     <div class="row">
-            <form {{action "getContact" contact on="submit"}}>
+            <form {{action "getContact" model.id on="submit"}}>
         <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
-        <input class="form-control" placeholder="Search" autofocus="autofocus"/>
+        <input class="form-control" placeholder="Search" autofocus="autofocus"  />
         </div>
         </form>
-        <p> {{contact.id}} </p>
-    </div>
+    </div>   
+     <p> {{model.id}} </p>
     <br>
     <br>
     <div class="row">
