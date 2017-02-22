@@ -4,7 +4,9 @@
 		{{#ember-scrollable autoHide=false}}
 			{{#each model as |client|}}
 				<!-- TODO: onclick, GET client info and display it -->
-				<p>{{client.name}}</p>
+				<div>
+					<p>{{client.name}}</p>
+				</div>
 			{{/each}}
 		{{/ember-scrollable}}
 	</div>
