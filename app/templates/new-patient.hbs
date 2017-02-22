@@ -1,0 +1,40 @@
+<div class ="container">
+	<form {{action "submitNewPatient" on="submit"}}>
+		<h3>Please fill in the patient's current status</h3>
+
+		<label for ="patientName">Patient's Name</label>
+		{{input id = "patientName" value=patientName required='true'}}
+		<br>
+
+		<label for ="patientSpecies">Patient's Species</label>
+		{{input id = "patientSpecies" value=patientSpecies required='true'}}
+		<br>
+
+		<label for ="patientGender">Patient's Gender</label>
+		{{input id = "patientGender" value=patientGender required='true'}}
+		<br>
+
+		<label for ="patientStatus">Patient's Reproduction Status</label>
+		{{input id = "patientStatus" value=patientStatus required='true'}}
+		<br>
+
+		<label for ="patientAge">Patient's Age</label>
+		{{input id = "patientAge" value=patientAge required='false'}}
+		<br>
+
+		<label for ="patientColor">Patient's Color</label>
+		{{input id = "patientColor" value=patientColor required='true'}}
+		<br>
+
+		<label for ="patientTatoo">Patient's Tatoo ID</label>
+		{{input id = "patientTatoo" value=patientTatoo required='false'}}
+		<br>
+
+		<label for ="patientMicrochip">Patient's Microchip Number</label>
+		{{input id = "patientMicrochip" value=patientMicrochip required='false'}}
+		<br>
+		<br>
+		<button type = "submit">Create Patient</button>
+		<button type = "reset">Reset Form</button>
+	</form>
+</div>

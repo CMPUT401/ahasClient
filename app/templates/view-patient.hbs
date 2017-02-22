@@ -1,0 +1,72 @@
+<div class = "container">
+	<h1>{{patientFirstName}} {{clientLastName}}</h1>
+	<p>
+		<h3>Client's Basic Information</h3>
+		Client's Name: {{clientFirstName}} {{clientLastName}}
+		<br>
+		Client's Address: {{clientAddress}}
+		<br>
+		Client's Phone Number: {{clientPhoneNumber}}
+		<br>
+		Client's Email Address: {{clientEmail}}
+		<br>
+		<br>
+
+		<h3>Client's Documentation</h3>
+		LICO: {{clientDocumentLICO}}
+		<br>
+		AISH: {{clientDocumentAISH}}
+		<br>
+		SA: {{clientDocumentSA}}
+		<br>
+		Notes: {{clientNotes}}
+		<br>
+		<br>
+
+		<h3>Alternative Contact</h3>
+
+		Alternative Contact Name: {{clientAlternativeCName}}
+		<br>
+		Alternative Contact Address: {{clientAlternativeCAddress}}
+		<br>
+		Alternative Contact Phone Number: {{clientAlternativeCPhone}}
+		<br>
+		Alternative Contact Secondary Phone: {{clientAlternativeCSPhone}}
+		<br>
+		Alternative Contact Email: {{clientAlternativeCEmail}}
+		<br>
+		<br>
+
+		<h3>Patient Info</h3>
+
+		Patient Name:{{patientFirstName}} {{clientLastName}}
+		<br>
+		Patient Species:{{patientSpecies}}
+		<br>
+		Patient Gender:{{patientGender}}
+		<br>
+		Patient Reproduction Status:{{patientStatus}}
+		<br>
+		Patient Age: {{patientAge}}
+		<br>
+		Patient Colour: {{patientColor}}
+		<br>
+		Patient Tatoo ID: {{patientTatoo}}
+		<br>
+		Patient MicroChip ID: {{patientMicrochip}}
+		<br>
+		<br>
+
+		
+		<h3> Experiment Section</h3>
+		{{#each model as |patient|}}
+		<h3> {{patient.patient.name}}</h3>
+		<br>
+		<br>
+		<button type = "button">Edit Info</button>
+		{{/each}}
+		<br>
+
+	</p>
+
+</div>

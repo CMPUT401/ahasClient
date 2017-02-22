@@ -1,11 +1,12 @@
 import Ember from 'ember';
 
+
 export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
 	//let cName, let cAddress, let cPhone,
 	actions: {
 		submitNewCient(){
-			self = this;
+			var self = this;
 			//let cName = this.get('clientName');
 			//TODO check inputs
 			let ajaxPost = this.get('ajax').post('/api/client' , {
@@ -18,7 +19,9 @@ export default Ember.Controller.extend({
 					licos: this.get('clientLICO'),
 					aish: this.get('clientAISH'),
 					socialAssistance: this.get('clientAS'),
+					pets: "",
 					created_at: new Date(),
+					updated_at: "",
 					clientID: this.get('clientID'),
 					alternativeContactName: this.get('alternativeName'),
 					alternativeContactPhoneNumber: this.get('alternativePrimaryPhone'),
@@ -36,11 +39,19 @@ export default Ember.Controller.extend({
 				}}, 
 			}).then(function(data){
 					//console.log("name is " + cName);
+					// TODO display confrimation page
+					// TODO prevent user from going back into this page
 					console.log("status is " + JSON.stringify(data));
 					self.transitionToRoute('login');
 				},
 				function(data){
 					console.log("status is " + JSON.stringify(data));
+					if (data === false){
+						if (self.get('session.isAuthenticated')){
+							self.get('session').invalidate();
+							}
+						self.transitionToRoute('/unauthorized');
+					}
 				});
 			//createNewCLient();
 			//this.transitionToRoute('/login');

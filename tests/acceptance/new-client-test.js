@@ -24,7 +24,9 @@ moduleForAcceptance('ajax-get component', {
 	}
 });
 
+
 test('waiting for a route with async widget', function (assert){
+	// this test is based on the test from https://www.npmjs.com/package/ember-ajax
 	// const PAYLOAD = [{name: 'bob',
 	// 				address: '123 somewehere st, Edmonton',
 	// 				phoneNumber: '780-555-1234',
@@ -56,4 +58,27 @@ test('waiting for a route with async widget', function (assert){
 		assert.equal($('.ajax-get li:eq(1)').text(), 'Bar');
     	assert.equal($('.ajax-get li:eq(2)').text(), 'Baz');
 	});
+});
+
+test('should fill in form with correct data', function (assert){
+
+	visit('/new-client');
+
+	andThen(function(){
+		assert.equal(currentURL(), '/new-client');
+		assert.equal(find('#clientName').text(), '');		
+	});
+
+	
+	fillIn('#clientName', 'Alice');
+	andThen(function(){
+		assert.equal(find('#clientName').text(), 'Alice');
+	});
+	//find('#clientName').change();
+
+	// andThen(function(){
+	// 	assert.equal(find('clientName')., 'Alice');
+	// });
+	
+	
 });
