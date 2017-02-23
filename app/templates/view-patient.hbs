@@ -1,5 +1,5 @@
 <div class = "container">
-	<h1>{{patientFirstName}} {{clientLastName}}</h1>
+	<h1>{{model.name}} {{clientLastName}}</h1>
 	<p>
 		<h3>Client's Basic Information</h3>
 		Client's Name: {{clientFirstName}} {{clientLastName}}
@@ -39,31 +39,21 @@
 
 		<h3>Patient Info</h3>
 
-		Patient Name:{{patientFirstName}} {{clientLastName}}
+		Patient Name:{{model.name}} {{clientLastName}}
 		<br>
-		Patient Species:{{patientSpecies}}
+		Patient Species:{{model.species}}
 		<br>
-		Patient Gender:{{patientGender}}
+		Patient Gender:{{model.gender}}
 		<br>
-		Patient Reproduction Status:{{patientStatus}}
+		Patient Reproduction Status:{{model.status}}
 		<br>
-		Patient Age: {{patientAge}}
+		Patient Age: {{model.age}}
 		<br>
-		Patient Colour: {{patientColor}}
+		Patient Colour: {{model.colour}}
 		<br>
-		Patient Tatoo ID: {{patientTatoo}}
+		Patient Tatoo ID: {{model.tattoo}}
 		<br>
-		Patient MicroChip ID: {{patientMicrochip}}
-		<br>
-		<br>
-
-		
-		<h3> Experiment Section</h3>
-		<h3>{{model}}{{model.name}}</h3>
-
-		{{#each model as |patient|}}
-		<h3> {{patient.body}}</h3>
-		{{/each}}
+		Patient MicroChip ID: {{model.microchip}}
 		<br>
 		<br>
 		<button type = "button">Edit Info</button>
