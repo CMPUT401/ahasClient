@@ -7,19 +7,31 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
     ajax: Ember.inject.service(),
 	model() {
 		var self = this;
-		var ajaxGet = this.get('ajax').request('/api/patients/1'
+		var ajaxGet = new Promise((resolve) =>
+		this.get('ajax').request('/api/patients/1'
 			).then(function(data){
+				Ember.run.later(function() {
+       			 resolve({ id: JSON.stringify(data.patient.id),
+						   name: JSON.stringify(data.patient.name)
+					
+				
+				});
+					console.log("we getdont here"); 
+    		  }, 3000);
                 console.log("status is " + JSON.stringify(data));
-				//return(data.patient); //need to find way to extract patient portion of request....
+				console.log("status is " + JSON.stringify(data.patient.name));
+				
+				 //self.set('patient', data.patient);
+				 return[JSON.stringify(data.patient)];
 			},
 			function(data){
 				if (data === false){
 				self.transitionTo('/unauthorized');
 				console.log("status is " + JSON.stringify(data));
 				}
-			});
-        console.log("patient extracted", ajaxGet);
-		return [ajaxGet];
+		}));
+		return(ajaxGet);
 	},
+	
 
 });
