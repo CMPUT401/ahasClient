@@ -1,7 +1,21 @@
 {{#if session.isAuthenticated}}
 <a href="#" {{action 'invalidateSession'}}>Logout</a>
 {{/if}}
+
 {{outlet}}
-
-
+{{#if session.isAuthenticated}}
+<div class = "container">
+	<ul class = "nav navbar-nav">
+		{{#nav-link-to 'new-client'}}
+			New CLient
+		{{/nav-link-to}}
+		{{#nav-link-to 'new-patient'}}
+			New Patient
+		{{/nav-link-to}}
+		{{#link-to 'login'}}
+		<a href="#" {{action 'invalidateSession'}}>Logout</a>
+		{{/link-to}}
+	</ul>	
+</div>
+{{/if}}
 
