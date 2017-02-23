@@ -1,16 +1,12 @@
 <div class = "container">
-    {{#each model as |person|}}
-    <h1 id="contactName">Contact id: {{person.id}}</h1>
+    <h1 id="contactName">Contact information for: {{model.name}}</h1>
     <br>
-    <h1 id="contactName">Contact information for: {{person.name}}</h1>
+    <p  id="contactPhoneNumber">Phone Number: {{model.phoneNumber}}</p>
     <br>
-    <p  >Phone Number: <p id="contactPhoneNumber">{{person.phoneNumber}} </p></p>
+    <p id="contactEmail" >Email: {{model.email}}</p>
     <br>
-    <p id="contactEmail" >Email: {{person.email}}</p>
+    <p id="contactFaxNumber" >Fax Number: {{model.faxNumber}}</p>
     <br>
-    <p id="contactFaxNumber" >Fax Number: {{person.faxNumber}}</p>
+    <p id="contactAddress">Address: {{model.address}}</p>
     <br>
-    <p id="contactAddress">Address: {{person.address}}</p>
-    <br>
-    {{/each}}
 </div>
