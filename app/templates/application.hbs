@@ -12,8 +12,8 @@
 			{{#nav-link-to 'afterlogin'}}
 				<h4>afterlogin</h4>
 			{{/nav-link-to}}
-			{{#nav-link-to 'login' action 'invalidateSession'}}
-				<h4>Logout</h4>
+			{{#nav-link-to 'login'}}
+				<h4 href="#" {{action 'invalidateSession'}}>Logout</h4>
 			{{/nav-link-to}}
 		</li>
 	</nav>
