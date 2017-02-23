@@ -14,6 +14,7 @@ export default function() {
 
    this.post('/user_token' , {"jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"});
    this.post('/signup', { success: true }, 201);
+   this.post('/create-contact', { success: true }, 201);
 
   /*
     Shorthand cheatsheet:
