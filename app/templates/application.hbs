@@ -1,21 +1,26 @@
-{{#if session.isAuthenticated}}
-<a href="#" {{action 'invalidateSession'}}>Logout</a>
-{{/if}}
 
-{{outlet}}
-{{#if session.isAuthenticated}}
 <div class = "container">
-	<ul class = "nav navbar-nav">
-		{{#nav-link-to 'new-client'}}
-			New CLient
-		{{/nav-link-to}}
-		{{#nav-link-to 'new-patient'}}
-			New Patient
-		{{/nav-link-to}}
-		{{#link-to 'login'}}
-		<a href="#" {{action 'invalidateSession'}}>Logout</a>
-		{{/link-to}}
-	</ul>	
+	{{#if session.isAuthenticated}}
+	<nav class = "navbar navbar-inverse">
+		<li class = "nav navbar-nav">
+			{{#nav-link-to 'new-client'}}
+				<h4>New Client</h4>
+			{{/nav-link-to}}
+			{{#nav-link-to 'new-patient'}}
+				<h4>New Patient</h4>
+			{{/nav-link-to}}
+			{{#nav-link-to 'afterlogin'}}
+				<h4>afterlogin</h4>
+			{{/nav-link-to}}
+			{{#nav-link-to 'login' action 'invalidateSession'}}
+				<h4>Logout</h4>
+			{{/nav-link-to}}
+		</li>
+	</nav>
+	{{/if}}
+	<div class = "body">
+		{{outlet}}
+	</div>	
 </div>
-{{/if}}
+
 
