@@ -14,6 +14,8 @@ Router.map(function() {
   this.route('new-client');
   this.route('view-patient');
   this.route('search-patient');
+  this.route('new-side-note');
+  this.route('view-side-note');
 });
 
 export default Router;
