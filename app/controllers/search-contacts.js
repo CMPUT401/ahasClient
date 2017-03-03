@@ -4,8 +4,8 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
     actions: {
         getContact(contact){
-            console.log("we get here", contact);
-            this.transitionToRoute('/view-contact/'+contact);
+            console.log("yes");
+            //this.transitionToRoute('/view-contact/'+contact);
         }
     }
 });
