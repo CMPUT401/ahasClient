@@ -11,7 +11,8 @@ export default Ember.Controller.extend({
 			let ajaxPost = this.get('ajax').post('/api/client' , {
 				type: 'application/json',
 				data: {client: {
-					name: this.get('clientName'),
+					firstName: this.get('clientFirstName'),
+					lastName: this.get('clientLastName'),
 					address: this.get('clientAddress'),
 					phoneNumber: this.get('clientPhone'),
 					email: this.get('clientEmail'),
