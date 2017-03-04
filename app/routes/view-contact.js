@@ -7,12 +7,14 @@ export default Ember.Route.extend({
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/contact/' + params.contact_id
 			).then(function(data){
+				//console.log(data, data.success, data.contacts);
 				Ember.run(function() {
        			 resolve({ 
-						   name: JSON.stringify(data.contact.name).replace(/\"/g, ""),
-						   phoneNumber: JSON.stringify(data.contact.phoneNumber).replace(/\"/g, ""),
+						   first_name: JSON.stringify(data.contact.first_name).replace(/\"/g, ""),
+						   last_name: JSON.stringify(data.contact.last_name).replace(/\"/g, ""),
+						   phone_number: JSON.stringify(data.contact.phone_number).replace(/\"/g, ""),
 						   email: JSON.stringify(data.contact.email).replace(/\"/g, ""),
-						   faxNumber: JSON.stringify(data.contact.faxNumber).replace(/\"/g, ""),
+						   fax_number: JSON.stringify(data.contact.fax_number).replace(/\"/g, ""),
 						   address: JSON.stringify(data.contact.address).replace(/\"/g, "")
 				
 				});

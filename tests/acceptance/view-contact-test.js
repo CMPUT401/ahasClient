@@ -18,10 +18,10 @@ test('checking info added correctly', function(assert) {
   visit('/view-contact/1');
 
   andThen(function() {
-    assert.equal(find('#contactName').text(), 'Contact information for: Joe');
-    assert.equal(find('#contactPhoneNumber').text(), 'Phone Number: 123-123-1234');
-    assert.equal(find('#contactEmail').text(), 'Email: joe@gmail.ca');
-    assert.equal(find('#contactFaxNumber').text(), 'Fax Number: 123-321-1234');
-    assert.equal(find('#contactAddress').text(), 'Address: 123 st');
+    assert.equal(find('#contactName').text(), 'Contact information for: Justin Barclay');
+    assert.equal(find('#contactPhoneNumber').text(), 'Phone Number: 555-555-5555');
+    assert.equal(find('#contactEmail').text(), 'Email: fakejustin@ualberta.ca');
+    assert.equal(find('#contactFaxNumber').text(), 'Fax Number: 555-555-5556');
+    assert.equal(find('#contactAddress').text(), 'Address: 116 St & 85 Ave, Edmonton, AB T6G 2R3');
   });
 });

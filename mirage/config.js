@@ -16,16 +16,19 @@ export default function() {
    this.post('/signup', { success: true }, 201);
    this.get('/contact/1', () => {
      return {
-      contact: {
-            id: '1',
-            name: 'Joe',
-            email: "joe@gmail.ca",
-            address: "123 st",
-            phoneNumber: "123-123-1234",
-            faxNumber: "123-321-1234",
-       }
-     };
-   }); //id for now TODO flexible?
+  success: true,
+  contact: 
+   {
+     first_name: "Justin",
+     last_name: "Barclay",
+     address: "116 St & 85 Ave, Edmonton, AB T6G 2R3",
+     email: "fakejustin@ualberta.ca",
+     phone_number: "555-555-5555",
+     fax_number: "555-555-5556",
+     contact_type: "Veterinarian"
+   }
+};
+   }); 
 
   /*
     Shorthand cheatsheet:
