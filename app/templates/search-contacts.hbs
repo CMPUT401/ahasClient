@@ -1,10 +1,11 @@
 <div class= "container" >
     <br>
+    <div>{{model.status}} {{model.data}} {{model.overall}}</div>
     <br>
     <br>
     <div>
         <div class="col-sm-1 col-sm-offset-1 col-md-1 col-md-offset-1">
-        <button  {{action "getContact" model.id }} type="submit" id="search-button">Search</button>
+        <button  {{action "getContact" model }} type="submit" id="search-button">Search</button>
         </div>
         <div class="col-sm-7 col-sm-offset-1 col-md-7 col-md-offset-1">
         <input class="form-control" placeholder="Search" autofocus="autofocus"  />
@@ -13,13 +14,13 @@
     <br>
     <br>
     <div >
-        <div class="col-md-3 col-md-offset-1">Veterinarians</div>
-        <div class="col-md-3 col-md-offset-1">Volunteers</div>
-        <div class="col-md-3 col-md-offset-1">Lab/Supply </div>
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">Veterinarians</div>
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">Volunteers</div>
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">Lab/Supply </div>
     </div>
     <div>
-      <div class="col-md-3  col-md-offset-1"> sample</div>
-            <div class="col-md-3  col-md-offset-1">sample </div>
-            <div class="col-md-3 col-md-offset-1"> sample</div>
+      <div class="col-sm-3  col-sm-offset-1 col-md-3  col-md-offset-1"> sample</div>
+            <div class="col-sm-3  col-sm-offset-1 col-md-3  col-md-offset-1">sample </div>
+            <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1"> sample</div>
     </div>
 </div>
