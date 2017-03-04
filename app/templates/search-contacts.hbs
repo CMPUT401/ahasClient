@@ -2,12 +2,13 @@
     <br>
     <br>
     <br>
-    <div class="row">
-            <form {{action "getContact" model.id on="submit"}}>
-        <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-7 col-md-offset-2">
+    <div>
+        <div class="col-sm-1 col-sm-offset-1 col-md-1 col-md-offset-1">
+        <button  {{action "getContact" model.id }} type="submit" id="search-button">Search</button>
+        </div>
+        <div class="col-sm-7 col-sm-offset-1 col-md-7 col-md-offset-1">
         <input class="form-control" placeholder="Search" autofocus="autofocus"  />
         </div>
-        </form>
     </div>
     <br>
     <br>
