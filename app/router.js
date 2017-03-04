@@ -16,6 +16,7 @@ Router.map(function() {
   this.route('search-contacts');
   this.route('view-patient');
   this.route('unauthorized');
+  this.route('edit-contact');
 });
 
 export default Router;

@@ -1,13 +1,14 @@
 import Ember from 'ember';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(AuthenticatedRouteMixin , {
+	session: Ember.inject.service(),
     ajax: Ember.inject.service(),
 	model(params) {
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-		this.get('ajax').request('/api/contact/' + params.contact_id
+		this.get('ajax').request('/api/contacts/' + params.contact_id
 			).then(function(data){
-				//console.log(data, data.success, data.contacts);
 				Ember.run(function() {
        			 resolve({ 
 						   first_name: JSON.stringify(data.contact.first_name).replace(/\"/g, ""),
@@ -22,10 +23,12 @@ export default Ember.Route.extend({
 			
 			},
 			function(data){
-				if (data === false){
-				self.transitionTo('/unauthorized');
-				console.log("status is " + JSON.stringify(data));
-				}
+				if (response === false){
+					if (self.get('session.isAuthenticated')){
+						self.get('session').invalidate();
+							}
+					self.transitionToRoute('/unauthorized');
+            }
 		}));
 		return(ajaxGet);
 	},
