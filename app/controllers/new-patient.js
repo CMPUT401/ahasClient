@@ -34,6 +34,9 @@ export default Ember.Controller.extend({
 			},
 			function(data){
 				if (data === false){
+					if (self.get('session.isAuthenticated')){
+						self.get('session').invalidate();
+							}
 					self.transitionToRoute('/unauthorized');
 				}
 			});
