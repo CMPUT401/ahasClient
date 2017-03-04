@@ -17,11 +17,12 @@ test('creating new contact successful', function(assert) {
   authenticateSession(this.application);
   visit('/create-contact');
   
-  fillIn('#name', "kristy");
+  fillIn('#first_name', "Kristy");
+  fillIn('#last_name', "Newbury");
   fillIn('#phoneNumber', "123-123-1234");
   fillIn('#faxNumber', "123-123-1233");
   fillIn('#email', "k@gmail.ca");
-  fillIn('#address', "k@gmail.ca");
+  fillIn('#address', "12 st 53 ave");
   click('#create-contact-button');
 
   andThen(function(){
