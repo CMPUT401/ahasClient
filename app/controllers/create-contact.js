@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+    session: Ember.inject.service(),
     ajax: Ember.inject.service(),
     actions: {
     createContact: function(){
@@ -8,16 +9,18 @@ export default Ember.Controller.extend({
     //this is to get the value in the dropdown specifically
     var type= document.getElementById('type');
     var typeval = type.options[type.selectedIndex].text;
+    var self = this;
     
-    var user = this.get('ajax').post('/api/create-contact', {
+    var user = this.get('ajax').post('/api/contacts', {
         type: 'application/json',
         data: { contact: {
-          name: this.get('name'),
-          phoneNumber: this.get('phoneNumber'),
-          faxNumber: this.get('faxNumber'),
-          email: this.get('email'),
+          first_name: this.get('first_name'),
+          last_name: this.get('last_name'),
           address: this.get('address'),
-          type: typeval
+          email: this.get('email'),
+          phone_number: this.get('phoneNumber'),
+          fax_number: this.get('faxNumber'),
+          contact_type: typeval
         }
     }
     });
@@ -28,9 +31,15 @@ export default Ember.Controller.extend({
             }
         //this is error from server condition
         }, function(response) {
-            console.log(response.errors[0]);
+            if (response === false){
+					if (self.get('session.isAuthenticated')){
+						self.get('session').invalidate();
+							}
+					self.transitionToRoute('/unauthorized');
+            }
+            else {
             showAlert(response.errors[0].title, false);
-        
+            }
         });
 }
     }

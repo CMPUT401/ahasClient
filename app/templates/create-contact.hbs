@@ -1,8 +1,13 @@
  <h3> Please enter the information for the new contact: </h3>
 <form > 
-  <label for="name">Name</label>
+  <label for="first_name">First Name:</label>
   <br>
-  {{input id='name' value=name}}
+  {{input id='first_name' value=first_name}}
+  <br>
+  <br> 
+  <label for="last_name">Last Name:</label>
+  <br>
+  {{input id='last_name' value=last_name}}
   <br>
   <br> 
   <label for="phoneNumber">Phone Number: </label>
@@ -28,13 +33,13 @@
   <label for="type">What type of volunteer is this?</label>
   <br>
   <select id="type">
-        <option value="veterinarian"> veterinarian </option>
-        <option value="volunteer"> volunteer </option>
-        <option value="laboratory"> laboratory </option>
+        <option value="Veterinarian"> Veterinarian </option>
+        <option value="Volunteer"> Volunteer </option>
+        <option value="Laboratory"> Laboratory </option>
   </select>
   <br>
   <br>
   <button type="submit" {{action 'createContact'}} id="create-contact-button">Create</button>
  </form>
  <br>
- <div id = "alert_placeholder"></div>
+ <div id = "alert_placeholder">here</div>
