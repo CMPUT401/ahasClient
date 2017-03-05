@@ -1,6 +1,7 @@
 <div class= "container" >
     <br>
-    <div>{{model}} </div>
+    <div>{{model.id}} </div>
+    <div>{{model.contacts}} </div>
     <br>
     <br>
     <div>
@@ -18,10 +19,19 @@
         <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">Volunteers</div>
         <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">Lab </div>
     </div>
-    {{#each contact in model}}
+    {{#each model.contacts as |contact|}}
+  
+      <p> {{contact.first_name}}</p>
+     
+
+    {{else}}
+    <p> Sorry, nobody is here.</p>
+     
+    {{/each}}
+    {{#each model.contacts as |contact|}}
     <div>
         
-      <div class="col-sm-3  col-sm-offset-1 col-md-3  col-md-offset-1"> {{contact.id}}</div>
+      <div class="col-sm-3  col-sm-offset-1 col-md-3  col-md-offset-1"> {{contact.first_name}}</div>
      
     </div>
     {{else}}
