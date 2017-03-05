@@ -27,6 +27,13 @@ export default function() {
      };
    }); //id for now TODO flexible?
 
+   this.get('/contacts', () => {
+     return {
+    success: true, 
+    patients: [ { "first_name": "Justin", "last_name": "Barclay", "id": 1}, { "first_name": "Simon", "last_name": "Cowell", "id": 2}, { "first_name": "Lab Number 9", "last_name": "", "id": 3}]
+     };
+   });
+
   /*
     Shorthand cheatsheet:
 

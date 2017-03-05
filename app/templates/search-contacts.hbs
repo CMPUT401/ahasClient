@@ -1,6 +1,6 @@
 <div class= "container" >
     <br>
-    <div>{{model.status}} {{model.data}} {{model.overall}}</div>
+    <div>{{model}} </div>
     <br>
     <br>
     <div>
@@ -16,11 +16,16 @@
     <div >
         <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">Veterinarians</div>
         <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">Volunteers</div>
-        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">Lab/Supply </div>
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">Lab </div>
     </div>
+    {{#each contact in model}}
     <div>
-      <div class="col-sm-3  col-sm-offset-1 col-md-3  col-md-offset-1"> sample</div>
-            <div class="col-sm-3  col-sm-offset-1 col-md-3  col-md-offset-1">sample </div>
-            <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1"> sample</div>
+        
+      <div class="col-sm-3  col-sm-offset-1 col-md-3  col-md-offset-1"> {{contact.id}}</div>
+     
     </div>
+    {{else}}
+    <p> Sorry, nobody is here.</p>
+     
+    {{/each}}
 </div>
