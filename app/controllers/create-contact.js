@@ -10,6 +10,24 @@ export default Ember.Controller.extend({
     var type= document.getElementById('type');
     var typeval = type.options[type.selectedIndex].text;
     var self = this;
+
+    if (this.get('first_name') === undefined ) {
+        showAlert("First name cannot be blank", false);
+    }
+
+    else if ( this.get('phoneNumber') === undefined){
+        showAlert("Phone number cannot be blank", false);
+    }
+
+    else if ( this.get('email') === undefined){
+        showAlert("Email cannot be blank", false);
+    }
+
+    else if ( this.get('address') === undefined){
+        showAlert("Address cannot be blank", false);
+    }
+
+    else{
     
     var user = this.get('ajax').post('/api/contacts', {
         type: 'application/json',
@@ -42,6 +60,7 @@ export default Ember.Controller.extend({
             }
         });
 }
+    }
     }
 });
    
