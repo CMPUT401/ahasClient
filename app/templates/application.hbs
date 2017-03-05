@@ -3,6 +3,9 @@
 	{{#if session.isAuthenticated}}
 	<nav class = "navbar navbar-inverse">
 		<li class = "nav navbar-nav">
+			{{#nav-link-to 'client-list'}}
+				<h4 class = "navItem">Search Client</h4>
+			{{/nav-link-to}}
 			{{#nav-link-to 'new-client'}}
 				<h4 class = "navItem">New Client</h4>
 			{{/nav-link-to}}
