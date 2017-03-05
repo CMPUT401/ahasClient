@@ -3,8 +3,11 @@
 	<form {{action "submitNewCient" on="submit"}}>
 		<h3>Please fill in the client's contact information</h3>
 
-		<label for = "clientName">Client's name</label>
-		{{input id='clientName' value=clientName required='true'}}
+		<label for = "clientFirstName">Client's First Name</label>
+		{{input id='clientFirstName' value=clientFirstName required='true'}}
+		<br>
+		<label for = "clientLastName">Client's Last Name</label>
+		{{input id='clientLastName' value=clientLastName required='true'}}
 		<br>
 		<label for = "clientAddress">Client's Address</label>
 		{{textarea id='clientAddress' value=clientAddress required='true' cols="50" rows="4"}}
@@ -13,10 +16,10 @@
 		{{input id='clientPhone' value=clientPhone required='true'}}
 		<br>
 		<label for = "clientEmail">Client's Email</label>
-		{{input id='clienEmail' value=clientEmail required='true'}}
+		{{input id='clientEmail' value=clientEmail required='true'}}
 		<br>
 		<label for = "clientID">Client's ID</label>
-		{{input id='clienID' value=clientID required='true'}}
+		{{input id='clientID' value=clientID required='true'}}
 		<br>
 		<br>
 
@@ -37,11 +40,14 @@
 
 		<h3>Please fill in the alternative contact's contact information</h3>
 
-		<label for = "alternativeName">Alternative Contact's Name</label>
-		{{input id='alternativName' value=alternativeName required='true'}}
+		<label for = "alternativeFirstName">Alternative Contact's First Name</label>
+		{{input id='alternativeFirstName' value=alternativeFirstName required='true'}}
+		<br>
+		<label for = "alternativeLastName">Alternative Contact's Last Name</label>
+		{{input id='alternativeLastName' value=alternativeLastName required='true'}}
 		<br>
 		<label for = "alternativeAddress">Alternative Contact's Address</label>
-		{{textarea id='alternativeAdress' value=alternativeAddress required='true'  cols="50" rows="4"}}
+		{{textarea id='alternativeAddress' value=alternativeAddress required='true'  cols="50" rows="4"}}
 		<br>
 		<label for = "alternativePrimaryPhone">Alternative Contact's Primary Phone Number</label>
 		{{input id='alternativePrimaryPhone' value=alternativePrimaryPhone}}
@@ -50,10 +56,10 @@
 		{{input id='alternativeSecondaryPhone' value=alternativeSecondaryPhone}}
 		<br>
 		<label for = "alternativeEmail">Alternative Contact's Email</label>
-		{{input id='alternativEmail' value=alternativeEmail required='true'}}
+		{{input id='alternativeEmail' value=alternativeEmail required='true'}}
 		<br>
 		<br>
-		<button type = "submit">Create Client</button>
+		<button type = "submit" id="create-client-button">Create Client</button>
 
 	</form>
 </div>
