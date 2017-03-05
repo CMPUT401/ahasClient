@@ -1,37 +1,37 @@
-<h3> Please edit the information for the contact:{{model.first_name}} {{model.first_name}} </h3>
+<h3> Please edit the information for the contact: {{model.first_name}} {{model.last_name}} </h3>
 <form > 
   <label for="first_name">First Name:</label>
   <br>
-  {{input id='first_name' value=first_name}}{{model.first_name}}
+  <input id='first_name' value={{model.first_name}} >
   <br>
   <br> 
   <label for="last_name">Last Name:</label>
   <br>
-  {{input id='last_name' value=last_name}}
+  <input id='last_name' value={{model.last_name}}>
   <br>
   <br> 
   <label for="phoneNumber">Phone Number: </label>
   <br>
-  {{input id='phoneNumber' value=phoneNumber}}
+  <input id='phoneNumber' value={{model.phone_number}}>
   <br>
   <br>
   <label for="faxNumber">Fax Number: </label>
   <br>
-  {{input type="faxNumber" id='faxNumber' value=faxNumber}}
+  <input type="faxNumber" id='faxNumber' value={{model.fax_number}}>
   <br>
   <br>
   <label for="email">Email: </label>
   <br>
-  {{input type="email" id='email' value=email}}
+  <input type="email" id='email' value={{model.email}}>
   <br>
   <br>
   <label for="address">Address: </label>
   <br>
-  {{input type="address" id='address' value=address}}
+  <input type="address" id='address' value={{model.address}}>
   <br>
   <br>
   <label for="type">What type of volunteer is this?</label>
-  <br>
+  <p> Was previously set as: {{model.type}} </p>
   <select id="type">
         <option value="Veterinarian"> Veterinarian </option>
         <option value="Volunteer"> Volunteer </option>
@@ -39,7 +39,7 @@
   </select>
   <br>
   <br>
-  <button type="submit" {{action 'doneEditContact'}} id="done-edit-button">Done Editing</button>
+  <button type="submit" {{action 'doneEditContact' model}} id="done-edit-button">Done Editing</button>
  </form>
  <br>
  <div id = "alert_placeholder"></div>
