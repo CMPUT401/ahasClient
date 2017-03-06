@@ -87,17 +87,7 @@ p {
     display: inline-block;
     float: left;
 }
-#clientContactInfoField{
-    margin: 10px;
-    display: block;
-    clear: left;
-}
-#clientDocumentationField{
-    margin: 10px;
-    display: block;
-    clear: left;
-}
-#altContactInfoField{
+.inputGroup{
     margin: 10px;
     display: block;
     clear: left;
