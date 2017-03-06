@@ -6,10 +6,10 @@
 				{{#each model as |client|}}
 					<!-- TODO: onclick, GET client info and display it -->
 					<div>
-						<p>{{client.name}}</p>
+						<p>{{client.firstName}} {{client.lastName}}</p>
 					</div>
 				{{/each}}
 			{{/ember-scrollable}}
-		<button {{link-to 'new-client'}}>New Client</button>
+		<!-- <button {{link-to 'new-client'}}>New Client</button> -->
 	</div>
 </div>

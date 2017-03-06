@@ -25,7 +25,7 @@ export default Ember.Controller.extend({
 					updated_at: "",
 					clientID: this.get('clientID'),
 					alternativeContactFirstName: this.get('alternativeFirstName'),
-					alternativeContactFirstName: this.get('alternativeLastName'),
+					alternativeContactLastName: this.get('alternativeLastName'),
 					alternativeContactPhoneNumber: this.get('alternativePrimaryPhone'),
 					alternativeContactAddress: this.get('alternativeAddress'),
 					notes: this.get('clientNotes'),
