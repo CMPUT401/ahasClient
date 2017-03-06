@@ -74,3 +74,31 @@ p {
 .status{
     padding: 15px;
 }
+
+
+.nav { width: 100%; margin: 0 auto; padding:0}
+.nav > li { width: 24%; text-align: center; margin: 0}
+.navbar {text-align: center}
+
+/* form creation/submission */
+.inputLabel{
+    display: inline-block;
+    float: left;
+    clear: left;
+    text-align: left;
+    width: 10em;
+}
+.inputBox{
+    display: inline-block;
+    float: left;
+}
+.inputGroup{
+    margin: 10px;
+    display: block;
+    clear: left;
+}
+#create-client-button{
+    margin: 20px;
+    display: block;
+    clear: left;
+}
