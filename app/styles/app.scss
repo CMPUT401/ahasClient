@@ -109,7 +109,7 @@ p {
     /*height: 80%;
     width: 40%;*/
     height: 500px;
-    width: 300px;
+    width: 250px;
     margin: 10px;
 }
 .nameListItem  { background: #ffc863; }
@@ -121,12 +121,13 @@ p {
 /* client-info */
 .clientInfo{
     display: inline-block;
-    width: 500px;
+    width: 600px;
     height: 500px;
+    margin: 10px;
 }
 .infoBlock{
     display: inline-block;
-    width: 48%;
-    height: 48%;
-    margin: 1%;
+    width: 40%;
+    height: 40%;
+    margin-bottom: 2%
 }
