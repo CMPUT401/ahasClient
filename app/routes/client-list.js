@@ -10,7 +10,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 		// 	// type: 'application/json',
 		// 	dataType: 'application/json',
 		// 	// data: {client: {
-		// 	// 	name: '',
+		// 	// 	firstName: '',
+		//  //  lastName: '',
 		// 	// 	id: ''
 		// 	// }}
 		// 	//method: 'GET'
@@ -32,31 +33,38 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 		
 		return [{
 			firstName: 'Boby',
-			lastName: 'Oor'
+			lastName: 'Oor',
+			id :110
 		},
 		{
 			firstName: 'Sally',
-			lastName: 'Stenson'
+			lastName: 'Stenson',
+			id :111
 		},
 		{
 			firstName: 'Jonathan',
-			lastName: 'Lafleur'
+			lastName: 'Lafleur',
+			id :112
 		},
 		{
 			firstName: 'Erica',
-			lastName: 'Smith'
+			lastName: 'Smith',
+			id :113
 		},
 		{
 			firstName: 'Joe',
-			lastName: 'Blo'
+			lastName: 'Blo',
+			id :114
 		},
 		{
 			firstName: 'Frank',
-			lastName: 'Wurst'
+			lastName: 'Wurst',
+			id :115
 		},
 		{
 			firstName: 'Francine',
-			lastName: 'Mancine'
+			lastName: 'Mancine',
+			id :116
 		}];
 	}
 });
