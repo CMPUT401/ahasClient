@@ -14,6 +14,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 					console.log(data, JSON.stringify(data.contacts));
        			 resolve({ 
 						  
+
 						  contacts: JSON.stringify(data.contacts),
 						  
 				
@@ -26,7 +27,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 					if (self.get('session.isAuthenticated')){
 						self.get('session').invalidate();
 							}
-					self.transitionToRoute('/unauthorized');
+					self.transitionTo('/unauthorized');
             }
 		}));
 		return(ajaxGet);
