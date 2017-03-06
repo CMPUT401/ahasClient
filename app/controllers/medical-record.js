@@ -1,13 +1,32 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    ajax: Ember.inject.service(),   
-    actions: {
+    color: '#000',  // default
+    backgroundColor: '#ffff',
+    height: 68,     // default
+    weight: 1,      // default
+    width: 386,     // default
+    
 
+    signature: Ember.computed(function () {
+        return Ember.A();
+    }),
+
+    stringifiedSignature: Ember.computed('signature.[]', function() {
+        return JSON.stringify(this.get('signature'));
+    }),
+
+    ajax: Ember.inject.service(), 
+
+
+    actions: {
        
         createMedicalRecord(){
             
-            
+            if( this.get('signature').length !== 0 ){
+
+            //saveSignature(this.get('stringifiedSignature'));
+
              var medicalRecord = this.get('ajax').post('/api/medical-record', {
              type: 'application/json',
              data: { 
@@ -87,7 +106,10 @@ export default Ember.Controller.extend({
 					}
 				});
         }
-
+        else{
+          showAlert("Record cannot be created without a signature", false);
+        }
+      }
     }
 });
 
@@ -100,3 +122,12 @@ function showAlert(message, bool) {
         }
  }
 
+function saveSignature(signature){
+            
+            localStorage.setItem('signature', signature);
+
+            //will want this to convert to png and last line can be used to verify creation
+           // var canvas = document.getElementById("canvas");
+            //var img    = canvas.toDataURL("image/png");
+           /// document.write('<img src="'+img+'"/>');
+}
