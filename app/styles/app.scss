@@ -48,7 +48,7 @@ p {
 .container {
     max-width: 1024px;
     min-height: 100vh;
-    background: #f2e9e6;
+    background: #ededed;
 
     margin: 0 auto;
 }
@@ -101,4 +101,19 @@ p {
     margin: 20px;
     display: block;
     clear: left;
+}
+
+/* display list of names*/
+.nameList{
+    display: block;
+    /*height: 80%;
+    width: 40%;*/
+    height: 400px;
+    width: 300px;
+    margin: 10px;
+}
+.nameListItem  { background: #ffc863; }
+.nameListItem:nth-child(odd) {
+    /*background: #E6FBFF;*/ 
+    background: #c0c5c6;
 }
