@@ -1,16 +1,8 @@
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<div class="row" >
 <h1> New Medical Record </h1>
+<h4> {{model}} </h4>
 <div> placeholder for pet info: </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Checkboxes
-        </a>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
+<div class="col-md-8">
 <div class="row">
     <div class="col-md-1">Attitude </div>
     <div class="col-md-1"> <input type="checkbox" id="attitudeBAR"> BAR </div> 
@@ -52,7 +44,7 @@
     <div class="col-md-1"> <input id="earsText">  </div>
 </div>
 <div class="row">
-    <div class="col-md-1">Glands/Nodes </div>
+    <div class="col-md-2">Glands/Nodes </div>
     <div class="col-md-1"> <input type="checkbox" id="glandsN"> N </div> 
     <div class="col-md-1"> <input type="checkbox" id="glandsA"> A </div> 
     <div class="col-md-1"> <input  id="glandsText">  </div>
@@ -82,58 +74,38 @@
     <div class="col-md-1"> <input id="nervousSystemText" >  </div>
 </div>
 <div class="row">
-    <div class="col-md-1">Musculoskeletal </div>
+    <div class="col-md-2">Musculoskeletal </div>
     <div class="col-md-1"> <input type="checkbox" id="musculoskeletalN"> N </div> 
     <div class="col-md-1"> <input type="checkbox" id="musculoskeletalA"> A </div> 
     <div class="col-md-1"> <input id="musculoskeletalText" >  </div>
 </div>
 <div class="row">
-    <div class="col-md-1">Cardiovascular </div>
+    <div class="col-md-2">Cardiovascular </div>
     <div class="col-md-1"> <input type="checkbox" id="cardiovascularN"> N </div> 
     <div class="col-md-1"> <input type="checkbox" id="cardiovascularA"> A </div> 
-    <div class="col-md-2"> <input id="cardiovascularText">  </div>
+    <div class="col-md-3"> <input id="cardiovascularText">  </div>
     <div class="col-md-1"> HR </div>
     <div class="col-md-1"> <input id="hrText">  </div>
 </div>
 <div class="row">
-    <div class="col-md-1">Respiratory </div>
+    <div class="col-md-2">Respiratory </div>
     <div class="col-md-1"> <input type="checkbox" id="respiratoryN"> N </div> 
     <div class="col-md-1"> <input type="checkbox" id="respiratoryA"> A </div> 
-    <div class="col-md-2"> <input id="respiratoryText1">  </div>
+    <div class="col-md-3"> <input id="respiratoryText1">  </div>
     <div class="col-md-1"> RR </div>
     <div class="col-md-1"> <input id="respiratoryText2">  </div>
 </div>
 </div>
-    </div>
-  </div>
- <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingTwo">
-      <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Notes
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="panel-body">
-       <textarea id="notes" rows="10" cols="40"> </textarea>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingThree">
-      <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Medications
-        </a>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="panel-body">
-       <textarea id="medications" rows="10" cols="40"> </textarea>
-      </div>
-    </div>
-  </div>
+
+<label for="notes">Notes</label>
+<br>
+<textarea id="notes" rows="10" cols="40"> </textarea>
+<br>
+<label for="medications">Medications</label>
+<br>
+<textarea id="medications" rows="10" cols="40"> </textarea>
+     
   <h4> Veterinarian Signature: (placeholder for now)</h4>
   <button type="submit" id="create-medical-button"{{action 'createMedicalRecord'}}>Create the medical record</button>
+
 </div>

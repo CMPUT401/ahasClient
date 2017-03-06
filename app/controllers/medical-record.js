@@ -78,10 +78,14 @@ export default Ember.Controller.extend({
             }
         //this is error from server condition
         }, function(response) {
-            console.log(response.errors[0]);
-            showAlert(response.errors[0].title, false);
-        
-        });
+            console.log("status is " + JSON.stringify(response));
+					if (response === false){
+						if (self.get('session.isAuthenticated')){
+							self.get('session').invalidate();
+							}
+						self.transitionToRoute('/unauthorized');
+					}
+				});
         }
 
     }
