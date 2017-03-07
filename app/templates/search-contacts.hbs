@@ -13,17 +13,32 @@
     <br>
     <br>
     <div >
-        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">Veterinarians</div>
-        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">Volunteers</div>
-        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">Lab </div>
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1"><h3>Veterinarians</h3></div>
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1"><h3>Volunteers</h3></div>
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1"><h3>Laboratory</h3></div>
     </div>
-    
-    {{#each-in model as |key contacts|}}
-                    {{#each contacts as |contact|}}
-                            <div >
-                                <p{{action "getContact" contact.id on="click"}}>{{contact.id}} {{contact.first_name}} {{contact.last_name}}</p>
-                            </div>
+ <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
+                 {{#each  model.contactsVeterinarian as |contact|}}
+                           
+                                <p{{action "getContact" contact.id on="click"}}>{{contact.first_name}} {{contact.last_name}}</p>
+                          
 
                     {{/each}}
-                {{/each-in}}
+        </div >
+         <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
+                      {{#each  model.contactsVolunteer as |contact|}}
+                           
+                                <p{{action "getContact" contact.id on="click"}}>{{contact.first_name}} {{contact.last_name}}</p>
+                           
+
+                    {{/each}}
+        </div >
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
+                      {{#each  model.contactsLaboratory as |contact|}}
+                            
+                                <p{{action "getContact" contact.id on="click"}}>{{contact.first_name}} {{contact.last_name}}</p>
+
+                    {{/each}}
+        </div >
+                    
 </div>

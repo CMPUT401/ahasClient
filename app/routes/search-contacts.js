@@ -11,11 +11,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 		this.get('ajax').request('/api/contacts'
 			).then(function(data){
 				Ember.run(function() {
-					console.log(JSON.stringify(data), JSON.stringify(data.contacts));
        			 resolve({ 
 						  
 
-						  contacts: deserialAttributes(data.contacts),
+						  contactsVolunteer: deserialAttributesVolunteer(data.contacts),
+						  contactsVeterinarian: deserialAttributesVeterinarian(data.contacts),
+						  contactsLaboratory: deserialAttributesLaboratory(data.contacts),
 
 				});
     		  });
@@ -36,16 +37,51 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 });
 
 
-function deserialAttributes(contacts){
+function deserialAttributesVolunteer(contacts){
 	var deserial = [];
 	for(var i = 0; i < contacts.length; i++) {
 
+		if(contacts[i].contact_type === 'Volunteer'){
 		var contact= contacts[i];
 		contact.id = JSON.stringify(contacts[i].id);
 		contact.first_name = JSON.stringify(contacts[i].first_name).replace(/\"/g, "");
 		contact.last_name = JSON.stringify(contacts[i].last_name).replace(/\"/g, "");
+		contact.contact_type = JSON.stringify(contacts[i].contact_type).replace(/\"/g, "");
 		deserial.push(contact);
-
 	}
+  }
+	return(deserial);
+}
+
+function deserialAttributesVeterinarian(contacts){
+	var deserial = [];
+	for(var i = 0; i < contacts.length; i++) {
+		
+	if(contacts[i].contact_type === 'Veterinarian'){
+		var contact= contacts[i];
+		contact.id = JSON.stringify(contacts[i].id);
+		contact.first_name = JSON.stringify(contacts[i].first_name).replace(/\"/g, "");
+		contact.last_name = JSON.stringify(contacts[i].last_name).replace(/\"/g, "");
+		contact.contact_type = JSON.stringify(contacts[i].contact_type).replace(/\"/g, "");
+		deserial.push(contact);
+		}
+	}
+	
+	return(deserial);
+}
+
+function deserialAttributesLaboratory(contacts){
+	var deserial = [];
+	for(var i = 0; i < contacts.length; i++) {
+
+		if(contacts[i].contact_type === 'Laboratory'){
+		var contact= contacts[i];
+		contact.id = JSON.stringify(contacts[i].id);
+		contact.first_name = JSON.stringify(contacts[i].first_name).replace(/\"/g, "");
+		contact.last_name = JSON.stringify(contacts[i].last_name).replace(/\"/g, "");
+		contact.contact_type = JSON.stringify(contacts[i].contact_type).replace(/\"/g, "");
+		deserial.push(contact);
+	}
+  }
 	return(deserial);
 }
