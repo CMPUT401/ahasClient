@@ -32,7 +32,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 		// return ajaxGet;
 		
 		return {
-			clients:[{
+			clients: [{
 				firstName: 'Boby',
 				lastName: 'Oor',
 				id :110
