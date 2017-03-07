@@ -69,9 +69,4 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 			}]
 		};
 	}
-	// actions:{
-	// 	showInfo: function(lname, fname, id){
-	// 		var clients = this.modelFor
-	// 	}
-	// }
 });

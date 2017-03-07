@@ -7,7 +7,7 @@
 				{{#each-in model as |key clients|}}
 					{{#each clients as |client|}}
 							<!-- TODO: onclick, GET client info and display it -->
-							<div class = "nameListItem">
+							<div class = "nameListItem" {{action "showInfo" client.firstName client.lastName client.id}}>
 								<p>{{client.firstName}} {{client.lastName}}</p>
 							</div>
 					{{/each}}
