@@ -7,7 +7,7 @@
 
 * {
     margin: 0;
-    margin-left: 1%;
+    margin-left: .5%;
     padding: .5%;
     box-sizing: border-box;
 }
@@ -28,6 +28,7 @@ a {
 }
 
 body {
+    max-width: 100%;
     background: #f2e9e6;
 }
 
@@ -67,8 +68,12 @@ p {
 }
 
 //inputboxes
-.nonalignbox{
-    margin-left: 10%;
+textarea{
+   resize: none;
+}
+
+canvas {
+    background: #fff
 }
 
 .status{

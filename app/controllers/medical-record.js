@@ -2,10 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     color: '#000',  // default
-    backgroundColor: '#ffff',
     height: 68,     // default
     weight: 1,      // default
-    width: 386,     // default
+    width: 300,     // default
     
 
     signature: Ember.computed(function () {
@@ -25,14 +24,15 @@ export default Ember.Controller.extend({
             
             if( this.get('signature').length !== 0 ){
 
-            //saveSignature(this.get('stringifiedSignature'));
+            var signature = exportSignature(this.get('stringifiedSignature'));
+
 
              var medicalRecord = this.get('ajax').post('/api/medical-record', {
              type: 'application/json',
              data: { 
                  medical_record: {
              
-           
+             signature: signature , 
 
              temperatureText: this.get('temperatureText'),
              eyesText: this.get('eyesText'),
@@ -122,12 +122,10 @@ function showAlert(message, bool) {
         }
  }
 
-function saveSignature(signature){
+function exportSignature(signature){
             
-            localStorage.setItem('signature', signature);
 
-            //will want this to convert to png and last line can be used to verify creation
-           // var canvas = document.getElementById("canvas");
-            //var img    = canvas.toDataURL("image/png");
-           /// document.write('<img src="'+img+'"/>');
+            var canvas = document.querySelector("canvas");
+            var img    = canvas.toDataURL("image/png");
+           return(img);
 }

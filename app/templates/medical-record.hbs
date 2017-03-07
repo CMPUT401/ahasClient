@@ -1,25 +1,33 @@
 <div class="row" >
+
+<div class="col-sm-12 col-md-12">
 <h1> New Medical Record </h1>
 <h4> Date: {{model}} </h4>
-<div> placeholder for pet info: 
+</div>
+
+<div class="col-sm-7 col-md-7">
+
+<div > placeholder for pet info: 
+  <br>
   <textarea rows="10" cols="40"> </textarea>
 </div>
-<div class="col-md-8">
+
+<div >
 <div class="row">
-    <div class="col-sm-1 col-md-1">Attitude </div>
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="attitudeBAR"> BAR </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="attitudeQAR" > QAR </div> 
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="attitudeDepressed" > Depressed </div>
+    <div class="col-sm-2 col-md-2">Attitude </div>
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="attitudeBAR"> BAR </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="attitudeQAR" > QAR </div> 
+    <div class="col-sm-3 col-md-3"> <input type="checkbox" id="attitudeDepressed" > Depressed </div>
     <div class="col-sm-1 col-md-1"> Temp </div>
     <div class="col-sm-1 col-md-1"> <input id="temperatureText">  </div>
 </div>
 <div class="row">
     <div class="col-sm-1 col-md-1">Eyes </div>
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="eyesN"> N </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="eyesA"> A </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="eyesOU"> OU </div>
-     <div class="col-sm-1 col-md-1"> <input type="checkbox" id="eyesOD"> OD </div>
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="eyesOS"> OS </div>
+    <div class="col-sm-2 col-md-1"> <input type="checkbox" id="eyesN"> N </div> 
+    <div class="col-sm-2 col-md-1"> <input type="checkbox" id="eyesA"> A </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOU"> OU </div>
+     <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOD"> OD </div>
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOS"> OS </div>
     <div class="col-sm-1 col-md-1"> <input id="eyesText">  </div>
 </div>
 <div class="row">
@@ -31,18 +39,18 @@
 <div class="row">
     <div class="col-sm-1 col-md-1">MM </div>
     <div class="col-sm-1 col-md-1"> <input type="checkbox" id="mmN"> N </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="mmPale"> Pale </div> 
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="mmJaundiced"> Jaundiced </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="mmTacky"> Tacky </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="mmPale"> Pale </div> 
+    <div class="col-sm-3 col-md-3"> <input type="checkbox" id="mmJaundiced"> Jaundiced </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="mmTacky"> Tacky </div> 
 </div>
 <div class="row">
     <div class="col-sm-1 col-md-1">Ears </div>
     <div class="col-sm-1 col-md-1"> <input type="checkbox" id="earsN"> N </div> 
     <div class="col-sm-1 col-md-1"> <input type="checkbox" id="earsA"> A </div> 
     <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsEarMites"> Ear Mites </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="earsAU"> AU </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="earsAD"> AD </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="earsAS"> AS </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsAU"> AU </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsAD"> AD </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsAS"> AS </div> 
     <div class="col-sm-1 col-md-1"> <input id="earsText">  </div>
 </div>
 <div class="row">
@@ -58,59 +66,70 @@
     <div class="col-sm-1 col-md-1"> <input id="skinText">  </div>
 </div>
 <div class="row">
-    <div class="col-sm-1 col-md-1">Abdomen </div>
+    <div class="col-sm-2 col-md-2">Abdomen </div>
     <div class="col-sm-1 col-md-1"> <input type="checkbox" id="abdomenN"> N </div> 
     <div class="col-sm-1 col-md-1"> <input type="checkbox" id="abdomenA"> A </div> 
     <div class="col-sm-1 col-md-1"> <input id="abdomenText" >  </div>
 </div>
 <div class="row">
-    <div class="col-sm-1 col-md-1">Urogential </div>
+    <div class="col-sm-3 col-md-2">Urogential </div>
     <div class="col-sm-1 col-md-1"> <input type="checkbox" id="urogentialN"> N </div> 
     <div class="col-sm-1 col-md-1"> <input type="checkbox"  id="urogentialA"> A </div> 
     <div class="col-sm-1 col-md-1"> <input  id="urogentialText">  </div>
 </div>
 <div class="row">
-    <div class="col-sm-1 col-md-1">Nervous System </div>
+    <div class="col-sm-2 col-md-2">Nervous System </div>
     <div class="col-sm-1 col-md-1"> <input type="checkbox" id="nervousSystemN"> N </div> 
     <div class="col-sm-1 col-md-1"> <input type="checkbox" id="nervousSystemA"> A </div> 
     <div class="col-sm-1 col-md-1"> <input id="nervousSystemText" >  </div>
 </div>
 <div class="row">
-    <div class="col-sm-2 col-md-2">Musculoskeletal </div>
+    <div class="col-sm-4 col-md-2">Musculoskeletal </div>
     <div class="col-sm-1 col-md-1"> <input type="checkbox" id="musculoskeletalN"> N </div> 
     <div class="col-sm-1 col-md-1"> <input type="checkbox" id="musculoskeletalA"> A </div> 
     <div class="col-sm-1 col-md-1"> <input id="musculoskeletalText" >  </div>
 </div>
 <div class="row">
-    <div class="col-sm-2 col-md-2">Cardiovascular </div>
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="cardiovascularN"> N </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="cardiovascularA"> A </div> 
-    <div class="col-sm-3 col-md-3"> <input id="cardiovascularText">  </div>
-    <div class="col-sm-1 col-md-1"> HR </div>
+    <div class="col-sm-4 col-md-2">Cardiovascular </div>
+    <div class="col-sm-1 col-md-auto"> <input type="checkbox" id="cardiovascularN"> N </div> 
+    <div class="col-sm-1 col-md-auto"> <input type="checkbox" id="cardiovascularA"> A </div> 
+    <div class="col-sm-4 col-md-4"> <input id="cardiovascularText">  </div>
+    <div class="col-sm-2 col-md-1"> HR </div>
     <div class="col-sm-1 col-md-1"> <input id="hrText">  </div>
 </div>
 <div class="row">
-    <div class="col-sm-2 col-md-2">Respiratory </div>
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="respiratoryN"> N </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="respiratoryA"> A </div> 
+    <div class="col-sm-2 col-md-2 ">Respiratory </div>
+    <div class="col-sm-2 col-md-1 "> <input type="checkbox" id="respiratoryN"> N </div> 
+    <div class="col-sm-2 col-md-1 "> <input type="checkbox" id="respiratoryA"> A </div> 
     <div class="col-sm-3 col-md-3"> <input id="respiratoryText1">  </div>
-    <div class="col-sm-1 col-md-1"> RR </div>
-    <div class="col-sm-1 col-md-1"> <input id="respiratoryText2">  </div>
+    <div class="col-sm-2 col-md-1"> RR </div>
+    <div class="col-sm-3 col-md-auto "> <input id="respiratoryText2">  </div>
 </div>
 </div>
 
-<label for="notes">Notes</label>
+</div>
+
+
+
+<div class="col-sm-3 col-md-3 col-sm-offset-1 col-md-offset-1">
+
+<div >
+<label for="notes">Notes: </label>
 <br>
-<textarea id="notes" rows="10" cols="40"> </textarea>
+<textarea id="notes" rows="10" cols="50"> </textarea>
 <br>
-<label for="medications">Medications</label>
+</div>
+
+<div >
+<label for="medications">Medications: </label>
 <br>
-<textarea id="medications" rows="10" cols="40"> </textarea>
-     
-  <h4> Veterinarian Signature: (placeholder for now)</h4>
+<textarea id="medications" rows="10" cols="50"> </textarea>
+</div>
+
+<div >
+  <h4> Veterinarian Signature: </h4>
 
   {{signature-pad
-    background-color: backgroundColor
     color=color
     height=height
     value=signature
@@ -119,6 +138,10 @@
     id='signature'
 }}
   <button type="submit" id="create-medical-button"{{action 'createMedicalRecord'}}>Create the medical record</button>
+</div>
+
+</div>
+
 
   <div id = "alert_placeholder"></div>
 
