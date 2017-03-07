@@ -8,15 +8,18 @@ export default Ember.Controller.extend({
       var credentials = this.getProperties('username', 'password');
       const { username, password } = credentials;
       var inputFilled = checkFields(username, password);
-      if(inputFilled){
+      if (inputFilled === false ){
+        showAlert('Please fill in all fields');
+      }
+      else if (this.get('session.isAuthenticated')){
+       showAlert('You are already logged in!');
+        }
+      else if(inputFilled){
         var authenticator = 'authenticator:jwt';
       this.get('session').authenticate(authenticator, 
         credentials).catch((reason)=>{
         this.set('errorMessage', reason.error || reason);
-      });
-       if (this.get('session.isAuthenticated')){
-       this.transitionToRoute('/afterlogin');
-        }
+      });     
     }
   }
 }
@@ -29,3 +32,8 @@ function checkFields(username, password){
   }
   return true;
 }
+function showAlert(message) {
+        
+      Ember.$('#alert_placeholder').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
+        
+ }

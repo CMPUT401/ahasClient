@@ -16,6 +16,7 @@ Router.map(function() {
   this.route('search-patient');
   this.route('new-side-note');
   this.route('view-side-note');
+  this.route('unauthorized');
 });
 
 export default Router;
