@@ -21,10 +21,10 @@ export default Ember.Controller.extend({
     actions: {
        
         createMedicalRecord(){
+
+            var self = this, 
             
             if( this.get('signature').length !== 0 ){
-
-            var signature = exportSignature(this.get('stringifiedSignature'));
 
 
              var medicalRecord = this.get('ajax').post('/api/medical-record', {
@@ -32,7 +32,7 @@ export default Ember.Controller.extend({
              data: { 
                  medical_record: {
              
-             signature: signature , 
+             signature: exportSignature(this.get('stringifiedSignature')), 
 
              temperatureText: this.get('temperatureText'),
              eyesText: this.get('eyesText'),
