@@ -1,7 +1,5 @@
 <div class= "container" >
     <br>
-    <div>{{model}} </div>
-    <div>{{model.contacts}} </div>
     <br>
     <br>
     <div>
@@ -20,10 +18,12 @@
         <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">Lab </div>
     </div>
     
-    <div>
-       
-      <div id = "volunteer_placeholder" class="col-sm-3  col-sm-offset-1 col-md-3  col-md-offset-1"></div>
-     
-    </div>
+    {{#each-in model as |key contacts|}}
+                    {{#each contacts as |contact|}}
+                            <div >
+                                <p{{action "getContact" contact.id on="click"}}>{{contact.id}} {{contact.first_name}} {{contact.last_name}}</p>
+                            </div>
 
+                    {{/each}}
+                {{/each-in}}
 </div>

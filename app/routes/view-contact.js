@@ -5,7 +5,7 @@ export default Ember.Route.extend({
 	model(params) {
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-		this.get('ajax').request('/api/contact/' + params.contact_id
+		this.get('ajax').request('/api/contacts/' + params.contact_id
 			).then(function(data){
 				Ember.run(function() {
        			 resolve({ 

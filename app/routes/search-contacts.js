@@ -11,13 +11,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 		this.get('ajax').request('/api/contacts'
 			).then(function(data){
 				Ember.run(function() {
-					console.log(data, JSON.stringify(data.contacts));
+					console.log(JSON.stringify(data), JSON.stringify(data.contacts));
        			 resolve({ 
 						  
 
-						  contacts: JSON.stringify(data.contacts),
-						  
-				
+						  contacts: deserialAttributes(data.contacts),
+
 				});
     		  });
 			
@@ -30,8 +29,23 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 					self.transitionTo('/unauthorized');
             }
 		}));
-		return(ajaxGet);
+	return(ajaxGet);
 		
 	}
 	
 });
+
+
+function deserialAttributes(contacts){
+	var deserial = [];
+	for(var i = 0; i < contacts.length; i++) {
+
+		var contact= contacts[i];
+		contact.id = JSON.stringify(contacts[i].id);
+		contact.first_name = JSON.stringify(contacts[i].first_name).replace(/\"/g, "");
+		contact.last_name = JSON.stringify(contacts[i].last_name).replace(/\"/g, "");
+		deserial.push(contact);
+
+	}
+	return(deserial);
+}
