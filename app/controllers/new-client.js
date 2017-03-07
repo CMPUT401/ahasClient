@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
 					pets: "",
 					created_at: new Date(),
 					updated_at: "",
-					clientID: this.get('clientID'),
+					id: this.get('clientID'),
 					alternativeContactFirstName: this.get('alternativeFirstName'),
 					alternativeContactLastName: this.get('alternativeLastName'),
 					alternativeContactPhoneNumber: this.get('alternativePrimaryPhone'),
