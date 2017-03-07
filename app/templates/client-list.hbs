@@ -4,12 +4,14 @@
 	<div class = "nameList" >
 		
 			{{#ember-scrollable autoHide=false}}
-				{{#each model as |client|}}
-					<!-- TODO: onclick, GET client info and display it -->
-					<div class = "nameListItem">
-						<p>{{client.firstName}} {{client.lastName}}</p>
-					</div>
-				{{/each}}
+				{{#each-in model as |key clients|}}
+					{{#each clients as |client|}}
+							<!-- TODO: onclick, GET client info and display it -->
+							<div class = "nameListItem">
+								<p>{{client.firstName}} {{client.lastName}}</p>
+							</div>
+					{{/each}}
+				{{/each-in}}
 			{{/ember-scrollable}}
 		<!-- <button {{link-to 'new-client'}}>New Client</button> -->
 		<br>
