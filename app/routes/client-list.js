@@ -31,40 +31,42 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 		// console.log("ajax is " + ajaxGet);
 		// return ajaxGet;
 		
-		return [{
-			firstName: 'Boby',
-			lastName: 'Oor',
-			id :110
-		},
-		{
-			firstName: 'Sally',
-			lastName: 'Stenson',
-			id :111
-		},
-		{
-			firstName: 'Jonathan',
-			lastName: 'Lafleur',
-			id :112
-		},
-		{
-			firstName: 'Erica',
-			lastName: 'Smith',
-			id :113
-		},
-		{
-			firstName: 'Joe',
-			lastName: 'Blo',
-			id :114
-		},
-		{
-			firstName: 'Frank',
-			lastName: 'Wurst',
-			id :115
-		},
-		{
-			firstName: 'Francine',
-			lastName: 'Mancine',
-			id :116
-		}];
+		return {
+			clients: [{
+				firstName: 'Boby',
+				lastName: 'Oor',
+				id :110
+			},
+			{
+				firstName: 'Sally',
+				lastName: 'Stenson',
+				id :111
+			},
+			{
+				firstName: 'Jonathan',
+				lastName: 'Lafleur',
+				id :112
+			},
+			{
+				firstName: 'Erica',
+				lastName: 'Smith',
+				id :113
+			},
+			{
+				firstName: 'Joe',
+				lastName: 'Blo',
+				id :114
+			},
+			{
+				firstName: 'Frank',
+				lastName: 'Wurst',
+				id :115
+			},
+			{
+				firstName: 'Francine',
+				lastName: 'Mancine',
+				id :116
+			}]
+		};
 	}
 });
