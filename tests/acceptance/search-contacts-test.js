@@ -13,14 +13,13 @@ test('visiting /search-contacts', function(assert) {
   });
 });
 
-//k wait wont have unique id's for these elements ... mirage wants to access elements based on ids...
-//hold off on this for now
 test('checking search info rendered before search', function(assert) {
   authenticateSession(this.application);
   visit('/search-contacts');
 
   andThen(function() {
-    assert.equal(find('#contactName').text(), 'Justin Barclay');
+    assert.equal(find('#veterinariansHeading').text(), 'Veterinarians');
+    assert.equal(find('.veterinariansContact').first().text(), 'Tony Stark');
    
   });
 });
@@ -29,8 +28,12 @@ test('checking we can search', function(assert) {
   authenticateSession(this.application);
   visit('/search-contacts');
 
+  fillIn('#search-bar', 'Justin');
+  click('#search-button');
+
   andThen(function() {
-    assert.equal(find('#contactName').text(), 'Justin Barclay');
+    assert.equal(find('.volunteersContact').length, 1);
+    assert.equal(find('.volunteersContact').text(), 'Justin Barclay');
 
   });
 });

@@ -7,20 +7,20 @@
         <button  {{action "getContact" model }} type="submit" id="search-button">Search</button>
         </div>
         <div class="col-sm-7 col-sm-offset-1 col-md-7 col-md-offset-1">
-        <input class="form-control" placeholder="Search" autofocus="autofocus"  />
+        <input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
         </div>
     </div>
     <br>
     <br>
     <div >
-        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1"><h3>Veterinarians</h3></div>
-        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1"><h3>Volunteers</h3></div>
-        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1"><h3>Laboratory</h3></div>
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="veterinariansHeading"><h3>Veterinarians</h3></div>
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="volunteersHeading"><h3>Volunteers</h3></div>
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="laboratoryHeading"><h3>Laboratory</h3></div>
     </div>
  <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
                  {{#each  model.contactsVeterinarian as |contact|}}
                            
-                                <p{{action "getContact" contact.id on="click"}}>{{contact.first_name}} {{contact.last_name}}</p>
+                                <p{{action "getContact" contact.id on="click"}} class='veterinariansContact'>{{contact.first_name}} {{contact.last_name}}</p>
                           
 
                     {{/each}}
@@ -28,7 +28,7 @@
          <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
                       {{#each  model.contactsVolunteer as |contact|}}
                            
-                                <p{{action "getContact" contact.id on="click"}}>{{contact.first_name}} {{contact.last_name}}</p>
+                                <p{{action "getContact" contact.id on="click"}} class='volunteersContact' >{{contact.first_name}} {{contact.last_name}}</p>
                            
 
                     {{/each}}
@@ -36,7 +36,7 @@
         <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
                       {{#each  model.contactsLaboratory as |contact|}}
                             
-                                <p{{action "getContact" contact.id on="click"}}>{{contact.first_name}} {{contact.last_name}}</p>
+                                <p{{action "getContact" contact.id on="click"}} class='laboratoryContact'>{{contact.first_name}} {{contact.last_name}}</p>
 
                     {{/each}}
         </div >
