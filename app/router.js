@@ -18,6 +18,7 @@ Router.map(function() {
   this.route('view-side-note');
   this.route('unauthorized');
   this.route('view-calendar');
+  this.route('new-calendar');
 });
 
 export default Router;
