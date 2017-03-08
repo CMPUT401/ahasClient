@@ -4,8 +4,9 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(AuthenticatedRouteMixin,
 
+	
 	{
-
+	/*
     ajax: Ember.inject.service(),
 	model() {
 		var self = this;
@@ -40,6 +41,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 		return(ajaxGet);
 
 	},
-	
+	*/
 
 });

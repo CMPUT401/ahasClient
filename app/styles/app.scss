@@ -76,6 +76,7 @@ p {
     padding: 15px;
 }
 
+//new-client&new-patient
 
 .nav { width: 100%; margin: 0 auto; padding:0}
 .nav > li { width: 24%; text-align: center; margin: 0}
@@ -87,7 +88,7 @@ p {
     float: left;
     clear: left;
     text-align: left;
-    width: 10em;
+    width: 15em;
 }
 .inputBox{
     display: inline-block;
@@ -114,12 +115,36 @@ p {
 .navbar {text-align: center}
 
 /* form creation/submission */
-.inputLabel{
+
+#create-patient-button{
+    margin:20px;
+    display:block;
+    width:10em;
+    clear:left;
+}
+#reset-patient-button{
+    margin:20px;
+    display:block;
+    width:10em;
+    clear:left;
+}
+#create-sidenote-button{
+    margin:20px;
+    display:block;
+    width:10em;
+    clear:left;
+}
+
+
+//view-patient
+.viewLabel{
+
     display: inline-block;
     float: left;
     clear: left;
     text-align: left;
-    width: 10em;
+
+    width: 20em;
 }
 .inputBox{
     display: inline-block;
@@ -150,10 +175,28 @@ p {
     width: 5em;
 }
 
+.viewInfo{
+    display: inline-block;
+    float: left;   
+}
+
+.viewGroup{
+    margin: 10px;
+    display: block;
+    clear:left;
+}
+#edit-patient-button{
+    margin:20px;
+    display:block;
+    width:10em;
+    clear:left;
+}
+
 #create-client-button{
     margin: 20px;
     display: block;
     clear: left;
+
 }
 
 #login-button{    
@@ -165,4 +208,5 @@ p {
 
 .createUserPrompt{
     margin-top: 20px;
+
 }
