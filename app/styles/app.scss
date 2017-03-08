@@ -7,7 +7,8 @@
 
 * {
     margin: 0;
-    padding: 0;
+    margin-left: 1%;
+    padding: .5%;
     box-sizing: border-box;
 }
 
@@ -27,7 +28,6 @@ a {
 }
 
 body {
-
     background: #f2e9e6;
 }
 
@@ -59,26 +59,72 @@ p {
 .body {
     padding: 15px;
 }
-/**
- * Utilities
- */
-.light {
-    font-weight: 300;
+
+//user-creation page textarea
+.usertextarea {
+    margin-top: 5%;
+    margin-right: 1%;
 }
 
-.left {
+//inputboxes
+.nonalignbox{
+    margin-left: 10%;
+}
+
+.status{
+    padding: 15px;
+}
+
+
+.nav { width: 100%; margin: 0 auto; padding:0}
+.nav > li { width: 24%; text-align: center; margin: 0}
+.navbar {text-align: center}
+
+/* form creation/submission */
+.inputLabel{
+    display: inline-block;
+    float: left;
+    clear: left;
+    text-align: left;
+    width: 10em;
+}
+.inputBox{
+    display: inline-block;
     float: left;
 }
-
-.right {
-    float: right;
+.inputGroup{
+    margin: 10px;
+    display: block;
+    clear: left;
 }
 
-.hidden {
-    display: none;
+/* login specific input stylings */
+.inputLoginGroup {
+    width: 500px ;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
-.relative {
-    position: relative;
+.inputLoginLabel{
+    display: inline-block;
+    float: left;
+    clear: left;
+    text-align: left;
+    width: 5em;
 }
 
+#create-client-button{
+    margin: 20px;
+    display: block;
+    clear: left;
+}
+
+#login-button{    
+    margin-left: 90px; 
+    margin-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: block;
+    clear: left;
+}

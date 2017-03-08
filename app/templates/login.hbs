@@ -1,16 +1,27 @@
-<div>
+<div class="inputLoginGroup">
 <form {{action 'authenticate' on='submit'}}>  
-  <label for="username">Username</label>
+
+  <label class = "inputLoginLabel" for="username">Username</label>
+  <div class = "inputBox">
   {{input id='username' value=username}}
+  </div>
+
   <br>
   <br>
-  <label for="password">Password</label>
+  <label class = "inputLoginLabel" for="password">Password</label>
+  <div class = "inputBox">
   {{input id='password' value=password}}
+  </div>
+
   <br>
   <br>
-  <button type="submit" id="login-button">Login</button>
+  
+
+  <button id="login-button" type="submit" id="login-button">Login</button>
+
+
  </form>
  <br>
  <div id = "alert_placeholder"></div>
-</div>
+ </div>
 
