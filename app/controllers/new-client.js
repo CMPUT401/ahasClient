@@ -12,7 +12,8 @@ export default Ember.Controller.extend({
 			let ajaxPost = this.get('ajax').post('/api/client' , {
 				type: 'application/json',
 				data: {client: {
-					name: this.get('clientName'),
+					firstName: this.get('clientFirstName'),
+					lastName: this.get('clientLastName'),
 					address: this.get('clientAddress'),
 					phoneNumber: this.get('clientPhone'),
 					email: this.get('clientEmail'),
@@ -23,7 +24,8 @@ export default Ember.Controller.extend({
 					created_at: new Date(),
 					updated_at: "",
 					clientID: this.get('clientID'),
-					alternativeContactName: this.get('alternativeName'),
+					alternativeContactFirstName: this.get('alternativeFirstName'),
+					alternativeContactLastName: this.get('alternativeLastName'),
 					alternativeContactPhoneNumber: this.get('alternativePrimaryPhone'),
 					alternativeContactAddress: this.get('alternativeAddress'),
 					notes: this.get('clientNotes'),
@@ -42,7 +44,7 @@ export default Ember.Controller.extend({
 					// TODO display confrimation page
 					// TODO prevent user from going back into this page
 					console.log("status is " + JSON.stringify(data));
-					self.transitionToRoute('login');
+					self.transitionToRoute('afterlogin');
 				},
 				function(data){
 					console.log("status is " + JSON.stringify(data));
