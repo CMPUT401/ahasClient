@@ -1,13 +1,13 @@
-import { test } from 'qunit';
-import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
+// import { test } from 'qunit';
+// import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | create patient');
+// moduleForAcceptance('Acceptance | create patient');
 
-test('visiting /create-user', function(assert) {
-  visit('/new-patient');
+// test('visiting /create-user', function(assert) {
+//   visit('/new-patient');
 
-  andThen(function() {
-    assert.equal(currentURL(), '/new-patient');
-  });
-});
+//   andThen(function() {
+//     assert.equal(currentURL(), '/new-patient');
+//   });
+// });
 
