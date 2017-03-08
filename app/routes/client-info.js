@@ -5,14 +5,18 @@ export default Ember.Route.extend({
 	ajax: Ember.inject.service(),
 	model(param) {
 		var self = this;
-		console.log("param is " + param.clientID);
+		// console.log("param is " + param.clientID);
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/client/' + param.clientID
 			).then(function(data){
 				console.log("data is " + JSON.stringify(data));
 				Ember.run(function() {
 	   			resolve({ 
-					client: deserialAttributes(data.client),
+					firstName: JSON.stringify(data.client.firstName).replace(/\"/g, ""),
+					lastName: JSON.stringify(data.client.lastName).replace(/\"/g, ""),
+					phoneNumber: JSON.stringify(data.client.phoneNumber).replace(/\"/g, ""),
+					email: JSON.stringify(data.client.email).replace(/\"/g, ""),
+					address: JSON.stringify(data.client.address).replace(/\\n/g, " <br> " ).replace(/\"/g, "")
 				
 				});
 			  });
@@ -20,17 +24,17 @@ export default Ember.Route.extend({
 			},
 			function(data){
 				if (data === false){
-				self.transitionTo('/unauthorized');
-				console.log("status is " + JSON.stringify(data));
+					self.transitionTo('/unauthorized');
+					console.log("status is " + JSON.stringify(data));
 				}
 		}));
 		return ajaxGet;
 	},
 });
-function deserialAttributes(client){
-	firstName: JSON.stringify(client.firstName).replace(/\"/g, "");
-	lastName: JSON.stringify(client.lastName).replace(/\"/g, "");
-	phoneNumber: JSON.stringify(client.phoneNumber).replace(/\"/g, "");
-	email: JSON.stringify(client.email).replace(/\"/g, "");
-	address: JSON.stringify(client.address).replace(/\"/g, "");
-}
+// function deserialAttributes(client){
+// 	firstName: JSON.stringify(client.firstName).replace(/\"/g, "");
+// 	lastName: JSON.stringify(client.lastName).replace(/\"/g, "");
+// 	phoneNumber: JSON.stringify(client.phoneNumber).replace(/\"/g, "");
+// 	email: JSON.stringify(client.email).replace(/\"/g, "");
+// 	address: JSON.stringify(client.address).replace(/\"/g, "");
+// }
