@@ -30,7 +30,7 @@ export default function() {
    this.get('/contacts', () => {
      return {
     success: true, 
-    patients: [ { "first_name": "Justin", "last_name": "Barclay", "id": 1}, { "first_name": "Simon", "last_name": "Cowell", "id": 2}, { "first_name": "Lab Number 9", "last_name": "", "id": 3}]
+    patients: [ { "first_name": "Justin", "last_name": "Barclay", "id": 1, "contact_type": "Volunteer"}, { "first_name": "Simon", "last_name": "Cowell", "id": 2, "contact_type": "Volunteer"}, { "first_name": "Lab Number 9", "last_name": "", "id": 3, "contact_type": "Veterinarian"}]
      };
    });
 
