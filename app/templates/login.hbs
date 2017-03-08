@@ -1,9 +1,5 @@
 
 <div class="container">
-<nav>
-  <p> Don't have an account yet? </p>
-  {{#link-to "create-user"}}create-user{{/link-to}}
-</nav>
 
 <div class="inputLoginGroup">
 
@@ -19,7 +15,7 @@
 
   <label class = "inputLoginLabel" for="password">Password</label>
   <div class = "inputBox">
-  {{input id='password' value=password}}
+  {{input id='password' value=password type="password"}}
   </div>
 
   <br>
@@ -27,6 +23,11 @@
   
 
   <button id="login-button" type="submit" id="login-button">Login</button>
+
+  <div class="createUserPrompt">
+  <p> Don't have an account yet? </p>
+  {{#link-to "create-user"}}Create User{{/link-to}}
+</div>
 
 
  </form>
