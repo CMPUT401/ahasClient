@@ -1,16 +1,21 @@
 <!-- <div class = "container"> -->
 	<!--TODO: add header with tabs -->
+	{{input value = searchClient classNames='form-control' placeholder="Search Client"}}
 	<div class = "nameList" >
 		
 			{{#ember-scrollable autoHide=false}}
-				{{#each-in model as |key clients|}}
+				<!--{{#client-list-filter filter=(action 'filterClientName') as |clients|}} -->
+				<div class = "results">
+				<!-- {{#each-in clientList as |key clients|}} -->
 					{{#each clients as |client|}} 
 							<!-- TODO: onclick, GET client info and display it -->
 							<div class = "nameListItem">
-								<p>{{client.firstName}} {{client.lastName}}</p>
+									<p>{{client.firstName}} {{client.lastName}}</p>
 							</div>
 					{{/each}}
-				{{/each-in}}
+				<!-- {{/each-in}} -->
+				</div>
+				<!-- {{/client-list-filter}} -->
 			{{/ember-scrollable}}
 		<br>
 		

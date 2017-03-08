@@ -42,7 +42,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 
 				});
 				//self.get('store').pushPayload(data);
-				// self.get('store').createRecord('client-list', data);
+				self.get('store').createRecord('client-list', data.clients);
+				// self.get('store').push(deserialAttributes(data.clients));
 				
 			},
 			function(response){
@@ -107,7 +108,7 @@ function deserialAttributes(clients){
 		// console.log("client at " + i + " is" + client)
 		client.id = JSON.stringify(clients[i].id);
 		client.firstName = JSON.stringify(clients[i].firstName).replace(/\"/g, "");
-		console.log("first name of " + i + " is " + client.firstName);
+		// console.log("first name of " + i + " is " + client.firstName);
 		// if(clients[i].last_name)
 		client.lastName = JSON.stringify(clients[i].lastName).replace(/\"/g, "");
 		deserial.push(client);

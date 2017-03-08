@@ -4,9 +4,11 @@ export default Ember.Controller.extend({
 	actions: {
 		filterClientName(param) {
 			if (param !== '') {
-				return this.get('store').querry('api/client', {name:param});
+				var queryResult = this.get('store').query('client-list', {firstName:param});
+				console.log("query result is " + queryResult);
+				return queryResult;
 			} else {
-				return this.get('store').findAll('api/client');
+				return this.get('store').findAll('client-list');
 			}
 		}
 	}
