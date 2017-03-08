@@ -11,5 +11,19 @@ export default Ember.Controller.extend({
 				return this.get('store').findAll('client-list');
 			}
 		}
-	}
+	},
+	clients: function() {
+        var model = this.get('model');
+        var search = this.get('search');
+        var current = 1;
+        var clients = model.filter(function(item) {
+            var reg = '.*'+search.toLowerCase()+'.*';
+            var name = item.get('firstName').toLowerCase();
+            if(name.match(reg) && current < 20) { 
+                current++;
+                return true; 
+            }
+        });
+        return clients;
+    }.property('search','model.length')
 });
