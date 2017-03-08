@@ -18,8 +18,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 					//self.get('store').push(clients);
 
 				});
-				//self.get('store').pushPayload(data);
-				self.get('store').createRecord('client-list', data.clients);
+				// self.get('store').pushPayload(data);
+				// self.get('store').createRecord('client-list', data.clients);
 				// self.get('store').push(deserialAttributes(data.clients));
 				
 			},

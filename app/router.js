@@ -15,6 +15,7 @@ Router.map(function() {
   this.route('view-patient');
   this.route('unauthorized');
   this.route('client-list');
+  this.route('client-info');
 });
 
 export default Router;
