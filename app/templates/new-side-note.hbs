@@ -1,5 +1,15 @@
-
-<p> Please Enter your new side note </p>
-  <label for="Notes:">Note</label>
-  <br>
-  {{input id='notes' value=notes}}
+<div class = "container">
+	<form {{action "submitNewNote" on = "submit"}}>
+		<div class = "inputGroup">
+			<h3> Please Enter your new side note </h3>
+  			<label class = "inputLabel" for="medNotes:">Side Note:</label>
+  			<br>
+  			<div class = "inputLabel">
+  				{{textarea id = 'medNotes' value = medNotes cols = "80" rows = "6"}}
+  			</div>
+  			<br>
+  		</div>
+  		<br>
+  		<button type = "submit" id = "create-sidenote-button">Create Note</button>
+  	</form>
+</div>
