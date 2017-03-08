@@ -21,11 +21,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						   tattoo: JSON.stringify(data.patient.tattoo),
 						   microchip: JSON.stringify(data.patient.microchip),
 						   status: JSON.stringify(data.patient.reproductive_status),
+						   client_id: JSON.stringify(data.patient.client_id),
 						   gender: JSON.stringify(data.patient.gender)
-					
-				
 				});
-					//console.log("we getdont here"); 
+				console.log("we getdont here");
+				//this.get('ajax').request('/api/client/1');
+
     		  });
                 console.log("status is " + JSON.stringify(data));
 				console.log("status is " + JSON.stringify(data.patient.name));

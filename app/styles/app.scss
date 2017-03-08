@@ -105,3 +105,29 @@ p {
     width:10em;
     clear:left;
 }
+
+
+//view-patient
+.viewLabel{
+    display: inline-block;
+    float: left;
+    clear: left;
+    text-align: left;
+    width: 20em;
+}
+.viewInfo{
+    display: inline-block;
+    float: left;   
+}
+
+.viewGroup{
+    margin: 10px;
+    display: block;
+    clear:left;
+}
+#edit-patient-button{
+    margin:20px;
+    display:block;
+    width:10em;
+    clear:left;
+}
