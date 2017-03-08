@@ -32,12 +32,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 			},
 			function(data){
 				if (data === false){
-<<<<<<< HEAD
 				self.transitionTo('/unauthorized');
 				console.log("status is " + JSON.stringify(data));
 				}
 		}));
 		return(ajaxGet);
+
 	},
 	
 
