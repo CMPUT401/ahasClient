@@ -8,18 +8,18 @@ export default Ember.Controller.extend({
 		submitNewCalendar()
 		{
 			var self = this;
-			let ajaxPost = this.get('ajax').request('/api/patients',
+			let ajaxPost = this.get('ajax').request('/api/schedules',
 			{
 				method: 'POST',
 				type: 'application/json',
-				data: { patient:
+				data: { schedule:
 					{
 					appointmentDate: 	this.get('appointmentStart'),
-					duration: 			this.get('appointmentEnd'),
 					clientId: 			"1",
 					reason: 			this.get('appointmentReason'),
 					notes: 				this.get('appointmentNote'),
-					location: 			this.get('appointmentLocation')
+					location: 			this.get('appointmentLocation'),
+					duration: 			this.get('appointmentEnd')
 				}
 			
 			}, 
