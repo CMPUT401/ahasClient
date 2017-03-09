@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
 					pets: "",
 					created_at: new Date(),
 					updated_at: "",
-					clientID: this.get('clientID'),
+					clientId: this.get('clientID'),
 					alternativeContactFirstName: this.get('alternativeFirstName'),
 					alternativeContactLastName: this.get('alternativeLastName'),
 					alternativeContactPhoneNumber: this.get('alternativePrimaryPhone'),
@@ -31,13 +31,6 @@ export default Ember.Controller.extend({
 					notes: this.get('clientNotes'),
 					alternativeContact2ndPhone: this.get('alternativeSecondaryPhone'),
 					alternativeContactEmail: this.get('alternativeEmail')
-					// name: 'Boby',
-					// address: '123 somewehere st, Edmonton',
-					// phoneNumber: '780-555-1234',
-					// email: 'someBoby@email.com',
-					// licos: '12345',
-					// socialAssistance: '4313',
-					// pets: ''
 				}}, 
 			}).then(function(data){
 					//console.log("name is " + cName);
