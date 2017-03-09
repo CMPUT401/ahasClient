@@ -4,13 +4,13 @@ export default Ember.Component.extend({
 	chronoIsVisible: true,
 	medicationIsVisible: false,
 	actions: {
-		showChronological: function(){
-			console.log("show chrono");
+		showChronological: function(patientId){
+			console.log("show chrono, the id is " + patientId);
 			this.set('chronoIsVisible', true);
 			this.set('medicationIsVisible', false);
 		},
-		showMedication: function(){
-			console.log("shoe medication");
+		showMedication: function(patientId){
+			console.log("show medication, the id is " + patientId);
 			this.set('chronoIsVisible', false);
 			this.set('medicationIsVisible', true);
 		}
