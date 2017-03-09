@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 	session: Ember.inject.service(),
 	actions: 
 	{
-		submitNewPatient()
+		submitNewCalendar()
 		{
 			var self = this;
 			let ajaxPost = this.get('ajax').request('/api/patients',
@@ -14,16 +14,12 @@ export default Ember.Controller.extend({
 				type: 'application/json',
 				data: { patient:
 					{
-					client: "1",
-					species: 	this.get('patientSpecies'),
-					name: 		this.get('patientName'),
-					age: 		this.get('patientAge'),
-					colour: 	this.get('patientColor'),
-					tattoo: 	this.get('patientTatoo'),
-					microchip: 	this.get('patientMicrochip'),
-					gender: 	this.get('patientGender'),
-					reproductive_status: 	this.get('patientStatus')
-				
+					appointmentDate: 	this.get('appointmentStart'),
+					duration: 			this.get('appointmentEnd'),
+					clientId: 			"1",
+					reason: 			this.get('appointmentReason'),
+					notes: 				this.get('appointmentNote'),
+					location: 			this.get('appointmentLocation')
 				}
 			
 			}, 
