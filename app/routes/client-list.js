@@ -12,7 +12,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 				Ember.run(function() {
 					resolve({ 
 						clients: deserialAttributes(data.clients),
-
+						clientsFiltered: deserialAttributes(data.clients),
 					});
 
 				});

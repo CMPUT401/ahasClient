@@ -1,14 +1,13 @@
+<button  {{action "filterClient"  }} type="submit" id="search-button">Search</button>
+<input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
 <div class = "nameList" >
 	<!-- TODO: filter client list -->
 	{{#ember-scrollable autoHide=false}}
-		{{#each-in model as |key clients|}}
-			{{#each clients as |client|}} 
-					<!-- TODO: onclick, GET client info and display it -->
+			{{#each model.clientsFiltered as |client|}}
 					<div class = "nameListItem">
 							<p>{{client.firstName}} {{client.lastName}}</p>
 					</div>
 			{{/each}}
-		{{/each-in}}
 	{{/ember-scrollable}}
 	<br>
 	
