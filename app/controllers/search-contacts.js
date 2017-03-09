@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
             this.transitionToRoute('/view-contact/'+contact);
         },
         filterContact(){
-            var input = document.getElementById('search-bar').value.trim()
+            var input = document.getElementById('search-bar').value.trim();
             if (input === "" || input === undefined ){
                 
                 //on empty input reset to show all
@@ -35,8 +35,8 @@ function filter(input, model, self){
         
         if (input === model.contactsVolunteer[i].first_name || input === model.contactsVolunteer[i].last_name){
             
-            var contact = { first_name : model.contactsVolunteer[i].first_name , last_name : model.contactsVolunteer[i].last_name };
-            resultVolunteer.push(contact);
+            var contactVolunteer = { first_name : model.contactsVolunteer[i].first_name , last_name : model.contactsVolunteer[i].last_name };
+            resultVolunteer.push(contactVolunteer);
             
         }
 
@@ -46,12 +46,12 @@ function filter(input, model, self){
     
     //filter veterinarians
     var resultVeterinarian = [];
-    for (var i = 0; i<model.contactsVeterinarian.length; i++){
+    for (var x = 0; x<model.contactsVeterinarian.length; x++){
          
-        if (input === model.contactsVeterinarian[i].first_name || input === model.contactsVeterinarian[i].last_name){
+        if (input === model.contactsVeterinarian[x].first_name || input === model.contactsVeterinarian[x].last_name){
             
-            var contact = { first_name : model.contactsVeterinarian[i].first_name , last_name : model.contactsVeterinarian[i].last_name };
-            resultVeterinarian.push(contact);
+            var contactVeterinarian = { first_name : model.contactsVeterinarian[x].first_name , last_name : model.contactsVeterinarian[x].last_name };
+            resultVeterinarian.push(contactVeterinarian);
            
         }
 
@@ -60,12 +60,12 @@ function filter(input, model, self){
 
     //filter laboratory
     var resultLaboratory = [];
-    for (var i = 0; i<model.contactsLaboratory.length; i++){
+    for (var j = 0; j<model.contactsLaboratory.length; j++){
         
-        if (input === model.contactsLaboratory[i].first_name || input === model.contactsLaboratory[i].last_name){
+        if (input === model.contactsLaboratory[j].first_name || input === model.contactsLaboratory[j].last_name){
 
-            var contact = { first_name : model.contactsLaboratory[i].first_name , last_name : model.contactsLaboratory[i].last_name };
-            resultLaboratory.push(contact);
+            var contactLaboratory = { first_name : model.contactsLaboratory[j].first_name , last_name : model.contactsLaboratory[j].last_name };
+            resultLaboratory.push(contactLaboratory);
         }
 
     }
