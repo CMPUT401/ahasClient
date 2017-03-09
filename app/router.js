@@ -8,7 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login');
-  this.route('new-patient');
+  this.route('new-patient', {path: '/new-patient/:clientID'});
   this.route('afterlogin');
   this.route('create-user');
   this.route('new-client');
