@@ -8,19 +8,19 @@ moduleForAcceptance('Acceptance | login');
 
 test('visiting /afterlogin while authenticated', function(assert) {
   authenticateSession(this.application);
-  visit('/afterlogin');
+  visit('/search-patient');
 
   andThen(function() {
-    assert.equal(currentURL(), '/afterlogin');
+    assert.equal(currentURL(), '/search-patient');
   });
 });
 
 test('visiting /afterlogin while not authenticated', function(assert) {
   invalidateSession(this.application);
-  visit('/afterlogin');
+  visit('/search-patient');
 
   andThen(function() {
-    assert.notEqual(currentURL(), '/afterlogin');
+    assert.notEqual(currentURL(), '/search-patient');
   });
 });
 
@@ -68,7 +68,7 @@ test('login with valid user, correct password', function(assert) {
    //server.post('/user_token' , { success: true}, 201);
 
   andThen(function() {
-    assert.equal(currentURL(), '/afterlogin');
+    assert.equal(currentURL(), '/search-patient');
     assert.notEqual(currentURL(), '/login');
   });
 });

@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	actions: {
-		filterClient(){
+		filterClient: function(){
 			var input = document.getElementById('search-bar').value.trim();
 			if(input === "" || input === undefined){
 				this.set('model.clientsFiltered', this.get(model.clients));
@@ -11,6 +11,11 @@ export default Ember.Controller.extend({
 				filter(input, this.get('model'), this);
 			}
 		}
+		viewClient: function(clientID){
+            console.log(clientID);
+            this.transitionToRoute("/client-info/" + clientID);
+        }
+
 	}
 });
 

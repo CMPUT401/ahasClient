@@ -34,8 +34,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 function deserialAttributes(clients){
 	var deserial = [];
 	for(var i = 0; i < clients.length; i++) {
-
-		var client= clients[i];
+		var client = clients[i];
 		client.id = JSON.stringify(clients[i].id);
 		client.firstName = JSON.stringify(clients[i].firstName).replace(/\"/g, "");
 		client.lastName = JSON.stringify(clients[i].lastName).replace(/\"/g, "");

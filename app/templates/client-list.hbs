@@ -3,10 +3,18 @@
 <div class = "nameList" >
 	<!-- TODO: filter client list -->
 	{{#ember-scrollable autoHide=false}}
+<<<<<<< HEAD
 			{{#each model.clientsFiltered as |client|}}
 					<div class = "nameListItem">
 							<p>{{client.firstName}} {{client.lastName}}</p>
 					</div>
+=======
+		{{#each-in model as |key clients|}}
+			{{#each clients as |client|}} 
+				<div class = "nameListItem" {{action "viewClient" client.id}}>
+						<p>{{client.firstName}} {{client.lastName}}</p>
+				</div>
+>>>>>>> master
 			{{/each}}
 	{{/ember-scrollable}}
 	<br>
