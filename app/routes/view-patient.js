@@ -14,7 +14,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 			).then(function(data){
 				Ember.run.later(function() {
        			 resolve({ id: JSON.stringify(data.patient.id).replace(/\"/g, ""),
-						   name: JSON.stringify(data.patient.name).replace(/\"/g, ""),
+						   first_name: JSON.stringify(data.patient.first_name).replace(/\"/g, ""),
+						   last_name: JSON.stringify(data.patient.last_name).replace(/\"/g, ""),
 						   species: JSON.stringify(data.patient.species).replace(/\"/g, ""),
 						   age: JSON.stringify(data.patient.age).replace(/\"/g, ""),
 						   colour: JSON.stringify(data.patient.colour).replace(/\"/g, ""),

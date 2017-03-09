@@ -1,13 +1,21 @@
-<div class= "container" >
-    <br>
-    <br>
-    <br>
-    <div class="row">
-            <form {{action "getContact" contact.id on="submit"}}>
-        <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
-        <input class="form-control" placeholder="Search" autofocus="autofocus"/>
-        </div>
-        </form>
+<br>
+<br>
+<br>
+<div>
+    <div class="col-sm-1 col-sm-offset-1 col-md-1 col-md-offset-1">
+        <button  {{action "filterContact"  }} type="submit" id="search-button">Search</button>        
+    </div>
+    <div class="col-sm-7 col-sm-offset-1 col-md-7 col-md-offset-1">
+        <input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
     </div>
 </div>
-{{outlet}}
+<br>
+<br>
+<div>
+    <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="veterinariansHeading"><h3>Patients</h3></div>
+</div>
+<div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
+    {{#each  model.contactsFilteredVeterinarian as |contact|}}                   
+    <p{{action "getContact" contact.id on="click"}} class='veterinariansContact'>{{contact.first_name}} {{contact.last_name}}</p>
+    {{/each}}
+</div >
