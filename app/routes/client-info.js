@@ -25,7 +25,6 @@ export default Ember.Route.extend({
 					
 					created_at: JSON.stringify(data.client.created_at).replace(/\"/g, ""),
 					updated_at: JSON.stringify(data.client.updated_at).replace(/\"/g, ""),
-					clientID: JSON.stringify(data.client.clientID).replace(/\"/g, ""),
 					notes: JSON.stringify(data.client.notes).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
 
 					alternativeContactFirstName: JSON.stringify(
@@ -36,8 +35,8 @@ export default Ember.Route.extend({
 						data.client.alternativeContactPhoneNumber).replace(/\"/g, ""),
 					alternativeContactAddress: JSON.stringify(
 						data.client.alternativeContactAddress).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
-					alternativeContact2ndPhone: JSON.stringify(
-						data.client.alternativeContact2ndPhone).replace(/\"/g, ""),
+					alternativeContact2ndPhone: if(data.client.alternativeContact2ndPhone != null){JSON.stringify(
+						data.client.alternativeContact2ndPhone).replace(/\"/g, "")},
 					alternativeContactEmail: JSON.stringify(
 						data.client.alternativeContactEmail).replace(/\"/g, "")
 				});
