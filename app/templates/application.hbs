@@ -3,11 +3,11 @@
 	{{#if session.isAuthenticated}}
 	<nav class = "navbar navbar-inverse">
 		<li class = "nav navbar-nav">
-			{{#nav-link-to 'new-client'}}
-				<h4 class = "navItem">New Client</h4>
+			{{#nav-link-to 'client-list'}}
+				<h4 class = "navItem">Search Client</h4>
 			{{/nav-link-to}}
-			{{#nav-link-to 'new-patient'}}
-				<h4 class = "navItem">New Patient</h4>
+			{{#nav-link-to 'search-patient'}}
+				<h4 class = "navItem">Search Patient</h4>
 			{{/nav-link-to}}
 			{{#nav-link-to 'login'}}
 				<h4 class = "navItem" href="#" {{action 'invalidateSession'}}>Logout</h4>
