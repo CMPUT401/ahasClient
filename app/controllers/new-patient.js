@@ -16,7 +16,8 @@ export default Ember.Controller.extend({
 					{
 					client: "1",
 					species: 	this.get('patientSpecies'),
-					name: 		this.get('patientName'),
+					first_name: this.get('patientFirstName'),
+					last_name:  this.get('patientLastName'),
 					age: 		this.get('patientAge'),
 					colour: 	this.get('patientColor'),
 					tattoo: 	this.get('patientTatoo'),
