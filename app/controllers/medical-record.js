@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
 
 
     actions: {
-       
+
         createMedicalRecord(){
 
             var self = this; 
@@ -38,20 +38,20 @@ export default Ember.Controller.extend({
              
              signature: exportSignature(this.get('stringifiedSignature')), 
 
-             temperature: this.get('temperatureText'),
-             eyes: this.get('eyesText'),
-             oral: this.get('oralText'),
-             ears: this.get('earsText'),
-             glands: this.get('glandsText'),
-             skin: this.get('skinText'),
-             abdomen: this.get('abdomenText'),
-             urogential: this.get('urogentialText'),
-             nervousSystem: this.get('nervousSystemText'),
-             musculoskeletal: this.get('musculoskeletalText'),
-             cardiovascular: this.get('cardiovascularText'),
-             heart_rate: this.get('hrText'),
-             respiratory: this.get('respiratoryText1'),
-             respiratory_rate: this.get('respiratoryText2'),
+             temperature: document.getElementById('temperatureText').value,
+             eyes: document.getElementById('eyesText').value,
+             oral: document.getElementById('oralText').value,
+             ears: document.getElementById('earsText').value,
+             glands: document.getElementById('glandsText').value,
+             skin: document.getElementById('skinText').value,
+             abdomen: document.getElementById('abdomenText').value,
+             urogential: document.getElementById('urogentialText').value,
+             nervousSystem: document.getElementById('nervousSystemText').value,
+             musculoskeletal: document.getElementById('musculoskeletalText').value,
+             cardiovascular: document.getElementById('cardiovascularText').value,
+             heart_rate: document.getElementById('hrText').value,
+             respiratory: document.getElementById('respiratoryText1').value,
+             respiratory_rate: document.getElementById('respiratoryText2').value,
 
              
              attitudeBAR: document.getElementById('attitudeBAR').checked,
@@ -88,9 +88,9 @@ export default Ember.Controller.extend({
 
 
 
-             exam_notes: this.get('notes'), 
-             medications: this.get('medications'),
-             summary: this.get('summary')
+             exam_notes: document.getElementById('notes').value, 
+             medications: document.getElementById('medications').value,
+             summary: document.getElementById('summary').value
 
         }
     }
