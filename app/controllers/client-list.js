@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
 			else {
 				filter(input, this.get('model'), this);
 			}
-		}
+		},
 		viewClient: function(clientID){
             console.log(clientID);
             this.transitionToRoute("/client-info/" + clientID);
