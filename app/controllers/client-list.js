@@ -27,7 +27,7 @@ function filter(input, model, self){
 							firstName: model.clients[i].firstName,
 							lastName: model.clients[i].lastName,
 							id: model.clients[i].id
-						}
+						};
 			results.push(client);
 		}
 	}

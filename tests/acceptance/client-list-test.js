@@ -4,8 +4,17 @@ import { authenticateSession, invalidateSession } from '../helpers/ember-simple-
 
 moduleForAcceptance('Acceptance | client list');
 
+test('visiting /client-list before login', function(assert) {
+	invalidateSession(this.application);
+	visit('client-list');
+
+	andThen(function(){
+		assert.notEqual(currentURL(), '/client-list');
+	});
+});
+
 test('visiting /client-list', function(assert) {
-	authenticateSession(this.application)
+	authenticateSession(this.application);
 	visit('/client-list');
 
 	andThen(function() {
