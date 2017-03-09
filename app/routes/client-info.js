@@ -16,8 +16,30 @@ export default Ember.Route.extend({
 					lastName: JSON.stringify(data.client.lastName).replace(/\"/g, ""),
 					phoneNumber: JSON.stringify(data.client.phoneNumber).replace(/\"/g, ""),
 					email: JSON.stringify(data.client.email).replace(/\"/g, ""),
-					address: JSON.stringify(data.client.address).replace(/\\n/g, " <br> " ).replace(/\"/g, "")
-				
+					address: JSON.stringify(data.client.address).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
+
+					licos: JSON.stringify(data.client.licos).replace(/\"/g, ""),
+					aish: JSON.stringify(data.client.aish).replace(/\"/g, ""),
+					socialAssistance: JSON.stringify(data.client.socialAssistance).replace(/\"/g, ""),
+					pets: JSON.stringify(data.client.pets).replace(/\"/g, ""),
+					
+					created_at: JSON.stringify(data.client.created_at).replace(/\"/g, ""),
+					updated_at: JSON.stringify(data.client.updated_at).replace(/\"/g, ""),
+					clientID: JSON.stringify(data.client.clientID).replace(/\"/g, ""),
+					notes: JSON.stringify(data.client.notes).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
+
+					alternativeContactFirstName: JSON.stringify(
+						data.client.alternativeContactFirstName).replace(/\"/g, ""),
+					alternativeContactLastName: JSON.stringify(
+						data.client.alternativeContactLastName).replace(/\"/g, ""),
+					alternativeContactPhoneNumber: JSON.stringify(
+						data.client.alternativeContactPhoneNumber).replace(/\"/g, ""),
+					alternativeContactAddress: JSON.stringify(
+						data.client.alternativeContactAddress).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
+					alternativeContact2ndPhone: JSON.stringify(
+						data.client.alternativeContact2ndPhone).replace(/\"/g, ""),
+					alternativeContactEmail: JSON.stringify(
+						data.client.alternativeContactEmail).replace(/\"/g, "")
 				});
 			  });
 			
