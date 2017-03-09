@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
 				data: { note:
 					{
 					medical_record_id: "1",
-					body: 	this.get('medNote'),
+					body: 	this.get('medNotes'),
 					initials: 		this.get('medSignature')
 				
 				}

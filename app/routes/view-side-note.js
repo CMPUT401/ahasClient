@@ -11,19 +11,19 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 	model() {
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-		this.get('ajax').request('/api/patients/1/medical_records'
+		this.get('ajax').request('/api/patients/1/medical_records/1/notes/1'
 			).then(function(data){
 				Ember.run.later(function() {
-       			 resolve({ id: JSON.stringify(data.appointment.id).replace(/\"/g, ""),
-						   notes: JSON.stringify(data.appointment.note).replace(/\"/g, ""),
-						   species: JSON.stringify(data.appointment.sig).replace(/\"/g, ""),
+       			 resolve({ id: JSON.stringify(data.note.id).replace(/\"/g, ""),
+						   body: JSON.stringify(data.note.body).replace(/\"/g, "").replace(/\\n/g, " <br> "),
+						   initials: JSON.stringify(data.note.initials).replace(/\"/g, ""),
 				});
 				console.log("we getdont here");
 				//this.get('ajax').request('/api/client/1');
 
     		  });
                 console.log("status is " + JSON.stringify(data));
-				console.log("status is " + JSON.stringify(data.appointment.sig));
+				//console.log("status is " + JSON.stringify(data.appointment.sig));
 			},
 			function(data){
 				if (data === false){
