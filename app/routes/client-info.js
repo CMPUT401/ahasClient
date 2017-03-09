@@ -23,8 +23,8 @@ export default Ember.Route.extend({
 					socialAssistance: JSON.stringify(data.client.socialAssistance).replace(/\"/g, ""),
 					pets: JSON.stringify(data.client.pets).replace(/\"/g, ""),
 					
-					created_at: JSON.stringify(data.client.created_at).replace(/\"/g, ""),
-					updated_at: JSON.stringify(data.client.updated_at).replace(/\"/g, ""),
+					created_at: JSON.stringify(data.client.created_at).replace(/\"/g, "").slice(0, 10),
+					updated_at: JSON.stringify(data.client.updated_at).replace(/\"/g, "").slice(0, 10),
 					notes: JSON.stringify(data.client.notes).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
 
 					alternativeContactFirstName: JSON.stringify(
@@ -35,11 +35,22 @@ export default Ember.Route.extend({
 						data.client.alternativeContactPhoneNumber).replace(/\"/g, ""),
 					alternativeContactAddress: JSON.stringify(
 						data.client.alternativeContactAddress).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
-					alternativeContact2ndPhone: if(data.client.alternativeContact2ndPhone != null){JSON.stringify(
-						data.client.alternativeContact2ndPhone).replace(/\"/g, "")},
-					alternativeContactEmail: JSON.stringify(
-						data.client.alternativeContactEmail).replace(/\"/g, "")
+					
+					
 				});
+				if(data.client.alternativeContact2ndPhone != null){
+					resolve({
+						alternativeContact2ndPhone: JSON.stringify(
+							data.client.alternativeContact2ndPhone).replace(/\"/g, ""),
+					});
+				}
+				// TEMP, needs bug fix on back end
+				if(data.client.alternativeContactEmail != null){
+					resolve({
+						alternativeContactEmail: JSON.stringify(
+							data.client.alternativeContactEmail).replace(/\"/g, "")
+					});
+				}
 			  });
 			
 			},
