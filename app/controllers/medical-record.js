@@ -26,11 +26,15 @@ export default Ember.Controller.extend({
             
             if( this.get('signature').length !== 0 ){
 
-
-             var medicalRecord = this.get('ajax').post('/api/medical-record', {
+            //note hardcoded patients id until it is passed to me.
+             var medicalRecord = this.get('ajax').post('/api/patients/1/medical_records', {
              type: 'application/json',
              data: { 
                  medical_record: {
+
+             // should be date not data?...
+             data: new Date(), 
+             patient_id: 1 , //for now only
              
              signature: exportSignature(this.get('stringifiedSignature')), 
 
@@ -84,8 +88,9 @@ export default Ember.Controller.extend({
 
 
 
-             notes: this.get('notes'), 
+             exam_notes: this.get('notes'), 
              medications: this.get('medications'),
+             summary: this.get('summary')
 
         }
     }
