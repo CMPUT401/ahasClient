@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	isVisible: true,
+	isVisible: false,
 	actions:{
 		newEntry: function(){
 			console.log("making a new medical history entry");
