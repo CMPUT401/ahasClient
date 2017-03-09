@@ -14,12 +14,12 @@ export default Ember.Controller.extend({
 				type: 'application/json',
 				data: { schedule:
 					{
-					appointmentDate: 	this.get('appointmentStart'),
-					clientId: 			"1",
-					reason: 			this.get('appointmentReason'),
-					notes: 				this.get('appointmentNote'),
-					location: 			this.get('appointmentLocation'),
-					duration: 			this.get('appointmentEnd')
+					appointmentStartDate: 	this.get('appointmentStart'),
+					clientId: 				"1",
+					reason: 				this.get('appointmentReason'),
+					notes: 					this.get('appointmentNote'),
+					location: 				this.get('appointmentLocation'),
+					appointmentEndDate: 	this.get('appointmentEnd')
 				}
 			
 			}, 
