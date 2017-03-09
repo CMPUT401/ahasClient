@@ -1,4 +1,4 @@
-<div class ="container">
+
 	<form {{action "submitNewCalendar" on="submit"}}>
 		<div class = "inputGroup">
 			<h3>Please fill in the appointment</h3>
@@ -15,12 +15,12 @@
 			<br>
 			<label class = "inputLabel" for ="appointmentReason">Reason:</label>
 			<div class = "inputBox">
-			{{input id = "appointmentReason" value=appointmentReason required='true'}}
+			{{textarea id = "appointmentReason" value=appointmentReason required='true' cols="50" rows="4"}}
 			</div>
 			<br>
 			<label class = "inputLabel" for ="appointmentNote">Note:</label>
 			<div class = "inputBox">
-			{{input id = "appointmentNote" value=appointmentNote required='true'}}
+			{{textarea id = "appointmentNote" value=appointmentNote required='true' cols="50" rows="4"}}
 			</div>
 			<br>
 			<label class = "inputLabel" for ="appointmentLocation">Location:</label>
@@ -31,4 +31,3 @@
 			<button type = "submit" id="create-appointment-button">Create Appointment</button>
 		</div>
 	</form>
-</div>
