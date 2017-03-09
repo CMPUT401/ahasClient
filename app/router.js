@@ -12,6 +12,8 @@ Router.map(function() {
   this.route('new-patient', {path: '/new-patient/:clientID'});
   this.route('create-user');
   this.route('new-client');
+  this.route('view-contact', { path: '/view-contact/:contact_id' });
+  this.route('search-contacts');
   this.route('view-patient');
   this.route('search-patient');
   this.route('new-side-note');

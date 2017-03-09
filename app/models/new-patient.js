@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+	name: DS.attr('string'),
 	patientName: DS.attr('string'),
 	patientSpecies: DS.attr('string'),
 	patientGender: DS.attr('string'),

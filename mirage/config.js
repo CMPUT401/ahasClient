@@ -12,9 +12,27 @@ export default function() {
    this.namespace = '/api';    // make this `/api`, for example, if your API is namespaced
   // this.timing = 400;      // delay for each request, automatically set to 0 during testing
 
-   this.post('/user_token' , {"jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"});
+   this.post('/user_token' , { success: false }, 404);
    this.post('/signup', { success: true }, 201);
+
    this.post('/contacts', { success: true }, 201);
+
+   this.get('/contact/1', () => {
+     return {
+  success: true,
+  contact: 
+   {
+     first_name: "Justin",
+     last_name: "Barclay",
+     address: "116 St & 85 Ave, Edmonton, AB T6G 2R3",
+     email: "fakejustin@ualberta.ca",
+     phone_number: "555-555-5555",
+     fax_number: "555-555-5556",
+     contact_type: "Veterinarian"
+   }
+};
+   }); 
+
 
   /*
     Shorthand cheatsheet:
