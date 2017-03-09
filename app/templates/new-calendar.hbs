@@ -1,1 +1,33 @@
-{{outlet}}
+<div class ="container">
+	<form {{action "submitNewCalendar" on="submit"}}>
+		<div class = "inputGroup">
+			<h3>Please fill in the appointment</h3>
+
+			<label class = "inputLabel" for ="appointmentStart">Start Time:</label>
+			<div class = "inputBox">
+			{{input id = "appointmentStart" value=appointmentStart required='true'}}
+			</div>
+			<br>
+			<label class = "inputLabel" for ="apportmentEnd">End Time:</label>
+			<div class = "inputBox">
+			{{input id = "appointmentEnd" value=appointmentEnd required='true'}}
+			</div>
+			<br>
+			<label class = "inputLabel" for ="appointmentReason">Reason:</label>
+			<div class = "inputBox">
+			{{input id = "appointmentReason" value=appointmentReason required='true'}}
+			</div>
+			<br>
+			<label class = "inputLocation" for ="appointmentNote">Note:</label>
+			<div class = "inputBox">
+			{{input id = "appointmentNote" value=appointmentNote required='true'}}
+			</div>
+			<br>
+			<label class = "inputLabel" for ="appointmentLocation">Location:</label>
+			<div class = "inputBox">
+			{{input id = "appointmentLocation" value=appointmentLocation required='true'}}
+			</div>
+			<br>
+		</div>
+	</form>
+</div>

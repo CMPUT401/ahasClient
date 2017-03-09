@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
 		submitNewPatient()
 		{
 			var self = this;
-				let ajaxPost = this.get('ajax').request('/api/patients',
+			let ajaxPost = this.get('ajax').request('/api/patients',
 			{
 				method: 'POST',
 				type: 'application/json',
