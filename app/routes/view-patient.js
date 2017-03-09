@@ -29,8 +29,27 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 				//this.get('ajax').request('/api/client/1');
 
     		  });
-                console.log("status is " + JSON.stringify(data));
-				console.log("status is " + JSON.stringify(data.patient.name));
+				console.log("status is " + JSON.stringify(data));
+				console.log('/api/client/' + JSON.stringify(data.patient.id));
+				//var self = this;
+				var ajaxGet = new Ember.RSVP.Promise((resolve) =>
+				self.get('ajax').request('/api/client/'+ JSON.stringify(data.patient.id)
+					).then(function(data){
+						Ember.run.later(function() {
+							resolve({ 
+								firstName: JSON.stringify(data.client.firstName),
+								lastName: JSON.stringify(data.client.lastName),
+							});
+						});
+						console.log("status is " + JSON.stringify(data));
+					},
+					function(data){
+						if (data === false){
+							self.transitionTo('/unauthorized');
+							console.log("status is " + JSON.stringify(data));
+						}
+					}));
+					return(ajaxGet);
 			},
 			function(data){
 				if (data === false){
