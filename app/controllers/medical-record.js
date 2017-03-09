@@ -22,7 +22,7 @@ export default Ember.Controller.extend({
        
         createMedicalRecord(){
 
-            var self = this, 
+            var self = this; 
             
             if( this.get('signature').length !== 0 ){
 
@@ -122,10 +122,9 @@ function showAlert(message, bool) {
         }
  }
 
-function exportSignature(signature){
+function exportSignature(){
             
-
             var canvas = document.querySelector("canvas");
             var img    = canvas.toDataURL("image/png");
-           return(img);
+            return(img);
 }
