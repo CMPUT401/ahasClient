@@ -6,7 +6,6 @@ export default Ember.Controller.extend({
      actions:{
      createUser: function() { 
 
-        //reset status displayed on every button press
         var name= document.getElementById('name').value;
         var email= document.getElementById('username').value;
         var password = document.getElementById('password').value;

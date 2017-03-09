@@ -19,6 +19,7 @@ Router.map(function() {
   this.route('client-list');
   this.route('client-info', {path: '/client-info/:clientID'});
   this.route('unauthorized');
+  this.route('create-contact');
 });
 
 export default Router;
