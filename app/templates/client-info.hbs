@@ -1,50 +1,50 @@
 <div class = "panel panel-default">
 		<div class = "panel-body">
 			<div class = "infoBlock">
-				<h4>Client: </h4><br>
-				<p>{{model.lastName}}, {{model.firstName}}  </p><br>
-				<h5>Address:</h5><br>
-				<p>{{model.address}} </p><br>
-				<h5>Phone Number: </h5><br>
-				<p>{{model.phoneNumber}} </p><br>
-				<h5>Email: </h5><br>
-				<p>{{model.email}} </p><br>
+				<h3>Client: </h3><br>
+				{{model.lastName}}, {{model.firstName}}  <br>
+				<h4>Address:</h4><br>
+				{{{model.address}}} <br>
+				<h4>Phone Number: </h4><br>
+				{{model.phoneNumber}} <br>
+				<h4>Email: </h4><br>
+				{{model.email}} <br>
 			</div>
 			<div class = "infoBlock">
-				<h4>Documentation Information</h4><br>
-				<h5>LICO: </h5><br>
-				<p>{{model.licos}}</p><br>
-				<h5>AISH: </h5><br>
-				<p>{{model.aish}}</p><br>
-				<h5>SA: </h5><br>
-				<p>{{model.socialAssistance}}</p><br>
-				<h5>Notes: </h5><br>
-				<p>{{model.notes}}</p><br>
+				<h3>Documentation Information: </h3><br>
+				<h4>LICO: </h4><br>
+				{{model.licos}}<br>
+				<h4>AISH: </h4><br>
+				{{model.aish}}<br>
+				<h4>SA: </h4><br>
+				{{model.socialAssistance}}<br>
+				<h4>Notes: </h4><br>
+				{{{model.notes}}}<br>
 			</div>
 			<div class = "infoBlock">
-				<h4>Alternate Contact</h4><br>
-				<p>{{model.alternativeContactFirstName}}</p><br>
-				<h5>Last, First</h5><br>
-				<p>{{model.alternativeContactLastName}}</p><br>
-				<h5>Address: </h5><br>
-				<p>{{model.alternativeContactAddress}}</p><br>
-				<h5>Phone Number: </h5><br>
-				<p>{{model.alternativeContactPhoneNumber}}</p><br>
-				<h5>Second Phone Number: </h5>
-				<p>{{model.alternativeContact2ndPhone}}</p><br>
-				<h5>Email: </h5><br>
-				<p>{{model.alternativeContactEmail}}</p><br>
+				<h3>Alternate Contact</h3><br>
+				{{model.alternativeContactFirstName}}<br>
+				<h4>Last, First</h4><br>
+				{{model.alternativeContactLastName}}<br>
+				<h4>Address: </h4><br>
+				{{{model.alternativeContactAddress}}}<br>
+				<h4>Phone Number: </h4><br>
+				{{model.alternativeContactPhoneNumber}}<br>
+				<h4>Second Phone Number: </h4>
+				{{model.alternativeContact2ndPhone}}<br>
+				<h4>Email: </h4><br>
+				{{model.alternativeContactEmail}}<br>
 			</div>
 			<div class = "infoBlock">
-				<h4>Pet: </h4>
+				<h3>Pet: </h3>
 				<!-- TODO loop through list of pets -->
-				<h5>Pet name</h5><br>
-				<p>{{model.pets}}</p><br>
-				<h5>Species: </h5><br>
-				<h5>Animal ID: </h5><br>
-				<h5>Tattoo/microchip ID: </h5><br>
+				<h4>Pet name</h4><br>
+				{{model.pets}}<br>
+				<h4>Species: </h4><br>
+				<h4>Animal ID: </h4><br>
+				<h4>Tattoo/microchip ID: </h4><br>
 			</div>
-			<h5>Created: </h5><p>{{model.created_at}}</p><br>
-			<h5>Last modified: </h5><p>{{model.updated_at}}</p><br>
+			<h4>Created: </h4>{{model.created_at}}<br>
+			<h4>Last modified: </h4>{{model.updated_at}}<br>
 		</div>
 </div>

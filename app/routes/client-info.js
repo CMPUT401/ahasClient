@@ -25,7 +25,7 @@ export default Ember.Route.extend({
 					
 					created_at: JSON.stringify(data.client.created_at).replace(/\"/g, "").slice(0, 10),
 					updated_at: JSON.stringify(data.client.updated_at).replace(/\"/g, "").slice(0, 10),
-					notes: JSON.stringify(data.client.notes).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
+					notes: JSON.stringify(data.client.notes).replace(/\"/g, "").replace(/\\n/g, ' <br> ' ),
 
 					alternativeContactFirstName: JSON.stringify(
 						data.client.alternativeContactFirstName).replace(/\"/g, ""),
