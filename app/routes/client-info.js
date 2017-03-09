@@ -39,9 +39,7 @@ export default Ember.Route.extend({
 						alternativeContactAddress: JSON.stringify(
 							data.client.alternativeContactAddress).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
 						alternativeContactEmail: JSON.stringify(
-								data.client.alternativeContactEmail).replace(/\"/g, ""),
-
-						clientID: JSON.stringify(data.client.id).replace(/\"/g, "")
+								data.client.alternativeContactEmail).replace(/\"/g, "")
 					});
 				}else{
 		   			resolve({ 
