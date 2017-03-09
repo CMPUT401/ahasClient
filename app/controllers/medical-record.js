@@ -22,7 +22,10 @@ export default Ember.Controller.extend({
 
         createMedicalRecord(){
 
-            var self = this; 
+            var self = this;
+            var date = Date.now(); 
+
+            console.log("the vals", document.getElementById('temperatureText').value,  document.getElementById('notes').value,  document.getElementById('summary').value, date);
             
             if( this.get('signature').length !== 0 ){
 
@@ -32,12 +35,14 @@ export default Ember.Controller.extend({
              data: { 
                  medical_record: {
 
-             // should be date not data?...
-             data: new Date(), 
+
+             
+             date: date,  
              patient_id: 1 , //for now only
              
              signature: exportSignature(this.get('stringifiedSignature')), 
 
+             //inputs
              temperature: document.getElementById('temperatureText').value,
              eyes: document.getElementById('eyesText').value,
              oral: document.getElementById('oralText').value,
@@ -53,7 +58,7 @@ export default Ember.Controller.extend({
              respiratory: document.getElementById('respiratoryText1').value,
              respiratory_rate: document.getElementById('respiratoryText2').value,
 
-             
+             //checkboxes
              attitudeBAR: document.getElementById('attitudeBAR').checked,
              attitudeQAR: document.getElementById('attitudeQAR').checked, 
              attitudeDepressed: document.getElementById('attitudeDepressed').checked,
@@ -87,7 +92,7 @@ export default Ember.Controller.extend({
              respiratoryA: document.getElementById('respiratoryA').checked,
 
 
-
+             //textareas
              exam_notes: document.getElementById('notes').value, 
              medications: document.getElementById('medications').value,
              summary: document.getElementById('summary').value
@@ -102,7 +107,7 @@ export default Ember.Controller.extend({
             }
         //this is error from server condition
         }, function(response) {
-            console.log("status is " + JSON.stringify(response));
+            console.log("status is " + JSON.stringify(response), response);
 					if (response === false){
 						if (self.get('session.isAuthenticated')){
 							self.get('session').invalidate();

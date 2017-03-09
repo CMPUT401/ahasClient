@@ -1,6 +1,8 @@
 <div class="container">
 <div class="row" >
 
+
+
 <div class="col-sm-12 col-md-12">
 <h1> Medical Record </h1>
 <h4> Created at: {{model.date_created}} </h4>
@@ -16,19 +18,67 @@
 <div >
 <div class="row">
     <div class="col-sm-2 col-md-2">Attitude </div>
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="attitudeBAR"> BAR </div> 
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="attitudeQAR" > QAR </div> 
-    <div class="col-sm-3 col-md-3"> <input type="checkbox" id="attitudeDepressed" > Depressed </div>
+    <div class="col-sm-2 col-md-2"> 
+        {{#if model.attitudeBAR }}
+        <input type="checkbox" id="attitudeBAR" disabled checked="true"> BAR 
+        {{else}}
+         <input type="checkbox" id="attitudeBAR" disabled > BAR 
+         {{/if}}
+        </div> 
+    <div class="col-sm-2 col-md-2"> 
+         {{#if model.attitudeQAR }}
+        <input type="checkbox" id="attitudeQAR" disabled checked="true"> QAR 
+         {{else}}
+          <input type="checkbox" id="attitudeQAR" disabled> QAR 
+           {{/if}}
+        </div> 
+    <div class="col-sm-3 col-md-3"> 
+        {{#if model.attitudeDepressed }}
+        <input type="checkbox" id="attitudeDepressed" disabled checked="true"> Depressed
+         {{else}}
+           <input type="checkbox" id="attitudeDepressed" disabled> Depressed 
+           {{/if}}
+         </div>
     <div class="col-sm-1 col-md-1"> Temp </div>
     <div class="col-sm-1 col-md-1"> <input id="temperatureText" class="inputMedLabel" >  </div>
 </div>
 <div class="row">
     <div class="col-sm-1 col-md-1">Eyes </div>
-    <div class="col-sm-2 col-md-1"> <input type="checkbox" id="eyesN"> N </div> 
-    <div class="col-sm-2 col-md-1"> <input type="checkbox" id="eyesA"> A </div> 
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOU"> OU </div>
-     <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOD"> OD </div>
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOS"> OS </div>
+    <div class="col-sm-2 col-md-1">
+        {{#if model.eyesN }}
+        <input type="checkbox" id="eyesN" disabled checked="true"> N
+         {{else}}
+           <input type="checkbox" id="eyesN" disabled> N
+           {{/if}} 
+           </div>
+    <div class="col-sm-2 col-md-1"> 
+        {{#if model.eyesA }}
+        <input type="checkbox" id="eyesA" disabled checked="true"> A
+         {{else}}
+           <input type="checkbox" id="eyesA" disabled> A
+           {{/if}} 
+        </div> 
+    <div class="col-sm-2 col-md-2"> 
+         {{#if model.eyesOU }}
+        <input type="checkbox" id="eyesOU" disabled checked="true"> OU
+         {{else}}
+           <input type="checkbox" id="eyesOU" disabled> OU
+           {{/if}} 
+        </div>
+     <div class="col-sm-2 col-md-2"> 
+         {{#if model.eyesOD }}
+        <input type="checkbox" id="eyesOD" disabled checked="true"> OD
+         {{else}}
+           <input type="checkbox" id="eyesOD" disabled> OD
+           {{/if}} 
+         </div>
+    <div class="col-sm-2 col-md-2"> 
+         {{#if model.eyesOD }}
+        <input type="checkbox" id="eyesOD" disabled checked="true"> OS
+         {{else}}
+           <input type="checkbox" id="eyesOS" disabled> OS
+           {{/if}} <input type="checkbox" id="eyesOS"> OS 
+           </div>
     <div class="col-sm-1 col-md-1"> <input id="eyesText" class="inputMedLabel">  </div>
 </div>
 <div class="row">

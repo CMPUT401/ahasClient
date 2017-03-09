@@ -7,12 +7,13 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
         //for nowwwwww
-		this.get('ajax').request('/api/patients/1/medical_records/1' //  + params.contact_id
+		this.get('ajax').request('/api/patients/1/medical_records/12' //  + params.contact_id
 			).then(function(data){
 				console.log(data, data.success, data.medical_record);
 				Ember.run(function() {
        			 resolve({ 
 						   
+
                             date_created: data.medical_record.created_at, 
                             patient_id: data.medical_record.id, 
                             
@@ -33,44 +34,46 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             respiratory: data.medical_record.respiratory,
                             respiratory_rate: data.medical_record.respiratory_rate,
 
-                            /*
-                            attitudeBAR: document.getElementById('attitudeBAR').checked,
-                            attitudeQAR: document.getElementById('attitudeQAR').checked, 
-                            attitudeDepressed: document.getElementById('attitudeDepressed').checked,
-                            eyesN: document.getElementById('eyesN').checked,
-                            eyesA: document.getElementById('eyesA').checked,
-                            mmN: document.getElementById('mmN').checked, 
-                            mmPale: document.getElementById('mmPale').checked, 
-                            mmJaundiced: document.getElementById('mmJaundiced').checked, 
-                            mmTacky: document.getElementById('mmTacky').checked, 
-                            earsN: document.getElementById('earsN').checked, 
-                            earsA: document.getElementById('earsA').checked, 
-                            earsEarMites: document.getElementById('earsEarMites').checked, 
-                            earsAU: document.getElementById('earsAU').checked, 
-                            earsAD: document.getElementById('earsAD').checked, 
-                            earsAS: document.getElementById('earsAS').checked, 
-                            glandsN: document.getElementById('glandsN').checked, 
-                            glandsA: document.getElementById('glandsA').checked,  
-                            skinN: document.getElementById('skinN').checked,
-                            skinA: document.getElementById('skinA').checked,   
-                            abdomenN: document.getElementById('abdomenN').checked,
-                            abdomenA: document.getElementById('abdomenA').checked, 
-                            urogentialN: document.getElementById('urogentialN').checked,
-                            urogentialA: document.getElementById('urogentialA').checked,
-                            nervousSystemN: document.getElementById('nervousSystemN').checked,
-                            nervousSystemA: document.getElementById('nervousSystemA').checked,
-                            musculoskeletalN: document.getElementById('musculoskeletalN').checked,
-                            musculoskeletalA: document.getElementById('musculoskeletalA').checked,
-                            cardiovascularN: document.getElementById('cardiovascularN').checked,
-                            cardiovascularA: document.getElementById('cardiovascularA').checked,
-                            respiratoryN: document.getElementById('respiratoryN').checked,
-                            respiratoryA: document.getElementById('respiratoryA').checked,*/
+                            
+                            attitudeBAR: data.medical_record.attitudeBAR ,
+                            attitudeQAR: data.medical_record.attitudeQAR, 
+                            attitudeDepressed: data.medical_record.attitudeDepressed,
+                            eyesN: data.medical_record.eyesN,
+                            eyesA: data.medical_record.eyesA,
+                            mmN: data.medical_record.mmN, 
+                            mmPale: data.medical_record.mmPale, 
+                            mmJaundiced: data.medical_record.mmJaundiced, 
+                            mmTacky: data.medical_record.mmTacky, 
+                            earsN: data.medical_record.earsN, 
+                            earsA: data.medical_record.earsA, 
+                            earsEarMites: data.medical_record.earsEarMites, 
+                            earsAU: data.medical_record.earsAU, 
+                            earsAD: data.medical_record.earsAD, 
+                            earsAS: data.medical_record.earsAS, 
+                            glandsN: data.medical_record.glandsN, 
+                            glandsA: data.medical_record.glandsA,  
+                            skinN: data.medical_record.skinN,
+                            skinA: data.medical_record.skinA,   
+                            abdomenN: data.medical_record.abdomenN,
+                            abdomenA: data.medical_record.abdomenA, 
+                            urogentialN: data.medical_record.urogentialN,
+                            urogentialA: data.medical_record.urogentialA,
+                            nervousSystemN: data.medical_record.nervousSystemN,
+                            nervousSystemA: data.medical_record.nervousSystemA,
+                            musculoskeletalN: data.medical_record.musculoskeletalN,
+                            musculoskeletalA: data.medical_record.musculoskeletalA,
+                            cardiovascularN: data.medical_record.cardiovascularN,
+                            cardiovascularA: data.medical_record.cardiovascularA,
+                            respiratoryN: data.medical_record.respiratoryN,
+                            respiratoryA: data.medical_record.respiratoryA,
 
 
 
                             exam_notes: data.medical_record.exam_notes, 
                             medications: data.medical_record.medications,
-                            summary: data.medical_record.summary
+                            summary: data.medical_record.summary 
+
+                          
 
 				
 				});
@@ -87,3 +90,8 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 	},
 
 });
+
+function setChecked (){
+
+    document.getElementById('attitudeBAR').checked = this.get('model.attitudeBAR');
+}
