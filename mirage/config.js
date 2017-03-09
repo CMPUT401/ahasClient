@@ -39,5 +39,33 @@ export default function() {
       }]
     };
   });
+
+  this.get('client/1', ()=>{
+    return{
+      success: true,
+      client: {
+        id: 1,
+        firstName: "Johny",
+        lastName: "Bravo",
+        address: "123 Office dr Edmonton, AB A6S 1F3",
+        phoneNumber: "780-555-1122",
+        email: "jbravo@email.ca",
+        licos: "123",
+        aish: "234",
+        socialAssistance: "345",
+        pets: "boby",
+        notes: "don't say anything about his hair",
+        created_at: "017-03-09T02:50:38.757Z",
+        updated_at: "017-03-09T02:50:38.757Z",
+        alternativeContactFirstName: "Bob",
+        alternativeContactLastName: "Mackenzie",
+        alternativeContactEmail: "bmackenzie@email.com",
+        alternativeContactPhoneNumber: "780-555-2211",
+        alternativeContact2ndPhone: "780-555-3321",
+        alternativeContactAddress: "4142 Office ave Edmonton, AB V2F 4A1"
+
+      }
+    };
+  });
   
 }

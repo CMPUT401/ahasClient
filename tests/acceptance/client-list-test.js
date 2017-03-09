@@ -21,3 +21,28 @@ test('visiting /client-list', function(assert) {
 		assert.equal(currentURL(), '/client-list');
 	});
 });
+
+test('client list contains an item', function(assert){
+	authenticateSession(this.application);
+	visit('/client-list');
+
+	andThen(function(){
+		// let item = document.getElements("div.div.p").textContent;
+		let item = find(".nameListItem").first().text().trim();
+		assert.equal(item, "Johny Bravo");
+	});
+	
+});
+
+test('should transition to /client-list/1', function(assert){
+	authenticateSession(this.application);
+	visit('/client-list');
+	andThen(function(){
+		var item = find(".nameListItem");
+	});
+
+	click(item);
+	andThen(function(){
+		assert.equal(currentURL(), '/client-list/1')
+	});
+});
