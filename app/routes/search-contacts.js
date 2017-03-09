@@ -15,8 +15,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						  
 
 						  contactsVolunteer: deserialAttributesVolunteer(data.contacts),
+						  contactsFilteredVolunteer: deserialAttributesVolunteer(data.contacts),
 						  contactsVeterinarian: deserialAttributesVeterinarian(data.contacts),
+						  contactsFilteredVeterinarian: deserialAttributesVeterinarian(data.contacts),
 						  contactsLaboratory: deserialAttributesLaboratory(data.contacts),
+						  contactsFilteredLaboratory: deserialAttributesLaboratory(data.contacts)
 
 				});
     		  });
