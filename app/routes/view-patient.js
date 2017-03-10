@@ -22,10 +22,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						   microchip: JSON.stringify(data.patient.microchip).replace(/\"/g, ""),
 						   status: JSON.stringify(data.patient.reproductive_status).replace(/\"/g, ""),
 						   client_id: JSON.stringify(data.patient.client_id).replace(/\"/g, ""),
-						   gender: JSON.stringify(data.patient.gender).replace(/\"/g, ""),
-						   route: self
+						   gender: JSON.stringify(data.patient.gender).replace(/\"/g, "")
 				});
-				console.log("we getdont here");
+				// console.log("we getdont here");
 				//this.get('ajax').request('/api/client/1');
 
     		  });
@@ -38,6 +37,18 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 				console.log("status is " + JSON.stringify(data));
 				}
 		}));
+		// var ajaxGet = new Ember.RSVP.Promise((resolve) =>
+		// 	this.get('ajax').request('api/patients/' + 1 + '/medical_records'
+		// 		).then(function(data){
+		// 			console.log("medical record data is" + JSON.stringify(data));
+		// 		},
+		// 		function(data){
+		// 			if (data === false){
+		// 				// self.transitionTo('/unauthorized');
+		// 				console.log("status is " + JSON.stringify(data));
+		// 			}		
+		// 		})
+		// );
 		return(ajaxGet);
 
 	},
