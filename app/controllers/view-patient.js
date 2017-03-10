@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	ajax: Ember.inject.service(),
+	/*ajax: Ember.inject.service(),
 	model() {
 		console.log("do we even get here");
 		var self = this;
@@ -14,8 +14,7 @@ export default Ember.Controller.extend({
 			});
 		return [ajaxGet];
 	},
-
-/*
+	*/
 	clientLastName: 'Bobbertson',
 	clientFirstName: 'Fred',
 	clientAddress: '22554 48th Ave NW Edmonton Alberta, Canada',
@@ -32,14 +31,5 @@ export default Ember.Controller.extend({
 	clientAlternativeCPhone: '123-456-7890',
 	clientAlternativeCSPhone: '999-999-9999',
 	clientAlternativeCEmail: 'efijo@foji.cdoji',
-
-	patientFirstName: 'Bob',
-	patientSpecies: 'Doggo',
-	patientGender: 'M',
-	patientStatus: 'Neutered',
-	patientAge: '10',
-	patientColor: 'Brown spotted',
-	patientTatoo: '12352',
-	patientMicrochip: '11102'*/
 
 });
