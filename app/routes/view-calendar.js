@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin'; 
 export default Ember.Route.extend(AuthenticatedRouteMixin,{
-	
+	/*
 	ajax: Ember.inject.service(),
 	model() {
 		var self = this;
@@ -29,15 +29,15 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 		return(ajaxGet);
 
 	},
-	
+	*/
 	
 	//weee splitter
-	/*
+	
   	model: function() {
     return {
       events: Ember.A([
         {title: "Hackathon \n ayelmao \n ayelmao2", start: Date.now()},
       ])
     };
-  }*/
+  }
 });
