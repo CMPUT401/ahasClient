@@ -3,7 +3,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	ajax: Ember.inject.service(),
-	model(params){
+	model(){
 		var self = this;
 
 		let ajaxGet = new Ember.RSVP.Promise((resolve) =>
@@ -32,15 +32,3 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 		return ajaxGet;
 	}
 });
-
-function deserialAttributes(notes){
-
-	var deserial = [];
-	for(var i = 0; i < notes.length; i++) {
-		var note = notes[i];
-		note.id = JSON.stringify(notes[i].id).replace(/\"/g, "");
-		deserial.push(note);
-
-	}
-	return(deserial);
-}
