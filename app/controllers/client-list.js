@@ -14,6 +14,9 @@ export default Ember.Controller.extend({
 		viewClient: function(clientID){
             console.log(clientID);
             this.transitionToRoute("/client-info/" + clientID);
+        },
+        newClient: function(){
+        	this.transitionToRoute("/new-client/");
         }
 
 	}

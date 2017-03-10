@@ -43,3 +43,13 @@ test('should transition to /client-list/1', function(assert){
 		assert.equal(currentURL(), '/client-info/1');
 	});
 });
+
+test('should transition to /new-client on button click', function(assert){
+	authenticateSession(this.application);
+	visit('/client-list');
+	
+	click('#newClientLinkButton');
+	andThen(function(){
+		assert.equal(currentURL(), '/new-client');
+	});
+});

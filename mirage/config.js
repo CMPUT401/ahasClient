@@ -62,8 +62,8 @@ export default function() {
         alternativeContactEmail: "bmackenzie@email.com",
         alternativeContactPhoneNumber: "780-555-2211",
         alternativeContact2ndPhone: "780-555-3321",
-        alternativeContactAddress: "4142 Office ave Edmonton, AB V2F 4A1"
-
+        alternativeContactAddress: "4142 Office ave Edmonton, AB V2F 4A1",
+        patients: [{"id":40,"first_name":"Dinkle","last_name":"Burg"}]
       }
     };
   });
