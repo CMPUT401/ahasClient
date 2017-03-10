@@ -1,7 +1,6 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
-import { authenticateSession} from '../helpers/ember-simple-auth';
-
+import { authenticateSession, invalidateSession } from '../helpers/ember-simple-auth';
 moduleForAcceptance('Acceptance | search patient');
 
 test('visiting /search-patient/ before login', function(assert) {
