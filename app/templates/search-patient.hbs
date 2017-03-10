@@ -4,7 +4,7 @@
     {{#ember-scrollable autoHide=false}}
             {{#each model.patientFiltered as |patient|}}
                     <div class = "nameListItem" {{action "getPatient" patient.id}}>
-                            <p>{{patient.firstName}} {{patient.lastName}}</p>
+                            <p>{{patient.first_name}} {{patient.last_name}}</p>
                     </div>
 
             {{/each}}
