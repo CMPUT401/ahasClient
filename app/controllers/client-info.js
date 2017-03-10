@@ -9,6 +9,10 @@ export default Ember.Controller.extend({
 		viewPatient: function(petId){
 			console.log(petId);
 			this.transitionToRoute("/view-patient/" + petId);
+		},
+
+		newSchedule: function(clientID){
+			this.transitionToRoute("/new-calendar/" + clientID);
 		}
 	}
 });

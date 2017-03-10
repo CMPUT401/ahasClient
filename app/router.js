@@ -24,7 +24,7 @@ Router.map(function() {
   this.route('client-info', {path: '/client-info/:clientID'});
   this.route('unauthorized');
   this.route('view-calendar');
-  this.route('new-calendar');
+  this.route('new-calendar', {path: '/new-patient/:clientID'});
   this.route('list-side-note');
   this.route('create-contact');
 
