@@ -18,8 +18,8 @@ test('medical record info shows up', function(assert) {
   visit('/view-medical-record');
 
   andThen(function() {
-    assert.equal(find('#summary').text(), 'fake summary');
-    assert.equal(find('#attitudeBAR').checked, true);
-    assert.equal(find('#attitudeDepressed').checked, false);
+    assert.equal(find('#summaryView')[0].value, 'fake summary');
+    assert.equal(find('#attitudeBAR')[0].checked, true);
+    assert.equal(find('#attitudeDepressed')[0].checked, false);
   });
 });
