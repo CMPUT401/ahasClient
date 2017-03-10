@@ -2,6 +2,8 @@ import { test } from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
 import { authenticateSession, invalidateSession } from '../helpers/ember-simple-auth';
 
+moduleForAcceptance('Acceptance | new side note');
+
 test('visiting /new-side-note/ before login', function(assert) {
 	invalidateSession(this.application);
 	visit('/new-side-note/');
