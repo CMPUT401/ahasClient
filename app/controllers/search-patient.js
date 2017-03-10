@@ -7,36 +7,30 @@ export default Ember.Controller.extend({
             console.log("we get here", patient);
             this.transitionToRoute('/view-patient/'+patient);
         },
-        filterContact(){
+        filterPatient: function(){
             var input = document.getElementById('search-bar').value.trim();
-            if (input === "" || input === undefined ){
-                
-                //on empty input reset to show all
-
-                this.set('model.contactsFilteredVeterinarian', this.get('model.contactsVeterinarian'));
-            
-        }
-            else{
-            
-            filter(input, this.get('model') , this);
-           
+            if(input === "" || input === undefined){
+                this.set('model.patientFiltered', this.get(model.patient));
             }
-        }
+            else {
+                filter(input, this.get('model'), this);
+            }
+        },
     }
 });
 
-function filter(input, model, self){
-    
-    //filter volunteers
-    var resultVolunteer = [];
-    for (var i = 0; i<model.contactsVolunteer.length; i++){
-        
-        if (input === model.contactsVolunteer[i].first_name || input === model.contactsVolunteer[i].last_name){
-            
-            var contactVolunteer = { first_name : model.contactsVolunteer[i].first_name , last_name : model.contactsVolunteer[i].last_name };
-            resultVolunteer.push(contactVolunteer);
-            
-        }
 
+function filter(input, model, self){
+    var results = [];
+    for(var i = 0; i < model.patient.length; i++){
+        if(input === model.patients[i].first_name || input === model.patients[i].last_name){
+            var patients = {
+                            first_name: model.patients[i].first_name,
+                            last_name: model.patients[i].last_name,
+                            id: model.patients[i].id
+                        };
+            results.push(patient);
+        }
     }
+    self.set('model.patientFiltered', results);
 }
