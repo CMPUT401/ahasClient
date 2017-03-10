@@ -31,3 +31,13 @@ test('last name, first name is present', function(assert) {
 		assert.equal(item, "Bravo, Johny");
 	});
 });
+
+test('transitions to new-patient/1 after clicking Add A Patient button', function(assert){
+	authenticateSession(this.application);
+	visit('/client-info/1');
+
+	click('button');
+	andThen(function(){
+		assert.equal(currentURL(), '/new-patient/1');
+	});
+});
