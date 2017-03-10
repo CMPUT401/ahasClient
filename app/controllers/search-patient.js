@@ -3,9 +3,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     actions: {
-        getContact(contact){
-            console.log("we get here", contact);
-            this.transitionToRoute('/view-contact/'+contact);
+        getPatient(patient){
+            console.log("we get here", patient);
+            this.transitionToRoute('/view-patient/'+patient);
         },
         filterContact(){
             var input = document.getElementById('search-bar').value.trim();

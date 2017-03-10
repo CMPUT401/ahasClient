@@ -7,10 +7,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 	{
 
     ajax: Ember.inject.service(),
-	model() {
+	model(param) {
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-		this.get('ajax').request('/api/patients/40'
+		this.get('ajax').request('/api/patients/' + param.patient_id
 			).then(function(data){
 				Ember.run.later(function() 
 					{
