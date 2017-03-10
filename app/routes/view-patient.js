@@ -22,7 +22,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						   microchip: JSON.stringify(data.patient.microchip).replace(/\"/g, ""),
 						   status: JSON.stringify(data.patient.reproductive_status).replace(/\"/g, ""),
 						   client_id: JSON.stringify(data.patient.client_id).replace(/\"/g, ""),
-						   gender: JSON.stringify(data.patient.gender).replace(/\"/g, "")
+						   gender: JSON.stringify(data.patient.gender).replace(/\"/g, ""),
+						   route: self
 				});
 				console.log("we getdont here");
 				//this.get('ajax').request('/api/client/1');
