@@ -121,10 +121,34 @@
 <br>
 </div>
 
+
 <div >
 <label for="medications">Medications: </label>
+
+<div id="medicationDiv">
+
+</div>
+
+<button type="submit" id="add-medication-button"{{action 'addMedication'}}>Add a medication prescription</button>
+</div>
+
+
+<div >
+<label for="vaccinces">Vaccines: </label>
 <br>
-<textarea id="medications" rows="10" cols="40"> </textarea>
+
+<div id="vaccineDiv">
+
+</div>
+
+<button type="submit" id="add-vaccine-button"{{action 'addVaccine'}}>Add a vaccine</button>
+</div>
+
+
+<div >
+<label for="followUpNotes">Please add some follow up notes: </label>
+<br>
+<textarea id="followUpNotes" rows="5" cols="40"> </textarea>
 </div>
 
 <div >
