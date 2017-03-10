@@ -6,7 +6,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 
 	
 	{
-	/*
+	
 	session: Ember.inject.service(),
     ajax: Ember.inject.service(),
 	model() {
@@ -36,7 +36,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 		}));
 		return(ajaxGet);
 
-	},*/
+	},
 	
 
 });
