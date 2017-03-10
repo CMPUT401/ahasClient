@@ -48,11 +48,11 @@
 		<div class = "panel-body">
 			<h3>Pet: </h3>
 			<!-- TODO loop through list of pets -->
-			<h4>Pet name</h4><br>
-			{{model.pets}}<br>
-			<h4>Species: </h4><br>
-			<h4>Animal ID: </h4><br>
-			<h4>Tattoo/microchip ID: </h4><br>
+			{{#each model.patients as |pet|}}
+				<div>
+					<h4>{{pet.firstName}} {{pet.lastName}}</h4><br>
+				</div>
+			{{/each}}
 		</div>
 	</div>
 </div>
