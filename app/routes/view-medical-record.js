@@ -7,7 +7,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
         //for nowwwwww
-		this.get('ajax').request('/api/patients/1/medical_records/14' //  + params.contact_id
+		this.get('ajax').request('/api/patients/1/medical_records/15' //  + params.contact_id
 			).then(function(data){
 				
             
@@ -74,6 +74,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
                             exam_notes: data.medical_record.exam_notes, 
                             medications: data.medical_record.medications,
+                            //vaccines: data.medical_record.vaccines, //currently not implemented back end
                             summary: data.medical_record.summary 
 
                           
