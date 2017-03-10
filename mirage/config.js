@@ -17,7 +17,7 @@ export default function() {
 
    this.post('/contacts', { success: true }, 201);
 
-   this.get('/contact/1', () => {
+   this.get('/contacts/1', () => {
      return {
   success: true,
   contact: 
@@ -33,6 +33,13 @@ export default function() {
 };
    }); 
 
+
+   this.get('/contacts', () => {
+     return {
+    success: true, 
+    contacts: [ { "first_name": "Justin", "last_name": "Barclay", "id": 1, "contact_type": "Volunteer"}, { "first_name": "Simon", "last_name": "Cowell", "id": 2, "contact_type": "Volunteer"}, { "first_name": "Tony", "last_name": "Stark", "id": 3, "contact_type": "Veterinarian"}]
+     };
+   });
 
   /*
     Shorthand cheatsheet:
