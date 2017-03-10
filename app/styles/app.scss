@@ -48,11 +48,23 @@ p {
 .container {
     max-width: 1024px;
     min-height: 100vh;
+    padding: 0;
     background: #ededed;
-
     margin: 0 auto;
 }
 
+.login {
+        top: 8em;   
+        height: 100%;
+    position: relative;
+}
+.ember-application {
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    top: 6em;
+    height: 100%;
+}
 /**
  * Content Area
  */
@@ -78,9 +90,9 @@ p {
 
 //new-client&new-patient
 
-.nav { width: 100%; margin: 0 auto; padding:0}
-.nav > li { width: 24%; text-align: center; margin: 0}
-.navbar {text-align: center}
+.nav {width: 100%; margin: 0 auto; padding:0}
+.nav > li { width: 19%; text-align: center; margin: 0}
+.navbar {position: fixed; top: 0; left: 0; text-align: center; margin: 0; width: 100%; height: 7 em}
 
 /* form creation/submission */
 .inputLabel{
@@ -111,11 +123,6 @@ p {
 .status{
     padding: 15px;
 }
-
-
-.nav { width: 100%; margin: 0 auto; padding:0}
-.nav > li { width: 24%; text-align: center; margin: 0}
-.navbar {text-align: center}
 
 /* form creation/submission */
 
@@ -284,11 +291,6 @@ p {
 .status{
     padding: 15px;
 }
-
-
-.nav { width: 100%; margin: 0 auto; padding:0}
-.nav > li { width: 24%; text-align: center; margin: 0}
-.navbar {text-align: center}
 
 /* form creation/submission */
 
