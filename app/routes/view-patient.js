@@ -24,7 +24,22 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						   microchip: JSON.stringify(data.patient.microchip).replace(/\"/g, ""),
 						   status: JSON.stringify(data.patient.reproductive_status).replace(/\"/g, ""),
 						   client_id: JSON.stringify(data.patient.client_id).replace(/\"/g, ""),
-						   gender: JSON.stringify(data.patient.gender).replace(/\"/g, "")
+						   gender: JSON.stringify(data.patient.gender).replace(/\"/g, ""),
+						   firstName: JSON.stringify(data.patient.client.firstName).replace(/\"/g, ""),
+							lastName: JSON.stringify(data.patient.client.lastName).replace(/\"/g, ""),
+							address: JSON.stringify(data.patient.client.address).replace(/\"/g, "").replace(/\\n/g, " <br> "),
+							phoneNumber: JSON.stringify(data.patient.client.phoneNumber).replace(/\"/g, ""),
+							email: JSON.stringify(data.patient.client.email).replace(/\"/g, ""),
+							licos: JSON.stringify(data.patient.client.licos).replace(/\"/g, ""),
+							aish: JSON.stringify(data.patient.client.aish).replace(/\"/g, ""),
+							socialAssistance: JSON.stringify(data.patient.client.socialAssistance).replace(/\"/g, ""),
+							notes: JSON.stringify(data.patient.client.notes).replace(/\"/g, "").replace(/\\n/g, " <br> "),
+							alternativeContactFirstName: JSON.stringify(data.patient.client.alternativeContactFirstName).replace(/\"/g, ""),
+							alternativeContactEmail: JSON.stringify(data.patient.client.alternativeContactEmail).replace(/\"/g, ""),
+							alternativeContactLastName: JSON.stringify(data.patient.client.alternativeContactLastName).replace(/\"/g, ""),
+							alternativeContactPhoneNumber:JSON.stringify(data.patient.client.alternativeContactPhoneNumber).replace(/\"/g, ""),
+							alternativeContact2ndPhone: JSON.stringify(data.patient.client.alternativeContact2ndPhone).replace(/\"/g, ""),
+							alternativeContactAddress: JSON.stringify(data.patient.client.alternativeContactAddress).replace(/\"/g, "").replace(/\\n/g, " <br> ")
 						});
 				console.log("we getdont here");
 				//this.get('ajax').request('/api/client/1');
@@ -39,45 +54,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 				self.transitionTo('/unauthorized');
 				console.log("status is " + JSON.stringify(data));
 				}
-		})
-			.then(function(data){
-				console.log("comehitler");
-				var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-				self.get('ajax').request('/api/client/1'
-					).then(function(data){
-						Ember.run(function() {
-							resolve({ 
-								firstName: JSON.stringify(data.client.firstName),
-								lastName: JSON.stringify(data.client.lastName),
-								address: JSON.stringify(data.client.address),
-								phoneNumber: JSON.stringify(data.client.phoneNumber),
-								email: JSON.stringify(data.client.email),
-								licos: JSON.stringify(data.client.licos),
-								aish: JSON.stringify(data.client.aish),
-								socialAssistance: JSON.stringify(data.client.socialAssistance),
-								notes: JSON.stringify(data.client.notes),
-								alternativeContactFirstName: JSON.stringify(data.client.alternativeContactFirstName),
-								alternativeContactEmail: JSON.stringify(data.client.alternativeContactEmail),
-								alternativeContactLastName: JSON.stringify(data.client.alternativeContactLastName),
-								alternativeContactPhoneNumber:JSON.stringify(data.client.alternativeContactPhoneNumber),
-								alternativeContact2ndPhone: JSON.stringify(data.client.alternativeContact2ndPhone),
-								alternativeContactAddress: JSON.stringify(data.client.alternativeContactAddress)
-							});
-						});
-
-						console.log("asoijdfoij"+ JSON.stringify(data));
-					},
-					function(data){
-						if (data === false){
-							self.transitionTo('/unauthorized');
-							console.log("status is " + JSON.stringify(data));
-						}
-					}));
-					return(ajaxGet);
-			})
-
-
-			);
+		}));
 		return(ajaxGet);
 
 	},

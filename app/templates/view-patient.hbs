@@ -1,5 +1,5 @@
 <div class = "container">
-	<h1>{{model.first_name}} {{model.last_name}}</h1>
+	<h1>{{model.first_name}} {{model.lastName}}</h1>
 	<div class = "viewGroup">
 		<h3>Client's Basic Information</h3>
 		
@@ -8,7 +8,7 @@
 		<br>
 		
 		<div class = "viewLabel">Client's Address:</div>
-		<div class = "viewInfo">{{model.address}}</div>
+		<div class = "viewInfo">{{{model.address}}}</div>
 		<br>
 		<div class = "viewLabel">Client's Phone Number:</div>
 		<div class = "viewInfo">{{model.phoneNumber}}</div>
@@ -30,7 +30,7 @@
 		<div class = "viewInfo">{{model.socialAssistance}}</div>
 		<br>
 		<div class = "viewLabel">Notes:</div>
-		<div class = "viewInfo">{{model.notes}}</div>
+		<div class = "viewInfo">{{{model.notes}}}</div>
 		<br>
 	</div>
 	<br>
@@ -40,7 +40,7 @@
 		<div class = "viewInfo">{{model.alternativeContactFirstName}} {{model.alternativeContactLastName}}</div>
 		<br>
 		<div class = "viewLabel">Alternative Contact Address:</div>
-		<div class = "viewInfo">{{model.alternativeContactAddress}}</div>
+		<div class = "viewInfo">{{{model.alternativeContactAddress}}}</div>
 		<br>
 		<div class = "viewLabel">Alternative Contact Phone Number:</div>
 		<div class = "viewInfo">{{model.alternativeContactPhoneNumber}}</div>
