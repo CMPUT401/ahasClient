@@ -41,7 +41,8 @@ export default Ember.Route.extend({
 						alternativeContactEmail: JSON.stringify(
 								data.client.alternativeContactEmail).replace(/\"/g, ""),
 
-						clientID: JSON.stringify(data.client.id).replace(/\"/g, "")
+						clientID: JSON.stringify(data.client.id).replace(/\"/g, ""),
+						patients: deserialAttributes(data.client.patients)
 					});
 				}else{
 		   			resolve({ 
@@ -71,7 +72,8 @@ export default Ember.Route.extend({
 						alternativeContactEmail: JSON.stringify(
 								data.client.alternativeContactEmail).replace(/\"/g, ""),
 
-						clientID: JSON.stringify(data.client.id).replace(/\"/g, "")
+						clientID: JSON.stringify(data.client.id).replace(/\"/g, ""),
+						patients: deserialAttributes(data.client.patients)
 					});
 				}
 			  });
@@ -86,10 +88,16 @@ export default Ember.Route.extend({
 		return ajaxGet;
 	},
 });
-// function deserialAttributes(client){
-// 	firstName: JSON.stringify(client.firstName).replace(/\"/g, "");
-// 	lastName: JSON.stringify(client.lastName).replace(/\"/g, "");
-// 	phoneNumber: JSON.stringify(client.phoneNumber).replace(/\"/g, "");
-// 	email: JSON.stringify(client.email).replace(/\"/g, "");
-// 	address: JSON.stringify(client.address).replace(/\"/g, "");
-// }
+function deserialAttributes(patients){
+	var deserial = [];
+	for(var i = 0; i < patients.length; i++) {
+		var patient = patients[i];
+		patient.id = JSON.stringify(patients[i].id).replace(/\"/g, "");
+		patient.firstName = JSON.stringify(patients[i].first_name).replace(/\"/g, "");
+		patient.lastName = JSON.stringify(patients[i].last_name).replace(/\"/g, "");
+		
+		deserial.push(patient);
+
+	}
+	return(deserial);
+}
