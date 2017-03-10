@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
         var password = document.getElementById('password').value;
         var passwordConfirm = document.getElementById('passwordConfirm').value;
         
-        if (checkFormat(password, email, passwordConfirm) === true ){
+        if (checkFormat(password, email, passwordConfirm, name) === true ){
          
         var user = this.get('ajax').post('/api/signup', {
         type: 'application/json',
@@ -44,24 +44,30 @@ export default Ember.Controller.extend({
 /* 
  * checks the format of the email and password provided on the createUser form
  */
-function checkFormat(password, email, passwordConfirm) {
+function checkFormat(password, email, passwordConfirm, name) {
 
         var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-        if (password !== passwordConfirm){
-            showAlert("Password and password confirmation do not match", false);
+        if (name === undefined || name === ""){
+            showAlert("Name cannot be blank", false);
             return false;
         }
 
-        else if (password.length < 7){
-            showAlert("Password too short, must be at least 7 characters!", false);
-            return false;
-        }   
-        
         else if ( re.test(email) !== true ) {
             showAlert("Incorrect email format", false);
             return false;
         }
+       
+        else if (password.length < 7){
+            showAlert("Password too short, must be at least 7 characters!", false);
+            return false;
+        }   
+        else if (password !== passwordConfirm){
+            showAlert("Password and password confirmation do not match", false);
+            return false;
+        }
+
+        
 
         return true;
     }
