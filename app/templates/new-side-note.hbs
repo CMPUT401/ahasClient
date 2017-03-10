@@ -1,5 +1,5 @@
 <div class = "container">
-	<form {{action "submitNewNote" on = "submit" model.patientID model.medID}}>
+	<form {{action "submitNewNote" on = "submit"}}>
 		<div class = "inputGroup">
 			<h3> Please Enter your new side note </h3>
   			<label class = "inputLabel" for="medNotes">Side Note:</label>
@@ -16,5 +16,4 @@
   		<br>
   		<button type = "submit" id = "create-sidenote-button">Create Note</button>
   	</form>
-    {{model.patientID}} {{model.medID}}
 </div>

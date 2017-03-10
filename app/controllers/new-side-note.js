@@ -7,10 +7,10 @@ export default Ember.Controller.extend({
 	session: Ember.inject.service(),
 	actions: 
 	{
-		submitNewNote(patientID,medID)
+		submitNewNote()
 		{
 			var self = this;
-				let ajaxPost = this.get('ajax').request('/api/patients/'+patientID+'/medical_records/'+medID+'/notes',
+				let ajaxPost = this.get('ajax').request('/api/patients/1/medical_records/1/notes',
 			{
 				method: 'POST',
 				type: 'application/json',
