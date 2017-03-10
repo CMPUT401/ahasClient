@@ -19,3 +19,15 @@ test('visiting /new-side-note/', function(assert) {
 		assert.equal(currentURL(), '/new-side-note/');
 	});
 });
+
+test('creating new contact successful', function(assert) {
+  authenticateSession(this.application);
+  visit('/create-contact');
+  
+  fillIn('#medNote', "Need to take asprine 4 times a day");
+  fillIn('#medSig', "Newbury");
+  click('#create-sidenote-button');
+    andThen(function(){
+    assert.notEqual(currentURL(), '/new-side-note/');
+  });
+});
