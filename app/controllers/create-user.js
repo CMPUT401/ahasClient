@@ -49,19 +49,14 @@ export default Ember.Controller.extend({
 
 function checkFormat(name , password, email, passwordConfirm) {
 
-        var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+       var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
         if (name === "" ||name === " "){
             showAlert("Name cannot be blank", false);
             return false;
         }
 
-        else if (password !== passwordConfirm){
-            showAlert("Password and password confirmation do not match", false);
-            return false;
-        }
-
-        else if ( re.test(email) !== true ) {
+        else if ( ! re.test(email)) {
             showAlert("Incorrect email format", false);
             return false;
         }

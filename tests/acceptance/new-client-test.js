@@ -1,21 +1,22 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
-import { authenticateSession, invalidateSession } from '../helpers/ember-simple-auth';
+import { authenticateSession } from '../helpers/ember-simple-auth';
 
 //import Pretender from 'pretender';
 
-let serv; 
+//let serv; 
 
-// moduleForAcceptance('Acceptance | new client');
+ moduleForAcceptance('Acceptance | new client');
+ 
+ test('visiting /new-client', function(assert) {
+	 authenticateSession(this.application);
+   visit('/new-client');
 
-// test('visiting /new-client', function(assert) {
-//   visit('/new-client');
-
-//   andThen(function() {
-//     assert.equal(currentURL(), '/new-client');
-//   });
-// });
-
+   andThen(function() {
+     assert.equal(currentURL(), '/new-client');
+   });
+ });
+/*
 moduleForAcceptance('ajax-get component', {
 	beforeEach(){
 		serv = new Pretender();
@@ -23,7 +24,7 @@ moduleForAcceptance('ajax-get component', {
 	afterEach(){
 		serv.shutdown();
 	}
-});
+});*/
 
 
 // test('waiting for a route with async widget', function (assert){
@@ -87,7 +88,7 @@ moduleForAcceptance('ajax-get component', {
 	
 // });
 
-test('should transition to another page', function (assert){
+/*test('should transition to another page', function (assert){
 	
 	// visit('/login');
 	// fillIn('#username', 'malajeun@ualberta.ca');
@@ -122,9 +123,9 @@ test('should transition to another page', function (assert){
 	//click('#create-client-button');
 	andThen(function(){
 		assert.notEqual(currentURL(), '/new-client');
-		assert.equal(currentURL(), '/afterlogin');
+		assert.equal(currentURL(), '/search-patient');
 	});
-});
+});*/
 
 // function loginToTest(){
 // 	visit('/login');
