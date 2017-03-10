@@ -4,11 +4,30 @@ import { authenticateSession, invalidateSession } from '../helpers/ember-simple-
 
 moduleForAcceptance('Acceptance | client info');
 
+test('visiting /client-info/1 before login', function(assert) {
+	invalidateSession(this.application);
+	visit('client-info/1');
+
+	andThen(function(){
+		assert.notEqual(currentURL(), '/client-info/1');
+	});
+});
+
 test('visiting /client-info/1', function(assert) {
 	authenticateSession(this.application);
 	visit('/client-info/1');
 
 	andThen(function() {
 		assert.equal(currentURL(), '/client-info/1');
+	});
+});
+
+test('last name, first name is present', function(assert) {
+	authenticateSession(this.application);
+	visit('/client-info/1');
+
+	andThen(function(){
+		let item = find(".panel-body h4:first").text().trim();
+		assert.equal(item, "Bravo, Johny");
 	});
 });
