@@ -14,7 +14,7 @@ export default function() {
 
    this.post('/user_token' , { success: false }, 404);
    this.post('/signup', { success: true }, 201);
-   this.get('/contact/1', () => {
+   this.get('/contacts/1', () => {
      return {
       contact: {
             id: '1',
@@ -30,7 +30,7 @@ export default function() {
    this.get('/contacts', () => {
      return {
     success: true, 
-    patients: [ { "first_name": "Justin", "last_name": "Barclay", "id": 1, "contact_type": "Volunteer"}, { "first_name": "Simon", "last_name": "Cowell", "id": 2, "contact_type": "Volunteer"}, { "first_name": "Tony", "last_name": "Stark", "id": 3, "contact_type": "Veterinarian"}]
+    contacts: [ { "first_name": "Justin", "last_name": "Barclay", "id": 1, "contact_type": "Volunteer"}, { "first_name": "Simon", "last_name": "Cowell", "id": 2, "contact_type": "Volunteer"}, { "first_name": "Tony", "last_name": "Stark", "id": 3, "contact_type": "Veterinarian"}]
      };
    });
 

@@ -33,7 +33,7 @@ test('checking we can search', function(assert) {
 
   andThen(function() {
     assert.equal(find('.volunteersContact').length, 1);
-    assert.equal(find('.volunteersContact').text(), 'Justin Barclay');
+    assert.equal(find('.volunteersContact').first().text(), 'Justin Barclay');
 
   });
 });
