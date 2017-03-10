@@ -14,7 +14,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 						patients: deserialAttributes(data.patients),
 						patientFiltered: deserialAttributes(data.patients),
 					});
-
+					console.log("status is " + JSON.stringify(data));
 				});
 				
 			},
