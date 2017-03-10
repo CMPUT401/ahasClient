@@ -64,6 +64,8 @@ export default Ember.Controller.extend({
              attitudeDepressed: document.getElementById('attitudeDepressed').checked,
              eyesN: document.getElementById('eyesN').checked,
              eyesA: document.getElementById('eyesA').checked,
+             eyesN: document.getElementById('oralN').checked,
+             eyesA: document.getElementById('oralA').checked,
              mmN: document.getElementById('mmN').checked, 
              mmPale: document.getElementById('mmPale').checked, 
              mmJaundiced: document.getElementById('mmJaundiced').checked, 

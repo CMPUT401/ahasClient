@@ -7,9 +7,10 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
         //for nowwwwww
-		this.get('ajax').request('/api/patients/1/medical_records/12' //  + params.contact_id
+		this.get('ajax').request('/api/patients/1/medical_records/13' //  + params.contact_id
 			).then(function(data){
-				console.log(data, data.success, data.medical_record);
+				
+            
 				Ember.run(function() {
        			 resolve({ 
 						   
@@ -17,7 +18,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             date_created: data.medical_record.created_at, 
                             patient_id: data.medical_record.id, 
                             
-                            signature: data.medical_record.id, 
+                            signature: data.medical_record.signature, 
 
                             temperature: data.medical_record.temperature,
                             eyes: data.medical_record.eyes,
@@ -40,6 +41,8 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             attitudeDepressed: data.medical_record.attitudeDepressed,
                             eyesN: data.medical_record.eyesN,
                             eyesA: data.medical_record.eyesA,
+                            oralN: data.medical_record.oralN,
+                            oralA: data.medical_record.oralA,
                             mmN: data.medical_record.mmN, 
                             mmPale: data.medical_record.mmPale, 
                             mmJaundiced: data.medical_record.mmJaundiced, 
@@ -91,7 +94,3 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
 });
 
-function setChecked (){
-
-    document.getElementById('attitudeBAR').checked = this.get('model.attitudeBAR');
-}
