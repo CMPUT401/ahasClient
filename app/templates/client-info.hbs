@@ -49,7 +49,7 @@
 			<h3>Pet: </h3>
 			<!-- TODO loop through list of pets -->
 			{{#each model.patients as |pet|}}
-				<div>
+				<div {{action "viewPatient" pet.id}}>
 					<h4>{{pet.firstName}} {{pet.lastName}}</h4><br>
 				</div>
 			{{/each}}
