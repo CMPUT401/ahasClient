@@ -12,7 +12,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/patients/40'
 			).then(function(data){
-				Ember.run.later(function() {
+				Ember.run.later(function() 
+					{
        			 resolve({ id: JSON.stringify(data.patient.id).replace(/\"/g, ""),
 						   first_name: JSON.stringify(data.patient.first_name).replace(/\"/g, ""),
 						   last_name: JSON.stringify(data.patient.last_name).replace(/\"/g, ""),
@@ -24,7 +25,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						   status: JSON.stringify(data.patient.reproductive_status).replace(/\"/g, ""),
 						   client_id: JSON.stringify(data.patient.client_id).replace(/\"/g, ""),
 						   gender: JSON.stringify(data.patient.gender).replace(/\"/g, "")
-				});
+						});
 				console.log("we getdont here");
 				//this.get('ajax').request('/api/client/1');
 
@@ -32,8 +33,17 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 				console.log("status is " + JSON.stringify(data));
 				console.log('/api/client/' + JSON.stringify(data.patient.id));
 				//var self = this;
+			},
+			function(data){
+				if (data === false){
+				self.transitionTo('/unauthorized');
+				console.log("status is " + JSON.stringify(data));
+				}
+		})
+			.then(function(data){
+				console.log("comehitler");
 				var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-				self.get('ajax').request('/api/client/'+ JSON.stringify(data.patient.id)
+				self.get('ajax').request('/api/client/1'
 					).then(function(data){
 						Ember.run(function() {
 							resolve({ 
@@ -54,8 +64,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 								alternativeContactAddress: JSON.stringify(data.client.alternativeContactAddress)
 							});
 						});
-						console.log("status is " + JSON.stringify(data));
-						console.log("asoijdfoij"+ JSON.stringify(data.client.firstName));
+
+						console.log("asoijdfoij"+ JSON.stringify(data));
 					},
 					function(data){
 						if (data === false){
@@ -64,13 +74,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						}
 					}));
 					return(ajaxGet);
-			},
-			function(data){
-				if (data === false){
-				self.transitionTo('/unauthorized');
-				console.log("status is " + JSON.stringify(data));
-				}
-		}));
+			})
+
+
+			);
 		return(ajaxGet);
 
 	},
