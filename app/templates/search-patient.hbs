@@ -1,21 +1,14 @@
-<br>
-<br>
-<br>
-<div>
-    <div class="col-sm-1 col-sm-offset-1 col-md-1 col-md-offset-1">
-        <button  {{action "filterContact"  }} type="submit" id="search-button">Search</button>        
-    </div>
-    <div class="col-sm-7 col-sm-offset-1 col-md-7 col-md-offset-1">
-        <input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
-    </div>
+<button  {{action "filterClient"  }} type="submit" id="search-button">Search</button>
+<input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
+<div class = "nameList" >
+    {{#ember-scrollable autoHide=false}}
+            {{#each model.patientFiltered as |patient|}}
+                    <div class = "nameListItem" {{action "getPatient" patient.id}}>
+                            <p>{{patient.firstName}} {{patient.lastName}}</p>
+                    </div>
+
+            {{/each}}
+    {{/ember-scrollable}}
+    <br>
+    
 </div>
-<br>
-<br>
-<div>
-    <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="patientsHeading"><h3>Patients</h3></div>
-</div>
-<div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
-    {{#each  model.patientFiltered as |patient|}}                   
-    <p{{action "getPatient" patient.id on="click"}} class='veterinariansContact'>{{patient.first_name}} {{patient.last_name}}</p>
-    {{/each}}
-</div >
