@@ -30,7 +30,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 					if (self.get('session.isAuthenticated')){
 						self.get('session').invalidate();
 							}
-					self.transitionTo('/unauthorized');
+					self.transitionTo('/login');
             }
 		}));
 	return(ajaxGet);

@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 
 export default Ember.Controller.extend({
+	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
 	//let cName, let cAddress, let cPhone,
 	actions: {
@@ -39,14 +40,14 @@ export default Ember.Controller.extend({
 					console.log("status is " + JSON.stringify(data));
 					self.transitionToRoute('afterlogin');
 				},
-				function(data){
+				function(response){
 					console.log("status is " + JSON.stringify(data));
-					if (data === false){
+					if (response === false){
 						if (self.get('session.isAuthenticated')){
-							self.get('session').invalidate();
-							}
-						self.transitionToRoute('/unauthorized');
+						self.get('session').invalidate();
 					}
+				self.transitionTo('/login');
+			}
 				});
 			//createNewCLient();
 			//this.transitionToRoute('/login');

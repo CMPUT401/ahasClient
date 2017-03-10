@@ -34,13 +34,13 @@ export default Ember.Controller.extend({
 			ajaxPost.then(function(data){
 				console.log("status is " + JSON.stringify(data));
 			},
-			function(data){
-				if (data === false){
+			function(response){
+				if (response === false){
 					if (self.get('session.isAuthenticated')){
 						self.get('session').invalidate();
-							}
-					self.transitionToRoute('/unauthorized');
-				}
+					}
+				self.transitionTo('/login');
+			}
 			});
 		return ajaxPost;
 	}

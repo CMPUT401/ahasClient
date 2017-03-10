@@ -52,9 +52,9 @@ export default Ember.Controller.extend({
             if (response === false){
 					if (self.get('session.isAuthenticated')){
 						self.get('session').invalidate();
-							}
-					self.transitionToRoute('/unauthorized');
-            }
+					}
+				self.transitionTo('/login');
+			}
             else {
             showAlert(response.errors[0].title, false);
             }

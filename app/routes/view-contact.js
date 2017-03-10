@@ -2,6 +2,7 @@ import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
+	session: Ember.inject.service(),
     ajax: Ember.inject.service(),
 	model(params) {
 		var self = this;
@@ -22,11 +23,13 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     		  });
 			
 			},
-			function(data){
-				if (data === false){
-				self.transitionTo('/unauthorized');
-				console.log("status is " + JSON.stringify(data));
-				}
+			function(response){
+				if (response === false){
+					if (self.get('session.isAuthenticated')){
+						self.get('session').invalidate();
+					}
+				self.transitionTo('/login');
+			}
 		}));
 		return(ajaxGet);
 	},
