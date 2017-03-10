@@ -47,11 +47,11 @@ export default Ember.Controller.extend({
  * checks the format of the email and password provided on the createUser form
  */
 
-function checkFormat(name , password, email, passwordConfirm) {
+function checkFormat(password, email, passwordConfirm, name) {
 
        var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-        if (name === "" ||name === " "){
+        if (name === undefined || name === ""){
             showAlert("Name cannot be blank", false);
             return false;
         }
