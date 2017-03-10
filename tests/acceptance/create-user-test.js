@@ -26,7 +26,9 @@ test('adding new user valid', function(assert){
 
   test('adding invalid user, too short password', function(assert){
   visit('/create-user');
-  fillIn('#name', "test");
+
+  
+  fillIn('#name', "kristy");
   fillIn('#username', "user@gmail.ca");
   fillIn('#password', "pass");
   fillIn('#passwordConfirm', "pass");
@@ -39,7 +41,9 @@ test('adding new user valid', function(assert){
 
   test('adding invalid user, incorrect format email', function(assert){
   visit('/create-user');
-  fillIn('#name', "test");
+
+
+  fillIn('#name', "kristy");
   fillIn('#username', "usermail.ca");
   fillIn('#password', "password");
   fillIn('#passwordConfirm', "password");
@@ -52,6 +56,20 @@ test('adding new user valid', function(assert){
 
   test('adding invalid user, name is blank', function(assert){
   visit('/create-user');
+  fillIn('#username', "usermail.ca");
+  fillIn('#password', "password");
+  fillIn('#passwordConfirm', "password");
+  click('#create-user-button');
+  andThen(function(){
+    assert.equal(find('#statusBad').text(), "Name cannot be blank");
+  });
+
+});
+
+  test('adding invalid user, blank name', function(assert){
+  visit('/create-user');
+
+ 
   fillIn('#username', "usermail.ca");
   fillIn('#password', "password");
   fillIn('#passwordConfirm', "password");
