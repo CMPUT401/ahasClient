@@ -1,6 +1,6 @@
-{{patient-history isVisible=chronoIsVisible}}
-{{medication-history isVisible=medicationIsVisible}}
+{{patient-history isVisible=chronoIsVisible patientId=patientID}}
+{{medication-history isVisible=medicationIsVisible patientId=patientID}}
 <div class = "history-selector">
-	<button {{action "showChronological" patientID}} class = "history-selector-button">Chronoligical</button>
-	<button {{action "showMedication" patientID}} class = "history-selector-button">Medication History</button>
+	<button {{action "showChronological"}} class = "history-selector-button">Chronoligical</button>
+	<button {{action "showMedication"}} class = "history-selector-button">Medication History</button>
 </div>
