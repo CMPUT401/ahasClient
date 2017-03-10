@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+
 	/*ajax: Ember.inject.service(),
 	model() {
 		console.log("do we even get here");
@@ -15,6 +16,15 @@ export default Ember.Controller.extend({
 		return [ajaxGet];
 	},
 	*/
+<<<<<<< HEAD
+=======
+
+	clientLastName: 'Bobbertson',
+	clientFirstName: 'Fred',
+	clientAddress: '22554 48th Ave NW Edmonton Alberta, Canada',
+	clientPhoneNumber: '666-666-6666',
+	clientEmail: '123dd@5d5dd.ca',
+>>>>>>> master
 
 
 });

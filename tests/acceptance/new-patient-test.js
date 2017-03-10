@@ -1,9 +1,14 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
+<<<<<<< HEAD
 import { authenticateSession, invalidateSession } from '../helpers/ember-simple-auth';
+=======
+import { authenticateSession} from '../helpers/ember-simple-auth';
+>>>>>>> master
 
 moduleForAcceptance('Acceptance | patient info');
 
+<<<<<<< HEAD
 test('visiting /view-patient/1 before login', function(assert) {
   invalidateSession(this.application);
   visit('view-patient/1');
@@ -19,11 +24,20 @@ test('visiting /view-patient/1', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/view-patient/1');
+=======
+test('visiting /new-patient', function(assert) {
+   authenticateSession(this.application);
+  visit('/new-patient/1');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/new-patient/1');
+>>>>>>> master
   });
 });
 
 test('adding new user valid', function(assert){
-  visit('/create-user');
+   authenticateSession(this.application);
+  visit('/new-patient/1');
 
   fillIn('#patientName', "Bob");
   fillIn('#patientSpecies', "Fred");

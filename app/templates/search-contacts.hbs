@@ -1,0 +1,48 @@
+<div class= "container" >
+    <br>
+    <br>
+    <br>
+    <div>
+        <div class="col-sm-2 col-sm-offset-1 col-md-2 col-md-offset-1">
+        <button  {{action "filterContact"  }} type="submit" id="search-button">Search</button>
+        
+        </div>
+        <div class="col-sm-7 col-md-7 ">
+        <input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
+        </div>
+    </div>
+    <br>
+    <br>
+    <div >
+
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="veterinariansHeading"><h3>Veterinarians</h3></div>
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="volunteersHeading"><h3>Volunteers</h3></div>
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="laboratoryHeading"><h3>Laboratory</h3></div>
+
+    </div>
+ <div class=" col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
+     
+                 {{#each  model.contactsFilteredVeterinarian as |contact|}}
+                           
+                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  veterinariansContact'>{{contact.first_name}} {{contact.last_name}}</p>
+                          
+
+                    {{/each}}
+        </div >
+         <div class=" col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
+                      {{#each  model.contactsFilteredVolunteer as |contact|}}
+                           
+                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  volunteersContact' >{{contact.first_name}} {{contact.last_name}}</p>
+                           
+
+                    {{/each}}
+        </div >
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
+                      {{#each  model.contactsFilteredLaboratory as |contact|}}
+                            
+                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  laboratoryContact'>{{contact.first_name}} {{contact.last_name}}</p>
+
+                    {{/each}}
+        </div >
+                    
+</div>

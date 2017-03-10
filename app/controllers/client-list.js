@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 		filterClient: function(){
 			var input = document.getElementById('search-bar').value.trim();
 			if(input === "" || input === undefined){
-				this.set('model.clientsFiltered', this.get(model.clients));
+				this.set('model.clientsFiltered', this.get('model.clients'));
 			}
 			else {
 				filter(input, this.get('model'), this);

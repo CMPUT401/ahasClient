@@ -6,12 +6,14 @@ export default Ember.Controller.extend({
      actions:{
      createUser: function() { 
 
-        //reset status displayed on every button press
         var name= document.getElementById('name').value;
         var email= document.getElementById('username').value;
         var password = document.getElementById('password').value;
         var passwordConfirm = document.getElementById('passwordConfirm').value;
+
+        console.log('the name' , name);
         
+
         if (checkFormat(password, email, passwordConfirm, name) === true ){
          
         var user = this.get('ajax').post('/api/signup', {
@@ -44,16 +46,17 @@ export default Ember.Controller.extend({
 /* 
  * checks the format of the email and password provided on the createUser form
  */
-function checkFormat(password, email, passwordConfirm, name) {
 
-        var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+function checkFormat(name , password, email, passwordConfirm) {
 
-        if (name === undefined || name === ""){
+       var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+        if (name === "" ||name === " "){
             showAlert("Name cannot be blank", false);
             return false;
         }
 
-        else if ( re.test(email) !== true ) {
+        else if ( ! re.test(email)) {
             showAlert("Incorrect email format", false);
             return false;
         }

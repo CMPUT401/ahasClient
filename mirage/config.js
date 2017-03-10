@@ -12,6 +12,7 @@ export default function() {
   // this.namespace = '';    // make this `/api`, for example, if your API is namespaced
   // this.timing = 400;      // delay for each request, automatically set to 0 during testing
 
+
   /*
     Shorthand cheatsheet:
 
@@ -64,4 +65,31 @@ export default function() {
       }
     };
   });
+
+
+this.get('patients/1', ()=>{
+    return{
+      success: true,
+       patient: {
+         id: 1,
+      clientLastName: 'Bobbertson',
+	clientFirstName: 'Fred',
+	clientAddress: '22554 48th Ave NW Edmonton Alberta, Canada',
+	clientPhoneNumber: '666-666-6666',
+	clientEmail: '123dd@5d5dd.ca',
+
+	clientDocumentLICO: 'Confirmed',
+	clientDocumentAISH: 'Confirmed',
+	clientDocumentSA: 'Confirmed',
+	clientNotes: 'Smells bad?',
+
+	clientAlternativeCName: 'Jack',
+	clientAlternativeCAddress: '12252 92nd Ave Edmonton, Alberta, Canada',
+	clientAlternativeCPhone: '123-456-7890',
+	clientAlternativeCSPhone: '999-999-9999',
+	clientAlternativeCEmail: 'efijo@foji.cdoji'
+       }
+    };
+});
 }
+
