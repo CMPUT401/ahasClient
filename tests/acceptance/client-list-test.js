@@ -37,12 +37,9 @@ test('client list contains an item', function(assert){
 test('should transition to /client-list/1', function(assert){
 	authenticateSession(this.application);
 	visit('/client-list');
+	
+	click(".nameListItem");
 	andThen(function(){
-		var item = find(".nameListItem");
-	});
-
-	click(item);
-	andThen(function(){
-		assert.equal(currentURL(), '/client-list/1')
+		assert.equal(currentURL(), '/client-info/1');
 	});
 });
