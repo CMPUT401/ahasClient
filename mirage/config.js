@@ -14,7 +14,7 @@ export default function() {
 
    this.post('/user_token' , {"jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"});
    this.post('/signup', { success: true }, 201);
-   this.post('patients/1/medical-record', { success: true }, 201);
+   this.post('patients/1/medical_records', { success: true }, 201);
 
   /*
     Shorthand cheatsheet:
