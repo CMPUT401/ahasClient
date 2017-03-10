@@ -67,6 +67,7 @@ export default function() {
   });
 
 
+
 this.get('patients/1', ()=>{
     return{
       success: true,
