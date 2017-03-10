@@ -53,9 +53,9 @@ function deserialAttributes(history){
 		var entry = history[i];
 		entry.id = JSON.stringify(history[i].id).replace(/\"/g, "");
 		if(JSON.stringify(history[i].exm_notes) != null){
-			entry.examNotes = JSON.stringify(history[i].exm_notes).replace(/\"/g, "");
+			entry.examNotes = JSON.stringify(history[i].exam_notes).replace(/\"/g, "");
 		}else {
-			entry.examNotes = JSON.stringify(history[i].exm_notes);
+			entry.examNotes = JSON.stringify(history[i].exam_notes);
 		}
 		// TODO convert from Unix time, to something more readable
 		if(JSON.stringify(history[i].date) != null){
