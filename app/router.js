@@ -14,7 +14,7 @@ Router.map(function() {
   this.route('new-client');
   this.route('view-patient',{path: '/view-patient/:patientID'});
   this.route('search-patient');
-  this.route('new-side-note');
+  this.route('new-side-note',{path: '/new-side-note/:IDs'});
   this.route('view-side-note');
   this.route('client-list');
   this.route('client-info', {path: '/client-info/:clientID'});

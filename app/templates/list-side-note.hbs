@@ -1,5 +1,4 @@
-<button  {{action "createSideNote"  }} type="submit" id="search-button">New Side Note</button>
-<input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
+<button  {{action "createSideNote" model.patientID model.medID }}>New Side Note</button>
 <div class = "nameList" >
     {{#ember-scrollable autoHide=false}}
             {{#each model.notesW as |note|}}

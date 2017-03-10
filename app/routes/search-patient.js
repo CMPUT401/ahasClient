@@ -12,9 +12,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 				Ember.run(function() {
 					resolve({ 
 						patients: deserialAttributes(data.patients),
-						patientFiltered: deserialAttributes(data.patients),
+						patientFiltered: deserialAttributes(data.patients)
 					});
-					console.log("status is " + JSON.stringify(data));
+					console.log("status is " + JSON.stringify(data.patients[1]));
 				});
 				
 			},

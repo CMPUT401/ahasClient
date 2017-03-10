@@ -1,4 +1,5 @@
 <button  {{action "filterPatient"  }} type="submit" id="search-button">Search</button>
+<p> {{model.notesW}} </p>
 <input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
 <div class = "nameList" >
     {{#ember-scrollable autoHide=false}}
@@ -10,5 +11,4 @@
             {{/each}}
     {{/ember-scrollable}}
     <br>
-    
 </div>
