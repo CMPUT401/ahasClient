@@ -94,7 +94,7 @@ export default function() {
     };
   });
 
-
+//this is wrong/broken at the moment
 this.get('patients/1', ()=>{
     return{
       success: true,
