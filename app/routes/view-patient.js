@@ -37,18 +37,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 				console.log("status is " + JSON.stringify(data));
 				}
 		}));
-		// var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-		// 	this.get('ajax').request('api/patients/' + 1 + '/medical_records'
-		// 		).then(function(data){
-		// 			console.log("medical record data is" + JSON.stringify(data));
-		// 		},
-		// 		function(data){
-		// 			if (data === false){
-		// 				// self.transitionTo('/unauthorized');
-		// 				console.log("status is " + JSON.stringify(data));
-		// 			}		
-		// 		})
-		// );
 		return(ajaxGet);
 
 	},

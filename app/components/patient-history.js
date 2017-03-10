@@ -38,7 +38,9 @@ export default Ember.Component.extend({
 					}		
 				})
 		);
-		this.medicalRecord = history;
+		// this.medicalRecord = history;
+		this.medicalRecord = [{"id": "1", "examNotes": "something", "date": "now"}, 
+		{"id": "2", "examNotes": "something else", "date": "later"}];
 	}
 });
 

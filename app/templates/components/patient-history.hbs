@@ -4,7 +4,11 @@
 			<button {{action "newEntry" }} class = "new-entry-button">New Entry</button>
 		</div>	
 		<p>some text about the entire medical history in chronological order!</p>
-		{{patientId}}
-		{{model}}
+		{{#ember-scrollable autoHide=false}}
+			{{#each medicalRecord as |entry|}}
+				<p>{{entry.examNotes}}{{entry.date}}</p>
+			{{/each}}
+		{{/ember-scrollable}}
+
 	</div>
 </div>
