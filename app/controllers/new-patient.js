@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
 				type: 'application/json',
 				data: { patient:
 					{
-					client: "1",
+					client: "40",
 					species: 	this.get('patientSpecies'),
 					first_name: this.get('patientFirstName'),
 					last_name:  this.get('patientLastName'),
