@@ -3,12 +3,15 @@
 		<div class = "new-entry-button-wrapper">
 			<button {{action "newEntry" }} class = "new-entry-button">New Entry</button>
 		</div>	
-		<p>some text about the entire medical history in chronological order!</p>
-		{{#ember-scrollable autoHide=false}}
-			{{#each medicalRecord as |entry|}}
-				<p>{{entry.examNotes}}{{entry.date}}</p>
-			{{/each}}
-		{{/ember-scrollable}}
-
+		<!-- <p>some text about the entire medical history in chronological order!</p> -->
+		<div class="history-list">
+			{{#ember-scrollable autoHide=false}}
+				{{#each medicalRecord as |entry|}}
+					<div class = "nameListItem">
+						<p>{{entry.examNotes}}  {{entry.date}}</p>
+					</div>
+				{{/each}}
+			{{/ember-scrollable}}
+		</div>
 	</div>
 </div>
