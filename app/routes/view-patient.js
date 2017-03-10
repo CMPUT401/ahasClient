@@ -35,7 +35,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 				var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 				self.get('ajax').request('/api/client/'+ JSON.stringify(data.patient.id)
 					).then(function(data){
-						Ember.run.later(function() {
+						Ember.run(function() {
 							resolve({ 
 								firstName: JSON.stringify(data.client.firstName),
 								lastName: JSON.stringify(data.client.lastName),
@@ -45,6 +45,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 								licos: JSON.stringify(data.client.licos),
 								aish: JSON.stringify(data.client.aish),
 								socialAssistance: JSON.stringify(data.client.socialAssistance),
+								notes: JSON.stringify(data.client.notes),
 								alternativeContactFirstName: JSON.stringify(data.client.alternativeContactFirstName),
 								alternativeContactEmail: JSON.stringify(data.client.alternativeContactEmail),
 								alternativeContactLastName: JSON.stringify(data.client.alternativeContactLastName),
@@ -54,6 +55,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 							});
 						});
 						console.log("status is " + JSON.stringify(data));
+						console.log("asoijdfoij"+ JSON.stringify(data.client.firstName));
 					},
 					function(data){
 						if (data === false){
