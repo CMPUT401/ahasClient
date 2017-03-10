@@ -41,7 +41,7 @@ export default Ember.Controller.extend({
 					self.transitionToRoute('afterlogin');
 				},
 				function(response){
-					console.log("status is " + JSON.stringify(data));
+					console.log("status is " + JSON.stringify(response));
 					if (response === false){
 						if (self.get('session.isAuthenticated')){
 						self.get('session').invalidate();
