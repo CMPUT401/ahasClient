@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
     color: '#000',  // default
     height: 68,     // default
     weight: 1,      // default
-    width: 300,     // default
+    width: 280,     // default
     
 
     signature: Ember.computed(function () {
@@ -19,12 +19,16 @@ export default Ember.Controller.extend({
 
 
     actions: {
-       
+
         createMedicalRecord(){
 
             var self = this; 
+
             
             if( this.get('signature').length !== 0 ){
+
+             var vaccines = gatherVaccines();
+             var medications = gatherMedications();
 
             //note hardcoded patients id until it is passed to me.
              var medicalRecord = this.get('ajax').post('/api/patients/1/medical_records', {
@@ -89,7 +93,8 @@ export default Ember.Controller.extend({
 
 
              exam_notes: this.get('notes'), 
-             medications: this.get('medications'),
+             medications: medications,
+             vaccines: vaccines, 
              summary: this.get('summary')
 
         }
@@ -114,7 +119,24 @@ export default Ember.Controller.extend({
         else{
           showAlert("Record cannot be created without a signature", false);
         }
+      },
+
+      addMedication(){
+          var divMed = document.getElementById('medicationDiv');
+          var textMed= document.createElement('div');
+          textMed.innerHTML = "<input class='medications '>";
+          divMed.appendChild(textMed);
+
+      },
+
+      addVaccine(){
+          var divVaccine = document.getElementById('vaccineDiv');
+          var textVaccine = document.createElement('div');
+          textVaccine.innerHTML = "<input class='vaccines' >";
+          divVaccine.appendChild(textVaccine);
+
       }
+
     }
 });
 
@@ -132,4 +154,25 @@ function exportSignature(){
             var canvas = document.querySelector("canvas");
             var img    = canvas.toDataURL("image/png");
             return(img);
+}
+
+function gatherVaccines() {
+    var vaccines = [];
+    for (var i  = 0; i<document.getElementsByClassName('vaccines').length; i++){
+        vaccines.push(document.getElementsByClassName('vaccines')[i].value);
+
+          }
+    return(vaccines);
+
+}
+
+function gatherMedications(){
+    var medications = [];
+    for (var i  = 0; i<document.getElementsByClassName('medications').length; i++){
+        medications.push(document.getElementsByClassName('medications')[i].value);
+
+          }
+    console.log(medications);
+    return(medications);
+    
 }
