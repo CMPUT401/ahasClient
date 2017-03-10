@@ -7,14 +7,16 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 		var self = this;
 
 		let ajaxGet = new Ember.RSVP.Promise((resolve) =>
-		this.get('ajax').request('/api/patients'
+		this.get('ajax').request('/api/patients/1/medical_records/1/notes/'
 			).then(function(data){
 				Ember.run(function() {
 					resolve({ 
-						patients: deserialAttributes(data.patients),
-						patientFiltered: deserialAttributes(data.patients)
+						notesW: data.notes,
+						patientID : "1",//param.patientID
+						medID: "1" //param.medID
 					});
-					console.log("status is " + JSON.stringify(data.patients[1]));
+					console.log("status is " + data.notes);
+					console.log(data.notes instanceof String);
 				});
 				
 			},
@@ -30,17 +32,3 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 		return ajaxGet;
 	}
 });
-
-function deserialAttributes(patients){
-
-	var deserial = [];
-	for(var i = 0; i < patients.length; i++) {
-		var patient = patients[i];
-		patient.id = JSON.stringify(patients[i].id).replace(/\"/g, "");
-		patient.first_name = JSON.stringify(patients[i].first_name).replace(/\"/g, "");
-		patient.last_name = JSON.stringify(patients[i].last_name).replace(/\"/g, "");
-		deserial.push(patient);
-
-	}
-	return(deserial);
-}

@@ -46,6 +46,7 @@ export default Ember.Controller.extend({
         user.then(function(response){
             if(response.success){
                 showAlert("Contact created!", true);
+                self.transitionToRoute('search-contacts');    
             }
         //this is error from server condition
         }, function(response) {

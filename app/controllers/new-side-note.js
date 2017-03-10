@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	/*
-	currently commented out because backend isn't implemented
+	
+	//currently commented out because backend isn't implemented
 	ajax: Ember.inject.service(),
 	session: Ember.inject.service(),
 	actions: 
@@ -10,21 +10,15 @@ export default Ember.Controller.extend({
 		submitNewNote()
 		{
 			var self = this;
-				let ajaxPost = this.get('ajax').request('/api/patients',
+				let ajaxPost = this.get('ajax').request('/api/patients/1/medical_records/1/notes',
 			{
 				method: 'POST',
 				type: 'application/json',
-				data: { patient:
+				data: { note:
 					{
-					client: "1",
-					species: 	this.get('patientSpecies'),
-					name: 		this.get('patientName'),
-					age: 		this.get('patientAge'),
-					colour: 	this.get('patientColor'),
-					tattoo: 	this.get('patientTatoo'),
-					microchip: 	this.get('patientMicrochip'),
-					gender: 	this.get('patientGender'),
-					reproductive_status: 	this.get('patientStatus')
+					medical_record_id: "1",
+					body: 	this.get('medNotes'),
+					initials: 		this.get('medSignature')
 				
 				}
 			
@@ -33,6 +27,7 @@ export default Ember.Controller.extend({
 			});
 			ajaxPost.then(function(data){
 				console.log("status is " + JSON.stringify(data));
+				self.transitionTo('/api/patients/1/medical_records/1')
 			},
 			function(response){
 				if (response === false){
@@ -45,5 +40,5 @@ export default Ember.Controller.extend({
 		return ajaxPost;
 	}
 }
-	*/
+	
 });
