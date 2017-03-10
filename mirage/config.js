@@ -68,6 +68,21 @@ export default function() {
 
 
 
+this.get('/patients/1/medical_records/1/notes/1', ()=>{
+    return{
+      success: true,
+      notes: {
+        id:1,
+        body:"hey listen\njjj",
+        initials:"jb",
+        medical_record_id:1,
+        created_at:"2017-03-09T19:43:59.816Z",
+        updated_at:"2017-03-09T19:43:59.816Z"
+      }
+    };
+});
+
+
 this.get('patients/1', ()=>{
     return{
       success: true,
