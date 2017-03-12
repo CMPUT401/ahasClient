@@ -20,7 +20,7 @@
         <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="laboratoryHeading"><h3>Laboratory</h3></div>
 
     </div>
- <div class=" col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
+ <div class=" col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1 contactNameList" >
      
                  {{#each  model.contactsFilteredVeterinarian as |contact|}}
                            
@@ -29,7 +29,8 @@
 
                     {{/each}}
         </div >
-         <div class=" col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
+      
+         <div class=" col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1 contactNameList" >
                       {{#each  model.contactsFilteredVolunteer as |contact|}}
                            
                                 <p{{action "getContact" contact.id on="click"}} class=' nameListItem  volunteersContact' >{{contact.first_name}} {{contact.last_name}}</p>
@@ -37,7 +38,8 @@
 
                     {{/each}}
         </div >
-        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
+     
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1 contactNameList" >
                       {{#each  model.contactsFilteredLaboratory as |contact|}}
                             
                                 <p{{action "getContact" contact.id on="click"}} class=' nameListItem  laboratoryContact'>{{contact.first_name}} {{contact.last_name}}</p>
