@@ -22,8 +22,8 @@ export default Ember.Controller.extend({
 
         createMedicalRecord(){
 
-            var self = this; 
-
+            var self = this;
+            var date = Date.now(); 
             
             if( this.get('signature').length !== 0 ){
 
@@ -37,33 +37,36 @@ export default Ember.Controller.extend({
                  medications: medications,
                  vaccines: vaccines, 
                  medical_record: {
-
-             date: new Date(), 
+   
+             date: date,  
              patient_id: 1 , //for now only
              
              signature: exportSignature(this.get('stringifiedSignature')), 
 
-             temperature: this.get('temperatureText'),
-             eyes: this.get('eyesText'),
-             oral: this.get('oralText'),
-             ears: this.get('earsText'),
-             glands: this.get('glandsText'),
-             skin: this.get('skinText'),
-             abdomen: this.get('abdomenText'),
-             urogential: this.get('urogentialText'),
-             nervousSystem: this.get('nervousSystemText'),
-             musculoskeletal: this.get('musculoskeletalText'),
-             cardiovascular: this.get('cardiovascularText'),
-             heart_rate: this.get('hrText'),
-             respiratory: this.get('respiratoryText1'),
-             respiratory_rate: this.get('respiratoryText2'),
+             //inputs
+             temperature: document.getElementById('temperatureText').value,
+             eyes: document.getElementById('eyesText').value,
+             oral: document.getElementById('oralText').value,
+             ears: document.getElementById('earsText').value,
+             glands: document.getElementById('glandsText').value,
+             skin: document.getElementById('skinText').value,
+             abdomen: document.getElementById('abdomenText').value,
+             urogential: document.getElementById('urogentialText').value,
+             nervousSystem: document.getElementById('nervousSystemText').value,
+             musculoskeletal: document.getElementById('musculoskeletalText').value,
+             cardiovascular: document.getElementById('cardiovascularText').value,
+             heart_rate: document.getElementById('hrText').value,
+             respiratory: document.getElementById('respiratoryText1').value,
+             respiratory_rate: document.getElementById('respiratoryText2').value,
 
-             
+             //checkboxes
              attitudeBAR: document.getElementById('attitudeBAR').checked,
              attitudeQAR: document.getElementById('attitudeQAR').checked, 
              attitudeDepressed: document.getElementById('attitudeDepressed').checked,
              eyesN: document.getElementById('eyesN').checked,
              eyesA: document.getElementById('eyesA').checked,
+             oralN: document.getElementById('oralN').checked,
+             oralA: document.getElementById('oralA').checked,
              mmN: document.getElementById('mmN').checked, 
              mmPale: document.getElementById('mmPale').checked, 
              mmJaundiced: document.getElementById('mmJaundiced').checked, 
@@ -93,8 +96,10 @@ export default Ember.Controller.extend({
 
 
 
+             //textareas
              exam_notes: this.get('notes'), 
              summary: this.get('summary')
+
 
         }
     }
@@ -106,7 +111,7 @@ export default Ember.Controller.extend({
             }
         //this is error from server condition
         }, function(response) {
-            console.log("status is " + JSON.stringify(response));
+            console.log("status is " + JSON.stringify(response), response);
 					if (response === false){
 						if (self.get('session.isAuthenticated')){
 							self.get('session').invalidate();
