@@ -46,7 +46,7 @@ function deserialAttributesVolunteer(contacts){
 
 		if(contacts[i].contact_type === 'Volunteer'){
 		var contact= contacts[i];
-		contact.id = JSON.stringify(contacts[i].id);
+		contact.id = contacts[i].id;
 		contact.first_name = JSON.stringify(contacts[i].first_name).replace(/\"/g, "");
 		contact.last_name = JSON.stringify(contacts[i].last_name).replace(/\"/g, "");
 		contact.contact_type = JSON.stringify(contacts[i].contact_type).replace(/\"/g, "");
@@ -62,7 +62,7 @@ function deserialAttributesVeterinarian(contacts){
 		
 	if(contacts[i].contact_type === 'Veterinarian'){
 		var contact= contacts[i];
-		contact.id = JSON.stringify(contacts[i].id);
+		contact.id = contacts[i].id;
 		contact.first_name = JSON.stringify(contacts[i].first_name).replace(/\"/g, "");
 		contact.last_name = JSON.stringify(contacts[i].last_name).replace(/\"/g, "");
 		contact.contact_type = JSON.stringify(contacts[i].contact_type).replace(/\"/g, "");
@@ -79,7 +79,7 @@ function deserialAttributesLaboratory(contacts){
 
 		if(contacts[i].contact_type === 'Laboratory'){
 		var contact= contacts[i];
-		contact.id = JSON.stringify(contacts[i].id);
+		contact.id = contacts[i].id;
 		contact.first_name = JSON.stringify(contacts[i].first_name).replace(/\"/g, "");
 		contact.last_name = JSON.stringify(contacts[i].last_name).replace(/\"/g, "");
 		contact.contact_type = JSON.stringify(contacts[i].contact_type).replace(/\"/g, "");

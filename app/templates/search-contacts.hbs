@@ -27,7 +27,7 @@
 
                     {{/each}}
         </div >
-         <div class=" col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1">
+         <div class=" col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="scroll-col">
                       {{#each  model.contactsFilteredVolunteer as |contact|}}
                            
                                 <p{{action "getContact" contact.id on="click"}} class=' nameListItem  volunteersContact' >{{contact.first_name}} {{contact.last_name}}</p>
