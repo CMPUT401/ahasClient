@@ -27,7 +27,6 @@ export default function() {
 
     http://www.ember-cli-mirage.com/docs/v0.2.x/shorthands/
   */
-  this.namespace = 'https://ahas.herokuapp.com/api';
 
   this.get('/client', 'new-client');
   

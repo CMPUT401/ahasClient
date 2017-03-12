@@ -34,10 +34,11 @@ export default Ember.Controller.extend({
              var medicalRecord = this.get('ajax').post('/api/patients/1/medical_records', {
              type: 'application/json',
              data: { 
+                 medications: medications,
+                 vaccines: vaccines, 
                  medical_record: {
 
-             // should be date not data?...
-             data: new Date(), 
+             date: new Date(), 
              patient_id: 1 , //for now only
              
              signature: exportSignature(this.get('stringifiedSignature')), 
@@ -93,8 +94,6 @@ export default Ember.Controller.extend({
 
 
              exam_notes: this.get('notes'), 
-             medications: medications,
-             vaccines: vaccines, 
              summary: this.get('summary')
 
         }
