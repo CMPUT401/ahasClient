@@ -238,8 +238,15 @@ p {
     height: 550px;
     width: 300px;
     margin: 10px;
+    
 }
-.nameListItem  { background: #ffc863; }
+.nameListItem  { 
+    cursor: pointer;
+    padding: 5px;
+    margin: 0px;
+    background: #ffc863; 
+    }
+
 .nameListItem:nth-child(odd) {
     /*background: #E6FBFF;*/ 
     background: #c0c5c6;
@@ -278,6 +285,11 @@ p {
     padding-right: 15px;
 }
 
-#scroll-col {
+
+/* display list of contact names*/
+.contactnameList{
     overflow-y: scroll;
+    display: block;
+    height: 550px;
+    
 }
