@@ -26,7 +26,8 @@ test('creating new contact successful', function(assert) {
   click('#create-contact-button');
 
   andThen(function(){
-    assert.equal(find('#statusGood').text(), 'Contact created!');
+    assert.equal(currentURL(), '/search-contacts');
+    
   });
 });
 

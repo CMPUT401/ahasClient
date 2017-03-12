@@ -8,11 +8,51 @@ export default function() {
     Note: these only affect routes defined *after* them!
   */
 
-  // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
-  // this.namespace = '';    // make this `/api`, for example, if your API is namespaced
-  // this.timing = 400;      // delay for each request, automatically set to 0 during testing
+   this.urlPrefix = 'https://ahas.herokuapp.com';    // make this `http://localhost:8080`, for example, if your API is on a different server
+   this.namespace = '/api';    // make this `/api`, for example, if your API is namespaced
+  //this.timing = 400;      // delay for each request, automatically set to 0 during testing
 
+   // for user creation
+   this.post('/signup', { success: true }, 201);
 
+   //for the login
+   this.post('/user_token' , {"jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"});
+
+   //this is for contact creation
+   this.post('/contacts', { success: true }, 201);
+
+   //this is for getting one contact
+   this.get('/contacts/1', () => {
+     return {
+  success: true,
+  contact: 
+   {
+     first_name: "Justin",
+     last_name: "Barclay",
+     address: "116 St & 85 Ave, Edmonton, AB T6G 2R3",
+     email: "fakejustin@ualberta.ca",
+     phone_number: "555-555-5555",
+     fax_number: "555-555-5556",
+     contact_type: "Veterinarian"
+   }
+};
+   }); 
+
+   //this is for get all contacts
+   this.get('/contacts', () => {
+     return {
+    success: true, 
+    contacts: [ { "first_name": "Justin", "last_name": "Barclay", "id": 1, "contact_type": "Volunteer"}, { "first_name": "Simon", "last_name": "Cowell", "id": 2, "contact_type": "Volunteer"}, { "first_name": "Tony", "last_name": "Stark", "id": 3, "contact_type": "Veterinarian"}]
+     };
+   });
+
+   //this is for get all patients
+   this.get('/patients', () => {
+     return {
+    success: true, 
+  patients: [ { first_name: "Chairman", last_name: "Meow", id: 1}]
+};
+   });
   /*
     Shorthand cheatsheet:
 
@@ -27,6 +67,7 @@ export default function() {
   // this.namespace = 'https://ahas.herokuapp.com/api';
 
   // this.get('/client', 'new-client');
+  //this is for getting one client
   this.get('/client', () =>{
     return {
       success: true,
@@ -82,7 +123,7 @@ this.get('/patients/1/medical_records/1/notes/1', ()=>{
     };
 });
 
-//this is wrong/broken at the moment
+//this is wrong/broken at the moment/ just wrong format
 this.get('patients/1', ()=>{
     return{
       success: true,
