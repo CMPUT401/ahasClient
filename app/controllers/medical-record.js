@@ -30,15 +30,20 @@ export default Ember.Controller.extend({
              var vaccines = gatherVaccines();
              var medications = gatherMedications();
 
+
+           // console.log("the info",medications, vaccines, document.getElementById('temperatureText').value,  document.getElementById('eyesText').value, document.getElementById('oralText').value, document.getElementById('earsText').value, document.getElementById('glandsText').value, document.getElementById('skinText').value, document.getElementById('respiratoryText2').value, document.getElementById('notes').value, document.getElementById('summary').value);
+
+
             //note hardcoded patients id until it is passed to me.
+            //also important note: the commented out things to send are to aniticipated to be implemented on the backend later on.
              var medicalRecord = this.get('ajax').post('/api/patients/1/medical_records', {
              type: 'application/json',
              data: { 
-                 medications: medications,
-                 vaccines: vaccines, 
+                // medications: medications,
+                 //vaccines: vaccines, 
                  medical_record: {
    
-             date: date,  
+             data: date,  
              patient_id: 1 , //for now only
              
              signature: exportSignature(this.get('stringifiedSignature')), 
@@ -97,8 +102,9 @@ export default Ember.Controller.extend({
 
 
              //textareas
-             exam_notes: this.get('notes'), 
-             summary: this.get('summary')
+             //follow_up_instructions: document.getElementById('followUpNotes').value,
+             exam_notes: document.getElementById('notes').value, 
+             summary: document.getElementById('summary').value
 
 
         }

@@ -6,8 +6,16 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 	model() { //params as param
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
+
+        this.get('ajax').request('/api/patients/1/medical_records' //  + params.contact_id
+			).then(function(data){
+				console.log(JSON.stringify(data));
+            
+				Ember.run(function() {
+                     resolve({ 
         //for nowwwwww
-		this.get('ajax').request('/api/patients/1/medical_records/15' //  + params.contact_id
+        /*
+		this.get('ajax').request('/api/patients/1/medical_records/3' //  + params.contact_id
 			).then(function(data){
 				
             
@@ -78,7 +86,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             summary: data.medical_record.summary 
 
                           
-
+*/
 				
 				});
     		  });

@@ -8,15 +8,16 @@ export default Ember.Controller.extend({
 		submitNewPatient()
 		{
 			var self = this;
-				let ajaxPost = this.get('ajax').request('/api/patients',
+			let ajaxPost = this.get('ajax').request('/api/patients',
 			{
 				method: 'POST',
 				type: 'application/json',
 				data: { patient:
 					{
-					client: "1",
+					client: "40",
 					species: 	this.get('patientSpecies'),
-					name: 		this.get('patientName'),
+					first_name: this.get('patientFirstName'),
+					last_name:  this.get('patientLastName'),
 					age: 		this.get('patientAge'),
 					colour: 	this.get('patientColor'),
 					tattoo: 	this.get('patientTatoo'),
@@ -32,13 +33,13 @@ export default Ember.Controller.extend({
 			ajaxPost.then(function(data){
 				console.log("status is " + JSON.stringify(data));
 			},
-			function(data){
-				if (data === false){
+			function(response){
+				if (response === false){
 					if (self.get('session.isAuthenticated')){
 						self.get('session').invalidate();
-							}
-					self.transitionToRoute('/unauthorized');
-				}
+					}
+				self.transitionToRoute('/login');
+			}
 			});
 		return ajaxPost;
 	}

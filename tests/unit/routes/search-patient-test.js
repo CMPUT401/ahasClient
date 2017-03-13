@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:afterlogin', 'Unit | Route | afterlogin', {
+moduleFor('route:search-patient', 'Unit | Route | search patient', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

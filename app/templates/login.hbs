@@ -1,21 +1,38 @@
-<div class="container">
-<nav>
-  <p> Don't have an account yet? </p>
-  {{#link-to "create-user"}}create-user{{/link-to}}
-</nav>
+
+<div class="login">
+
+<div class="inputLoginGroup">
+
 <form {{action 'authenticate' on='submit'}}>  
-  <label for="username">Username</label>
+
+  <label class = "inputLoginLabel" for="username">Username</label>
+  <div class = "inputBox">
   {{input id='username' value=username}}
+  </div>
+
   <br>
   <br>
-  <label for="password">Password</label>
-  {{input type="password" id='password' value=password}}
+
+  <label class = "inputLoginLabel" for="password">Password</label>
+  <div class = "inputBox">
+  {{input id='password' value=password type="password"}}
+  </div>
+
   <br>
   <br>
-  <button type="submit" id="login-button">Login</button>
+  
+
+  <button id="login-button" type="submit" id="login-button">Login</button>
+
+  <div class="createUserPrompt">
+  <p> Don't have an account yet? </p>
+  {{#link-to "create-user"}}Create User{{/link-to}}
+</div>
+
+
  </form>
  <br>
  <div id = "alert_placeholder"></div>
  </div>
-
+</div>
 
