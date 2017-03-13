@@ -20,7 +20,9 @@ export default Ember.Controller.extend({
         }
             else{
             
-            filter(input, this.get('model') , this);
+            var lowerCaseInput = input.toLowerCase();
+
+            filter(lowerCaseInput, this.get('model') , this);
            
             }
         }
@@ -32,8 +34,11 @@ function filter(input, model, self){
     //filter volunteers
     var resultVolunteer = [];
     for (var i = 0; i<model.contactsVolunteer.length; i++){
+
+        var firstNameVolunteer = model.contactsVolunteer[i].first_name.toLowerCase();
+        var lastNameVolunteer = model.contactsVolunteer[i].last_name.toLowerCase();
         
-        if (input === model.contactsVolunteer[i].first_name || input === model.contactsVolunteer[i].last_name){
+        if (input ===  firstNameVolunteer || input === lastNameVolunteer || input === firstNameVolunteer + " " + lastNameVolunteer){
             
             var contactVolunteer = { first_name : model.contactsVolunteer[i].first_name , last_name : model.contactsVolunteer[i].last_name };
             resultVolunteer.push(contactVolunteer);
@@ -47,8 +52,11 @@ function filter(input, model, self){
     //filter veterinarians
     var resultVeterinarian = [];
     for (var x = 0; x<model.contactsVeterinarian.length; x++){
+
+        var firstNameVeterinarian = model.contactsVeterinarian[x].first_name.toLowerCase();
+        var lastNameVetrinarian = model.contactsVeterinarian[x].last_name.toLowerCase();
          
-        if (input === model.contactsVeterinarian[x].first_name || input === model.contactsVeterinarian[x].last_name){
+        if (input === firstNameVeterinarian || input === lastNameVetrinarian || input === firstNameVeterinarian + " " + lastNameVetrinarian ){
             
             var contactVeterinarian = { first_name : model.contactsVeterinarian[x].first_name , last_name : model.contactsVeterinarian[x].last_name };
             resultVeterinarian.push(contactVeterinarian);
@@ -62,7 +70,7 @@ function filter(input, model, self){
     var resultLaboratory = [];
     for (var j = 0; j<model.contactsLaboratory.length; j++){
         
-        if (input === model.contactsLaboratory[j].first_name || input === model.contactsLaboratory[j].last_name){
+        if (input === model.contactsLaboratory[j].first_name.toLowerCase() || input === model.contactsLaboratory[j].last_name.toLowerCase()){
 
             var contactLaboratory = { first_name : model.contactsLaboratory[j].first_name , last_name : model.contactsLaboratory[j].last_name };
             resultLaboratory.push(contactLaboratory);
