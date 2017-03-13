@@ -27,6 +27,13 @@ export default Ember.Controller.extend({
         showAlert("Address cannot be blank", false);
     }
 
+    else if ( this.get('faxNumber') === undefined){
+       document.getElementById('faxNumber').value = "";
+    }
+    else if ( this.get('last_name') === undefined){
+       document.getElementById('last_name').value = "";
+    }
+
     else{
     
     var user = this.get('ajax').post('/api/contacts', {
