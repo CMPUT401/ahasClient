@@ -7,14 +7,14 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 		var self = this;
 
 		let ajaxGet = new Ember.RSVP.Promise((resolve) =>
-		this.get('ajax').request('/api/patients'
+		this.get('ajax').request('/api/patients/'
 			).then(function(data){
 				Ember.run(function() {
 					resolve({ 
 						patients: deserialAttributes(data.patients),
 						patientFiltered: deserialAttributes(data.patients)
 					});
-					console.log("status is " + JSON.stringify(data.patients[1]));
+					console.log("status is " + JSON.stringify(data));
 				});
 				
 			},
