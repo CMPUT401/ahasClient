@@ -30,6 +30,9 @@ export default Ember.Controller.extend({
 });
 
 function filter(input, model, self){
+
+    var reg = new RegExp( input );
+    console.log(reg);
     
     //filter volunteers
     var resultVolunteer = [];
@@ -37,8 +40,9 @@ function filter(input, model, self){
 
         var firstNameVolunteer = model.contactsVolunteer[i].first_name.toLowerCase();
         var lastNameVolunteer = model.contactsVolunteer[i].last_name.toLowerCase();
+        var volunteerFullName = firstNameVolunteer + " " + lastNameVolunteer;
         
-        if (input ===  firstNameVolunteer || input === lastNameVolunteer || input === firstNameVolunteer + " " + lastNameVolunteer){
+        if (input ===  firstNameVolunteer || input === lastNameVolunteer || input === volunteerFullName || reg.test(volunteerFullName)){
             
             var contactVolunteer = { first_name : model.contactsVolunteer[i].first_name , last_name : model.contactsVolunteer[i].last_name };
             resultVolunteer.push(contactVolunteer);
