@@ -5,6 +5,8 @@ export default Ember.Controller.extend({
 	session: Ember.inject.service(),
 	actions: 
 	{
+
+
 		submitNewPatient()
 		{
 			var self = this;
@@ -14,7 +16,7 @@ export default Ember.Controller.extend({
 				type: 'application/json',
 				data: { patient:
 					{
-					client: "40",
+					client: this.get('model.clientid'),
 					species: 	this.get('patientSpecies'),
 					first_name: this.get('patientFirstName'),
 					last_name:  this.get('patientLastName'),

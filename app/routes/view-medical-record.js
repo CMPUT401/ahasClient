@@ -7,15 +7,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-        this.get('ajax').request('/api/patients/1/medical_records' //  + params.contact_id
-			).then(function(data){
-				console.log(JSON.stringify(data));
-            
-				Ember.run(function() {
-                     resolve({ 
-        //for nowwwwww
-        /*
-		this.get('ajax').request('/api/patients/1/medical_records/3' //  + params.contact_id
+		this.get('ajax').request('/api/patients/1/medical_records/1' //  + params.contact_id
 			).then(function(data){
 				
             
@@ -82,11 +74,10 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
                             exam_notes: data.medical_record.exam_notes, 
                             medications: data.medical_record.medications,
-                            //vaccines: data.medical_record.vaccines, //currently not implemented back end
+                            //vaccines: data.medical_record.vaccines, //currently not implemented back end i think as per api
                             summary: data.medical_record.summary 
 
                           
-*/
 				
 				});
     		  });
