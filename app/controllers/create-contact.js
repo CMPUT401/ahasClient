@@ -46,6 +46,7 @@ export default Ember.Controller.extend({
         user.then(function(response){
             if(response.success){
                 showAlert("Contact created!", true);
+                self.transitionToRoute('search-contacts');    
             }
         //this is error from server condition
         }, function(response) {
@@ -53,7 +54,7 @@ export default Ember.Controller.extend({
 					if (self.get('session.isAuthenticated')){
 						self.get('session').invalidate();
 					}
-				self.transitionTo('/login');
+				self.transitionToRoute('/login');
 			}
             else {
             showAlert(response.errors[0].title, false);

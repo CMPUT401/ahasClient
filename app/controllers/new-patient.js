@@ -40,7 +40,7 @@ export default Ember.Controller.extend({
 					if (self.get('session.isAuthenticated')){
 						self.get('session').invalidate();
 					}
-				self.transitionTo('/login');
+				self.transitionToRoute('/login');
 			}
 			});
 		return ajaxPost;
