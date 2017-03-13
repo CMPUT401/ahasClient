@@ -1,0 +1,183 @@
+<div class="container">
+<div class="row" >
+
+<div class="col-sm-12 col-md-12">
+<h1> New Medical Record </h1>
+<h4> Date: {{model}} </h4>
+</div>
+
+<div class="col-sm-7 col-md-7">
+
+<div > placeholder for pet info: 
+  <br>
+  <textarea rows="10" cols="40"> </textarea>
+</div>
+
+<div >
+<div class="row">
+    <div class="col-sm-2 col-md-2">Attitude </div>
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="attitudeBAR"> BAR </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="attitudeQAR" > QAR </div> 
+    <div class="col-sm-3 col-md-3"> <input type="checkbox" id="attitudeDepressed" > Depressed </div>
+    <div class="col-sm-1 col-md-1"> Temp </div>
+    <div class="col-sm-1 col-md-1"> <input id="temperatureText" class="inputMedLabel" value="">  </div>
+</div>
+<div class="row">
+    <div class="col-sm-1 col-md-1">Eyes </div>
+    <div class="col-sm-2 col-md-1"> <input type="checkbox" id="eyesN"> N </div> 
+    <div class="col-sm-2 col-md-1"> <input type="checkbox" id="eyesA"> A </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOU"> OU </div>
+     <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOD"> OD </div>
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOS"> OS </div>
+    <div class="col-sm-1 col-md-1"> <input id="eyesText" class="inputMedLabel" value="">  </div>
+</div>
+<div class="row">
+    <div class="col-sm-1 col-md-1">Oral </div>
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="oralN"> N </div> 
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="oralA"> A </div> 
+    <div class="col-sm-1 col-md-1"> <input id="oralText" class="inputMedLabel" value="">  </div>
+</div>
+<div class="row">
+    <div class="col-sm-1 col-md-1">MM </div>
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="mmN"> N </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="mmPale"> Pale </div> 
+    <div class="col-sm-3 col-md-3"> <input type="checkbox" id="mmJaundiced"> Jaundiced </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="mmTacky" value=""> Tacky </div> 
+</div>
+<div class="row">
+    <div class="col-sm-1 col-md-1">Ears </div>
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="earsN"> N </div> 
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="earsA"> A </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsEarMites"> Ear Mites </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsAU"> AU </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsAD"> AD </div> 
+    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsAS"> AS </div> 
+    <div class="col-sm-1 col-md-1"> <input id="earsText" class="inputMedLabel" value="">  </div>
+</div>
+<div class="row">
+    <div class="col-sm-3 col-md-2">Glands/Nodes </div>
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="glandsN"> N </div> 
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="glandsA"> A </div> 
+    <div class="col-sm-1 col-md-1"> <input  id="glandsText" class="inputMedLabel" value="">  </div>
+</div>
+<div class="row">
+    <div class="col-sm-1 col-md-1">Skin </div>
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="skinN"> N </div> 
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="skinA"> A </div> 
+    <div class="col-sm-1 col-md-1"> <input id="skinText" class="inputMedLabel" value="">  </div>
+</div>
+<div class="row">
+    <div class="col-sm-2 col-md-2">Abdomen </div>
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="abdomenN"> N </div> 
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="abdomenA"> A </div> 
+    <div class="col-sm-1 col-md-1"> <input id="abdomenText" class="inputMedLabel" value="">  </div>
+</div>
+<div class="row">
+    <div class="col-sm-3 col-md-2">Urogential </div>
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="urogentialN"> N </div> 
+    <div class="col-sm-1 col-md-1"> <input type="checkbox"  id="urogentialA"> A </div> 
+    <div class="col-sm-1 col-md-1"> <input  id="urogentialText" class="inputMedLabel" value="">  </div>
+</div>
+<div class="row">
+    <div class="col-sm-2 col-md-2">Nervous System </div>
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="nervousSystemN"> N </div> 
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="nervousSystemA"> A </div> 
+    <div class="col-sm-1 col-md-1"> <input id="nervousSystemText" class="inputMedLabel" value="">  </div>
+</div>
+<div class="row">
+    <div class="col-sm-4 col-md-2">Musculoskeletal </div>
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="musculoskeletalN"> N </div> 
+    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="musculoskeletalA"> A </div> 
+    <div class="col-sm-1 col-md-1"> <input id="musculoskeletalText" class="inputMedLabel" value="">  </div>
+</div>
+<div class="row">
+    <div class="col-sm-4 col-md-2">Cardiovascular </div>
+    <div class="col-sm-1 col-md-auto"> <input type="checkbox" id="cardiovascularN"> N </div> 
+    <div class="col-sm-1 col-md-auto"> <input type="checkbox" id="cardiovascularA"> A </div> 
+    <div class="col-sm-4 col-md-4"> <input id="cardiovascularText" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-2 col-md-1"> HR </div>
+    <div class="col-sm-1 col-md-1"> <input id="hrText" class="inputMedLabel" value="">  </div>
+</div>
+<div class="row">
+    <div class="col-sm-2 col-md-2 ">Respiratory </div>
+    <div class="col-sm-2 col-md-1 "> <input type="checkbox" id="respiratoryN"> N </div> 
+    <div class="col-sm-2 col-md-1 "> <input type="checkbox" id="respiratoryA"> A </div> 
+    <div class="col-sm-4 col-md-4"> <input id="respiratoryText1" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-2 col-md-1"> RR </div>
+    <div class="col-sm-3 col-md-1 "> <input id="respiratoryText2" class="inputMedLabel" value="">  </div>
+</div>
+</div>
+
+</div>
+
+
+
+<div class="col-sm-3 col-md-3 col-sm-offset-1 col-md-offset-1">
+
+<div >
+<label for="notes">Notes: </label>
+<br>
+<textarea id="notes" rows="10" cols="40" value=""> </textarea>
+<br>
+</div>
+
+
+<div >
+<label for="medications">Medications: </label>
+
+<div id="medicationDiv">
+
+</div>
+
+<button type="submit" id="add-medication-button"{{action 'addMedication'}}>Add a medication prescription</button>
+</div>
+
+
+<div >
+<label for="vaccinces">Vaccines: </label>
+<br>
+
+<div id="vaccineDiv">
+
+</div>
+
+<button type="submit" id="add-vaccine-button"{{action 'addVaccine'}}>Add a vaccine</button>
+</div>
+
+
+<div >
+<label for="followUpNotes">Please add some follow up notes: </label>
+<br>
+<textarea id="followUpNotes" rows="5" cols="40" value=""> </textarea>
+</div>
+
+<div >
+<label for="summary">Please enter a short summary: </label>
+<br>
+<textarea id="summary" rows="5" cols="40" value=""> </textarea>
+</div>
+
+<div >
+  <h4> Veterinarian Signature: </h4>
+
+  {{signature-pad
+    color=color
+    height=height
+    value=signature
+    weight=weight
+    width=width
+    id='signature'
+}}
+  <button type="submit" id="create-medical-button"{{action 'createMedicalRecord'}}>Create the medical record</button>
+</div>
+
+</div>
+
+
+  
+
+</div>
+
+<div id = "alert_placeholder"></div>
+
+</div>

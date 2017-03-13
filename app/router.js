@@ -22,11 +22,13 @@ Router.map(function() {
   this.route('view-side-note');
   this.route('client-list');
   this.route('client-info', {path: '/client-info/:clientID'});
-  this.route('unauthorized');
+  this.route('medical-record', {path: '/medical-record/:patientID'});
+  this.route('view-medical-record');
   this.route('view-calendar');
   this.route('new-calendar');
   this.route('list-side-note');
   this.route('create-contact');
+
 
 });
 

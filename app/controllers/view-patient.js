@@ -1,20 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	 actions: {
+        gotoMedicalRoute(patient){
+            console.log("we get here", patient);
+            this.transitionToRoute('/medical-record/'+patient);
+        },
+        viewMedicalRecords(patient){
+            console.log('patient', patient);
+            this.transitionToRoute('/view-medical-record/').then(function(newRoute) {
+            newRoute.currentModel.patientId = patient;
+            console.log('new route', newRoute, newRoute.currentModel);
+            //newRoute.currentModel.patient_id =  patient;
+        });
+     }
 
-	/*ajax: Ember.inject.service(),
-	model() {
-		console.log("do we even get here");
-		var self = this;
-		let ajaxGet=this.get('ajax').get('/api/patients/1'
-			).then(function(data){
-				console.log("status is " + JSON.stringify(data));
-			},
-			function(data){
-				console.log("status is " + JSON.stringify(data));
-			});
-		return [ajaxGet];
-	},
-	*/
+}
 
 });
