@@ -102,7 +102,7 @@ export default Ember.Controller.extend({
 
 
              //textareas
-             //follow_up_instructions: document.getElementById('followUpNotes').value,
+             follow_up_instructions: document.getElementById('followUpNotes').value,
              exam_notes: document.getElementById('notes').value, 
              summary: document.getElementById('summary').value
 

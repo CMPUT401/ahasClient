@@ -3,13 +3,22 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend( AuthenticatedRouteMixin , {
     ajax: Ember.inject.service(),
-	model() { //params as param
-		var self = this;
+	model(params) { //params as param
+
+
+     
+		
+        var self = this;
+
+        //undefined because the promise in the routes tranistion to method resolves after all of the below....
+        console.log('our id', self.get('model'), self.get('model.patientId'));
+
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
 		this.get('ajax').request('/api/patients/1/medical_records/1' //  + params.contact_id
 			).then(function(data){
 				
+              
             
 				Ember.run(function() {
        			 resolve({ 
@@ -74,6 +83,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
                             exam_notes: data.medical_record.exam_notes, 
                             medications: data.medical_record.medications,
+                            followUpNotes: data.medical_record.follow_up_instructions,
                             //vaccines: data.medical_record.vaccines, //currently not implemented back end i think as per api
                             summary: data.medical_record.summary 
 
