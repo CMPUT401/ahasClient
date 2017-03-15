@@ -41,10 +41,12 @@ export default Ember.Controller.extend({
 					// TODO display confrimation page
 					// TODO prevent user from going back into this page
 					console.log("status is " + JSON.stringify(data));
+					self.set('clientFirstName', '');
 					self.transitionToRoute('client-list');
 				},
 				function(response){
 					console.log("status is " + JSON.stringify(response));
+					self.set('clientFirstName', '');
 					document.getElementById("create-client-button").disabled = false;
 					if (response === false){
 						if (self.get('session.isAuthenticated')){
