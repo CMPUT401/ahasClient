@@ -45,7 +45,7 @@ function filter(input, model, self){
         
         if (input ===  firstNameVolunteer || input === lastNameVolunteer || input === volunteerFullName || reg.test(volunteerFullName)){
             
-            var contactVolunteer = { first_name : model.contactsVolunteer[i].first_name , last_name : model.contactsVolunteer[i].last_name };
+            var contactVolunteer = { first_name : model.contactsVolunteer[i].first_name , last_name : model.contactsVolunteer[i].last_name, id: model.contactsVolunteer[i].id };
             resultVolunteer.push(contactVolunteer);
             
         }
@@ -64,7 +64,7 @@ function filter(input, model, self){
          
         if (input === firstNameVeterinarian || input === lastNameVetrinarian || input === veterinarianFullName || reg.test(veterinarianFullName)){
             
-            var contactVeterinarian = { first_name : model.contactsVeterinarian[x].first_name , last_name : model.contactsVeterinarian[x].last_name };
+            var contactVeterinarian = { first_name : model.contactsVeterinarian[x].first_name , last_name : model.contactsVeterinarian[x].last_name, id: model.contactsVeterinarian[x].id };
             resultVeterinarian.push(contactVeterinarian);
            
         }
@@ -83,7 +83,7 @@ function filter(input, model, self){
         
         if (input === firstNameLaboratory || input === lastNameLaboratory || input === LaboratoryFullName || reg.test(LaboratoryFullName)){
 
-            var contactLaboratory = { first_name : model.contactsLaboratory[j].first_name , last_name : model.contactsLaboratory[j].last_name };
+            var contactLaboratory = { first_name : model.contactsLaboratory[j].first_name , last_name : model.contactsLaboratory[j].last_name , id: model.contactsLaboratory[j].id};
             resultLaboratory.push(contactLaboratory);
         }
 
