@@ -15,7 +15,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-		this.get('ajax').request('/api/patients/1/medical_records/1' //  + params.contact_id
+		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/1' //  + params.contact_id
 			).then(function(data){
 				
               
@@ -25,7 +25,8 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 						   
 
                             date_created: data.medical_record.created_at, 
-                            patient_id: data.medical_record.id, 
+                            patient_id: params.patientID 
+                            med_id: data.medical_record.id, 
                             
                             signature: data.medical_record.signature, 
 
