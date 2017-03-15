@@ -9,6 +9,7 @@ test('visiting /create-user', function(assert) {
   andThen(function() {
     assert.equal(currentURL(), '/create-user');
   });
+  
 });
 
 test('adding new user valid', function(assert){
@@ -21,15 +22,19 @@ test('adding new user valid', function(assert){
   click('#create-user-button');
   andThen(function(){
     assert.equal(find('#statusGood').text(), 'Account created!');
+    assert.notEqual(find('#statusBad').text(), "Incorrect email format");
   });
 });
 
   test('adding invalid user, too short password', function(assert){
   visit('/create-user');
-  fillIn('#name', "test");
-  fillIn('#username', "user@gmail.ca");
-  fillIn('#password', "pass");
-  fillIn('#passwordConfirm', "pass");
+
+  var pass = 'pass';
+  
+  fillIn('#name', "kristy");
+  fillIn('#username', "auser@gmail.com");
+  fillIn('#password', pass);
+  fillIn('#passwordConfirm', pass);
   click('#create-user-button');
   andThen(function(){
     assert.equal(find('#statusBad').text(), "Password too short, must be at least 7 characters!");
@@ -39,7 +44,9 @@ test('adding new user valid', function(assert){
 
   test('adding invalid user, incorrect format email', function(assert){
   visit('/create-user');
-  fillIn('#name', "test");
+
+
+  fillIn('#name', "kristy");
   fillIn('#username', "usermail.ca");
   fillIn('#password', "password");
   fillIn('#passwordConfirm', "password");
@@ -52,7 +59,8 @@ test('adding new user valid', function(assert){
 
   test('adding invalid user, name is blank', function(assert){
   visit('/create-user');
-  fillIn('#username', "usermail.ca");
+  
+  fillIn('#username', "usermail@gmail.ca");
   fillIn('#password', "password");
   fillIn('#passwordConfirm', "password");
   click('#create-user-button');

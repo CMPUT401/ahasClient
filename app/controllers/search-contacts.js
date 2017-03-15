@@ -25,6 +25,7 @@ export default Ember.Controller.extend({
             filter(lowerCaseInput, this.get('model') , this);
            
             }
+
         }
     }
 });

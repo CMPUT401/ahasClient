@@ -1,40 +1,66 @@
 <div class ="container">
 	<form {{action "submitNewPatient" on="submit"}}>
-		<h3>Please fill in the patient's current status</h3>
+		<div class = "inputGroup">
+			<h3>Please fill in the patient's current status</h3>
 
-		<label for ="patientName">Patient's Name</label>
-		{{input id = "patientName" value=patientName required='true'}}
-		<br>
+			<label class = "inputLabel" for ="patientFirstName">Patient's First Name</label>
+			<div class = "inputBox">
+			{{input id = "patientFirstName" value=patientFirstName required='true'}}
+			</div>
+			<br>
 
-		<label for ="patientSpecies">Patient's Species</label>
-		{{input id = "patientSpecies" value=patientSpecies required='true'}}
-		<br>
+			<label class = "inputLabel" for ="patientLastName">Patient's Last Name</label>
+			<div class = "inputBox">
+			{{input id = "patientLastName" value=patientLastName required='true'}}
+			</div>
+			<br>
 
-		<label for ="patientGender">Patient's Gender</label>
-		{{input id = "patientGender" value=patientGender required='true'}}
-		<br>
+			<label class = "inputLabel" for ="patientSpecies">Patient's Species</label>
+			<div class = "inputBox">
+			{{input id = "patientSpecies" value=patientSpecies required='true'}}
+			</div>
+			<br>
 
-		<label for ="patientStatus">Patient's Reproduction Status</label>
-		{{input id = "patientStatus" value=patientStatus required='true'}}
-		<br>
+			<label class = "inputLabel" for ="patientGender">Patient's Gender</label>
+			<div class = "inputBox">
+			{{input id = "patientGender" value=patientGender required='true'}}
+			</div>
+			<br>
 
-		<label for ="patientAge">Patient's Age</label>
-		{{input id = "patientAge" value=patientAge required='false'}}
-		<br>
+			<label class = "inputLabel"  for ="patientStatus">Patient's Reproduction Status</label>
+			<div class = "inputBox">
+			{{input id = "patientStatus" value=patientStatus required='true'}}
+			</div>
+			<br>
 
-		<label for ="patientColor">Patient's Color</label>
-		{{input id = "patientColor" value=patientColor required='true'}}
-		<br>
+			<label class = "inputLabel"  for ="patientAge">Patient's Age</label>
+			<div class = "inputBox">
+			{{input id = "patientAge" value=patientAge required='false'}}
+			</div>
+			<br>
 
-		<label for ="patientTatoo">Patient's Tatoo ID</label>
-		{{input id = "patientTatoo" value=patientTatoo required='false'}}
-		<br>
+			<label class = "inputLabel"  for ="patientColor">Patient's Color</label>
+			<div class = "inputBox">
+			{{input id = "patientColor" value=patientColor required='true'}}
+			</div>
+			<br>
 
-		<label for ="patientMicrochip">Patient's Microchip Number</label>
-		{{input id = "patientMicrochip" value=patientMicrochip required='false'}}
-		<br>
-		<br>
-		<button type = "submit">Create Patient</button>
-		<button type = "reset">Reset Form</button>
+			<label class = "inputLabel"  for ="patientTatoo">Patient's Tatoo ID</label>
+			<div class = "inputBox">
+			{{input id = "patientTatoo" value=patientTatoo required='false'}}
+			</div>
+			<br>
+
+			<label class = "inputLabel"  for ="patientMicrochip">Patient's Microchip Number</label>
+			<div class = "inputBox">
+			{{input id = "patientMicrochip" value=patientMicrochip required='false'}}
+			</div>
+			<br>
+			<br>
+			<button type = "submit" id="create-patient-button">Create Patient</button>
+			<button type = "reset" id="reset-patient-button">Reset Form</button>
+			
+		</div>
 	</form>
+	<button type = "submit" id="checkid-button" {{action 'checkid'}}>checkid</button>
 </div>

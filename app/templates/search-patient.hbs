@@ -1,0 +1,17 @@
+<div class="search">
+<button  {{action "filterPatient"  }} type="submit" id="search-button">Search</button>
+<p> {{model.notesW}} </p>
+<input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
+<div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="patientHeading"><h3>Patients</h3></div>
+<div class = "nameList" >
+    {{#ember-scrollable autoHide=false}}
+            {{#each model.patientFiltered as |patient|}}
+                    <div class = "nameListItem" {{action "getPatient" patient.id}}>
+                            <p>{{patient.first_name}} {{patient.last_name}}</p>
+                    </div>
+
+            {{/each}}
+    {{/ember-scrollable}}
+    <br>
+</div>
+</div>

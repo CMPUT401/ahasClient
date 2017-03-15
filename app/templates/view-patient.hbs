@@ -1,75 +1,91 @@
 <div class = "container">
-	<h1>{{patientFirstName}} {{clientLastName}}</h1>
-	<p>
+	<h1>{{model.first_name}} {{model.lastName}}</h1>
+	<div class = "viewGroup">
 		<h3>Client's Basic Information</h3>
-		Client's Name: {{clientFirstName}} {{clientLastName}}
+		
+		<div class = "viewLabel">Client's Name:</div>
+		<div class = "viewInfo">{{model.firstName}} {{model.lastName}}</div>
 		<br>
-		Client's Address: {{clientAddress}}
+		
+		<div class = "viewLabel">Client's Address:</div>
+		<div class = "viewInfo">{{{model.address}}}</div>
 		<br>
-		Client's Phone Number: {{clientPhoneNumber}}
+		<div class = "viewLabel">Client's Phone Number:</div>
+		<div class = "viewInfo">{{model.phoneNumber}}</div>
 		<br>
-		Client's Email Address: {{clientEmail}}
+		<div class = "viewLabel">Client's Email Address:</div>
+		<div class = "viewInfo">{{model.email}}</div>
 		<br>
-		<br>
-
+	</div>
+	<br>
+	<div class = "viewGroup">
 		<h3>Client's Documentation</h3>
-		LICO: {{clientDocumentLICO}}
+		<div class = "viewLabel">LICO:</div>
+		<div class = "viewInfo">{{model.licos}}</div>
 		<br>
-		AISH: {{clientDocumentAISH}}
+		<div class = "viewLabel">AISH:</div>
+		<div class = "viewInfo">{{model.aish}}</div>
 		<br>
-		SA: {{clientDocumentSA}}
+		<div class = "viewLabel">SA:</div>
+		<div class = "viewInfo">{{model.socialAssistance}}</div>
 		<br>
-		Notes: {{clientNotes}}
+		<div class = "viewLabel">Notes:</div>
+		<div class = "viewInfo">{{{model.notes}}}</div>
 		<br>
-		<br>
-
+	</div>
+	<br>
+	<div class = "viewGroup">
 		<h3>Alternative Contact</h3>
-
-		Alternative Contact Name: {{clientAlternativeCName}}
+		<div class = "viewLabel">Alternative Contact Name:</div>
+		<div class = "viewInfo">{{model.alternativeContactFirstName}} {{model.alternativeContactLastName}}</div>
 		<br>
-		Alternative Contact Address: {{clientAlternativeCAddress}}
+		<div class = "viewLabel">Alternative Contact Address:</div>
+		<div class = "viewInfo">{{{model.alternativeContactAddress}}}</div>
 		<br>
-		Alternative Contact Phone Number: {{clientAlternativeCPhone}}
+		<div class = "viewLabel">Alternative Contact Phone Number:</div>
+		<div class = "viewInfo">{{model.alternativeContactPhoneNumber}}</div>
 		<br>
-		Alternative Contact Secondary Phone: {{clientAlternativeCSPhone}}
+		<div class = "viewLabel">Alternative Contact Secondary Phone:</div>
+		<div class = "viewInfo">{{model.alternativeContact2ndPhone}}</div>
 		<br>
-		Alternative Contact Email: {{clientAlternativeCEmail}}
+		<div class = "viewLabel">Alternative Contact Email:</div>
+		<div class = "viewInfo">{{model.alternativeContactEmail}}</div>
 		<br>
-		<br>
-
+	</div>
+	<br>
+	<div class = "viewGroup">
 		<h3>Patient Info</h3>
-
-		Patient Name:{{patientFirstName}} {{clientLastName}}
+		<div class = "viewLabel">Patient Name:</div>
+		<div class = "viewInfo">{{model.first_name}} {{model.last_name}}</div>
 		<br>
-		Patient Species:{{patientSpecies}}
+		<div class = "viewLabel">Patient Species:</div>
+		<div class = "viewInfo">{{model.species}}</div>
 		<br>
-		Patient Gender:{{patientGender}}
+		<div class = "viewLabel">Patient Gender:</div>
+		<div class = "viewInfo">{{model.gender}}</div>
 		<br>
-		Patient Reproduction Status:{{patientStatus}}
+		<div class = "viewLabel">Patient Reproduction Status:</div>
+		<div class = "viewInfo">{{model.status}}</div>
 		<br>
-		Patient Age: {{patientAge}}
+		<div class = "viewLabel">Patient Age:</div>
+		<div class = "viewInfo">{{model.age}}</div>
 		<br>
-		Patient Colour: {{patientColor}}
-		<br>
-		Patient Tatoo ID: {{patientTatoo}}
-		<br>
-		Patient MicroChip ID: {{patientMicrochip}}
-		<br>
-		<br>
-
-		
-		<h3> Experiment Section</h3>
-
-		<h3> {{model}}</h3>
-
-
-		<h3> {{model.name}}</h3>	
-		
-		<br>
-		<br>
-		<button type = "button">Edit Info</button>
+		<div class = "viewLabel">Patient Colour:</div>
+		<div class = "viewInfo">{{model.colour}}</div>
 		<br>
 
-	</p>
+		<div class = "viewLabel">Patient Tatoo ID:</div>
+		<div class = "viewInfo">{{model.tattoo}}</div>
+		<br>
+		<div class = "viewLabel">Patient MicroChip ID:</div>
+		<div class = "viewInfo">{{model.microchip}}</div>
+		<br>
+	</div>
+	<br>
+	<button type = "button" id= "edit-patient-button">Edit Info</button>
+	<br>
+	<br>
+	<button type = "button" id= "create-medrec-button" {{action 'gotoMedicalRoute' model.id}}>Create a medical record</button>
+	<button type = "button" id= "view-medrec-button" {{action 'viewMedicalRecords' model.id}}>View a medical record</button>
 
 </div>

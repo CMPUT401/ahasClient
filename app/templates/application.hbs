@@ -1,7 +1,33 @@
-{{#if session.isAuthenticated}}
-<a href="#" {{action 'invalidateSession'}}>Logout</a>
-{{/if}}
-{{outlet}}
-
+<!-- TODO: reorganize navigation bar to reflect final UI -->
+<div class = "container">
+	{{#if session.isAuthenticated}}
+	<nav class = "navbar navbar-inverse">
+		<li class = "nav navbar-nav">
+			{{#nav-link-to 'client-list'}}
+				<h5 class = "navItem">Search Clients</h5>
+			{{/nav-link-to}}
+			{{#nav-link-to 'search-contacts'}}
+				<h5 class = "navItem">Search Contacts</h5>
+			{{/nav-link-to}}
+			{{#nav-link-to 'search-patient'}}
+				<h5 class = "navItem">Search Patient</h5>
+			{{/nav-link-to}}
+			{{#nav-link-to 'create-contact'}}
+				<h5 class = "navItem">Create Contact</h5>
+			{{/nav-link-to}}
+			{{#nav-link-to 'new-client'}}
+				<h5 class = "navItem">Create Client</h5>
+			{{/nav-link-to}}
+			{{#nav-link-to 'login'}}
+				<h5 class = "navItem" href="#" {{action 'invalidateSession'}}>Logout</h5>
+			{{/nav-link-to}}
+			
+		</li>
+	</nav>
+	{{/if}}
+	<div class = "body">
+		{{outlet}}
+	</div>	
+</div>
 
 
