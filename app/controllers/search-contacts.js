@@ -60,8 +60,9 @@ function filter(input, model, self){
 
         var firstNameVeterinarian = model.contactsVeterinarian[x].first_name.toLowerCase();
         var lastNameVetrinarian = model.contactsVeterinarian[x].last_name.toLowerCase();
+        var veterinarianFullName = firstNameVeterinarian + " " + lastNameVetrinarian;
          
-        if (input === firstNameVeterinarian || input === lastNameVetrinarian || input === firstNameVeterinarian + " " + lastNameVetrinarian ){
+        if (input === firstNameVeterinarian || input === lastNameVetrinarian || input === veterinarianFullName || reg.test(veterinarianFullName)){
             
             var contactVeterinarian = { first_name : model.contactsVeterinarian[x].first_name , last_name : model.contactsVeterinarian[x].last_name };
             resultVeterinarian.push(contactVeterinarian);
@@ -71,11 +72,16 @@ function filter(input, model, self){
     }
     self.set('model.contactsFilteredVeterinarian', resultVeterinarian);
 
+
     //filter laboratory
     var resultLaboratory = [];
     for (var j = 0; j<model.contactsLaboratory.length; j++){
+
+        var firstNameLaboratory = model.contactsLaboratory[j].first_name.toLowerCase();
+        var lastNameLaboratory = model.contactsLaboratory[j].last_name.toLowerCase();
+        var LaboratoryFullName = firstNameLaboratory + " " + lastNameLaboratory;
         
-        if (input === model.contactsLaboratory[j].first_name.toLowerCase() || input === model.contactsLaboratory[j].last_name.toLowerCase()){
+        if (input === firstNameLaboratory || input === lastNameLaboratory || input === LaboratoryFullName || reg.test(LaboratoryFullName)){
 
             var contactLaboratory = { first_name : model.contactsLaboratory[j].first_name , last_name : model.contactsLaboratory[j].last_name };
             resultLaboratory.push(contactLaboratory);
