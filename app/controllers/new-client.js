@@ -45,12 +45,13 @@ export default Ember.Controller.extend({
 				},
 				function(response){
 					console.log("status is " + JSON.stringify(response));
+					document.getElementById("create-client-button").disabled = false;
 					if (response === false){
 						if (self.get('session.isAuthenticated')){
-						self.get('session').invalidate();
+							self.get('session').invalidate();
+						}
+						self.transitionToRoute('/login');
 					}
-				self.transitionToRoute('/login');
-			}
 				});
 			//createNewCLient();
 			//this.transitionToRoute('/login');
