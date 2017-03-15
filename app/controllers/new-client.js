@@ -41,17 +41,17 @@ export default Ember.Controller.extend({
 					// TODO display confrimation page
 					// TODO prevent user from going back into this page
 					console.log("status is " + JSON.stringify(data));
-					
+					clearFields(self);
 					self.transitionToRoute('client-list');
 				},
 				function(response){
 					console.log("status is " + JSON.stringify(response));
-
 					document.getElementById("create-client-button").disabled = false;
 					if (response === false){
 						if (self.get('session.isAuthenticated')){
 							self.get('session').invalidate();
 						}
+						clearFields(self);
 						self.transitionToRoute('/login');
 					}
 				});
@@ -62,7 +62,7 @@ export default Ember.Controller.extend({
 	}
 });
 
-clearFields: function(page){
+function clearFields(page){
 	page.set('clientFirstName', '');
 	page.set('clientLastName', '');
 	page.set('clientAddress', '');
@@ -71,11 +71,11 @@ clearFields: function(page){
 	page.set('clientLICO', '');
 	page.set('clientAISH', '');
 	page.set('clientAS', '');
-	self.set('alternativeFirstName', '');
-	self.set('alternativeLastName', '');
-	self.set('alternativePrimaryPhone', '');
-	self.set('alternativeAddress', '');
-	self.set('clientNotes', '');
-	self.set('alternativeSecondaryPhone', '');
-	self.set('alternativeEmail', '');
+	page.set('alternativeFirstName', '');
+	page.set('alternativeLastName', '');
+	page.set('alternativePrimaryPhone', '');
+	page.set('alternativeAddress', '');
+	page.set('clientNotes', '');
+	page.set('alternativeSecondaryPhone', '');
+	page.set('alternativeEmail', '');
 }
