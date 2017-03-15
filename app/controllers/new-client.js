@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
 	//let cName, let cAddress, let cPhone,
 	actions: {
 		submitNewCient: function(){
+			document.getElementById("create-client-button").disabled = true; 
 			console.log("making new client!");
 		}
 	}
