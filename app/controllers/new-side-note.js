@@ -26,8 +26,8 @@ export default Ember.Controller.extend({
 		
 			});
 			ajaxPost.then(function(data){
-				console.log("status is " + JSON.stringify(data));
-				self.transitionTo('/api/patients/1/medical_records/1')
+				console.log("status is " + data);
+				self.transitionTo('/api/patients/1/medical_records/1');
 			},
 			function(response){
 				if (response === false){
