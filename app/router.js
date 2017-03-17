@@ -30,6 +30,7 @@ Router.map(function() {
   this.route('create-contact');
 
 
+  this.route('lab-result-upload');
 });
 
 export default Router;
