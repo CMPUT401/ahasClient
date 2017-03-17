@@ -4,6 +4,19 @@ export default Ember.Controller.extend({
     session: Ember.inject.service(),
     ajax: Ember.inject.service(),
     actions: {
+
+    showLastName: function(){
+        var type= document.getElementById('type');
+        var typeval = type.options[type.selectedIndex].text;
+
+        if (typeval == "Laboratory" ){
+        this.set('model.laboratory', false);
+        }
+        else{
+        this.set('model.laboratory', true);
+        }
+    },
+
     createContact: function(){
 
     //this is to get the value in the dropdown specifically

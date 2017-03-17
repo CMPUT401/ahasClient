@@ -276,24 +276,6 @@ p {
 }
 
 
-/*  create contact */
- 
-#create-contact-button{
-    margin-left: 150px; 
-    margin-top: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.inputCenterLabel{
-    display: inline-block;
-    float: left;
-    clear: left;
-    text-align: left;
-    width: 15em;
-
-}
-
 /* medical record */
 textarea{
     resize: none;
@@ -462,19 +444,33 @@ textarea{
 /*  create contact */
  
 #create-contact-button{
-    margin-left: 150px; 
+    margin-left: 10px; 
     margin-top: 10px;
     padding-left: 15px;
     padding-right: 15px;
 }
 
-
-.inputCenterLabel{
+.inputContactLabel{
     display: inline-block;
     float: left;
     clear: left;
+    margin-left: 100px;
+    margin-right:auto;
     text-align: left;
-    width: 15em;
+    width: 10em;
+}
+.inputContactBox{
+    display: inline-block;
+    float: left;
+    width: 10em;
+
+}
+
+.inputContactGroup {
+    width: 500px ;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
 }
 
 /*  search contacts  */
