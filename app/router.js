@@ -22,7 +22,7 @@ Router.map(function() {
   this.route('view-side-note');
   this.route('client-list');
   this.route('client-info', {path: '/client-info/:clientID'});
-  this.route('medical-record', {path: '/medical-record/:patientID'});
+  this.route('medical-record');
   this.route('view-medical-record');
   this.route('view-calendar');
   this.route('new-calendar');
