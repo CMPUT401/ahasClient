@@ -10,6 +10,7 @@ export default Ember.Controller.extend({
     var type= document.getElementById('type');
     var typeval = type.options[type.selectedIndex].text;
     var self = this;
+ 
 
     if (this.get('first_name') === undefined ) {
         showAlert("First name cannot be blank", false);
@@ -27,15 +28,10 @@ export default Ember.Controller.extend({
         showAlert("Address cannot be blank", false);
     }
 
-    else if ( this.get('faxNumber') === undefined){
-       document.getElementById('faxNumber').value = "";
-    }
-    else if ( this.get('last_name') === undefined){
-       document.getElementById('last_name').value = "";
-    }
-
     else{
-    
+
+    document.getElementById("create-contact-button").disabled = true; 
+  
     var user = this.get('ajax').post('/api/contacts', {
         type: 'application/json',
         data: { contact: {
@@ -53,6 +49,7 @@ export default Ember.Controller.extend({
         user.then(function(response){
             if(response.success){
                 showAlert("Contact created!", true);
+                clearFields(self);
                 self.transitionToRoute('search-contacts');    
             }
         //this is error from server condition
@@ -65,6 +62,7 @@ export default Ember.Controller.extend({
 			}
             else {
             showAlert(response.errors[0].title, false);
+            document.getElementById("create-contact-button").disabled = false; 
             }
         });
 }
@@ -81,3 +79,13 @@ function showAlert(message, bool) {
              Ember.$('#alert_placeholder').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
         }
  }
+
+function clearFields(page){
+	page.set('first_name', '');
+	page.set('last_name', '');
+	page.set('phoneNumber', '');
+    page.set('faxNumber', '');
+    page.set('email', '');
+    page.set('address', '');
+	
+}
