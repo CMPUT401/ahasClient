@@ -1,10 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	checkFileApiSupport()
+	init(){
+		checkFileApiSupport();
+	}
 });
 
-function: checkFileApiSupport(){
+function checkFileApiSupport(){
 	if (window.File && window.FileReader && window.FileList && window.Blob){
 		console.log("File API is supported");
 		return true;
