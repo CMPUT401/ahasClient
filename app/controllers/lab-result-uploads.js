@@ -2,10 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	// actions: {
-	// 	clickChooseFile: function(){
-	// 		console.log("click choose file");
-	// 		document.getElementById('files').addEventListener('change', handleFileSelect, false);
-	// 	}
+	// 	// clickChooseFile: function(){
+	// 	// 	console.log("click choose file");
+	// 	// 	document.getElementById('files').addEventListener('change', handleFileSelect, false);
+	// 	// }
 	// }
 });
 

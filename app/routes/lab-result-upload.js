@@ -3,8 +3,10 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 	init(){
 		checkFileApiSupport();
-		document.getElementById('files').addEventListener('change', handleFileSelect, false);
-	}
+		//document.getElementById('files').addEventListener('change', handleFileSelect, false);
+		//console.log(document.getElementById('files'));
+	},
+	activate: document.getElementById('files').addEventListener('change', handleFileSelect, false)
 });
 
 function checkFileApiSupport(){
