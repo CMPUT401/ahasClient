@@ -324,6 +324,14 @@ textarea{
     margin-left: 5px;
     margin-right: 5px;
 }
+
+.checkboxMed{
+    display: inline;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 3px;
+    margin-right: 3px;
+}
 .labelForRadio{
    font-weight: normal;
 }
@@ -341,6 +349,16 @@ textarea{
     padding-left: 5px;
     padding-right: 5px;
 
+}
+#alert_placeholder_med{
+    margin-top: 10px;
+    width: 250px;
+}
+.allMedGroup{
+    text-align: left;
+}
+.medHeading{
+    text-align: center;
 }
 
 /* form creation/submission */

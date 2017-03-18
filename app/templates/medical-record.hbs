@@ -1,9 +1,11 @@
 <div class="container">
-<div class="row" >
+<div class="row allMedGroup" >
 
+<div class="medHeading">
 <div class="col-sm-12 col-md-12">
 <h1> New Medical Record </h1>
 <h4> Date: {{model}} </h4>
+</div>
 </div>
 
 <div class="col-sm-7 col-md-7">
@@ -16,64 +18,70 @@
 <div >
 <div class="row">
     <div class="col-sm-2 col-md-2">Attitude </div>
-    <div class="col-sm-3 col-md-3">
-    <label class="radioButton labelForRadio" for="attitudeBAR"> <input type="radio" name="attitude" id="attitudeBAR">  BAR </label> 
+    <div class="col-sm-4 col-md-3">
+    <label class="radioButton labelForRadio" for="attitudeBAR"> <input class="norm" type="radio" name="attitude" id="attitudeBAR">  BAR </label> 
     <label class="radioButton labelForRadio" for="attitudeQAR"><input type="radio"  name="attitude" id="attitudeQAR" >  QAR </label> 
     </div>
-    <div class="col-sm-3 col-md-3"> <input type="checkbox" id="attitudeDepressed" > Depressed </div>
+    <label class="col-sm-3 col-md-3 labelForRadio"> <input type="checkbox" id="attitudeDepressed" > Depressed </label>
     <div class="col-sm-1 col-md-1"> Temp </div>
     <div class="col-sm-1 col-md-1"> <input id="temperatureText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
-    <div class="col-sm-1 col-md-1">Eyes </div>
+    <div class="col-sm-2 col-md-2">Eyes </div>
     <div class="col-sm-2 col-md-2">
-    <label class="radioButton labelForRadio"> <input type="radio" name="eyes" id="eyesN"> N </label> 
+    <label class="radioButton labelForRadio "> <input class="norm" type="radio" name="eyes" id="eyesN"> N </label> 
     <label class="radioButton labelForRadio"> <input type="radio" name="eyes" id="eyesA"> A </label> 
     </div>
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOU"> OU </div>
-     <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOD"> OD </div>
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOS"> OS </div>
+    <label class="col-sm-2 col-md-2 labelForRadio"> <input type="checkbox" id="eyesOU"> OU </label>
+     <label class="col-sm-2 col-md-2 labelForRadio"> <input type="checkbox" id="eyesOD"> OD </label>
+    <label class="col-sm-2 col-md-2 labelForRadio"> <input type="checkbox" id="eyesOS"> OS </label>
     <div class="col-sm-1 col-md-1"> <input id="eyesText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
-    <div class="col-sm-1 col-md-1">Oral </div>
+    <div class="col-sm-2 col-md-2">Oral </div>
     <div class="col-sm-2 col-md-2">
-    <label class="radioButton labelForRadio"> <input type="radio" name="oral" id="oralN"> N </label> 
+    <label class="radioButton labelForRadio"> <input class="norm" type="radio" name="oral" id="oralN"> N </label> 
     <label class="radioButton labelForRadio"> <input type="radio" name="oral" id="oralA"> A </label> 
     </div>
     <div class="col-sm-1 col-md-1"> <input id="oralText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
-    <div class="col-sm-1 col-md-1">MM </div>
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="mmN"> N </div> 
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="mmPale"> Pale </div> 
-    <div class="col-sm-3 col-md-3"> <input type="checkbox" id="mmJaundiced"> Jaundiced </div> 
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="mmTacky" value=""> Tacky </div> 
+    <div class="col-sm-2 col-md-2">MM </div>
+    <div class="col-sm-3 col-md-3">
+    <label class="radioButton labelForRadio"> <input class="norm" type="checkbox" id="mmN"> N </label> 
+    <label class="radioButton labelForRadio"> <input type="checkbox" id="mmPale"> Pale </label>
+    </div>
+    <div class="col-sm-6 col-md-6"> 
+    <label class="labelForRadio"> <input type="checkbox" id="mmJaundiced"> Jaundiced </label> 
+    <label class="labelForRadio"> <input type="checkbox" id="mmTacky" value=""> Tacky </label> 
+    </div>
 </div>
 <div class="row">
-    <div class="col-sm-1 col-md-1">Ears </div>
+    <div class="col-sm-1 col-md-2 ">Ears </div>
     <div class="col-sm-2 col-md-2">
-    <label class="radioButton labelForRadio"> <input type="radio" name="ears" id="earsN"> N </label> 
+    <label class="radioButton labelForRadio"> <input class="norm" type="radio" name="ears" id="earsN"> N </label> 
     <label class="radioButton labelForRadio"> <input type="radio" name="ears" id="earsA"> A </label>
     </div> 
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsEarMites"> Ear Mites </div> 
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsAU"> AU </div> 
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsAD"> AD </div> 
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsAS"> AS </div> 
-    <div class="col-sm-1 col-md-1"> <input id="earsText" class="medicalTextInput" value="">  </div>
+    <div class="col-sm-7 col-md-7 ">
+    <label class="checkboxMed labelForRadio"> <input type="checkbox" id="earsEarMites"> Ear Mites </label> 
+    <label class="checkboxMed labelForRadio"> <input type="checkbox" id="earsAU"> AU </label> 
+    <label class="checkboxMed labelForRadio"> <input type="checkbox" id="earsAD"> AD </label> 
+    <label class=" checkboxMed labelForRadio"> <input type="checkbox" id="earsAS"> AS </label> 
+    <div class="checkboxMed"> <input id="earsText" class="medicalTextInput" value="">  </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-sm-3 col-md-2">Glands/Nodes </div>
     <div class="col-sm-2 col-md-2">
-    <label class="radioButton labelForRadio"> <input type="radio" name="glands" id="glandsN"> N </label> 
+    <label class="radioButton labelForRadio"> <input class="norm" type="radio" name="glands" id="glandsN"> N </label> 
     <label class="radioButton labelForRadio"> <input type="radio" name="glands" id="glandsA"> A </label> 
     </div>
     <div class="col-sm-1 col-md-1"> <input  id="glandsText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
-    <div class="col-sm-1 col-md-1">Skin </div>
+    <div class="col-sm-2 col-md-2">Skin </div>
     <div class="col-sm-2 col-md-2">
-    <label class="radioButton labelForRadio"> <input type="radio" name="skin" id="skinN"> N </label> 
+    <label class="radioButton labelForRadio"> <input class="norm" type="radio" name="skin" id="skinN"> N </label> 
     <label class="radioButton labelForRadio"> <input type="radio" name="skin" id="skinA"> A </label> 
     </div>
     <div class="col-sm-1 col-md-1"> <input id="skinText" class="medicalTextInput" value="">  </div>
@@ -81,7 +89,7 @@
 <div class="row">
     <div class="col-sm-2 col-md-2">Abdomen </div>
     <div class="col-sm-2 col-md-2">
-    <label class="radioButton labelForRadio"> <input type="radio" name="abdomen" id="abdomenN"> N </label> 
+    <label class="radioButton labelForRadio"> <input class="norm" type="radio" name="abdomen" id="abdomenN"> N </label> 
     <label class="radioButton labelForRadio"> <input type="radio" name="abdomen" id="abdomenA"> A </label> 
     </div>
     <div class="col-sm-1 col-md-1"> <input id="abdomenText" class="medicalTextInput" value="">  </div>
@@ -89,7 +97,7 @@
 <div class="row">
     <div class="col-sm-3 col-md-2">Urogential </div>
     <div class="col-sm-2 col-md-2">
-    <label class="radioButton labelForRadio"> <input type="radio" name="urogential"id="urogentialN"> N </label> 
+    <label class="radioButton labelForRadio"> <input class="norm" type="radio" name="urogential"id="urogentialN"> N </label> 
     <label class="radioButton labelForRadio"> <input type="radio" name="urogential"  id="urogentialA"> A </label> 
     </div>
     <div class="col-sm-1 col-md-1"> <input  id="urogentialText" class="medicalTextInput" value="">  </div>
@@ -97,7 +105,7 @@
 <div class="row">
     <div class="col-sm-2 col-md-2">Nervous System </div>
     <div class="col-sm-2 col-md-2">
-    <label class="radioButton labelForRadio"> <input type="radio" name="nervous" id="nervousSystemN"> N </label> 
+    <label class="radioButton labelForRadio"> <input class="norm" type="radio" name="nervous" id="nervousSystemN"> N </label> 
     <label class="radioButton labelForRadio"> <input type="radio" name="nervous" id="nervousSystemA"> A </label> 
     </div>
     <div class="col-sm-1 col-md-1"> <input id="nervousSystemText" class="medicalTextInput" value="">  </div>
@@ -105,7 +113,7 @@
 <div class="row">
     <div class="col-sm-4 col-md-2">Musculoskeletal </div>
     <div class="col-sm-2 col-md-2">
-    <label class="radioButton labelForRadio"> <input type="radio" name="musculoskeletal" id="musculoskeletalN"> N </label> 
+    <label class="radioButton labelForRadio"> <input class="norm" type="radio" name="musculoskeletal" id="musculoskeletalN"> N </label> 
     <label class="radioButton labelForRadio"> <input type="radio" name="musculoskeletal" id="musculoskeletalA"> A </label> 
     </div>
     <div class="col-sm-1 col-md-1"> <input id="musculoskeletalText" class="medicalTextInput" value="">  </div>
@@ -113,28 +121,30 @@
 <div class="row">
     <div class="col-sm-4 col-md-2">Cardiovascular </div>
     <div class="col-sm-2 col-md-2">
-    <label class="radioButton labelForRadio"> <input type="radio" name="cardiovascular" id="cardiovascularN"> N </label> 
+    <label class="radioButton labelForRadio"> <input class="norm" type="radio" name="cardiovascular" id="cardiovascularN"> N </label> 
     <label class="radioButton labelForRadio"> <input type="radio" name="cardiovascular" id="cardiovascularA"> A </label> 
     </div>
-    <div class="col-sm-4 col-md-4"> <input id="cardiovascularText" class="medicalTextInput" value="">  </div>
+    <div class="col-sm-3 col-md-3"> <input id="cardiovascularText" class="medicalTextInput" value="">  </div>
     <div class="col-sm-2 col-md-1"> HR </div>
     <div class="col-sm-1 col-md-1"> <input id="hrText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
     <div class="col-sm-2 col-md-2 ">Respiratory </div>
     <div class="col-sm-2 col-md-2">
-    <label class="radioButton labelForRadio"> <input type="radio" name="respiratory" id="respiratoryN"> N </label> 
+    <label class="radioButton labelForRadio"> <input class="norm" type="radio" name="respiratory" id="respiratoryN"> N </label> 
     <label class="radioButton labelForRadio"> <input type="radio" name="respiratory" id="respiratoryA"> A </label> 
     </div>
-    <div class="col-sm-4 col-md-4"> <input id="respiratoryText1" class="medicalTextInput" value="">  </div>
+    <div class="col-sm-3 col-md-3"> <input id="respiratoryText1" class="medicalTextInput" value="">  </div>
     <div class="col-sm-2 col-md-1"> RR </div>
     <div class="col-sm-3 col-md-1 "> <input id="respiratoryText2" class="medicalTextInput" value="">  </div>
 </div>
 
+<button type="submit" class="addButton" id="check-button"{{action 'checkAll'}}>Check all</button>
+
 <div class="row">
 <label for="notes">Notes: </label>
 <br>
-<textarea id="notes" rows="10" cols="40" value=""> </textarea>
+<textarea id="notes" rows="10" cols="70" value=""> </textarea>
 <br>
 </div>
 
@@ -184,13 +194,13 @@
 <div >
 <label for="followUpNotes">Follow up notes: </label>
 <br>
-<textarea id="followUpNotes" rows="5" cols="40" value=""> </textarea>
+<textarea id="followUpNotes" rows="5" cols="35" value=""> </textarea>
 </div>
 
 <div >
 <label for="summary">Short summary: </label>
 <br>
-<textarea id="summary" rows="5" cols="40" value=""> </textarea>
+<textarea id="summary" rows="5" cols="35" value=""> </textarea>
 </div>
 
 <div >
@@ -207,13 +217,11 @@
   <button type="submit" class= "medical-button" id="clear-signature-button"{{action 'clearSignature'}}>Clear Signature</button>
 
   <button type="submit" class= "medical-button" id="create-medical-button"{{action 'createMedicalRecord'}}>Create medical record</button>
+  <div id = "alert_placeholder_med"></div>
 </div>
 
 </div>
 
-
-
-<div id = "alert_placeholder"></div>
 
 </div>
 </div>

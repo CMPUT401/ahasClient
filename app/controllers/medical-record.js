@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
     color: '#000',  // default
     height: 68,     // default
     weight: 1,      // default
-    width: 280,     // default
+    width: 250,     // default
     
 
     signature: Ember.computed(function () {
@@ -140,7 +140,7 @@ export default Ember.Controller.extend({
           buttonMedication.setAttribute('id', 'removeOther');
           buttonMedication.setAttribute('type', 'submit');
           buttonMedication.innerHTML = 'x';
-          buttonMedication.onclick = function() { $(this).parent('div').remove();};
+          buttonMedication.onclick = function() { Ember.$(this).parent('div').remove();};
           textMedication.innerHTML = "<input class='medication' >";
           textMedication.appendChild(buttonMedication);
           divMedication.appendChild(textMedication);
@@ -155,7 +155,7 @@ export default Ember.Controller.extend({
           buttonVaccine.setAttribute('id', 'removeOther');
           buttonVaccine.setAttribute('type', 'submit');
           buttonVaccine.innerHTML = 'x';
-          buttonVaccine.onclick = function() { $(this).parent('div').remove();};
+          buttonVaccine.onclick = function() { Ember.$(this).parent('div').remove();};
           textVaccine.innerHTML = "<input class='vaccine' >";
           textVaccine.appendChild(buttonVaccine);
           divVaccine.appendChild(textVaccine);
@@ -170,24 +170,33 @@ export default Ember.Controller.extend({
           buttonOther.setAttribute('id', 'removeOther');
           buttonOther.setAttribute('type', 'submit');
           buttonOther.innerHTML = 'x';
-          buttonOther.onclick = function() { $(this).parent('div').remove();};
+          buttonOther.onclick = function() { Ember.$(this).parent('div').remove();};
           textOther.innerHTML = "<input class='other' >";
           textOther.appendChild(buttonOther);
           divOther.appendChild(textOther);
 
-      }
+      },
 
-      
+      clearSignature(){
+        this.set('signature', Ember.A());
+      }, 
+
+      checkAll(){
+          var normals = document.getElementsByClassName("norm");
+          for (var i=0; i<normals.length; i++){
+              normals[i].checked = true;
+          }
+      }
 
     }
 });
 
 function showAlert(message, bool) {
         if(bool){
-            Ember.$('#alert_placeholder').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
+            Ember.$('#alert_placeholder_med').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
         }
         else{
-             Ember.$('#alert_placeholder').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
+             Ember.$('#alert_placeholder_med').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
         }
  }
 
