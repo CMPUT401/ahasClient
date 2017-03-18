@@ -20,4 +20,5 @@ function handleFileSelect(evt){
 			f.lastModifiedDatetoLocalDateString(): 'n/a', '</li>');
 	}
 	document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+	return true;
 }
