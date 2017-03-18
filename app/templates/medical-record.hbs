@@ -16,26 +16,32 @@
 <div >
 <div class="row">
     <div class="col-sm-2 col-md-2">Attitude </div>
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="attitudeBAR"> BAR </div> 
-    <div class="col-sm-2 col-md-2"> <input type="checkbox" id="attitudeQAR" > QAR </div> 
+    <div class="col-sm-3 col-md-3">
+    <label class="radioButton labelForRadio" for="attitudeBAR"> <input type="radio" name="attitude" id="attitudeBAR">  BAR </label> 
+    <label class="radioButton labelForRadio" for="attitudeQAR"><input type="radio"  name="attitude" id="attitudeQAR" >  QAR </label> 
+    </div>
     <div class="col-sm-3 col-md-3"> <input type="checkbox" id="attitudeDepressed" > Depressed </div>
     <div class="col-sm-1 col-md-1"> Temp </div>
-    <div class="col-sm-1 col-md-1"> <input id="temperatureText" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-1 col-md-1"> <input id="temperatureText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
     <div class="col-sm-1 col-md-1">Eyes </div>
-    <div class="col-sm-2 col-md-1"> <input type="checkbox" id="eyesN"> N </div> 
-    <div class="col-sm-2 col-md-1"> <input type="checkbox" id="eyesA"> A </div> 
+    <div class="col-sm-2 col-md-2">
+    <label class="radioButton labelForRadio"> <input type="radio" name="eyes" id="eyesN"> N </label> 
+    <label class="radioButton labelForRadio"> <input type="radio" name="eyes" id="eyesA"> A </label> 
+    </div>
     <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOU"> OU </div>
      <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOD"> OD </div>
     <div class="col-sm-2 col-md-2"> <input type="checkbox" id="eyesOS"> OS </div>
-    <div class="col-sm-1 col-md-1"> <input id="eyesText" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-1 col-md-1"> <input id="eyesText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
     <div class="col-sm-1 col-md-1">Oral </div>
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="oralN"> N </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="oralA"> A </div> 
-    <div class="col-sm-1 col-md-1"> <input id="oralText" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-2 col-md-2">
+    <label class="radioButton labelForRadio"> <input type="radio" name="oral" id="oralN"> N </label> 
+    <label class="radioButton labelForRadio"> <input type="radio" name="oral" id="oralA"> A </label> 
+    </div>
+    <div class="col-sm-1 col-md-1"> <input id="oralText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
     <div class="col-sm-1 col-md-1">MM </div>
@@ -46,90 +52,101 @@
 </div>
 <div class="row">
     <div class="col-sm-1 col-md-1">Ears </div>
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="earsN"> N </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="earsA"> A </div> 
+    <div class="col-sm-2 col-md-2">
+    <label class="radioButton labelForRadio"> <input type="radio" name="ears" id="earsN"> N </label> 
+    <label class="radioButton labelForRadio"> <input type="radio" name="ears" id="earsA"> A </label>
+    </div> 
     <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsEarMites"> Ear Mites </div> 
     <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsAU"> AU </div> 
     <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsAD"> AD </div> 
     <div class="col-sm-2 col-md-2"> <input type="checkbox" id="earsAS"> AS </div> 
-    <div class="col-sm-1 col-md-1"> <input id="earsText" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-1 col-md-1"> <input id="earsText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
     <div class="col-sm-3 col-md-2">Glands/Nodes </div>
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="glandsN"> N </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="glandsA"> A </div> 
-    <div class="col-sm-1 col-md-1"> <input  id="glandsText" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-2 col-md-2">
+    <label class="radioButton labelForRadio"> <input type="radio" name="glands" id="glandsN"> N </label> 
+    <label class="radioButton labelForRadio"> <input type="radio" name="glands" id="glandsA"> A </label> 
+    </div>
+    <div class="col-sm-1 col-md-1"> <input  id="glandsText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
     <div class="col-sm-1 col-md-1">Skin </div>
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="skinN"> N </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="skinA"> A </div> 
-    <div class="col-sm-1 col-md-1"> <input id="skinText" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-2 col-md-2">
+    <label class="radioButton labelForRadio"> <input type="radio" name="skin" id="skinN"> N </label> 
+    <label class="radioButton labelForRadio"> <input type="radio" name="skin" id="skinA"> A </label> 
+    </div>
+    <div class="col-sm-1 col-md-1"> <input id="skinText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
     <div class="col-sm-2 col-md-2">Abdomen </div>
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="abdomenN"> N </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="abdomenA"> A </div> 
-    <div class="col-sm-1 col-md-1"> <input id="abdomenText" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-2 col-md-2">
+    <label class="radioButton labelForRadio"> <input type="radio" name="abdomen" id="abdomenN"> N </label> 
+    <label class="radioButton labelForRadio"> <input type="radio" name="abdomen" id="abdomenA"> A </label> 
+    </div>
+    <div class="col-sm-1 col-md-1"> <input id="abdomenText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
     <div class="col-sm-3 col-md-2">Urogential </div>
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="urogentialN"> N </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox"  id="urogentialA"> A </div> 
-    <div class="col-sm-1 col-md-1"> <input  id="urogentialText" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-2 col-md-2">
+    <label class="radioButton labelForRadio"> <input type="radio" name="urogential"id="urogentialN"> N </label> 
+    <label class="radioButton labelForRadio"> <input type="radio" name="urogential"  id="urogentialA"> A </label> 
+    </div>
+    <div class="col-sm-1 col-md-1"> <input  id="urogentialText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
     <div class="col-sm-2 col-md-2">Nervous System </div>
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="nervousSystemN"> N </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="nervousSystemA"> A </div> 
-    <div class="col-sm-1 col-md-1"> <input id="nervousSystemText" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-2 col-md-2">
+    <label class="radioButton labelForRadio"> <input type="radio" name="nervous" id="nervousSystemN"> N </label> 
+    <label class="radioButton labelForRadio"> <input type="radio" name="nervous" id="nervousSystemA"> A </label> 
+    </div>
+    <div class="col-sm-1 col-md-1"> <input id="nervousSystemText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
     <div class="col-sm-4 col-md-2">Musculoskeletal </div>
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="musculoskeletalN"> N </div> 
-    <div class="col-sm-1 col-md-1"> <input type="checkbox" id="musculoskeletalA"> A </div> 
-    <div class="col-sm-1 col-md-1"> <input id="musculoskeletalText" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-2 col-md-2">
+    <label class="radioButton labelForRadio"> <input type="radio" name="musculoskeletal" id="musculoskeletalN"> N </label> 
+    <label class="radioButton labelForRadio"> <input type="radio" name="musculoskeletal" id="musculoskeletalA"> A </label> 
+    </div>
+    <div class="col-sm-1 col-md-1"> <input id="musculoskeletalText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
     <div class="col-sm-4 col-md-2">Cardiovascular </div>
-    <div class="col-sm-1 col-md-auto"> <input type="checkbox" id="cardiovascularN"> N </div> 
-    <div class="col-sm-1 col-md-auto"> <input type="checkbox" id="cardiovascularA"> A </div> 
-    <div class="col-sm-4 col-md-4"> <input id="cardiovascularText" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-2 col-md-2">
+    <label class="radioButton labelForRadio"> <input type="radio" name="cardiovascular" id="cardiovascularN"> N </label> 
+    <label class="radioButton labelForRadio"> <input type="radio" name="cardiovascular" id="cardiovascularA"> A </label> 
+    </div>
+    <div class="col-sm-4 col-md-4"> <input id="cardiovascularText" class="medicalTextInput" value="">  </div>
     <div class="col-sm-2 col-md-1"> HR </div>
-    <div class="col-sm-1 col-md-1"> <input id="hrText" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-1 col-md-1"> <input id="hrText" class="medicalTextInput" value="">  </div>
 </div>
 <div class="row">
     <div class="col-sm-2 col-md-2 ">Respiratory </div>
-    <div class="col-sm-2 col-md-1 "> <input type="checkbox" id="respiratoryN"> N </div> 
-    <div class="col-sm-2 col-md-1 "> <input type="checkbox" id="respiratoryA"> A </div> 
-    <div class="col-sm-4 col-md-4"> <input id="respiratoryText1" class="inputMedLabel" value="">  </div>
+    <div class="col-sm-2 col-md-2">
+    <label class="radioButton labelForRadio"> <input type="radio" name="respiratory" id="respiratoryN"> N </label> 
+    <label class="radioButton labelForRadio"> <input type="radio" name="respiratory" id="respiratoryA"> A </label> 
+    </div>
+    <div class="col-sm-4 col-md-4"> <input id="respiratoryText1" class="medicalTextInput" value="">  </div>
     <div class="col-sm-2 col-md-1"> RR </div>
-    <div class="col-sm-3 col-md-1 "> <input id="respiratoryText2" class="inputMedLabel" value="">  </div>
-</div>
-</div>
-
+    <div class="col-sm-3 col-md-1 "> <input id="respiratoryText2" class="medicalTextInput" value="">  </div>
 </div>
 
-
-
-<div class="col-sm-3 col-md-3 col-sm-offset-1 col-md-offset-1">
-
-<div >
+<div class="row">
 <label for="notes">Notes: </label>
 <br>
 <textarea id="notes" rows="10" cols="40" value=""> </textarea>
 <br>
 </div>
 
-
-<div >
+<div class="row">
+<div>
 <label for="medications">Medications: </label>
 
 <div id="medicationDiv">
 
 </div>
 
-<button type="submit" id="add-medication-button"{{action 'addMedication'}}>Add a medication prescription</button>
+<button type="submit" class="addButton" id="add-medication-button"{{action 'addMedication'}}>Add</button>
 </div>
 
 
@@ -141,18 +158,37 @@
 
 </div>
 
-<button type="submit" id="add-vaccine-button"{{action 'addVaccine'}}>Add a vaccine</button>
+<button type="submit" class="addButton" id="add-vaccine-button"{{action 'addVaccine'}}>Add</button>
+</div>
+
+<div >
+<label for="other">Other: </label>
+<br>
+
+<div id="otherDiv">
+
+</div>
+
+<button type="submit" class="addButton" id="add-other-button"{{action 'addOther'}}>Add</button>
+</div>
+
+</div>
+</div>
+
 </div>
 
 
+<div class="col-sm-3 col-md-3 col-sm-offset-1 col-md-offset-1">
+
+
 <div >
-<label for="followUpNotes">Please add some follow up notes: </label>
+<label for="followUpNotes">Follow up notes: </label>
 <br>
 <textarea id="followUpNotes" rows="5" cols="40" value=""> </textarea>
 </div>
 
 <div >
-<label for="summary">Please enter a short summary: </label>
+<label for="summary">Short summary: </label>
 <br>
 <textarea id="summary" rows="5" cols="40" value=""> </textarea>
 </div>
@@ -168,16 +204,16 @@
     width=width
     id='signature'
 }}
-  <button type="submit" id="create-medical-button"{{action 'createMedicalRecord'}}>Create the medical record</button>
+  <button type="submit" class= "medical-button" id="clear-signature-button"{{action 'clearSignature'}}>Clear Signature</button>
+
+  <button type="submit" class= "medical-button" id="create-medical-button"{{action 'createMedicalRecord'}}>Create medical record</button>
 </div>
 
 </div>
 
 
-  
-
-</div>
 
 <div id = "alert_placeholder"></div>
 
+</div>
 </div>

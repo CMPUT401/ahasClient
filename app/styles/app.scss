@@ -303,14 +303,44 @@ textarea{
      background: #fff
   }
 
-#create-medical-button{
-    margin-left: 5px; 
+.medical-button{
+    margin: 5px;
+    margin-top: 15px;
+    width: 180px; 
+    padding-top: 5px;
+    padding-bottom: 5px;
 
 
 }
 
 .status{
     padding: 15px;
+}
+
+.radioButton{
+    display: inline;
+    width: 50%;
+    padding: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.labelForRadio{
+   font-weight: normal;
+}
+
+.medicalTextInput{
+    width: 100px;
+}
+
+.addButton{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.removeButton{
+    line-height: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+
 }
 
 /* form creation/submission */

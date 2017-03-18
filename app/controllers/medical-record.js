@@ -27,7 +27,7 @@ export default Ember.Controller.extend({
             
             if( this.get('signature').length !== 0 ){
 
-             var vaccines = gatherVaccines();
+             //also patient id
              var medications = gatherMedications();
 
 
@@ -40,7 +40,8 @@ export default Ember.Controller.extend({
              type: 'application/json',
              data: { 
                 // medications: medications,
-                 //vaccines: vaccines, 
+                //add reminder date
+                //other
                  medical_record: {
    
              data: date,  
@@ -132,20 +133,51 @@ export default Ember.Controller.extend({
       },
 
       addMedication(){
-          var divMed = document.getElementById('medicationDiv');
-          var textMed= document.createElement('div');
-          textMed.innerHTML = "<input class='medications '>";
-          divMed.appendChild(textMed);
+          var divMedication = document.getElementById('medicationDiv');
+          var textMedication = document.createElement('div');
+          var buttonMedication =  document.createElement('button');
+          buttonMedication.setAttribute('class', 'removeButton');
+          buttonMedication.setAttribute('id', 'removeOther');
+          buttonMedication.setAttribute('type', 'submit');
+          buttonMedication.innerHTML = 'x';
+          buttonMedication.onclick = function() { $(this).parent('div').remove();};
+          textMedication.innerHTML = "<input class='medication' >";
+          textMedication.appendChild(buttonMedication);
+          divMedication.appendChild(textMedication);
 
       },
 
       addVaccine(){
           var divVaccine = document.getElementById('vaccineDiv');
           var textVaccine = document.createElement('div');
-          textVaccine.innerHTML = "<input class='vaccines' >";
+          var buttonVaccine =  document.createElement('button');
+          buttonVaccine.setAttribute('class', 'removeButton');
+          buttonVaccine.setAttribute('id', 'removeOther');
+          buttonVaccine.setAttribute('type', 'submit');
+          buttonVaccine.innerHTML = 'x';
+          buttonVaccine.onclick = function() { $(this).parent('div').remove();};
+          textVaccine.innerHTML = "<input class='vaccine' >";
+          textVaccine.appendChild(buttonVaccine);
           divVaccine.appendChild(textVaccine);
 
+      },
+
+      addOther(){
+          var divOther = document.getElementById('otherDiv');
+          var textOther = document.createElement('div');
+          var buttonOther =  document.createElement('button');
+          buttonOther.setAttribute('class', 'removeButton');
+          buttonOther.setAttribute('id', 'removeOther');
+          buttonOther.setAttribute('type', 'submit');
+          buttonOther.innerHTML = 'x';
+          buttonOther.onclick = function() { $(this).parent('div').remove();};
+          textOther.innerHTML = "<input class='other' >";
+          textOther.appendChild(buttonOther);
+          divOther.appendChild(textOther);
+
       }
+
+      
 
     }
 });
@@ -166,15 +198,6 @@ function exportSignature(){
             return(img);
 }
 
-function gatherVaccines() {
-    var vaccines = [];
-    for (var i  = 0; i<document.getElementsByClassName('vaccines').length; i++){
-        vaccines.push(document.getElementsByClassName('vaccines')[i].value);
-
-          }
-    return(vaccines);
-
-}
 
 function gatherMedications(){
     var medications = [];
