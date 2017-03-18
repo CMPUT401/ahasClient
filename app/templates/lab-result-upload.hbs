@@ -2,6 +2,10 @@
 	<input  type = "file" id = "files" name = "files[]" mulitple />
 </div>
 <output id = "list"></output> -->
-{{#file-picker fileLoaded="fileLoaded"}}
-	Drag here or click to upload a file
-{{/file-picker}}
+<div>
+	{{#file-picker fileLoaded="fileLoaded" readAs="readAsDataURL" }}
+		Drag here or click to upload a file
+	{{/file-picker}}
+</div>
+
+<button id = "sendLabResults" {{action "sendFile" fileLoaded}}>Save</button>

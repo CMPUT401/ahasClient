@@ -8,7 +8,9 @@ export default Ember.Controller.extend({
 			console.log("data is ");
 			console.log(file.data);
 			console.log("size is " + file.size + " bytes");
+		},
+		sendFile:function(file){
+			console.log("uploading file " + file.name);
 		}
-		
 	}
 });
