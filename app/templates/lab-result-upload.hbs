@@ -1,4 +1,7 @@
-<div {{action 'clickChooseFile'}}>
+<!-- <div {{action 'clickChooseFile'}}>
 	<input  type = "file" id = "files" name = "files[]" mulitple />
 </div>
-<output id = "list"></output>
+<output id = "list"></output> -->
+{{#file-picker fileLoaded="fileLoaded"}}
+	Drag here or click to upload a file
+{{/file-picker}}
