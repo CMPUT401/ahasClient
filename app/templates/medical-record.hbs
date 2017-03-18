@@ -189,7 +189,9 @@
 <label for="medications">Medications: </label>
 
 <div id="medicationDiv">
-
+    <div>
+{{bootstrap-datepicker id="datePickerMedication"}}
+</div>
 </div>
 
 <button type="submit" class="addButton" id="add-medication-button"{{action 'addMedication'}}>Add</button>
@@ -201,7 +203,9 @@
 <br>
 
 <div id="vaccineDiv">
-
+    <div>
+    {{bootstrap-datepicker id="datePickerVaccine" }}
+    </div>
 </div>
 
 <button type="submit" class="addButton" id="add-vaccine-button"{{action 'addVaccine'}}>Add</button>
@@ -212,7 +216,9 @@
 <br>
 
 <div id="otherDiv">
-
+      <div>
+{{bootstrap-datepicker id="datePickerOther"  }}
+</div>
 </div>
 
 <button type="submit" class="addButton" id="add-other-button"{{action 'addOther'}}>Add</button>

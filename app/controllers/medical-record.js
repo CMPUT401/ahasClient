@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import datePickerComponent from '../components/date-picker'
 
 export default Ember.Controller.extend({
     color: '#000',  // default
@@ -31,10 +32,10 @@ export default Ember.Controller.extend({
              var medications = gatherMedications(1);
 
              var bcsvalue= document.getElementById('bcsvalue');
-             var bcsVal = type.options[bcsvalue.selectedIndex].text;
+             var bcsVal = bcsvalue.options[bcsvalue.selectedIndex].text;
 
              var unit = document.getElementById('unit');
-             var weightUnit = type.options[unit.selectedIndex].text;
+             var weightUnit = unit.options[unit.selectedIndex].text;
 
 
             //note hardcoded patients id until it is passed to me.
@@ -153,7 +154,15 @@ export default Ember.Controller.extend({
           buttonMedication.setAttribute('type', 'submit');
           buttonMedication.innerHTML = 'x';
           buttonMedication.onclick = function() { Ember.$(this).parent('div').remove();};
+
+          var dateMedication =  document.createElement('input');
+          dateMedication.setAttribute('id', 'reminderMedication');
+          dateMedication.onclick = function() {
+               this.value= document.getElementById('datePickerMedication').value;
+            };
+     
           textMedication.innerHTML = "<input class='medication' >";
+          textMedication.appendChild(dateMedication);
           textMedication.appendChild(buttonMedication);
           divMedication.appendChild(textMedication);
 
@@ -168,8 +177,20 @@ export default Ember.Controller.extend({
           buttonVaccine.setAttribute('type', 'submit');
           buttonVaccine.innerHTML = 'x';
           buttonVaccine.onclick = function() { Ember.$(this).parent('div').remove();};
-          textVaccine.innerHTML = "<input class='vaccine' >";
+
+          var dateVaccine =  document.createElement('input');
+          dateVaccine.setAttribute('id', 'reminderVaccine');
+          dateVaccine.onclick = function() {
+               this.value= document.getElementById('datePickerVaccine').value;
+            };
+
+          textVaccine.innerHTML = "<input class='vaccine' >"; //<input id='date'>
+         // var datePicker = datePickerComponent.create(); //.appendTo(textVaccine); //this doesnt work...
+          textVaccine.appendChild(dateVaccine);
           textVaccine.appendChild(buttonVaccine);
+          //console.log(datePicker);
+          //console.log(buttonVaccine);
+          //textVaccine.append(datePicker);
           divVaccine.appendChild(textVaccine);
 
       },
@@ -183,7 +204,16 @@ export default Ember.Controller.extend({
           buttonOther.setAttribute('type', 'submit');
           buttonOther.innerHTML = 'x';
           buttonOther.onclick = function() { Ember.$(this).parent('div').remove();};
+
+          var dateOther =  document.createElement('input');
+          dateOther.setAttribute('id', 'reminderOther');
+          dateOther.onclick = function() {
+               this.value= document.getElementById('datePickerOther').value;
+            };
+
           textOther.innerHTML = "<input class='other' >";
+
+          textOther.appendChild(dateOther);
           textOther.appendChild(buttonOther);
           divOther.appendChild(textOther);
 
@@ -240,15 +270,15 @@ function gatherMedications(id){
           }
 
     var vaccine = document.getElementsByClassName('vaccine');
-    for (var i  = 0; i<vaccine.length; i++){
-        var formattedVaccine = { type:"vaccine" , name:vaccine[i].value, reminder:"", patientid:id};
+    for (var j  = 0; j<vaccine.length; j++){
+        var formattedVaccine = { type:"vaccine" , name:vaccine[j].value, reminder:"", patientid:id};
         medications.push(formattedVaccine);
 
           }
 
     var other = document.getElementsByClassName('other');
-    for (var i  = 0; i<other.length; i++){
-        var formattedOther = { type:"other" , name:other[i].value, reminder:"", patientid:id};
+    for (var k  = 0; k<other.length; k++){
+        var formattedOther = { type:"other" , name:other[k].value, reminder:"", patientid:id};
         medications.push(formattedOther);
 
           }
