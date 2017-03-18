@@ -5,7 +5,7 @@ export default Ember.Component.extend({
     tagName: 'bootstrap-datepicker',
 actions: {
     changeDateAction(){
-        console.log("handlded", document.getElementById('vaccineDiv'));
+        console.log("handled", document.getElementById('vaccineDiv'));
     }
 }
 });

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import datePickerComponent from '../components/date-picker'
+import datePickerComponent from '../components/date-picker';
 
 export default Ember.Controller.extend({
     color: '#000',  // default
@@ -104,7 +104,7 @@ export default Ember.Controller.extend({
              respiratoryN: document.getElementById('respiratoryN').checked,
              respiratoryA: document.getElementById('respiratoryA').checked,
 
-           /*  mcsN: document.getElementById('mcsN').checked,
+             mcsN: document.getElementById('mcsN').checked,
              mcsMild: document.getElementById('mcsMild').checked,
              mcsMod: document.getElementById('mcsMod').checked,
              mcsSevere: document.getElementById('mcsSevere').checked,
@@ -112,7 +112,7 @@ export default Ember.Controller.extend({
 
              //dropdown values
              weightUnit: weightUnit, 
-             bcsVal: bcsVal,*/
+             bcsVal: bcsVal,
 
 
              //textareas
@@ -157,11 +157,13 @@ export default Ember.Controller.extend({
 
           var dateMedication =  document.createElement('input');
           dateMedication.setAttribute('id', 'reminderMedication');
+          dateMedication.setAttribute('class', 'reminderMedication');
+          dateMedication.setAttribute('placeholder', 'use calendar to set');
           dateMedication.onclick = function() {
                this.value= document.getElementById('datePickerMedication').value;
             };
      
-          textMedication.innerHTML = "<input class='medication' >";
+          textMedication.innerHTML = "<input class='medication' placeholder='medication type'>";
           textMedication.appendChild(dateMedication);
           textMedication.appendChild(buttonMedication);
           divMedication.appendChild(textMedication);
@@ -180,11 +182,13 @@ export default Ember.Controller.extend({
 
           var dateVaccine =  document.createElement('input');
           dateVaccine.setAttribute('id', 'reminderVaccine');
+          dateVaccine.setAttribute('class', 'reminderVaccine');
+          dateVaccine.setAttribute('placeholder', 'use calendar to set');
           dateVaccine.onclick = function() {
                this.value= document.getElementById('datePickerVaccine').value;
             };
 
-          textVaccine.innerHTML = "<input class='vaccine' >"; //<input id='date'>
+          textVaccine.innerHTML = "<input class='vaccine' placeholder='vaccine type'>"; //<input id='date'>
          // var datePicker = datePickerComponent.create(); //.appendTo(textVaccine); //this doesnt work...
           textVaccine.appendChild(dateVaccine);
           textVaccine.appendChild(buttonVaccine);
@@ -207,11 +211,13 @@ export default Ember.Controller.extend({
 
           var dateOther =  document.createElement('input');
           dateOther.setAttribute('id', 'reminderOther');
+          dateOther.setAttribute('class', 'reminderVaccine');
+          dateOther.setAttribute('placeholder', 'use calendar to set');
           dateOther.onclick = function() {
                this.value= document.getElementById('datePickerOther').value;
             };
 
-          textOther.innerHTML = "<input class='other' >";
+          textOther.innerHTML = "<input class='other' placeholder='other type'>";
 
           textOther.appendChild(dateOther);
           textOther.appendChild(buttonOther);
@@ -263,22 +269,25 @@ function exportSignature(){
 function gatherMedications(id){
     var medications = [];
     var medication = document.getElementsByClassName('medication');
+    var medicationReminders = document.getElementsByClassName('reminderMedication');
     for (var i  = 0; i<medication.length; i++){
-        var formattedMed = { type:"medicine" , name:medication[i].value, reminder:"", patientid:id };
+        var formattedMed = { type:"medicine" , name:medication[i].value, reminder:medicationReminders[i].value, patientid:id };
         medications.push(formattedMed);
 
           }
 
     var vaccine = document.getElementsByClassName('vaccine');
+    var vaccineReminders = document.getElementsByClassName('reminderVaccine');
     for (var j  = 0; j<vaccine.length; j++){
-        var formattedVaccine = { type:"vaccine" , name:vaccine[j].value, reminder:"", patientid:id};
+        var formattedVaccine = { type:"vaccine" , name:vaccine[j].value, reminder:vaccineReminders[j].value, patientid:id};
         medications.push(formattedVaccine);
 
           }
 
     var other = document.getElementsByClassName('other');
+    var otherReminders = document.getElementsByClassName('reminderOther');
     for (var k  = 0; k<other.length; k++){
-        var formattedOther = { type:"other" , name:other[k].value, reminder:"", patientid:id};
+        var formattedOther = { type:"other" , name:other[k].value, reminder:otherReminders[k].value, patientid:id};
         medications.push(formattedOther);
 
           }
