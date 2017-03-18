@@ -343,6 +343,7 @@ textarea{
 .addButton{
     padding-left: 10px;
     padding-right: 10px;
+    margin-top: 10px;
 }
 .removeButton{
     line-height: 25px;
@@ -359,6 +360,9 @@ textarea{
 }
 .medHeading{
     text-align: center;
+}
+.bcsSelect{
+    width: 75px;
 }
 
 /* form creation/submission */

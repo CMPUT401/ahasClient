@@ -28,10 +28,13 @@ export default Ember.Controller.extend({
             if( this.get('signature').length !== 0 ){
 
              //also patient id
-             var medications = gatherMedications();
+             var medications = gatherMedications(1);
 
+             var bcsvalue= document.getElementById('bcsvalue');
+             var bcsVal = type.options[bcsvalue.selectedIndex].text;
 
-           // console.log("the info",medications, vaccines, document.getElementById('temperatureText').value,  document.getElementById('eyesText').value, document.getElementById('oralText').value, document.getElementById('earsText').value, document.getElementById('glandsText').value, document.getElementById('skinText').value, document.getElementById('respiratoryText2').value, document.getElementById('notes').value, document.getElementById('summary').value);
+             var unit = document.getElementById('unit');
+             var weightUnit = type.options[unit.selectedIndex].text;
 
 
             //note hardcoded patients id until it is passed to me.
@@ -100,6 +103,15 @@ export default Ember.Controller.extend({
              respiratoryN: document.getElementById('respiratoryN').checked,
              respiratoryA: document.getElementById('respiratoryA').checked,
 
+           /*  mcsN: document.getElementById('mcsN').checked,
+             mcsMild: document.getElementById('mcsMild').checked,
+             mcsMod: document.getElementById('mcsMod').checked,
+             mcsSevere: document.getElementById('mcsSevere').checked,
+             weight: document.getElementById('weight').value,
+
+             //dropdown values
+             weightUnit: weightUnit, 
+             bcsVal: bcsVal,*/
 
 
              //textareas
@@ -186,6 +198,16 @@ export default Ember.Controller.extend({
           for (var i=0; i<normals.length; i++){
               normals[i].checked = true;
           }
+      }, 
+      uncheckAll(){
+          var normals = document.getElementsByClassName("norm");
+          for (var i=0; i<normals.length; i++){
+              normals[i].checked = false;
+          }
+      }, 
+
+      printMeds(){
+          gatherMedications();
       }
 
     }
@@ -208,10 +230,26 @@ function exportSignature(){
 }
 
 
-function gatherMedications(){
+function gatherMedications(id){
     var medications = [];
-    for (var i  = 0; i<document.getElementsByClassName('medications').length; i++){
-        medications.push(document.getElementsByClassName('medications')[i].value);
+    var medication = document.getElementsByClassName('medication');
+    for (var i  = 0; i<medication.length; i++){
+        var formattedMed = { type:"medicine" , name:medication[i].value, reminder:"", patientid:id };
+        medications.push(formattedMed);
+
+          }
+
+    var vaccine = document.getElementsByClassName('vaccine');
+    for (var i  = 0; i<vaccine.length; i++){
+        var formattedVaccine = { type:"vaccine" , name:vaccine[i].value, reminder:"", patientid:id};
+        medications.push(formattedVaccine);
+
+          }
+
+    var other = document.getElementsByClassName('other');
+    for (var i  = 0; i<other.length; i++){
+        var formattedOther = { type:"other" , name:other[i].value, reminder:"", patientid:id};
+        medications.push(formattedOther);
 
           }
     console.log(medications);
