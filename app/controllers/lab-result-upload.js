@@ -1,25 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	// actions: {
-	// 	clickChooseFile: function(){
-	// 		console.log("click choose file");
-	// 		document.getElementById('files').addEventListener('change', handleFileSelect, false);
-	// 		return true;
-	// 	}
-	// }
+	actions: {
+		fileLoaded: function(file){
+			console.log("name is " + file.name);
+			console.log("type is " + file.type);
+			console.log("data is ");
+			console.log(file.data);
+			console.log("size is " + file.size + " bytes");
+		}
+		
+	}
 });
-// function handleFileSelect(evt){
-	// from https://www.html5rocks.com/en/tutorials/file/dndfiles/
-// 	console.log("handling file select");
-// 	var files = evt.target.files; // FileList object of File objects
-
-// 	var output = [];
-// 	for(var i = 0, f; f = files[i]; i++){
-// 		output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-// 			f.size, 'bytes, last modified: ', f.lastModifiedDate ? 
-// 			f.lastModifiedDatetoLocalDateString(): 'n/a', '</li>');
-// 	}
-// 	document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-// 	return true;
-// }
