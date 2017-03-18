@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
+	//queryParams: ['clientID'],
 	session: Ember.inject.service(),
 	actions: 
 	{
@@ -16,6 +17,7 @@ export default Ember.Controller.extend({
 				type: 'application/json',
 				data: { patient:
 					{
+
 					client: this.get('model.clientid'),
 					species: 	this.get('patientSpecies'),
 					first_name: this.get('patientFirstName'),
@@ -33,7 +35,9 @@ export default Ember.Controller.extend({
 		
 			});
 			ajaxPost.then(function(data){
+				//console.log(this.c_ID);
 				console.log("status is " + JSON.stringify(data));
+				self.transitionToRoute('search-patient');
 			},
 			function(response){
 				if (response === false){

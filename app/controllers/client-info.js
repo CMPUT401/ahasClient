@@ -4,7 +4,10 @@ export default Ember.Controller.extend({
 	actions: {
 		newPatient: function(clientID){
 			console.log(clientID);
-			this.transitionToRoute("/new-patient/" + clientID);
+			this.transitionToRoute("/new-patient/").then(function(newRoute){
+				newRoute.controller.set("c_ID",clientID)
+			});
+			//this.transitionTo('new-patient', { queryParams: { clientID: '1' }});
 		},
 		viewPatient: function(petId){
 			console.log(petId);

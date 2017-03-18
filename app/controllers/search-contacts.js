@@ -20,7 +20,9 @@ export default Ember.Controller.extend({
         }
             else{
             
-            filter(input, this.get('model') , this);
+            var lowerCaseInput = input.toLowerCase();
+
+            filter(lowerCaseInput, this.get('model') , this);
            
             }
 
@@ -29,14 +31,21 @@ export default Ember.Controller.extend({
 });
 
 function filter(input, model, self){
+
+    var reg = new RegExp( input );
+    console.log(reg);
     
     //filter volunteers
     var resultVolunteer = [];
     for (var i = 0; i<model.contactsVolunteer.length; i++){
+
+        var firstNameVolunteer = model.contactsVolunteer[i].first_name.toLowerCase();
+        var lastNameVolunteer = model.contactsVolunteer[i].last_name.toLowerCase();
+        var volunteerFullName = firstNameVolunteer + " " + lastNameVolunteer;
         
-        if (input === model.contactsVolunteer[i].first_name || input === model.contactsVolunteer[i].last_name){
+        if (input ===  firstNameVolunteer || input === lastNameVolunteer || input === volunteerFullName || reg.test(volunteerFullName)){
             
-            var contactVolunteer = { first_name : model.contactsVolunteer[i].first_name , last_name : model.contactsVolunteer[i].last_name };
+            var contactVolunteer = { first_name : model.contactsVolunteer[i].first_name , last_name : model.contactsVolunteer[i].last_name, id: model.contactsVolunteer[i].id };
             resultVolunteer.push(contactVolunteer);
             
         }
@@ -48,10 +57,14 @@ function filter(input, model, self){
     //filter veterinarians
     var resultVeterinarian = [];
     for (var x = 0; x<model.contactsVeterinarian.length; x++){
+
+        var firstNameVeterinarian = model.contactsVeterinarian[x].first_name.toLowerCase();
+        var lastNameVetrinarian = model.contactsVeterinarian[x].last_name.toLowerCase();
+        var veterinarianFullName = firstNameVeterinarian + " " + lastNameVetrinarian;
          
-        if (input === model.contactsVeterinarian[x].first_name || input === model.contactsVeterinarian[x].last_name){
+        if (input === firstNameVeterinarian || input === lastNameVetrinarian || input === veterinarianFullName || reg.test(veterinarianFullName)){
             
-            var contactVeterinarian = { first_name : model.contactsVeterinarian[x].first_name , last_name : model.contactsVeterinarian[x].last_name };
+            var contactVeterinarian = { first_name : model.contactsVeterinarian[x].first_name , last_name : model.contactsVeterinarian[x].last_name, id: model.contactsVeterinarian[x].id };
             resultVeterinarian.push(contactVeterinarian);
            
         }
@@ -59,13 +72,18 @@ function filter(input, model, self){
     }
     self.set('model.contactsFilteredVeterinarian', resultVeterinarian);
 
+
     //filter laboratory
     var resultLaboratory = [];
     for (var j = 0; j<model.contactsLaboratory.length; j++){
-        
-        if (input === model.contactsLaboratory[j].first_name || input === model.contactsLaboratory[j].last_name){
 
-            var contactLaboratory = { first_name : model.contactsLaboratory[j].first_name , last_name : model.contactsLaboratory[j].last_name };
+        var firstNameLaboratory = model.contactsLaboratory[j].first_name.toLowerCase();
+        var lastNameLaboratory = model.contactsLaboratory[j].last_name.toLowerCase();
+        var LaboratoryFullName = firstNameLaboratory + " " + lastNameLaboratory;
+        
+        if (input === firstNameLaboratory || input === lastNameLaboratory || input === LaboratoryFullName || reg.test(LaboratoryFullName)){
+
+            var contactLaboratory = { first_name : model.contactsLaboratory[j].first_name , last_name : model.contactsLaboratory[j].last_name , id: model.contactsLaboratory[j].id};
             resultLaboratory.push(contactLaboratory);
         }
 
