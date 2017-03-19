@@ -5,6 +5,11 @@ export default Ember.Route.extend({
 		checkFileApiSupport();
 		//document.getElementById('files').addEventListener('change', handleFileSelect, false);
 		//console.log(document.getElementById('files'));
+	},
+	model(param){
+		return {
+			patientId: param.patientID
+		};
 	}
 });
 
