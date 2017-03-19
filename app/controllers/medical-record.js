@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import datePickerComponent from '../components/date-picker';
 
 export default Ember.Controller.extend({
     color: '#000',  // default
@@ -28,8 +27,7 @@ export default Ember.Controller.extend({
             
             if( this.get('signature').length !== 0 ){
 
-             //also patient id
-             var medications = gatherMedications(1);
+             var medications = gatherMedications(this.get('model.patientID'));
 
              var bcsvalue= document.getElementById('bcsvalue');
              var bcsVal = bcsvalue.options[bcsvalue.selectedIndex].text;
@@ -43,9 +41,7 @@ export default Ember.Controller.extend({
              var medicalRecord = this.get('ajax').post('/api/patients/'+ this.get('model.patientID')+'/medical_records', {
              type: 'application/json',
              data: { 
-                // medications: medications,
-                //add reminder date
-                //other
+                 medications: medications,
                  medical_record: {
    
              data: date,  
@@ -188,13 +184,9 @@ export default Ember.Controller.extend({
                this.value= document.getElementById('datePickerVaccine').value;
             };
 
-          textVaccine.innerHTML = "<input class='vaccine' placeholder='vaccine type'>"; //<input id='date'>
-         // var datePicker = datePickerComponent.create(); //.appendTo(textVaccine); //this doesnt work...
+          textVaccine.innerHTML = "<input class='vaccine' placeholder='vaccine type'>"; 
           textVaccine.appendChild(dateVaccine);
           textVaccine.appendChild(buttonVaccine);
-          //console.log(datePicker);
-          //console.log(buttonVaccine);
-          //textVaccine.append(datePicker);
           divVaccine.appendChild(textVaccine);
 
       },
@@ -218,7 +210,6 @@ export default Ember.Controller.extend({
             };
 
           textOther.innerHTML = "<input class='other' placeholder='other type'>";
-
           textOther.appendChild(dateOther);
           textOther.appendChild(buttonOther);
           divOther.appendChild(textOther);
@@ -243,7 +234,7 @@ export default Ember.Controller.extend({
       }, 
 
       printMeds(){
-          gatherMedications();
+          gatherMedications(this.get('model.patientID'));
       }
 
     }
@@ -271,7 +262,7 @@ function gatherMedications(id){
     var medication = document.getElementsByClassName('medication');
     var medicationReminders = document.getElementsByClassName('reminderMedication');
     for (var i  = 0; i<medication.length; i++){
-        var formattedMed = { type:"medicine" , name:medication[i].value, reminder:medicationReminders[i].value, patientid:id };
+        var formattedMed = { type:"medicine" , name:medication[i].value, reminder:medicationReminders[i].value, patient_id:id };
         medications.push(formattedMed);
 
           }
@@ -279,7 +270,7 @@ function gatherMedications(id){
     var vaccine = document.getElementsByClassName('vaccine');
     var vaccineReminders = document.getElementsByClassName('reminderVaccine');
     for (var j  = 0; j<vaccine.length; j++){
-        var formattedVaccine = { type:"vaccine" , name:vaccine[j].value, reminder:vaccineReminders[j].value, patientid:id};
+        var formattedVaccine = { type:"vaccine" , name:vaccine[j].value, reminder:vaccineReminders[j].value, patient_id:id};
         medications.push(formattedVaccine);
 
           }
@@ -287,7 +278,7 @@ function gatherMedications(id){
     var other = document.getElementsByClassName('other');
     var otherReminders = document.getElementsByClassName('reminderOther');
     for (var k  = 0; k<other.length; k++){
-        var formattedOther = { type:"other" , name:other[k].value, reminder:otherReminders[k].value, patientid:id};
+        var formattedOther = { type:"other" , name:other[k].value, reminder:otherReminders[k].value, patient_id:id};
         medications.push(formattedOther);
 
           }

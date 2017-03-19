@@ -6,7 +6,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
         return {
         patientID: params.patientID,
         date: parseDate()
-        }
+        };
     }
 });
 
