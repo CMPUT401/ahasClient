@@ -3,6 +3,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend( AuthenticatedRouteMixin , {
     ajax: Ember.inject.service(),
+    index : 1,
 	model(params) { 
 
         //console.log(document.getElementById("followUpNotes"));
@@ -33,7 +34,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/8' 
+		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/15' 
 			).then(function(data){
 				
                 //undefined!!!!!!!!!!!
@@ -107,8 +108,16 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             weight: data.medical_record.weight,
 
                             //dropdowns
-                            weightUnit: data.medical_record.weightUnit, //setDropdowns(data.medical_record.weightUnit), 
-                            bcsVal: data.medical_record.bcsVal,
+                            weightUnit: setDropdowns(data.medical_record.weightUnit), 
+                            bcsVal1: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal2: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal3: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal4: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal5: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal6: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal7: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal8: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal9: setDropdownBCS(data.medical_record.bcsVal, self),
 
 
                             exam_notes: data.medical_record.exam_notes, 
@@ -142,4 +151,21 @@ function parseDate(date){
         var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
         var whole = days[day] +" "+ months[month] +" "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
         return(whole);
+}
+
+
+function setDropdowns(value){
+    if (value == "kg"){
+        return(true);
+    }
+    return(false);
+}
+
+function setDropdownBCS(value, self){
+    if(value === self.get('index') ){
+        self.set('index' , self.get('index')+1);
+        return(true);
+    }
+    self.set('index' , self.get('index')+1);
+    return(false);
 }

@@ -3,10 +3,10 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend( AuthenticatedRouteMixin , {
     ajax: Ember.inject.service(),
+    index : 1,
 	model(params) { 
 
         //console.log(document.getElementById("followUpNotes"));
-
         var self = this;
 
       /*  var ajaxGet = new Ember.RSVP.Promise((resolve) =>
@@ -33,11 +33,11 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/8' 
+		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/15' 
 			).then(function(data){
 				
                 //undefined!!!!!!!!!!!
-                console.log(data.medical_record.oralA);
+                console.log(data.medical_record.oralA, data.medical_record.oralN);
               
             
 				Ember.run(function() {
@@ -107,8 +107,16 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             weight: data.medical_record.weight,
 
                             //dropdowns
-                            weightUnit: data.medical_record.weightUnit, //setDropdowns(data.medical_record.weightUnit), 
-                            bcsVal: data.medical_record.bcsVal,
+                            weightUnit: setDropdowns(data.medical_record.weightUnit), 
+                            bcsVal1: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal2: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal3: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal4: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal5: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal6: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal7: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal8: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal9: setDropdownBCS(data.medical_record.bcsVal, self),
 
 
                             exam_notes: data.medical_record.exam_notes, 
@@ -130,6 +138,13 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 		return(ajaxGet);
 	},
 
+    setupController(controller, model) {
+    // Call _super for default behavior
+    this._super(controller, model);
+    //going to try to use this to fix nulls displaying problem
+    console.log(model.glands);
+  }
+
 });
 
 function parseDate(date){
@@ -144,17 +159,19 @@ function parseDate(date){
         return(whole);
 }
 
-/*
-{{#if model.attitudeBAR }}
-        <input type="checkbox" id="attitudeBAR" disabled checked="true"> BAR 
-        {{else}}
-         <input type="checkbox" id="attitudeBAR" disabled > BAR 
-         {{/if}}*/
-
 function setDropdowns(value){
-    //ugh idk why cannot set. 
-    var element = document.getElementById("unit");
-    console.log( document, document.getElementById("unit"));
-    //element.value = value;
-    //return(true);
+    if (value == "kg"){
+        return(true);
+    }
+    return(false);
 }
+
+function setDropdownBCS(value, self){
+    if(value === self.get('index') ){
+        self.set('index' , self.get('index')+1);
+        return(true);
+    }
+    self.set('index' , self.get('index')+1);
+    return(false);
+}
+
