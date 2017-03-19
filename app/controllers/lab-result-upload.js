@@ -14,6 +14,7 @@ export default Ember.Controller.extend({
 			// console.log("size is " + file.size + " bytes");
 		},
 		sendLabResults: function(patientId){
+			document.getElementById("saveLabResults").disabled = true;
 			console.log("uploading file " + this.loadedFile.name + 
 				" " + this.loadedFile.data);
 			console.log("patient id is " + patientId);
@@ -30,8 +31,10 @@ export default Ember.Controller.extend({
 				}},
 			}).then(function(response){
 				console.log("status is " +JSON.stringify(response));
+				self.transitionToRoute('/view-patient/' + patientId);
 
 			}, function(response){
+				document.getElementById("saveLabResults").disabled = false;
 				console.log("status is " + JSON.stringify(response));
 				if(response === false){
 					if(self.get('session.isAuthenticated')){
