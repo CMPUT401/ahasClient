@@ -40,7 +40,7 @@ export default Ember.Controller.extend({
 
             //note hardcoded patients id until it is passed to me.
             //also important note: the commented out things to send are to aniticipated to be implemented on the backend later on.
-             var medicalRecord = this.get('ajax').post('/api/patients/1/medical_records', {
+             var medicalRecord = this.get('ajax').post('/api/patients/'+ this.get('model.patientID')+'/medical_records', {
              type: 'application/json',
              data: { 
                 // medications: medications,
@@ -49,7 +49,7 @@ export default Ember.Controller.extend({
                  medical_record: {
    
              data: date,  
-             patient_id: 1 , //for now only
+             patient_id: this.get('model.patientID'),
              
              signature: exportSignature(this.get('stringifiedSignature')), 
 
