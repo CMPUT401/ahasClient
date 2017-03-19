@@ -16,8 +16,8 @@ export default Ember.Controller.extend({
 			console.log("uploading file " + this.loadedFile.name + 
 				" " + this.loadedFile.data);
 			console.log("patient id is " + patientId);
-			var = self;
-			let ajaxPost = this.get('ajax').post('api/lab-results' + patientId, {
+			var self = this;
+			let ajaxPost = this.get('ajax').post('api/lab-results/' + patientId, {
 				type: 'application/json',
 				data: {lab_result: {
 					file_name: this.loadedFile.name,
@@ -27,7 +27,7 @@ export default Ember.Controller.extend({
 			}).then(function(response){
 				console.log("status is " +JSON.stringify(response));
 
-			}, then(response){
+			}, function(response){
 				console.log("status is " + JSON.stringify(response));
 				if(response === false){
 					if(self.get('session.isAuthenticated')){
