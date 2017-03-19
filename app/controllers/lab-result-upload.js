@@ -22,8 +22,10 @@ export default Ember.Controller.extend({
 			let ajaxPost = this.get('ajax').post('api/lab-results/' + patientId, {
 				type: 'application/json',
 				data: {lab_result: {
+					patient_id: patientId,
 					file_name: this.loadedFile.name,
-					image: this.loadedFile.data,
+					data: this.loadedFile.data,
+					picture_type: this.loadedFile.type,
 					// date: new Date()
 					date: this.get('datePicker')
 				}},
