@@ -5,7 +5,11 @@
 <form {{action "sendLabResults" model.patientId on="submit"}}>
 	<div>
 		{{#file-picker fileLoaded="fileLoaded" readAs="readAsDataURL"}}
-			Drag here or click to upload a file
+			<div class = "infoBlock">
+				<div class = "panel panel-default">
+					Drag here or click to upload a file
+				</div>
+			</div>
 		{{/file-picker}}
 	</div>
 
