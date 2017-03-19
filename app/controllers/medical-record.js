@@ -23,11 +23,11 @@ export default Ember.Controller.extend({
         createMedicalRecord(){
 
             var self = this;
-            var date = Date.now(); 
+            var date = Math.floor(Date.now() /1000); 
             
             if( this.get('signature').length !== 0 ){
 
-             var medications = gatherMedications(this.get('model.patientID'));
+             //var medications = gatherMedications(this.get('model.patientID'));
 
              var bcsvalue= document.getElementById('bcsvalue');
              var bcsVal = bcsvalue.options[bcsvalue.selectedIndex].text;
@@ -41,7 +41,6 @@ export default Ember.Controller.extend({
              var medicalRecord = this.get('ajax').post('/api/patients/'+ this.get('model.patientID')+'/medical_records', {
              type: 'application/json',
              data: { 
-                 medications: medications,
                  medical_record: {
    
              date: date,  
@@ -116,9 +115,12 @@ export default Ember.Controller.extend({
              exam_notes: document.getElementById('notes').value, 
              summary: document.getElementById('summary').value
 
-
-        }
+           
+        },
+         medications: gatherMedications(this.get('model.patientID')),
+        
     }
+    
     });
 
         medicalRecord.then(function(response){
@@ -262,7 +264,10 @@ function gatherMedications(id){
     var medication = document.getElementsByClassName('medication');
     var medicationReminders = document.getElementsByClassName('reminderMedication');
     for (var i  = 0; i<medication.length; i++){
-        var formattedMed = { type:"medicine" , name:medication[i].value, reminder:medicationReminders[i].value, patient_id:id };
+        var nondateMedication = medicationReminders[i].value;
+        var halfformattedDateMedication = new Date(nondateMedication);
+        var formattedDateMedication = Math.floor(halfformattedDateMedication.getTime() / 1000);
+        var formattedMed = { med_type:"medicine" , name:medication[i].value, reminder:formattedDateMedication, patient_id:id };
         medications.push(formattedMed);
 
           }
@@ -270,7 +275,10 @@ function gatherMedications(id){
     var vaccine = document.getElementsByClassName('vaccine');
     var vaccineReminders = document.getElementsByClassName('reminderVaccine');
     for (var j  = 0; j<vaccine.length; j++){
-        var formattedVaccine = { type:"vaccine" , name:vaccine[j].value, reminder:vaccineReminders[j].value, patient_id:id};
+        var nondateVaccine = vaccineReminders[j].value;
+        var halfformattedDateVaccine = new Date(nondateVaccine);
+        var formattedDateVaccine = Math.floor(halfformattedDateVaccine.getTime() / 1000);
+        var formattedVaccine = { med_type:"vaccine" , name:vaccine[j].value, reminder:formattedDateVaccine, patient_id:id};
         medications.push(formattedVaccine);
 
           }
@@ -278,7 +286,10 @@ function gatherMedications(id){
     var other = document.getElementsByClassName('other');
     var otherReminders = document.getElementsByClassName('reminderOther');
     for (var k  = 0; k<other.length; k++){
-        var formattedOther = { type:"other" , name:other[k].value, reminder:otherReminders[k].value, patient_id:id};
+        var nondateOther = otherReminders[k].value;
+        var halfformattedDateOther = new Date(nondateOther);
+        var formattedDateOther = Math.floor(halfformattedDateOther.getTime() / 1000);
+        var formattedOther = { med_type:"other" , name:other[k].value, reminder:formattedDateOther, patient_id:id};
         medications.push(formattedOther);
 
           }

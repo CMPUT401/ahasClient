@@ -5,15 +5,33 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
     ajax: Ember.inject.service(),
 	model(params) { 
 
+        var self = this;
 
+      /*  var ajaxGet = new Ember.RSVP.Promise((resolve) =>
+        this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records' 
+			).then(function(data){
+            console.log(JSON.stringify(data));
+                Ember.run(function() {
+       			 resolve({ 
+                });
+    		  });
+			
+			},
+			function(data){
+				if (data === false){
+				self.transitionTo('/unauthorized');
+				console.log("status is " + JSON.stringify(data));
+				}
+        }));
+		return(ajaxGet);
+	},*/
      
 		
-        var self = this;
 
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/1' 
+		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/8' 
 			).then(function(data){
 				
               
@@ -22,6 +40,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
        			 resolve({ 
 						   
 
+                            date: parseDate(new Date(data.medical_record.date * 1000)),
                             date_created: data.medical_record.created_at, 
                             patient_id: data.medical_record.id, 
                             
@@ -76,13 +95,17 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             cardiovascularA: data.medical_record.cardiovascularA,
                             respiratoryN: data.medical_record.respiratoryN,
                             respiratoryA: data.medical_record.respiratoryA,
-
+                            mcsN: data.medical_record.mcsN,
+                            mcsMild: data.medical_record.mcsMild,
+                            mcsMod: data.medical_record.mcsMod,
+                            mcsSevere: data.medical_record.mcsSevere,
+                            weight: data.medical_record.weight,
+                            weightUnit: data.medical_record.weightUnit, 
+                            bcsVal: data.medical_record.bcsVal,
 
 
                             exam_notes: data.medical_record.exam_notes, 
-                            medications: data.medical_record.medications,
                             followUpNotes: data.medical_record.follow_up_instructions,
-                            //vaccines: data.medical_record.vaccines, //currently not implemented back end i think as per api
                             summary: data.medical_record.summary 
 
                           
@@ -102,3 +125,21 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
 });
 
+function parseDate(date){
+        var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        var months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
+        var day = date.getDay() ;
+        var month = date.getMonth()  ;
+        var year = date.getFullYear();
+        var hours = date.getHours();
+        var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
+        var whole = days[day] +" "+ months[month] +" "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
+        return(whole);
+}
+
+/*
+{{#if model.attitudeBAR }}
+        <input type="checkbox" id="attitudeBAR" disabled checked="true"> BAR 
+        {{else}}
+         <input type="checkbox" id="attitudeBAR" disabled > BAR 
+         {{/if}}*/
