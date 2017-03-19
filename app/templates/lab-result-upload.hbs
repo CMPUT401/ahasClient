@@ -8,4 +8,8 @@
 	{{/file-picker}}
 </div>
 
+<div>
+	{{bootstrap-datepicker autoclose=true placeholder="Date of lab result" class="form-control"}}
+</div>
+
 <button id = "saveLabResults" {{action "sendLabResults" model.patientId}}>Save</button>
