@@ -2,14 +2,18 @@
 	<input  type = "file" id = "files" name = "files[]" mulitple />
 </div>
 <output id = "list"></output> -->
-<div>
-	{{#file-picker fileLoaded="fileLoaded" readAs="readAsDataURL" }}
-		Drag here or click to upload a file
-	{{/file-picker}}
-</div>
+<form {{action "sendLabResults" model.patientId on="submit"}}>
+	<div>
+		{{#file-picker fileLoaded="fileLoaded" readAs="readAsDataURL"}}
+			Drag here or click to upload a file
+		{{/file-picker}}
+	</div>
 
-<div>
-	{{bootstrap-datepicker id='datePicker' value=datePicker autoclose=true placeholder="Date of lab result" class="form-control"}}
-</div>
+	<div>
+		{{bootstrap-datepicker id='datePicker' value=datePicker autoclose=true placeholder="Date of lab result" class="form-control" required=true}}
+	</div>
+	<button type = "submit" id = "saveLabResults">Save</button>
+</form>
 
-<button id = "saveLabResults" {{action "sendLabResults" model.patientId}}>Save</button>
+
+
