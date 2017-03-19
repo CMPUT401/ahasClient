@@ -11,11 +11,11 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
         var self = this;
 
         //undefined because the promise in the routes tranistion to method resolves after all of the below....
-        console.log('our id', self.get('model'), self.get('model.patientId'));
+        console.log('our id', this.controllerFor('view-medical-record'), this.controllerFor('view-medical-record').p_ID, this.controllerFor('view-medical-record').get('p_ID'));
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-		this.get('ajax').request('/api/patients/1/medical_records/1' //  + params.contact_id
+		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/1' //  + params.contact_id
 			).then(function(data){
 				
               
