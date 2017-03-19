@@ -3,12 +3,13 @@
     <br>
     <br>
     <div>
-        <div class="col-sm-2 col-sm-offset-1 col-md-2 col-md-offset-1">
-        <button  {{action "filterContact"  }} type="submit" id="search-button">Search</button>
-        
-        </div>
-        <div class="col-sm-7 col-md-7 ">
+        <div class="col-sm-7 col-sm-offset-1 col-md-7  col-md-offset-1">
+        <form {{action "filterContact" on="submit" }} > 
         <input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
+        </form>
+        </div>
+        <div class="col-sm-2 col-md-2">
+        <button  {{action "filterContact"  }} type="submit" id="search-button">Search</button>
         </div>
     </div>
     <br>
