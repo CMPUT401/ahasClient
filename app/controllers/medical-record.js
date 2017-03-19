@@ -44,7 +44,7 @@ export default Ember.Controller.extend({
                  medications: medications,
                  medical_record: {
    
-             data: date,  
+             date: date,  
              patient_id: this.get('model.patientID'),
              
              signature: exportSignature(this.get('stringifiedSignature')), 
@@ -203,7 +203,7 @@ export default Ember.Controller.extend({
 
           var dateOther =  document.createElement('input');
           dateOther.setAttribute('id', 'reminderOther');
-          dateOther.setAttribute('class', 'reminderVaccine');
+          dateOther.setAttribute('class', 'reminderOther');
           dateOther.setAttribute('placeholder', 'use calendar to set');
           dateOther.onclick = function() {
                this.value= document.getElementById('datePickerOther').value;
