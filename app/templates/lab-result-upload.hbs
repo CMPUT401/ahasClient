@@ -3,20 +3,18 @@
 </div>
 <output id = "list"></output> -->
 <form {{action "sendLabResults" model.patientId on="submit"}}>
-	<div>
+	<div class = "panel panel-default">
 		{{#file-picker fileLoaded="fileLoaded" readAs="readAsDataURL"}}
-			<div class = "infoBlock">
-				<div class = "panel panel-default">
-					Drag here or click to upload a file
-				</div>
+			<div class = "fileDropZone">
+				Drag here or click to upload a file
 			</div>
-		{{/file-picker}}
+			{{/file-picker}}
 	</div>
-
-	<div>
+		
+	<div class = "fileDatePicker">
 		{{bootstrap-datepicker id='datePicker' value=datePicker autoclose=true placeholder="Date of lab result" class="form-control" required=true}}
 	</div>
-	<button type = "submit" id = "saveLabResults">Save</button>
+	<button type = "submit" id = "saveLabResults" class = "saveFileButton">Save</button>
 </form>
 
 
