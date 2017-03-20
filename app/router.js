@@ -29,6 +29,7 @@ Router.map(function() {
   this.route('new-calendar');
   this.route('list-side-note');
   this.route('create-contact');
+  this.route('test');
 
 
   
