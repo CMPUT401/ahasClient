@@ -4,14 +4,21 @@
 	<nav class = "navbar navbar-inverse">
 		<li class = "nav navbar-nav">
 			{{#nav-link-to 'client-list'}}
-				<h4 class = "navItem">Search Client</h4>
+				<h5 class = "navItem">Clients</h5>
 			{{/nav-link-to}}
 			{{#nav-link-to 'search-patient'}}
-				<h4 class = "navItem">Search Patient</h4>
+				<h5 class = "navItem">Patients</h5>
+			{{/nav-link-to}}
+			{{#nav-link-to 'search-contacts'}}
+				<h5 class = "navItem">Contacts</h5>
+			{{/nav-link-to}}
+			{{#nav-link-to 'create-contact'}}
+				<h5 class = "navItem">Create Contact</h5>
 			{{/nav-link-to}}
 			{{#nav-link-to 'login'}}
-				<h4 class = "navItem" href="#" {{action 'invalidateSession'}}>Logout</h4>
+				<h5 class = "navItem" href="#" {{action 'invalidateSession'}}>Logout</h5>
 			{{/nav-link-to}}
+			
 		</li>
 	</nav>
 	{{/if}}

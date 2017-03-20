@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 
 export default Ember.Controller.extend({
+	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
 	//let cName, let cAddress, let cPhone,
 	actions: {
@@ -37,16 +38,16 @@ export default Ember.Controller.extend({
 					// TODO display confrimation page
 					// TODO prevent user from going back into this page
 					console.log("status is " + JSON.stringify(data));
-					self.transitionToRoute('afterlogin');
+					self.transitionToRoute('client-list');
 				},
-				function(data){
-					console.log("status is " + JSON.stringify(data));
-					if (data === false){
+				function(response){
+					console.log("status is " + JSON.stringify(response));
+					if (response === false){
 						if (self.get('session.isAuthenticated')){
-							self.get('session').invalidate();
-							}
-						self.transitionToRoute('/unauthorized');
+						self.get('session').invalidate();
 					}
+				self.transitionToRoute('/login');
+			}
 				});
 			//createNewCLient();
 			//this.transitionToRoute('/login');

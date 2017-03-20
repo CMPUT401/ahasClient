@@ -1,27 +1,37 @@
-<nav>
+<div>
+<div >
   <p> Back to the login page: </p>
   {{#link-to "login"}}Login{{/link-to}}
-</nav>
-<p> Please enter your email and a password to create an account: </p>
+</div> 
+
+<div class="inputLoginGroup">
+<h4> Please enter your information to create an account : </h4>
+<br>
+<br>
 <form > 
-  <label for="name">Name</label>
-  <br>
+  <label for="name" class="inputUserLabel">Name</label>
+
   {{input id='name' value=name}}
   <br>
   <br> 
-  <label for="username">Username</label>
-  <br>
+  <label for="username" class="inputUserLabel">Email</label>
+
   {{input id='username' value=identification}}
+
   <br>
   <br>
-  <label for="password">Password</label>
+
+  <label for="password" class="inputUserLabel">Password</label>
+
+  {{input id='password' value=password  type="password"}}
+
   <br>
-  {{input type="password" id='password' value=password}}
   <br>
-  <br>
-  <label for="passwordConfirm">Confirm Password</label>
-  <br>
-  {{input type="password" id='passwordConfirm' value=confirmpassword}}
+
+  <label for="passwordConfirm" class="inputUserLabel">Confirm Password</label>
+  
+  {{input id='passwordConfirm' value=confirmpassword type="password"}}
+
   <br>
   <br>
   <button type="submit" {{action 'createUser'}} id="create-user-button">Create</button>
@@ -29,4 +39,6 @@
  <br>
  <div id = "alert_placeholder"></div>
 
-{{outlet}}
+</div>
+
+</div>
