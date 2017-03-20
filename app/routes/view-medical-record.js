@@ -34,7 +34,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/18' 
+		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/20' 
 			).then(function(data){
             
 				Ember.run(function() {
@@ -217,7 +217,7 @@ function deserialAttributesOthers(others){
 
 function format(date){
     var partialDate = new Date(date * 1000);
-    var day = (partialDate.getDay()<10?'0':'' )+ partialDate.getDay();
-    var month = (partialDate.getMonth()<10?'0':'' )+ partialDate.getMonth();
+    var day = (partialDate.getDate()<10?'0':'' )+ partialDate.getDate();
+    var month = (partialDate.getMonth()<10?'0':'' )+ (partialDate.getMonth()+1);
     return(month+"/"+ day +"/"+partialDate.getFullYear());
 }

@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
       ajax: Ember.inject.service(),
       actions: {
 
-          updateMedicalRecord(){
+          updateMedicalRecord(id){
 
              var self = this;
 
@@ -15,14 +15,14 @@ export default Ember.Controller.extend({
              var weightUnit = unit.options[unit.selectedIndex].text;
 
               
-             var medicalRecord = this.get('ajax').put('/api/patients/'+ this.get('model.patientID')+'/medical_records', {
+             var medicalRecord = this.get('ajax').patch('/api/patients/'+ id+'/medical_records/19', {
              type: 'application/json',
              data: { 
                  medical_record: {
    
              //things that are not updateable
              date: this.get('model.unixDate'),  
-             patient_id: this.get('model.patientID'),
+             patient_id: id,
              signature: this.get('model.signature'), 
 
              //inputs

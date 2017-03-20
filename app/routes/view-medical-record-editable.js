@@ -6,35 +6,12 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
     index : 1,
 	model(params) { 
 
-
-        //console.log(document.getElementById("followUpNotes"));
-        var self = this;
-
-     /*   var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-        this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records' 
-			).then(function(data){
-            console.log(JSON.stringify(data));
-                Ember.run(function() {
-       			 resolve({ 
-                });
-    		  });
-			
-			},
-			function(data){
-				if (data === false){
-				self.transitionTo('/unauthorized');
-				console.log("status is " + JSON.stringify(data));
-				}
-        }));
-		return(ajaxGet);
-	},*/
-     
-		
+        var self = this;		
 
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/18' 
+		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/19' 
 			).then(function(data){
 				
               
@@ -45,7 +22,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             unixDate: data.medical_record.date,
                             date: parseDate(new Date(data.medical_record.date * 1000)),
                             date_created: data.medical_record.created_at, 
-                            patient_id: data.medical_record.id, 
+                            patient_id: data.medical_record.patient_id, 
                             
                             signature: data.medical_record.signature, 
 
@@ -211,6 +188,7 @@ function deserialAttributesMedicines(medications){
 		var medication = medications[i];
 		medication.name = medication.name;
         medication.reminderToDisplay = format(medication.reminder);
+        console.log(medication.reminderToDisplay);
 		deserial.push(medication);
 	}
   }
@@ -247,7 +225,7 @@ function deserialAttributesOthers(others){
 
 function format(date){
     var partialDate = new Date(date * 1000);
-    var day = (partialDate.getDay()<10?'0':'' )+ partialDate.getDay();
-    var month = (partialDate.getMonth()<10?'0':'' )+ partialDate.getMonth();
+    var day = (partialDate.getDate()<10?'0':'' )+ partialDate.getDate();
+    var month = (partialDate.getMonth()<10?'0':'' )+ (partialDate.getMonth()+1);
     return(month+"/"+ day +"/"+partialDate.getFullYear());
 }
