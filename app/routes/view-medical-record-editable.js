@@ -39,7 +39,6 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 				
                 //undefined!!!!!!!!!!!
                 console.log(data.medical_record.oralA, data.medical_record.oralN);
-                console.log("the rec weirds", data.medications, data.medical_record.medications);
               
             
 				Ember.run(function() {
@@ -153,7 +152,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
     // Call _super for default behavior
     this._super(controller, model);
     //going to try to use this to fix nulls displaying problem
-    console.log(model.glands);
+    //console.log(model.glands);
   }
 
 });
@@ -208,18 +207,15 @@ function checkUpdate(date){
 
 function deserialAttributesMedicines(medications){
 	var deserial = [];
-    //console.log(medications);
 	for(var i = 0; i < medications.length; i++) {
 
 		if(medications[i].med_type === 'medicine'){
-        //console.log("one", medications[i]);
 		var medication = medications[i];
 		medication.name = medication.name;
         medication.reminder = medication.reminder;
 		deserial.push(medication);
 	}
   }
-    console.log(deserial);
 	return(deserial);
 }
 
@@ -234,7 +230,6 @@ function deserialAttributesVaccines(vaccines){
 		deserial.push(vaccine);
 	}
   }
-    console.log(deserial);
 	return(deserial);
 }
 
@@ -249,6 +244,5 @@ function deserialAttributesOthers(others){
 		deserial.push(other);
 	}
   }
-    console.log(deserial);
 	return(deserial);
 }

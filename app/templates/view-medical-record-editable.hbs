@@ -526,11 +526,12 @@
 </div>
 </div>
 
+
 {{#each  model.medications as |medication|}}
 
     <div id="medicationDiv">
         <div>
-    <input class='medication' value={{medication.name}}><input id='reminderMedication' {{action 'dateMedicationClick' medication}} class='reminderMedication' value={{medication.reminder}}><button id='removeMedication' {{action 'remove' medication.id }} class='removeButton' type='submit'>x</button>
+    <input class='medication' value={{medication.name}}><input id='reminderMedication' {{action 'dateMedicationClick' medication}} class='reminderMedication' value={{medication.reminder}}><button id='removeMedication' {{action 'removeMedications' medication.id }} class='removeButton' type='submit'>x</button>
         </div>
     </div>
 
@@ -554,7 +555,7 @@
 
     <div id="vaccineDiv">
         <div>
-    <input class='vaccine' value={{vaccine.name}}><input id='reminderVaccine' {{action 'dateVaccineClick' vaccine}} class='reminderVaccine' value={{vaccine.reminder}}><button id='removeVaccine' class='removeButton' type='submit'>x</button>
+    <input class='vaccine' value={{vaccine.name}}><input id='reminderVaccine' {{action 'dateVaccineClick' vaccine}} class='reminderVaccine' value={{vaccine.reminder}}><button id='removeVaccine' {{action 'removeVaccines' vaccine.id }}  class='removeButton' type='submit'>x</button>
         </div>
     </div>
 
@@ -577,7 +578,7 @@
 
     <div id="otherDiv">
         <div>
-    <input class='other' value={{other.name}}><input id='reminderOther' {{action 'dateOtherClick' other}} class='reminderOther' value={{other.reminder}}><button id='removeOther' class='removeButton' type='submit'>x</button>
+    <input class='other' value={{other.name}}><input id='reminderOther' {{action 'dateOtherClick' other}} class='reminderOther' value={{other.reminder}}><button id='removeOther' {{action 'removeOthers' other.id }} class='removeButton' type='submit'>x</button>
         </div>
     </div>
 

@@ -216,18 +216,35 @@ export default Ember.Controller.extend({
                
             },
 
-        remove(id){
+        removeMedications(id){
+            var newMeds = [];
             var medications = this.get('model.medications');
             for(var i =0; i<medications.length; i++){
-                console.log("stuff", medications[i].id, medications[i], medications[i].name);
-                if (medications[i].id === id){
-                    console.log('we here');
-                    medications.splice(i, 1);
-                    console.log("our div", document.getElementById('medicationDiv'), Ember.$(':contains(m1)').css("background-color", "yellow")); //'+medications[i].name+'
+                if (medications[i].id !== id){
+                    newMeds.push(medications[i]);
                 }
             }
-            //this.
-            console.log("result med", this.get('model.medications'), medications, id);
+            this.set('model.medications', newMeds);
+        }, 
+        removeVaccines(id){
+            var newVaccines = [];
+            var vaccines = this.get('model.vaccines');
+            for(var j =0; j<vaccines.length; j++){
+                if (vaccines[j].id !== id){
+                    newVaccines.push(vaccines[j]);
+                }
+            }
+            this.set('model.vaccines', newVaccines);
+        },
+        removeOthers(id){
+            var newOthers = [];
+            var others = this.get('model.others');
+            for(var k =0; k<others.length; k++){
+                if (others[k].id !== id){
+                    newOthers.push(others[k]);
+                }
+            }
+            this.set('model.others', newOthers);
         }
     }
 });
