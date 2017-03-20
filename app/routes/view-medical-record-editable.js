@@ -130,10 +130,12 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 			
 			},
 			function(data){
-				if (data === false){
-				self.transitionTo('/unauthorized');
-				console.log("status is " + JSON.stringify(data));
-				}
+					if (data === false){
+						if (self.get('session.isAuthenticated')){
+							self.get('session').invalidate();
+							}
+						self.transitionTo('/login');
+					}
 		}));
 		return(ajaxGet);
 	},
@@ -160,7 +162,7 @@ function parseDate(date){
 }
 
 function setDropdowns(value){
-    if (value == "kg"){
+    if (value === "kg"){
         return(true);
     }
     return(false);
