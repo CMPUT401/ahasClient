@@ -185,44 +185,19 @@
 
 <div class="row">
 <div>
-<label for="medications">Medications: </label>
-
-<div id="medicationDiv">
-    <div>
-{{bootstrap-datepicker id="datePickerMedication" placeholder='Medication Calendar'}}
-</div>
+  Medicine
+{{medications-container medType="Medicine" medicationList=medicine}}
 </div>
 
-<button type="submit" class="addButton" id="add-medication-button"{{action 'addMedication'}}>Add</button>
+<div>
+  Vaccines
+{{medications-container medType="Vaccine" medicationList=vaccine}}
 </div>
 
-
-<div >
-<label for="vaccinces">Vaccines: </label>
-<br>
-
-<div id="vaccineDiv">
-    <div>
-    {{bootstrap-datepicker id="datePickerVaccine" placeholder='Vaccine Calendar'}}
-    </div>
+<div>
+  Other
+{{medications-container medType="Other" medicationList=other}}
 </div>
-
-<button type="submit" class="addButton" id="add-vaccine-button"{{action 'addVaccine'}}>Add</button>
-</div>
-
-<div >
-<label for="other">Other: </label>
-<br>
-
-<div id="otherDiv">
-      <div>
-{{bootstrap-datepicker id="datePickerOther"  placeholder='Other Calendar'}}
-</div>
-</div>
-
-<button type="submit" class="addButton" id="add-other-button"{{action 'addOther'}}>Add</button>
-</div>
-
 </div>
 </div>
 
@@ -259,6 +234,7 @@
 
   <button type="submit" class= "medical-button" id="create-medical-button"{{action 'createMedicalRecord'}}>Create medical record</button>
   <div id = "alert_placeholder_med"></div>
+  <button type="submit" class= "medical-button" id="create-medical-button"{{action 'show'}}>show</button>
 </div>
 
 </div>

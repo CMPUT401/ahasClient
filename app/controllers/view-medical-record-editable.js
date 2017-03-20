@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+      medicine: [],
+      vaccine: [],
+      other: [],
       ajax: Ember.inject.service(),
       actions: {
 
@@ -196,7 +199,7 @@ export default Ember.Controller.extend({
           dateOther.setAttribute('placeholder', 'use calendar to set');
           dateOther.onclick = function() {
               this.value= document.getElementById('datePickerOther').value;
-          }
+          };
 
           textOther.innerHTML = "<input class='other' placeholder='other type'>";
           textOther.appendChild(dateOther);

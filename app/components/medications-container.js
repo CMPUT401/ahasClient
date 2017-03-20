@@ -5,6 +5,7 @@ export default Ember.Component.extend({
   actions: {
     addMedication: function () {
       // Push an empty object to medicationList
+      console.log("med list", this.get('medicationList'));
       this.get('medicationList').pushObject({
         med_type: this.medType,
         name: "",
