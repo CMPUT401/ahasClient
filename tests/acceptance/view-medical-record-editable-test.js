@@ -21,6 +21,5 @@ test('medical record info shows up', function(assert) {
     assert.equal(find('#summary')[0].value, 'fake summary');
     assert.equal(find('#attitudeBAR')[0].checked, true);
     assert.equal(find('#attitudeDepressed')[0].checked, false);
-    assert.equal(find('#medicationDiv').contains('med1'), true);
   });
 });

@@ -247,7 +247,7 @@ function deserialAttributesOthers(others){
 
 function format(date){
     var partialDate = new Date(date * 1000);
-    var day = (partialDate.getDay()<10?'0':'' )+ partialDate.getDay()
-    var month = (partialDate.getMonth()<10?'0':'' )+ partialDate.getMonth()
+    var day = (partialDate.getDay()<10?'0':'' )+ partialDate.getDay();
+    var month = (partialDate.getMonth()<10?'0':'' )+ partialDate.getMonth();
     return(month+"/"+ day +"/"+partialDate.getFullYear());
 }
