@@ -15,12 +15,12 @@ export default Ember.Controller.extend({
              var weightUnit = unit.options[unit.selectedIndex].text;
 
               
-             var medicalRecord = this.get('ajax').patch('/api/patients/'+ id+'/medical_records/19', {
+             var medicalRecord = this.get('ajax').put('/api/patients/'+ id+'/medical_records/19', {
              type: 'application/json',
              data: { 
                  medical_record: {
    
-             //things that are not updateable
+             //things that are not updateable on our form
              date: this.get('model.unixDate'),  
              patient_id: id,
              signature: this.get('model.signature'), 
@@ -94,7 +94,7 @@ export default Ember.Controller.extend({
 
            
         },
-         medications: gatherMedications(this.get('model.patientID')),
+         medications: gatherMedications(id),
         
     }
                });
@@ -104,7 +104,8 @@ export default Ember.Controller.extend({
             }
         //this is error from server condition
         }, function(response) {
-            console.log("status is " + JSON.stringify(response), response);
+            showAlert("Could not update", false);
+            console.log("status is " + JSON.stringify(response));
 					if (response === false){
 						if (self.get('session.isAuthenticated')){
 							self.get('session').invalidate();
@@ -114,12 +115,14 @@ export default Ember.Controller.extend({
 				});
 
         },
+     // checks all of the N's and the BAR
      checkAll(){
           var normals = document.getElementsByClassName("norm");
           for (var i=0; i<normals.length; i++){
               normals[i].checked = true;
           }
       }, 
+      // unchecks all of N's and BAR
       uncheckAll(){
           var normals = document.getElementsByClassName("norm");
           for (var i=0; i<normals.length; i++){
@@ -191,7 +194,9 @@ export default Ember.Controller.extend({
           dateOther.setAttribute('id', 'reminderOther');
           dateOther.setAttribute('class', 'reminderOther');
           dateOther.setAttribute('placeholder', 'use calendar to set');
-          dateOther.onclick = dateOtherClick;
+          dateOther.onclick = function() {
+              this.value= document.getElementById('datePickerOther').value;
+          }
 
           textOther.innerHTML = "<input class='other' placeholder='other type'>";
           textOther.appendChild(dateOther);
@@ -249,6 +254,7 @@ export default Ember.Controller.extend({
     }
 });
 
+//gathers all of the medications from the medication inputs and sorts them into an appropriate list to be sent to server
 function gatherMedications(id){
     var medications = [];
     var medication = document.getElementsByClassName('medication');
@@ -296,7 +302,3 @@ function showAlert(message, bool) {
              Ember.$('#alert_placeholder_med').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
         }
  }
-
-function dateOtherClick() {
-    this.value = document.getElementById('datePickerOther').value;
-            }

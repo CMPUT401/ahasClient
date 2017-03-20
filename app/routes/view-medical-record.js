@@ -6,35 +6,12 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
     index : 1,
 	model(params) { 
 
-        //console.log(document.getElementById("followUpNotes"));
-
         var self = this;
-
-      /*  var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-        this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records' 
-			).then(function(data){
-            console.log(JSON.stringify(data));
-                Ember.run(function() {
-       			 resolve({ 
-                });
-    		  });
-			
-			},
-			function(data){
-				if (data === false){
-				self.transitionTo('/unauthorized');
-				console.log("status is " + JSON.stringify(data));
-				}
-        }));
-		return(ajaxGet);
-	},*/
-     
-		
 
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/20' 
+		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/19' 
 			).then(function(data){
             
 				Ember.run(function() {
