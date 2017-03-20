@@ -4,7 +4,6 @@ export default Ember.Controller.extend({
       ajax: Ember.inject.service(),
       actions: {
 
-
           updateMedicalRecord(){
 
              var self = this;
@@ -115,7 +114,7 @@ export default Ember.Controller.extend({
 				});
 
         },
-    checkAll(){
+     checkAll(){
           var normals = document.getElementsByClassName("norm");
           for (var i=0; i<normals.length; i++){
               normals[i].checked = true;
@@ -126,7 +125,110 @@ export default Ember.Controller.extend({
           for (var i=0; i<normals.length; i++){
               normals[i].checked = false;
           }        
-      }
+      },
+      
+      addMedication(){
+          var divMedication = document.getElementById('medicationDiv');
+          var textMedication = document.createElement('div');
+          var buttonMedication =  document.createElement('button');
+          buttonMedication.setAttribute('class', 'removeButton');
+          buttonMedication.setAttribute('id', 'removeOther');
+          buttonMedication.setAttribute('type', 'submit');
+          buttonMedication.innerHTML = 'x';
+          buttonMedication.onclick = function() { Ember.$(this).parent('div').remove();};
+
+          var dateMedication =  document.createElement('input');
+          dateMedication.setAttribute('id', 'reminderMedication');
+          dateMedication.setAttribute('class', 'reminderMedication');
+          dateMedication.setAttribute('placeholder', 'use calendar to set');
+          dateMedication.onclick = function() {
+               this.value= document.getElementById('datePickerMedication').value;
+            };
+     
+          textMedication.innerHTML = "<input class='medication' placeholder='medication type'>";
+          textMedication.appendChild(dateMedication);
+          textMedication.appendChild(buttonMedication);
+          divMedication.appendChild(textMedication);
+
+      },
+
+      addVaccine(){
+          var divVaccine = document.getElementById('vaccineDiv');
+          var textVaccine = document.createElement('div');
+          var buttonVaccine =  document.createElement('button');
+          buttonVaccine.setAttribute('class', 'removeButton');
+          buttonVaccine.setAttribute('id', 'removeOther');
+          buttonVaccine.setAttribute('type', 'submit');
+          buttonVaccine.innerHTML = 'x';
+          buttonVaccine.onclick = function() { Ember.$(this).parent('div').remove();};
+
+          var dateVaccine =  document.createElement('input');
+          dateVaccine.setAttribute('id', 'reminderVaccine');
+          dateVaccine.setAttribute('class', 'reminderVaccine');
+          dateVaccine.setAttribute('placeholder', 'use calendar to set');
+          dateVaccine.onclick = function() {
+               this.value= document.getElementById('datePickerVaccine').value;
+            };
+
+          textVaccine.innerHTML = "<input class='vaccine' placeholder='vaccine type'>"; 
+          textVaccine.appendChild(dateVaccine);
+          textVaccine.appendChild(buttonVaccine);
+          divVaccine.appendChild(textVaccine);
+
+      },
+
+      addOther(){
+          var divOther = document.getElementById('otherDiv');
+          var textOther = document.createElement('div');
+          var buttonOther =  document.createElement('button');
+          buttonOther.setAttribute('class', 'removeButton');
+          buttonOther.setAttribute('id', 'removeOther');
+          buttonOther.setAttribute('type', 'submit');
+          buttonOther.innerHTML = 'x';
+          buttonOther.onclick = function() { Ember.$(this).parent('div').remove();};
+
+          var dateOther =  document.createElement('input');
+          dateOther.setAttribute('id', 'reminderOther');
+          dateOther.setAttribute('class', 'reminderOther');
+          dateOther.setAttribute('placeholder', 'use calendar to set');
+          dateOther.onclick = dateOtherClick;
+
+          textOther.innerHTML = "<input class='other' placeholder='other type'>";
+          textOther.appendChild(dateOther);
+          textOther.appendChild(buttonOther);
+          divOther.appendChild(textOther);
+
+      },
+
+        //for (re)setting reminders on editable template, for old medications only, new use javascript onclick
+        dateMedicationClick(item) {
+              Ember.set(item, 'reminder', document.getElementById('datePickerMedication').value );
+               
+            },
+
+        dateVaccineClick(item) {
+              Ember.set(item, 'reminder', document.getElementById('datePickerVaccine').value );
+               
+            },
+
+        dateOtherClick(item) {
+              Ember.set(item, 'reminder', document.getElementById('datePickerOther').value );
+               
+            },
+
+        remove(id){
+            var medications = this.get('model.medications');
+            for(var i =0; i<medications.length; i++){
+                console.log("stuff", medications[i].id, medications[i], medications[i].name);
+                if (medications[i].id === id){
+                    console.log('we here');
+                    medications.splice(i, 1);
+                    console.log("our div", document.getElementById('medicationDiv'), Ember.$(':contains(m1)').css("background-color", "yellow")); //'+medications[i].name+'
+                }
+            }
+            //this.
+            console.log("result med", this.get('model.medications'), medications, id);
+        }
     }
 });
 
@@ -177,3 +279,7 @@ function showAlert(message, bool) {
              Ember.$('#alert_placeholder_med').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
         }
  }
+
+function dateOtherClick() {
+    this.value = document.getElementById('datePickerOther').value;
+            }

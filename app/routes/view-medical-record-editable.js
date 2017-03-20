@@ -6,10 +6,11 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
     index : 1,
 	model(params) { 
 
+
         //console.log(document.getElementById("followUpNotes"));
         var self = this;
 
-      /*  var ajaxGet = new Ember.RSVP.Promise((resolve) =>
+     /*   var ajaxGet = new Ember.RSVP.Promise((resolve) =>
         this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records' 
 			).then(function(data){
             console.log(JSON.stringify(data));
@@ -38,6 +39,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 				
                 //undefined!!!!!!!!!!!
                 console.log(data.medical_record.oralA, data.medical_record.oralN);
+                console.log("the rec weirds", data.medications, data.medical_record.medications);
               
             
 				Ember.run(function() {
@@ -127,10 +129,9 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             editable: checkUpdate( new Date(data.medical_record.date * 1000)) ,
 
                             //medications
-                            medications: deserialAttributesMedicines(data.medications),
+                            medications: deserialAttributesMedicines(data.medications), 
                             vaccines: deserialAttributesVaccines(data.medications),
-                            others: deserialAttributesOthers(data.medications),
-
+                            others:deserialAttributesOthers(data.medications) 
                           
 				
 				});
@@ -207,11 +208,11 @@ function checkUpdate(date){
 
 function deserialAttributesMedicines(medications){
 	var deserial = [];
-    console.log(medications);
+    //console.log(medications);
 	for(var i = 0; i < medications.length; i++) {
 
 		if(medications[i].med_type === 'medicine'){
-        console.log("one", medications[i]);
+        //console.log("one", medications[i]);
 		var medication = medications[i];
 		medication.name = medication.name;
         medication.reminder = medication.reminder;

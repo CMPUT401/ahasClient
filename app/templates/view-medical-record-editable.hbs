@@ -7,7 +7,6 @@
 <h4> Created at: {{model.date}} </h4>
 </div>
 </div>
-
 <div class="col-sm-7 col-md-7">
 
 <div > placeholder for pet info: 
@@ -507,7 +506,6 @@
     </div>
 </div>
 
-
 <button type="submit" class="addButton" id="check-button"{{action 'checkAll'}}>Check all</button>
 <button type="submit" class="addButton" id="uncheck-button"{{action 'uncheckAll'}}>Uncheck all</button>
 
@@ -522,11 +520,21 @@
 <div>
 <label for="medications">Medications: </label>
 
-<div id="medicationDiv">
+<div id="medicationdateDiv">
     <div>
 {{bootstrap-datepicker id="datePickerMedication" placeholder='Medication Calendar'}}
 </div>
 </div>
+
+{{#each  model.medications as |medication|}}
+
+    <div id="medicationDiv">
+        <div>
+    <input class='medication' value={{medication.name}}><input id='reminderMedication' {{action 'dateMedicationClick' medication}} class='reminderMedication' value={{medication.reminder}}><button id='removeMedication' {{action 'remove' medication.id }} class='removeButton' type='submit'>x</button>
+        </div>
+    </div>
+
+{{/each}}
 
 <button type="submit" class="addButton" id="add-medication-button"{{action 'addMedication'}}>Add</button>
 </div>
@@ -536,11 +544,21 @@
 <label for="vaccinces">Vaccines: </label>
 <br>
 
-<div id="vaccineDiv">
+<div id="vaccinedateDiv">
     <div>
     {{bootstrap-datepicker id="datePickerVaccine" placeholder='Vaccine Calendar'}}
     </div>
 </div>
+
+{{#each  model.vaccines as |vaccine|}}
+
+    <div id="vaccineDiv">
+        <div>
+    <input class='vaccine' value={{vaccine.name}}><input id='reminderVaccine' {{action 'dateVaccineClick' vaccine}} class='reminderVaccine' value={{vaccine.reminder}}><button id='removeVaccine' class='removeButton' type='submit'>x</button>
+        </div>
+    </div>
+
+{{/each}}
 
 <button type="submit" class="addButton" id="add-vaccine-button"{{action 'addVaccine'}}>Add</button>
 </div>
@@ -549,11 +567,21 @@
 <label for="other">Other: </label>
 <br>
 
-<div id="otherDiv">
+<div id="otherdateDiv">
       <div>
 {{bootstrap-datepicker id="datePickerOther"  placeholder='Other Calendar'}}
 </div>
 </div>
+
+{{#each  model.others as |other|}}
+
+    <div id="otherDiv">
+        <div>
+    <input class='other' value={{other.name}}><input id='reminderOther' {{action 'dateOtherClick' other}} class='reminderOther' value={{other.reminder}}><button id='removeOther' class='removeButton' type='submit'>x</button>
+        </div>
+    </div>
+
+{{/each}}
 
 <button type="submit" class="addButton" id="add-other-button"{{action 'addOther'}}>Add</button>
 </div>

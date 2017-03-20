@@ -516,16 +516,19 @@
 </div>
 
 <div class="row">
-<div>
-<label for="medications">Medications: </label>
-
-<div id="medicationDiv">
     <div>
-{{bootstrap-datepicker id="datePickerMedication" placeholder='Medication Calendar'}}
-</div>
-</div>
+        <label for="medications">Medications: </label>
 
-<button type="submit" class="addButton" id="add-medication-button"{{action 'addMedication'}}>Add</button>
+{{#each  model.medications as |medication|}}
+
+    <div id="medicationDiv">
+        <div>
+    <input class='medication' value={{medication.name}} disabled><input id='reminderMedication' class='reminderMedication' value={{medication.reminder}} disabled>
+        </div>
+    </div>
+
+{{/each}}
+
 </div>
 
 
@@ -533,26 +536,32 @@
 <label for="vaccinces">Vaccines: </label>
 <br>
 
-<div id="vaccineDiv">
-    <div>
-    {{bootstrap-datepicker id="datePickerVaccine" placeholder='Vaccine Calendar'}}
-    </div>
-</div>
 
-<button type="submit" class="addButton" id="add-vaccine-button"{{action 'addVaccine'}}>Add</button>
+{{#each  model.vaccines as |vaccine|}}
+
+    <div id="vaccineDiv">
+        <div>
+    <input class='vaccine' value={{vaccine.name}} disabled><input id='reminderVaccine' class='reminderVaccine' value={{vaccine.reminder}} disabled>
+        </div>
+    </div>
+
+{{/each}}
+
 </div>
 
 <div >
 <label for="other">Other: </label>
 <br>
 
-<div id="otherDiv">
-      <div>
-{{bootstrap-datepicker id="datePickerOther"  placeholder='Other Calendar'}}
-</div>
-</div>
+{{#each  model.others as |other|}}
 
-<button type="submit" class="addButton" id="add-other-button"{{action 'addOther'}}>Add</button>
+    <div id="otherDiv">
+        <div>
+    <input class='other' value={{other.name}} disabled><input id='reminderOther' {{action 'dateOtherClick' this}} class='reminderOther' value={{other.reminder}} disabled>
+        </div>
+    </div>
+
+{{/each}}
 </div>
 
 </div>
