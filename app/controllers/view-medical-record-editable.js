@@ -202,17 +202,17 @@ export default Ember.Controller.extend({
 
         //for (re)setting reminders on editable template, for old medications only, new use javascript onclick
         dateMedicationClick(item) {
-              Ember.set(item, 'reminder', document.getElementById('datePickerMedication').value );
+              Ember.set(item, 'reminderToDisplay', document.getElementById('datePickerMedication').value );
                
             },
 
         dateVaccineClick(item) {
-              Ember.set(item, 'reminder', document.getElementById('datePickerVaccine').value );
+              Ember.set(item, 'reminderToDisplay', document.getElementById('datePickerVaccine').value );
                
             },
 
         dateOtherClick(item) {
-              Ember.set(item, 'reminder', document.getElementById('datePickerOther').value );
+              Ember.set(item, 'reminderToDisplay', document.getElementById('datePickerOther').value );
                
             },
 

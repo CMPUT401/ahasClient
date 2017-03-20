@@ -34,12 +34,8 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/16' 
+		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/18' 
 			).then(function(data){
-				
-                //undefined!!!!!!!!!!!
-                console.log(data.medical_record.oralA);
-              
             
 				Ember.run(function() {
        			 resolve({ 
@@ -179,18 +175,15 @@ function setDropdownBCS(value, self){
 
 function deserialAttributesMedicines(medications){
 	var deserial = [];
-    //console.log(medications);
 	for(var i = 0; i < medications.length; i++) {
 
 		if(medications[i].med_type === 'medicine'){
-        //console.log("one", medications[i]);
 		var medication = medications[i];
 		medication.name = medication.name;
-        medication.reminder = medication.reminder;
+        medication.reminderToDisplay = format(medication.reminder);
 		deserial.push(medication);
 	}
   }
-    console.log(deserial);
 	return(deserial);
 }
 
@@ -201,11 +194,10 @@ function deserialAttributesVaccines(vaccines){
 		if(vaccines[i].med_type === 'vaccine'){
 		var vaccine = vaccines[i];
 		vaccine.name = vaccine.name;
-        vaccine.reminder = vaccine.reminder;
+        vaccine.reminderToDisplay = format(vaccine.reminder);
 		deserial.push(vaccine);
 	}
   }
-    console.log(deserial);
 	return(deserial);
 }
 
@@ -216,10 +208,16 @@ function deserialAttributesOthers(others){
 		if(others[i].med_type === 'other'){
 		var other = others[i];
 		other.name = other.name;
-        other.reminder = other.reminder;
+        other.reminderToDisplay = format(other.reminder);
 		deserial.push(other);
 	}
   }
-    console.log(deserial);
 	return(deserial);
+}
+
+function format(date){
+    var partialDate = new Date(date * 1000);
+    var day = (partialDate.getDay()<10?'0':'' )+ partialDate.getDay()
+    var month = (partialDate.getMonth()<10?'0':'' )+ partialDate.getMonth()
+    return(month+"/"+ day +"/"+partialDate.getFullYear());
 }
