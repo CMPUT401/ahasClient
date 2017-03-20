@@ -5,6 +5,7 @@ export default Ember.Controller.extend({
       actions: {
           updateMedicalRecord(){
 
+
              var bcsvalue= document.getElementById('bcsvalue');
              var bcsVal = bcsvalue.options[bcsvalue.selectedIndex].text;
 
@@ -18,7 +19,7 @@ export default Ember.Controller.extend({
                  medical_record: {
    
              //things that are not updateable
-             date: this.get('model.date'),  
+             date: this.get('model.unixDate'),  
              patient_id: this.get('model.patientID'),
              signature: this.get('model.signature'), 
 
@@ -110,7 +111,7 @@ export default Ember.Controller.extend({
 					}
 				});
 
-          },
+        },
     checkAll(){
           var normals = document.getElementsByClassName("norm");
           for (var i=0; i<normals.length; i++){
@@ -164,3 +165,4 @@ function gatherMedications(id){
     return(medications);
     
 }
+

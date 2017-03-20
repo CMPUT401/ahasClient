@@ -43,7 +43,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 				Ember.run(function() {
        			 resolve({ 
 						   
-
+                            unixDate: data.medical_record.date,
                             date: parseDate(new Date(data.medical_record.date * 1000)),
                             date_created: data.medical_record.created_at, 
                             patient_id: data.medical_record.id, 
@@ -121,7 +121,10 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
                             exam_notes: data.medical_record.exam_notes, 
                             followUpNotes: data.medical_record.follow_up_instructions,
-                            summary: data.medical_record.summary 
+                            summary: data.medical_record.summary ,
+
+                            //to determine if edit button is disabled or not
+                            editable: checkUpdate( new Date(data.medical_record.date * 1000)) 
 
                           
 				
@@ -177,3 +180,25 @@ function setDropdownBCS(value, self){
     return(false);
 }
 
+function checkUpdate(date){
+
+    var day = date.getDay() ;
+    var month = date.getMonth()  ;
+    var year = date.getFullYear();
+    var hours = date.getHours();
+    var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
+
+    var current = new Date();
+
+    var currentDay = current.getDay() ;
+    var currentMonth = current.getMonth()  ;
+    var currentYear = current.getFullYear();
+    var currentHours = current.getHours();
+    var currentMins = (current.getMinutes()<10?'0':'') + current.getMinutes();
+
+    //exact minute of midnight is when we will autofinalize
+    if (currentDay === day && currentMonth === month && currentYear === year && currentHours <= 24 ){
+        return(true);
+    }
+    return(false);
+}
