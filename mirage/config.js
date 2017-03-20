@@ -17,7 +17,7 @@ export default function() {
    this.post('patients/1/medical_records', { success: true }, 201);
 
    //this is for viewing one medical record
-   this.get('patients/1/medical_records/1',
+   this.get('patients/1/medical_records/15',
    {
      success:true,
      medical_record:
@@ -40,7 +40,7 @@ export default function() {
      respiratory:null,
      respiratory_rate:null,
      attitudeBAR:true,
-     attitudeQAR:true,
+     attitudeQAR:false,
      attitudeDepressed:false,
      eyesN:false,
      eyesA:false,

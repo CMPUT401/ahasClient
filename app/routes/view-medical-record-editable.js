@@ -33,7 +33,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/15' 
+		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/16' 
 			).then(function(data){
 				
                 //undefined!!!!!!!!!!!
@@ -124,7 +124,12 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             summary: data.medical_record.summary ,
 
                             //to determine if edit button is disabled or not
-                            editable: checkUpdate( new Date(data.medical_record.date * 1000)) 
+                            editable: checkUpdate( new Date(data.medical_record.date * 1000)) ,
+
+                            //medications
+                            medications: deserialAttributesMedicines(data.medications),
+                            vaccines: deserialAttributesVaccines(data.medications),
+                            others: deserialAttributesOthers(data.medications),
 
                           
 				
@@ -185,8 +190,6 @@ function checkUpdate(date){
     var day = date.getDay() ;
     var month = date.getMonth()  ;
     var year = date.getFullYear();
-    var hours = date.getHours();
-    var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
 
     var current = new Date();
 
@@ -194,11 +197,57 @@ function checkUpdate(date){
     var currentMonth = current.getMonth()  ;
     var currentYear = current.getFullYear();
     var currentHours = current.getHours();
-    var currentMins = (current.getMinutes()<10?'0':'') + current.getMinutes();
 
     //exact minute of midnight is when we will autofinalize
     if (currentDay === day && currentMonth === month && currentYear === year && currentHours <= 24 ){
         return(true);
     }
     return(false);
+}
+
+function deserialAttributesMedicines(medications){
+	var deserial = [];
+    console.log(medications);
+	for(var i = 0; i < medications.length; i++) {
+
+		if(medications[i].med_type === 'medicine'){
+        console.log("one", medications[i]);
+		var medication = medications[i];
+		medication.name = medication.name;
+        medication.reminder = medication.reminder;
+		deserial.push(medication);
+	}
+  }
+    console.log(deserial);
+	return(deserial);
+}
+
+function deserialAttributesVaccines(vaccines){
+	var deserial = [];
+	for(var i = 0; i < vaccines.length; i++) {
+
+		if(vaccines[i].med_type === 'vaccine'){
+		var vaccine = vaccines[i];
+		vaccine.name = vaccine.name;
+        vaccine.reminder = vaccine.reminder;
+		deserial.push(vaccine);
+	}
+  }
+    console.log(deserial);
+	return(deserial);
+}
+
+function deserialAttributesOthers(others){
+	var deserial = [];
+	for(var i = 0; i < others.length; i++) {
+
+		if(others[i].med_type === 'other'){
+		var other = others[i];
+		other.name = other.name;
+        other.reminder = other.reminder;
+		deserial.push(other);
+	}
+  }
+    console.log(deserial);
+	return(deserial);
 }

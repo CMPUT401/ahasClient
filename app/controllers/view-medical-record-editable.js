@@ -3,8 +3,11 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
       ajax: Ember.inject.service(),
       actions: {
+
+
           updateMedicalRecord(){
 
+             var self = this;
 
              var bcsvalue= document.getElementById('bcsvalue');
              var bcsVal = bcsvalue.options[bcsvalue.selectedIndex].text;
@@ -166,3 +169,11 @@ function gatherMedications(id){
     
 }
 
+function showAlert(message, bool) {
+        if(bool){
+            Ember.$('#alert_placeholder_med').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
+        }
+        else{
+             Ember.$('#alert_placeholder_med').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
+        }
+ }
