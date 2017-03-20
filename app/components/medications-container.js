@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 // This component dynamically renders new medications entries
 export default Ember.Component.extend({
-  medications: [],
   actions: {
     addMedication: function () {
       // Push an empty object to medicationList

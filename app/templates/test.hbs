@@ -13,7 +13,7 @@
   Other
 {{medications-container medType="Other" medicationList=other}}
 </div>
-
+<button {{action 'alertMedication'}}>Medications Alert</button>
 <!-- Here is showing that we have realtime access to all data in data stored at the root.-->
 {{#each medicine as |item|}}
   {{item.name}} {{item.reminder}} {{item.med_type}}<br/>
