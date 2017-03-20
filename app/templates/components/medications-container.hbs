@@ -1,0 +1,7 @@
+<div id="medications">
+    {{#each medications as |item index|}}
+      {{medication-input index=index date=item.date name=item.name update=(action 'updateMed') delete=(action 'deleteMed') }}
+    {{/each}}
+    <button {{action 'addMedication'}}>Add</button>
+</div>
+{{yield results}}
