@@ -7,8 +7,8 @@
 		<div class="history-list">
 			{{#ember-scrollable autoHide=false}}
 				{{#each medicalRecord as |entry|}}
-					<div class = "nameListItem">
-						<p>{{entry.examNotes}}  {{entry.date}}</p>
+					<div class = "nameListItem" {{action 'viewEntry' entry.recordId}}>
+						<p>{{entry.summary}}  {{entry.date}}</p>
 					</div>
 				{{/each}}
 			{{/ember-scrollable}}

@@ -5,6 +5,7 @@ export default Ember.Component.extend({
 	patientId: 0,
 	ajax: Ember.inject.service(),
 	medicalRecord: [],
+	router: Ember.inject.service('-routing'),
 	actions:{
 		newEntry: function(){
 			console.log("making a new medical history entry");
@@ -16,7 +17,10 @@ export default Ember.Component.extend({
 			} else {
 				this.set('isVisible', true);
 			}
-		}.observes('isVisible')
+		}.observes('isVisible'),
+		viewEntry: function(recordID){
+			this.get('router').transitionTo('/view-patient/'+ this.patientId +'/view-medical-record/'+ recordID)
+		}
 	},
 	init(){
 		this._super(...arguments);
@@ -51,15 +55,19 @@ function deserialAttributes(history){
 	var deserial = [];
 	for(var i = 0; i < history.length; i++) {
 		var entry = history[i];
-		entry.id = JSON.stringify(history[i].id).replace(/\"/g, "");
+		entry.recordId = JSON.stringify(history[i].id).replace(/\"/g, "");
 		if(JSON.stringify(history[i].exm_notes) != null){
-			entry.examNotes = JSON.stringify(history[i].exam_notes).replace(/\"/g, "");
+			entry.examNotes = JSON.stringify(history[i].summary).replace(/\"/g, "");
 		}else {
-			entry.examNotes = JSON.stringify(history[i].exam_notes);
+			entry.examNotes = JSON.stringify(history[i].summary);
 		}
 		// TODO convert from Unix time, to something more readable
 		if(JSON.stringify(history[i].date) != null){
-			entry.date = JSON.stringify(history[i].created_at).replace(/\"/g, "");
+			var entryDate = new Date(JSON.stringify(history[i].created_at).replace(/\"/g, "") *1000);
+			var day = entryDate.getDate();
+			var month = entryDate.getMonth();
+			var year = entryDate.getFullYear();
+			entry.date = day + "/" + month + "/" + year;
 		}else{
 			entry.date = JSON.stringify(history[i].created_at);
 		}
