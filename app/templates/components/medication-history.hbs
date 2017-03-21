@@ -3,7 +3,14 @@
 		<div class = "new-entry-button-wrapper">
 			<button {{action "newEntry" }} class = "new-entry-button">New Entry</button>
 		</div>	
-		<p>some text about medication history!</p>
-		{{patientId}}
+		<div class="history-list">
+			{{#ember-scrollable autoHide=false}}
+				{{#each medicalRecord as |entry|}}
+					<div class = "nameListItem" {{action 'viewEntry' entry.recordId}}>
+						<p></p>
+					</div>
+				{{/each}}
+			{{/ember-scrollable}}
+		</div>
 	</div>
 </div>
