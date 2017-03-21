@@ -16,7 +16,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
 					firstName: deserialFirstName(data.client),
 					lastName: deserialLastName(data.client),
 					phoneNumber: deserialPhoneNumber(data.client),
-					email: deserialPhoneNumber(data.client),
+					email: deserialEmail(data.client),
 					address: deserialAddress(data.client),
 
 					licos: deserialLICOS(data.client),
