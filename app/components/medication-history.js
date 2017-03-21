@@ -49,7 +49,10 @@ export default Ember.Component.extend({
 				})
 		);
 		console.log(this.medicationList);
-	}
+	},
+	ifMedicine: function(){
+		return this.get(med_type) === "medicine";
+	}.property(med_type);
 });
 
 function deserialAttributes(meds){
@@ -57,20 +60,23 @@ function deserialAttributes(meds){
 	for(var i = 0; i < meds.length; i++) {
 		var entry = meds[i];
 		entry.recordId = JSON.stringify(meds[i].id).replace(/\"/g, "");
-		if(JSON.stringify(meds[i].type) = "medicine"){
-			if(JSON.stringify(meds[i].name) != null){
-				entry.name = JSON.stringify(meds[i].name).replace(/\"/g, "");
-			}
-			if(JSON.stringify(meds[i].created_At) != null){
-				//convert from unix time to a date string
-				var entryDate = new Date(JSON.stringify(meds[i].created_At).replace(/\"/g, "") *1000);
-				var day = entryDate.getDate();
-				var month = entryDate.getMonth();
-				var year = entryDate.getFullYear();
-				entry.date = month + "/" + day + "/" + year;
-			}
-			deserial.push(entry);
+		// if(JSON.stringify(meds[i].med_type) === "medicine"){
+		if(JSON.stringify(meds[i].name) != null){
+			entry.name = JSON.stringify(meds[i].name).replace(/\"/g, "");
 		}
+		if(JSON.stringify(meds[i].created_at) != null){
+			//convert from unix time to a date string
+			// var entryDate = new Date(JSON.stringify(meds[i].created_At).replace(/\"/g, "") *1000);
+			// var day = entryDate.getDate();
+			// var month = entryDate.getMonth();
+			// var year = entryDate.getFullYear();
+			// entry.date = month + "/" + day + "/" + year;
+			entry.date = JSON.stringify(meds[i].created_at).replace(/\"/g, "").slice(0, 10);
+		}
+		deserial.push(entry);
+		// }else{
+		// 	console.log(JSON.stringify(meds[i].med_type));
+		// }
 	}
 	return(deserial);
 }
