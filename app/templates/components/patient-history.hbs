@@ -1,0 +1,17 @@
+<div class = "infoBlock">
+	<div class = "panel panel-default">
+		<div class = "new-entry-button-wrapper">
+			<button {{action "newEntry" }} class = "new-entry-button">New Entry</button>
+		</div>	
+		<!-- <p>some text about the entire medical history in chronological order!</p> -->
+		<div class="history-list">
+			{{#ember-scrollable autoHide=false}}
+				{{#each medicalRecord as |entry|}}
+					<div class = "nameListItem" {{action 'viewEntry' entry.recordId}}>
+						<p>{{entry.summary}}  {{entry.date}}</p>
+					</div>
+				{{/each}}
+			{{/ember-scrollable}}
+		</div>
+	</div>
+</div>
