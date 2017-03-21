@@ -31,6 +31,7 @@ Router.map(function() {
   this.route('create-contact');
   this.route('test');
   this.route('admin');
+  this.route('user', {path: '/admin/users/:id'})
 });
 
 export default Router;
