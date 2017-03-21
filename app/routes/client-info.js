@@ -74,17 +74,59 @@ function deserialPatients(patients){
 	return(deserial);
 }
 
-function deserialFirstName(client){}
+function deserialFirstName(client){
+	var fName = JSON.stringify(client.firstName);
+	if(fName != null){
+		return fName.replace(/\"/g, "");
+	}else{
+		return "";
+	}
+}
 
-function deserialLastName(client){}
+function deserialLastName(client){
+	var lName = 
+	if(lName != null){
+		return lName.replace(/\"/g, "");
+	}else{
+		return "";
+	}
+}
 
-function deserialPhoneNumber(client){}
+function deserialPhoneNumber(client){
+	var phoneNumber = 
+	if(phoneNumber != null){
+		return phoneNumber.replace(/\"/g, "");
+	}else{
+		return "";
+	}
+}
 
-function deserialEmail(client){}
+function deserialEmail(client){
+	var email =
+	if(email != null){
+		return email.replace(/\"/g, "");
+	}else{
+		return "";
+	}
+}
 
-function deserialAddress(client){}
+function deserialAddress(client){
+	var address = 
+	if(address != null){
+		return address.replace(/\"/g, "");
+	}else{
+		return "";
+	}
+}
 
-function deserialLICOS(client){}
+function deserialLICOS(client){
+	var lico = 
+	if(lico != null){
+		return lico.replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
 
 function deserialAISH(client){}
 
