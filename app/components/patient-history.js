@@ -19,7 +19,10 @@ export default Ember.Component.extend({
 			}
 		}.observes('isVisible'),
 		viewEntry: function(recordID){
-			this.get('router').transitionTo('/view-patient/'+ this.patientId +'/view-medical-record/'+ recordID);
+			// this.get('router').transitionTo('/view-patient/'+ this.patientId +
+			// 	'/view-medical-record/'+ recordID);
+			this.get('router').transitionTo('view-patient.view-medical-record', [this.patientId, recordID]);
+			// this.get('router').transitionTo('client-list');
 			// this.get('router').transitionTo('view-medical-record', this.patientId, recordID);
 		}
 	},
