@@ -6,21 +6,23 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
     index : 1,
 	model(params) { 
 
-        var self = this;
+        var self = this;		
 
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
 		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/'+params.recordID 
 			).then(function(data){
+				
+              
             
 				Ember.run(function() {
        			 resolve({ 
 						   
-
+                            unixDate: data.medical_record.date,
                             date: parseDate(new Date(data.medical_record.date * 1000)),
                             date_created: data.medical_record.created_at, 
-                            patient_id: data.medical_record.id, 
+                            patient_id: data.medical_record.patient_id, 
                             
                             signature: data.medical_record.signature, 
 
@@ -97,11 +99,13 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             followUpNotes: data.medical_record.follow_up_instructions,
                             summary: data.medical_record.summary ,
 
-                            //medications
-                            medications: deserialAttributesMedicines(data.medications), 
-                            vaccines: deserialAttributesVaccines(data.medications),
-                            others:deserialAttributesOthers(data.medications) 
+                            //to determine if edit button is disabled or not
+                            editable: checkUpdate( new Date(data.medical_record.date * 1000)) ,
 
+                            //medications
+                            medicine: deserialAttributesMedicines(data.medications), 
+                            vaccine: deserialAttributesVaccines(data.medications),
+                            other:deserialAttributesOthers(data.medications) 
                           
 				
 				});
@@ -109,7 +113,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 			
 			},
 			function(data){
-				if (data === false){
+					if (data === false){
 						if (self.get('session.isAuthenticated')){
 							self.get('session').invalidate();
 							}
@@ -118,6 +122,13 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 		}));
 		return(ajaxGet);
 	},
+
+    setupController(controller, model) {
+    // Call _super for default behavior
+    this._super(controller, model);
+    //going to try to use this to fix nulls displaying problem
+    //console.log(model.glands);
+  }
 
 });
 
@@ -132,7 +143,6 @@ function parseDate(date){
         var whole = days[day] +" "+ months[month] +" "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
         return(whole);
 }
-
 
 function setDropdowns(value){
     if (value === "kg"){
@@ -150,11 +160,33 @@ function setDropdownBCS(value, self){
     return(false);
 }
 
+function checkUpdate(date){
+
+    var day = date.getDay() ;
+    var month = date.getMonth()  ;
+    var year = date.getFullYear();
+
+    var current = new Date();
+
+    var currentDay = current.getDay() ;
+    var currentMonth = current.getMonth()  ;
+    var currentYear = current.getFullYear();
+    var currentHours = current.getHours();
+
+    //exact minute of midnight is when we will autofinalize
+    if (currentDay === day && currentMonth === month && currentYear === year && currentHours <= 24 ){
+        return(true);
+    }
+    return(false);
+}
+
 function deserialAttributesMedicines(medications){
+    console.log('we here', medications, medications.length);
 	var deserial = [];
 	for(var i = 0; i < medications.length; i++) {
 
-		if(medications[i].med_type === 'medicine' || medications[i].med_type === 'Medicine'){
+        //bc at some point data was created with both (over component integration period)
+		if(medications[i].med_type === 'medicine' || medications[i].med_type === 'Medicine'  ){
 		var medication = medications[i];
 		medication.name = medication.name;
         medication.reminderToDisplay = format(medication.reminder);
@@ -168,7 +200,7 @@ function deserialAttributesVaccines(vaccines){
 	var deserial = [];
 	for(var i = 0; i < vaccines.length; i++) {
 
-		if(vaccines[i].med_type === 'vaccine' || vaccines[i].med_type === 'Vaccine'){
+		if(vaccines[i].med_type === 'vaccine'||vaccines[i].med_type === 'Vaccine'){
 		var vaccine = vaccines[i];
 		vaccine.name = vaccine.name;
         vaccine.reminderToDisplay = format(vaccine.reminder);
@@ -182,7 +214,7 @@ function deserialAttributesOthers(others){
 	var deserial = [];
 	for(var i = 0; i < others.length; i++) {
 
-		if(others[i].med_type === 'other'||others[i].med_type === 'Other'){
+		if(others[i].med_type === 'other'|| others[i].med_type === 'Other'){
 		var other = others[i];
 		other.name = other.name;
         other.reminderToDisplay = format(other.reminder);

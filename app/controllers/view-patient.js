@@ -3,18 +3,38 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	 actions: {
         gotoMedicalRoute(patient){
-            console.log("we get here", patient);
-            this.transitionToRoute('/medical-record/'+patient);
+            this.transitionToRoute("/view-patient/"+patient+"/medical-record");
         },
-        viewMedicalRecords(patient){
-            console.log('patient', patient);
-            this.transitionToRoute('/view-medical-record/').then(function(newRoute) {
-            newRoute.currentModel.patientId = patient;
-            console.log('new route', newRoute, newRoute.currentModel);
-            //newRoute.currentModel.patient_id =  patient;
-        });
+        viewMedicalRecords(patient){ //want to be passed a date here from whatever med rec was clicked viewMedicalRecords(patient, date){
+           // if ( checkUpdate(date) ){
+            //    this.transitionToRoute('/view-patient/'+patient+'/view-medical-record-editable/1');
+            //}
+            //else{
+                this.transitionToRoute('/view-patient/'+patient+'/view-medical-record/'+23);
+            //}
+            //this is still hardcoded for med rec number until i actually have a list to come from
      }
 
 }
 
 });
+
+function checkUpdate(date){
+
+    var day = date.getDay() ;
+    var month = date.getMonth()  ;
+    var year = date.getFullYear();
+
+    var current = new Date();
+
+    var currentDay = current.getDay() ;
+    var currentMonth = current.getMonth()  ;
+    var currentYear = current.getFullYear();
+    var currentHours = current.getHours();
+
+    //exact minute of midnight is when we will autofinalize
+    if (currentDay === day && currentMonth === month && currentYear === year && currentHours <= 24 ){
+        return(true);
+    }
+    return(false);
+}

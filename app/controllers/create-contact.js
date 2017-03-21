@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
         var type= document.getElementById('type');
         var typeval = type.options[type.selectedIndex].text;
 
-        if (typeval == "Laboratory" ){
+        if (typeval === "Laboratory" ){
         this.set('model.laboratory', false);
         }
         else{
