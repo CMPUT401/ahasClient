@@ -1,4 +1,4 @@
-<div class = "container">
+
 	<h1>{{model.first_name}} {{model.lastName}}</h1>
 	<div class = "viewGroup">
 		<h3>Client's Basic Information</h3>
@@ -88,4 +88,5 @@
 	<button type = "button" id= "create-medrec-button" {{action 'gotoMedicalRoute' model.id}}>Create a medical record</button>
 	<button type = "button" id= "view-medrec-button" {{action 'viewMedicalRecords' model.id}}>View a medical record</button>
 	{{history-container patientID=model.id}}
-</div>
+
+{{outlet}}
