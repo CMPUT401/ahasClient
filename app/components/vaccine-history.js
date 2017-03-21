@@ -1,17 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	isVisible: true,
-	patientId: 0,
+	isVisible: false,
+	patientId:0 ,
 	ajax: Ember.inject.service(),
-	medicalRecord: [],
+	medicationList: [],
 	router: Ember.inject.service('-routing'),
 	actions:{
 		newEntry: function(){
-			this.get('router').transitionTo('medical-record', [this.patientId]);
+            //this should just go to medical record creation right? or is this button even needed?
+			console.log("making a new medical history entry");
 		},
 		toggleVisibility: function(){
-			// console.log("show chrono, the id is " + patientId);
+			// console.log("show medication, the id is " + patientId);
 			if(this.get('isVisible')){
 				this.set('isVisible', false);
 			} else {
@@ -30,57 +31,54 @@ export default Ember.Component.extend({
 	},
 	init(){
 		this._super(...arguments);
-		console.log("calling ajax");
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-			this.get('ajax').request('api/patients/' + this.patientId + '/medical_records'
+			this.get('ajax').request('api/patients/' + this.patientId + '/medications'
 				).then(function(data){
 					console.log("data is" + JSON.stringify(data));
 					Ember.run(function(){
 						resolve({
-							//why is this in here as well as self.set ect? -kristy
-							history: deserialAttributes(data.medical_records)
+							vaccines: deserialAttributes(data.medications)
 						});
 						// console.log(deserialAttributes(data.medical_records));
-						self.set('medicalRecord', deserialAttributes(data.medical_records));
+						self.set('vaccineList', deserialAttributes(data.medications));
 					});
 				},
 				function(data){
 					if (data === false){
 						// self.transitionTo('/unauthorized');
+						// self.get('router').transitionTo('unauthorized'); //not sure if this works
 						console.log("status is " + JSON.stringify(data));
 					}		
 				})
 		);
-		console.log(this.medicalRecord);
+		console.log(this.medicationList);
 	}
 });
 
-function deserialAttributes(history){
+function deserialAttributes(meds){
 	var deserial = [];
-	for(var i = 0; i < history.length; i++) {
-		var entry = history[i];
-		entry.recordId = JSON.stringify(history[i].id).replace(/\"/g, "");
-		if(JSON.stringify(history[i].exam_notes) != null){
-			entry.examNotes = JSON.stringify(history[i].summary).replace(/\"/g, "");
-		}else {
-			entry.examNotes = JSON.stringify(history[i].summary);
+	for(var i = 0; i < meds.length; i++) {
+		var entry = meds[i];
+        if (entry.med_type === "Vaccine" || entry.med_type === "vaccine"){
+		entry.recordId = JSON.stringify(meds[i].id).replace(/\"/g, "");
+		if(JSON.stringify(meds[i].medical_record_id) != null){
+			entry.medical_record_id = JSON.stringify(meds[i].medical_record_id).replace(/\"/g, "");
 		}
-		if(JSON.stringify(history[i].created_at) !== null){
-			//convert from unix time to a date string
-			var formattedDateCreated = format(history[i].created_at);
-			entry.dateToDisplay = formattedDateCreated;
+		// if(JSON.stringify(meds[i].med_type) === "medicine"){
+		if(JSON.stringify(meds[i].name) != null){
+			entry.name = JSON.stringify(meds[i].name).replace(/\"/g, "");
+		}
+		if(JSON.stringify(meds[i].created_at) != null){
+			
+			entry.dateToDisplay =meds[i].created_at;
 			//also want to keep one unix time for our checkUpdate function
-			entry.date = history[i].created_at;
-		}else{
-			//not sure when we would ever get here...
-			var formattedDateOrig = format(history[i].date);
-			entry.dateToDisplay = formattedDateOrig;
-			entry.date = history[i].date;
+            entry.date = new Date(meds[i].created_at).now;
+            console.log(entry.date);
 		}
 		deserial.push(entry);
-
 	}
+    }
 	return(deserial);
 }
 
