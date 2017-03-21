@@ -21,11 +21,12 @@ export default Ember.Component.extend({
 		viewEntry: function(recordID){
 			//this.get('router').transitionTo('view-medical-record', [this.patientId, recordID]);
 			console.log('view entry ' + recordID);
+			this.get('router').transitionTo('view-medical-record', [this.patientId, recordID]);
 		}
 	},
 	init(){
 		this._super(...arguments);
-		console.log("calling ajax");
+		console.log("calling ajax for medcation List");
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 			this.get('ajax').request('api/patients/' + this.patientId + '/medical_records/medication'
@@ -42,6 +43,7 @@ export default Ember.Component.extend({
 				function(data){
 					if (data === false){
 						// self.transitionTo('/unauthorized');
+						// self.get('router').transitionTo('unauthorized'); //not sure if this works
 						console.log("status is " + JSON.stringify(data));
 					}		
 				})
