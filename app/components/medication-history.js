@@ -4,7 +4,7 @@ export default Ember.Component.extend({
 	isVisible: false,
 	patientId:0 ,
 	ajax: Ember.inject.service(),
-	medicalRecord: [],
+	medicationList: [],
 	router: Ember.inject.service('-routing'),
 	actions:{
 		newEntry: function(){
@@ -33,10 +33,10 @@ export default Ember.Component.extend({
 					console.log("data is" + JSON.stringify(data));
 					Ember.run(function(){
 						resolve({
-							history: deserialAttributes(data.medical_records)
+							medications: deserialAttributes(data.medications)
 						});
 						// console.log(deserialAttributes(data.medical_records));
-						self.set('medicalRecord', deserialAttributes(data.medical_records));
+						self.set('medicationList', deserialAttributes(data.medications));
 					});
 				},
 				function(data){
@@ -46,6 +46,6 @@ export default Ember.Component.extend({
 					}		
 				})
 		);
-		console.log(this.medicalRecord);
+		console.log(this.medicationList);
 	}
 });
