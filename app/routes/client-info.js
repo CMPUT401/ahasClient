@@ -84,7 +84,7 @@ function deserialFirstName(client){
 }
 
 function deserialLastName(client){
-	var lName = 
+	var lName = JSON.stringify(client.lastName);
 	if(lName != null){
 		return lName.replace(/\"/g, "");
 	}else{
@@ -93,7 +93,7 @@ function deserialLastName(client){
 }
 
 function deserialPhoneNumber(client){
-	var phoneNumber = 
+	var phoneNumber = JSON.stringify(client.phoneNumber);
 	if(phoneNumber != null){
 		return phoneNumber.replace(/\"/g, "");
 	}else{
@@ -102,7 +102,7 @@ function deserialPhoneNumber(client){
 }
 
 function deserialEmail(client){
-	var email =
+	var email = JSON.stringify(client.email);
 	if(email != null){
 		return email.replace(/\"/g, "");
 	}else{
@@ -111,16 +111,16 @@ function deserialEmail(client){
 }
 
 function deserialAddress(client){
-	var address = 
+	var address = JSON.stringify(client.address);
 	if(address != null){
-		return address.replace(/\"/g, "");
+		return address.replace(/\\n/g, " <br> " ).replace(/\"/g, "");
 	}else{
 		return "";
 	}
 }
 
 function deserialLICOS(client){
-	var lico = 
+	var lico = JSON.stringify(client.licos);
 	if(lico != null){
 		return lico.replace(/\"/g, "");
 	} else{
@@ -128,62 +128,140 @@ function deserialLICOS(client){
 	}
 }
 
-function deserialAISH(client){}
+function deserialAISH(client){
+	var aish = JSON.stringify(client.aish);
+	if(aish != null){
+		return aish.replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
 
-function deserialSA(client){}
+function deserialSA(client){
+	var socialAssistance = JSON.stringify(client.socialAssistance);
+	if(socialAssistance != null){
+		return socialAssistance.replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
 
-function deserialCreateAt(client){}
+function deserialCreateAt(client){
+	var createdAt = JSON.stringify(client.created_at);
+	if(createdAt != null){
+		return createdAt.replace(/\"/g, "").slice(0,10);
+	} else{
+		return "";
+	}
+}
 
-function deserialUpdatedAt(client){}
+function deserialUpdatedAt(client){
+	var updatedAt = JSON.stringify(client.updated_at);
+	if(updatedAt != null){
+		return updatedAt.replace(/\"/g, "").slice(0,10);
+	} else{
+		return "";
+	}
+}
 
-function deserialNotes(client){}
+function deserialNotes(client){
+	var notes = JSON.stringify(client.notes);
+	if(notes != null){
+		return notes.replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
 
-function deserialAltFirstName(client){}
+function deserialAltFirstName(client){
+	var altFName = JSON.stringify(client.alternativeContactFirstName);
+	if(altFName != null){
+		return altFName.replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
 
-function deserialAltLastName(client){}
+function deserialAltLastName(client){
+	var altLName = JSON.stringify(client.alternativeContactLastName)
+	if(altLName != null){
+		return altLName.replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
 
-function deserialAltPhoneNumber(client){}
+function deserialAltPhoneNumber(client){
+	var altPhoneNumber = JSON.stringify(client.alternativeContactPhoneNumber)
+	if(altPhoneNumber != null){
+		return altPhoneNumber.replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
 
-function deserialAlt2ndPhone(client){}
+function deserialAlt2ndPhone(client){
+	var altPhone = JSON.stringify(client.alternativeContact2ndPhone);
+	if(altPhone != null){
+		return altPhone.replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
 
-function deserialAltAddress(client){}
+function deserialAltAddress(client){
+	var altAddress = JSON.stringify(client.alternativeContactAddress);
+	if(altAddress != null){
+		return altAddress.replace(/\\n/g, " <br> " ).replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
 
-function deserialAltEmail(client){}
+function deserialAltEmail(client){
+	var altEmail = JSON.stringify(client.alternativeContactEmail);
+	if(altEmail != null){
+		return altEmail.replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
 
-function deserialClientId(client){}
+function deserialClientId(client){
+	var clientId = JSON.stringify(data.client.id)
+	if(clientId != null){
+		return clientId.replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
 
 function deserialClient(client){
 	var deserial;
 	//only one client to deserial
-	client.firstName = JSON.stringify(client.firstName).replace(/\"/g, "");
-	client.lastName = JSON.stringify(client.lastName).replace(/\"/g, "");
-	client.phoneNumber = JSON.stringify(client.phoneNumber).replace(/\"/g, "");
-	client.email = JSON.stringify(client.email).replace(/\"/g, "");
-	client.address = JSON.stringify(client.address).replace(/\\n/g, " <br> " ).replace(/\"/g, "");
+	client.firstName = .replace(/\"/g, "");
+	client.lastName = .replace(/\"/g, "");
+	client.phoneNumber = .replace(/\"/g, "");
+	client.email = .replace(/\"/g, "");
+	client.address = .replace(/\"/g, "");
 
-	client.licos = JSON.stringify(client.licos).replace(/\"/g, "");
-	client.aish = JSON.stringify(client.aish).replace(/\"/g, "");
-	client.socialAssistance = JSON.stringify(client.socialAssistance).replace(/\"/g, "");
+	client.licos = .replace(/\"/g, "");
+	client.aish = .replace(/\"/g, "");
+	client.socialAssistance = .replace(/\"/g, "");
 	client.pets = JSON.stringify(client.pets).replace(/\"/g, "");
 	
-	client.created_at = JSON.stringify(client.created_at).replace(/\"/g, "").slice(0, 10);
-	client.updated_at = JSON.stringify(client.updated_at).replace(/\"/g, "").slice(0, 10);
-	client.notes = JSON.stringify(client.notes).replace(/\"/g, "").replace(/\\n/g, ' <br> ' );
+	client.created_at = .replace(/\"/g, "").slice(0, 10);
+	client.updated_at = .replace(/\"/g, "").slice(0, 10);
+	client.notes = .replace(/\"/g, "").replace(/\\n/g, ' <br> ' );
 
-	client.alternativeContactFirstName = JSON.stringify(
-		client.alternativeContactFirstName).replace(/\"/g, "");
-	client.alternativeContactLastName = JSON.stringify(
-		client.alternativeContactLastName).replace(/\"/g, "");
-	client.alternativeContactPhoneNumber = JSON.stringify(
-		client.alternativeContactPhoneNumber).replace(/\"/g, "");
-	client.alternativeContact2ndPhone = JSON.stringify(
-		client.alternativeContact2ndPhone).replace(/\"/g, "");
-	client.alternativeContactAddress = JSON.stringify(
-		client.alternativeContactAddress).replace(/\\n/g, " <br> " ).replace(/\"/g, "");
-	client.alternativeContactEmail = JSON.stringify(
-			client.alternativeContactEmail).replace(/\"/g, "");
+	client.alternativeContactFirstName = .replace(/\"/g, "");
+	client.alternativeContactLastName = .replace(/\"/g, "");
+	client.alternativeContactPhoneNumber = .replace(/\"/g, "");
+	client.alternativeContact2ndPhone = .replace(/\"/g, "");
+	client.alternativeContactAddress = .replace(/\"/g, "");
+	client.alternativeContactEmail = .replace(/\"/g, "");
 
-	client.clientID = JSON.stringify(data.client.id).replace(/\"/g, "");
+	client.clientID = .replace(/\"/g, "");
 	client.patients = deserialAttributes(data.client.patients);
 
 	return client;
