@@ -47,8 +47,6 @@ export default Ember.Component.extend({
 				})
 		);
 		console.log(this.medicalRecord);
-		// this.medicalRecord = [{"id": "1", "examNotes": "something", "date": "now"}, 
-		// {"id": "2", "examNotes": "something else", "date": "later"}];
 	}
 });
 
@@ -62,8 +60,8 @@ function deserialAttributes(history){
 		}else {
 			entry.examNotes = JSON.stringify(history[i].summary);
 		}
-		// TODO convert from Unix time, to something more readable
 		if(JSON.stringify(history[i].date) != null){
+			//convert from unix time to a date string
 			var entryDate = new Date(JSON.stringify(history[i].created_at).replace(/\"/g, "") *1000);
 			var day = entryDate.getDate();
 			var month = entryDate.getMonth();
