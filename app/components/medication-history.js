@@ -49,10 +49,7 @@ export default Ember.Component.extend({
 				})
 		);
 		console.log(this.medicationList);
-	},
-	ifMedicine: function(){
-		return this.get(med_type) === "medicine";
-	}.property(med_type);
+	}
 });
 
 function deserialAttributes(meds){
