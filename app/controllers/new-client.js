@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
 	//let cName, let cAddress, let cPhone,
 	actions: {
-		submitNewCient: function(){
+		submitNewClient: function(){
 			//disable button
 			document.getElementById("create-client-button").disabled = true; 
 			console.log("making new client!");
