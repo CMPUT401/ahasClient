@@ -43,5 +43,23 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 });
 
 function convertUnix(schedules){
+	var newsched = [];
 	for(var i = 0; i < schedules.length; i++) {
+		var schedule = schedules[i];
+		schedule.start = new Date(schedules[i].appointmentStartDate* 1000);
+		newsched.push(schedule);
+	}
+	return (newsched);
+}
+
+function parseDate(date){
+        var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        var months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
+        var day = date.getDay() ;
+        var month = date.getMonth()  ;
+        var year = date.getFullYear();
+        var hours = date.getHours();
+        var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
+        var whole = months[month] +" "+ days[day] +" "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
+        return(whole);
 }
