@@ -22,7 +22,7 @@
     background: #F5F5F5;
   }
   &:hover{
-      background:#FFFFFF ;
+      background:#FFFFFF;
   }
 }
 
@@ -30,4 +30,7 @@
     &:hover{
         background: #F5F5F5;
     }
+    &:active{
+      background:#F0F0F0;
+  }
 }
