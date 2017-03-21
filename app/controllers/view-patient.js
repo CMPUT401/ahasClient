@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
             //    this.transitionToRoute('/view-patient/'+patient+'/view-medical-record-editable/1');
             //}
             //else{
-                this.transitionToRoute('/view-patient/'+patient+'/view-medical-record/1');
+                this.transitionToRoute('/view-patient/'+patient+'/view-medical-record/'+23);
             //}
             //this is still hardcoded for med rec number until i actually have a list to come from
      }

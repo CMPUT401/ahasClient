@@ -17,7 +17,7 @@ export default Ember.Component.extend({
       Ember.set(this.get('medicationList').objectAt(index), 'name', name);
       Ember.set(this.get('medicationList').objectAt(index), 'reminder', date);
     },
-    deleteMed: function (index, name, date) {
+    deleteMed: function (index) {
       // Remove current medication from the container
       this.get('medicationList').removeAt(index);
     }

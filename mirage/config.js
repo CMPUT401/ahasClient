@@ -17,7 +17,7 @@ export default function() {
    this.post('patients/1/medical_records', { success: true }, 201);
 
    //this is for viewing one medical record
-   this.get('patients/1/medical_records/18',
+   this.get('patients/1/medical_records/23',
    {
      success:true,
      medical_record:

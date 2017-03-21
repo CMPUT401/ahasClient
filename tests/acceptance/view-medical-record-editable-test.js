@@ -13,6 +13,15 @@ test('visiting /view-patient/1/view-medical-record/1', function(assert) {
   });
 });
 
+test('visiting /view-patient/1/view-medical-record-editable/1', function(assert) {
+  authenticateSession(this.application);
+  visit('/view-patient/1/view-medical-record-editable/1');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/view-patient/1/view-medical-record-editable/1');
+  });
+});
+
 test('medical record info shows up', function(assert) {
   authenticateSession(this.application);
   visit('/view-patient/1/view-medical-record/1');

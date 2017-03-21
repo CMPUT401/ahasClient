@@ -208,12 +208,14 @@ function formatReminders(items, id){
     for(var i =0 ; i<items.length; i++){
         if (items[i].reminder !== ""){
             var newObjectReminder = formatDate(items[i].reminder);
-            var newObject = {patient_id: id, name: items[i].name, med_type: items[i].med_type, reminder: newObjectReminder}
+            var newObject1 = {patient_id: id, name: items[i].name, med_type: items[i].med_type, reminder: newObjectReminder};
+            newList.push(newObject1);
         }
         else{
-            var newObject = {patient_id: id, name: items[i].name, med_type: items[i].med_type, reminder: ''}
+            var newObject2 = {patient_id: id, name: items[i].name, med_type: items[i].med_type, reminder: ''};
+            newList.push(newObject2);
         }
-        newList.push(newObject);
+        
     }
 
     return(newList);
