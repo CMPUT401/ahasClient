@@ -11,7 +11,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/19' 
+		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/23' 
 			).then(function(data){
 				
               
@@ -103,9 +103,9 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             editable: checkUpdate( new Date(data.medical_record.date * 1000)) ,
 
                             //medications
-                            medications: deserialAttributesMedicines(data.medications), 
-                            vaccines: deserialAttributesVaccines(data.medications),
-                            others:deserialAttributesOthers(data.medications) 
+                            medicine: deserialAttributesMedicines(data.medications), 
+                            vaccine: deserialAttributesVaccines(data.medications),
+                            other:deserialAttributesOthers(data.medications) 
                           
 				
 				});
@@ -181,14 +181,15 @@ function checkUpdate(date){
 }
 
 function deserialAttributesMedicines(medications){
+    console.log('we here', medications, medications.length);
 	var deserial = [];
 	for(var i = 0; i < medications.length; i++) {
 
-		if(medications[i].med_type === 'medicine'){
+        //bc at some point data was created with both (over component integration period)
+		if(medications[i].med_type === 'medicine' || medications[i].med_type === 'Medicine'  ){
 		var medication = medications[i];
 		medication.name = medication.name;
         medication.reminderToDisplay = format(medication.reminder);
-        console.log(medication.reminderToDisplay);
 		deserial.push(medication);
 	}
   }
@@ -199,7 +200,7 @@ function deserialAttributesVaccines(vaccines){
 	var deserial = [];
 	for(var i = 0; i < vaccines.length; i++) {
 
-		if(vaccines[i].med_type === 'vaccine'){
+		if(vaccines[i].med_type === 'vaccine'||vaccines[i].med_type === 'Vaccine'){
 		var vaccine = vaccines[i];
 		vaccine.name = vaccine.name;
         vaccine.reminderToDisplay = format(vaccine.reminder);
@@ -213,7 +214,7 @@ function deserialAttributesOthers(others){
 	var deserial = [];
 	for(var i = 0; i < others.length; i++) {
 
-		if(others[i].med_type === 'other'){
+		if(others[i].med_type === 'other'|| others[i].med_type === 'Other'){
 		var other = others[i];
 		other.name = other.name;
         other.reminderToDisplay = format(other.reminder);

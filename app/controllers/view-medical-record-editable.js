@@ -7,6 +7,11 @@ export default Ember.Controller.extend({
       ajax: Ember.inject.service(),
       actions: {
 
+          show(id){
+           var self = this;
+           gatherMedications(id, self);   
+          },
+
           updateMedicalRecord(id){
 
              var self = this;
@@ -97,7 +102,7 @@ export default Ember.Controller.extend({
 
            
         },
-         medications: gatherMedications(id),
+         medications: gatherMedications(id, self),
         
     }
                });
@@ -131,171 +136,49 @@ export default Ember.Controller.extend({
           for (var i=0; i<normals.length; i++){
               normals[i].checked = false;
           }        
-      },
-      
-      addMedication(){
-          var divMedication = document.getElementById('medicationDiv');
-          var textMedication = document.createElement('div');
-          var buttonMedication =  document.createElement('button');
-          buttonMedication.setAttribute('class', 'removeButton');
-          buttonMedication.setAttribute('id', 'removeOther');
-          buttonMedication.setAttribute('type', 'submit');
-          buttonMedication.innerHTML = 'x';
-          buttonMedication.onclick = function() { Ember.$(this).parent('div').remove();};
-
-          var dateMedication =  document.createElement('input');
-          dateMedication.setAttribute('id', 'reminderMedication');
-          dateMedication.setAttribute('class', 'reminderMedication');
-          dateMedication.setAttribute('placeholder', 'use calendar to set');
-          dateMedication.onclick = function() {
-               this.value= document.getElementById('datePickerMedication').value;
-            };
-     
-          textMedication.innerHTML = "<input class='medication' placeholder='medication type'>";
-          textMedication.appendChild(dateMedication);
-          textMedication.appendChild(buttonMedication);
-          divMedication.appendChild(textMedication);
-
-      },
-
-      addVaccine(){
-          var divVaccine = document.getElementById('vaccineDiv');
-          var textVaccine = document.createElement('div');
-          var buttonVaccine =  document.createElement('button');
-          buttonVaccine.setAttribute('class', 'removeButton');
-          buttonVaccine.setAttribute('id', 'removeOther');
-          buttonVaccine.setAttribute('type', 'submit');
-          buttonVaccine.innerHTML = 'x';
-          buttonVaccine.onclick = function() { Ember.$(this).parent('div').remove();};
-
-          var dateVaccine =  document.createElement('input');
-          dateVaccine.setAttribute('id', 'reminderVaccine');
-          dateVaccine.setAttribute('class', 'reminderVaccine');
-          dateVaccine.setAttribute('placeholder', 'use calendar to set');
-          dateVaccine.onclick = function() {
-               this.value= document.getElementById('datePickerVaccine').value;
-            };
-
-          textVaccine.innerHTML = "<input class='vaccine' placeholder='vaccine type'>"; 
-          textVaccine.appendChild(dateVaccine);
-          textVaccine.appendChild(buttonVaccine);
-          divVaccine.appendChild(textVaccine);
-
-      },
-
-      addOther(){
-          var divOther = document.getElementById('otherDiv');
-          var textOther = document.createElement('div');
-          var buttonOther =  document.createElement('button');
-          buttonOther.setAttribute('class', 'removeButton');
-          buttonOther.setAttribute('id', 'removeOther');
-          buttonOther.setAttribute('type', 'submit');
-          buttonOther.innerHTML = 'x';
-          buttonOther.onclick = function() { Ember.$(this).parent('div').remove();};
-
-          var dateOther =  document.createElement('input');
-          dateOther.setAttribute('id', 'reminderOther');
-          dateOther.setAttribute('class', 'reminderOther');
-          dateOther.setAttribute('placeholder', 'use calendar to set');
-          dateOther.onclick = function() {
-              this.value= document.getElementById('datePickerOther').value;
-          };
-
-          textOther.innerHTML = "<input class='other' placeholder='other type'>";
-          textOther.appendChild(dateOther);
-          textOther.appendChild(buttonOther);
-          divOther.appendChild(textOther);
-
-      },
-
-        //for (re)setting reminders on editable template, for old medications only, new use javascript onclick
-        dateMedicationClick(item) {
-              Ember.set(item, 'reminderToDisplay', document.getElementById('datePickerMedication').value );
-               
-            },
-
-        dateVaccineClick(item) {
-              Ember.set(item, 'reminderToDisplay', document.getElementById('datePickerVaccine').value );
-               
-            },
-
-        dateOtherClick(item) {
-              Ember.set(item, 'reminderToDisplay', document.getElementById('datePickerOther').value );
-               
-            },
-
-        removeMedications(id){
-            var newMeds = [];
-            var medications = this.get('model.medications');
-            for(var i =0; i<medications.length; i++){
-                if (medications[i].id !== id){
-                    newMeds.push(medications[i]);
-                }
-            }
-            this.set('model.medications', newMeds);
-        }, 
-        removeVaccines(id){
-            var newVaccines = [];
-            var vaccines = this.get('model.vaccines');
-            for(var j =0; j<vaccines.length; j++){
-                if (vaccines[j].id !== id){
-                    newVaccines.push(vaccines[j]);
-                }
-            }
-            this.set('model.vaccines', newVaccines);
-        },
-        removeOthers(id){
-            var newOthers = [];
-            var others = this.get('model.others');
-            for(var k =0; k<others.length; k++){
-                if (others[k].id !== id){
-                    newOthers.push(others[k]);
-                }
-            }
-            this.set('model.others', newOthers);
-        }
+      }  
     }
 });
 
 //gathers all of the medications from the medication inputs and sorts them into an appropriate list to be sent to server
-function gatherMedications(id){
+function gatherMedications(id, self){
     var medications = [];
-    var medication = document.getElementsByClassName('medication');
-    var medicationReminders = document.getElementsByClassName('reminderMedication');
-    for (var i  = 0; i<medication.length; i++){
-        var nondateMedication = medicationReminders[i].value;
-        var halfformattedDateMedication = new Date(nondateMedication);
-        var formattedDateMedication = Math.floor(halfformattedDateMedication.getTime() / 1000);
-        var formattedMed = { med_type:"medicine" , name:medication[i].value, reminder:formattedDateMedication, patient_id:id };
-        medications.push(formattedMed);
-
-          }
-
-    var vaccine = document.getElementsByClassName('vaccine');
-    var vaccineReminders = document.getElementsByClassName('reminderVaccine');
-    for (var j  = 0; j<vaccine.length; j++){
-        var nondateVaccine = vaccineReminders[j].value;
-        var halfformattedDateVaccine = new Date(nondateVaccine);
-        var formattedDateVaccine = Math.floor(halfformattedDateVaccine.getTime() / 1000);
-        var formattedVaccine = { med_type:"vaccine" , name:vaccine[j].value, reminder:formattedDateVaccine, patient_id:id};
-        medications.push(formattedVaccine);
-
-          }
-
-    var other = document.getElementsByClassName('other');
-    var otherReminders = document.getElementsByClassName('reminderOther');
-    for (var k  = 0; k<other.length; k++){
-        var nondateOther = otherReminders[k].value;
-        var halfformattedDateOther = new Date(nondateOther);
-        var formattedDateOther = Math.floor(halfformattedDateOther.getTime() / 1000);
-        var formattedOther = { med_type:"other" , name:other[k].value, reminder:formattedDateOther, patient_id:id};
-        medications.push(formattedOther);
-
-          }
+    var formattedMedicine = formatReminders(self.get('model.medicine'));
+    var formattedVaccine = formatReminders(self.get('model.vaccine'));
+    var formattedOther = formatReminders(self.get('model.other'));
+    medications.push.apply(medications, formattedMedicine);
+    medications.push.apply(medications, formattedVaccine);
+    medications.push.apply(medications, formattedOther);
     console.log(medications);
     return(medications);
     
 }
+
+function formatReminders(items){
+
+    var newList = [];
+
+    for(var i =0 ; i<items.length; i++){
+        if (items[i].reminder !== ""){
+            var newObjectReminder = formatDate(items[i].reminder);
+            var newObject = {name: items[i].name, med_type: items[i].med_type, reminder: newObjectReminder}
+        }
+        else{
+            var newObject = {name: items[i].name, med_type: items[i].med_type, reminder: ''}
+        }
+        newList.push(newObject);
+    }
+
+    return(newList);
+
+}
+
+function formatDate(date){
+  var half = new Date(date);
+  var formatted = Math.floor(half.getTime() / 1000);
+  return(formatted);
+}
+
 
 function showAlert(message, bool) {
         if(bool){

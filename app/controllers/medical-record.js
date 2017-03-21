@@ -190,9 +190,9 @@ function exportSignature(){
 
 function gatherMedications(id, self){
     var medications = [];
-    var formattedMedicine = formatReminders(self.get('medicine'));
-    var formattedVaccine = formatReminders(self.get('vaccine'));
-    var formattedOther = formatReminders(self.get('other'));
+    var formattedMedicine = formatReminders(self.get('medicine'), self.get('model.patientID'));
+    var formattedVaccine = formatReminders(self.get('vaccine'), self.get('model.patientID'));
+    var formattedOther = formatReminders(self.get('other'), self.get('model.patientID'));
     medications.push.apply(medications, formattedMedicine);
     medications.push.apply(medications, formattedVaccine);
     medications.push.apply(medications, formattedOther);
@@ -201,17 +201,17 @@ function gatherMedications(id, self){
     
 }
 
-function formatReminders(items){
+function formatReminders(items, id){
 
     var newList = [];
 
     for(var i =0 ; i<items.length; i++){
         if (items[i].reminder !== ""){
             var newObjectReminder = formatDate(items[i].reminder);
-            var newObject = {name: items[i].name, med_type: items[i].med_type, reminder: newObjectReminder}
+            var newObject = {patient_id: id, name: items[i].name, med_type: items[i].med_type, reminder: newObjectReminder}
         }
         else{
-            var newObject = {name: items[i].name, med_type: items[i].med_type, reminder: ''}
+            var newObject = {patient_id: id, name: items[i].name, med_type: items[i].med_type, reminder: ''}
         }
         newList.push(newObject);
     }

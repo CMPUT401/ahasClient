@@ -518,83 +518,21 @@
 
 <div class="row">
 <div>
-<label for="medications">Medications: </label>
-
-<div id="medicationdateDiv">
-    <div>
-{{bootstrap-datepicker id="datePickerMedication" placeholder='Medication Calendar'}}
-</div>
+  Medicine
+{{medications-container medType="Medicine" medicationList=model.medicine}}
 </div>
 
-<div id="medicationDiv">
-{{#each  model.medications as |medication|}}
-
-    
-        <div>
-    <input class='medication' value={{medication.name}}><input id='reminderMedication' {{action 'dateMedicationClick' medication}} class='reminderMedication' value={{medication.reminderToDisplay}}><button id='removeMedication' {{action 'removeMedications' medication.id }} class='removeButton' type='submit'>x</button>
-        </div>
-   
-
-{{/each}}
- </div>
-
-<button type="submit" class="addButton" id="add-medication-button"{{action 'addMedication'}}>Add</button>
+<div>
+  Vaccines
+{{medications-container medType="Vaccine" medicationList=model.vaccine}}
 </div>
 
-
-<div >
-<label for="vaccinces">Vaccines: </label>
-<br>
-
-<div id="vaccinedateDiv">
-    <div>
-    {{bootstrap-datepicker id="datePickerVaccine" placeholder='Vaccine Calendar'}}
-    </div>
-</div>
-
- <div id="vaccineDiv">
-{{#each  model.vaccines as |vaccine|}}
-
-   
-        <div>
-    <input class='vaccine' value={{vaccine.name}}><input id='reminderVaccine' {{action 'dateVaccineClick' vaccine}} class='reminderVaccine' value={{vaccine.reminderToDisplay}}><button id='removeVaccine' {{action 'removeVaccines' vaccine.id }}  class='removeButton' type='submit'>x</button>
-        </div>
- 
-
-{{/each}}
-   </div>
-
-<button type="submit" class="addButton" id="add-vaccine-button"{{action 'addVaccine'}}>Add</button>
-</div>
-
-<div >
-<label for="other">Other: </label>
-<br>
-
-<div id="otherdateDiv">
-      <div>
-{{bootstrap-datepicker id="datePickerOther"  placeholder='Other Calendar'}}
+<div>
+  Other
+{{medications-container medType="Other" medicationList=model.other}}
 </div>
 </div>
-
-   <div id="otherDiv">
-{{#each  model.others as |other|}}
-
- 
-        <div>
-    <input class='other' value={{other.name}}><input id='reminderOther' {{action 'dateOtherClick' other}} class='reminderOther' value={{other.reminderToDisplay}}><button id='removeOther' {{action 'removeOthers' other.id }} class='removeButton' type='submit'>x</button>
-        </div>
-  
-
-{{/each}}
-  </div>
-
-<button type="submit" class="addButton" id="add-other-button"{{action 'addOther'}}>Add</button>
 </div>
-
-</div>
-</div>
-
 </div>
 
 

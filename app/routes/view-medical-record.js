@@ -11,7 +11,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/19' 
+		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/23' 
 			).then(function(data){
             
 				Ember.run(function() {
@@ -154,7 +154,7 @@ function deserialAttributesMedicines(medications){
 	var deserial = [];
 	for(var i = 0; i < medications.length; i++) {
 
-		if(medications[i].med_type === 'medicine'){
+		if(medications[i].med_type === 'medicine' || medications[i].med_type === 'Medicine'){
 		var medication = medications[i];
 		medication.name = medication.name;
         medication.reminderToDisplay = format(medication.reminder);
@@ -168,7 +168,7 @@ function deserialAttributesVaccines(vaccines){
 	var deserial = [];
 	for(var i = 0; i < vaccines.length; i++) {
 
-		if(vaccines[i].med_type === 'vaccine'){
+		if(vaccines[i].med_type === 'vaccine' || vaccines[i].med_type === 'Vaccine'){
 		var vaccine = vaccines[i];
 		vaccine.name = vaccine.name;
         vaccine.reminderToDisplay = format(vaccine.reminder);
@@ -182,7 +182,7 @@ function deserialAttributesOthers(others){
 	var deserial = [];
 	for(var i = 0; i < others.length; i++) {
 
-		if(others[i].med_type === 'other'){
+		if(others[i].med_type === 'other'||others[i].med_type === 'Other'){
 		var other = others[i];
 		other.name = other.name;
         other.reminderToDisplay = format(other.reminder);
