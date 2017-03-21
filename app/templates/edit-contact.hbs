@@ -1,6 +1,45 @@
 <div class="inputCenterGroup">
-<h3> Please edit the information for the contact: {{model.first_name}} {{model.last_name}} </h3>
+<h3 class='heading'> Editing: {{model.first_name}} {{model.last_name}} </h3>
 <form > 
+
+ <label for="type" >What type of volunteer is this?</label>
+  <select id="type" {{action "showLastName" on="change"}}>
+        {{#if model.veterinarian}}
+        <option value="Veterinarian" selected='selected'> Veterinarian </option>
+        <option value="Volunteer"> Volunteer </option>
+        <option value="Laboratory"> Laboratory </option>
+         <option value="Technician"> Technician </option>
+        {{/if}}
+          {{#if model.volunteer}}
+        <option value="Veterinarian" > Veterinarian </option>
+        <option value="Volunteer" selected='selected'> Volunteer </option>
+        <option value="Laboratory"> Laboratory </option>
+         <option value="Technician"> Technician </option>
+        {{/if}}
+          {{#if model.laboratory}}
+        <option value="Veterinarian" > Veterinarian </option>
+        <option value="Volunteer"> Volunteer </option>
+        <option value="Laboratory" selected='selected'> Laboratory </option>
+         <option value="Technician"> Technician </option>
+        {{/if}}
+          {{#if model.technician}}
+        <option value="Veterinarian" > Veterinarian </option>
+        <option value="Volunteer"> Volunteer </option>
+        <option value="Laboratory"> Laboratory </option>
+         <option value="Technician" selected='selected'> Technician </option>
+        {{/if}}
+  </select>
+  {{#if model.laboratory}}
+  <br>
+  <br> 
+  <label for="first_name" class="inputUserLabel">Name:</label>
+  
+  <input id='first_name' value={{model.first_name}} >
+  <br>
+  <br> 
+  {{else}}  
+   <br>
+  <br>   
   <label for="first_name" class="inputUserLabel">First Name:</label>
   
   <input id='first_name' value={{model.first_name}} >
@@ -11,6 +50,7 @@
   <input id='last_name' value={{model.last_name}}>
   <br>
   <br> 
+  {{/if}}
   <label for="phoneNumber" class="inputUserLabel">Phone Number: </label>
 
   <input id='phoneNumber' value={{model.phone_number}}>
@@ -31,16 +71,7 @@
   <input type="address" id='address' value={{model.address}}>
   <br>
   <br>
-  <label for="type" >What type of volunteer is this?</label>
-  <p> Was previously set as: {{model.type}} </p>
-  <select id="type">
-        <option value="Veterinarian"> Veterinarian </option>
-        <option value="Volunteer"> Volunteer </option>
-        <option value="Laboratory"> Laboratory </option>
-  </select>
-  <br>
-  <br>
-  <button type="submit" {{action 'doneEditContact' model}} id="done-edit-button" class="centeredButton">Done Editing</button>
+  <button type="submit" {{action 'doneEditContact' model.id}} id="done-edit-button" class="centeredButton">Done Editing</button>
  </form>
  <br>
  <div id = "alert_placeholder"></div>

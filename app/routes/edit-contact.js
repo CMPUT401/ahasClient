@@ -2,21 +2,82 @@ import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin , {
-    model() { 
+     ajax: Ember.inject.service(),
+       model(params) {
+		var self = this;
+		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
+		this.get('ajax').request('/api/contacts/' + params.contact_id
+			).then(function(data){
+				console.log(JSON.stringify(data));
+				Ember.run(function() {
+       			 resolve({ 
+						   first_name: JSON.stringify(data.contact.first_name).replace(/\"/g, ""),
+						   last_name: JSON.stringify(data.contact.last_name).replace(/\"/g, ""),
+						   phone_number: JSON.stringify(data.contact.phone_number).replace(/\"/g, ""),
+						   email: JSON.stringify(data.contact.email).replace(/\"/g, ""),
+						   fax_number: JSON.stringify(data.contact.fax_number).replace(/\"/g, ""),
+						   address: JSON.stringify(data.contact.address).replace(/\"/g, ""),
+						   id: JSON.stringify(data.contact.id).replace(/\"/g, ""),
+                           veterinarian: checkVeterinarian(JSON.stringify(data.contact.contact_type).replace(/\"/g, "")),
+                           volunteer: checkVolunteer(JSON.stringify(data.contact.contact_type).replace(/\"/g, "")),
+                           laboratory: checkLaboratory(JSON.stringify(data.contact.contact_type).replace(/\"/g, "")),
+                           technician: checkTechnician(JSON.stringify(data.contact.contact_type).replace(/\"/g, ""))				
+				});
+    		  });
+			
+			},
+			function(data){
+				if (response === false){
+					if (self.get('session.isAuthenticated')){
+						self.get('session').invalidate();
+							}
+					self.transitionToRoute('/unauthorized');
+            }
+		}));
+		return(ajaxGet);
+       }
+});
 
-        var model = JSON.parse(localStorage.getItem("contact"));
+function checkVeterinarian(contact){
 
-        return{
+    if(contact === 'Veterinarian'){
 
-         id: model.id,
-         first_name: model.first_name,
-		 last_name: model.last_name,
-		 phone_number: model.phone_number,
-		 email: model.email,
-		 fax_number: model.fax_number,
-		 address: model.address,
-         type: model.type
-    };
+        return(true);
 
     }
-});
+    return(false);
+
+}
+
+function checkVolunteer(contact){
+
+    if(contact === 'Volunteer'){
+
+        return(true);
+
+    }
+    return(false);
+
+}
+
+function checkLaboratory(contact){
+
+    if(contact === 'Laboratory'){
+
+        return(true);
+
+    }
+    return(false);
+
+}
+
+function checkTechnician(contact){
+
+    if(contact === 'Technician'){
+
+        return(true);
+
+    }
+    return(false);
+
+}
