@@ -14,6 +14,10 @@ export default Ember.Component.extend({
 			} else {
 				this.set('isVisible', true);
 			}
-		}.observes('isVisible')
+		}.observes('isVisible'),
+		viewEntry: function(recordID){
+			//this.get('router').transitionTo('view-medical-record', [this.patientId, recordID]);
+			console.log('view entry ' + recordID);
+		}
 	}
 });
