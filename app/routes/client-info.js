@@ -14,7 +14,36 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
 				console.log("data is " + JSON.stringify(data));
 				Ember.run(function() {
 				resolve({
-					client: deserialClient(data);
+					firstName: JSON.stringify(data.client.firstName).replace(/\"/g, ""),
+					lastName: JSON.stringify(data.client.lastName).replace(/\"/g, ""),
+					phoneNumber: JSON.stringify(data.client.phoneNumber).replace(/\"/g, ""),
+					email: JSON.stringify(data.client.email).replace(/\"/g, ""),
+					address: JSON.stringify(data.client.address).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
+
+					licos: JSON.stringify(data.client.licos).replace(/\"/g, ""),
+					aish: JSON.stringify(data.client.aish).replace(/\"/g, ""),
+					socialAssistance: JSON.stringify(data.client.socialAssistance).replace(/\"/g, ""),
+					pets: JSON.stringify(data.client.pets).replace(/\"/g, ""),
+					
+					created_at: JSON.stringify(data.client.created_at).replace(/\"/g, "").slice(0, 10),
+					updated_at: JSON.stringify(data.client.updated_at).replace(/\"/g, "").slice(0, 10),
+					notes: JSON.stringify(data.client.notes).replace(/\"/g, "").replace(/\\n/g, ' <br> ' ),
+
+					alternativeContactFirstName: JSON.stringify(
+						data.client.alternativeContactFirstName).replace(/\"/g, ""),
+					alternativeContactLastName: JSON.stringify(
+						data.client.alternativeContactLastName).replace(/\"/g, ""),
+					alternativeContactPhoneNumber: JSON.stringify(
+						data.client.alternativeContactPhoneNumber).replace(/\"/g, ""),
+					alternativeContact2ndPhone: JSON.stringify(
+						data.client.alternativeContact2ndPhone).replace(/\"/g, ""),
+					alternativeContactAddress: JSON.stringify(
+						data.client.alternativeContactAddress).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
+					alternativeContactEmail: JSON.stringify(
+							data.client.alternativeContactEmail).replace(/\"/g, ""),
+
+					clientID: JSON.stringify(data.client.id).replace(/\"/g, ""),
+					patients: deserialAttributes(data.client.patients)
 				});
 			  });
 			
@@ -44,6 +73,42 @@ function deserialPatients(patients){
 	}
 	return(deserial);
 }
+
+function deserialFirstName(client){}
+
+function deserialLastName(client){}
+
+function deserialPhoneNumber(client){}
+
+function deserialEmail(client){}
+
+function deserialAddress(client){}
+
+function deserialLICOS(client){}
+
+function deserialAISH(client){}
+
+function deserialSA(client){}
+
+function deserialCreateAt(client){}
+
+function deserialUpdatedAt(client){}
+
+function deserialNotes(client){}
+
+function deserialAltFirstName(client){}
+
+function deserialAltLastName(client){}
+
+function deserialAltPhoneNumber(client){}
+
+function deserialAlt2ndPhone(client){}
+
+function deserialAltAddress(client){}
+
+function deserialAltEmail(client){}
+
+function deserialClientId(client){}
 
 function deserialClient(client){
 	var deserial;
