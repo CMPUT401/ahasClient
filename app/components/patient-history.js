@@ -19,7 +19,8 @@ export default Ember.Component.extend({
 			}
 		}.observes('isVisible'),
 		viewEntry: function(recordID){
-			this.get('router').transitionTo('/view-patient/'+ this.patientId +'/view-medical-record/'+ recordID)
+			this.get('router').transitionTo('/view-patient/'+ this.patientId +'/view-medical-record/'+ recordID);
+			// this.get('router').transitionTo('view-medical-record', this.patientId, recordID);
 		}
 	},
 	init(){
@@ -67,7 +68,7 @@ function deserialAttributes(history){
 			var day = entryDate.getDate();
 			var month = entryDate.getMonth();
 			var year = entryDate.getFullYear();
-			entry.date = day + "/" + month + "/" + year;
+			entry.date = month + "/" + day + "/" + year;
 		}else{
 			entry.date = JSON.stringify(history[i].created_at);
 		}

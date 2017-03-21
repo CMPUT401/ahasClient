@@ -25,6 +25,9 @@ Router.map(function() {
   this.route('medical-record', {path: '/view-patient/:patientID/medical-record'});
   this.route('view-medical-record-editable', {path: '/view-patient/:patientID/view-medical-record-editable/:recordID'});
   this.route('view-medical-record', {path: '/view-patient/:patientID/view-medical-record/:recordID'});
+  // this.route('view-patient', {path:'/view-patient/:patientID'}, function(){
+  //   this.route('view-medical-record', {path: '/view-medical-record/:recordID'});
+  // });
   this.route('view-calendar');
   this.route('new-calendar');
   this.route('list-side-note');
