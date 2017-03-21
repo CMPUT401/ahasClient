@@ -57,6 +57,9 @@ function deserialAttributes(meds){
 	for(var i = 0; i < meds.length; i++) {
 		var entry = meds[i];
 		entry.recordId = JSON.stringify(meds[i].id).replace(/\"/g, "");
+		if(JSON.stringify(meds[i].medical_record_id) != null){
+			entry.medical_record_id = JSON.stringify(meds[i].medical_record_id).replace(/\"/g, "");
+		}
 		// if(JSON.stringify(meds[i].med_type) === "medicine"){
 		if(JSON.stringify(meds[i].name) != null){
 			entry.name = JSON.stringify(meds[i].name).replace(/\"/g, "");
