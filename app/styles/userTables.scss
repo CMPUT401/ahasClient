@@ -1,0 +1,33 @@
+.users {
+  margin: 0;
+  > div {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.body{
+    margin:0;
+    padding:0;
+}
+.table-body {
+  padding: 0;
+  margin: 0;
+}
+
+.striped {
+  padding: 0;
+  margin: 0;
+  &:nth-child(2n) {
+    background: #F5F5F5;
+  }
+  &:hover{
+      background:#FFFFFF ;
+  }
+}
+
+.list-group-item {
+    &:hover{
+        background: #F5F5F5;
+    }
+}

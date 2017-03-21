@@ -30,9 +30,7 @@ Router.map(function() {
   this.route('list-side-note');
   this.route('create-contact');
   this.route('test');
-
-
-  
+  this.route('admin');
 });
 
 export default Router;
