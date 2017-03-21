@@ -2,7 +2,6 @@ import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin , {
-	// TODO: load from /api/client/{id}
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
 	model(param) {
@@ -68,196 +67,165 @@ function deserialPatients(patients){
 }
 
 function deserialFirstName(client){
-	var fName = JSON.stringify(client.firstName);
+	var fName = client.firstName;
 	if(fName != null){
-		return fName.replace(/\"/g, "");
+		return JSON.stringify(fName).replace(/\"/g, "");
 	}else{
 		return "";
 	}
 }
 
 function deserialLastName(client){
-	var lName = JSON.stringify(client.lastName);
+	var lName = client.lastName;
 	if(lName != null){
-		return lName.replace(/\"/g, "");
+		return JSON.stringify(lName).replace(/\"/g, "");
 	}else{
 		return "";
 	}
 }
 
 function deserialPhoneNumber(client){
-	var phoneNumber = JSON.stringify(client.phoneNumber);
+	var phoneNumber = client.phoneNumber;
 	if(phoneNumber != null){
-		return phoneNumber.replace(/\"/g, "");
+		return JSON.stringify(phoneNumber).replace(/\"/g, "");
 	}else{
 		return "";
 	}
 }
 
 function deserialEmail(client){
-	var email = JSON.stringify(client.email);
+	var email = client.email;
 	if(email != null){
-		return email.replace(/\"/g, "");
+		return JSON.stringify(email).replace(/\"/g, "");
 	}else{
 		return "";
 	}
 }
 
 function deserialAddress(client){
-	var address = JSON.stringify(client.address);
+	var address = client.address;
 	if(address != null){
-		return address.replace(/\\n/g, " <br> " ).replace(/\"/g, "");
+		return JSON.stringify(address).replace(/\\n/g, " <br> " ).replace(/\"/g, "");
 	}else{
 		return "";
 	}
 }
 
 function deserialLICOS(client){
-	var lico = JSON.stringify(client.licos).replace(/\"/g, "");
+	var lico = client.licos;
 	if(lico != null){
-		console.log("licos is not null");
-		return lico;
+		return JSON.stringify(lico).replace(/\"/g, "");
 	} else{
-		console.log("lico is null");
 		return "";
 	}
 }
 
 function deserialAISH(client){
-	var aish = JSON.stringify(client.aish);
+	var aish = client.aish;
 	if(aish != null){
-		return aish.replace(/\"/g, "");
+		return JSON.stringify(aish).replace(/\"/g, "");
 	} else{
 		return "";
 	}
 }
 
 function deserialSA(client){
-	var socialAssistance = JSON.stringify(client.socialAssistance);
+	var socialAssistance = client.socialAssistance;
 	if(socialAssistance != null){
-		return socialAssistance.replace(/\"/g, "");
+		return JSON.stringify(socialAssistance).replace(/\"/g, "");
 	} else{
 		return "";
 	}
 }
 
 function deserialCreateAt(client){
-	var createdAt = JSON.stringify(client.created_at);
+	var createdAt = client.created_at;
 	if(createdAt != null){
-		return createdAt.replace(/\"/g, "").slice(0,10);
+		return JSON.stringify(createdAt).replace(/\"/g, "").slice(0,10);
 	} else{
 		return "";
 	}
 }
 
 function deserialUpdatedAt(client){
-	var updatedAt = JSON.stringify(client.updated_at);
+	var updatedAt = client.updated_at;
 	if(updatedAt != null){
-		return updatedAt.replace(/\"/g, "").slice(0,10);
+		return JSON.stringify(updatedAt).replace(/\"/g, "").slice(0,10);
 	} else{
 		return "";
 	}
 }
 
 function deserialNotes(client){
-	var notes = JSON.stringify(client.notes);
+	var notes = client.notes;
 	if(notes != null){
-		return notes.replace(/\"/g, "");
+		return JSON.stringify(notes).replace(/\"/g, "");
 	} else{
 		return "";
 	}
 }
 
 function deserialAltFirstName(client){
-	var altFName = JSON.stringify(client.alternativeContactFirstName);
+	var altFName = client.alternativeContactFirstName;
 	if(altFName != null){
-		return altFName.replace(/\"/g, "");
+		return JSON.stringify(altFName).replace(/\"/g, "");
 	} else{
 		return "";
 	}
 }
 
 function deserialAltLastName(client){
-	var altLName = JSON.stringify(client.alternativeContactLastName)
+	var altLName = client.alternativeContactLastName;
 	if(altLName != null){
-		return altLName.replace(/\"/g, "");
+		return JSON.stringify(altLName).replace(/\"/g, "");
 	} else{
 		return "";
 	}
 }
 
 function deserialAltPhoneNumber(client){
-	var altPhoneNumber = JSON.stringify(client.alternativeContactPhoneNumber)
+	var altPhoneNumber = client.alternativeContactPhoneNumber;
 	if(altPhoneNumber != null){
-		return altPhoneNumber.replace(/\"/g, "");
+		return JSON.stringify(altPhoneNumber).replace(/\"/g, "");
 	} else{
 		return "";
 	}
 }
 
 function deserialAlt2ndPhone(client){
-	var altPhone = JSON.stringify(client.alternativeContact2ndPhone);
+	var altPhone = client.alternativeContact2ndPhone;
 	if(altPhone != null){
-		return altPhone.replace(/\"/g, "");
+		return JSON.stringify(altPhone).replace(/\"/g, "");
 	} else{
 		return "";
 	}
 }
 
 function deserialAltAddress(client){
-	var altAddress = JSON.stringify(client.alternativeContactAddress);
+	var altAddress = client.alternativeContactAddress;
 	if(altAddress != null){
-		return altAddress.replace(/\\n/g, " <br> " ).replace(/\"/g, "");
+		return JSON.stringify(altAddress).replace(/\\n/g, " <br> " ).replace(/\"/g, "");
 	} else{
 		return "";
 	}
 }
 
 function deserialAltEmail(client){
-	var altEmail = JSON.stringify(client.alternativeContactEmail);
+	var altEmail = client.alternativeContactEmail;
 	if(altEmail != null){
-		return altEmail.replace(/\"/g, "");
+		return JSON.stringify(altEmail).replace(/\"/g, "");
 	} else{
 		return "";
 	}
 }
 
 function deserialClientId(client){
-	var clientId = JSON.stringify(client.id)
+	var clientId = client.id;
 	if(clientId != null){
-		return clientId.replace(/\"/g, "");
+		return JSON.stringify(clientId).replace(/\"/g, "");
 	} else{
 		return "";
 	}
 }
 
-// function deserialClient(client){
-// 	var deserial;
-// 	//only one client to deserial
-// 	client.firstName = .replace(/\"/g, "");
-// 	client.lastName = .replace(/\"/g, "");
-// 	client.phoneNumber = .replace(/\"/g, "");
-// 	client.email = .replace(/\"/g, "");
-// 	client.address = .replace(/\"/g, "");
 
-// 	client.licos = .replace(/\"/g, "");
-// 	client.aish = .replace(/\"/g, "");
-// 	client.socialAssistance = .replace(/\"/g, "");
-// 	client.pets = JSON.stringify(client.pets).replace(/\"/g, "");
-	
-// 	client.created_at = .replace(/\"/g, "").slice(0, 10);
-// 	client.updated_at = .replace(/\"/g, "").slice(0, 10);
-// 	client.notes = .replace(/\"/g, "").replace(/\\n/g, ' <br> ' );
-
-// 	client.alternativeContactFirstName = .replace(/\"/g, "");
-// 	client.alternativeContactLastName = .replace(/\"/g, "");
-// 	client.alternativeContactPhoneNumber = .replace(/\"/g, "");
-// 	client.alternativeContact2ndPhone = .replace(/\"/g, "");
-// 	client.alternativeContactAddress = .replace(/\"/g, "");
-// 	client.alternativeContactEmail = .replace(/\"/g, "");
-
-// 	client.clientID = .replace(/\"/g, "");
-// 	client.patients = deserialAttributes(data.client.patients);
-
-// 	return client;
-// }
