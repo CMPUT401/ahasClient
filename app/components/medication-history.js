@@ -29,7 +29,7 @@ export default Ember.Component.extend({
 		console.log("calling ajax for medcation List");
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-			this.get('ajax').request('api/patients/' + this.patientId + '/medical_records/medication'
+			this.get('ajax').request('api/patients/' + this.patientId + '/medications'
 				).then(function(data){
 					console.log("data is" + JSON.stringify(data));
 					Ember.run(function(){
@@ -57,28 +57,20 @@ function deserialAttributes(meds){
 	for(var i = 0; i < meds.length; i++) {
 		var entry = meds[i];
 		entry.recordId = JSON.stringify(meds[i].id).replace(/\"/g, "");
-		if(JSON.stringify(meds[i].type) != null){
-			entry.type = JSON.stringify(meds[i].type).replace(/\"/g, "");
-		}else {
-			entry.type = JSON.stringify(meds[i].type);
+		if(JSON.stringify(meds[i].type) = "medicine"){
+			if(JSON.stringify(meds[i].name) != null){
+				entry.name = JSON.stringify(meds[i].name).replace(/\"/g, "");
+			}
+			if(JSON.stringify(meds[i].created_At) != null){
+				//convert from unix time to a date string
+				var entryDate = new Date(JSON.stringify(meds[i].created_At).replace(/\"/g, "") *1000);
+				var day = entryDate.getDate();
+				var month = entryDate.getMonth();
+				var year = entryDate.getFullYear();
+				entry.date = month + "/" + day + "/" + year;
+			}
+			deserial.push(entry);
 		}
-		if(JSON.stringify(meds[i].name) != null){
-			entry.name = JSON.stringify(meds[i].name).replace(/\"/g, "");
-		}else {
-			entry.name = JSON.stringify(meds[i].name);
-		}
-		if(JSON.stringify(meds[i].reminder) != null){
-			//convert from unix time to a date string
-			var entryDate = new Date(JSON.stringify(meds[i].reminder).replace(/\"/g, "") *1000);
-			var day = entryDate.getDate();
-			var month = entryDate.getMonth();
-			var year = entryDate.getFullYear();
-			entry.date = month + "/" + day + "/" + year;
-		}else{
-			entry.date = JSON.stringify(meds[i].reminder);
-		}
-		deserial.push(entry);
-
 	}
 	return(deserial);
 }

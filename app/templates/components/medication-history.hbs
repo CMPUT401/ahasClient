@@ -7,7 +7,7 @@
 			{{#ember-scrollable autoHide=false}}
 				{{#each medicationList as |entry|}}
 					<div class = "nameListItem" {{action 'viewEntry' entry.recordId}}>
-						<p>{{entry.name}} {{entry.type}} {{entry.date}}</p>
+						<p>{{entry.name}} {{entry.date}}</p>
 					</div>
 				{{/each}}
 			{{/ember-scrollable}}
