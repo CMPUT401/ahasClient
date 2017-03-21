@@ -65,12 +65,6 @@ function deserialAttributes(meds){
 			entry.name = JSON.stringify(meds[i].name).replace(/\"/g, "");
 		}
 		if(JSON.stringify(meds[i].created_at) != null){
-			//convert from unix time to a date string
-			// var entryDate = new Date(JSON.stringify(meds[i].created_At).replace(/\"/g, "") *1000);
-			// var day = entryDate.getDate();
-			// var month = entryDate.getMonth();
-			// var year = entryDate.getFullYear();
-			// entry.date = month + "/" + day + "/" + year;
 			entry.date = JSON.stringify(meds[i].created_at).replace(/\"/g, "").slice(0, 10);
 		}
 		deserial.push(entry);
