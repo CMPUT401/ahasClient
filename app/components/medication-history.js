@@ -49,3 +49,34 @@ export default Ember.Component.extend({
 		console.log(this.medicationList);
 	}
 });
+
+function deserialAttributes(meds){
+	var deserial = [];
+	for(var i = 0; i < meds.length; i++) {
+		var entry = meds[i];
+		entry.recordId = JSON.stringify(meds[i].id).replace(/\"/g, "");
+		if(JSON.stringify(meds[i].type) != null){
+			entry.type = JSON.stringify(meds[i].type).replace(/\"/g, "");
+		}else {
+			entry.type = JSON.stringify(meds[i].type);
+		}
+		if(JSON.stringify(meds[i].name) != null){
+			entry.name = JSON.stringify(meds[i].name).replace(/\"/g, "");
+		}else {
+			entry.name = JSON.stringify(meds[i].name);
+		}
+		if(JSON.stringify(meds[i].reminder) != null){
+			//convert from unix time to a date string
+			var entryDate = new Date(JSON.stringify(meds[i].reminder).replace(/\"/g, "") *1000);
+			var day = entryDate.getDate();
+			var month = entryDate.getMonth();
+			var year = entryDate.getFullYear();
+			entry.date = month + "/" + day + "/" + year;
+		}else{
+			entry.date = JSON.stringify(meds[i].reminder);
+		}
+		deserial.push(entry);
+
+	}
+	return(deserial);
+}
