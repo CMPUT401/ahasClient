@@ -2,22 +2,22 @@
     <h2> Users </h2>
     <div class="row">
         <div class="col-md-2 col-md-offset-1">
-            Name
+            <h4>Name</h4>
         </div>
         <div class="col-md-2 col-md-offset-2">
-            Email
+            <h4>Email</h4>
         </div>
     </div>
     <div>
-    {{#each model.users as |user|}}
-    <div class="row list-group-item">
-        <div class="col-md-2 col-md-offset-1">
-            {{user.name}}
-        </div>
-        <div class="col-md-2 col-md-offset-2">
-            {{user.email}}
-        </div>
-    </div>
-    {{/each}}
+        {{#each model.users as |user|}}
+        <a href='/admin/users/{{user.id}}' class="row list-group-item">
+            <div class="col-md-2 col-md-offset-1">
+                {{user.name}}
+            </div>
+            <div class="col-md-2 col-md-offset-2">
+                {{user.email}}
+            </div>
+        </a>
+        {{/each}}
     </div>
 </div>
