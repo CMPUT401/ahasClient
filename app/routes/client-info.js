@@ -14,36 +14,29 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
 				console.log("data is " + JSON.stringify(data));
 				Ember.run(function() {
 				resolve({
-					firstName: JSON.stringify(data.client.firstName).replace(/\"/g, ""),
-					lastName: JSON.stringify(data.client.lastName).replace(/\"/g, ""),
-					phoneNumber: JSON.stringify(data.client.phoneNumber).replace(/\"/g, ""),
-					email: JSON.stringify(data.client.email).replace(/\"/g, ""),
-					address: JSON.stringify(data.client.address).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
+					firstName: deserialFirstName(data.client),
+					lastName: deserialLastName(data.client),
+					phoneNumber: deserialPhoneNumber(data.client),
+					email: deserialPhoneNumber(data.client),
+					address: deserialAddress(data.client),
 
-					licos: JSON.stringify(data.client.licos).replace(/\"/g, ""),
-					aish: JSON.stringify(data.client.aish).replace(/\"/g, ""),
-					socialAssistance: JSON.stringify(data.client.socialAssistance).replace(/\"/g, ""),
-					pets: JSON.stringify(data.client.pets).replace(/\"/g, ""),
+					licos: deserialLICOS(data.client),
+					aish: deserialAISH(data.client),
+					socialAssistance: deserialSA(data.client),
 					
-					created_at: JSON.stringify(data.client.created_at).replace(/\"/g, "").slice(0, 10),
-					updated_at: JSON.stringify(data.client.updated_at).replace(/\"/g, "").slice(0, 10),
-					notes: JSON.stringify(data.client.notes).replace(/\"/g, "").replace(/\\n/g, ' <br> ' ),
+					created_at: deserialCreateAt(data.client),
+					updated_at: deserialUpdatedAt(data.client),
+					notes: deserialNotes(data.client),
 
-					alternativeContactFirstName: JSON.stringify(
-						data.client.alternativeContactFirstName).replace(/\"/g, ""),
-					alternativeContactLastName: JSON.stringify(
-						data.client.alternativeContactLastName).replace(/\"/g, ""),
-					alternativeContactPhoneNumber: JSON.stringify(
-						data.client.alternativeContactPhoneNumber).replace(/\"/g, ""),
-					alternativeContact2ndPhone: JSON.stringify(
-						data.client.alternativeContact2ndPhone).replace(/\"/g, ""),
-					alternativeContactAddress: JSON.stringify(
-						data.client.alternativeContactAddress).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
-					alternativeContactEmail: JSON.stringify(
-							data.client.alternativeContactEmail).replace(/\"/g, ""),
+					alternativeContactFirstName: deserialAltFirstName(data.client),
+					alternativeContactLastName: deserialAltLastName(data.client),
+					alternativeContactPhoneNumber: deserialAltPhoneNumber(data.client),
+					alternativeContact2ndPhone: deserialAlt2ndPhone(data.client),
+					alternativeContactAddress: deserialAltAddress(data.client),
+					alternativeContactEmail: deserialAltEmail(data.client),
 
-					clientID: JSON.stringify(data.client.id).replace(/\"/g, ""),
-					patients: deserialAttributes(data.client.patients)
+					clientID: deserialClientId(data.client),
+					patients: deserialPatients(data.client.patients)
 				});
 			  });
 			
@@ -120,10 +113,12 @@ function deserialAddress(client){
 }
 
 function deserialLICOS(client){
-	var lico = JSON.stringify(client.licos);
+	var lico = JSON.stringify(client.licos).replace(/\"/g, "");
 	if(lico != null){
-		return lico.replace(/\"/g, "");
+		console.log("licos is not null");
+		return lico;
 	} else{
+		console.log("lico is null");
 		return "";
 	}
 }
@@ -228,7 +223,7 @@ function deserialAltEmail(client){
 }
 
 function deserialClientId(client){
-	var clientId = JSON.stringify(data.client.id)
+	var clientId = JSON.stringify(client.id)
 	if(clientId != null){
 		return clientId.replace(/\"/g, "");
 	} else{
@@ -236,33 +231,33 @@ function deserialClientId(client){
 	}
 }
 
-function deserialClient(client){
-	var deserial;
-	//only one client to deserial
-	client.firstName = .replace(/\"/g, "");
-	client.lastName = .replace(/\"/g, "");
-	client.phoneNumber = .replace(/\"/g, "");
-	client.email = .replace(/\"/g, "");
-	client.address = .replace(/\"/g, "");
+// function deserialClient(client){
+// 	var deserial;
+// 	//only one client to deserial
+// 	client.firstName = .replace(/\"/g, "");
+// 	client.lastName = .replace(/\"/g, "");
+// 	client.phoneNumber = .replace(/\"/g, "");
+// 	client.email = .replace(/\"/g, "");
+// 	client.address = .replace(/\"/g, "");
 
-	client.licos = .replace(/\"/g, "");
-	client.aish = .replace(/\"/g, "");
-	client.socialAssistance = .replace(/\"/g, "");
-	client.pets = JSON.stringify(client.pets).replace(/\"/g, "");
+// 	client.licos = .replace(/\"/g, "");
+// 	client.aish = .replace(/\"/g, "");
+// 	client.socialAssistance = .replace(/\"/g, "");
+// 	client.pets = JSON.stringify(client.pets).replace(/\"/g, "");
 	
-	client.created_at = .replace(/\"/g, "").slice(0, 10);
-	client.updated_at = .replace(/\"/g, "").slice(0, 10);
-	client.notes = .replace(/\"/g, "").replace(/\\n/g, ' <br> ' );
+// 	client.created_at = .replace(/\"/g, "").slice(0, 10);
+// 	client.updated_at = .replace(/\"/g, "").slice(0, 10);
+// 	client.notes = .replace(/\"/g, "").replace(/\\n/g, ' <br> ' );
 
-	client.alternativeContactFirstName = .replace(/\"/g, "");
-	client.alternativeContactLastName = .replace(/\"/g, "");
-	client.alternativeContactPhoneNumber = .replace(/\"/g, "");
-	client.alternativeContact2ndPhone = .replace(/\"/g, "");
-	client.alternativeContactAddress = .replace(/\"/g, "");
-	client.alternativeContactEmail = .replace(/\"/g, "");
+// 	client.alternativeContactFirstName = .replace(/\"/g, "");
+// 	client.alternativeContactLastName = .replace(/\"/g, "");
+// 	client.alternativeContactPhoneNumber = .replace(/\"/g, "");
+// 	client.alternativeContact2ndPhone = .replace(/\"/g, "");
+// 	client.alternativeContactAddress = .replace(/\"/g, "");
+// 	client.alternativeContactEmail = .replace(/\"/g, "");
 
-	client.clientID = .replace(/\"/g, "");
-	client.patients = deserialAttributes(data.client.patients);
+// 	client.clientID = .replace(/\"/g, "");
+// 	client.patients = deserialAttributes(data.client.patients);
 
-	return client;
-}
+// 	return client;
+// }
