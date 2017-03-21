@@ -11,7 +11,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/23' 
+		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/'+params.recordID 
 			).then(function(data){
 				
               

@@ -8,7 +8,7 @@ export default Ember.Component.extend({
 	router: Ember.inject.service('-routing'),
 	actions:{
 		newEntry: function(){
-			console.log("making a new medical history entry");
+			this.get('router').transitionTo('medical-record', [this.patientId]);
 		},
 		toggleVisibility: function(){
 			// console.log("show chrono, the id is " + patientId);
@@ -18,14 +18,14 @@ export default Ember.Component.extend({
 				this.set('isVisible', true);
 			}
 		}.observes('isVisible'),
-		viewEntry: function(recordID){
-			//cant do that bc cant do an if here? will figure it out later... -kristy
-			//if checkUpdate(this.get('medicalRecord.date')){
-		//	this.get('router').transitionTo('view-medical-record-editable', [this.patientId, recordID]);
-		//	}
-			//else{
+		viewEntry: function(recordID, date){
+			var check = checkUpdate(date);
+			if(check){
+				this.get('router').transitionTo('view-medical-record-editable', [this.patientId, recordID]);
+			}
+			else{
 				this.get('router').transitionTo('view-medical-record', [this.patientId, recordID]);
-			//}
+			}
 		}
 	},
 	init(){
@@ -60,20 +60,22 @@ function deserialAttributes(history){
 	for(var i = 0; i < history.length; i++) {
 		var entry = history[i];
 		entry.recordId = JSON.stringify(history[i].id).replace(/\"/g, "");
-		if(JSON.stringify(history[i].exm_notes) != null){
+		if(JSON.stringify(history[i].exam_notes) != null){
 			entry.examNotes = JSON.stringify(history[i].summary).replace(/\"/g, "");
 		}else {
 			entry.examNotes = JSON.stringify(history[i].summary);
 		}
-		if(JSON.stringify(history[i].date) != null){
+		if(JSON.stringify(history[i].created_at) !== null){
 			//convert from unix time to a date string
-			var entryDate = new Date(JSON.stringify(history[i].created_at).replace(/\"/g, "") *1000);
-			var day = (entryDate.getDate()<10?'0':'' )+ entryDate.getDate();
-			var month = (entryDate.getMonth()<10?'0':'' )+ (entryDate.getMonth()+1);
-			var year = entryDate.getFullYear();
-			entry.date = month + "/" + day + "/" + year;
+			var formattedDateCreated = format(history[i].created_at);
+			entry.dateToDisplay = formattedDateCreated;
+			//also want to keep one unix time for our checkUpdate function
+			entry.date = history[i].created_at;
 		}else{
-			entry.date = JSON.stringify(history[i].created_at);
+			//not sure when we would ever get here...
+			var formattedDateOrig = format(history[i].date);
+			entry.dateToDisplay = formattedDateOrig;
+			entry.date = history[i].date;
 		}
 		deserial.push(entry);
 
@@ -81,7 +83,9 @@ function deserialAttributes(history){
 	return(deserial);
 }
 
-function checkUpdate(date){
+function checkUpdate(olddate){
+
+	var date = new Date(olddate*1000);
 
     var day = date.getDay() ;
     var month = date.getMonth()  ;
@@ -99,4 +103,14 @@ function checkUpdate(date){
         return(true);
     }
     return(false);
+}
+
+function format(date){
+	var entryDate = new Date(JSON.stringify(date).replace(/\"/g, "") *1000);
+	var day = (entryDate.getDate()<10?'0':'' )+ entryDate.getDate();
+	var month = (entryDate.getMonth()<10?'0':'' )+ (entryDate.getMonth()+1);
+	var year = entryDate.getFullYear();
+	var newDate = month + "/" + day + "/" + year;
+	return(newDate);
+
 }
