@@ -16,6 +16,9 @@ export default Ember.Controller.extend({
 
 		newSchedule: function(clientID){
 			this.transitionToRoute("/new-calendar/" + clientID);
+		},
+		editClient: function(clientID){
+			this.transitionToRoute('/edit-client/' + clientID);
 		}
 	}
 });
