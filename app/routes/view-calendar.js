@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin'; 
 export default Ember.Route.extend(AuthenticatedRouteMixin,{
-	/*
+	
 	ajax: Ember.inject.service(),
 	model() {
 		var self = this;
@@ -11,7 +11,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 		this.get('ajax').request('/api/schedules'
 			).then(function(data){
 				Ember.run.later(function() {
-       			 resolve({ events: data.schedules,
+       			 resolve({ events: convertUnix(data.schedules)
 				});
 				console.log("we getdont here");
 				//this.get('ajax').request('/api/client/1');
@@ -29,15 +29,19 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 		return(ajaxGet);
 
 	},
-	*/
+	
 	
 	//weee splitter
-	
+	/*
   	model: function() {
     return {
       events: Ember.A([
         {title: "Hackathon \n ayelmao \n ayelmao2", start: Date.now()},
       ])
     };
-  }
+  }*/
 });
+
+function convertUnix(schedules){
+	for(var i = 0; i < schedules.length; i++) {
+}
