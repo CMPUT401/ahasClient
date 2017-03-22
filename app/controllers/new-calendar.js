@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
 	{
 		submitNewCalendar()
 		{
-			console.log("status is " + this.get('appointmentStart'));
+			console.log(document.getElementById("appointmentStart").value);
 			document.getElementById("create-appointment-button").disabled = true;
 			var self = this;
 			let ajaxPost = this.get('ajax').request('/api/schedules',
