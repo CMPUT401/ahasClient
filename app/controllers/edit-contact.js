@@ -33,13 +33,11 @@ export default Ember.Controller.extend({
         }
   
     },
-     doneEditContact: function(id) {
+    doneEditContact: function(id) {
 
     var type= document.getElementById('type');
     var typeval = type.options[type.selectedIndex].text;
     var self = this;
-
-    console.log('teh info', this.get('first_name'));
     
     var user = this.get('ajax').put('/api/contacts/' + id, {
         type: 'application/json',
@@ -55,8 +53,11 @@ export default Ember.Controller.extend({
     }
     });
      user.then(function(response){
+    
             if(response.success){
+              
                 showAlert("Record updated", true);
+                self.transitionToRoute('/view-contact/'+ id);
             }
         //this is error from server condition
         }, function(response) {
@@ -77,9 +78,9 @@ export default Ember.Controller.extend({
 
 function showAlert(message, bool) {
         if(bool){
-            Ember.$('#alert_placeholder_med').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
+            Ember.$('#alert_placeholder').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
         }
         else{
-             Ember.$('#alert_placeholder_med').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
+             Ember.$('#alert_placeholder').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
         }
  }

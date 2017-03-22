@@ -14,6 +14,7 @@ export default function() {
 
    this.post('/user_token' , { success: false }, 404);
    this.post('/signup', { success: true }, 201);
+   this.put('/contacts/:id', { success: true }, 201);
    this.get('/contacts/:id', () => {
      return {
   success: true,
