@@ -34,7 +34,7 @@ Router.map(function() {
 
 
 
-  this.route('view-appointment');
+  this.route('view-appointment', {path: '/view-appointment/:appointmentid'});
 });
 
 export default Router;
