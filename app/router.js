@@ -10,7 +10,7 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('login');
   this.route('new-patient');
-  this.route('create-user');
+  this.route('create-user', {path: '/creat-user/:token'});
   this.route('new-client');
 
   this.route('view-patient',{path: '/view-patient/:patientID'});
@@ -31,7 +31,7 @@ Router.map(function() {
   this.route('create-contact');
   this.route('test');
   this.route('admin');
-  this.route('user', {path: '/admin/users/:id'})
+  this.route('user', {path: '/admin/users/:id'});
 });
 
 export default Router;
