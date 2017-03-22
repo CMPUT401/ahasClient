@@ -6,27 +6,27 @@
 
 			<label class = "inputLabel" for = "clientFirstName">Client's First Name</label>
 			<div class = "inputBox">
-				{{input id='clientFirstName' value=clientFirstName required='true'}}
+				{{input id='clientFirstName' value=model.firstName required='true'}}
 			</div>
 			<br>
 			<label class = "inputLabel" for = "clientLastName">Client's Last Name</label>
 			<div class = "inputBox">
-				{{input id='clientLastName' value=clientLastName required='true'}}
+				{{input id='clientLastName' value=model.lastName required='true'}}
 			</div>
 			<br>
 			<label class = "inputLabel" for = "clientAddress">Client's Address</label>
 			<div class = "inputBox">
-				{{textarea id='clientAddress' value=clientAddress required='true' cols="50" rows="4"}}
+				{{textarea id='clientAddress' value=model.address required='true' cols="50" rows="4"}}
 			</div>
 			<br>
 			<label class = "inputLabel" for = "clientPhone">Client's Phone Number</label>
 			<div class = "inputBox">
-				{{input id='clientPhone' value=clientPhone}}
+				{{input id='clientPhone' value=model.phoneNumber}}
 			</div>
 			<br>
 			<label class = "inputLabel" for = "clientEmail">Client's Email</label>
 			<div class = "inputBox">
-				{{input id='clientEmail' value=clientEmail}}
+				{{input id='clientEmail' value=model.email}}
 			</div>
 			<br>
 			
@@ -38,22 +38,22 @@
 
 			<label class = "inputLabel" for = "licoDocumentation">LICO</label>
 			<div class = "inputBox">
-				{{input id='clientLICO' value=clientLICO}}
+				{{input id='clientLICO' value=model.licos}}
 			</div>
 			<br>
 			<label class = "inputLabel" for = "aishDocumentation">AISH</label>
 			<div class = "inputBox">
-				{{input id='clientAISH' value=clientAISH}}
+				{{input id='clientAISH' value=model.aish}}
 			</div>
 			<br>
 			<label class = "inputLabel" for = "saDocumentation">SA</label>
 			<div class = "inputBox">
-				{{input id='clientSA' value=clientSA}}
+				{{input id='clientSA' value=model.socialAssistance}}
 			</div>
 			<br>
 			<label class = "inputLabel" for = "notesDocumentation">Notes</label>
 			<div class = "inputBox">
-				{{textarea id='clientNotes' value=clientNotes cols="80" rows="6"}}
+				{{textarea id='clientNotes' value=model.notes cols="80" rows="6"}}
 			</div>
 			<br>
 		</div>
@@ -64,32 +64,32 @@
 
 			<label class = "inputLabel" for = "alternativeFirstName">Alternative Contact's First Name</label>
 			<div class = "inputBox">
-				{{input id='alternativeFirstName' value=alternativeFirstName }}
+				{{input id='alternativeFirstName' value=model.alternativeContactFirstName }}
 			</div>
 			<br>
 			<label class = "inputLabel" for = "alternativeLastName">Alternative Contact's Last Name</label>
 			<div class = "inputBox">
-				{{input id='alternativeLastName' value=alternativeLastName }}
+				{{input id='alternativeLastName' value=model.alternativeContactLastName }}
 			</div>
 			<br>
 			<label class = "inputLabel" for = "alternativeAddress">Alternative Contact's Address</label>
 			<div class = "inputBox">
-				{{textarea id='alternativeAddress' value=alternativeAddress   cols="50" rows="4"}}
+				{{textarea id='alternativeAddress' value=model.alternativeContactAddress   cols="50" rows="4"}}
 			</div>
 			<br>
 			<label class = "inputLabel" for = "alternativePrimaryPhone">Alternative Contact's Primary Phone Number</label>
 			<div class = "inputBox">
-				{{input id='alternativePrimaryPhone' value=alternativePrimaryPhone}}
+				{{input id='alternativePrimaryPhone' value=model.alternativeContactPhoneNumber}}
 			</div>
 			<br>
 			<label class = "inputLabel" for = "alternativeSecondaryPhone">Alternative Contact's Secondary Phone Number</label>
 			<div class = "inputBox">
-				{{input id='alternativeSecondaryPhone' value=alternativeSecondaryPhone}}
+				{{input id='alternativeSecondaryPhone' value=model.alternativeContact2ndPhone}}
 			</div>
 			<br>
 			<label class = "inputLabel" for = "alternativeEmail">Alternative Contact's Email</label>
 			<div class = "inputBox">
-				{{input id='alternativeEmail' value=alternativeEmail}}
+				{{input id='alternativeEmail' value=model.alternativeContactEmail}}
 			</div>
 			<br>
 			
