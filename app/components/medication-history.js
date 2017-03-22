@@ -68,7 +68,7 @@ function deserialAttributes(meds){
 			if(JSON.stringify(meds[i].created_at) != null){
 				var partialDate = JSON.stringify(meds[i].created_at).replace(/\"/g, "").slice(0, 10);
 				var partialDate2 = partialDate.split("-");
-				entry.date = partialDate2[1] + "/" +partialDate2[2] + "/" + partialDate2[0]
+				entry.date = partialDate2[1] + "/" +partialDate2[2] + "/" + partialDate2[0];
 			}
 			deserial.push(entry);
 		}
