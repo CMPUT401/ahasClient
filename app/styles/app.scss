@@ -561,3 +561,19 @@ textarea{
     
 
 }
+/* file upload*/
+.fileDropZone{
+    display: block;
+    height: 100px;
+}
+.fileDatePicker{
+    display: block;
+    width: 30%;
+    vertical-align: left;
+}
+.saveFileButton{
+    display: block;
+    width: 10%;
+    vertical-align: left;
+    margin: 15px;
+}

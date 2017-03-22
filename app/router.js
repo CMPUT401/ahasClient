@@ -33,6 +33,7 @@ Router.map(function() {
   this.route('test');
 
   this.route('edit-client', {path: 'edit-client/:clientID'});
+  this.route('lab-result-upload', {path: '/lab-result-upload/:patientID'});
   
 });
 
