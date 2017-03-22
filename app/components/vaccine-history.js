@@ -8,8 +8,7 @@ export default Ember.Component.extend({
 	router: Ember.inject.service('-routing'),
 	actions:{
 		newEntry: function(){
-            //this should just go to medical record creation right? or is this button even needed?
-			console.log("making a new medical history entry");
+           	this.get('router').transitionTo('medical-record', [this.patientId]);
 		},
 		toggleVisibility: function(){
 			// console.log("show medication, the id is " + patientId);
@@ -61,7 +60,7 @@ function deserialAttributes(meds){
 	for(var i = 0; i < meds.length; i++) {
 		var entry = meds[i];
         if (entry.med_type === "Vaccine" || entry.med_type === "vaccine"){
-		entry.recordId = JSON.stringify(meds[i].id).replace(/\"/g, "");
+		
 		if(JSON.stringify(meds[i].medical_record_id) != null){
 			entry.medical_record_id = JSON.stringify(meds[i].medical_record_id).replace(/\"/g, "");
 		}
@@ -73,8 +72,8 @@ function deserialAttributes(meds){
 			
 			entry.dateToDisplay =meds[i].created_at;
 			//also want to keep one unix time for our checkUpdate function
-            entry.date = new Date(meds[i].created_at).now;
-            console.log(entry.date);
+			entry.date = new Date(meds[i].created_at).getTime();
+            //entry.date = new Date(meds[i].created_at).now;
 		}
 		deserial.push(entry);
 	}
@@ -84,7 +83,7 @@ function deserialAttributes(meds){
 
 function checkUpdate(olddate){
 
-	var date = new Date(olddate*1000);
+	var date = new Date(olddate);
 
     var day = date.getDay() ;
     var month = date.getMonth()  ;
@@ -98,7 +97,8 @@ function checkUpdate(olddate){
     var currentHours = current.getHours();
 
     //exact minute of midnight is when we will autofinalize
-    if (currentDay === day && currentMonth === month && currentYear === year && currentHours <= 24 ){
+	console.log("the dates are", current, date, olddate, current.getTime());
+    if (currentDay === day && currentMonth === month && currentYear === year ){
         return(true);
     }
     return(false);

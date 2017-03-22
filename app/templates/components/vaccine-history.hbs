@@ -6,7 +6,7 @@
 		<div class="history-list">
 			{{#ember-scrollable autoHide=false}}
 				{{#each vaccineList as |entry|}}
-					<div class = "nameListItem" {{action 'viewEntry' entry.recordId entry.date}}>
+					<div class = "nameListItem" {{action 'viewEntry' entry.medical_record_id entry.date}}>
 						<p>{{entry.name}}  {{entry.dateToDisplay}}</p>
 					</div>
 				{{/each}}
