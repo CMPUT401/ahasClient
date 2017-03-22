@@ -47,6 +47,7 @@ function convertUnix(schedules){
 	for(var i = 0; i < schedules.length; i++) {
 		var schedule = schedules[i];
 		schedule.start = new Date(schedules[i].appointmentStartDate* 1000);
+		schedule.title = schedules[i].reason;
 		newsched.push(schedule);
 	}
 	return (newsched);
