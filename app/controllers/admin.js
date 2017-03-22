@@ -34,6 +34,7 @@ export default Ember.Controller.extend({
                 results = fuse.search(this.filterOn);
             }
             this.set('users', results);
-        }
+        },
+        
     }
 });
