@@ -56,18 +56,23 @@ function deserialAttributes(meds){
 	var deserial = [];
 	for(var i = 0; i < meds.length; i++) {
 		var entry = meds[i];
-		entry.recordId = JSON.stringify(meds[i].id).replace(/\"/g, "");
-		if(JSON.stringify(meds[i].medical_record_id) != null){
-			entry.medical_record_id = JSON.stringify(meds[i].medical_record_id).replace(/\"/g, "");
+		if(entry.med_type.toLowerCase() === "medicine"){
+			entry.recordId = JSON.stringify(meds[i].id).replace(/\"/g, "");
+			if(JSON.stringify(meds[i].medical_record_id) != null){
+				entry.medical_record_id = JSON.stringify(meds[i].medical_record_id).replace(/\"/g, "");
+			}
+			// if(JSON.stringify(meds[i].med_type) === "medicine"){
+			if(JSON.stringify(meds[i].name) != null){
+				entry.name = JSON.stringify(meds[i].name).replace(/\"/g, "");
+			}
+			if(JSON.stringify(meds[i].created_at) != null){
+				var partialDate = JSON.stringify(meds[i].created_at).replace(/\"/g, "").slice(0, 10);
+				var partialDate2 = partialDate.split("-");
+				entry.date = partialDate2[1] + "/" +partialDate2[2] + "/" + partialDate2[0]
+			}
+			deserial.push(entry);
 		}
-		// if(JSON.stringify(meds[i].med_type) === "medicine"){
-		if(JSON.stringify(meds[i].name) != null){
-			entry.name = JSON.stringify(meds[i].name).replace(/\"/g, "");
-		}
-		if(JSON.stringify(meds[i].created_at) != null){
-			entry.date = JSON.stringify(meds[i].created_at).replace(/\"/g, "").slice(0, 10);
-		}
-		deserial.push(entry);
+		
 		// }else{
 		// 	console.log(JSON.stringify(meds[i].med_type));
 		// }
