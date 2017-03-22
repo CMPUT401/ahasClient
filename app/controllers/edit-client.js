@@ -5,7 +5,10 @@ export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
 	actions:{
 		saveClient: function(){
+			//disable button
+			document.getElementById("create-client-button").disabled = true; 
 			console.log("saving client!");
+			//make ajax put request
 		}
 	}
 });
