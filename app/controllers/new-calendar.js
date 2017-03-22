@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
 	{
 		submitNewCalendar()
 		{
-			console.log(document.getElementById("appointmentStart").value);
+			console.log(JSON.stringify(formatDate(document.getElementById("appointmentStart").value, this.get('appointmentStartTime'))));
 			document.getElementById("create-appointment-button").disabled = true;
 			var self = this;
 			let ajaxPost = this.get('ajax').request('/api/schedules',
@@ -16,12 +16,12 @@ export default Ember.Controller.extend({
 				type: 'application/json',
 				data: { schedule:
 					{
-					appointmentStartDate: 	this.get('appointmentStart'),
+					appointmentStartDate: 	JSON.stringify(formatDate(document.getElementById("appointmentStart").value, this.get('appointmentStartTime'))),
 					clientId: 				this.get('c_ID'),
 					reason: 				this.get('appointmentReason'),
 					notes: 					this.get('appointmentNote'),
 					location: 				this.get('appointmentLocation'),
-					appointmentEndDate: 	this.get('appointmentEnd')
+					appointmentEndDate: 	JSON.stringify(formatDate(document.getElementById("appointmentEnd").value, this.get('appointmentEndTime')))
 				}
 			
 			}, 
@@ -57,8 +57,16 @@ export default Ember.Controller.extend({
  }
 
 
-function formatDate(date){
-  var half = new Date(date);
-  var formatted = Math.floor(half.getTime() / 1000);
-  return(formatted);
+function formatDate(date,time){
+	var splitdate = date.split("/");
+	var splittime = time.split(":");
+  	var newdate = [];
+  	newdate.push(splitdate[2]);
+  	newdate.push(splitdate[0]);
+  	newdate.push(splitdate[1]);
+  	var rightdate = newdate.concat(splittime);
+  	var formatted = moment(rightdate).unix();
+  	//var half = new Date(date);
+  	//var formatted = Math.floor(half.getTime() / 1000);
+  	return(formatted);
 }
