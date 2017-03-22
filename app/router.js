@@ -32,9 +32,10 @@ Router.map(function() {
   this.route('create-contact');
   this.route('test');
 
-
+  this.route('edit-client', {path: 'edit-client/:clientID'});
   
 });
 
 export default Router;
+
 
