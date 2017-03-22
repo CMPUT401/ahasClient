@@ -26,7 +26,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
     		  });
 			
 			},
-			function(data){
+			function(response){
 				if (response === false){
 					if (self.get('session.isAuthenticated')){
 						self.get('session').invalidate();

@@ -14,7 +14,7 @@ export default function() {
 
    this.post('/user_token' , { success: false }, 404);
    this.post('/signup', { success: true }, 201);
-   this.get('/contact/1', () => {
+   this.get('/contacts/:id', () => {
      return {
   success: true,
   contact: 
@@ -25,7 +25,8 @@ export default function() {
      email: "fakejustin@ualberta.ca",
      phone_number: "555-555-5555",
      fax_number: "555-555-5556",
-     contact_type: "Veterinarian"
+     contact_type: "Veterinarian",
+     id: 1
    }
 };
    }); 
