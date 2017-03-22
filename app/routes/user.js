@@ -1,19 +1,19 @@
-import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import Ember from 'ember';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
-	model(){
+	model(params){
 		var self = this;
-
+        console.log(params);
 		let ajaxGet = new Ember.RSVP.Promise((resolve) =>
-		this.get('ajax').request('/api/client'
+		this.get('ajax').request(`/api/users/${params.id}`
 			).then(function(data){
 				Ember.run(function() {
+                    console.log(data.user);
 					resolve({ 
-						clients: deserialAttributes(data.clients),
-						clientsFiltered: deserialAttributes(data.clients),
+						user: data.user
 					});
 
 				});
@@ -30,16 +30,3 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 		return ajaxGet;
 	}
 });
-
-function deserialAttributes(clients){
-	var deserial = [];
-	for(var i = 0; i < clients.length; i++) {
-		var client = clients[i];
-		client.id = JSON.stringify(clients[i].id).replace(/\"/g, "");
-		client.firstName = JSON.stringify(clients[i].firstName).replace(/\"/g, "");
-		client.lastName = JSON.stringify(clients[i].lastName).replace(/\"/g, "");
-		deserial.push(client);
-
-	}
-	return(deserial);
-}

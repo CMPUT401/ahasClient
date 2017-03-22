@@ -1,11 +1,15 @@
 @import "bootstrap";
 @import "./removeButton";
+@import "./userTables";
 @import url(https://fonts.googleapis.com/css?family=Lato:300,300italic,400,700,700italic);
 
 /**
  * Base Elements
  */
-
+html, body{
+    height: 100%;
+    width: 100%;
+}
 * {
     margin: 0;
     margin-left: 1%;
@@ -70,7 +74,7 @@ p {
  * Content Area
  */
 .body {
-    padding: 15px;
+    padding-bottom: 20px;
 }
 
 
