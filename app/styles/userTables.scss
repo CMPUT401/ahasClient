@@ -1,0 +1,35 @@
+.users {
+  padding-left: 10px; 
+  margin: 0;
+  > div {
+    margin: 0;
+    padding: 0;
+  }
+}
+.searchButton{
+  margin-left: 10px;
+}
+.table-body {
+  padding: 0;
+  margin: 0;
+}
+
+.striped {
+  padding: 0;
+  margin: 0;
+  &:nth-child(2n) {
+    background: #F5F5F5;
+  }
+  &:hover{
+      background:#FFFFFF;
+  }
+}
+
+.list-group-item {
+    &:hover{
+        background: #F5F5F5;
+    }
+    &:active{
+      background:#F0F0F0;
+  }
+}

@@ -2,23 +2,50 @@
     <br>
     <br>
     <br>
-    <div class="row">
-            <form {{action "getContact" model.id on="submit"}}>
-        <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-7 col-md-offset-2">
-        <input class="form-control" placeholder="Search" autofocus="autofocus"  />
-        </div>
+    <div>
+        <div class="col-sm-7 col-sm-offset-1 col-md-7  col-md-offset-1">
+        <form {{action "filterContact" on="submit" }} > 
+        <input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
         </form>
+        </div>
+        <div class="col-sm-2 col-md-2">
+        <button  {{action "filterContact"  }} type="submit" id="search-button">Search</button>
+        </div>
     </div>
     <br>
     <br>
     <div >
-        <div class="col-md-3 col-md-offset-1">Veterinarians</div>
-        <div class="col-md-3 col-md-offset-1">Volunteers</div>
-        <div class="col-md-3 col-md-offset-1">Labortatory </div>
+
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="veterinariansHeading"><h3>Veterinarians</h3></div>
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="volunteersHeading"><h3>Volunteers</h3></div>
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="laboratoryHeading"><h3>Laboratory</h3></div>
+
     </div>
-    <div>
-      <div class="col-md-3  col-md-offset-1"> sample</div>
-            <div class="col-md-3  col-md-offset-1">sample </div>
-            <div class="col-md-3 col-md-offset-1"> sample</div>
-    </div>
+ <div class=" col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1 contactNameList" >
+     
+                 {{#each  model.contactsFilteredVeterinarian as |contact|}}
+                           
+                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  veterinariansContact'>{{contact.first_name}} {{contact.last_name}}</p>
+                          
+
+                    {{/each}}
+        </div >
+      
+         <div class=" col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1 contactNameList" >
+                      {{#each  model.contactsFilteredVolunteer as |contact|}}
+                           
+                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  volunteersContact' >{{contact.first_name}} {{contact.last_name}}</p>
+                           
+
+                    {{/each}}
+        </div >
+     
+        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1 contactNameList" >
+                      {{#each  model.contactsFilteredLaboratory as |contact|}}
+                            
+                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  laboratoryContact'>{{contact.first_name}} {{contact.last_name}}</p>
+
+                    {{/each}}
+        </div >
+                    
 </div>

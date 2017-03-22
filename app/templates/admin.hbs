@@ -1,0 +1,27 @@
+<div class="users">
+    <h2> Users </h2>
+    <div class="search row">
+        {{input type="text" class="searchInput col-md-8" keyUp=(action 'filterUsers') value=filterOn }}
+        <button class="col-md-2 searchButton"{{action 'filterUsers'}}>Search </button>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-1">
+            <h4>Name</h4>
+        </div>
+        <div class="col-md-2 col-md-offset-2">
+            <h4>Email</h4>
+        </div>
+    </div>
+    <div class="list-group">
+        {{#each users as |user|}}
+        <a href='/admin/users/{{user.id}}' class="row list-group-item">
+            <div class="col-md-2 col-md-offset-1">
+                {{user.name}}
+            </div>
+            <div class="col-md-2 col-md-offset-2">
+                {{user.email}}
+            </div>
+        </a>
+        {{/each}}
+    </div>
+</div>

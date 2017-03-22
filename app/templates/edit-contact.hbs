@@ -1,5 +1,6 @@
-<div class="inputCenterGroup">
+<div class="inputContactGroup">
 <h3 class='heading' > Editing: {{model.first_name}} {{model.last_name}} </h3>
+<div>
 <form > 
 
  <label for="type" >What type of volunteer is this?</label>
@@ -32,7 +33,7 @@
   {{#if model.laboratory}}
   <br>
   <br> 
-  <label for="first_name" class="inputUserLabel">Name:</label>
+  <label for="first_name" class="inputContactLabel">Name:</label>
   
   <input id='first_name' value={{model.first_name}} >
   <br>
@@ -40,39 +41,40 @@
   {{else}}  
    <br>
   <br>   
-  <label for="first_name" class="inputUserLabel">First Name:</label>
+  <label for="first_name" class="inputContactLabel">First Name:</label>
   
   <input id='first_name' value={{model.first_name}} >
   <br>
   <br> 
-  <label for="last_name" class="inputUserLabel">Last Name:</label>
+  <label for="last_name" class="inputContactLabel">Last Name:</label>
  
   <input id='last_name' value={{model.last_name}}>
   <br>
   <br> 
   {{/if}}
-  <label for="phoneNumber" class="inputUserLabel">Phone Number: </label>
+  <label for="phoneNumber" class="inputContactLabel">Phone Number: </label>
 
   <input id='phoneNumber' value={{model.phone_number}}>
   <br>
   <br>
-  <label for="faxNumber" class="inputUserLabel">Fax Number: </label>
+  <label for="faxNumber" class="inputContactLabel">Fax Number: </label>
   
   <input type="faxNumber" id='faxNumber' value={{model.fax_number}}>
   <br>
   <br>
-  <label for="email" class="inputUserLabel">Email: </label>
+  <label for="email" class="inputContactLabel">Email: </label>
 
   <input type="email" id='email' value={{model.email}}>
   <br>
   <br>
-  <label for="address" class="inputUserLabel">Address: </label>
+  <label for="address" class="inputContactLabel">Address: </label>
   
   <input type="address" id='address' value={{model.address}}>
   <br>
   <br>
   <button type="submit" {{action 'doneEditContact' model.id}} id="done-edit-button" class="centeredButton">Done Editing</button>
  </form>
+ </div>
  <br>
  <div id = "alert_placeholder"></div>
  </div>

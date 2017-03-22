@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:unauthorized', 'Unit | Route | unauthorized', {
+moduleFor('route:medical-record', 'Unit | Route | medical record', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

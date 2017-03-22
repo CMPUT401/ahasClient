@@ -1,0 +1,7 @@
+<div id="medications">
+    {{#each medicationList as |item index|}}
+      {{medication-input index=index reminder=item.reminder name=item.name update=(action 'updateMed') delete=(action 'deleteMed') }}
+    {{/each}}
+    <button {{action 'addMedication'}}>Add</button>
+</div>
+{{yield results}}
