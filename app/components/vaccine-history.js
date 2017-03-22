@@ -70,10 +70,12 @@ function deserialAttributes(meds){
 		}
 		if(JSON.stringify(meds[i].created_at) != null){
 			
-			entry.dateToDisplay =meds[i].created_at;
-			//also want to keep one unix time for our checkUpdate function
-			entry.date = new Date(meds[i].created_at).getTime();
-            //entry.date = new Date(meds[i].created_at).now;
+			var parital1 = JSON.stringify(meds[i].created_at).replace(/\"/g, "").slice(0, 10);
+			var parital2 = parital1.split("-");
+			entry.dateToDisplay = parital2[2] + "/" +parital2[1] + "/" +parital2[0]; 
+			//entry.dateToDisplay =meds[i].created_at;
+			entry.date = parital2;
+          
 		}
 		deserial.push(entry);
 	}
@@ -81,24 +83,19 @@ function deserialAttributes(meds){
 	return(deserial);
 }
 
-function checkUpdate(olddate){
+function checkUpdate(date){
 
-	var date = new Date(olddate);
-
-    var day = date.getDay() ;
-    var month = date.getMonth()  ;
-    var year = date.getFullYear();
+	var day = date[2] ;
+    var month = date[1] -1 ;
+	var year = date[0];
 
     var current = new Date();
 
-    var currentDay = current.getDay() ;
+    var currentDay = current.getDate() ;
     var currentMonth = current.getMonth()  ;
     var currentYear = current.getFullYear();
-    var currentHours = current.getHours();
 
-    //exact minute of midnight is when we will autofinalize
-	console.log("the dates are", current, date, olddate, current.getTime());
-    if (currentDay === day && currentMonth === month && currentYear === year ){
+    if (currentDay.toString() === day.toString() && currentMonth.toString() === month.toString() && currentYear.toString() === year.toString() ){
         return(true);
     }
     return(false);
