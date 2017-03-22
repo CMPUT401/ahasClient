@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
 	{
 		submitNewCalendar()
 		{
+			console.log("status is " + model.clientid);
 			var self = this;
 			let ajaxPost = this.get('ajax').request('/api/schedules',
 			{
@@ -15,7 +16,7 @@ export default Ember.Controller.extend({
 				data: { schedule:
 					{
 					appointmentStartDate: 	this.get('appointmentStart'),
-					clientId: 				"1",
+					clientId: 				this.get('model.clientid'),
 					reason: 				this.get('appointmentReason'),
 					notes: 					this.get('appointmentNote'),
 					location: 				this.get('appointmentLocation'),
@@ -26,7 +27,9 @@ export default Ember.Controller.extend({
 		
 			});
 			ajaxPost.then(function(data){
-				console.log("status is " + JSON.stringify(data));
+				console.log("status is " + model.clientid);
+				showAlert("Appointment created!", true);
+				self.transitionToRoute('view-calendar')
 			},
 			function(data){
 				if (data === false){
@@ -41,3 +44,12 @@ export default Ember.Controller.extend({
 }
 	
 });
+
+ function showAlert(message, bool) {
+        if(bool){
+            Ember.$('#alert_placeholder').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
+        }
+        else{
+             Ember.$('#alert_placeholder').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
+        }
+ }
