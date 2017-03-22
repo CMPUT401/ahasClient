@@ -34,8 +34,7 @@ Router.map(function() {
 
   this.route('edit-client', {path: 'edit-client/:clientID'});
   this.route('lab-result-upload', {path: '/lab-result-upload/:patientID'});
-
-  this.route('radiography-upload');
+  this.route('radiography-upload', {path: '/radiography-upload/:patientID'});
 });
 
 export default Router;
