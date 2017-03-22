@@ -15,6 +15,7 @@ export default Ember.Controller.extend({
 		},
 
 		newAppointment: function(clientID){
+			console.log(clientID);
 			this.transitionToRoute("/new-calendar/").then(function(newRoute){
 				newRoute.controller.set("c_ID",clientID)
 			});
