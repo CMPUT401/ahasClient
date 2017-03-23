@@ -14,7 +14,7 @@ export default Ember.Component.extend({
 		viewEntry: function(labResultID){
 			console.log('view lab result ' + labResultID);
 			// TODO transition to lab result
-			//this.get('view-image-record').transitionTo('view-medical-record', [this.patientId, labResults]);
+			//this.get('router').transitionTo('view-image-record', [this.patientId, labResults]);
 		}
 	},
 	init(){
