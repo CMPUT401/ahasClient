@@ -37,12 +37,7 @@ Router.map(function() {
   this.route('admin');
   this.route('user', {path: '/admin/users/:id'});
 
-<<<<<<< HEAD
-
-
   this.route('view-appointment', {path: '/view-appointment/:appointmentid'});
-=======
->>>>>>> origin
 });
 
 export default Router;
