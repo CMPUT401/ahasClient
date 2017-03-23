@@ -38,7 +38,7 @@ Router.map(function() {
   this.route('user', {path: '/admin/users/:id'});
 
   this.route('view-appointment', {path: '/view-appointment/:appointmentid'});
-  this.route('view-image-record');
+  this.route('view-image-record', {path: 'view-patient/:patientID/view-image-record/:imageID'});
 });
 
 export default Router;
