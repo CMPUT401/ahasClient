@@ -13,6 +13,9 @@ export default Ember.Controller.extend({
 			console.log(petId);
 			this.transitionToRoute("/view-patient/" + petId);
 		},
+		editClient: function(clientID){
+			this.transitionToRoute('/edit-client/' + clientID);
+		},
 
 		newAppointment: function(clientID){
 			console.log(clientID);

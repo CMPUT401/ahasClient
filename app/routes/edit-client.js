@@ -1,12 +1,13 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend(AuthenticatedRouteMixin , {
+export default Ember.Route.extend({
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
-	model(param) {
+	model(param){
 		var self = this;
-		// console.log("param is " + param.clientID);
+		clearFields(self);//clear the entryfields before setting them
+		//ajax get request to populate field
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/client/' + param.clientID
 			).then(function(data){
@@ -50,8 +51,28 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
 				}
 		}));
 		return ajaxGet;
-	},
+	}
 });
+
+
+function clearFields(page){
+	page.set('clientFirstName', '');
+	page.set('clientLastName', '');
+	page.set('clientAddress', '');
+	page.set('clientPhone', '');
+	page.set('clientEmail', '');
+	page.set('clientLICO', '');
+	page.set('clientAISH', '');
+	page.set('clientAS', '');
+	page.set('alternativeFirstName', '');
+	page.set('alternativeLastName', '');
+	page.set('alternativePrimaryPhone', '');
+	page.set('alternativeAddress', '');
+	page.set('clientNotes', '');
+	page.set('alternativeSecondaryPhone', '');
+	page.set('alternativeEmail', '');
+}
+
 function deserialPatients(patients){
 	var deserial = [];
 	for(var i = 0; i < patients.length; i++) {
@@ -227,5 +248,3 @@ function deserialClientId(client){
 		return "";
 	}
 }
-
-

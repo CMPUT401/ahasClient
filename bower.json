@@ -3,6 +3,7 @@
   "dependencies": {
     "fullcalendar": "^3.0.0",
     "fullcalendar-scheduler": "^1.4.0",
+    "blob": "*",
     "bootstrap-datepicker": "^1.6.4"
   }
 }

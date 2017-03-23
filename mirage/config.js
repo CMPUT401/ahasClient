@@ -14,10 +14,11 @@ export default function() {
 
    // for user creation
    this.post('/signup', { success: true }, 201);
-   this.post('patients/1/medical_records', { success: true }, 201);
+
+   this.post('patients/:id/medical_records', { success: true }, 201);
 
    //this is for viewing one medical record
-   this.get('patients/1/medical_records/23',
+   this.get('patients/:id/medical_records/:id',
    {
      success:true,
      medical_record:
@@ -82,11 +83,14 @@ export default function() {
    //for the login
    this.post('/user_token' , {"jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"});
 
-   //this is for contact creation
+   //ontact creation
    this.post('/contacts', { success: true }, 201);
 
-   //this is for getting one contact
-   this.get('/contacts/1', () => {
+   //contact editing
+   this.put('/contacts/:id', { success: true }, 201);
+
+   //for getting one contact
+   this.get('/contacts/:id', () => {
      return {
   success: true,
   contact: 
@@ -97,7 +101,8 @@ export default function() {
      email: "fakejustin@ualberta.ca",
      phone_number: "555-555-5555",
      fax_number: "555-555-5556",
-     contact_type: "Veterinarian"
+     contact_type: "Veterinarian",
+     id: 1
    }
 };
    }); 
@@ -143,7 +148,7 @@ export default function() {
   });
 
 
-  this.get('client/1', ()=>{
+  this.get('client/:id', ()=>{
     return{
       success: true,
       client: {
@@ -173,7 +178,7 @@ export default function() {
 
 
 
-this.get('/patients/1/medical_records/1/notes/1', ()=>{
+this.get('/patients/:id/medical_records/:id/notes/:id', ()=>{
     return{
       success: true,
       notes: {
@@ -188,7 +193,7 @@ this.get('/patients/1/medical_records/1/notes/1', ()=>{
 });
 
 //this is wrong/broken at the moment/ just wrong format
-this.get('patients/1', ()=>{
+this.get('patients/:id', ()=>{
     return{
       success: true,
        patient: {

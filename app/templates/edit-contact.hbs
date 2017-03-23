@@ -1,0 +1,80 @@
+<div class="inputContactGroup">
+<h3 class='heading' > Editing: {{model.first_name}} {{model.last_name}} </h3>
+<div>
+<form > 
+
+ <label for="type" >What type of volunteer is this?</label>
+  <select id="type" {{action "showLastName" on="change"}}>
+        {{#if model.veterinarian}}
+        <option value="Veterinarian" selected='selected'> Veterinarian </option>
+        <option value="Volunteer"> Volunteer </option>
+        <option value="Laboratory"> Laboratory </option>
+         <option value="Technician"> Technician </option>
+        {{/if}}
+          {{#if model.volunteer}}
+        <option value="Veterinarian" > Veterinarian </option>
+        <option value="Volunteer" selected='selected'> Volunteer </option>
+        <option value="Laboratory"> Laboratory </option>
+         <option value="Technician"> Technician </option>
+        {{/if}}
+          {{#if model.laboratory}}
+        <option value="Veterinarian" > Veterinarian </option>
+        <option value="Volunteer"> Volunteer </option>
+        <option value="Laboratory" selected='selected'> Laboratory </option>
+         <option value="Technician"> Technician </option>
+        {{/if}}
+          {{#if model.technician}}
+        <option value="Veterinarian" > Veterinarian </option>
+        <option value="Volunteer"> Volunteer </option>
+        <option value="Laboratory"> Laboratory </option>
+         <option value="Technician" selected='selected'> Technician </option>
+        {{/if}}
+  </select>
+  {{#if model.laboratory}}
+  <br>
+  <br> 
+  <label for="first_name" class="inputContactLabel">Name:</label>
+  
+  <input id='first_name' value={{model.first_name}} >
+  <br>
+  <br> 
+  {{else}}  
+   <br>
+  <br>   
+  <label for="first_name" class="inputContactLabel">First Name:</label>
+  
+  <input id='first_name' value={{model.first_name}} >
+  <br>
+  <br> 
+  <label for="last_name" class="inputContactLabel">Last Name:</label>
+ 
+  <input id='last_name' value={{model.last_name}}>
+  <br>
+  <br> 
+  {{/if}}
+  <label for="phoneNumber" class="inputContactLabel">Phone Number: </label>
+
+  <input id='phoneNumber' value={{model.phone_number}}>
+  <br>
+  <br>
+  <label for="faxNumber" class="inputContactLabel">Fax Number: </label>
+  
+  <input type="faxNumber" id='faxNumber' value={{model.fax_number}}>
+  <br>
+  <br>
+  <label for="email" class="inputContactLabel">Email: </label>
+
+  <input type="email" id='email' value={{model.email}}>
+  <br>
+  <br>
+  <label for="address" class="inputContactLabel">Address: </label>
+  
+  <input type="address" id='address' value={{model.address}}>
+  <br>
+  <br>
+  <button type="submit" {{action 'doneEditContact' model.id}} id="done-edit-button" class="centeredButton">Done Editing</button>
+ </form>
+ </div>
+ <br>
+ <div id = "alert_placeholder"></div>
+ </div>
