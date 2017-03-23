@@ -15,19 +15,18 @@ export default Ember.Controller.extend({
 		},
 		sendLabResults: function(patientId){
 			document.getElementById("saveLabResults").disabled = true;
-			console.log("uploading file " + this.loadedFile.name + 
-				" " + this.loadedFile.data);
-			console.log("patient id is " + patientId);
-			console.log("date is " + this.get('datePicker'));
+			var partialDate = this.get('datePicker');
+			var partialDate2 = partialDate.toString().split(' ');
+			var imageDate = partialDate2[2] + "/" + partialDate2[1] + "/" + partialDate2[3];
 			var self = this;
 			let ajaxPost = this.get('ajax').post('api/patients/' + patientId + "/images", {
 				type: 'application/json',
 				data: {image: {
 					patient_id: patientId,
-					file_name: this.loadedFile.name,
+					name: this.loadedFile.name,
 					data: this.loadedFile.data,
 					picture_type: "lab result",
-					date: this.get('datePicker')
+					date: Date.parse(imageDate)/1000
 				}},
 			}).then(function(response){
 				console.log("status is " +JSON.stringify(response));
