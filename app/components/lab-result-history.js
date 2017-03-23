@@ -22,10 +22,10 @@ export default Ember.Component.extend({
 					console.log("data is" + JSON.stringify(data));
 					Ember.run(function(){
 						resolve({
-							labResults: deserialAttributes(data.image)
+							labResults: deserialAttributes(data.images)
 						});
 						// console.log(deserialAttributes(data.medical_records));
-						self.set('labResultList', deserialAttributes(data.image));
+						self.set('labResultList', deserialAttributes(data.images));
 					});
 				},
 				function(data){
