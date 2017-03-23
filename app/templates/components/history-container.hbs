@@ -1,8 +1,10 @@
 {{patient-history isVisible=chronoIsVisible patientId=patientID}}
 {{medication-history isVisible=medicationIsVisible patientId=patientID}}
 {{lab-result-history isVisible=labResultIsVisible patientId=patientID}}
+{{vaccine-history isVisible=vaccineIsVisible patientId=patientID}}
 <div class = "history-selector">
 	<button {{action "showChronological"}} class = "history-selector-button">Chronological</button>
 	<button {{action "showMedication"}} class = "history-selector-button">Medication History</button>
+	<button {{action "showVaccine"}} id="vaccine-component-button" class = "history-selector-button">Vaccine History</button>
 	<button {{action "showLabResults"}} class = "history-selector-button">Lab Results</button>
 </div>

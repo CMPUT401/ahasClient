@@ -7,9 +7,6 @@ export default Ember.Component.extend({
 	medicalRecord: [],
 	router: Ember.inject.service('-routing'),
 	actions:{
-		newEntry: function(){
-			this.get('router').transitionTo('medical-record', [this.patientId]);
-		},
 		toggleVisibility: function(){
 			// console.log("show chrono, the id is " + patientId);
 			if(this.get('isVisible')){
@@ -38,6 +35,7 @@ export default Ember.Component.extend({
 					console.log("data is" + JSON.stringify(data));
 					Ember.run(function(){
 						resolve({
+							//why is this in here as well as self.set ect? -kristy
 							history: deserialAttributes(data.medical_records)
 						});
 						// console.log(deserialAttributes(data.medical_records));
@@ -52,6 +50,7 @@ export default Ember.Component.extend({
 				})
 		);
 		console.log(this.medicalRecord);
+		return(ajaxGet);
 	}
 });
 

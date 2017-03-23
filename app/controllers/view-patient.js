@@ -2,9 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	 actions: {
-        gotoMedicalRoute(patient){
-            this.transitionToRoute("/view-patient/"+patient+"/medical-record");
-        },
+         newEntry(patientId){
+			this.transitionToRoute("/view-patient/"+patientId+"/medical-record");
+		},
         viewMedicalRecords(patient){ //want to be passed a date here from whatever med rec was clicked viewMedicalRecords(patient, date){
            // if ( checkUpdate(date) ){
             //    this.transitionToRoute('/view-patient/'+patient+'/view-medical-record-editable/1');

@@ -85,6 +85,9 @@
 	<button type = "button" id= "edit-patient-button">Edit Info</button>
 	<br>
 	<br>
+	<div class = "new-entry-button-wrapper">
+	<button {{action "newEntry" model.id}} class = "new-entry-button">New Entry</button>
+	</div>
 	{{history-container patientID=model.id}}
 
 {{outlet}}
