@@ -11,14 +11,14 @@ export default Ember.Component.extend({
 			console.log("making a new medical history entry");
 			this.get('router').transitionTo('medical-record', [this.patientId]);
 		},
-		toggleVisibility: function(){
-			// console.log("show medication, the id is " + patientId);
-			if(this.get('isVisible')){
-				this.set('isVisible', false);
-			} else {
-				this.set('isVisible', true);
-			}
-		}.observes('isVisible'),
+		// toggleVisibility: function(){
+		// 	// console.log("show medication, the id is " + patientId);
+		// 	if(this.get('isVisible')){
+		// 		this.set('isVisible', false);
+		// 	} else {
+		// 		this.set('isVisible', true);
+		// 	}
+		// }.observes('isVisible'),
 		viewEntry: function(recordID){
 			//this.get('router').transitionTo('view-medical-record', [this.patientId, recordID]);
 			console.log('view entry ' + recordID);
@@ -35,7 +35,7 @@ export default Ember.Component.extend({
 					console.log("data is" + JSON.stringify(data));
 					Ember.run(function(){
 						resolve({
-							medications: deserialAttributes(data.medications)
+							// medications: deserialAttributes(data.medications)
 						});
 						// console.log(deserialAttributes(data.medical_records));
 						self.set('medicationList', deserialAttributes(data.medications));

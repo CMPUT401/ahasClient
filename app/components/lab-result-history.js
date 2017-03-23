@@ -22,7 +22,7 @@ export default Ember.Component.extend({
 					console.log("data is" + JSON.stringify(data));
 					Ember.run(function(){
 						resolve({
-							labResults: deserialAttributes(data.images)
+							// labResults: deserialAttributes(data.images)
 						});
 						// console.log(deserialAttributes(data.medical_records));
 						self.set('labResultList', deserialAttributes(data.images));
@@ -48,6 +48,8 @@ function deserialAttributes(labResults){
 			entry.imageId = JSON.stringify(labResults[i].id).replace(/\"/g, "");
 			if(JSON.stringify(labResults[i].file_name) != null){
 				entry.name = JSON.stringify(labResults[i].name);
+			} else{
+				entry.name = "bob";
 			}
 			if(JSON.stringify(labResults[i].date) != null){
 				var partialDate = JSON.stringify(labResults[i].date).replace(/\"/g, "").slice(0, 10);
