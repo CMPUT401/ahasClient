@@ -6,7 +6,7 @@
 		<div class="history-list">
 			{{#ember-scrollable autoHide=false}}
 				{{#each labResultList as |labEntry|}}
-					<div class = "nameListItem" {{action 'viewEntry' entry.imageId}}>
+					<div class = "nameListItem" {{action 'viewEntry' labEntry.imageId}}>
 						
 							<p>{{labEntry.name}} {{labEntry.date}}</p>
 						
