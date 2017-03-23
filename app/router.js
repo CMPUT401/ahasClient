@@ -20,7 +20,7 @@ Router.map(function() {
   this.route('edit-contact', { path: '/edit-contact/:contact_id' });
   this.route('search-patient');
   this.route('new-side-note');
-  this.route('view-side-note');
+  this.route('view-side-note', {path: '/view-patient/:patientID/view-medical-record/:recordID/notes/:notesID'});
   this.route('client-list');
   this.route('client-info', {path: '/client-info/:clientID'});
   this.route('medical-record', {path: '/view-patient/:patientID/medical-record'});

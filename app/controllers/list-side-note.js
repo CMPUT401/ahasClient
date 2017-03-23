@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
     actions: {
         getNote(model,note){
             console.log(model);
-            this.transitionToRoute('/api/patients/1/medical_records/1/notes/'+note);
+            this.transitionToRoute('/view-patient/'+model.patientID+'/view-medical-record/'+:model.recordID+'/notes/'+note);
         },
         createSideNote: function(model){
         	console.log(model.patientID , model.recordID);
