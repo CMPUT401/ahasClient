@@ -13,12 +13,15 @@ export default Ember.Controller.extend({
 			console.log(petId);
 			this.transitionToRoute("/view-patient/" + petId);
 		},
-
-		newSchedule: function(clientID){
-			this.transitionToRoute("/new-calendar/" + clientID);
-		},
 		editClient: function(clientID){
 			this.transitionToRoute('/edit-client/' + clientID);
+		},
+
+		newAppointment: function(clientID){
+			console.log(clientID);
+			this.transitionToRoute("/new-calendar/").then(function(newRoute){
+				newRoute.controller.set("c_ID",clientID)
+			});
 		}
 	}
 });
