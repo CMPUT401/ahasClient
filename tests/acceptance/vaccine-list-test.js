@@ -11,6 +11,6 @@ test('checking list added correctly', function(assert) {
   click('#vaccine-component-button');
 
   andThen(function() {
-    assert.equal(find('.nameListItem').length(), 2);
+    assert.equal(find('.vaccineList').length, 2);
   });
 });

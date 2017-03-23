@@ -23,11 +23,6 @@ export default Ember.Controller.extend({
 
     actions: {
 
-        show(){
-             var self = this;
-            gatherMedications(this.get('model.patientID'), self);
-        },
-
         createMedicalRecord(){
 
             var self = this;

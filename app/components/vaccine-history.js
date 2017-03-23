@@ -31,6 +31,7 @@ export default Ember.Component.extend({
 	init(){
 		this._super(...arguments);
 		var self = this;
+		console.log('getting ajax for vaccine');
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 			this.get('ajax').request('api/patients/' + this.patientId + '/medications'
 				).then(function(data){
@@ -52,6 +53,7 @@ export default Ember.Component.extend({
 				})
 		);
 		console.log(this.medicationList);
+		return(ajaxGet);
 	}
 });
 
@@ -101,12 +103,3 @@ function checkUpdate(date){
     return(false);
 }
 
-function format(date){
-	var entryDate = new Date(JSON.stringify(date).replace(/\"/g, "") *1000);
-	var day = (entryDate.getDate()<10?'0':'' )+ entryDate.getDate();
-	var month = (entryDate.getMonth()<10?'0':'' )+ (entryDate.getMonth()+1);
-	var year = entryDate.getFullYear();
-	var newDate = month + "/" + day + "/" + year;
-	return(newDate);
-
-}

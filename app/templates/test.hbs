@@ -26,3 +26,10 @@
 {{#each other as |item|}}
   {{item.name}} {{item.reminder}} {{item.med_type}} <br/>
 {{/each}}
+<div>
+Here
+  {{nullObject.hello}}
+  {{nullObject.world}}
+  {{nullObject.thing}}
+</div>
+<button {{action 'fixnull'}}> Filter nulls </button>

@@ -50,6 +50,7 @@ export default Ember.Component.extend({
 				})
 		);
 		console.log(this.medicalRecord);
+		return(ajaxGet);
 	}
 });
 
