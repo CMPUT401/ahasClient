@@ -21,10 +21,7 @@ Router.map(function() {
 
   this.route('view-contact', { path: '/view-contact/:contact_id' });
   this.route('search-contacts');
-<<<<<<< HEAD
   this.route('edit-contact', { path: '/edit-contact/:contact_id' });
-=======
->>>>>>> radiographyUpload
   this.route('search-patient');
   this.route('new-side-note');
   this.route('view-side-note');
