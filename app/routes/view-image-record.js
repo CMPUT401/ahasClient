@@ -15,7 +15,8 @@ export default Ember.Route.extend({
 				resolve({
 					name: deserialName(data.image),
 					imgData: deserialData(data.image),
-					date: deserialDate(data.image)
+					date: deserialDate(data.image),
+					type: deserialType(data.image)
 				});
 			  });
 			
@@ -48,7 +49,7 @@ function deserialData(img){
 		var image = JSON.stringify(data).replace(/\"/g, "");
 		return '<img class="recordImage" src="' + image + '"/>';
 	}else{
-		return " ";
+		return "Image not found!!";
 	}
 }
 
@@ -59,5 +60,14 @@ function deserialDate(img){
 		return  date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
 	}else{
 		return " ";
+	}
+}
+
+function deserialType(img){
+	var type = img.picture_type;
+	if(type != null){
+		return JSON.stringify(type).replace(/\"/g, "");
+	} else{
+		return ""
 	}
 }
