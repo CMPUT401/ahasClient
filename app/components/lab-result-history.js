@@ -52,12 +52,14 @@ function deserialAttributes(labResults){
 			// console.log("is lab result")
 			entry.imageId = JSON.stringify(labResults[i].id).replace(/\"/g, "");
 			if(JSON.stringify(labResults[i].file_name) != null){
-				entry.name = JSON.stringify(labResults[i].name);
+				entry.name = JSON.stringify(labResults[i].name).replace(/\"/g, "");
 			} 
 			if(JSON.stringify(labResults[i].date) != null){
-				var partialDate = JSON.stringify(labResults[i].date).replace(/\"/g, "").slice(0, 10);
-				var partialDate2 = partialDate.split("-");
-				entry.date = partialDate2[1] + "/" +partialDate2[2] + "/" + partialDate2[0];
+				// var partialDate = JSON.stringify(labResults[i].date).replace(/\"/g, "").slice(0, 10);
+				// var partialDate2 = partialDate.split("-");
+				// entry.date = partialDate2[1] + "/" +partialDate2[2] + "/" + partialDate2[0];
+				var date = new Date(JSON.stringify(labResults[i].date)*1000);
+				entry.date = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
 			}
 			deserial.push(entry);
 		}
