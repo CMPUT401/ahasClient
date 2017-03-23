@@ -4,7 +4,15 @@
 <div class = "infoBlock">
 	<div class = "panel panel-default">		
 		<div class="history-list">
-		Hello!
+		{{#ember-scrollable autoHide=false}}
+				{{#each radiographyList as |labEntry|}}
+					<div class = "nameListItem" {{action 'viewEntry' labEntry.imageId}}>
+						
+							<p>{{labEntry.name}} {{labEntry.date}}</p>
+						
+					</div>
+				{{/each}}
+			{{/ember-scrollable}}
 		</div>
 	</div>
 </div>
