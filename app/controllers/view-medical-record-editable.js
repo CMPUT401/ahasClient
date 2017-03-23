@@ -136,7 +136,8 @@ export default Ember.Controller.extend({
           for (var i=0; i<normals.length; i++){
               normals[i].checked = false;
           }        
-      }  
+      }
+
     }
 });
 
