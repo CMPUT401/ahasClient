@@ -8,7 +8,7 @@ export default Ember.Component.extend({
 	router: Ember.inject.service('-routing'),
 	actions: {
 		uploadResult: function(){
-			console.log("making a new medical history entry");
+			// console.log("making a new medical history entry");
 			this.get('router').transitionTo('lab-result-upload', [this.patientId]);
 		}
 	},
@@ -25,7 +25,7 @@ export default Ember.Component.extend({
 							labResults: deserialAttributes(data.image)
 						});
 						// console.log(deserialAttributes(data.medical_records));
-						self.set('medicationList', deserialAttributes(data.image));
+						self.set('labResultList', deserialAttributes(data.image));
 					});
 				},
 				function(data){
