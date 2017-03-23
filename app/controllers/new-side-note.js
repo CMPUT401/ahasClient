@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
 				type: 'application/json',
 				data: { note:
 					{
-					medical_record_id: "1",
+					medical_record_id: this.get('r_ID'),
 					body: 	this.get('medNotes'),
 					initials: 		this.get('medSignature'),
 					is_alert: document.getElementById('isAlert').checked
@@ -28,7 +28,7 @@ export default Ember.Controller.extend({
 			});
 			ajaxPost.then(function(data){
 				console.log("status is " + data);
-				self.transitionTo('/api/patients/1/medical_records/1');
+				self.transitionTo('/search-patient/');
 			},
 			function(response){
 				if (response === false){
