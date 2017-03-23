@@ -9,6 +9,7 @@ export default Ember.Component.extend({
 	actions: {
 		uploadResult: function(){
 			console.log("making a new medical history entry");
+			this.get('router').transitionTo('lab-result-upload', [this.patientId]);
 		}
 	}
 });
