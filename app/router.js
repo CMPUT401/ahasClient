@@ -10,11 +10,8 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('login');
   this.route('new-patient');
-<<<<<<< HEAD
   this.route('create-user', {path: '/creat-user/:token'});
-=======
-  this.route('create-user');
->>>>>>> radiographyUpload
+
   this.route('new-client');
 
   this.route('view-patient',{path: '/view-patient/:patientID'});
