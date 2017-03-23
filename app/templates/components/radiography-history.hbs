@@ -5,10 +5,10 @@
 	<div class = "panel panel-default">		
 		<div class="history-list">
 		{{#ember-scrollable autoHide=false}}
-				{{#each radiographyList as |labEntry|}}
-					<div class = "nameListItem" {{action 'viewEntry' labEntry.imageId}}>
+				{{#each radiographyList as |radiograph|}}
+					<div class = "nameListItem" {{action 'viewEntry' radiograph.imageId}}>
 						
-							<p>{{labEntry.name}} {{labEntry.date}}</p>
+							<p>{{radiograph.name}} {{radiograph.date}}</p>
 						
 					</div>
 				{{/each}}
