@@ -13,7 +13,9 @@ export default Ember.Route.extend({
 				console.log("data is " + JSON.stringify(data));
 				Ember.run(function() {
 				resolve({
-					name: deserialName(data.image)
+					name: deserialName(data.image),
+					data: deserialData(data.image),
+					date: deserialDate(data.image)
 				});
 			  });
 			
@@ -44,7 +46,17 @@ function deserialData(img){
 	var data = img.data;
 	if(data != null){
 		return JSON.stringify(data).replace(/\"/g, "");
+	}else{
+		return " ";
 	}
 }
 
-function deserialDate(img){}
+function deserialDate(img){
+	var unixDate = img.date;
+	if(unixDate != null){
+		var date = new Date(JSON.stringify(unixDate)*1000); 
+		return  date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
+	}else{
+		return " ";
+	}
+}
