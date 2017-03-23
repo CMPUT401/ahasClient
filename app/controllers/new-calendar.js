@@ -62,7 +62,7 @@ function formatDate(date,time){
 	var splittime = time.split(":");
   	var newdate = [];
   	newdate.push(splitdate[2]);
-  	newdate.push(splitdate[0]);
+  	newdate.push(splitdate[0] -1);
   	newdate.push(splitdate[1]);
   	var rightdate = newdate.concat(splittime);
   	var formatted = moment(rightdate).unix();
