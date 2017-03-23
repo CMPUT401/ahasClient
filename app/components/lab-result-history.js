@@ -10,6 +10,11 @@ export default Ember.Component.extend({
 		uploadResult: function(){
 			// console.log("making a new medical history entry");
 			this.get('router').transitionTo('lab-result-upload', [this.patientId]);
+		},
+		viewEntry: function(labResultID){
+			console.log('view lab result ' + labResultID);
+			// TODO transition to lab result
+			//this.get('view-image-record').transitionTo('view-medical-record', [this.patientId, labResults]);
 		}
 	},
 	init(){
