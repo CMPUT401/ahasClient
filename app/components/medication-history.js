@@ -9,6 +9,7 @@ export default Ember.Component.extend({
 	actions:{
 		newEntry: function(){
 			console.log("making a new medical history entry");
+			this.get('router').transitionTo('medical-record', [this.patientId]);
 		},
 		toggleVisibility: function(){
 			// console.log("show medication, the id is " + patientId);
