@@ -10,14 +10,21 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('login');
   this.route('new-patient');
+<<<<<<< HEAD
   this.route('create-user', {path: '/creat-user/:token'});
+=======
+  this.route('create-user');
+>>>>>>> radiographyUpload
   this.route('new-client');
 
   this.route('view-patient',{path: '/view-patient/:patientID'});
 
   this.route('view-contact', { path: '/view-contact/:contact_id' });
   this.route('search-contacts');
+<<<<<<< HEAD
   this.route('edit-contact', { path: '/edit-contact/:contact_id' });
+=======
+>>>>>>> radiographyUpload
   this.route('search-patient');
   this.route('new-side-note');
   this.route('view-side-note');
@@ -34,6 +41,7 @@ Router.map(function() {
   this.route('test');
   this.route('edit-client', {path: 'edit-client/:clientID'});
   this.route('lab-result-upload', {path: '/lab-result-upload/:patientID'});
+  this.route('radiography-upload', {path: '/radiography-upload/:patientID'});
   this.route('admin');
   this.route('user', {path: '/admin/users/:id'});
 
