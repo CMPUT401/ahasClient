@@ -14,7 +14,7 @@ export default Ember.Route.extend({
 				Ember.run(function() {
 				resolve({
 					name: deserialName(data.image),
-					data: deserialData(data.image),
+					imgData: deserialData(data.image),
 					date: deserialDate(data.image)
 				});
 			  });
@@ -45,7 +45,8 @@ function deserialName(img){
 function deserialData(img){
 	var data = img.data;
 	if(data != null){
-		return JSON.stringify(data).replace(/\"/g, "");
+		var image = JSON.stringify(data).replace(/\"/g, "");
+		return '<img class="recordImage" src="' + image + '"/>';
 	}else{
 		return " ";
 	}
