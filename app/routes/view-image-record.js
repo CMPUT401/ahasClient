@@ -39,3 +39,12 @@ function deserialName(img){
 		return " ";
 	}
 }
+
+function deserialData(img){
+	var data = img.data;
+	if(data != null){
+		return JSON.stringify(data).replace(/\"/g, "");
+	}
+}
+
+function deserialDate(img){}
