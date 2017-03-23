@@ -29,7 +29,7 @@ Router.map(function() {
 
   this.route('view-calendar');
   this.route('new-calendar');
-  this.route('list-side-note');
+  this.route('list-side-note', {path: '/view-patient/:patientID/view-medical-record/:recordID/notes'});
   this.route('create-contact');
   this.route('test');
   this.route('edit-client', {path: 'edit-client/:clientID'});
