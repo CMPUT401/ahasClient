@@ -193,7 +193,7 @@ this.get('/patients/:id/medical_records/:id/notes/:id', ()=>{
 });
 
 //for getting all medical records for the chronological comoponent on the view patient page
-this.get('patients/:id/medical_records', ()=>{
+this.get('/patients/:id/medical_records', ()=>{
   return{
     success:true, 
     medical_records: []
@@ -201,7 +201,7 @@ this.get('patients/:id/medical_records', ()=>{
 });
 
 //for vaccine list in the component on view-patient page
-this.get('patients/:id/medications', ()=>{
+this.get('/patients/:id/medications', ()=>{
   return{
     success:true, 
     medications: [
