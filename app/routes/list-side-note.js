@@ -3,20 +3,20 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	ajax: Ember.inject.service(),
-	model(params){
+	model(param){
 		var self = this;
 
 		let ajaxGet = new Ember.RSVP.Promise((resolve) =>
-		this.get('ajax').request('/api/patients/1/medical_records/1/notes/'
+		this.get('ajax').request('/api/patients/'+param.patientID+'/medical_records/'+param.recordID+'/notes/'
 			).then(function(data){
 				Ember.run(function() {
 					resolve({ 
 						notesW: data.notes,
-						patientID : "1",//param.patientID
-						medID: "1" //param.medID
+						patientID : param.patientID,
+						recordID: param.recordID
 					});
-					console.log("status is " + data.notes);
-					console.log(data.notes instanceof String);
+					console.log("status is " + JSON.stringify(data));
+					//console.log(data.notes instanceof String);
 				});
 				
 			},
