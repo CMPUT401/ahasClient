@@ -187,6 +187,38 @@ this.get('/patients/1/medical_records/1/notes/1', ()=>{
     };
 });
 
+//for vaccine list in the component on view-patient page
+this.get('patients/:id/medications', ()=>{
+  return{
+    success:true, 
+    medications: [
+      {
+        name: "test vaccine", 
+        reminder: "", 
+        med_type: "Vaccine",
+        medical_record_id: 1,
+        created_at: "2017-02-02"
+      },
+      {
+        name: "other test vaccine", 
+        reminder: "",
+        med_type: "Vaccine",
+        medical_record_id : 2,
+        created_at: "2017-02-02"
+
+      },
+      {
+        name: "test medicine", 
+        reminder: "",
+        med_type: "Medicine",
+        medical_record_id : 3,
+        created_at: "2017-02-02"
+
+      }
+    ]
+  }
+});
+
 //this is wrong/broken at the moment/ just wrong format
 this.get('patients/1', ()=>{
     return{
