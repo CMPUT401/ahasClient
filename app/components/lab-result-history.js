@@ -44,15 +44,17 @@ function deserialAttributes(labResults){
 	for(var i = 0; i < labResults.length; i++) {
 		var entry = labResults[i];
 		if(entry.picture_type.toLowerCase() === "lab result"){
+			// console.log("is lab result")
 			entry.imageId = JSON.stringify(labResults[i].id).replace(/\"/g, "");
 			if(JSON.stringify(labResults[i].file_name) != null){
-				entry.file_name = JSON.stringify(labResults[i].file_name);
+				entry.name = JSON.stringify(labResults[i].name);
 			}
 			if(JSON.stringify(labResults[i].date) != null){
 				var partialDate = JSON.stringify(labResults[i].date).replace(/\"/g, "").slice(0, 10);
 				var partialDate2 = partialDate.split("-");
 				entry.date = partialDate2[1] + "/" +partialDate2[2] + "/" + partialDate2[0];
 			}
+			deserial.push(entry);
 		}
 	}
 }
