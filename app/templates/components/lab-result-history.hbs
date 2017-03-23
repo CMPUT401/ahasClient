@@ -1,10 +1,9 @@
 <div class = "new-entry-button-wrapper">
 	<button {{action "uploadResult" }} class = "new-entry-button">Upload Lab Result</button>
 </div>	
-<div class = "infoBlock">
+<div class = "infoBlockComponent">
 	<div class = "panel panel-default">		
-		<div class="history-list">
-			{{#ember-scrollable autoHide=false}}
+		<div class="history-list" style="overflow:auto">
 				{{#each labResultList as |labEntry|}}
 					<div class = "nameListItem" {{action 'viewEntry' labEntry.imageId}}>
 						
@@ -12,7 +11,6 @@
 						
 					</div>
 				{{/each}}
-			{{/ember-scrollable}}
 		</div>
 	</div>
 </div>

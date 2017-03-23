@@ -1,14 +1,11 @@
-<div class = "infoBlock">
+<div class = "infoBlockComponent">
 	<div class = "panel panel-default">
-		<!-- <p>some text about the entire medical history in chronological order!</p> -->
-		<div class="history-list">
-			{{#ember-scrollable autoHide=false}}
+		<div class="history-list" style="overflow:auto">
 				{{#each medicalRecord as |entry|}}
 					<div class = "nameListItem" {{action 'viewEntry' entry.recordId entry.date}}>
 						<p>{{entry.summary}}  {{entry.dateToDisplay}}</p>
 					</div>
 				{{/each}}
-			{{/ember-scrollable}}
 		</div>
 	</div>
 </div>

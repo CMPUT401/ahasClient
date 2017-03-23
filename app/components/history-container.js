@@ -31,7 +31,7 @@ export default Ember.Component.extend({
 			// console.log("show medication, the id is " + patientId);
 			this.set('chronoIsVisible', false);
 			this.set('medicationIsVisible', false);
-			his.set('labResultIsVisible', false);
+			this.set('labResultIsVisible', false);
 			this.set('vaccineIsVisible', true);
 		}
 	}

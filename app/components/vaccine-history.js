@@ -74,7 +74,7 @@ function deserialAttributes(meds){
 			
 			var parital1 = JSON.stringify(meds[i].created_at).replace(/\"/g, "").slice(0, 10);
 			var parital2 = parital1.split("-");
-			entry.dateToDisplay = parital2[2] + "/" +parital2[1] + "/" +parital2[0]; 
+			entry.dateToDisplay = parital2[1] + "/" +parital2[2] + "/" +parital2[0]; 
 			//entry.dateToDisplay =meds[i].created_at;
 			entry.date = parital2;
           
