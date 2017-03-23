@@ -189,7 +189,7 @@ function deserialAttributesMedicines(medications){
 		if(medications[i].med_type === 'medicine' || medications[i].med_type === 'Medicine'  ){
 		var medication = medications[i];
 		medication.name = medication.name;
-        medication.reminderToDisplay = format(medication.reminder);
+        medication.reminder = format(medication.reminder);
 		deserial.push(medication);
 	}
   }
@@ -203,7 +203,7 @@ function deserialAttributesVaccines(vaccines){
 		if(vaccines[i].med_type === 'vaccine'||vaccines[i].med_type === 'Vaccine'){
 		var vaccine = vaccines[i];
 		vaccine.name = vaccine.name;
-        vaccine.reminderToDisplay = format(vaccine.reminder);
+        vaccine.reminder= format(vaccine.reminder);
 		deserial.push(vaccine);
 	}
   }
@@ -217,7 +217,7 @@ function deserialAttributesOthers(others){
 		if(others[i].med_type === 'other'|| others[i].med_type === 'Other'){
 		var other = others[i];
 		other.name = other.name;
-        other.reminderToDisplay = format(other.reminder);
+        other.reminder = format(other.reminder);
 		deserial.push(other);
 	}
   }

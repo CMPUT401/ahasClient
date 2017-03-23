@@ -192,28 +192,83 @@ this.get('/patients/:id/medical_records/:id/notes/:id', ()=>{
     };
 });
 
+//for getting all medical records for the chronological comoponent on the view patient page
+this.get('/patients/:id/medical_records', ()=>{
+  return{
+    success:true, 
+    medical_records: []
+  };
+});
+
+//for vaccine list in the component on view-patient page
+this.get('/patients/:id/medications', ()=>{
+  return{
+    success:true, 
+    medications: [
+      {
+        id: 1,
+        name: "test vaccine", 
+        reminder: "", 
+        med_type: "Vaccine",
+        medical_record_id: 1,
+        created_at: "2017-02-02"
+      },
+      {
+        id: 2, 
+        name: "other test vaccine", 
+        reminder: "",
+        med_type: "Vaccine",
+        medical_record_id : 2,
+        created_at: "2017-02-02"
+
+      },
+      {
+        id: 3, 
+        name: "test medicine", 
+        reminder: "",
+        med_type: "Medicine",
+        medical_record_id : 3,
+        created_at: "2017-02-02"
+
+      }
+    ]
+  };
+});
+
 //this is wrong/broken at the moment/ just wrong format
 this.get('patients/:id', ()=>{
     return{
       success: true,
        patient: {
          id: 1,
-      clientLastName: 'Bobbertson',
-	clientFirstName: 'Fred',
-	clientAddress: '22554 48th Ave NW Edmonton Alberta, Canada',
-	clientPhoneNumber: '666-666-6666',
-	clientEmail: '123dd@5d5dd.ca',
+						   first_name: '',
+						   last_name:  '',
+						   species:'',
+						   age: 1, 
+						   colour: '',
+						   tattoo: 2,
+						   microchip: 3,
+						   reproductive_status:'',
+						   client_id: 1,
+						   gender: '',
+                client:{
+           firstName:  'Fred',
+							lastName: 'Bobbertson',
+							address: '',
+							phoneNumber: '',
+							email: '',
+							licos:'',
+							aish: '',
+							socialAssistance: '',
+							notes: '',
+							alternativeContactFirstName:'',
+							alternativeContactEmail: '',
+							alternativeContactLastName: '',
+							alternativeContactPhoneNumber:'',
+							alternativeContact2ndPhone: '',
+							alternativeContactAddress:''
 
-	clientDocumentLICO: 'Confirmed',
-	clientDocumentAISH: 'Confirmed',
-	clientDocumentSA: 'Confirmed',
-	clientNotes: 'Smells bad?',
-
-	clientAlternativeCName: 'Jack',
-	clientAlternativeCAddress: '12252 92nd Ave Edmonton, Alberta, Canada',
-	clientAlternativeCPhone: '123-456-7890',
-	clientAlternativeCSPhone: '999-999-9999',
-	clientAlternativeCEmail: 'efijo@foji.cdoji'
+       }
        }
     };
 });

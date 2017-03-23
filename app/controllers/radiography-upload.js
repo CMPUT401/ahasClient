@@ -7,9 +7,14 @@ export default Ember.Controller.extend({
 	actions: {
 		fileLoaded: function(file){
 			this.set('loadedFile', file);
+			// console.log("name is " + file.name);
+			// console.log("type is " + file.type);
+			// console.log("data is ");
+			// //console.log(file.data);
+			// console.log("size is " + file.size + " bytes");
 		},
-		sendLabResults: function(patientId){
-			document.getElementById("saveLabResults").disabled = true;
+		sendRadiographyResults: function(patientId){
+			document.getElementById("saveRadiography").disabled = true;
 			var partialDate = this.get('datePicker');
 			var partialDate2 = partialDate.toString().split(' ');
 			var imageDate = partialDate2[2] + "/" + partialDate2[1] + "/" + partialDate2[3];
@@ -20,7 +25,7 @@ export default Ember.Controller.extend({
 					patient_id: patientId,
 					name: this.loadedFile.name,
 					data: this.loadedFile.data,
-					picture_type: "lab result",
+					picture_type: "radiograph",
 					date: Date.parse(imageDate)/1000
 				}},
 			}).then(function(response){
@@ -28,7 +33,7 @@ export default Ember.Controller.extend({
 				self.transitionToRoute('/view-patient/' + patientId);
 
 			}, function(response){
-				document.getElementById("saveLabResults").disabled = false;
+				document.getElementById("saveRadiography").disabled = false;
 				console.log("status is " + JSON.stringify(response));
 				if(response === false){
 					if(self.get('session.isAuthenticated')){

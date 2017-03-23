@@ -1,10 +1,6 @@
-<div class = "new-entry-button-wrapper">
-	<button {{action "newEntry" }} class = "new-entry-button">New Entry</button>
-</div>	
-<div class = "infoBlock">
+<div class = "infoBlockComponent">
 	<div class = "panel panel-default">		
-		<div class="history-list">
-			{{#ember-scrollable autoHide=false}}
+		<div class="history-list" style="overflow:auto">
 				{{#each medicationList as |entry|}}
 					<div class = "nameListItem" {{action 'viewEntry' entry.medical_record_id}}>
 						
@@ -12,7 +8,6 @@
 						
 					</div>
 				{{/each}}
-			{{/ember-scrollable}}
 		</div>
 	</div>
 </div>

@@ -28,7 +28,7 @@ export default Ember.Controller.extend({
                 ]
             };
             var fuse = new Fuse(this.users, options); // "list" is the item array
-            if (this.filterOn == "") {
+            if (this.filterOn === "") {
                 results = this.model.users;
             } else {
                 results = fuse.search(this.filterOn);
