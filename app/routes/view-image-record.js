@@ -13,7 +13,7 @@ export default Ember.Route.extend({
 				console.log("data is " + JSON.stringify(data));
 				Ember.run(function() {
 				resolve({
-					
+					name: deserialName(data.image)
 				});
 			  });
 			
@@ -30,3 +30,12 @@ export default Ember.Route.extend({
 		return ajaxGet;
 	}
 });
+
+function deserialName(img){
+	var name = img.name;
+	if(name != null){
+		return JSON.stringify(name).replace(/\"/g, "");
+	}else{
+		return " ";
+	}
+}
