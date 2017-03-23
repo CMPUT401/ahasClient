@@ -3,7 +3,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	ajax: Ember.inject.service(),
-	model(){
+	model(params){
 		var self = this;
 
 		let ajaxGet = new Ember.RSVP.Promise((resolve) =>

@@ -18,8 +18,8 @@ export default Ember.Controller.extend({
 					{
 					medical_record_id: "1",
 					body: 	this.get('medNotes'),
-					initials: 		this.get('medSignature')
-					is_alert: document.getElementById('isAlert').checked,
+					initials: 		this.get('medSignature'),
+					is_alert: document.getElementById('isAlert').checked
 				
 				}
 			
