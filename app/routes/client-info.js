@@ -159,7 +159,7 @@ function deserialUpdatedAt(client){
 function deserialNotes(client){
 	var notes = client.notes;
 	if(notes != null){
-		return JSON.stringify(notes).replace(/\"/g, "");
+		return JSON.stringify(notes).replace(/\\n/g, " <br> " ).replace(/\"/g, "");
 	} else{
 		return "";
 	}
