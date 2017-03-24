@@ -1,6 +1,10 @@
 Human read script to test editing client information
 
 Assumptions: There is at least one client.
+//////////////////////////
+//// EDIT EVERY FIELD ////
+//////////////////////////
+
 
 Navigate to /client-info/1
 
@@ -52,7 +56,7 @@ CHECK: Under "Address", the client's new address is displayed.
 
 CHECK: Under "Phone Number", the client's new Phone Number is displayed. 
 
-CHECK: Under "Email", the client's new client's Email is displayed. 
+CHECK: Under "Email", the client's new  Email is displayed. 
 
 CHECK: Under "LICO", the client's new LICO is displayed. 
 
@@ -62,9 +66,95 @@ CHECK: Under "SA", the client's new SA is displayed.
 
 CHECK: Under "NOTES", the client's new NOTES is displayed. 
 
+CHECK: Under "Alternate Contact", The Alternate Contact's new last name, first name is displayed.
+
+CHECK: Under "Address", The Alternate Contact's new Address is displayed.
+
+CHECK: Under "Phone Number", the Alternate Contact's new primary Phone Number is displayed. 
+
+CHECK: Under "Secondary Phone Number", the Alternate Contact's new seconday Phone Number is displayed. 
+
+CHECK: Under "Email", the Alternate Contact's new Email is displayed. 
+
+CHECK: Pets remain unchanged.
+
+CHECK: no null values are displayed. a blank should be displayed to indicate lack of data. 
+
+
+///////////////////////
+//// EDIT NO FIELD ////
+///////////////////////
 
 
 
+Navigate to /client-info/1
 
+Take note of the information. 
 
+Click on the button labeled "Edit Client". 
 
+CHECK: The page should have redirected. the URL should be /edit-client/1
+
+CHECK: The patient's first name is displayed in an input box next to "Client's First Name"
+
+CHECK: Below, the patient's last name is displayed in an input box next to "Client's Last Name"
+
+CHECK: Below, the patient's address is displayed in an input box next to "Client's Address"
+
+CHECK: Below, the patient's Phone Number is displayed in an input box next to "Client's Number"
+
+CHECK: The patient's email is displayed in an input box next to "Client's Email"
+
+CHECK: The LICO number is displayed in an input box next to "LICO"
+
+CHECK: The AISH number is displayed in an input box next to "AISH"
+
+CHECK: The SA number is displayed in an input box next to "SA"
+
+CHECK: The notes are displayed in an input box next to "Notes"
+
+CHECK: The alternative contact first name is displayed in an input box next to "Alternative Contact's First Name"
+
+CHECK: The alternative contact lasr name is displayed in an input box next to "Alternative Contact's Last Name"
+
+CHECK: The alternative contact address is displayed in an input box next to "Alternative Contact's Address"
+
+CHECK: The alternative contact primary phone number is displayed in an input box next to "Alternative Contact's Primary Phone Number"
+
+CHECK: The alternative contact secondary phone number is displayed in an input box next to "Alternative Contact's Seconday Phone Number"
+
+CHECK: The alternative contact secondary email is displayed in an input box next to "Alternative Contact's Email"
+
+Click the button labeled "Save"
+
+CHECK: The page should have redirected. the URL should be /client-info/1
+
+CHECK: Under "Client", The client's last name, first name is remains unchanged.
+
+CHECK: Under "Address", the client's address is remains unchanged. 
+
+CHECK: Under "Phone Number", the client's Phone Number is remains unchanged. 
+
+CHECK: Under "Email", the client's  Email is remains unchanged. 
+
+CHECK: Under "LICO", the client's LICO is remains unchanged. 
+
+CHECK: Under "AISH", the client's AISH is remains unchanged. 
+
+CHECK: Under "SA", the client's SA is remains unchanged. 
+
+CHECK: Under "NOTES", the client's NOTES is remains unchanged. 
+
+CHECK: Under "Alternate Contact", The Alternate Contact's last name, first name remains unchanged.
+
+CHECK: Under "Address", The Alternate Contact's Address remains unchanged.
+
+CHECK: Under "Phone Number", the Alternate Contact's primary Phone Number remains unchanged. 
+
+CHECK: Under "Secondary Phone Number", the Alternate Contact's seconday Phone Number remains unchanged. 
+
+CHECK: Under "Email", the Alternate Contact's Email remains unchanged. 
+
+CHECK: Pets remain unchanged.
+
+CHECK: no null values are displayed. a blank should be displayed to indicate lack of data. 
