@@ -42,7 +42,7 @@ export default Ember.Controller.extend({
             console.log('summary is', summary);
 
               if(summary === null || summary === undefined || summary === ""){
-                  showAlert("Must enter a summary for the patients medical reecord history list", false);
+                  showAlert("Must enter a summary for the patients medical record history list", false);
               }
               else{
 
