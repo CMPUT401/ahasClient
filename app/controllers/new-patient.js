@@ -1,12 +1,20 @@
 import Ember from 'ember';
-
+/**
+* Controller for the newpatient page
+* This posts a request to the back end for adding a new-patient
+* @class new-patient controller
+*/
 export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
 	//queryParams: ['clientID'],
 	session: Ember.inject.service(),
 	actions: 
 	{
-
+		/**
+	* Controller for the submitnewpatient
+	* THis method does a post on the back end to create a new patient
+	* @method submitNewPatient()
+	*/
 
 		submitNewPatient()
 		{
