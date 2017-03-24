@@ -48,6 +48,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 
     		  });
 				console.log("status is " + JSON.stringify(data));
+				console.log("aaaaaaaaaaaaaaaaaaaaaaaaas " + JSON.stringify(data.patient.portrait_id));
 				console.log("here" + JSON.stringify(data.patient.medicationAlerts))
 				//var self = this;
 			},
