@@ -1,5 +1,8 @@
 import Ember from 'ember';
-
+/**
+* Controller for radiography-upload
+* @class radiographyUploadController
+*/
 export default Ember.Controller.extend({
 	loadedFile: null,
 	session: Ember.inject.service(),
@@ -13,6 +16,11 @@ export default Ember.Controller.extend({
 			// //console.log(file.data);
 			// console.log("size is " + file.size + " bytes");
 		},
+		/**
+		* makes an ajax POST request to save the radiography
+		* @param {int} the patient's id
+		* @method sendRadiographyResults
+		*/
 		sendRadiographyResults: function(patientId){
 			document.getElementById("saveRadiography").disabled = true;
 			var partialDate = this.get('datePicker');
