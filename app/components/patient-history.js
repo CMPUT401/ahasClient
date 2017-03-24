@@ -7,6 +7,9 @@ export default Ember.Component.extend({
 	medicalRecord: [],
 	router: Ember.inject.service('-routing'),
 	actions:{
+			newEntry: function(){
+           	this.get('router').transitionTo('medical-record', [this.patientId]);
+		},
 		toggleVisibility: function(){
 			// console.log("show chrono, the id is " + patientId);
 			if(this.get('isVisible')){
