@@ -12,7 +12,10 @@
             {{/each}}
     {{/ember-scrollable}}
     <br>
+    <img src={{patient-picture patientID=model.id imageID = model.imageid}} alt="Cannot display" />
+    
     <button  {{action "uploadPicture" model.id}}>Upload A New Picture</button>
+
 	</div>
 
 	<div class = "viewGroup">

@@ -11,7 +11,7 @@ export default Ember.Component.extend({
 		console.log("calling ajax for medcation List");
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-			this.get('ajax').request('api/patients/' + this.patientId + '/medications'
+			this.get('ajax').request('api/patients/' + this.patientID + '/images/' + this.imageID
 				).then(function(data){
 					console.log("data is" + JSON.stringify(data));
 					Ember.run(function(){
@@ -19,7 +19,7 @@ export default Ember.Component.extend({
 							// medications: deserialAttributes(data.medications)
 						});
 						// console.log(deserialAttributes(data.medical_records));
-						self.set('medicationList', deserialAttributes(data.medications));
+						self.set('medicationList', data.data);
 					});
 				},
 				function(data){
