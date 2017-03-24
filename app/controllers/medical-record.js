@@ -1,5 +1,11 @@
 import Ember from 'ember';
 
+/**
+* Controller for medical-record
+* @class MedicalRecordController
+*/
+
+
 export default Ember.Controller.extend({
     medicine: [],
     vaccine: [],
@@ -23,14 +29,27 @@ export default Ember.Controller.extend({
 
     actions: {
 
+        /** 
+		* handles action called when user clicks create-medical-record-button
+		* gathers all dropdown vals and makes sure that summary and signature are not empty
+        * if this condition passes it makes a post to the server
+		* @method createMedicalRecord
+		*/
+
         createMedicalRecord(){
+
+            var summary = document.getElementById('summary').value.trim();
+            console.log('summary is', summary);
+
+              if(summary === null || summary === undefined || summary === ""){
+                  showAlert("Must enter a summary for the patients medical reecord history list", false);
+              }
+              else{
 
             var self = this;
             var date = Math.floor(Date.now() /1000); 
             
             if( this.get('signature').length !== 0 ){
-
-             //var medications = gatherMedications(this.get('model.patientID'));
 
              var bcsvalue= document.getElementById('bcsvalue');
              var bcsVal = bcsvalue.options[bcsvalue.selectedIndex].text;
@@ -39,8 +58,6 @@ export default Ember.Controller.extend({
              var weightUnit = unit.options[unit.selectedIndex].text;
 
 
-            //note hardcoded patients id until it is passed to me.
-            //also important note: the commented out things to send are to aniticipated to be implemented on the backend later on.
              var medicalRecord = this.get('ajax').post('/api/patients/'+ this.get('model.patientID')+'/medical_records', {
              type: 'application/json',
              data: { 
@@ -144,18 +161,32 @@ export default Ember.Controller.extend({
         else{
           showAlert("Record cannot be created without a signature", false);
         }
+              }
       },
 
+/** 
+	* used to clear the signature
+	* @method  clearSignature
+	*/  
       clearSignature(){
         this.set('signature', Ember.A());
       }, 
-
+/** 
+	* used to check all normal buttons on the page
+    * which is all N's and the BAR
+	* @method checkAll
+	*/  
       checkAll(){
           var normals = document.getElementsByClassName("norm");
           for (var i=0; i<normals.length; i++){
               normals[i].checked = true;
           }
       }, 
+/** 
+	* used to uncheck all normal buttons on the page
+    * which is all N's and the BAR
+	* @method uncheckAll
+	*/  
       uncheckAll(){
           var normals = document.getElementsByClassName("norm");
           for (var i=0; i<normals.length; i++){
@@ -166,6 +197,14 @@ export default Ember.Controller.extend({
     }
 });
 
+ /** 
+		* used to provide feedback to user on success condition as well as fail condition
+        * only displayed very briefly on success condition however before transition
+		* @method  showAlert
+		* @param {string} message The message to display in the alert
+        * @param {boolean} bool Determines if this is a warning alert or confirmation alert
+		*/   
+
 function showAlert(message, bool) {
         if(bool){
             Ember.$('#alert_placeholder_med').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
@@ -175,6 +214,13 @@ function showAlert(message, bool) {
         }
  }
 
+/** 
+	* used to gather the signature to send in request
+    * finds the only canvas element on the page and then converts to base 64 img to send
+	* @method  exportSignature
+	*/  
+ 
+
 function exportSignature(){
             
             var canvas = document.querySelector("canvas");
@@ -182,6 +228,13 @@ function exportSignature(){
             return(img);
 }
 
+/** 
+		* used to gather the objects we will send in request
+        * delegates to formatReminders to handle each type of reminder
+		* @method  gatherMedications
+        * @param {controller} self the controller for medical-record, used to store and gather attributes of medication lists
+        * @param {id} id the id of the patient to include in the objects we are sending
+		*/  
 
 function gatherMedications(id, self){
     var medications = [];
@@ -195,6 +248,13 @@ function gatherMedications(id, self){
     return(medications);
     
 }
+
+/** 
+		* used to format the objects we will send in request
+		* @method   formatReminders
+        * @param {array} items the array of reminders to be formatted
+        * @param {id} id the id of the patient to include in the objects we are sending
+		*/  
 
 function formatReminders(items, id){
 
@@ -216,6 +276,13 @@ function formatReminders(items, id){
     return(newList);
 
 }
+
+ /** 
+		* used to format the date to we will send in request
+        * converts from format in datepicker to unix time in seconds
+		* @method   formatDate
+        * @param {date} date the date to be formatted
+		*/   
 
 function formatDate(date){
   var half = new Date(date);

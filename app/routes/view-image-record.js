@@ -68,6 +68,6 @@ function deserialType(img){
 	if(type != null){
 		return JSON.stringify(type).replace(/\"/g, "");
 	} else{
-		return ""
+		return "";
 	}
 }
