@@ -1,10 +1,15 @@
 import Ember from 'ember';
 
+/**
+* Controller for client-info
+* @class ClientInfoController
+*/
 export default Ember.Controller.extend({
 	actions: {
 		/** 
 		* handles action called when user clicks New Patient button
 		* redirects to the client's new patient page
+		* @method newPatient
 		* @param {int} clientID The ID of the client 
 		*/
 		newPatient: function(clientID){
