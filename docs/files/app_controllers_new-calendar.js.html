@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app\controllers\client-info.js - ahasweb</title>
+    <title>app\controllers\new-calendar.js - ahasweb</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -96,64 +96,98 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: app\controllers\client-info.js</h1>
+<h1 class="file-heading">File: app\controllers\new-calendar.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 import Ember from &#x27;ember&#x27;;
-
 /**
-* Controller for client-info
-* @class ClientInfoController
+* Controller for the new calendar page
+* This shows all of the appointments stuff for the user to enter
+* @class new-calendar Controller
 */
 export default Ember.Controller.extend({
-	actions: {
-		/** 
-		* handles action called when user clicks New Patient button. 
-		* redirects to the client&#x27;s new patient page
-		* @method newPatient
-		* @param {int} clientID The ID of the client 
-		*/
-		newPatient: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-patient/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID)
-			});
-			//this.transitionTo(&#x27;new-patient&#x27;, { queryParams: { clientID: &#x27;1&#x27; }});
-		},
-		/** 
-		* handles the action called when user clicks on a patient&#x27;s name. 
-		* redirects to the patient&#x27;s view-patient page
-		* @method viewPatient
-		* @param {int} petID The ID of the patient
-		*/
-		viewPatient: function(petId){
-			console.log(petId);
-			this.transitionToRoute(&quot;/view-patient/&quot; + petId);
-		},
+	ajax: Ember.inject.service(),
+	session: Ember.inject.service(),
+	actions: 
+	{
 		/**
-		* handles the action called when the user clicks the Edit Client button. 
-		* redirects to the client&#x27;s endit-client page
-		* @method editClient
-		* @param {int} clientID The ID of the client
-		*/
-		editClient: function(clientID){
-			this.transitionToRoute(&#x27;/edit-client/&#x27; + clientID);
-		},
-		/**
-		* handles the action called when a user clicks the Make Appointment button. 
-		* redirects to the client&#x27;s callendar
-		* @method newAppointment
-		* @param {int} clientID The ID of the client
-		*/
-		newAppointment: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-calendar/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID);
+        * Does a post on the backend with the fields passed in
+        * @method submitNewCalendar
+        */
+		submitNewCalendar()
+		{
+			console.log(JSON.stringify(formatDate(document.getElementById(&quot;appointmentStart&quot;).value, this.get(&#x27;appointmentStartTime&#x27;))));
+			document.getElementById(&quot;create-appointment-button&quot;).disabled = true;
+			var self = this;
+			let ajaxPost = this.get(&#x27;ajax&#x27;).request(&#x27;/api/schedules&#x27;,
+			{
+				method: &#x27;POST&#x27;,
+				type: &#x27;application/json&#x27;,
+				data: { schedule:
+					{
+					appointmentStartDate: 	JSON.stringify(formatDate(document.getElementById(&quot;appointmentStart&quot;).value, this.get(&#x27;appointmentStartTime&#x27;))),
+					clientId: 				this.get(&#x27;c_ID&#x27;),
+					reason: 				this.get(&#x27;appointmentReason&#x27;),
+					notes: 					this.get(&#x27;appointmentNote&#x27;),
+					location: 				this.get(&#x27;appointmentLocation&#x27;),
+					appointmentEndDate: 	JSON.stringify(formatDate(document.getElementById(&quot;appointmentEnd&quot;).value, this.get(&#x27;appointmentEndTime&#x27;)))
+				}
+			
+			}, 
+		
 			});
-		}
+			ajaxPost.then(function(data){
+				//console.log(&quot;status is &quot; + model.clientid);
+				showAlert(&quot;Appointment created!&quot;, true);
+				self.transitionToRoute(&#x27;view-calendar&#x27;)
+			},
+			function(data){
+				document.getElementById(&quot;create-appointment-button&quot;).disabled = false;
+				if (data === false){
+					if (self.get(&#x27;session.isAuthenticated&#x27;)){
+						self.get(&#x27;session&#x27;).invalidate();
+							}
+					self.transitionToRoute(&#x27;/unauthorized&#x27;);
+				}
+			});
+		return ajaxPost;
 	}
+}
+	
 });
+		/**
+        * Should show up with an alert if something went wrong
+        * @method showAlert
+        * @params {?,bool} 
+        */
+ function showAlert(message, bool) {
+        if(bool){
+            Ember.$(&#x27;#alert_placeholder&#x27;).html(&#x27;&lt;div class=&quot;alert alert-success&quot;&gt;&lt;a class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;×&lt;/a&gt;&lt;span  id=&quot;statusGood&quot;&gt;&#x27;+message+&#x27;&lt;/span&gt;&lt;/div&gt;&#x27;);
+        }
+        else{
+             Ember.$(&#x27;#alert_placeholder&#x27;).html(&#x27;&lt;div class=&quot;alert alert-danger&quot; &gt;&lt;a class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;×&lt;/a&gt;&lt;span id=&quot;statusBad&quot;&gt;&#x27;+message+&#x27;&lt;/span&gt;&lt;/div&gt;&#x27;);
+        }
+ }
+/**
+* Formate Date, changes the date from unix time to human readable one
+* @method formatDate
+* @params {date, object} date in unix, time in time
+*/
+
+function formatDate(date,time){
+	var splitdate = date.split(&quot;/&quot;);
+	var splittime = time.split(&quot;:&quot;);
+  	var newdate = [];
+  	newdate.push(splitdate[2]);
+  	newdate.push(splitdate[0] -1);
+  	newdate.push(splitdate[1]);
+  	var rightdate = newdate.concat(splittime);
+  	var formatted = moment(rightdate).unix();
+  	//var half = new Date(date);
+  	//var formatted = Math.floor(half.getTime() / 1000);
+  	return(formatted);
+}
 
     </pre>
 </div>

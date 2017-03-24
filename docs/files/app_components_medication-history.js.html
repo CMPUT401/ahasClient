@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app\controllers\client-info.js - ahasweb</title>
+    <title>app\components\medication-history.js - ahasweb</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -96,64 +96,104 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: app\controllers\client-info.js</h1>
+<h1 class="file-heading">File: app\components\medication-history.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 import Ember from &#x27;ember&#x27;;
 
 /**
-* Controller for client-info
-* @class ClientInfoController
+* controller for the medication-history component. Make AJAX get request on init
+* @class MedicationHistoryComponentController
 */
-export default Ember.Controller.extend({
-	actions: {
-		/** 
-		* handles action called when user clicks New Patient button. 
-		* redirects to the client&#x27;s new patient page
-		* @method newPatient
-		* @param {int} clientID The ID of the client 
+export default Ember.Component.extend({
+	isVisible: false,
+	patientId:0 ,
+	ajax: Ember.inject.service(),
+	medicationList: [],
+	router: Ember.inject.service(&#x27;-routing&#x27;),
+	actions:{
+		/**
+		* Redirects to the new medical entry page when user clicks on the New Entry button
+		* @method newEntry
 		*/
-		newPatient: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-patient/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID)
-			});
-			//this.transitionTo(&#x27;new-patient&#x27;, { queryParams: { clientID: &#x27;1&#x27; }});
-		},
-		/** 
-		* handles the action called when user clicks on a patient&#x27;s name. 
-		* redirects to the patient&#x27;s view-patient page
-		* @method viewPatient
-		* @param {int} petID The ID of the patient
-		*/
-		viewPatient: function(petId){
-			console.log(petId);
-			this.transitionToRoute(&quot;/view-patient/&quot; + petId);
+		newEntry: function(){
+			console.log(&quot;making a new medical history entry&quot;);
+			this.get(&#x27;router&#x27;).transitionTo(&#x27;medical-record&#x27;, [this.patientId]);
 		},
 		/**
-		* handles the action called when the user clicks the Edit Client button. 
-		* redirects to the client&#x27;s endit-client page
-		* @method editClient
-		* @param {int} clientID The ID of the client
+		* Redirects to the medical record page when the user clicks on it in the list
+		* @param {int} recordID The ID of the medical record that has been clicked
+		* @method viewEntry
 		*/
-		editClient: function(clientID){
-			this.transitionToRoute(&#x27;/edit-client/&#x27; + clientID);
-		},
-		/**
-		* handles the action called when a user clicks the Make Appointment button. 
-		* redirects to the client&#x27;s callendar
-		* @method newAppointment
-		* @param {int} clientID The ID of the client
-		*/
-		newAppointment: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-calendar/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID);
-			});
+		viewEntry: function(recordID){
+			//this.get(&#x27;router&#x27;).transitionTo(&#x27;view-medical-record&#x27;, [this.patientId, recordID]);
+			console.log(&#x27;view entry &#x27; + recordID);
+			this.get(&#x27;router&#x27;).transitionTo(&#x27;view-medical-record&#x27;, [this.patientId, recordID]);
 		}
+	},
+	init(){
+		this._super(...arguments);
+		console.log(&quot;calling ajax for medcation List&quot;);
+		var self = this;
+		var ajaxGet = new Ember.RSVP.Promise((resolve) =&gt;
+			this.get(&#x27;ajax&#x27;).request(&#x27;api/patients/&#x27; + this.patientId + &#x27;/medications&#x27;
+				).then(function(data){
+					console.log(&quot;data is&quot; + JSON.stringify(data));
+					Ember.run(function(){
+						resolve({
+							// medications: deserialAttributes(data.medications)
+						});
+						// console.log(deserialAttributes(data.medical_records));
+						self.set(&#x27;medicationList&#x27;, deserialAttributes(data.medications));
+					});
+				},
+				function(data){
+					if (data === false){
+						// self.transitionTo(&#x27;/unauthorized&#x27;);
+						// self.get(&#x27;router&#x27;).transitionTo(&#x27;unauthorized&#x27;); //not sure if this works
+						console.log(&quot;status is &quot; + JSON.stringify(data));
+					}		
+				})
+		);
+		console.log(this.medicationList);
+		return(ajaxGet);
 	}
 });
+
+/**
+* deserializes the mdeications after they have been received by the AJAX request. 
+* Filters med_type for medicine. Also formats dates
+* @param {object} meds the JSON object received
+* @method deserialAttributes
+*/
+function deserialAttributes(meds){
+	var deserial = [];
+	for(var i = 0; i &lt; meds.length; i++) {
+		var entry = meds[i];
+		if(entry.med_type.toLowerCase() === &quot;medicine&quot;){
+			entry.recordId = JSON.stringify(meds[i].id).replace(/\&quot;/g, &quot;&quot;);
+			if(JSON.stringify(meds[i].medical_record_id) != null){
+				entry.medical_record_id = JSON.stringify(meds[i].medical_record_id).replace(/\&quot;/g, &quot;&quot;);
+			}
+			// if(JSON.stringify(meds[i].med_type) === &quot;medicine&quot;){
+			if(JSON.stringify(meds[i].name) != null){
+				entry.name = JSON.stringify(meds[i].name).replace(/\&quot;/g, &quot;&quot;);
+			}
+			if(JSON.stringify(meds[i].created_at) != null){
+				var partialDate = JSON.stringify(meds[i].created_at).replace(/\&quot;/g, &quot;&quot;).slice(0, 10);
+				var partialDate2 = partialDate.split(&quot;-&quot;);
+				entry.date = partialDate2[1] + &quot;/&quot; +partialDate2[2] + &quot;/&quot; + partialDate2[0];
+			}
+			deserial.push(entry);
+		}
+		
+		// }else{
+		// 	console.log(JSON.stringify(meds[i].med_type));
+		// }
+	}
+	return(deserial);
+}
 
     </pre>
 </div>

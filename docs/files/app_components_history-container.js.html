@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app\controllers\client-info.js - ahasweb</title>
+    <title>app\components\history-container.js - ahasweb</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -96,62 +96,83 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: app\controllers\client-info.js</h1>
+<h1 class="file-heading">File: app\components\history-container.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 import Ember from &#x27;ember&#x27;;
 
 /**
-* Controller for client-info
-* @class ClientInfoController
+* Controller for the history-container component
+* @class HistoryContainerComponentController
 */
-export default Ember.Controller.extend({
+export default Ember.Component.extend({
+	chronoIsVisible: true,
+	medicationIsVisible: false,
+	labResultIsVisible:false,
+	vaccineIsVisible: false,
+	radiographyIsVisible: false,
+	patientID: 0,
 	actions: {
-		/** 
-		* handles action called when user clicks New Patient button. 
-		* redirects to the client&#x27;s new patient page
-		* @method newPatient
-		* @param {int} clientID The ID of the client 
-		*/
-		newPatient: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-patient/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID)
-			});
-			//this.transitionTo(&#x27;new-patient&#x27;, { queryParams: { clientID: &#x27;1&#x27; }});
-		},
-		/** 
-		* handles the action called when user clicks on a patient&#x27;s name. 
-		* redirects to the patient&#x27;s view-patient page
-		* @method viewPatient
-		* @param {int} petID The ID of the patient
-		*/
-		viewPatient: function(petId){
-			console.log(petId);
-			this.transitionToRoute(&quot;/view-patient/&quot; + petId);
+		/**
+		* Shows the component which shows the list of all medical records for the patient in chronological order
+		* @method showChronological
+		*/ 
+		showChronological: function(){
+			// console.log(&quot;show chrono, the id is &quot; + patientId);
+			this.set(&#x27;chronoIsVisible&#x27;, true);
+			this.set(&#x27;medicationIsVisible&#x27;, false);
+			this.set(&#x27;labResultIsVisible&#x27;, false);
+			this.set(&#x27;vaccineIsVisible&#x27;, false);
+			this.set(&#x27;radiographyIsVisible&#x27;, false);
 		},
 		/**
-		* handles the action called when the user clicks the Edit Client button. 
-		* redirects to the client&#x27;s endit-client page
-		* @method editClient
-		* @param {int} clientID The ID of the client
-		*/
-		editClient: function(clientID){
-			this.transitionToRoute(&#x27;/edit-client/&#x27; + clientID);
+		* Shows the component which shows the list of all medicine for the patient
+		* @method showMedication
+		*/ 
+		showMedication: function(){
+			// console.log(&quot;show medication, the id is &quot; + patientId);
+			this.set(&#x27;chronoIsVisible&#x27;, false);
+			this.set(&#x27;medicationIsVisible&#x27;, true);
+			this.set(&#x27;labResultIsVisible&#x27;, false);
+			this.set(&#x27;vaccineIsVisible&#x27;, false);
+			this.set(&#x27;radiographyIsVisible&#x27;, false);
 		},
 		/**
-		* handles the action called when a user clicks the Make Appointment button. 
-		* redirects to the client&#x27;s callendar
-		* @method newAppointment
-		* @param {int} clientID The ID of the client
-		*/
-		newAppointment: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-calendar/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID);
-			});
+		* Shows the component which shows the list of all lab results for the patient
+		* @method showLabResults
+		*/ 
+		showLabResults: function(){
+			this.set(&#x27;chronoIsVisible&#x27;, false);
+			this.set(&#x27;medicationIsVisible&#x27;, false);
+			this.set(&#x27;labResultIsVisible&#x27;, true);
+			this.set(&#x27;vaccineIsVisible&#x27;, false);
+			this.set(&#x27;radiographyIsVisible&#x27;, false);
+		},
+		/**
+		* Shows the component which shows the list of all vaccines for the patient
+		* @method showVaccine
+		*/ 
+		showVaccine: function(){
+			// console.log(&quot;show medication, the id is &quot; + patientId);
+			this.set(&#x27;chronoIsVisible&#x27;, false);
+			this.set(&#x27;medicationIsVisible&#x27;, false);
+			this.set(&#x27;labResultIsVisible&#x27;, false);
+			this.set(&#x27;vaccineIsVisible&#x27;, true);
+			this.set(&#x27;radiographyIsVisible&#x27;, false);
+		},
+		/**
+		* Shows the component which shows the list of all radiographs for the patient
+		* @method showRadiographs
+		*/ 
+		showRadiographs: function(){
+			this.set(&#x27;chronoIsVisible&#x27;, false);
+			this.set(&#x27;medicationIsVisible&#x27;, false);
+			this.set(&#x27;labResultIsVisible&#x27;, false);
+			this.set(&#x27;vaccineIsVisible&#x27;, false);
+			this.set(&#x27;radiographyIsVisible&#x27;, true);
 		}
+
 	}
 });
 

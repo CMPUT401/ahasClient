@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app\controllers\client-info.js - ahasweb</title>
+    <title>app\components\patient-history.js - ahasweb</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -96,65 +96,156 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: app\controllers\client-info.js</h1>
+<h1 class="file-heading">File: app\components\patient-history.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 import Ember from &#x27;ember&#x27;;
 
 /**
-* Controller for client-info
-* @class ClientInfoController
+* controller for the patient-history component. Make AJAX get request on init. 
+* Shows the entire medical history for the patient in chronological order. 
+* @class patientHistoryComponentController
 */
-export default Ember.Controller.extend({
-	actions: {
-		/** 
-		* handles action called when user clicks New Patient button. 
-		* redirects to the client&#x27;s new patient page
-		* @method newPatient
-		* @param {int} clientID The ID of the client 
-		*/
-		newPatient: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-patient/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID)
-			});
-			//this.transitionTo(&#x27;new-patient&#x27;, { queryParams: { clientID: &#x27;1&#x27; }});
+export default Ember.Component.extend({
+	isVisible: true,
+	patientId: 0,
+	ajax: Ember.inject.service(),
+	medicalRecord: [],
+	router: Ember.inject.service(&#x27;-routing&#x27;),
+	actions:{
+			newEntry: function(){
+           	this.get(&#x27;router&#x27;).transitionTo(&#x27;medical-record&#x27;, [this.patientId]);
 		},
-		/** 
-		* handles the action called when user clicks on a patient&#x27;s name. 
-		* redirects to the patient&#x27;s view-patient page
-		* @method viewPatient
-		* @param {int} petID The ID of the patient
-		*/
-		viewPatient: function(petId){
-			console.log(petId);
-			this.transitionToRoute(&quot;/view-patient/&quot; + petId);
-		},
+		toggleVisibility: function(){
+			// console.log(&quot;show chrono, the id is &quot; + patientId);
+			if(this.get(&#x27;isVisible&#x27;)){
+				this.set(&#x27;isVisible&#x27;, false);
+			} else {
+				this.set(&#x27;isVisible&#x27;, true);
+			}
+		}.observes(&#x27;isVisible&#x27;),
 		/**
-		* handles the action called when the user clicks the Edit Client button. 
-		* redirects to the client&#x27;s endit-client page
-		* @method editClient
-		* @param {int} clientID The ID of the client
+		* Redirects to the medical record page when the user clicks on it in the list. Medical record
+		* may be editable depending on the date
+		* @param {int} recordID The ID of the medical record that has been clicked
+		* @param {Date} date Date of the medical record. In Unix time.
+		* @method viewEntry
 		*/
-		editClient: function(clientID){
-			this.transitionToRoute(&#x27;/edit-client/&#x27; + clientID);
-		},
-		/**
-		* handles the action called when a user clicks the Make Appointment button. 
-		* redirects to the client&#x27;s callendar
-		* @method newAppointment
-		* @param {int} clientID The ID of the client
-		*/
-		newAppointment: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-calendar/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID);
-			});
+		viewEntry: function(recordID, date){
+			var check = checkUpdate(date);
+			if(check){
+				this.get(&#x27;router&#x27;).transitionTo(&#x27;view-medical-record-editable&#x27;, [this.patientId, recordID]);
+			}
+			else{
+				this.get(&#x27;router&#x27;).transitionTo(&#x27;view-medical-record&#x27;, [this.patientId, recordID]);
+			}
 		}
+	},
+	init(){
+		this._super(...arguments);
+		console.log(&quot;calling ajax&quot;);
+		var self = this;
+		var ajaxGet = new Ember.RSVP.Promise((resolve) =&gt;
+			this.get(&#x27;ajax&#x27;).request(&#x27;api/patients/&#x27; + this.patientId + &#x27;/medical_records&#x27;
+				).then(function(data){
+					console.log(&quot;data is&quot; + JSON.stringify(data));
+					Ember.run(function(){
+						resolve({
+							//why is this in here as well as self.set ect? -kristy
+							history: deserialAttributes(data.medical_records)
+						});
+						// console.log(deserialAttributes(data.medical_records));
+						self.set(&#x27;medicalRecord&#x27;, deserialAttributes(data.medical_records));
+					});
+				},
+				function(data){
+					if (data === false){
+						// self.transitionTo(&#x27;/unauthorized&#x27;);
+						console.log(&quot;status is &quot; + JSON.stringify(data));
+					}		
+				})
+		);
+		console.log(this.medicalRecord);
+		return(ajaxGet);
 	}
 });
 
+/**
+* deserializes the medical history after they have been received by the AJAX request. 
+* Filters med_type for medicine.
+* @param {object} history the JSON object received
+* @method deserialAttributes
+*/
+function deserialAttributes(history){
+	var deserial = [];
+	for(var i = 0; i &lt; history.length; i++) {
+		var entry = history[i];
+		entry.recordId = JSON.stringify(history[i].id).replace(/\&quot;/g, &quot;&quot;);
+		if(JSON.stringify(history[i].exam_notes) != null){
+			entry.examNotes = JSON.stringify(history[i].summary).replace(/\&quot;/g, &quot;&quot;);
+		}else {
+			entry.examNotes = JSON.stringify(history[i].summary);
+		}
+		if(JSON.stringify(history[i].created_at) !== null){
+			//convert from unix time to a date string
+			var formattedDateCreated = format(history[i].created_at);
+			entry.dateToDisplay = formattedDateCreated;
+			//also want to keep one unix time for our checkUpdate function
+			entry.date = history[i].created_at;
+		}else{
+			//not sure when we would ever get here...
+			var formattedDateOrig = format(history[i].date);
+			entry.dateToDisplay = formattedDateOrig;
+			entry.date = history[i].date;
+		}
+		deserial.push(entry);
+
+	}
+	return(deserial);
+}
+
+/**
+* checks to see if the medical record can still be edited
+* @param {date} olddate Date of the medical record. In Unix time.
+* @method checkUpdate
+*/
+function checkUpdate(olddate){
+
+	var date = new Date(olddate*1000);
+
+    var day = date.getDay() ;
+    var month = date.getMonth()  ;
+    var year = date.getFullYear();
+
+    var current = new Date();
+
+    var currentDay = current.getDay() ;
+    var currentMonth = current.getMonth()  ;
+    var currentYear = current.getFullYear();
+    var currentHours = current.getHours();
+
+    //exact minute of midnight is when we will autofinalize
+    if (currentDay === day &amp;&amp; currentMonth === month &amp;&amp; currentYear === year &amp;&amp; currentHours &lt;= 24 ){
+        return(true);
+    }
+    return(false);
+}
+
+/**
+* format he date to month/day/year
+* @param{date} {Date} Date in unix time
+* @method format
+*/
+function format(date){
+	var entryDate = new Date(JSON.stringify(date).replace(/\&quot;/g, &quot;&quot;) *1000);
+	var day = (entryDate.getDate()&lt;10?&#x27;0&#x27;:&#x27;&#x27; )+ entryDate.getDate();
+	var month = (entryDate.getMonth()&lt;10?&#x27;0&#x27;:&#x27;&#x27; )+ (entryDate.getMonth()+1);
+	var year = entryDate.getFullYear();
+	var newDate = month + &quot;/&quot; + day + &quot;/&quot; + year;
+	return(newDate);
+
+}
     </pre>
 </div>
                     </div>

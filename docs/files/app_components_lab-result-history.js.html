@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app\controllers\client-info.js - ahasweb</title>
+    <title>app\components\lab-result-history.js - ahasweb</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -96,64 +96,97 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: app\controllers\client-info.js</h1>
+<h1 class="file-heading">File: app\components\lab-result-history.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 import Ember from &#x27;ember&#x27;;
 
 /**
-* Controller for client-info
-* @class ClientInfoController
+* controller for the lab-result-history component. Make AJAX get request on init
+* @class LabResultHistoryComponentController
 */
-export default Ember.Controller.extend({
+export default Ember.Component.extend({
+	isVisible: false,
+	patientId: 0,
+	ajax: Ember.inject.service(),
+	labResultList: [],
+	router: Ember.inject.service(&#x27;-routing&#x27;),
 	actions: {
-		/** 
-		* handles action called when user clicks New Patient button. 
-		* redirects to the client&#x27;s new patient page
-		* @method newPatient
-		* @param {int} clientID The ID of the client 
+		/**
+		* Redirects to the lab result upload page when user clicks on the Upload Lab Result button
+		* @method uploadResult
 		*/
-		newPatient: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-patient/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID)
-			});
-			//this.transitionTo(&#x27;new-patient&#x27;, { queryParams: { clientID: &#x27;1&#x27; }});
-		},
-		/** 
-		* handles the action called when user clicks on a patient&#x27;s name. 
-		* redirects to the patient&#x27;s view-patient page
-		* @method viewPatient
-		* @param {int} petID The ID of the patient
-		*/
-		viewPatient: function(petId){
-			console.log(petId);
-			this.transitionToRoute(&quot;/view-patient/&quot; + petId);
+		uploadResult: function(){
+			// console.log(&quot;making a new medical history entry&quot;);
+			this.get(&#x27;router&#x27;).transitionTo(&#x27;lab-result-upload&#x27;, [this.patientId]);
 		},
 		/**
-		* handles the action called when the user clicks the Edit Client button. 
-		* redirects to the client&#x27;s endit-client page
-		* @method editClient
-		* @param {int} clientID The ID of the client
+		* Redirects to the lab result page when the user clicks on it in the list
+		* @param {int} labResultID The ID of the lab result that has been clicked
+		* @method viewEntry
 		*/
-		editClient: function(clientID){
-			this.transitionToRoute(&#x27;/edit-client/&#x27; + clientID);
-		},
-		/**
-		* handles the action called when a user clicks the Make Appointment button. 
-		* redirects to the client&#x27;s callendar
-		* @method newAppointment
-		* @param {int} clientID The ID of the client
-		*/
-		newAppointment: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-calendar/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID);
-			});
+		viewEntry: function(labResultID){
+			console.log(&#x27;view lab result &#x27; + labResultID);
+			// TODO transition to lab result
+			this.get(&#x27;router&#x27;).transitionTo(&#x27;view-image-record&#x27;, [this.patientId, labResultID]);
 		}
+	},
+	init(){
+		this._super(...arguments);
+		console.log(&quot;calling ajax for lab results list&quot;);
+		var self = this;
+		var ajaxGet = new Ember.RSVP.Promise((resolve) =&gt;
+			this.get(&#x27;ajax&#x27;).request(&#x27;api/patients/&#x27; + this.patientId + &#x27;/images&#x27;
+				).then(function(data){
+					console.log(&quot;data is&quot; + JSON.stringify(data));
+					Ember.run(function(){
+						resolve({
+							// labResults: deserialAttributes(data.images)
+						});
+						// console.log(deserialAttributes(data.medical_records));
+						self.set(&#x27;labResultList&#x27;, deserialAttributes(data.images));
+					});
+				},
+				function(data){
+					if (data === false){
+						// self.transitionTo(&#x27;/unauthorized&#x27;);
+						// self.get(&#x27;router&#x27;).transitionTo(&#x27;unauthorized&#x27;); //not sure if this works
+						console.log(&quot;status is &quot; + JSON.stringify(data));
+					}		
+				})
+		);
 	}
 });
+
+/**
+* deserializes the lab results after they have been received by the AJAX request. 
+* Filters picture_type for lab result. Also formats dates
+* @param {object} labResults the JSON object received
+* @method deserialAttributes
+*/
+function deserialAttributes(labResults){
+	var deserial = [];
+	for(var i = 0; i &lt; labResults.length; i++) {
+		var entry = labResults[i];
+		if(entry.picture_type.toLowerCase() === &quot;lab result&quot;){
+			// console.log(&quot;is lab result&quot;)
+			entry.imageId = JSON.stringify(labResults[i].id).replace(/\&quot;/g, &quot;&quot;);
+			if(JSON.stringify(labResults[i].file_name) != null){
+				entry.name = JSON.stringify(labResults[i].name).replace(/\&quot;/g, &quot;&quot;);
+			} 
+			if(JSON.stringify(labResults[i].date) != null){
+				// var partialDate = JSON.stringify(labResults[i].date).replace(/\&quot;/g, &quot;&quot;).slice(0, 10);
+				// var partialDate2 = partialDate.split(&quot;-&quot;);
+				// entry.date = partialDate2[1] + &quot;/&quot; +partialDate2[2] + &quot;/&quot; + partialDate2[0];
+				var date = new Date(JSON.stringify(labResults[i].date)*1000);
+				entry.date = date.getMonth() + &quot;/&quot; + date.getDate() + &quot;/&quot; + date.getFullYear();
+			}
+			deserial.push(entry);
+		}
+	}
+	return(deserial);
+}
 
     </pre>
 </div>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app\controllers\client-info.js - ahasweb</title>
+    <title>HistoryContainerComponentController - ahasweb</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -96,66 +96,229 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: app\controllers\client-info.js</h1>
+<h1>HistoryContainerComponentController Class</h1>
+<div class="box meta">
 
-<div class="file">
-    <pre class="code prettyprint linenums">
-import Ember from &#x27;ember&#x27;;
 
-/**
-* Controller for client-info
-* @class ClientInfoController
-*/
-export default Ember.Controller.extend({
-	actions: {
-		/** 
-		* handles action called when user clicks New Patient button. 
-		* redirects to the client&#x27;s new patient page
-		* @method newPatient
-		* @param {int} clientID The ID of the client 
-		*/
-		newPatient: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-patient/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID)
-			});
-			//this.transitionTo(&#x27;new-patient&#x27;, { queryParams: { clientID: &#x27;1&#x27; }});
-		},
-		/** 
-		* handles the action called when user clicks on a patient&#x27;s name. 
-		* redirects to the patient&#x27;s view-patient page
-		* @method viewPatient
-		* @param {int} petID The ID of the patient
-		*/
-		viewPatient: function(petId){
-			console.log(petId);
-			this.transitionToRoute(&quot;/view-patient/&quot; + petId);
-		},
-		/**
-		* handles the action called when the user clicks the Edit Client button. 
-		* redirects to the client&#x27;s endit-client page
-		* @method editClient
-		* @param {int} clientID The ID of the client
-		*/
-		editClient: function(clientID){
-			this.transitionToRoute(&#x27;/edit-client/&#x27; + clientID);
-		},
-		/**
-		* handles the action called when a user clicks the Make Appointment button. 
-		* redirects to the client&#x27;s callendar
-		* @method newAppointment
-		* @param {int} clientID The ID of the client
-		*/
-		newAppointment: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-calendar/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID);
-			});
-		}
-	}
-});
+        <div class="foundat">
+            Defined in: <a href="../files/app_components_history-container.js.html#l3"><code>app\components\history-container.js:3</code></a>
+        </div>
 
-    </pre>
+
+</div>
+
+
+<div class="box intro">
+    <p>Controller for the history-container component</p>
+
+</div>
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                            <li class="index-item method">
+                                <a href="#method_showChronological">showChronological</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_showLabResults">showLabResults</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_showMedication">showMedication</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_showRadiographs">showRadiographs</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_showVaccine">showVaccine</a>
+
+                            </li>
+                    </ul>
+                </div>
+
+
+
+        </div>
+
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method_showChronological" class="method item">
+    <h3 class="name"><code>showChronological</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/app_components_history-container.js.html#l15"><code>app\components\history-container.js:15</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Shows the component which shows the list of all medical records for the patient in chronological order</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_showLabResults" class="method item">
+    <h3 class="name"><code>showLabResults</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/app_components_history-container.js.html#l39"><code>app\components\history-container.js:39</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Shows the component which shows the list of all lab results for the patient</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_showMedication" class="method item">
+    <h3 class="name"><code>showMedication</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/app_components_history-container.js.html#l27"><code>app\components\history-container.js:27</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Shows the component which shows the list of all medicine for the patient</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_showRadiographs" class="method item">
+    <h3 class="name"><code>showRadiographs</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/app_components_history-container.js.html#l62"><code>app\components\history-container.js:62</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Shows the component which shows the list of all radiographs for the patient</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_showVaccine" class="method item">
+    <h3 class="name"><code>showVaccine</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/app_components_history-container.js.html#l50"><code>app\components\history-container.js:50</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Shows the component which shows the list of all vaccines for the patient</p>
+
+    </div>
+
+
+
+
+</div>
+            </div>
+
+
+
+    </div>
 </div>
                     </div>
                 </div>
