@@ -1,0 +1,140 @@
+Human read script to test uploading and viewing of lab results and radiographs. 
+
+Assumptions: There is at least one patient. 
+
+/////////////////////
+//// LAB RESULTS ////
+/////////////////////
+
+
+Navigate to view-patient/1
+
+Click on the button labeled "Lab Results" . 
+Click on the very first item. (if there are no items in the list, see note 1). 
+
+
+CHECK: the page should have redirected. the URL should be view-patient/1/view-image-record/m , where m is an iteger representing the id of the record of lab results and radiographs. Take note of m.
+
+Navigate to view-patient/1
+Click on the button labeled "Radiographs" . 
+Click on the very first item. (if there are no items in the list, see note 2).
+
+CHECK: the page should have redirected. the URL should be view-patient/1/view-image-record/n , where n is an iteger representing the id of the record of lab results and radiographs. Take note of n.
+
+
+
+UPLOADING NEW RECORD, then VIEW the newly created record:
+Navigate to view-patient/1
+
+Click on the button labeled "Lab Results" . 
+Click on the button labeled "Upload Lab Result".  
+
+CHECK: the page should have redirected. the URL should be view-patient/1/view-image-record/n 
+
+Click in the box labeled "Drag here or click to upload a file".
+
+CHECK: a file explorer window should open.
+
+Select an image, take note of its name, and click the button in the window label "Open" (on a Windows OS). 
+
+CHECK: the image should appear in the box. (see note 3)
+
+Click in the box labeled "Date of lab result"
+
+Select a date.
+
+CHECK: The selected date should appear in the box in the mm/dd/yyyy format. take note of the date.
+
+Click the button labeled "Save"
+
+CHECK: the page should have redirected. the URL should be view-patient/1
+
+Click on the button labeled "Lab Results" . 
+
+CHECK that the first item on the list has the same name and date as the uploaded file. 
+
+Click on the very first item.
+
+CHECK: the page should have redirected. the URL should be view-patient/1/view-image-record/(max(m,n) + 1)
+
+CHECK: the name of the file should be displayed at the top.
+
+CHECK: Below the name of the file, it should say "Record Type: lab result".
+
+CHECK: Below the file type, the date should be displayed.
+
+CHECK: Below the date, the image should be dispalyed. 
+
+
+/////////////////////
+//// Radiography ////
+/////////////////////
+
+Navigate to view-patient/1
+
+Click on the button labeled "Lab Results" . 
+Click on the very first item. (if there are no items in the list, see note 1). 
+
+
+CHECK: the page should have redirected. the URL should be view-patient/1/view-image-record/m , where m is an iteger representing the id of the record of lab results and radiographs. Take note of m.
+
+Navigate to view-patient/1
+Click on the button labeled "Radiographs" . 
+Click on the very first item. (if there are no items in the list, see note 2).
+
+CHECK: the page should have redirected. the URL should be view-patient/1/view-image-record/n , where n is an iteger representing the id of the record of lab results and radiographs. Take note of n.
+
+
+
+UPLOADING NEW RECORD, then VIEW the newly created record:
+Navigate to view-patient/1
+
+Click on the button labeled "Radiographs" . 
+Click on the button labeled "Upload Radiograph".  
+
+CHECK: the page should have redirected. the URL should be view-patient/1/view-image-record/m 
+
+Click in the box labeled "Drag here or click to upload a file".
+
+CHECK: a file explorer window should open.
+
+Select an image, take note of its name, and click the button in the window label "Open" (on a Windows OS). 
+
+CHECK: the image should appear in the box. (see note 3)
+
+Click in the box labeled "Date of radiography"
+
+Select a date.
+
+CHECK: The selected date should appear in the box in the mm/dd/yyyy format. take note of the date.
+
+Click the button labeled "Save"
+
+CHECK: the page should have redirected. the URL should be view-patient/1
+
+Click on the button labeled "Radiographs" . 
+
+CHECK that the first item on the list has the same name and date as the uploaded file. 
+
+Click on the very first item.
+
+CHECK: the page should have redirected. the URL should be view-patient/1/view-image-record/(max(m,n) + 1)
+
+CHECK: the name of the file should be displayed at the top.
+
+CHECK: Below the name of the file, it should say "Record Type: radiograph".
+
+CHECK: Below the file type, the date should be displayed.
+
+CHECK: Below the date, the image should be dispalyed. 
+
+
+
+
+
+
+
+
+note 1: If there are no items in the Lab Result, then do not click on any (non-existing) item. In this case, m=0. Skip the next CHECK. 
+note 2: If there are no items in the Radiographs, then do not click on any (non-existing) item. In this case, n=0. Skip the next CHECK. 
+note 3: Repeat test, but instead of clicking in the box labeled "Drag here or click to upload a file", open a file explorer, and drag and drop the file into the box. CHECK that the image should appear in the box. continue. 
