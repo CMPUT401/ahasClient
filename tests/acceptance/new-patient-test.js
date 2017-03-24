@@ -13,6 +13,17 @@ test('visiting /new-patient', function(assert) {
   });
 });
 
+
+test('visiting /new-patient/ before login', function(assert) {
+  invalidateSession(this.application);
+  visit('new-patient');
+
+  andThen(function(){
+    assert.notEqual(currentURL(), '/new-patient');
+  });
+});
+
+/*
 test('adding new user valid', function(assert){
    authenticateSession(this.application);
   visit('/new-patient/1');
@@ -30,3 +41,4 @@ test('adding new user valid', function(assert){
     assert.equal(find('#statusGood').text());
   });
 });
+*/
