@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
 		* handles action called when user clicks on a client's name. Redirects to that client's
 		* info page. 
 		* @method viewClient
-		* *param {int} clientID The ID of the client
+		* @param {int} clientID The ID of the client
 		*/
 		viewClient: function(clientID){
             console.log(clientID);
@@ -41,6 +41,13 @@ export default Ember.Controller.extend({
 	}
 });
 
+/**
+* Filters the client slist using the user's input. Sets the new model to the the filtered model
+* @param {object} self the controller
+* @param {object} model the client list
+* @param {string} input user input
+* @method filter
+*/
 function filter(input, model, self){
 	var results = [];
 	for(var i = 0; i < model.clients.length; i++){
