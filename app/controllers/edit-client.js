@@ -1,10 +1,19 @@
 import Ember from 'ember';
 
+/**
+* Controller for edit-client
+* @class EditClientController
+*/
 export default Ember.Controller.extend({
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
 	clientId: 0,
 	actions:{
+		/**
+		* makes an ajax PUT request to save the client info
+		* @param {object} the model from the page
+		* @method saveClient
+		*/
 		saveClient: function(client){
 			//disable button
 			document.getElementById("create-client-button").disabled = true; 

@@ -34,6 +34,7 @@ Router.map(function() {
   this.route('test');
   this.route('edit-client', {path: 'edit-client/:clientID'});
   this.route('lab-result-upload', {path: '/lab-result-upload/:patientID'});
+  this.route('radiography-upload', {path: '/radiography-upload/:patientID'});
   this.route('admin');
   this.route('user', {path: '/admin/users/:id'});
   this.route('view-appointment', {path: '/view-appointment/:appointmentid'});
