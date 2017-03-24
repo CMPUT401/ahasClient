@@ -5,7 +5,7 @@ import Ember from 'ember';
 * @class PatientPictureComponentController
 */
 export default Ember.Component.extend({
-	isVisible: false,
+	isVisible: true,
 	patientId:0 ,
 	ajax: Ember.inject.service(),
 	//picture: [],

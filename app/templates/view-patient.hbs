@@ -11,11 +11,13 @@
 
             {{/each}}
     {{/ember-scrollable}}
-    <br>
-    {{patient-picture modelID=model}}
-    <button  {{action "uploadPicture" model.id}}>Upload A New Picture</button>
 
 	</div>
+	<br>
+    {{patient-picture modelID=model}}
+    <button  {{action "uploadPicture" model.id}}>Upload A New Picture</button>
+    <br>
+    <br>
 
 	<div class = "viewGroup">
 		<h3>Client's Basic Information</h3>
