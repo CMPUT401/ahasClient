@@ -14,15 +14,15 @@ Click on the button labeled "Edit Client".
 
 CHECK: The page should have redirected. the URL should be /edit-client/1
 
-CHECK: The patient's first name is displayed in an input box next to "Client's First Name"
+CHECK: The client's first name is displayed in an input box next to "Client's First Name"
 
-CHECK: Below, the patient's last name is displayed in an input box next to "Client's Last Name"
+CHECK: Below, the client's last name is displayed in an input box next to "Client's Last Name"
 
-CHECK: Below, the patient's address is displayed in an input box next to "Client's Address"
+CHECK: Below, the client's address is displayed in an input box next to "Client's Address" (Fail #1)
 
-CHECK: Below, the patient's Phone Number is displayed in an input box next to "Client's Number"
+CHECK: Below, the client's Phone Number is displayed in an input box next to "Client's Number"
 
-CHECK: The patient's email is displayed in an input box next to "Client's Email"
+CHECK: The client's email is displayed in an input box next to "Client's Email"
 
 CHECK: The LICO number is displayed in an input box next to "LICO"
 
@@ -30,13 +30,13 @@ CHECK: The AISH number is displayed in an input box next to "AISH"
 
 CHECK: The SA number is displayed in an input box next to "SA"
 
-CHECK: The notes are displayed in an input box next to "Notes"
+CHECK: The notes are displayed in an input box next to "Notes" (Fail #2)
 
 CHECK: The alternative contact first name is displayed in an input box next to "Alternative Contact's First Name"
 
 CHECK: The alternative contact lasr name is displayed in an input box next to "Alternative Contact's Last Name"
 
-CHECK: The alternative contact address is displayed in an input box next to "Alternative Contact's Address"
+CHECK: The alternative contact address is displayed in an input box next to "Alternative Contact's Address" (Fail #3)
 
 CHECK: The alternative contact primary phone number is displayed in an input box next to "Alternative Contact's Primary Phone Number"
 
@@ -95,13 +95,13 @@ Click on the button labeled "Edit Client".
 
 CHECK: The page should have redirected. the URL should be /edit-client/1
 
-CHECK: The patient's first name is displayed in an input box next to "Client's First Name"
+CHECK: The client's first name is displayed in an input box next to "Client's First Name"
 
-CHECK: Below, the patient's last name is displayed in an input box next to "Client's Last Name"
+CHECK: Below, the client's last name is displayed in an input box next to "Client's Last Name"
 
-CHECK: Below, the patient's address is displayed in an input box next to "Client's Address"
+CHECK: Below, the client's address is displayed in an input box next to "Client's Address" (Fail #4)
 
-CHECK: Below, the patient's Phone Number is displayed in an input box next to "Client's Number"
+CHECK: Below, the client's Phone Number is displayed in an input box next to "Client's Number"
 
 CHECK: The patient's email is displayed in an input box next to "Client's Email"
 
@@ -111,13 +111,13 @@ CHECK: The AISH number is displayed in an input box next to "AISH"
 
 CHECK: The SA number is displayed in an input box next to "SA"
 
-CHECK: The notes are displayed in an input box next to "Notes"
+CHECK: The notes are displayed in an input box next to "Notes" (Fail #5)
 
 CHECK: The alternative contact first name is displayed in an input box next to "Alternative Contact's First Name"
 
 CHECK: The alternative contact lasr name is displayed in an input box next to "Alternative Contact's Last Name"
 
-CHECK: The alternative contact address is displayed in an input box next to "Alternative Contact's Address"
+CHECK: The alternative contact address is displayed in an input box next to "Alternative Contact's Address" (Fail #6)
 
 CHECK: The alternative contact primary phone number is displayed in an input box next to "Alternative Contact's Primary Phone Number"
 
@@ -158,3 +158,8 @@ CHECK: Under "Email", the Alternate Contact's Email remains unchanged.
 CHECK: Pets remain unchanged.
 
 CHECK: no null values are displayed. a blank should be displayed to indicate lack of data. 
+
+
+
+Fails 1-6 are caused when the user goes to edit the clients, 
+tags are displayed in the address and notes fields when they should not be.
