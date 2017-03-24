@@ -13,6 +13,6 @@ test('visiting /view-appointment/ before login', function(assert) {
 	visit('view-appointment');
 
 	andThen(function(){
-		assert.notEqual(currentURL(), '/view-appoitment');
+		assert.notEqual(currentURL(), '/view-appoitment/1');
 	});
 });

@@ -13,7 +13,7 @@ test('visiting /view-patient/ before login', function(assert) {
 	visit('view-patient');
 
 	andThen(function(){
-		assert.notEqual(currentURL(), '/view-patient');
+		assert.notEqual(currentURL(), '/view-patient/1');
 	});
 });
 

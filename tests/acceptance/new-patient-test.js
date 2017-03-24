@@ -2,14 +2,14 @@ import { test } from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
 import { authenticateSession, invalidateSession } from '../helpers/ember-simple-auth';
 
-moduleForAcceptance('Acceptance | patient info');
+moduleForAcceptance('Acceptance | new-patient-test');
 
 test('visiting /new-patient', function(assert) {
    authenticateSession(this.application);
   visit('/new-patient/1');
 
   andThen(function() {
-    assert.equal(currentURL(), '/new-patient/1');
+    assert.equal(currentURL(), '/new-patient');
   });
 });
 
