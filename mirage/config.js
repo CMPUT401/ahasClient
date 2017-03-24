@@ -181,7 +181,7 @@ export default function() {
 this.get('/patients/:id/medical_records/:id/notes/:id', ()=>{
     return{
       success: true,
-      notes: {
+      note: {
         id:1,
         body:"hey listen\njjj",
         initials:"jb",
@@ -200,11 +200,11 @@ this.get('/patients/:id/medical_records', ()=>{
   };
 });
 
-//for getting patient image
+//for getting one patient image
 this.get('/patients/:id/images/:id', ()=>{
   return{
     success:true, 
-    images: 
+    image: 
    {
     name: "string",
     data: "string",
@@ -212,6 +212,21 @@ this.get('/patients/:id/images/:id', ()=>{
     patient_id: "integer",
     date: "unix time",
    }
+  };
+});
+
+//for getting multiple patient images
+this.get('/patients/:id/images', ()=>{
+  return{
+    success:true, 
+    images:[ 
+   {
+    name: "string",
+    data: "string",
+    picture_type: "lab_result",
+    patient_id: "integer",
+    date: "unix time",
+    }]
   };
 });
 

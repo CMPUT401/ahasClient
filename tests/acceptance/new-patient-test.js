@@ -6,7 +6,7 @@ moduleForAcceptance('Acceptance | new-patient-test');
 
 test('visiting /new-patient', function(assert) {
    authenticateSession(this.application);
-  visit('/new-patient/1');
+  visit('/new-patient');
 
   andThen(function() {
     assert.equal(currentURL(), '/new-patient');
@@ -16,7 +16,7 @@ test('visiting /new-patient', function(assert) {
 
 test('visiting /new-patient/ before login', function(assert) {
   invalidateSession(this.application);
-  visit('new-patient');
+  visit('/new-patient');
 
   andThen(function(){
     assert.notEqual(currentURL(), '/new-patient');

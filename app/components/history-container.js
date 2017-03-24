@@ -10,7 +10,7 @@ export default Ember.Component.extend({
 	labResultIsVisible:false,
 	vaccineIsVisible: false,
 	radiographyIsVisible: false,
-	patientID: 0,
+	patientID: null,
 	actions: {
 		/**
 		* Shows the component which shows the list of all medical records for the patient in chronological order
