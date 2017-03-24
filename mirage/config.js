@@ -200,6 +200,21 @@ this.get('/patients/:id/medical_records', ()=>{
   };
 });
 
+//for getting patient image
+this.get('/patients/:id/images/:id', ()=>{
+  return{
+    success:true, 
+    images: 
+   {
+    name: "string",
+    data: "string",
+    picture_type: "lab_result",
+    patient_id: "integer",
+    date: "unix time",
+   }
+  };
+});
+
 //for vaccine list in the component on view-patient page
 this.get('/patients/:id/medications', ()=>{
   return{
