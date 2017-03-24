@@ -2,6 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	actions: {
+		/**
+		* handles action called when user clicks New Patient button
+		* redirects to the client's new patient page
+		* @param {int} clientID The ID of the client 
+		*/
 		newPatient: function(clientID){
 			console.log(clientID);
 			this.transitionToRoute("/new-patient/").then(function(newRoute){
