@@ -8,7 +8,6 @@ export default Ember.Component.extend({
 	router: Ember.inject.service('-routing'),
 	actions: {
 		uploadResult: function(){
-			// console.log("making a new medical history entry");
 			this.get('router').transitionTo('radiography-upload', [this.patientId]);
 		},
 		viewEntry: function(radiographyID){
