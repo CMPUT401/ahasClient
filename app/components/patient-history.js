@@ -1,5 +1,10 @@
 import Ember from 'ember';
 
+/**
+* controller for the patient-history component. Make AJAX get request on init. 
+* Shows the entire medical history for the patient in chronological order. 
+* @class patientHistoryComponentController
+*/
 export default Ember.Component.extend({
 	isVisible: true,
 	patientId: 0,
@@ -15,6 +20,13 @@ export default Ember.Component.extend({
 				this.set('isVisible', true);
 			}
 		}.observes('isVisible'),
+		/**
+		* Redirects to the medical record page when the user clicks on it in the list. Medical record
+		* may be editable depending on the date
+		* @param {int} recordID The ID of the medical record that has been clicked
+		* @param {Date} date Date of the medical record. In Unix time.
+		* @method viewEntry
+		*/
 		viewEntry: function(recordID, date){
 			var check = checkUpdate(date);
 			if(check){
@@ -54,6 +66,12 @@ export default Ember.Component.extend({
 	}
 });
 
+/**
+* deserializes the medical history after they have been received by the AJAX request. 
+* Filters med_type for medicine.
+* @param {object} history the JSON object received
+* @method deserialAttributes
+*/
 function deserialAttributes(history){
 	var deserial = [];
 	for(var i = 0; i < history.length; i++) {
@@ -82,6 +100,11 @@ function deserialAttributes(history){
 	return(deserial);
 }
 
+/**
+* checks to see if the medical record can still be edited
+* @param {date} olddate Date of the medical record. In Unix time.
+* @method checkUpdate
+*/
 function checkUpdate(olddate){
 
 	var date = new Date(olddate*1000);
@@ -104,6 +127,11 @@ function checkUpdate(olddate){
     return(false);
 }
 
+/**
+* format he date to month/day/year
+* @param{date} {Date} Date in unix time
+* @method format
+*/
 function format(date){
 	var entryDate = new Date(JSON.stringify(date).replace(/\"/g, "") *1000);
 	var day = (entryDate.getDate()<10?'0':'' )+ entryDate.getDate();

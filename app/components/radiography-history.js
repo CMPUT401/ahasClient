@@ -1,5 +1,9 @@
 import Ember from 'ember';
 
+/**
+* controller for the radiography-history component. Make AJAX get request on init
+* @class RadiographyHistoryComponentController
+*/
 export default Ember.Component.extend({
 	isVisible: false,
 	patientId: 0,
@@ -7,10 +11,19 @@ export default Ember.Component.extend({
 	radiographyList: [],
 	router: Ember.inject.service('-routing'),
 	actions: {
+		/**
+		* Redirects to the radiography upload page when user clicks on the Upload Lab Result button
+		* @method uploadResult
+		*/
 		uploadResult: function(){
 			// console.log("making a new medical history entry");
 			this.get('router').transitionTo('radiography-upload', [this.patientId]);
 		},
+		/**
+		* Redirects to the radiography page when the user clicks on it in the list
+		* @param {int} radiographyID The ID of the radiography that has been clicked
+		* @method viewEntry
+		*/
 		viewEntry: function(radiographyID){
 			console.log('view radiograph ' + radiographyID);
 			// TODO transition to lab result
@@ -44,7 +57,12 @@ export default Ember.Component.extend({
 	}
 });
 
-
+/**
+* deserializes the radiographs after they have been received by the AJAX request. 
+* Filters picture_type for radiograph. Also formats dates
+* @param {object} radiograph the JSON object received
+* @method deserialAttributes
+*/
 function deserialAttributes(radiograph){
 	var deserial = [];
 	for(var i = 0; i < radiograph.length; i++) {

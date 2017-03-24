@@ -1,5 +1,9 @@
 import Ember from 'ember';
 
+/**
+* controller for the medication-history component. Make AJAX get request on init
+* @class MedicationHistoryComponentController
+*/
 export default Ember.Component.extend({
 	isVisible: false,
 	patientId:0 ,
@@ -7,18 +11,19 @@ export default Ember.Component.extend({
 	medicationList: [],
 	router: Ember.inject.service('-routing'),
 	actions:{
+		/**
+		* Redirects to the new medical entry page when user clicks on the New Entry button
+		* @method newEntry
+		*/
 		newEntry: function(){
 			console.log("making a new medical history entry");
 			this.get('router').transitionTo('medical-record', [this.patientId]);
 		},
-		// toggleVisibility: function(){
-		// 	// console.log("show medication, the id is " + patientId);
-		// 	if(this.get('isVisible')){
-		// 		this.set('isVisible', false);
-		// 	} else {
-		// 		this.set('isVisible', true);
-		// 	}
-		// }.observes('isVisible'),
+		/**
+		* Redirects to the medical record page when the user clicks on it in the list
+		* @param {int} recordID The ID of the medical record that has been clicked
+		* @method viewEntry
+		*/
 		viewEntry: function(recordID){
 			//this.get('router').transitionTo('view-medical-record', [this.patientId, recordID]);
 			console.log('view entry ' + recordID);
@@ -54,6 +59,12 @@ export default Ember.Component.extend({
 	}
 });
 
+/**
+* deserializes the mdeications after they have been received by the AJAX request. 
+* Filters med_type for medicine. Also formats dates
+* @param {object} meds the JSON object received
+* @method deserialAttributes
+*/
 function deserialAttributes(meds){
 	var deserial = [];
 	for(var i = 0; i < meds.length; i++) {
