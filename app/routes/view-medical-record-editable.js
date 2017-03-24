@@ -217,7 +217,9 @@ function deserialAttributesOthers(others){
 		if(others[i].med_type === 'other'|| others[i].med_type === 'Other'){
 		var other = others[i];
 		other.name = other.name;
+        console.log("first check", other.reminder);
         other.reminder = format(other.reminder);
+          console.log("second check", other.reminder, document.getElementsByClassName('datePicker'));
 		deserial.push(other);
 	}
   }
@@ -228,5 +230,5 @@ function format(date){
     var partialDate = new Date(date * 1000);
     var day = (partialDate.getDate()<10?'0':'' )+ partialDate.getDate();
     var month = (partialDate.getMonth()<10?'0':'' )+ (partialDate.getMonth()+1);
-    return(month+"/"+ day +"/"+partialDate.getFullYear());
+    return(new Date(month+"/"+ day +"/"+partialDate.getFullYear()));
 }

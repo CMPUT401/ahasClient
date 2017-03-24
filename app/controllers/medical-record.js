@@ -25,13 +25,20 @@ export default Ember.Controller.extend({
 
         createMedicalRecord(){
 
+            var summary = document.getElementById('summary').value.trim();
+            console.log('summary is', summary);
+
+              if(summary === null || summary === undefined || summary === ""){
+                  showAlert("Must enter a summary for the patients medical reecord history list", false);
+              }
+              else{
+
             var self = this;
             var date = Math.floor(Date.now() /1000); 
             
             if( this.get('signature').length !== 0 ){
 
-             //var medications = gatherMedications(this.get('model.patientID'));
-
+           
              var bcsvalue= document.getElementById('bcsvalue');
              var bcsVal = bcsvalue.options[bcsvalue.selectedIndex].text;
 
@@ -144,6 +151,7 @@ export default Ember.Controller.extend({
         else{
           showAlert("Record cannot be created without a signature", false);
         }
+              }
       },
 
       clearSignature(){
