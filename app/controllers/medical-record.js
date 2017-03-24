@@ -1,5 +1,11 @@
 import Ember from 'ember';
 
+/**
+* Controller for medical-record
+* @class MedicalRecordController
+*/
+
+
 export default Ember.Controller.extend({
     medicine: [],
     vaccine: [],
@@ -23,6 +29,12 @@ export default Ember.Controller.extend({
 
     actions: {
 
+        /** 
+		* handles action called when user clicks create-medical-record-button
+		* gathers all dropdown vals
+		* @method createMedicalRecord
+		*/
+
         createMedicalRecord(){
 
             var self = this;
@@ -30,7 +42,6 @@ export default Ember.Controller.extend({
             
             if( this.get('signature').length !== 0 ){
 
-             //var medications = gatherMedications(this.get('model.patientID'));
 
              var bcsvalue= document.getElementById('bcsvalue');
              var bcsVal = bcsvalue.options[bcsvalue.selectedIndex].text;

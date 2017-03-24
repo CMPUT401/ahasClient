@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app/controllers/client-info.js - ahasweb</title>
+    <title>app/controllers/edit-client.js - ahasweb</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -93,61 +93,72 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: app/controllers/client-info.js</h1>
+<h1 class="file-heading">File: app/controllers/edit-client.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 import Ember from &#x27;ember&#x27;;
 
 /**
-* Controller for client-info
-* @class ClientInfoController
+* Controller for edit-client
+* @class EditClientController
 */
 export default Ember.Controller.extend({
-	actions: {
-		/** 
-		* handles action called when user clicks New Patient button. 
-		* redirects to the client&#x27;s new patient page
-		* @method newPatient
-		* @param {int} clientID The ID of the client 
-		*/
-		newPatient: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-patient/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID)
-			});
-			//this.transitionTo(&#x27;new-patient&#x27;, { queryParams: { clientID: &#x27;1&#x27; }});
-		},
-		/** 
-		* handles the action called when user clicks on a patient&#x27;s name. 
-		* redirects to the patient&#x27;s view-patient page
-		* @method viewPatient
-		* @param {int} petID The ID of the patient
-		*/
-		viewPatient: function(petId){
-			console.log(petId);
-			this.transitionToRoute(&quot;/view-patient/&quot; + petId);
-		},
+	session: Ember.inject.service(),
+	ajax: Ember.inject.service(),
+	clientId: 0,
+	actions:{
 		/**
-		* handles the action called when the user clicks the Edit Client button. 
-		* redirects to the client&#x27;s endit-client page
-		* @method editClient
-		* @param {int} clientID The ID of the client
+		* makes an ajax PUT request to save the client info
+		* @param {object} the model from the page
+		* @method saveClient
 		*/
-		editClient: function(clientID){
-			this.transitionToRoute(&#x27;/edit-client/&#x27; + clientID);
-		},
-		/**
-		* handles the action called when a user clicks the Make Appointment button. 
-		* redirects to the client&#x27;s callendar
-		* @method newAppointment
-		* @param {int} clientID The ID of the client
-		*/
-		newAppointment: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-calendar/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID);
+		saveClient: function(client){
+			//disable button
+			document.getElementById(&quot;create-client-button&quot;).disabled = true; 
+			console.log(&quot;saving client!&quot; + this.clientId);
+			this.clientId = client.clientID;
+			//make ajax put request
+
+			var self = this;
+			let ajaxPut = this.get(&#x27;ajax&#x27;).put(&#x27;api/client/&#x27; + this.clientId, {
+				type: &#x27;application/json&#x27;,
+				data: {client: {
+					firstName: client.firstName,
+					lastName: client.lastName,
+					address: client.address,
+					phoneNumber: client.phoneNumber,
+					email: client.email,
+					licos: client.licos,
+					aish: client.aish,
+					socialAssistance: client.socialAssistance,
+					pets: &quot;&quot;,
+					created_at: client.created_at,
+					updated_at: new Date(),
+					alternativeContactFirstName: client.alternativeContactFirstName,
+					alternativeContactLastName: client.alternativeContactLastName,
+					alternativeContactPhoneNumber: client.alternativeContactPhoneNumber,
+					alternativeContactAddress: client.alternativeContactAddress,
+					notes: client.notes,
+					alternativeContact2ndPhone: client.alternativeContact2ndPhone,
+					alternativeContactEmail: client.alternativeContactEmail,
+					patients: client.patients
+				}},
+			}).then(function(data){
+				console.log(&quot;status is &quot; + JSON.stringify(data));
+				self.transitionToRoute(&#x27;/client-info/&#x27; + self.clientId);
+			},function(response){
+				console.log(&quot;status is &quot; + JSON.stringify(response));
+				document.getElementById(&quot;create-client-button&quot;).disabled = false;
+				if (response === false){
+					if (self.get(&#x27;session.isAuthenticated&#x27;)){
+						self.get(&#x27;session&#x27;).invalidate();
+					}
+					clearFields(self);
+					self.transitionToRoute(&#x27;/login&#x27;);
+				}
 			});
+			return ajaxPut;
 		}
 	}
 });

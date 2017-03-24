@@ -7,11 +7,6 @@ export default Ember.Controller.extend({
       ajax: Ember.inject.service(),
       actions: {
 
-          show(id){
-           var self = this;
-           gatherMedications(id, self);   
-          },
-
           updateMedicalRecord(id){
 
              var self = this;

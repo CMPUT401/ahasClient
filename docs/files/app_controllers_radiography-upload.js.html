@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app/controllers/client-info.js - ahasweb</title>
+    <title>app/controllers/radiography-upload.js - ahasweb</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -93,61 +93,63 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: app/controllers/client-info.js</h1>
+<h1 class="file-heading">File: app/controllers/radiography-upload.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 import Ember from &#x27;ember&#x27;;
-
 /**
-* Controller for client-info
-* @class ClientInfoController
+* Controller for radiography-upload
+* @class radiographyUploadController
 */
 export default Ember.Controller.extend({
+	loadedFile: null,
+	session: Ember.inject.service(),
+	ajax: Ember.inject.service(),
 	actions: {
-		/** 
-		* handles action called when user clicks New Patient button. 
-		* redirects to the client&#x27;s new patient page
-		* @method newPatient
-		* @param {int} clientID The ID of the client 
-		*/
-		newPatient: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-patient/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID)
-			});
-			//this.transitionTo(&#x27;new-patient&#x27;, { queryParams: { clientID: &#x27;1&#x27; }});
-		},
-		/** 
-		* handles the action called when user clicks on a patient&#x27;s name. 
-		* redirects to the patient&#x27;s view-patient page
-		* @method viewPatient
-		* @param {int} petID The ID of the patient
-		*/
-		viewPatient: function(petId){
-			console.log(petId);
-			this.transitionToRoute(&quot;/view-patient/&quot; + petId);
+		fileLoaded: function(file){
+			this.set(&#x27;loadedFile&#x27;, file);
+			// console.log(&quot;name is &quot; + file.name);
+			// console.log(&quot;type is &quot; + file.type);
+			// console.log(&quot;data is &quot;);
+			// //console.log(file.data);
+			// console.log(&quot;size is &quot; + file.size + &quot; bytes&quot;);
 		},
 		/**
-		* handles the action called when the user clicks the Edit Client button. 
-		* redirects to the client&#x27;s endit-client page
-		* @method editClient
-		* @param {int} clientID The ID of the client
+		* makes an ajax POST request to save the radiography
+		* @param {int} the patient&#x27;s id
+		* @method sendRadiographyResults
 		*/
-		editClient: function(clientID){
-			this.transitionToRoute(&#x27;/edit-client/&#x27; + clientID);
-		},
-		/**
-		* handles the action called when a user clicks the Make Appointment button. 
-		* redirects to the client&#x27;s callendar
-		* @method newAppointment
-		* @param {int} clientID The ID of the client
-		*/
-		newAppointment: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-calendar/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID);
+		sendRadiographyResults: function(patientId){
+			document.getElementById(&quot;saveRadiography&quot;).disabled = true;
+			var partialDate = this.get(&#x27;datePicker&#x27;);
+			var partialDate2 = partialDate.toString().split(&#x27; &#x27;);
+			var imageDate = partialDate2[2] + &quot;/&quot; + partialDate2[1] + &quot;/&quot; + partialDate2[3];
+			var self = this;
+			let ajaxPost = this.get(&#x27;ajax&#x27;).post(&#x27;api/patients/&#x27; + patientId + &quot;/images&quot;, {
+				type: &#x27;application/json&#x27;,
+				data: {image: {
+					patient_id: patientId,
+					name: this.loadedFile.name,
+					data: this.loadedFile.data,
+					picture_type: &quot;radiograph&quot;,
+					date: Date.parse(imageDate)/1000
+				}},
+			}).then(function(response){
+				console.log(&quot;status is &quot; +JSON.stringify(response));
+				self.transitionToRoute(&#x27;/view-patient/&#x27; + patientId);
+
+			}, function(response){
+				document.getElementById(&quot;saveRadiography&quot;).disabled = false;
+				console.log(&quot;status is &quot; + JSON.stringify(response));
+				if(response === false){
+					if(self.get(&#x27;session.isAuthenticated&#x27;)){
+						self.get(&#x27;session&#x27;).invalidate();
+					}
+					self.transitionToRoute(&#x27;/login&#x27;);
+				}
 			});
+			return ajaxPost;
 		}
 	}
 });

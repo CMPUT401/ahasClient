@@ -2,90 +2,1080 @@
     "project": {
         "name": "ahasweb",
         "description": "Small description for ahasweb goes here",
-        "version": "0.0.0.b52f2b35"
+        "version": "0.0.0.06026420"
     },
     "files": {
-        "app\\controllers\\client-info.js": {
-            "name": "app\\controllers\\client-info.js",
+        "app/authenticators/jwt.js": {
+            "name": "app/authenticators/jwt.js",
             "modules": {},
-            "classes": {},
+            "classes": {
+                "authenticator": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/components/history-container.js": {
+            "name": "app/components/history-container.js",
+            "modules": {},
+            "classes": {
+                "HistoryContainerComponentController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/components/lab-result-history.js": {
+            "name": "app/components/lab-result-history.js",
+            "modules": {},
+            "classes": {
+                "LabResultHistoryComponentController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/components/medication-history.js": {
+            "name": "app/components/medication-history.js",
+            "modules": {},
+            "classes": {
+                "MedicationHistoryComponentController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/components/medication-input.js": {
+            "name": "app/components/medication-input.js",
+            "modules": {},
+            "classes": {
+                "MedicationInputComponentController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/components/patient-history.js": {
+            "name": "app/components/patient-history.js",
+            "modules": {},
+            "classes": {
+                "patientHistoryComponentController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/components/radiography-history.js": {
+            "name": "app/components/radiography-history.js",
+            "modules": {},
+            "classes": {
+                "RadiographyHistoryComponentController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/components/vaccine-history.js": {
+            "name": "app/components/vaccine-history.js",
+            "modules": {},
+            "classes": {
+                "VaccineHistoryComponentController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/client-info.js": {
+            "name": "app/controllers/client-info.js",
+            "modules": {},
+            "classes": {
+                "ClientInfoController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/client-list.js": {
+            "name": "app/controllers/client-list.js",
+            "modules": {},
+            "classes": {
+                "ClientListController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/create-contact.js": {
+            "name": "app/controllers/create-contact.js",
+            "modules": {},
+            "classes": {
+                "CreateContactController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/create-user.js": {
+            "name": "app/controllers/create-user.js",
+            "modules": {},
+            "classes": {
+                "CreateUserController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/edit-client.js": {
+            "name": "app/controllers/edit-client.js",
+            "modules": {},
+            "classes": {
+                "EditClientController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/edit-contact.js": {
+            "name": "app/controllers/edit-contact.js",
+            "modules": {},
+            "classes": {
+                "EditContactController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/lab-result-upload.js": {
+            "name": "app/controllers/lab-result-upload.js",
+            "modules": {},
+            "classes": {
+                "labResultUploadController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/login.js": {
+            "name": "app/controllers/login.js",
+            "modules": {},
+            "classes": {
+                "LoginController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/new-client.js": {
+            "name": "app/controllers/new-client.js",
+            "modules": {},
+            "classes": {
+                "NewClientController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/radiography-upload.js": {
+            "name": "app/controllers/radiography-upload.js",
+            "modules": {},
+            "classes": {
+                "radiographyUploadController": 1
+            },
             "fors": {},
             "namespaces": {}
         }
     },
     "modules": {},
-    "classes": {},
+    "classes": {
+        "authenticator": {
+            "name": "authenticator",
+            "shortname": "authenticator",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/authenticators/jwt.js",
+            "line": 6,
+            "description": "jwt authenticator"
+        },
+        "HistoryContainerComponentController": {
+            "name": "HistoryContainerComponentController",
+            "shortname": "HistoryContainerComponentController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/components/history-container.js",
+            "line": 3,
+            "description": "Controller for the history-container component"
+        },
+        "LabResultHistoryComponentController": {
+            "name": "LabResultHistoryComponentController",
+            "shortname": "LabResultHistoryComponentController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/components/lab-result-history.js",
+            "line": 3,
+            "description": "controller for the lab-result-history component. Make AJAX get request on init"
+        },
+        "MedicationHistoryComponentController": {
+            "name": "MedicationHistoryComponentController",
+            "shortname": "MedicationHistoryComponentController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/components/medication-history.js",
+            "line": 3,
+            "description": "controller for the medication-history component. Make AJAX get request on init"
+        },
+        "MedicationInputComponentController": {
+            "name": "MedicationInputComponentController",
+            "shortname": "MedicationInputComponentController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/components/medication-input.js",
+            "line": 3,
+            "description": "controller for the medication-input component\nSimple container to capture state from entry boxes"
+        },
+        "patientHistoryComponentController": {
+            "name": "patientHistoryComponentController",
+            "shortname": "patientHistoryComponentController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/components/patient-history.js",
+            "line": 3,
+            "description": "controller for the patient-history component. Make AJAX get request on init. \nShows the entire medical history for the patient in chronological order."
+        },
+        "RadiographyHistoryComponentController": {
+            "name": "RadiographyHistoryComponentController",
+            "shortname": "RadiographyHistoryComponentController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/components/radiography-history.js",
+            "line": 3,
+            "description": "controller for the radiography-history component. Make AJAX get request on init"
+        },
+        "VaccineHistoryComponentController": {
+            "name": "VaccineHistoryComponentController",
+            "shortname": "VaccineHistoryComponentController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/components/vaccine-history.js",
+            "line": 3,
+            "description": "controller for the vaccine-history component. Make AJAX get request on init"
+        },
+        "ClientInfoController": {
+            "name": "ClientInfoController",
+            "shortname": "ClientInfoController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/client-info.js",
+            "line": 3,
+            "description": "Controller for client-info"
+        },
+        "ClientListController": {
+            "name": "ClientListController",
+            "shortname": "ClientListController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/client-list.js",
+            "line": 3,
+            "description": "Controller for client-list"
+        },
+        "CreateContactController": {
+            "name": "CreateContactController",
+            "shortname": "CreateContactController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/create-contact.js",
+            "line": 3,
+            "description": "Controller for create-contact"
+        },
+        "CreateUserController": {
+            "name": "CreateUserController",
+            "shortname": "CreateUserController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/create-user.js",
+            "line": 4,
+            "description": "Controller for creat-user"
+        },
+        "EditClientController": {
+            "name": "EditClientController",
+            "shortname": "EditClientController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/edit-client.js",
+            "line": 3,
+            "description": "Controller for edit-client"
+        },
+        "EditContactController": {
+            "name": "EditContactController",
+            "shortname": "EditContactController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/edit-contact.js",
+            "line": 4,
+            "description": "Controller for client-info"
+        },
+        "labResultUploadController": {
+            "name": "labResultUploadController",
+            "shortname": "labResultUploadController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/lab-result-upload.js",
+            "line": 3,
+            "description": "Controller for lab-result-upload"
+        },
+        "LoginController": {
+            "name": "LoginController",
+            "shortname": "LoginController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/login.js",
+            "line": 3,
+            "description": "Controller for login"
+        },
+        "NewClientController": {
+            "name": "NewClientController",
+            "shortname": "NewClientController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/new-client.js",
+            "line": 3,
+            "description": "Controller for new-client"
+        },
+        "radiographyUploadController": {
+            "name": "radiographyUploadController",
+            "shortname": "radiographyUploadController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/radiography-upload.js",
+            "line": 2,
+            "description": "Controller for radiography-upload"
+        }
+    },
     "elements": {},
     "classitems": [
         {
-            "file": "app\\controllers\\client-info.js",
-            "line": 5,
-            "description": "handles the action called when user clicks New Patient.\nredirects to a new-patient page associated with that client",
+            "file": "app/authenticators/jwt.js",
+            "line": 24,
+            "description": "handles call from login file\nmakes a post request to the server with authentication items\nif this is success , gets a jwt back and ember-simple-auth addon handles method that stores it",
+            "itemtype": "method",
+            "name": "authenticate",
+            "class": "authenticator"
+        },
+        {
+            "file": "app/authenticators/jwt.js",
+            "line": 59,
+            "description": "used to invalidate a session",
+            "itemtype": "method",
+            "name": "invalidate",
+            "class": "authenticator"
+        },
+        {
+            "file": "app/authenticators/jwt.js",
+            "line": 68,
+            "description": "used to provide feedback to user on fail condition",
+            "itemtype": "method",
+            "name": "showAlert",
             "params": [
                 {
-                    "name": "clientID",
-                    "description": "- the ID of the client",
+                    "name": "message",
+                    "description": "The message to display in the alert",
+                    "type": "String"
+                }
+            ],
+            "class": "authenticator"
+        },
+        {
+            "file": "app/components/history-container.js",
+            "line": 15,
+            "description": "Shows the component which shows the list of all medical records for the patient in chronological order",
+            "itemtype": "method",
+            "name": "showChronological",
+            "class": "HistoryContainerComponentController"
+        },
+        {
+            "file": "app/components/history-container.js",
+            "line": 27,
+            "description": "Shows the component which shows the list of all medicine for the patient",
+            "itemtype": "method",
+            "name": "showMedication",
+            "class": "HistoryContainerComponentController"
+        },
+        {
+            "file": "app/components/history-container.js",
+            "line": 39,
+            "description": "Shows the component which shows the list of all lab results for the patient",
+            "itemtype": "method",
+            "name": "showLabResults",
+            "class": "HistoryContainerComponentController"
+        },
+        {
+            "file": "app/components/history-container.js",
+            "line": 50,
+            "description": "Shows the component which shows the list of all vaccines for the patient",
+            "itemtype": "method",
+            "name": "showVaccine",
+            "class": "HistoryContainerComponentController"
+        },
+        {
+            "file": "app/components/history-container.js",
+            "line": 62,
+            "description": "Shows the component which shows the list of all radiographs for the patient",
+            "itemtype": "method",
+            "name": "showRadiographs",
+            "class": "HistoryContainerComponentController"
+        },
+        {
+            "file": "app/components/lab-result-history.js",
+            "line": 14,
+            "description": "Redirects to the lab result upload page when user clicks on the Upload Lab Result button",
+            "itemtype": "method",
+            "name": "uploadResult",
+            "class": "LabResultHistoryComponentController"
+        },
+        {
+            "file": "app/components/lab-result-history.js",
+            "line": 22,
+            "description": "Redirects to the lab result page when the user clicks on it in the list",
+            "params": [
+                {
+                    "name": "labResultID",
+                    "description": "The ID of the lab result that has been clicked",
                     "type": "Int"
                 }
             ],
-            "class": ""
+            "itemtype": "method",
+            "name": "viewEntry",
+            "class": "LabResultHistoryComponentController"
         },
         {
-            "file": "app\\controllers\\client-info.js",
-            "line": 17,
-            "description": "handles the action called when user clicks on a patient's name\nredirects to the patient's view-patient page",
+            "file": "app/components/lab-result-history.js",
+            "line": 60,
+            "description": "deserializes the lab results after they have been received by the AJAX request. \nFilters picture_type for lab result. Also formats dates",
+            "params": [
+                {
+                    "name": "labResults",
+                    "description": "the JSON object received",
+                    "type": "Object"
+                }
+            ],
+            "itemtype": "method",
+            "name": "deserialAttributes",
+            "class": "LabResultHistoryComponentController"
+        },
+        {
+            "file": "app/components/medication-history.js",
+            "line": 14,
+            "description": "Redirects to the new medical entry page when user clicks on the New Entry button",
+            "itemtype": "method",
+            "name": "newEntry",
+            "class": "MedicationHistoryComponentController"
+        },
+        {
+            "file": "app/components/medication-history.js",
+            "line": 22,
+            "description": "Redirects to the medical record page when the user clicks on it in the list",
+            "params": [
+                {
+                    "name": "recordID",
+                    "description": "The ID of the medical record that has been clicked",
+                    "type": "Int"
+                }
+            ],
+            "itemtype": "method",
+            "name": "viewEntry",
+            "class": "MedicationHistoryComponentController"
+        },
+        {
+            "file": "app/components/medication-history.js",
+            "line": 62,
+            "description": "deserializes the mdeications after they have been received by the AJAX request. \nFilters med_type for medicine. Also formats dates",
+            "params": [
+                {
+                    "name": "meds",
+                    "description": "the JSON object received",
+                    "type": "Object"
+                }
+            ],
+            "itemtype": "method",
+            "name": "deserialAttributes",
+            "class": "MedicationHistoryComponentController"
+        },
+        {
+            "file": "app/components/patient-history.js",
+            "line": 26,
+            "description": "Redirects to the medical record page when the user clicks on it in the list. Medical record\nmay be editable depending on the date",
+            "params": [
+                {
+                    "name": "recordID",
+                    "description": "The ID of the medical record that has been clicked",
+                    "type": "Int"
+                },
+                {
+                    "name": "date",
+                    "description": "Date of the medical record. In Unix time.",
+                    "type": "Date"
+                }
+            ],
+            "itemtype": "method",
+            "name": "viewEntry",
+            "class": "patientHistoryComponentController"
+        },
+        {
+            "file": "app/components/patient-history.js",
+            "line": 72,
+            "description": "deserializes the medical history after they have been received by the AJAX request. \nFilters med_type for medicine.",
+            "params": [
+                {
+                    "name": "history",
+                    "description": "the JSON object received",
+                    "type": "Object"
+                }
+            ],
+            "itemtype": "method",
+            "name": "deserialAttributes",
+            "class": "patientHistoryComponentController"
+        },
+        {
+            "file": "app/components/patient-history.js",
+            "line": 106,
+            "description": "checks to see if the medical record can still be edited",
+            "params": [
+                {
+                    "name": "olddate",
+                    "description": "Date of the medical record. In Unix time.",
+                    "type": "Date"
+                }
+            ],
+            "itemtype": "method",
+            "name": "checkUpdate",
+            "class": "patientHistoryComponentController"
+        },
+        {
+            "file": "app/components/patient-history.js",
+            "line": 133,
+            "description": "format he date to month/day/year",
+            "params": [
+                {
+                    "name": "{Date}",
+                    "description": "Date in unix time",
+                    "type": "Date"
+                }
+            ],
+            "itemtype": "method",
+            "name": "format",
+            "class": "patientHistoryComponentController"
+        },
+        {
+            "file": "app/components/radiography-history.js",
+            "line": 14,
+            "description": "Redirects to the radiography upload page when user clicks on the Upload Lab Result button",
+            "itemtype": "method",
+            "name": "uploadResult",
+            "class": "RadiographyHistoryComponentController"
+        },
+        {
+            "file": "app/components/radiography-history.js",
+            "line": 21,
+            "description": "Redirects to the radiography page when the user clicks on it in the list",
+            "params": [
+                {
+                    "name": "radiographyID",
+                    "description": "The ID of the radiography that has been clicked",
+                    "type": "Int"
+                }
+            ],
+            "itemtype": "method",
+            "name": "viewEntry",
+            "class": "RadiographyHistoryComponentController"
+        },
+        {
+            "file": "app/components/radiography-history.js",
+            "line": 59,
+            "description": "deserializes the radiographs after they have been received by the AJAX request. \nFilters picture_type for radiograph. Also formats dates",
+            "params": [
+                {
+                    "name": "radiograph",
+                    "description": "the JSON object received",
+                    "type": "Object"
+                }
+            ],
+            "itemtype": "method",
+            "name": "deserialAttributes",
+            "class": "RadiographyHistoryComponentController"
+        },
+        {
+            "file": "app/components/vaccine-history.js",
+            "line": 14,
+            "description": "Redirects to the new medical entry page when user clicks on the New Entry button",
+            "itemtype": "method",
+            "name": "newEntry",
+            "class": "VaccineHistoryComponentController"
+        },
+        {
+            "file": "app/components/vaccine-history.js",
+            "line": 29,
+            "description": "Redirects to the medical record page when the user clicks on it in the list. Medical record\nmay be editable depending on the date",
+            "params": [
+                {
+                    "name": "recordID",
+                    "description": "The ID of the medical record that has been clicked",
+                    "type": "Int"
+                },
+                {
+                    "name": "date",
+                    "description": "Date of the medical record. In Unix time.",
+                    "type": "Date"
+                }
+            ],
+            "itemtype": "method",
+            "name": "viewEntry",
+            "class": "VaccineHistoryComponentController"
+        },
+        {
+            "file": "app/components/vaccine-history.js",
+            "line": 75,
+            "description": "deserializes the vaccines after they have been received by the AJAX request. \nFilters med_type for vaccine.",
+            "params": [
+                {
+                    "name": "meds",
+                    "description": "the JSON object received",
+                    "type": "Object"
+                }
+            ],
+            "itemtype": "method",
+            "name": "deserialAttributes",
+            "class": "VaccineHistoryComponentController"
+        },
+        {
+            "file": "app/components/vaccine-history.js",
+            "line": 109,
+            "description": "checks to see if the medical record can still be edited",
+            "params": [
+                {
+                    "name": "olddate",
+                    "description": "Date of the medical record. In Unix time.",
+                    "type": "Date"
+                }
+            ],
+            "itemtype": "method",
+            "name": "checkUpdate",
+            "class": "VaccineHistoryComponentController"
+        },
+        {
+            "file": "app/controllers/client-info.js",
+            "line": 9,
+            "description": "handles action called when user clicks New Patient button. \nredirects to the client's new patient page",
+            "itemtype": "method",
+            "name": "newPatient",
+            "params": [
+                {
+                    "name": "clientID",
+                    "description": "The ID of the client",
+                    "type": "Int"
+                }
+            ],
+            "class": "ClientInfoController"
+        },
+        {
+            "file": "app/controllers/client-info.js",
+            "line": 22,
+            "description": "handles the action called when user clicks on a patient's name. \nredirects to the patient's view-patient page",
+            "itemtype": "method",
+            "name": "viewPatient",
             "params": [
                 {
                     "name": "petID",
-                    "description": "- the ID of the patient",
+                    "description": "The ID of the patient",
                     "type": "Int"
                 }
             ],
-            "class": ""
+            "class": "ClientInfoController"
         },
         {
-            "file": "app\\controllers\\client-info.js",
-            "line": 26,
-            "description": "handles the action called when the user clicks the Edit Client button\n redirects to the client's endit-client page",
+            "file": "app/controllers/client-info.js",
+            "line": 32,
+            "description": "handles the action called when the user clicks the Edit Client button. \nredirects to the client's endit-client page",
+            "itemtype": "method",
+            "name": "editClient",
             "params": [
                 {
                     "name": "clientID",
-                    "description": "- the ID of the client",
+                    "description": "The ID of the client",
                     "type": "Int"
                 }
             ],
-            "class": ""
+            "class": "ClientInfoController"
         },
         {
-            "file": "app\\controllers\\client-info.js",
-            "line": 34,
-            "description": "handles the action called when a user clicks the Make Appointment button\n redirects to the client's callendar",
+            "file": "app/controllers/client-info.js",
+            "line": 41,
+            "description": "handles the action called when a user clicks the Make Appointment button. \nredirects to the client's callendar",
+            "itemtype": "method",
+            "name": "newAppointment",
             "params": [
                 {
                     "name": "clientID",
-                    "description": "- the ID of the client",
+                    "description": "The ID of the client",
                     "type": "Int"
                 }
             ],
-            "class": ""
+            "class": "ClientInfoController"
+        },
+        {
+            "file": "app/controllers/client-list.js",
+            "line": 9,
+            "description": "fitlers clients according to user input",
+            "itemtype": "method",
+            "name": "filterClient",
+            "class": "ClientListController"
+        },
+        {
+            "file": "app/controllers/client-list.js",
+            "line": 22,
+            "description": "handles action called when user clicks on a client's name. Redirects to that client's\ninfo page.",
+            "itemtype": "method",
+            "name": "viewClient",
+            "params": [
+                {
+                    "name": "clientID",
+                    "description": "The ID of the client",
+                    "type": "Int"
+                }
+            ],
+            "class": "ClientListController"
+        },
+        {
+            "file": "app/controllers/client-list.js",
+            "line": 32,
+            "description": "handles action called when user clicks New Client button. \nRedirects to the client page",
+            "itemtype": "method",
+            "name": "newPatient",
+            "class": "ClientListController"
+        },
+        {
+            "file": "app/controllers/client-list.js",
+            "line": 44,
+            "description": "Filters the client slist using the user's input. Sets the new model to the the filtered model",
+            "params": [
+                {
+                    "name": "self",
+                    "description": "the controller",
+                    "type": "Object"
+                },
+                {
+                    "name": "model",
+                    "description": "the client list",
+                    "type": "Object"
+                },
+                {
+                    "name": "input",
+                    "description": "user input",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "filter",
+            "class": "ClientListController"
+        },
+        {
+            "file": "app/controllers/create-contact.js",
+            "line": 12,
+            "description": "handles action called when user changes the option selected in the dropdown\nif option is Laboratory only display name input, else display both first and last name inputs",
+            "itemtype": "method",
+            "name": "showLastName",
+            "class": "CreateContactController"
+        },
+        {
+            "file": "app/controllers/create-contact.js",
+            "line": 29,
+            "description": "handles action called when user clicks create-contact-button\nsends a post to server after doing some checks for input content\ndisplays error message upon failure \nbriefly displays confirmation upon success and then transitions to search-contacts\nif input validation works and it gets to the request we disable the create button so that duplicate contacts\ncannot be created",
+            "itemtype": "method",
+            "name": "createContact",
+            "class": "CreateContactController"
+        },
+        {
+            "file": "app/controllers/create-contact.js",
+            "line": 105,
+            "description": "used to provide feedback to user on success condition as well as fail condition\nonly displayed very briefly on success condition however before transition",
+            "itemtype": "method",
+            "name": "showAlert",
+            "params": [
+                {
+                    "name": "message",
+                    "description": "The message to display in the alert",
+                    "type": "String"
+                },
+                {
+                    "name": "bool",
+                    "description": "Determines if this is a warning alert or confirmation alert",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "CreateContactController"
+        },
+        {
+            "file": "app/controllers/create-contact.js",
+            "line": 122,
+            "description": "used to clear the fields in the inputs of the form once a contact is created",
+            "itemtype": "method",
+            "name": "showAlert",
+            "params": [
+                {
+                    "name": "page",
+                    "description": "The page to clear the fields of",
+                    "type": "Page"
+                }
+            ],
+            "class": "CreateContactController"
+        },
+        {
+            "file": "app/controllers/create-user.js",
+            "line": 15,
+            "description": "handles action called when user clicks create-user-button\ndelegates checking the necessary inputs and then if those are all ok\nmakes the post request to server with user info\nprovides alert feedback on success or fail condition",
+            "itemtype": "method",
+            "name": "createUser",
+            "class": "CreateUserController"
+        },
+        {
+            "file": "app/controllers/create-user.js",
+            "line": 59,
+            "description": "used to check the input fields on the create user page",
+            "itemtype": "method",
+            "name": "checkFormat",
+            "params": [
+                {
+                    "name": "password",
+                    "description": "The user's password",
+                    "type": "String"
+                },
+                {
+                    "name": "email",
+                    "description": "The user's email",
+                    "type": "String"
+                },
+                {
+                    "name": "passwordConfirm",
+                    "description": "The user's password confirmation",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "The user's name",
+                    "type": "String"
+                }
+            ],
+            "class": "CreateUserController"
+        },
+        {
+            "file": "app/controllers/create-user.js",
+            "line": 95,
+            "description": "used to provide feedback to user on success condition as well as fail condition\nonly displayed very briefly on success condition however before transition",
+            "itemtype": "method",
+            "name": "showAlert",
+            "params": [
+                {
+                    "name": "message",
+                    "description": "The message to display in the alert",
+                    "type": "String"
+                },
+                {
+                    "name": "bool",
+                    "description": "Determines if this is a warning alert or confirmation alert",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "CreateUserController"
+        },
+        {
+            "file": "app/controllers/edit-client.js",
+            "line": 12,
+            "description": "makes an ajax PUT request to save the client info",
+            "params": [
+                {
+                    "name": "the",
+                    "description": "model from the page",
+                    "type": "Object"
+                }
+            ],
+            "itemtype": "method",
+            "name": "saveClient",
+            "class": "EditClientController"
+        },
+        {
+            "file": "app/controllers/edit-contact.js",
+            "line": 12,
+            "description": "handles action called when user changes the option selected in the dropdown\nif option is Laboratory only display name input, else display both first and last name inputs",
+            "itemtype": "method",
+            "name": "showLastName",
+            "class": "EditContactController"
+        },
+        {
+            "file": "app/controllers/edit-contact.js",
+            "line": 47,
+            "description": "handles action called when user clicks done-edit-button\nsends a put request to the server with all values of input elements on this page\nredirects to the view-contact page for that contact upon success\nupon failure it displays error message",
+            "itemtype": "method",
+            "name": "doneEditContact",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "The id of the contact",
+                    "type": "Int"
+                }
+            ],
+            "class": "EditContactController"
+        },
+        {
+            "file": "app/controllers/edit-contact.js",
+            "line": 98,
+            "description": "used to provide feedback to user on success condition as well as fail condition\nonly displayed very briefly on success condition however before transition",
+            "itemtype": "method",
+            "name": "showAlert",
+            "params": [
+                {
+                    "name": "message",
+                    "description": "The message to display in the alert",
+                    "type": "String"
+                },
+                {
+                    "name": "bool",
+                    "description": "Determines if this is a warning alert or confirmation alert",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "EditContactController"
+        },
+        {
+            "file": "app/controllers/lab-result-upload.js",
+            "line": 15,
+            "description": "makes an ajax POST request to save the lab result",
+            "params": [
+                {
+                    "name": "the",
+                    "description": "patient's id",
+                    "type": "Int"
+                }
+            ],
+            "itemtype": "method",
+            "name": "sendLabResults",
+            "class": "labResultUploadController"
+        },
+        {
+            "file": "app/controllers/login.js",
+            "line": 12,
+            "description": "handles action called when user clicks the login-button\ndelegates for input checking and if those succeed it uses the authenticator in jwt.js to authenticate",
+            "itemtype": "method",
+            "name": "authenticate",
+            "class": "LoginController"
+        },
+        {
+            "file": "app/controllers/login.js",
+            "line": 38,
+            "description": "make sure that we dont post undefined to server",
+            "itemtype": "method",
+            "name": "checkFields",
+            "params": [
+                {
+                    "name": "username",
+                    "description": "The attempted username",
+                    "type": "String"
+                },
+                {
+                    "name": "password",
+                    "description": "The attempted password",
+                    "type": "String"
+                }
+            ],
+            "class": "LoginController"
+        },
+        {
+            "file": "app/controllers/login.js",
+            "line": 51,
+            "description": "used to provide feedback to user on fail condition",
+            "itemtype": "method",
+            "name": "showAlert",
+            "params": [
+                {
+                    "name": "message",
+                    "description": "The message to display in the alert",
+                    "type": "String"
+                }
+            ],
+            "class": "LoginController"
+        },
+        {
+            "file": "app/controllers/new-client.js",
+            "line": 12,
+            "description": "makes an ajax POST request to save the new client",
+            "itemtype": "method",
+            "name": "submitNewClient",
+            "class": "NewClientController"
+        },
+        {
+            "file": "app/controllers/new-client.js",
+            "line": 72,
+            "description": "clears the page's input fields",
+            "params": [
+                {
+                    "name": "page",
+                    "description": "the controller",
+                    "type": "Object"
+                }
+            ],
+            "itemtype": "method",
+            "name": "clearFields",
+            "class": "NewClientController"
+        },
+        {
+            "file": "app/controllers/radiography-upload.js",
+            "line": 19,
+            "description": "makes an ajax POST request to save the radiography",
+            "params": [
+                {
+                    "name": "the",
+                    "description": "patient's id",
+                    "type": "Int"
+                }
+            ],
+            "itemtype": "method",
+            "name": "sendRadiographyResults",
+            "class": "radiographyUploadController"
         }
     ],
-    "warnings": [
-        {
-            "message": "Missing item type\nhandles the action called when user clicks New Patient.\nredirects to a new-patient page associated with that client",
-            "line": " app\\controllers\\client-info.js:5"
-        },
-        {
-            "message": "Missing item type\nhandles the action called when user clicks on a patient's name\nredirects to the patient's view-patient page",
-            "line": " app\\controllers\\client-info.js:17"
-        },
-        {
-            "message": "Missing item type\nhandles the action called when the user clicks the Edit Client button\n redirects to the client's endit-client page",
-            "line": " app\\controllers\\client-info.js:26"
-        },
-        {
-            "message": "Missing item type\nhandles the action called when a user clicks the Make Appointment button\n redirects to the client's callendar",
-            "line": " app\\controllers\\client-info.js:34"
-        }
-    ]
+    "warnings": []
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app/controllers/client-info.js - ahasweb</title>
+    <title>app/controllers/create-contact.js - ahasweb</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -93,65 +93,145 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: app/controllers/client-info.js</h1>
+<h1 class="file-heading">File: app/controllers/create-contact.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 import Ember from &#x27;ember&#x27;;
 
 /**
-* Controller for client-info
-* @class ClientInfoController
+* Controller for create-contact
+* @class CreateContactController
 */
-export default Ember.Controller.extend({
-	actions: {
-		/** 
-		* handles action called when user clicks New Patient button. 
-		* redirects to the client&#x27;s new patient page
-		* @method newPatient
-		* @param {int} clientID The ID of the client 
-		*/
-		newPatient: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-patient/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID)
-			});
-			//this.transitionTo(&#x27;new-patient&#x27;, { queryParams: { clientID: &#x27;1&#x27; }});
-		},
-		/** 
-		* handles the action called when user clicks on a patient&#x27;s name. 
-		* redirects to the patient&#x27;s view-patient page
-		* @method viewPatient
-		* @param {int} petID The ID of the patient
-		*/
-		viewPatient: function(petId){
-			console.log(petId);
-			this.transitionToRoute(&quot;/view-patient/&quot; + petId);
-		},
-		/**
-		* handles the action called when the user clicks the Edit Client button. 
-		* redirects to the client&#x27;s endit-client page
-		* @method editClient
-		* @param {int} clientID The ID of the client
-		*/
-		editClient: function(clientID){
-			this.transitionToRoute(&#x27;/edit-client/&#x27; + clientID);
-		},
-		/**
-		* handles the action called when a user clicks the Make Appointment button. 
-		* redirects to the client&#x27;s callendar
-		* @method newAppointment
-		* @param {int} clientID The ID of the client
-		*/
-		newAppointment: function(clientID){
-			console.log(clientID);
-			this.transitionToRoute(&quot;/new-calendar/&quot;).then(function(newRoute){
-				newRoute.controller.set(&quot;c_ID&quot;,clientID);
-			});
-		}
-	}
-});
 
+export default Ember.Controller.extend({
+    session: Ember.inject.service(),
+    ajax: Ember.inject.service(),
+    actions: {
+ /** 
+		* handles action called when user changes the option selected in the dropdown
+		* if option is Laboratory only display name input, else display both first and last name inputs
+		* @method showLastName
+		*/
+    showLastName: function(){
+        var type= document.getElementById(&#x27;type&#x27;);
+        var typeval = type.options[type.selectedIndex].text;
+
+        if (typeval === &quot;Laboratory&quot; ){
+        this.set(&#x27;model.laboratory&#x27;, false);
+        }
+        else{
+        this.set(&#x27;model.laboratory&#x27;, true);
+        }
+    },
+
+     /** 
+		* handles action called when user clicks create-contact-button
+		* sends a post to server after doing some checks for input content
+        * displays error message upon failure 
+        * briefly displays confirmation upon success and then transitions to search-contacts
+        * if input validation works and it gets to the request we disable the create button so that duplicate contacts
+        * cannot be created
+		* @method createContact
+		*/
+
+    createContact: function(){
+
+    //this is to get the value in the dropdown specifically
+    var type= document.getElementById(&#x27;type&#x27;);
+    var typeval = type.options[type.selectedIndex].text;
+    var self = this;
+ 
+
+    if (this.get(&#x27;first_name&#x27;) === undefined ) {
+        showAlert(&quot;First name cannot be blank&quot;, false);
+    }
+
+    else if ( this.get(&#x27;phoneNumber&#x27;) === undefined){
+        showAlert(&quot;Phone number cannot be blank&quot;, false);
+    }
+
+    else if ( this.get(&#x27;email&#x27;) === undefined){
+        showAlert(&quot;Email cannot be blank&quot;, false);
+    }
+
+    else if ( this.get(&#x27;address&#x27;) === undefined){
+        showAlert(&quot;Address cannot be blank&quot;, false);
+    }
+
+    else{
+
+    document.getElementById(&quot;create-contact-button&quot;).disabled = true; 
+  
+    var user = this.get(&#x27;ajax&#x27;).post(&#x27;/api/contacts&#x27;, {
+        type: &#x27;application/json&#x27;,
+        data: { contact: {
+          first_name: this.get(&#x27;first_name&#x27;),
+          last_name: this.get(&#x27;last_name&#x27;),
+          address: this.get(&#x27;address&#x27;),
+          email: this.get(&#x27;email&#x27;),
+          phone_number: this.get(&#x27;phoneNumber&#x27;),
+          fax_number: this.get(&#x27;faxNumber&#x27;),
+          contact_type: typeval
+        }
+    }
+    });
+
+        user.then(function(response){
+            if(response.success){
+                showAlert(&quot;Contact created!&quot;, true);
+                clearFields(self);
+                self.transitionToRoute(&#x27;search-contacts&#x27;);    
+            }
+        //this is error from server condition
+        }, function(response) {
+            if (response === false){
+					if (self.get(&#x27;session.isAuthenticated&#x27;)){
+						self.get(&#x27;session&#x27;).invalidate();
+					}
+				self.transitionToRoute(&#x27;/login&#x27;);
+			}
+            else {
+            showAlert(response.errors[0].title, false);
+            document.getElementById(&quot;create-contact-button&quot;).disabled = false; 
+            }
+        });
+}
+    }
+    }
+});
+   
+ /** 
+		* used to provide feedback to user on success condition as well as fail condition
+        * only displayed very briefly on success condition however before transition
+		* @method  showAlert
+		* @param {string} message The message to display in the alert
+        * @param {boolean} bool Determines if this is a warning alert or confirmation alert
+		*/   
+
+function showAlert(message, bool) {
+        if(bool){
+            Ember.$(&#x27;#alert_placeholder&#x27;).html(&#x27;&lt;div class=&quot;alert alert-success&quot;&gt;&lt;a class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;×&lt;/a&gt;&lt;span  id=&quot;statusGood&quot;&gt;&#x27;+message+&#x27;&lt;/span&gt;&lt;/div&gt;&#x27;);
+        }
+        else{
+             Ember.$(&#x27;#alert_placeholder&#x27;).html(&#x27;&lt;div class=&quot;alert alert-danger&quot; &gt;&lt;a class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;×&lt;/a&gt;&lt;span id=&quot;statusBad&quot;&gt;&#x27;+message+&#x27;&lt;/span&gt;&lt;/div&gt;&#x27;);
+        }
+ }
+
+ /** 
+		* used to clear the fields in the inputs of the form once a contact is created
+		* @method  showAlert
+		* @param {page} page The page to clear the fields of
+		*/
+function clearFields(page){
+	page.set(&#x27;first_name&#x27;, &#x27;&#x27;);
+	page.set(&#x27;last_name&#x27;, &#x27;&#x27;);
+	page.set(&#x27;phoneNumber&#x27;, &#x27;&#x27;);
+    page.set(&#x27;faxNumber&#x27;, &#x27;&#x27;);
+    page.set(&#x27;email&#x27;, &#x27;&#x27;);
+    page.set(&#x27;address&#x27;, &#x27;&#x27;);
+	
+}
     </pre>
 </div>
                     </div>
