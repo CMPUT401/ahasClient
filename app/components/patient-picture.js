@@ -1,11 +1,20 @@
 import Ember from 'ember';
 
+/**
+* Controller for the patient-picture component
+* @class PatientPictureComponentController
+*/
 export default Ember.Component.extend({
 	isVisible: false,
 	patientId:0 ,
 	ajax: Ember.inject.service(),
 	//picture: [],
 	router: Ember.inject.service('-routing'),
+	/**
+	* Controller for the patient-picture component when it first loads into the component
+	* It gets the data and tries to display it in the HBS
+	* @method init
+	*/
 	init(){
 		this._super(...arguments);
 		console.log("calling ajax for medcation List");
