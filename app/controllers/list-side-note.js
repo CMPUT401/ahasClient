@@ -4,8 +4,8 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
     actions: {
         getNote(model,note){
-            console.log(model);
-            this.transitionToRoute('/view-patient/'+model.patientID+'/view-medical-record/'+:model.recordID+'/notes/'+note);
+            //console.log(model);
+            this.transitionToRoute('/view-patient/'+model.patientID+'/view-medical-record/'+model.recordID+'/notes/'+note);
         },
         createSideNote: function(model){
         	console.log(model.patientID , model.recordID);

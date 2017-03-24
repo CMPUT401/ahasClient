@@ -15,6 +15,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 				Ember.run.later(function() 
 					{
        			 resolve({ id: JSON.stringify(data.patient.id).replace(/\"/g, ""),
+       			 			alerts: concatAlerts(data.generalAlerts,data.medicationAlerts),
 						   first_name: JSON.stringify(data.patient.first_name).replace(/\"/g, ""),
 						   last_name: JSON.stringify(data.patient.last_name).replace(/\"/g, ""),
 						   species: JSON.stringify(data.patient.species).replace(/\"/g, ""),
@@ -46,7 +47,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 
     		  });
 				console.log("status is " + JSON.stringify(data));
-				console.log('/api/client/' + JSON.stringify(param.patientID));
+				console.log("here" + JSON.stringify(data.patient.medicationAlerts))
 				//var self = this;
 			},
 			function(response){
@@ -63,3 +64,29 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 	
 
 });
+
+function concatAlerts(general,medical){
+	var both = [];
+	for(var i = 0; i < general.length; i++) {
+		var alert = general[i];
+		alert.id = alert.id;
+		alert.body = alert.body;
+		alert.end = "Forever";
+		both.push(alert);
+	}
+	for(var i = 0; i < medical.length; i++) {
+		var alert = medical[i];
+		alert.id = alert.id;
+		alert.body = alert.name;
+		alert.end = format(alert.reminder);
+		both.push(alert);
+	}
+	return(both);
+}
+
+function format(date){
+    var partialDate = new Date(date * 1000);
+    var day = (partialDate.getDate()<10?'0':'' )+ partialDate.getDate();
+    var month = (partialDate.getMonth()<10?'0':'' )+ (partialDate.getMonth()+1);
+    return(month+"/"+ day +"/"+partialDate.getFullYear());
+}

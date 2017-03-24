@@ -1,5 +1,20 @@
 
 	<h1>{{model.first_name}} {{model.lastName}}</h1>
+	<h3>ALERTS</h3>
+	<div class = "nameList" >
+    {{#ember-scrollable autoHide=false}}
+            {{#each model.alerts as |alert|}}
+                    <div class = "nameListItem" {{action "getNote" model alert.id}}>
+                            <p>{{alert.body}} </p>
+                            <p>Active till: {{alert.end}} </p>
+                    </div>
+
+            {{/each}}
+    {{/ember-scrollable}}
+    <br>
+    
+	</div>
+
 	<div class = "viewGroup">
 		<h3>Client's Basic Information</h3>
 		
@@ -86,5 +101,7 @@
 	<br>
 	<br>
 	{{history-container patientID=model.id}}
+
+
 
 {{outlet}}
