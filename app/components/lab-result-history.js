@@ -1,5 +1,9 @@
 import Ember from 'ember';
 
+/**
+* controller for the lab-result-history component. Make AJAX get request on init
+* @class LabResultHistoryComponentController
+*/
 export default Ember.Component.extend({
 	isVisible: false,
 	patientId: 0,
@@ -7,10 +11,19 @@ export default Ember.Component.extend({
 	labResultList: [],
 	router: Ember.inject.service('-routing'),
 	actions: {
+		/**
+		* Redirects to the lab result upload page when user clicks on the Upload Lab Result button
+		* @method uploadResult
+		*/
 		uploadResult: function(){
 			// console.log("making a new medical history entry");
 			this.get('router').transitionTo('lab-result-upload', [this.patientId]);
 		},
+		/**
+		* Redirects to the lab result page when the user clicks on it in the list
+		* @param {int} labResultID The ID of the lab result that has been clicked
+		* @method viewEntry
+		*/
 		viewEntry: function(labResultID){
 			console.log('view lab result ' + labResultID);
 			// TODO transition to lab result
@@ -44,6 +57,12 @@ export default Ember.Component.extend({
 	}
 });
 
+/**
+* deserializes the lab results after they have been received by the AJAX request. 
+* Filters picture_type for lab result. Also formats dates
+* @param {object} labResults the JSON object received
+* @method deserialAttributes
+*/
 function deserialAttributes(labResults){
 	var deserial = [];
 	for(var i = 0; i < labResults.length; i++) {

@@ -1,5 +1,9 @@
 import Ember from 'ember';
 
+/**
+* controller for the vaccine-history component. Make AJAX get request on init
+* @class VaccineHistoryComponentController
+*/
 export default Ember.Component.extend({
 	isVisible: false,
 	patientId:0 ,
@@ -7,6 +11,10 @@ export default Ember.Component.extend({
 	medicationList: [],
 	router: Ember.inject.service('-routing'),
 	actions:{
+		/**
+		* Redirects to the new medical entry page when user clicks on the New Entry button
+		* @method newEntry
+		*/
 		newEntry: function(){
            	this.get('router').transitionTo('medical-record', [this.patientId]);
 		},
@@ -18,6 +26,13 @@ export default Ember.Component.extend({
 				this.set('isVisible', true);
 			}
 		}.observes('isVisible'),
+		/**
+		* Redirects to the medical record page when the user clicks on it in the list. Medical record
+		* may be editable depending on the date
+		* @param {int} recordID The ID of the medical record that has been clicked
+		* @param {Date} date Date of the medical record. In Unix time.
+		* @method viewEntry
+		*/
 		viewEntry: function(recordID, date){
 			var check = checkUpdate(date);
 			if(check){
@@ -57,6 +72,12 @@ export default Ember.Component.extend({
 	}
 });
 
+/**
+* deserializes the vaccines after they have been received by the AJAX request. 
+* Filters med_type for vaccine.
+* @param {object} meds the JSON object received
+* @method deserialAttributes
+*/
 function deserialAttributes(meds){
 	var deserial = [];
 	for(var i = 0; i < meds.length; i++) {
@@ -85,6 +106,11 @@ function deserialAttributes(meds){
 	return(deserial);
 }
 
+/**
+* checks to see if the medical record can still be edited
+* @param {date} olddate Date of the medical record. In Unix time.
+* @method checkUpdate
+*/
 function checkUpdate(date){
 
 	var day = date[2] ;
