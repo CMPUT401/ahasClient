@@ -1,5 +1,11 @@
 import Ember from 'ember';
 
+/**
+* Controller for view-medical-record-editable
+* @class ViewMedicalRecordEditableController
+*/
+
+
 export default Ember.Controller.extend({
       medicine: [],
       vaccine: [],
@@ -7,6 +13,12 @@ export default Ember.Controller.extend({
       ajax: Ember.inject.service(),
       actions: {
 
+ /** 
+		* handles action called when user clicks update-medical-record-button
+		* makes a put to the server with all updated information
+		* @method createMedicalRecord
+        * @param {id} patientid The id of the patient whose medical record we are updating
+		*/
           updateMedicalRecord(id){
 
              var self = this;
@@ -118,14 +130,22 @@ export default Ember.Controller.extend({
 				});
 
         },
-     // checks all of the N's and the BAR
+    /** 
+	* used to check all normal buttons on the page
+    * which is all N's and the BAR
+	* @method checkAll
+	*/  
      checkAll(){
           var normals = document.getElementsByClassName("norm");
           for (var i=0; i<normals.length; i++){
               normals[i].checked = true;
           }
       }, 
-      // unchecks all of N's and BAR
+      /** 
+	* used to uncheck all normal buttons on the page
+    * which is all N's and the BAR
+	* @method uncheckAll
+	*/  
       uncheckAll(){
           var normals = document.getElementsByClassName("norm");
           for (var i=0; i<normals.length; i++){
@@ -136,7 +156,13 @@ export default Ember.Controller.extend({
     }
 });
 
-//gathers all of the medications from the medication inputs and sorts them into an appropriate list to be sent to server
+/** 
+		* used to gather the objects we will send in request
+        * delegates to formatReminders to handle each type of reminder
+		* @method  gatherMedications
+        * @param {controller} self the controller for medical-record, used to store and gather attributes of medication lists
+        * @param {id} id the id of the patient to include in the objects we are sending
+		*/  
 function gatherMedications(id, self){
     var medications = [];
     var formattedMedicine = formatReminders(self.get('model.medicine'));
@@ -149,6 +175,11 @@ function gatherMedications(id, self){
     return(medications);
     
 }
+/** 
+		* used to format the objects we will send in request
+		* @method   formatReminders
+        * @param {array} items the array of reminders to be formatted
+		*/  
 
 function formatReminders(items){
 
@@ -170,13 +201,25 @@ function formatReminders(items){
     return(newList);
 
 }
-
+ /** 
+		* used to format the date to we will send in request
+        * converts from format in datepicker to unix time in seconds
+		* @method   formatDate
+        * @param {date} date the date to be formatted
+		*/ 
 function formatDate(date){
   var half = new Date(date);
   var formatted = Math.floor(half.getTime() / 1000);
   return(formatted);
 }
 
+/** 
+		* used to provide feedback to user on success condition as well as fail condition
+        * only displayed very briefly on success condition however before transition
+		* @method  showAlert
+		* @param {string} message The message to display in the alert
+        * @param {boolean} bool Determines if this is a warning alert or confirmation alert
+		*/  
 
 function showAlert(message, bool) {
         if(bool){

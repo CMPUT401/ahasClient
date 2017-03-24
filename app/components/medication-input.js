@@ -14,7 +14,7 @@ export default Ember.Component.extend({
 		* @method update
 		*/
 		update: function(){
-			this.update(this.index, this.name, this.date);
+			this.update(this.index, this.name, this.reminder);
 		},
 	/** 
 		* Set delete action to delete callback passed in
