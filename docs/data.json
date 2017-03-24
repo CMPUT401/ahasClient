@@ -2,7 +2,7 @@
     "project": {
         "name": "ahasweb",
         "description": "Small description for ahasweb goes here",
-        "version": "0.0.0.06026420"
+        "version": "0.0.0.fa310ca0"
     },
     "files": {
         "app/authenticators/jwt.js": {
@@ -50,11 +50,29 @@
             "fors": {},
             "namespaces": {}
         },
+        "app/components/medications-container.js": {
+            "name": "app/components/medications-container.js",
+            "modules": {},
+            "classes": {
+                "MedicationInputContainerComponentController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "app/components/patient-history.js": {
             "name": "app/components/patient-history.js",
             "modules": {},
             "classes": {
                 "patientHistoryComponentController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/components/patient-picture.js": {
+            "name": "app/components/patient-picture.js",
+            "modules": {},
+            "classes": {
+                "PatientPictureComponentController": 1
             },
             "fors": {},
             "namespaces": {}
@@ -140,12 +158,37 @@
             "fors": {},
             "namespaces": {}
         },
+        "app/controllers/list-side-note.js": {
+            "name": "app/controllers/list-side-note.js",
+            "modules": {},
+            "classes": {
+                "List-Side-Note Controller": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "app/controllers/login.js": {
             "name": "app/controllers/login.js",
             "modules": {},
             "classes": {
                 "LoginController": 1
             },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/medical-record.js": {
+            "name": "app/controllers/medical-record.js",
+            "modules": {},
+            "classes": {
+                "MedicalRecordController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/new-calendar.js": {
+            "name": "app/controllers/new-calendar.js",
+            "modules": {},
+            "classes": {},
             "fors": {},
             "namespaces": {}
         },
@@ -158,11 +201,110 @@
             "fors": {},
             "namespaces": {}
         },
+        "app/controllers/new-patient.js": {
+            "name": "app/controllers/new-patient.js",
+            "modules": {},
+            "classes": {
+                "new-patient controller": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/new-side-note.js": {
+            "name": "app/controllers/new-side-note.js",
+            "modules": {},
+            "classes": {
+                "new side note Controller": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "app/controllers/radiography-upload.js": {
             "name": "app/controllers/radiography-upload.js",
             "modules": {},
             "classes": {
                 "radiographyUploadController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/search-contacts.js": {
+            "name": "app/controllers/search-contacts.js",
+            "modules": {},
+            "classes": {
+                "SearchContactController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/search-patient.js": {
+            "name": "app/controllers/search-patient.js",
+            "modules": {},
+            "classes": {
+                "search-patient Controller": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/upload-patient.js": {
+            "name": "app/controllers/upload-patient.js",
+            "modules": {},
+            "classes": {
+                "upload patient controleler": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/view-appointment.js": {
+            "name": "app/controllers/view-appointment.js",
+            "modules": {},
+            "classes": {
+                "view appointment controller": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/view-calendar.js": {
+            "name": "app/controllers/view-calendar.js",
+            "modules": {},
+            "classes": {
+                "new-calendar Controller": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/view-contact.js": {
+            "name": "app/controllers/view-contact.js",
+            "modules": {},
+            "classes": {
+                "ViewContactController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/view-medical-record-editable.js": {
+            "name": "app/controllers/view-medical-record-editable.js",
+            "modules": {},
+            "classes": {
+                "ViewMedicalRecordEditableController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/view-medical-record.js": {
+            "name": "app/controllers/view-medical-record.js",
+            "modules": {},
+            "classes": {
+                "ViewMedicalRecordController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app/controllers/view-patient.js": {
+            "name": "app/controllers/view-patient.js",
+            "modules": {},
+            "classes": {
+                "view-patient": 1
             },
             "fors": {},
             "namespaces": {}
@@ -230,6 +372,18 @@
             "line": 3,
             "description": "controller for the medication-input component\nSimple container to capture state from entry boxes"
         },
+        "MedicationInputContainerComponentController": {
+            "name": "MedicationInputContainerComponentController",
+            "shortname": "MedicationInputContainerComponentController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/components/medications-container.js",
+            "line": 3,
+            "description": "controller for the medication-container component\nThis component dynamically renders new medications entries"
+        },
         "patientHistoryComponentController": {
             "name": "patientHistoryComponentController",
             "shortname": "patientHistoryComponentController",
@@ -241,6 +395,18 @@
             "file": "app/components/patient-history.js",
             "line": 3,
             "description": "controller for the patient-history component. Make AJAX get request on init. \nShows the entire medical history for the patient in chronological order."
+        },
+        "PatientPictureComponentController": {
+            "name": "PatientPictureComponentController",
+            "shortname": "PatientPictureComponentController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/components/patient-picture.js",
+            "line": 3,
+            "description": "Controller for the patient-picture component"
         },
         "RadiographyHistoryComponentController": {
             "name": "RadiographyHistoryComponentController",
@@ -312,7 +478,7 @@
             "extension_for": [],
             "file": "app/controllers/create-user.js",
             "line": 4,
-            "description": "Controller for creat-user"
+            "description": "Controller for create-user"
         },
         "EditClientController": {
             "name": "EditClientController",
@@ -350,6 +516,18 @@
             "line": 3,
             "description": "Controller for lab-result-upload"
         },
+        "List-Side-Note Controller": {
+            "name": "List-Side-Note Controller",
+            "shortname": "List-Side-Note Controller",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/list-side-note.js",
+            "line": 2,
+            "description": "Controller for the list side note page\nThis shows all the side notes related to that specific patient, and medical record"
+        },
         "LoginController": {
             "name": "LoginController",
             "shortname": "LoginController",
@@ -361,6 +539,30 @@
             "file": "app/controllers/login.js",
             "line": 3,
             "description": "Controller for login"
+        },
+        "MedicalRecordController": {
+            "name": "MedicalRecordController",
+            "shortname": "MedicalRecordController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/medical-record.js",
+            "line": 3,
+            "description": "Controller for medical-record"
+        },
+        "new-calendar Controller": {
+            "name": "new-calendar Controller",
+            "shortname": "new-calendar Controller",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/view-calendar.js",
+            "line": 2,
+            "description": "Controller for the new calendar page\nThis shows all of the appointments scheduled and if one clicks on a \nappointment, it will transition them to a view appointment page"
         },
         "NewClientController": {
             "name": "NewClientController",
@@ -374,6 +576,30 @@
             "line": 3,
             "description": "Controller for new-client"
         },
+        "new-patient controller": {
+            "name": "new-patient controller",
+            "shortname": "new-patient controller",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/new-patient.js",
+            "line": 2,
+            "description": "Controller for the newpatient page\nThis posts a request to the back end for adding a new-patient"
+        },
+        "new side note Controller": {
+            "name": "new side note Controller",
+            "shortname": "new side note Controller",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/new-side-note.js",
+            "line": 2,
+            "description": "Controller for the  new side note page\nThis shows all the side notes options for user to post to backend"
+        },
         "radiographyUploadController": {
             "name": "radiographyUploadController",
             "shortname": "radiographyUploadController",
@@ -385,6 +611,102 @@
             "file": "app/controllers/radiography-upload.js",
             "line": 2,
             "description": "Controller for radiography-upload"
+        },
+        "SearchContactController": {
+            "name": "SearchContactController",
+            "shortname": "SearchContactController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/search-contacts.js",
+            "line": 3,
+            "description": "Controller for search-contacts"
+        },
+        "search-patient Controller": {
+            "name": "search-patient Controller",
+            "shortname": "search-patient Controller",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/search-patient.js",
+            "line": 2,
+            "description": "Controller for the search patient\nThis shows all the patients in the backend"
+        },
+        "upload patient controleler": {
+            "name": "upload patient controleler",
+            "shortname": "upload patient controleler",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/upload-patient.js",
+            "line": 2,
+            "description": "Controller for the uploadpatient page\nCAN uploadpatients on htis page"
+        },
+        "view appointment controller": {
+            "name": "view appointment controller",
+            "shortname": "view appointment controller",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/view-appointment.js",
+            "line": 2,
+            "description": "Controller for the view appointment page\nDoes nothing inc ontroller"
+        },
+        "ViewContactController": {
+            "name": "ViewContactController",
+            "shortname": "ViewContactController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/view-contact.js",
+            "line": 3,
+            "description": "Controller for view-contact"
+        },
+        "ViewMedicalRecordEditableController": {
+            "name": "ViewMedicalRecordEditableController",
+            "shortname": "ViewMedicalRecordEditableController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/view-medical-record-editable.js",
+            "line": 3,
+            "description": "Controller for view-medical-record-editable"
+        },
+        "ViewMedicalRecordController": {
+            "name": "ViewMedicalRecordController",
+            "shortname": "ViewMedicalRecordController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/view-medical-record.js",
+            "line": 3,
+            "description": "Controller for view-medical-record"
+        },
+        "view-patient": {
+            "name": "view-patient",
+            "shortname": "view-patient",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "app/controllers/view-patient.js",
+            "line": 2,
+            "description": "Controller for the view patients page\nThis shows all the thisngs required for patient\\\nonly thing needed was to have a button to take you to upload a picture"
         }
     },
     "elements": {},
@@ -537,6 +859,70 @@
             "class": "MedicationHistoryComponentController"
         },
         {
+            "file": "app/components/medication-input.js",
+            "line": 11,
+            "description": "Set update action to delete callback passed in\nhandles updating just one medication input",
+            "itemtype": "method",
+            "name": "update",
+            "class": "MedicationInputComponentController"
+        },
+        {
+            "file": "app/components/medication-input.js",
+            "line": 19,
+            "description": "Set delete action to delete callback passed in\nhandles deleting just one medication input",
+            "itemtype": "method",
+            "name": "delete",
+            "class": "MedicationInputComponentController"
+        },
+        {
+            "file": "app/components/medications-container.js",
+            "line": 10,
+            "description": "Push an empty object to medicationList",
+            "itemtype": "method",
+            "name": "addMedication",
+            "class": "MedicationInputContainerComponentController"
+        },
+        {
+            "file": "app/components/medications-container.js",
+            "line": 21,
+            "description": "On focus change from either element update the entire entry",
+            "itemtype": "method",
+            "name": "updateMed",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "The index within the medicationList for the element to be updated",
+                    "type": "Int"
+                },
+                {
+                    "name": "name",
+                    "description": "The name for the medication to update",
+                    "type": "String"
+                },
+                {
+                    "name": "date",
+                    "description": "The date for the medication to update",
+                    "type": "Date"
+                }
+            ],
+            "class": "MedicationInputContainerComponentController"
+        },
+        {
+            "file": "app/components/medications-container.js",
+            "line": 32,
+            "description": "Remove current medication from the container",
+            "itemtype": "method",
+            "name": "deleteMed",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "The index within the medicationList for the element to be removed",
+                    "type": "Int"
+                }
+            ],
+            "class": "MedicationInputContainerComponentController"
+        },
+        {
             "file": "app/components/patient-history.js",
             "line": 26,
             "description": "Redirects to the medical record page when the user clicks on it in the list. Medical record\nmay be editable depending on the date",
@@ -600,6 +986,14 @@
             "itemtype": "method",
             "name": "format",
             "class": "patientHistoryComponentController"
+        },
+        {
+            "file": "app/components/patient-picture.js",
+            "line": 13,
+            "description": "Controller for the patient-picture component when it first loads into the component\nIt gets the data and tries to display it in the HBS",
+            "itemtype": "method",
+            "name": "init",
+            "class": "PatientPictureComponentController"
         },
         {
             "file": "app/components/radiography-history.js",
@@ -852,16 +1246,16 @@
         {
             "file": "app/controllers/create-contact.js",
             "line": 122,
-            "description": "used to clear the fields in the inputs of the form once a contact is created",
-            "itemtype": "method",
-            "name": "showAlert",
+            "description": "clears the page's input fields",
             "params": [
                 {
                     "name": "page",
-                    "description": "The page to clear the fields of",
-                    "type": "Page"
+                    "description": "the controller",
+                    "type": "Object"
                 }
             ],
+            "itemtype": "method",
+            "name": "clearFields",
             "class": "CreateContactController"
         },
         {
@@ -996,6 +1390,36 @@
             "class": "labResultUploadController"
         },
         {
+            "file": "app/controllers/list-side-note.js",
+            "line": 9,
+            "description": "Redirects to a new fresh page of notes for creation",
+            "itemtype": "method",
+            "name": "getNote",
+            "params": [
+                {
+                    "name": "model",
+                    "description": "is the model passed in, note is the note number",
+                    "type": "Object, int"
+                }
+            ],
+            "class": "List-Side-Note Controller"
+        },
+        {
+            "file": "app/controllers/list-side-note.js",
+            "line": 18,
+            "description": "Redirects to the the view of the side notes individual",
+            "itemtype": "method",
+            "name": "createSideNote",
+            "params": [
+                {
+                    "name": "the",
+                    "description": "model first passed in through the route",
+                    "type": "Object"
+                }
+            ],
+            "class": "List-Side-Note Controller"
+        },
+        {
             "file": "app/controllers/login.js",
             "line": 12,
             "description": "handles action called when user clicks the login-button\ndelegates for input checking and if those succeed it uses the authenticator in jwt.js to authenticate",
@@ -1039,6 +1463,159 @@
             "class": "LoginController"
         },
         {
+            "file": "app/controllers/medical-record.js",
+            "line": 32,
+            "description": "handles action called when user clicks create-medical-record-button\ngathers all dropdown vals and makes sure that summary and signature are not empty\nif this condition passes it makes a post to the server",
+            "itemtype": "method",
+            "name": "createMedicalRecord",
+            "class": "MedicalRecordController"
+        },
+        {
+            "file": "app/controllers/medical-record.js",
+            "line": 167,
+            "description": "used to clear the signature",
+            "itemtype": "method",
+            "name": "clearSignature",
+            "class": "MedicalRecordController"
+        },
+        {
+            "file": "app/controllers/medical-record.js",
+            "line": 174,
+            "description": "used to check all normal buttons on the page\nwhich is all N's and the BAR",
+            "itemtype": "method",
+            "name": "checkAll",
+            "class": "MedicalRecordController"
+        },
+        {
+            "file": "app/controllers/medical-record.js",
+            "line": 185,
+            "description": "used to uncheck all normal buttons on the page\nwhich is all N's and the BAR",
+            "itemtype": "method",
+            "name": "uncheckAll",
+            "class": "MedicalRecordController"
+        },
+        {
+            "file": "app/controllers/medical-record.js",
+            "line": 200,
+            "description": "used to provide feedback to user on success condition as well as fail condition\nonly displayed very briefly on success condition however before transition",
+            "itemtype": "method",
+            "name": "showAlert",
+            "params": [
+                {
+                    "name": "message",
+                    "description": "The message to display in the alert",
+                    "type": "String"
+                },
+                {
+                    "name": "bool",
+                    "description": "Determines if this is a warning alert or confirmation alert",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "MedicalRecordController"
+        },
+        {
+            "file": "app/controllers/medical-record.js",
+            "line": 217,
+            "description": "used to gather the signature to send in request\nfinds the only canvas element on the page and then converts to base 64 img to send",
+            "itemtype": "method",
+            "name": "exportSignature",
+            "class": "MedicalRecordController"
+        },
+        {
+            "file": "app/controllers/medical-record.js",
+            "line": 231,
+            "description": "used to gather the objects we will send in request\ndelegates to formatReminders to handle each type of reminder",
+            "itemtype": "method",
+            "name": "gatherMedications",
+            "params": [
+                {
+                    "name": "self",
+                    "description": "the controller for medical-record, used to store and gather attributes of medication lists",
+                    "type": "Controller"
+                },
+                {
+                    "name": "id",
+                    "description": "the id of the patient to include in the objects we are sending",
+                    "type": "Id"
+                }
+            ],
+            "class": "MedicalRecordController"
+        },
+        {
+            "file": "app/controllers/medical-record.js",
+            "line": 252,
+            "description": "used to format the objects we will send in request",
+            "itemtype": "method",
+            "name": "formatReminders",
+            "params": [
+                {
+                    "name": "items",
+                    "description": "the array of reminders to be formatted",
+                    "type": "Array"
+                },
+                {
+                    "name": "id",
+                    "description": "the id of the patient to include in the objects we are sending",
+                    "type": "Id"
+                }
+            ],
+            "class": "MedicalRecordController"
+        },
+        {
+            "file": "app/controllers/medical-record.js",
+            "line": 280,
+            "description": "used to format the date to we will send in request\nconverts from format in datepicker to unix time in seconds",
+            "itemtype": "method",
+            "name": "formatDate",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "the date to be formatted",
+                    "type": "Date"
+                }
+            ],
+            "class": "MedicalRecordController"
+        },
+        {
+            "file": "app/controllers/new-calendar.js",
+            "line": 12,
+            "description": "Does a post on the backend with the fields passed in",
+            "itemtype": "method",
+            "name": "submitNewCalendar",
+            "class": "new-calendar Controller"
+        },
+        {
+            "file": "app/controllers/new-calendar.js",
+            "line": 57,
+            "description": "Should show up with an alert if something went wrong",
+            "itemtype": "method",
+            "name": "showAlert",
+            "params": [
+                {
+                    "name": "UNKNOWN",
+                    "description": "",
+                    "type": "?,bool"
+                }
+            ],
+            "class": "new-calendar Controller"
+        },
+        {
+            "file": "app/controllers/new-calendar.js",
+            "line": 70,
+            "description": "Formate Date, changes the date from unix time to human readable one",
+            "itemtype": "method",
+            "name": "formatDate",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "in unix, time in time",
+                    "type": "Date, object"
+                }
+            ],
+            "class": "new-calendar Controller"
+        },
+        {
             "file": "app/controllers/new-client.js",
             "line": 12,
             "description": "makes an ajax POST request to save the new client",
@@ -1062,6 +1639,22 @@
             "class": "NewClientController"
         },
         {
+            "file": "app/controllers/new-patient.js",
+            "line": 13,
+            "description": "Controller for the submitnewpatient\nTHis method does a post on the back end to create a new patient",
+            "itemtype": "method",
+            "name": "submitNewPatient()",
+            "class": "new-patient controller"
+        },
+        {
+            "file": "app/controllers/new-side-note.js",
+            "line": 14,
+            "description": "Controller for the submitnewnote\nTHis method does a post on the back end to create a new side note",
+            "itemtype": "method",
+            "name": "submitNewNote()",
+            "class": "new side note Controller"
+        },
+        {
             "file": "app/controllers/radiography-upload.js",
             "line": 19,
             "description": "makes an ajax POST request to save the radiography",
@@ -1075,7 +1668,242 @@
             "itemtype": "method",
             "name": "sendRadiographyResults",
             "class": "radiographyUploadController"
+        },
+        {
+            "file": "app/controllers/search-contacts.js",
+            "line": 12,
+            "description": "action for clicking on a contact in the displayed list\ntakes us to the view-contact page for that contact",
+            "itemtype": "method",
+            "name": "getContact",
+            "params": [
+                {
+                    "name": "contact",
+                    "description": "The contact id for the contact we wish to view",
+                    "type": "Id"
+                }
+            ],
+            "class": "SearchContactController"
+        },
+        {
+            "file": "app/controllers/search-contacts.js",
+            "line": 23,
+            "description": "action for clicking on te search-contacts-button or pressing enter while in the searchbar\nif input is none we reset the search\nelse we filter the displayed lists based on input",
+            "itemtype": "method",
+            "name": "filterContact",
+            "class": "SearchContactController"
+        },
+        {
+            "file": "app/controllers/search-contacts.js",
+            "line": 52,
+            "description": "used to filter the lists for searching for contacts\nsets model attributes to the list to display which is contructed\nfrom objects in the full model list which match the input criteria",
+            "itemtype": "method",
+            "name": "filter",
+            "params": [
+                {
+                    "name": "input",
+                    "description": "The searchbar input",
+                    "type": "String"
+                },
+                {
+                    "name": "model",
+                    "description": "The model for this controller",
+                    "type": "Model"
+                },
+                {
+                    "name": "controller",
+                    "description": "the search-contact controller",
+                    "type": "Self"
+                }
+            ],
+            "class": "SearchContactController"
+        },
+        {
+            "file": "app/controllers/search-patient.js",
+            "line": 11,
+            "description": "Redirects to a patient",
+            "itemtype": "method",
+            "name": "getPatient",
+            "params": [
+                {
+                    "name": "patient",
+                    "description": "id from model passed in",
+                    "type": "Int"
+                }
+            ],
+            "class": "search-patient Controller"
+        },
+        {
+            "file": "app/controllers/search-patient.js",
+            "line": 20,
+            "description": "Filters patient search bar",
+            "itemtype": "method",
+            "name": "filterPatient",
+            "class": "search-patient Controller"
+        },
+        {
+            "file": "app/controllers/search-patient.js",
+            "line": 36,
+            "description": "Filters patient search bar",
+            "itemtype": "method",
+            "name": "filterPatient",
+            "class": "search-patient Controller"
+        },
+        {
+            "file": "app/controllers/view-contact.js",
+            "line": 11,
+            "description": "handles action called when user clicks edit-contact-button\ntransitions to edit-contact for that specific contact",
+            "itemtype": "method",
+            "name": "gotoEditContact",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "The id to use to transition",
+                    "type": "String"
+                }
+            ],
+            "class": "ViewContactController"
+        },
+        {
+            "file": "app/controllers/view-medical-record-editable.js",
+            "line": 16,
+            "description": "handles action called when user clicks update-medical-record-button\nmakes a put to the server with all updated information",
+            "itemtype": "method",
+            "name": "createMedicalRecord",
+            "params": [
+                {
+                    "name": "patientid",
+                    "description": "The id of the patient whose medical record we are updating",
+                    "type": "Id"
+                }
+            ],
+            "class": "ViewMedicalRecordEditableController"
+        },
+        {
+            "file": "app/controllers/view-medical-record-editable.js",
+            "line": 133,
+            "description": "used to check all normal buttons on the page\nwhich is all N's and the BAR",
+            "itemtype": "method",
+            "name": "checkAll",
+            "class": "ViewMedicalRecordEditableController"
+        },
+        {
+            "file": "app/controllers/view-medical-record-editable.js",
+            "line": 144,
+            "description": "used to uncheck all normal buttons on the page\nwhich is all N's and the BAR",
+            "itemtype": "method",
+            "name": "uncheckAll",
+            "class": "ViewMedicalRecordEditableController"
+        },
+        {
+            "file": "app/controllers/view-medical-record-editable.js",
+            "line": 159,
+            "description": "used to gather the objects we will send in request\ndelegates to formatReminders to handle each type of reminder",
+            "itemtype": "method",
+            "name": "gatherMedications",
+            "params": [
+                {
+                    "name": "self",
+                    "description": "the controller for medical-record, used to store and gather attributes of medication lists",
+                    "type": "Controller"
+                },
+                {
+                    "name": "id",
+                    "description": "the id of the patient to include in the objects we are sending",
+                    "type": "Id"
+                }
+            ],
+            "class": "ViewMedicalRecordEditableController"
+        },
+        {
+            "file": "app/controllers/view-medical-record-editable.js",
+            "line": 178,
+            "description": "used to format the objects we will send in request",
+            "itemtype": "method",
+            "name": "formatReminders",
+            "params": [
+                {
+                    "name": "items",
+                    "description": "the array of reminders to be formatted",
+                    "type": "Array"
+                }
+            ],
+            "class": "ViewMedicalRecordEditableController"
+        },
+        {
+            "file": "app/controllers/view-medical-record-editable.js",
+            "line": 204,
+            "description": "used to format the date to we will send in request\nconverts from format in datepicker to unix time in seconds",
+            "itemtype": "method",
+            "name": "formatDate",
+            "params": [
+                {
+                    "name": "date",
+                    "description": "the date to be formatted",
+                    "type": "Date"
+                }
+            ],
+            "class": "ViewMedicalRecordEditableController"
+        },
+        {
+            "file": "app/controllers/view-medical-record-editable.js",
+            "line": 216,
+            "description": "used to provide feedback to user on success condition as well as fail condition\nonly displayed very briefly on success condition however before transition",
+            "itemtype": "method",
+            "name": "showAlert",
+            "params": [
+                {
+                    "name": "message",
+                    "description": "The message to display in the alert",
+                    "type": "String"
+                },
+                {
+                    "name": "bool",
+                    "description": "Determines if this is a warning alert or confirmation alert",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "ViewMedicalRecordEditableController"
+        },
+        {
+            "file": "app/controllers/view-medical-record.js",
+            "line": 10,
+            "description": "handles action called when user clicks side-note-button\ntransitions to view-patient/:id/view-medical-record/:id/notes which is notes \nspecific to one patient from one client",
+            "itemtype": "method",
+            "name": "sideNotes",
+            "params": [
+                {
+                    "name": "model",
+                    "description": "the model for this route and is passed in on action",
+                    "type": "Object"
+                }
+            ],
+            "class": "ViewMedicalRecordController"
         }
     ],
-    "warnings": []
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: params with param",
+            "line": " app/controllers/list-side-note.js:9"
+        },
+        {
+            "message": "replacing incorrect tag: params with param",
+            "line": " app/controllers/list-side-note.js:18"
+        },
+        {
+            "message": "replacing incorrect tag: params with param",
+            "line": " app/controllers/new-calendar.js:57"
+        },
+        {
+            "message": "param name missing: {?,bool}",
+            "line": " app/controllers/new-calendar.js:57"
+        },
+        {
+            "message": "replacing incorrect tag: params with param",
+            "line": " app/controllers/new-calendar.js:70"
+        },
+        {
+            "message": "replacing incorrect tag: params with param",
+            "line": " app/controllers/search-patient.js:11"
+        }
+    ]
 }

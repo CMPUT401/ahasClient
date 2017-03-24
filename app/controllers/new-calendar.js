@@ -1,10 +1,18 @@
 import Ember from 'ember';
-
+/**
+* Controller for the new calendar page
+* This shows all of the appointments stuff for the user to enter
+* @class new-calendar Controller
+*/
 export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
 	session: Ember.inject.service(),
 	actions: 
 	{
+		/**
+        * Does a post on the backend with the fields passed in
+        * @method submitNewCalendar
+        */
 		submitNewCalendar()
 		{
 			console.log(JSON.stringify(formatDate(document.getElementById("appointmentStart").value, this.get('appointmentStartTime'))));
@@ -46,7 +54,11 @@ export default Ember.Controller.extend({
 }
 	
 });
-
+		/**
+        * Should show up with an alert if something went wrong
+        * @method showAlert
+        * @params {?,bool} 
+        */
  function showAlert(message, bool) {
         if(bool){
             Ember.$('#alert_placeholder').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
@@ -55,7 +67,11 @@ export default Ember.Controller.extend({
              Ember.$('#alert_placeholder').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
         }
  }
-
+/**
+* Formate Date, changes the date from unix time to human readable one
+* @method formatDate
+* @params {date, object} date in unix, time in time
+*/
 
 function formatDate(date,time){
 	var splitdate = date.split("/");

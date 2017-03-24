@@ -1,5 +1,9 @@
 import Ember from 'ember';
-
+/**
+* Controller for the  new side note page
+* This shows all the side notes options for user to post to backend
+* @class new side note Controller
+*/
 export default Ember.Controller.extend({
 	
 	//currently commented out because backend isn't implemented
@@ -7,6 +11,11 @@ export default Ember.Controller.extend({
 	session: Ember.inject.service(),
 	actions: 
 	{
+				/**
+	* Controller for the submitnewnote
+	* THis method does a post on the back end to create a new side note
+	* @method submitNewNote()
+	*/
 		submitNewNote()
 		{
 			console.log(this.get('r_ID'));
