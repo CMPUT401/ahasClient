@@ -5,6 +5,9 @@ export default Ember.Controller.extend({
          newEntry(patientId){
 			this.transitionToRoute("/view-patient/"+patientId+"/medical-record");
 		},
+        uploadPicture(patientID){
+            this.transitionToRoute("/upload-patient/"+patientID);
+        },
         viewMedicalRecords(patient){ //want to be passed a date here from whatever med rec was clicked viewMedicalRecords(patient, date){
            // if ( checkUpdate(date) ){
             //    this.transitionToRoute('/view-patient/'+patient+'/view-medical-record-editable/1');

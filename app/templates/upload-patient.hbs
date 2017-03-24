@@ -1,1 +1,14 @@
-{{outlet}}
+<form {{action "sendPatientPortrait" model.patientId on="submit"}}>
+	<div class = "panel panel-default">
+		{{#file-picker fileLoaded="fileLoaded" readAs="readAsDataURL"}}
+			<div class = "fileDropZone">
+				Drag here or click to upload a file
+			</div>
+			{{/file-picker}}
+	</div>
+		
+	<div class = "fileDatePicker">
+		{{bootstrap-datepicker id='datePicker' value=datePicker autoclose=true placeholder="Date of Picture" class="form-control" required=true}}
+	</div>
+	<button type = "submit" id = "savePicture" class = "saveFileButton">Save</button>
+</form>
