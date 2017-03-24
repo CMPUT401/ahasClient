@@ -20,7 +20,7 @@ export default Ember.Component.extend({
 		console.log("calling ajax for medcation List");
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-			this.get('ajax').request('api/patients/' + this.modelID.id + '/images/' + this.modelID.imageid
+			this.get('ajax').request('api/patients/' + this.patientId+ '/images/' + this.modelID.imageid
 				).then(function(data){
 					console.log("data is" + JSON.stringify(data));
 					Ember.run(function(){
