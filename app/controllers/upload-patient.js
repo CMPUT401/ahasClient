@@ -1,5 +1,9 @@
 import Ember from 'ember';
-
+/**
+* Controller for the uploadpatient page
+* CAN uploadpatients on htis page
+* @class upload patient controleler
+*/
 export default Ember.Controller.extend({
 	loadedFile: null,
 	session: Ember.inject.service(),
