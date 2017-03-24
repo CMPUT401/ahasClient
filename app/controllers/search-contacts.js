@@ -1,12 +1,32 @@
 import Ember from 'ember';
 
+/**
+* Controller for search-contacts
+* @class SearchContactController
+*/
+
 
 export default Ember.Controller.extend({
     actions: {
+
+        /** 
+		* action for clicking on a contact in the displayed list
+        * takes us to the view-contact page for that contact
+		* @method getContact
+		* @param {id} contact The contact id for the contact we wish to view
+		*/
+        
         getContact(contact){
-            console.log("we get here", contact);
+
             this.transitionToRoute('/view-contact/'+contact);
         },
+         /** 
+		* action for clicking on te search-contacts-button or pressing enter while in the searchbar
+        * if input is none we reset the search
+        * else we filter the displayed lists based on input
+		* @method filterContact
+        */
+
         filterContact(){
             var input = document.getElementById('search-bar').value.trim();
             if (input === "" || input === undefined ){
@@ -29,11 +49,19 @@ export default Ember.Controller.extend({
         }
     }
 });
+ /** 
+		* used to filter the lists for searching for contacts
+        * sets model attributes to the list to display which is contructed
+        * from objects in the full model list which match the input criteria
+		* @method filter
+		* @param {string} input The searchbar input
+        * @param {model} model The model for this controller
+        * @param {self} controller the search-contact controller
+		*/   
 
 function filter(input, model, self){
 
     var reg = new RegExp( input );
-    console.log(reg);
     
     //filter volunteers
     var resultVolunteer = [];

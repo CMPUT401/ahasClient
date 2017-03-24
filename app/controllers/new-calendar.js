@@ -38,7 +38,7 @@ export default Ember.Controller.extend({
 			ajaxPost.then(function(data){
 				//console.log("status is " + model.clientid);
 				showAlert("Appointment created!", true);
-				self.transitionToRoute('view-calendar')
+				self.transitionToRoute('view-calendar');
 			},
 			function(data){
 				document.getElementById("create-appointment-button").disabled = false;

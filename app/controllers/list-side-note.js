@@ -23,8 +23,8 @@ export default Ember.Controller.extend({
         createSideNote: function(model){
         	console.log(model.patientID , model.recordID);
                 this.transitionToRoute("/new-side-note/").then(function(newRoute){
-                newRoute.controller.set("r_ID",model.recordID),
-                newRoute.controller.set("p_ID",model.patientID)
+                newRoute.controller.set("r_ID",model.recordID);
+                newRoute.controller.set("p_ID",model.patientID);
             });
         }
     }

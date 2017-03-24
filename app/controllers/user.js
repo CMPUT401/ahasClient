@@ -9,6 +9,7 @@ export default Ember.Controller.extend({
             // Empty functions
         },
         deleteUser: function () {
+             var self = this;
             let deleteButton = document.getElementById("delete");
             deleteButton.disable = true;
             // Empty functions

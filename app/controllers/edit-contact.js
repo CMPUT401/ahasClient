@@ -1,8 +1,19 @@
 import Ember from 'ember';
 
+
+/**
+* Controller for client-info
+* @class EditContactController
+*/
+
 export default Ember.Controller.extend({
     ajax: Ember.inject.service(),
     actions:{
+        /** 
+		* handles action called when user changes the option selected in the dropdown
+		* if option is Laboratory only display name input, else display both first and last name inputs
+		* @method showLastName
+		*/
       showLastName: function(){
         var type= document.getElementById('type');
         var typeval = type.options[type.selectedIndex].text;
@@ -33,6 +44,14 @@ export default Ember.Controller.extend({
         }
   
     },
+    /** 
+		* handles action called when user clicks done-edit-button
+        * sends a put request to the server with all values of input elements on this page
+		* redirects to the view-contact page for that contact upon success
+        * upon failure it displays error message
+		* @method  doneEditContact
+		* @param {int} id The id of the contact
+		*/
     doneEditContact: function(id) {
 
     var type= document.getElementById('type');
@@ -76,6 +95,13 @@ export default Ember.Controller.extend({
 });
 
 
+ /** 
+		* used to provide feedback to user on success condition as well as fail condition
+        * only displayed very briefly on success condition however before transition
+		* @method  showAlert
+		* @param {string} message The message to display in the alert
+        * @param {boolean} bool Determines if this is a warning alert or confirmation alert
+		*/
 function showAlert(message, bool) {
         if(bool){
             Ember.$('#alert_placeholder').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');

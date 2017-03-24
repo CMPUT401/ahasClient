@@ -21,6 +21,7 @@ test('create medical record success', function(assert) {
  //any touch to the signature pad should count as signature....
  //also dont really need to fill in any of the fields just for this test
   click('#signature');
+  fillIn("#summary","some summary");
   click('#create-medical-button');
 
   andThen(function() {
@@ -32,9 +33,21 @@ test('create medical record without signature', function(assert) {
   authenticateSession(this.application);
   visit('/view-patient/1/medical-record');
 
+ fillIn("#summary","some summary");
+ click('#create-medical-button');
+  
+  andThen(function() {
+    assert.equal(find('#statusBad').text(),'Record cannot be created without a signature');
+  });
+});
+
+test('create medical record without summary', function(assert) {
+  authenticateSession(this.application);
+  visit('/view-patient/1/medical-record');
+
  click('#create-medical-button');
 
   andThen(function() {
-    assert.equal(find('#statusBad').text(),'Record cannot be created without a signature');
+    assert.equal(find('#statusBad').text(),'Must enter a summary for the patients medical record history list');
   });
 });
