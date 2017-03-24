@@ -1,0 +1,33 @@
+Human read script to test editing client information
+
+Assumptions: There is at least one client.
+
+Navigate to /client-info/1
+
+Take note of the information. 
+
+Click on the button labeled "Edit Client". 
+
+CHECK: The page should have redirected. the URL should be /edit-client/1
+
+CHECK: The patient's first name is displayed in an input box next to "Client's First Name"
+
+CHECK: Below, the patient's last name is displayed in an input box next to "Client's Last Name"
+
+CHECK: Below, the patient's address is displayed in an input box next to "Client's Address"
+
+CHECK: The patient's email is displayed in an input box next to "Client's Email"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
