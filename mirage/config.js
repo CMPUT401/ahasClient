@@ -239,7 +239,10 @@ this.get('/patients/:id/medications', ()=>{
 this.get('patients/:id', ()=>{
     return{
       success: true,
+       generalAlerts: [],
+         medicationAlerts: [],
        patient: {
+         portrait_id: 1,
          id: 1,
 						   first_name: '',
 						   last_name:  '',
