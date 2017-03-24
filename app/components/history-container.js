@@ -5,6 +5,7 @@ export default Ember.Component.extend({
 	medicationIsVisible: false,
 	labResultIsVisible:false,
 	vaccineIsVisible: false,
+	radiographyIsVisible: false,
 	patientID: 0,
 	actions: {
 		showChronological: function(){
@@ -13,6 +14,7 @@ export default Ember.Component.extend({
 			this.set('medicationIsVisible', false);
 			this.set('labResultIsVisible', false);
 			this.set('vaccineIsVisible', false);
+			this.set('radiographyIsVisible', false);
 		},
 		showMedication: function(){
 			// console.log("show medication, the id is " + patientId);
@@ -20,12 +22,14 @@ export default Ember.Component.extend({
 			this.set('medicationIsVisible', true);
 			this.set('labResultIsVisible', false);
 			this.set('vaccineIsVisible', false);
+			this.set('radiographyIsVisible', false);
 		},
 		showLabResults: function(){
 			this.set('chronoIsVisible', false);
 			this.set('medicationIsVisible', false);
 			this.set('labResultIsVisible', true);
 			this.set('vaccineIsVisible', false);
+			this.set('radiographyIsVisible', false);
 		},
 		showVaccine: function(){
 			// console.log("show medication, the id is " + patientId);
@@ -33,6 +37,15 @@ export default Ember.Component.extend({
 			this.set('medicationIsVisible', false);
 			this.set('labResultIsVisible', false);
 			this.set('vaccineIsVisible', true);
+			this.set('radiographyIsVisible', false);
+		},
+		showRadiographs: function(){
+			this.set('chronoIsVisible', false);
+			this.set('medicationIsVisible', false);
+			this.set('labResultIsVisible', false);
+			this.set('vaccineIsVisible', false);
+			this.set('radiographyIsVisible', true);
 		}
+
 	}
 });
