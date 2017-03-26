@@ -9,7 +9,7 @@ test('visiting /new-calendar/ before login', function(assert) {
 	visit('new-calendar');
 
 	andThen(function(){
-		assert.notEqual(currentURL(), '/new-calendar/');
+		assert.notEqual(currentURL(), '/new-calendar');
 	});
 });
 
@@ -24,7 +24,7 @@ test('visiting /new-calendar/', function(assert) {
 
 test('creating new calendar unsuccessful', function(assert) {
   authenticateSession(this.application);
-  visit('/new-calendar');
+  visit('/new-calendar/');
   
   fillIn('#appointmentStart', "tttt");
   fillIn('#appointmentEnd', "sssy");

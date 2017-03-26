@@ -1,14 +1,27 @@
 import Ember from 'ember';
 
-// Simple container to capture state from entry boxes
+/**
+* controller for the medication-input component
+* Simple container to capture state from entry boxes
+* @class MedicationInputComponentController
+*/
 export default Ember.Component.extend({
 	actions: {
-		// Set update action to callback passed in to component
+		
+		/** 
+		* Set update action to delete callback passed in
+		* handles updating just one medication input
+		* @method update
+		*/
 		update: function(){
 			this.update(this.index, this.name, this.reminder);
 		},
+	/** 
+		* Set delete action to delete callback passed in
+		* handles deleting just one medication input
+		* @method delete
+		*/
 		delete: function(){
-		// Set delete action to delete callback passed in
 			this.delete(this.index);
 		}
 	}

@@ -1,11 +1,18 @@
 import Ember from 'ember';
 
-
+/**
+* Controller for new-client
+* @class NewClientController
+*/
 export default Ember.Controller.extend({
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
 	//let cName, let cAddress, let cPhone,
 	actions: {
+		/**
+		* makes an ajax POST request to save the new client
+		* @method submitNewClient
+		*/
 		submitNewClient: function(){
 			//disable button
 			document.getElementById("create-client-button").disabled = true; 
@@ -62,6 +69,11 @@ export default Ember.Controller.extend({
 	}
 });
 
+/**
+* clears the page's input fields
+* @param {object} page the controller
+* @method clearFields
+*/
 function clearFields(page){
 	page.set('clientFirstName', '');
 	page.set('clientLastName', '');

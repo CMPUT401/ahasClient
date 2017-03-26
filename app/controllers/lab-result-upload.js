@@ -1,5 +1,9 @@
 import Ember from 'ember';
 
+/**
+* Controller for lab-result-upload
+* @class labResultUploadController
+*/
 export default Ember.Controller.extend({
 	loadedFile: null,
 	session: Ember.inject.service(),
@@ -8,6 +12,11 @@ export default Ember.Controller.extend({
 		fileLoaded: function(file){
 			this.set('loadedFile', file);
 		},
+		/**
+		* makes an ajax POST request to save the lab result
+		* @param {int} the patient's id
+		* @method sendLabResults
+		*/
 		sendLabResults: function(patientId){
 			document.getElementById("saveLabResults").disabled = true;
 			var partialDate = this.get('datePicker');

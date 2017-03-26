@@ -15,6 +15,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 				Ember.run.later(function() 
 					{
        			 resolve({ id: JSON.stringify(data.patient.id).replace(/\"/g, ""),
+       			 			imageid: JSON.stringify(data.patient.portrait_id).replace(/\"/g, ""),
        			 			alerts: concatAlerts(data.generalAlerts,data.medicationAlerts),
 						   first_name: JSON.stringify(data.patient.first_name).replace(/\"/g, ""),
 						   last_name: JSON.stringify(data.patient.last_name).replace(/\"/g, ""),
@@ -47,7 +48,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 
     		  });
 				console.log("status is " + JSON.stringify(data));
-				console.log("here" + JSON.stringify(data.patient.medicationAlerts))
+				console.log("here" + JSON.stringify(data.patient.medicationAlerts));
 				//var self = this;
 			},
 			function(response){
@@ -74,8 +75,8 @@ function concatAlerts(general,medical){
 		alert.end = "Forever";
 		both.push(alert);
 	}
-	for(var i = 0; i < medical.length; i++) {
-		var alert = medical[i];
+	for(var j = 0; j < medical.length; j++) {
+		var alert = medical[j];
 		alert.id = alert.id;
 		alert.body = alert.name;
 		alert.end = format(alert.reminder);

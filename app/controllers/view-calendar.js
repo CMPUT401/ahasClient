@@ -1,5 +1,10 @@
 import Ember from 'ember';
- 
+ /**
+* Controller for the new calendar page
+* This shows all of the appointments scheduled and if one clicks on a 
+* appointment, it will transition them to a view appointment page
+* @class new-calendar Controller
+*/
 export default Ember.Controller.extend({
 	actions: {
         clicked(event, jsEvent, view){
