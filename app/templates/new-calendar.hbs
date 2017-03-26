@@ -1,16 +1,25 @@
-
 	<form {{action "submitNewCalendar" on="submit"}}>
 		<div class = "inputGroup">
 			<h3>Please fill in the appointment</h3>
 
-			<label class = "inputLabel" for ="appointmentStart">Start Time:</label>
+			<label class = "inputLabel" for ="appointmentStart">Start Date:</label>
 			<div class = "inputBox">
-			{{input id = "appointmentStart" value=appointmentStart required='true'}}
+			<input id = "appointmentStart" data-provide="datepicker">
 			</div>
 			<br>
-			<label class = "inputLabel" for ="apportmentEnd">End Time:</label>
+			<label class = "inputLabel" for ="appointmentStartTime">Start Time:</label>
 			<div class = "inputBox">
-			{{input id = "appointmentEnd" value=appointmentEnd required='true'}}
+			{{input id = "appointmentStartTime" value=appointmentStartTime required='true'}}
+			</div>
+			<br>
+			<label class = "inputLabel" for ="appointmentEnd">End Date:</label>
+			<div class = "inputBox">
+			<input id = "appointmentEnd" data-provide="datepicker">
+			</div>
+			<br>
+			<label class = "inputLabel" for ="appointmentEndTime">End Time:</label>
+			<div class = "inputBox">
+			{{input id = "appointmentEndTime" value=appointmentEndTime required='true'}}
 			</div>
 			<br>
 			<label class = "inputLabel" for ="appointmentReason">Reason:</label>
@@ -20,7 +29,7 @@
 			<br>
 			<label class = "inputLabel" for ="appointmentNote">Note:</label>
 			<div class = "inputBox">
-			{{textarea id = "appointmentNote" value=appointmentNote required='true' cols="50" rows="4"}}
+			{{textarea id = "appointmentNote" value=appointmentNote cols="50" rows="4"}}
 			</div>
 			<br>
 			<label class = "inputLabel" for ="appointmentLocation">Location:</label>

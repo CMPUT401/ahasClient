@@ -1,9 +1,9 @@
-<button  {{action "createSideNote" model.patientID model.medID }}>New Side Note</button>
+<button  {{action "createSideNote" model}}>New Side Note</button>
 <div class = "nameList" >
     {{#ember-scrollable autoHide=false}}
             {{#each model.notesW as |note|}}
-                    <div class = "nameListItem" {{action "getNote" note.id}}>
-                            <p>{{note.id}}</p>
+                    <div class = "nameListItem" {{action "getNote" model note.id}}>
+                            <p>{{note.body}}</p>
                     </div>
 
             {{/each}}

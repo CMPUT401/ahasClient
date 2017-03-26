@@ -1,19 +1,15 @@
 import Ember from 'ember';
-
+/**
+* Controller for the view patients page
+* This shows all the thisngs required for patient\
+*only thing needed was to have a button to take you to upload a picture
+* @class view-patient
+*/
 export default Ember.Controller.extend({
 	 actions: {
-        gotoMedicalRoute(patient){
-            console.log("we get here", patient);
-            this.transitionToRoute('/medical-record/'+patient);
-        },
-        viewMedicalRecords(patient){
-            console.log('patient', patient);
-            this.transitionToRoute('/view-medical-record/').then(function(newRoute) {
-            newRoute.currentModel.patientId = patient;
-            console.log('new route', newRoute, newRoute.currentModel);
-            //newRoute.currentModel.patient_id =  patient;
-        });
-     }
+        uploadPicture(patientID){
+            this.transitionToRoute("/upload-patient/"+patientID);
+        }
 
 }
 

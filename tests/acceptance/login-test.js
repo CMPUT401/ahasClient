@@ -33,6 +33,6 @@ test('login with valid user, correct password', function(assert) {
 
   andThen(function() {
     assert.notEqual(currentURL(), '/login');
-    assert.equal(currentURL(), '/search-patient');
+    assert.equal(currentURL(), '/client-list');
   });
 });

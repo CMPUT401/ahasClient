@@ -1,0 +1,14 @@
+<div class = "infoBlockComponent">
+	<div class = "new-entry-button-wrapper">
+	<button {{action "newEntry" model.id}} class = "new-entry-button">New Entry</button>
+	</div>
+	<div class = "panel panel-default">
+		<div class="history-list" style="overflow:auto">
+				{{#each medicalRecord as |entry|}}
+					<div class = "nameListItem" {{action 'viewEntry' entry.recordId entry.date}}>
+						<p>{{entry.summary}}  {{entry.dateToDisplay}}</p>
+					</div>
+				{{/each}}
+		</div>
+	</div>
+</div>

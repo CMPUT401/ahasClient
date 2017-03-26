@@ -4,13 +4,13 @@ import { authenticateSession} from '../helpers/ember-simple-auth';
 
  moduleForAcceptance('Acceptance | create patient');
 
-test('visiting /new-patient/1', function(assert) {
+test('visiting /new-patient/', function(assert) {
   authenticateSession(this.application);
-  visit('/new-patient/1');
+  visit('/new-patient/');
 
 
    andThen(function() {
-     assert.equal(currentURL(), '/new-patient/1');
+     assert.equal(currentURL(), '/new-patient/');
    });
  });
 

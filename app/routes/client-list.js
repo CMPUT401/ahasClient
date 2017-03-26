@@ -27,7 +27,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 					self.transitionTo('/login');
             	}
             }));
-
 		return ajaxGet;
 	}
 });
