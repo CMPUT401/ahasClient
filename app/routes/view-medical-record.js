@@ -13,6 +13,8 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
 		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/'+params.recordID 
 			).then(function(data){
+
+                self.set('index' , 1);
             
 				Ember.run(function() {
        			 resolve({ 
