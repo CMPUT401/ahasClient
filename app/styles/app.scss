@@ -384,6 +384,26 @@ textarea{
     width: 75px;
 }
 
+/*  patient-info component          */
+
+.patientInfoHeading{
+    margin-top: 0;
+}
+.patientViewGroup{
+    margin-bottom: 50px;
+    display: block;
+    clear:left;
+
+}
+.patientViewLabel{
+
+    display: inline-block;
+    float: left;
+    clear: left;
+    text-align: left;
+    width: 12em;
+}
+
 /* form creation/submission */
 
 #create-patient-button{

@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('lab-result-history', 'Integration | Component | lab result history', {
+moduleForComponent('patient-info', 'Integration | Component | patient info', {
   integration: true
 });
 
@@ -10,15 +10,15 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{lab-result-history}}`);
+  this.render(hbs`{{patient-info}}`);
 
   assert.equal(this.$().text().trim(), '');
 
   // Template block usage:
   this.render(hbs`
-    {{#lab-result-history}}
+    {{#patient-info}}
       template block text
-    {{/lab-result-history}}
+    {{/patient-info}}
   `);
 
   assert.equal(this.$().text().trim(), 'template block text');

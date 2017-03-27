@@ -8,7 +8,7 @@ export default Ember.Component.extend({
 	router: Ember.inject.service('-routing'),
 	init(){
 		this._super(...arguments);
-		console.log("calling ajax for medcation List");
+		console.log("calling ajax for images");
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 			this.get('ajax').request('api/patients/' + this.patientID + '/images/' + this.imageID

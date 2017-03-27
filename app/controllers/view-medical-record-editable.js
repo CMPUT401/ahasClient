@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
 		* @method createMedicalRecord
         * @param {id} patientid The id of the patient whose medical record we are updating
 		*/
-          updateMedicalRecord(id){
+          updateMedicalRecord(patientid, id){
 
              var self = this;
 
@@ -30,14 +30,15 @@ export default Ember.Controller.extend({
              var weightUnit = unit.options[unit.selectedIndex].text;
 
               
-             var medicalRecord = this.get('ajax').put('/api/patients/'+ id+'/medical_records/19', {
+             var medicalRecord = this.get('ajax').put('/api/patients/'+ patientid+'/medical_records/'+ id, {
              type: 'application/json',
              data: { 
                  medical_record: {
    
              //things that are not updateable on our form
              date: this.get('model.unixDate'),  
-             patient_id: id,
+             patient_id: patientid,
+             id: id,
              signature: this.get('model.signature'), 
 
              //inputs
@@ -171,7 +172,7 @@ function gatherMedications(id, self){
     medications.push.apply(medications, formattedMedicine);
     medications.push.apply(medications, formattedVaccine);
     medications.push.apply(medications, formattedOther);
-    console.log(medications);
+    console.log('this is the new meds list', medications);
     return(medications);
     
 }
