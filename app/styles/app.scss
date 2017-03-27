@@ -9,11 +9,13 @@
 html, body{
     height: 100%;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 * {
     margin: 0;
-    margin-left: 1%;
-    padding: .5%;
+    // margin-left: 1%;
+    // padding: .5%;
     box-sizing: border-box;
 }
 
@@ -67,7 +69,7 @@ p {
     position: relative;
     margin: 0 auto;
     text-align: center;
-    top: 6em;
+    padding: 0;
     height: 100%;
 }
 /**
