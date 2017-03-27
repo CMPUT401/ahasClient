@@ -9,9 +9,9 @@
 </div>
 <div class="col-sm-7 col-md-7">
 
-<div > placeholder for pet info: 
-  <br>
-  <textarea rows="10" cols="40"> </textarea>
+<div >
+  {{patient-info patientID=model.patient_id}}
+ 
 </div>
 
 <div >
@@ -557,7 +557,7 @@
 <img src={{model.signature}} alt="Cannot display" />
 
   {{#if model.editable}}
-  <button type="submit" class= "medical-button" id="update-medical-button"{{action 'updateMedicalRecord' model.patient_id}}>Update medical record</button>
+  <button type="submit" class= "medical-button" id="update-medical-button"{{action 'updateMedicalRecord' model.patient_id model.id}}>Update medical record</button>
   {{else}}
   <button type="submit" disabled class= "medical-button" id="update-medical-button">Update medical record</button>
   {{/if}}

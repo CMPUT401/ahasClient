@@ -41,6 +41,8 @@ Router.map(function() {
   this.route('view-image-record', {path: 'view-patient/:patientID/view-image-record/:imageID'});
   this.route('view-appointment', {path: '/view-appointment/:appointmentid'});
   this.route('upload-patient' , {path: '/upload-patient/:patientID'});
+  
+  this.route('not-found', { path: '/*path' });
 });
 
 export default Router;
