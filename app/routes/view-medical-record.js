@@ -23,7 +23,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             patID: params.patientID,
                             date: parseDate(new Date(data.medical_record.date * 1000)),
                             date_created: data.medical_record.created_at, 
-                            patient_id: data.medical_record.id, 
+                            patient_id: data.medical_record.patient_id, 
                             
                             signature: data.medical_record.signature, 
 
