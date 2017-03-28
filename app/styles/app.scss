@@ -7,10 +7,10 @@
 @import "./login";
 @import "./fileUpload";
 @import "./userCreation";
-@import "userTableYellowGrey";
-@import "patientInfoComponent";
-@import "viewPatient";
-@import "contact";
+@import "./userTableYellowGrey";
+@import "./patientInfoComponent";
+@import "./viewPatient";
+@import "./contact";
 @import url(https://fonts.googleapis.com/css?family=Lato:300,300italic,400,700,700italic);
 
 /**
@@ -26,8 +26,8 @@ body {
 }
 
 * {
-  margin: 0; // margin-left: 1%;
-  // padding: .5%;
+  margin: 0; 
+ // padding: .5%;
   box-sizing: border-box;
 }
 
