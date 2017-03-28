@@ -1,0 +1,44 @@
+.inputLoginGroup {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.inputLoginLabel {
+  display: inline-block;
+  float: left;
+  clear: left;
+  text-align: left;
+  width: 5em;
+}
+
+.viewInfo {
+  display: inline-block;
+  float: left;
+}
+
+.viewGroup {
+  margin: 10px;
+  display: block;
+  clear: left;
+}
+
+
+#login-button {
+  margin-left: 90px;
+  margin-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+.login {
+  top: 8em;
+  height: 100%;
+  position: relative;
+}
+
+.createUserPrompt {
+  margin-top: 20px;
+}

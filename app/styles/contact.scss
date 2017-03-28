@@ -1,0 +1,47 @@
+/* create contact */ 
+#create-contact-button {
+  margin-left: 10px;
+  margin-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.inputContactLabel {
+  display: inline-block;
+  float: left;
+  clear: left;
+  margin-left: 100px;
+  margin-right: auto;
+  text-align: left;
+  width: 10em;
+}
+
+.inputContactBox {
+  display: inline-block;
+  float: left;
+  width: 10em;
+}
+
+.inputContactGroup {
+  width: 500px;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+}
+
+/*  search contacts  */
+
+#search-button {
+  margin-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+/* display list of contact names*/
+
+.contactnameList {
+  overflow-y: scroll;
+  display: block;
+  height: 550px;
+}
