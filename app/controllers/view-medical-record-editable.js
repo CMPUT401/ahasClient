@@ -121,7 +121,6 @@ export default Ember.Controller.extend({
         //this is error from server condition
         }, function(response) {
             showAlert("Could not update", false);
-            console.log("status is " + JSON.stringify(response));
 					if (response === false){
 						if (self.get('session.isAuthenticated')){
 							self.get('session').invalidate();
@@ -172,7 +171,6 @@ function gatherMedications(id, self){
     medications.push.apply(medications, formattedMedicine);
     medications.push.apply(medications, formattedVaccine);
     medications.push.apply(medications, formattedOther);
-    console.log('this is the new meds list', medications);
     return(medications);
     
 }
@@ -189,15 +187,13 @@ function formatReminders(items){
     for(var i =0 ; i<items.length; i++){
         if (items[i].reminder !== ""){
             var newObjectReminder = formatDate(items[i].reminder);
-            var newObject1 = {name: items[i].name, med_type: items[i].med_type, reminder: newObjectReminder};
+            var newObject1 = {name: items[i].name, med_type: items[i].med_type, reminder: newObjectReminder, medical_record_id: items[i].medical_record_id};
             newList.push(newObject1);
         }
         else{
-            var newObject2 = {name: items[i].name, med_type: items[i].med_type, reminder: ''};
+            var newObject2 = {name: items[i].name, med_type: items[i].med_type, reminder: '', medical_record_id: items[i].medical_record_id}};
             newList.push(newObject2);
         }
-       
-    }
 
     return(newList);
 

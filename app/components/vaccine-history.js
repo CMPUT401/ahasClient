@@ -46,11 +46,11 @@ export default Ember.Component.extend({
 	init(){
 		this._super(...arguments);
 		var self = this;
-		console.log('getting ajax for vaccine');
+		
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 			this.get('ajax').request('api/patients/' + this.patientId + '/medications'
 				).then(function(data){
-					console.log("data is" + JSON.stringify(data));
+					
 					Ember.run(function(){
 						resolve({
 							vaccines: deserialAttributes(data.medications)
@@ -63,11 +63,11 @@ export default Ember.Component.extend({
 					if (data === false){
 						// self.transitionTo('/unauthorized');
 						// self.get('router').transitionTo('unauthorized'); //not sure if this works
-						console.log("status is " + JSON.stringify(data));
+					
 					}		
 				})
 		);
-		console.log(this.medicationList);
+	
 		return(ajaxGet);
 	}
 });

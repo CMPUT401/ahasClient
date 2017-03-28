@@ -11,7 +11,6 @@ export default Ember.Route.extend({
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/client/' + param.clientID
 			).then(function(data){
-				console.log("data is " + JSON.stringify(data));
 				Ember.run(function() {
 				resolve({
 					firstName: deserialFirstName(data.client),
@@ -47,7 +46,6 @@ export default Ember.Route.extend({
 					self.get('session').invalidate();
 					}
 				self.transitionTo('/login');
-					console.log("status is " + JSON.stringify(data));
 				}
 		}));
 		return ajaxGet;

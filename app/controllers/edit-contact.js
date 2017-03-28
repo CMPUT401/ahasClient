@@ -81,7 +81,6 @@ export default Ember.Controller.extend({
         //this is error from server condition
         }, function(response) {
             showAlert("Could not update", false);
-            console.log("status is " + JSON.stringify(response));
 					if (response === false){
 						if (self.get('session.isAuthenticated')){
 							self.get('session').invalidate();

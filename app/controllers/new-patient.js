@@ -44,7 +44,6 @@ export default Ember.Controller.extend({
 			});
 			ajaxPost.then(function(data){
 				//console.log(this.c_ID);
-				console.log("status is " + JSON.stringify(data));
 				self.transitionToRoute('search-patient');
 			},
 			function(response){

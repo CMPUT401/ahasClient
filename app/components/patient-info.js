@@ -16,7 +16,6 @@ export default Ember.Component.extend({
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 			this.get('ajax').request('api/patients/' + this.patientID
 				).then(function(data){
-					console.log("data is" + JSON.stringify(data));
 					Ember.run(function(){
 						resolve({
 						 
@@ -34,7 +33,7 @@ export default Ember.Component.extend({
 				},
 				function(data){
 					if (data === false){
-						console.log("status is " + JSON.stringify(data));
+					
 					}		
 				})
 		);

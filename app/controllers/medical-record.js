@@ -39,7 +39,6 @@ export default Ember.Controller.extend({
         createMedicalRecord(){
 
             var summary = document.getElementById('summary').value.trim();
-            console.log('summary is', summary);
 
               if(summary === null || summary === undefined || summary === ""){
                   showAlert("Must enter a summary for the patients medical record history list", false);
@@ -149,7 +148,6 @@ export default Ember.Controller.extend({
             }
         //this is error from server condition
         }, function(response) {
-            console.log("status is " + JSON.stringify(response), response);
 					if (response === false){
 						if (self.get('session.isAuthenticated')){
 							self.get('session').invalidate();
@@ -244,7 +242,6 @@ function gatherMedications(id, self){
     medications.push.apply(medications, formattedMedicine);
     medications.push.apply(medications, formattedVaccine);
     medications.push.apply(medications, formattedOther);
-    console.log(medications);
     return(medications);
     
 }

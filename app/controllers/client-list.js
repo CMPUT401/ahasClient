@@ -26,7 +26,6 @@ export default Ember.Controller.extend({
 		* @param {int} clientID The ID of the client
 		*/
 		viewClient: function(clientID){
-            console.log(clientID);
             this.transitionToRoute("/client-info/" + clientID);
         },
         /**

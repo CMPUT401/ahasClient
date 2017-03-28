@@ -15,7 +15,6 @@ export default Ember.Controller.extend({
         * @param {object} model the model for this route and is passed in on action
 		*/
 	    sideNotes(model){
-            console.log(model.medID,model.patID);
             this.transitionToRoute('/view-patient/' + model.patID + '/view-medical-record/'+ model.medID + '/notes');
         }
     }

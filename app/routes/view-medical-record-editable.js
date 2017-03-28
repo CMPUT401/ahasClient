@@ -182,7 +182,6 @@ function checkUpdate(date){
 }
 
 function deserialAttributesMedicines(medications){
-    console.log('we here', medications, medications.length);
 	var deserial = [];
 	for(var i = 0; i < medications.length; i++) {
 
@@ -218,9 +217,7 @@ function deserialAttributesOthers(others){
 		if(others[i].med_type === 'other'|| others[i].med_type === 'Other'){
 		var other = others[i];
 		other.name = other.name;
-        console.log("first check", other.reminder);
         other.reminder = format(other.reminder);
-          console.log("second check", other.reminder, document.getElementsByClassName('datePicker'));
 		deserial.push(other);
 	}
   }

@@ -42,12 +42,10 @@ export default Ember.Component.extend({
 	},
 	init(){
 		this._super(...arguments);
-		console.log("calling ajax");
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 			this.get('ajax').request('api/patients/' + this.patientId + '/medical_records'
 				).then(function(data){
-					console.log("data is" + JSON.stringify(data));
 					Ember.run(function(){
 						resolve({
 							//why is this in here as well as self.set ect? -kristy
@@ -60,11 +58,9 @@ export default Ember.Component.extend({
 				function(data){
 					if (data === false){
 						// self.transitionTo('/unauthorized');
-						console.log("status is " + JSON.stringify(data));
 					}		
 				})
 		);
-		console.log(this.medicalRecord);
 		return(ajaxGet);
 	}
 });

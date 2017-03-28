@@ -15,7 +15,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 						patientID : param.patientID,
 						recordID: param.recordID
 					});
-					console.log("status is " + JSON.stringify(data));
 					//console.log(data.notes instanceof String);
 				});
 				

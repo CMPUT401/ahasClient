@@ -15,8 +15,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 				Ember.run.later(function() 
 					{
        			 resolve({ id: JSON.stringify(data.patient.id).replace(/\"/g, ""),
-       			 			imageid: JSON.stringify(data.patient.portrait_id).replace(/\"/g, ""),
-       			 			alerts: concatAlerts(data.generalAlerts,data.medicationAlerts),
+       			 		   imageid: JSON.stringify(data.patient.portrait_id).replace(/\"/g, ""),
+       			 		   alerts: concatAlerts(data.generalAlerts,data.medicationAlerts),
 						   first_name: JSON.stringify(data.patient.first_name).replace(/\"/g, ""),
 						   last_name: JSON.stringify(data.patient.last_name).replace(/\"/g, ""),
 						   species: JSON.stringify(data.patient.species).replace(/\"/g, ""),
@@ -28,27 +28,24 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						   client_id: JSON.stringify(data.patient.client_id).replace(/\"/g, ""),
 						   gender: JSON.stringify(data.patient.gender).replace(/\"/g, ""),
 						   firstName: JSON.stringify(data.patient.client.firstName).replace(/\"/g, ""),
-							lastName: JSON.stringify(data.patient.client.lastName).replace(/\"/g, ""),
-							address: JSON.stringify(data.patient.client.address).replace(/\"/g, "").replace(/\\n/g, " <br> "),
-							phoneNumber: JSON.stringify(data.patient.client.phoneNumber).replace(/\"/g, ""),
-							email: JSON.stringify(data.patient.client.email).replace(/\"/g, ""),
-							licos: JSON.stringify(data.patient.client.licos).replace(/\"/g, ""),
-							aish: JSON.stringify(data.patient.client.aish).replace(/\"/g, ""),
-							socialAssistance: JSON.stringify(data.patient.client.socialAssistance).replace(/\"/g, ""),
-							notes: JSON.stringify(data.patient.client.notes).replace(/\"/g, "").replace(/\\n/g, " <br> "),
-							alternativeContactFirstName: JSON.stringify(data.patient.client.alternativeContactFirstName).replace(/\"/g, ""),
-							alternativeContactEmail: JSON.stringify(data.patient.client.alternativeContactEmail).replace(/\"/g, ""),
-							alternativeContactLastName: JSON.stringify(data.patient.client.alternativeContactLastName).replace(/\"/g, ""),
-							alternativeContactPhoneNumber:JSON.stringify(data.patient.client.alternativeContactPhoneNumber).replace(/\"/g, ""),
-							alternativeContact2ndPhone: JSON.stringify(data.patient.client.alternativeContact2ndPhone).replace(/\"/g, ""),
-							alternativeContactAddress: JSON.stringify(data.patient.client.alternativeContactAddress).replace(/\"/g, "").replace(/\\n/g, " <br> ")
+						   lastName: JSON.stringify(data.patient.client.lastName).replace(/\"/g, ""),
+						   address: JSON.stringify(data.patient.client.address).replace(/\"/g, "").replace(/\\n/g, " <br> "),
+						   phoneNumber: JSON.stringify(data.patient.client.phoneNumber).replace(/\"/g, ""),
+						   email: JSON.stringify(data.patient.client.email).replace(/\"/g, ""),
+						   licos: JSON.stringify(data.patient.client.licos).replace(/\"/g, ""),
+						   aish: JSON.stringify(data.patient.client.aish).replace(/\"/g, ""),
+						   socialAssistance: JSON.stringify(data.patient.client.socialAssistance).replace(/\"/g, ""),
+						   notes: JSON.stringify(data.patient.client.notes).replace(/\"/g, "").replace(/\\n/g, " <br> "),
+						   alternativeContactFirstName: JSON.stringify(data.patient.client.alternativeContactFirstName).replace(/\"/g, ""),
+						   alternativeContactEmail: JSON.stringify(data.patient.client.alternativeContactEmail).replace(/\"/g, ""),
+						   alternativeContactLastName: JSON.stringify(data.patient.client.alternativeContactLastName).replace(/\"/g, ""),
+						   alternativeContactPhoneNumber:JSON.stringify(data.patient.client.alternativeContactPhoneNumber).replace(/\"/g, ""),
+						   alternativeContact2ndPhone: JSON.stringify(data.patient.client.alternativeContact2ndPhone).replace(/\"/g, ""),
+						   alternativeContactAddress: JSON.stringify(data.patient.client.alternativeContactAddress).replace(/\"/g, "").replace(/\\n/g, " <br> ")
 						});
-				console.log("we getdont here");
 				//this.get('ajax').request('/api/client/1');
 
     		  });
-				console.log("status is " + JSON.stringify(data));
-				console.log("here" + JSON.stringify(data.patient.medicationAlerts));
 				//var self = this;
 			},
 			function(response){
