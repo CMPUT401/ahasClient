@@ -18,11 +18,11 @@ export default Ember.Controller.extend({
         var type= document.getElementById('type');
         var typeval = type.options[type.selectedIndex].text;
 
-        if (typeval === "Laboratory" ){
-        this.set('model.laboratory', false);
+        if (typeval == "Laboratory" ){
+        this.set('model.laboratory', true);
         }
         else{
-        this.set('model.laboratory', true);
+        this.set('model.laboratory', false);
         }
     },
 
@@ -41,6 +41,13 @@ export default Ember.Controller.extend({
     //this is to get the value in the dropdown specifically
     var type= document.getElementById('type');
     var typeval = type.options[type.selectedIndex].text;
+
+    if (typeval === "Laboratory"){
+        var last_name = "laboratorytype";
+    }
+    else{
+        var last_name = this.get('last_name');
+    }
     var self = this;
  
 
@@ -68,7 +75,7 @@ export default Ember.Controller.extend({
         type: 'application/json',
         data: { contact: {
           first_name: this.get('first_name'),
-          last_name: this.get('last_name'),
+          last_name: last_name,
           address: this.get('address'),
           email: this.get('email'),
           phone_number: this.get('phoneNumber'),
