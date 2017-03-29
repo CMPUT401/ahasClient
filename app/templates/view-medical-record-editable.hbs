@@ -562,10 +562,10 @@
             <div>
                 <h4> Veterinarian Signature: </h4>
               <img src={{model.signature}} alt="Cannot display" />
-               {{#if model.editable}}
+{{#if model.editable}}
   <button type="submit" class= "medical-button" id="update-medical-button"{{action 'updateMedicalRecord' model.patient_id model.id}}>Update medical record</button>
   {{else}}
-  <button type="submit"  class= "medical-button" id="update-medical-button">Update medical record</button>
+  <button type="submit"  class= "medical-button" disabled id="update-medical-button">Update medical record</button>
   {{/if}}
   <div id = "alert_placeholder_med"></div><div class="row">
             </div>
