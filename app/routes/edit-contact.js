@@ -8,7 +8,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/contacts/' + params.contact_id
 			).then(function(data){
-				console.log(JSON.stringify(data));
 				Ember.run(function() {
        			 resolve({ 
 						   first_name: JSON.stringify(data.contact.first_name).replace(/\"/g, ""),

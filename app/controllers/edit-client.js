@@ -17,7 +17,6 @@ export default Ember.Controller.extend({
 		saveClient: function(client){
 			//disable button
 			document.getElementById("create-client-button").disabled = true; 
-			console.log("saving client!" + this.clientId);
 			this.clientId = client.clientID;
 			//make ajax put request
 
@@ -46,10 +45,8 @@ export default Ember.Controller.extend({
 					patients: client.patients
 				}},
 			}).then(function(data){
-				console.log("status is " + JSON.stringify(data));
 				self.transitionToRoute('/client-info/' + self.clientId);
 			},function(response){
-				console.log("status is " + JSON.stringify(response));
 				document.getElementById("create-client-button").disabled = false;
 				if (response === false){
 					if (self.get('session.isAuthenticated')){

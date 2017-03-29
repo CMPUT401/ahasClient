@@ -16,7 +16,6 @@ export default Ember.Controller.extend({
 		submitNewClient: function(){
 			//disable button
 			document.getElementById("create-client-button").disabled = true; 
-			console.log("making new client!");
 			//make asynch post request
 			var self = this;
 			//let cName = this.get('clientName');
@@ -47,12 +46,10 @@ export default Ember.Controller.extend({
 					//console.log("name is " + cName);
 					// TODO display confrimation page
 					// TODO prevent user from going back into this page
-					console.log("status is " + JSON.stringify(data));
 					clearFields(self);
 					self.transitionToRoute('client-list');
 				},
 				function(response){
-					console.log("status is " + JSON.stringify(response));
 					document.getElementById("create-client-button").disabled = false;
 					if (response === false){
 						if (self.get('session.isAuthenticated')){

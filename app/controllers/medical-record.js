@@ -39,7 +39,6 @@ export default Ember.Controller.extend({
         createMedicalRecord(){
 
             var summary = document.getElementById('summary').value.trim();
-            console.log('summary is', summary);
 
               if(summary === null || summary === undefined || summary === ""){
                   showAlert("Must enter a summary for the patients medical record history list", false);
@@ -76,7 +75,7 @@ export default Ember.Controller.extend({
              glands: document.getElementById('glandsText').value,
              skin: document.getElementById('skinText').value,
              abdomen: document.getElementById('abdomenText').value,
-             urogential: document.getElementById('urogentialText').value,
+             urogenital: document.getElementById('urogenitalText').value,
              nervousSystem: document.getElementById('nervousSystemText').value,
              musculoskeletal: document.getElementById('musculoskeletalText').value,
              cardiovascular: document.getElementById('cardiovascularText').value,
@@ -108,8 +107,8 @@ export default Ember.Controller.extend({
              skinA: document.getElementById('skinA').checked,   
              abdomenN: document.getElementById('abdomenN').checked,
              abdomenA: document.getElementById('abdomenA').checked, 
-             urogentialN: document.getElementById('urogentialN').checked,
-             urogentialA: document.getElementById('urogentialA').checked,
+             urogenitalN: document.getElementById('urogenitalN').checked,
+             urogenitalA: document.getElementById('urogenitalA').checked,
              nervousSystemN: document.getElementById('nervousSystemN').checked,
              nervousSystemA: document.getElementById('nervousSystemA').checked,
              musculoskeletalN: document.getElementById('musculoskeletalN').checked,
@@ -149,7 +148,6 @@ export default Ember.Controller.extend({
             }
         //this is error from server condition
         }, function(response) {
-            console.log("status is " + JSON.stringify(response), response);
 					if (response === false){
 						if (self.get('session.isAuthenticated')){
 							self.get('session').invalidate();
@@ -244,7 +242,6 @@ function gatherMedications(id, self){
     medications.push.apply(medications, formattedMedicine);
     medications.push.apply(medications, formattedVaccine);
     medications.push.apply(medications, formattedOther);
-    console.log(medications);
     return(medications);
     
 }

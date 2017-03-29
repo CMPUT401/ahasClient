@@ -6,12 +6,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	ajax: Ember.inject.service(),
 	model(params){
 		var self = this;
-        console.log(params);
 		let ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request(`/api/users/${params.id}`
 			).then(function(data){
 				Ember.run(function() {
-                    console.log(data.user);
 					resolve({ 
 						user: data.user
 					});

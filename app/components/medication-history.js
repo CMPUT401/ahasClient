@@ -16,7 +16,6 @@ export default Ember.Component.extend({
 		* @method newEntry
 		*/
 		newEntry: function(){
-			console.log("making a new medical history entry");
 			this.get('router').transitionTo('medical-record', [this.patientId]);
 		},
 		/**
@@ -26,18 +25,15 @@ export default Ember.Component.extend({
 		*/
 		viewEntry: function(recordID){
 			//this.get('router').transitionTo('view-medical-record', [this.patientId, recordID]);
-			console.log('view entry ' + recordID);
 			this.get('router').transitionTo('view-medical-record', [this.patientId, recordID]);
 		}
 	},
 	init(){
 		this._super(...arguments);
-		console.log("calling ajax for medcation List");
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 			this.get('ajax').request('api/patients/' + this.patientId + '/medications'
 				).then(function(data){
-					console.log("data is" + JSON.stringify(data));
 					Ember.run(function(){
 						resolve({
 							// medications: deserialAttributes(data.medications)
@@ -50,11 +46,9 @@ export default Ember.Component.extend({
 					if (data === false){
 						// self.transitionTo('/unauthorized');
 						// self.get('router').transitionTo('unauthorized'); //not sure if this works
-						console.log("status is " + JSON.stringify(data));
 					}		
 				})
 		);
-		console.log(this.medicationList);
 		return(ajaxGet);
 	}
 });

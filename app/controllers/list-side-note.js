@@ -21,7 +21,6 @@ export default Ember.Controller.extend({
         * @params {object} the model first passed in through the route
         */
         createSideNote: function(model){
-        	console.log(model.patientID , model.recordID);
                 this.transitionToRoute("/new-side-note/").then(function(newRoute){
                 newRoute.controller.set("r_ID",model.recordID);
                 newRoute.controller.set("p_ID",model.patientID);

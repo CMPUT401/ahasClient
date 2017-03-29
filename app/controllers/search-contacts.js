@@ -36,6 +36,7 @@ export default Ember.Controller.extend({
                 this.set('model.contactsFilteredVeterinarian', this.get('model.contactsVeterinarian'));
                 this.set('model.contactsFilteredVolunteer', this.get('model.contactsVolunteer'));
                 this.set('model.contactsFilteredLaboratory', this.get('model.contactsLaboratory'));
+                this.set('model.contactsFilteredTechnician', this.get('model.contactsTechnician'));
             
         }
             else{
@@ -109,7 +110,7 @@ function filter(input, model, self){
         var lastNameLaboratory = model.contactsLaboratory[j].last_name.toLowerCase();
         var LaboratoryFullName = firstNameLaboratory + " " + lastNameLaboratory;
         
-        if (input === firstNameLaboratory || input === lastNameLaboratory || input === LaboratoryFullName || reg.test(LaboratoryFullName)){
+        if (input === firstNameLaboratory || input === LaboratoryFullName || reg.test(LaboratoryFullName)){
 
             var contactLaboratory = { first_name : model.contactsLaboratory[j].first_name , last_name : model.contactsLaboratory[j].last_name , id: model.contactsLaboratory[j].id};
             resultLaboratory.push(contactLaboratory);
@@ -117,6 +118,23 @@ function filter(input, model, self){
 
     }
      self.set('model.contactsFilteredLaboratory', resultLaboratory);
+
+     //filter technicians
+    var resultTechnician = [];
+    for (var n = 0; n<model.contactsTechnician.length; n++){
+
+        var firstNameTechnician = model.contactsTechnician[n].first_name.toLowerCase();
+        var lastNameTechnician = model.contactsTechnician[n].last_name.toLowerCase();
+        var TechnicianFullName = firstNameTechnician + " " + lastNameTechnician;
+        
+        if (input === firstNameTechnician || input === lastNameTechnician || input === TechnicianFullName || reg.test(TechnicianFullName)){
+
+            var contactTechnician = { first_name : model.contactsTechnician[n].first_name , last_name : model.contactsTechnician[n].last_name , id: model.contactsTechnician[n].id};
+            resultTechnician.push(contactTechnician);
+        }
+
+    }
+     self.set('model.contactsFilteredTechnician', resultTechnician);
 }
 
 

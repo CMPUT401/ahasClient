@@ -19,11 +19,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						   body: JSON.stringify(data.note.body).replace(/\"/g, "").replace(/\\n/g, " <br> "),
 						   initials: JSON.stringify(data.note.initials).replace(/\"/g, ""),
 				});
-				console.log("we getdont here");
 				//this.get('ajax').request('/api/client/1');
 
     		  });
-                console.log("status is " + JSON.stringify(data));
 				//console.log("status is " + JSON.stringify(data.appointment.sig));
 			},
 			function(response){

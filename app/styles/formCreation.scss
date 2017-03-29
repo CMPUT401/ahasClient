@@ -1,0 +1,63 @@
+/* form creation/submission */
+
+.inputLabel {
+  display: inline-block;
+  float: left;
+  clear: left;
+  text-align: left;
+  width: 15em;
+  margin-top:.5rem;
+  margin-bottom:.5rem;
+}
+
+.inputBox {
+  display: inline-block;
+  float: left;
+  margin-top:.5rem;
+  margin-bottom:.5rem;
+}
+
+.inputGroup {
+  margin: 10px;
+  display: block;
+  clear: left;
+}
+
+#create-patient-button {
+  margin: 20px;
+  display: block;
+  width: 10em;
+  clear: left;
+}
+
+#reset-patient-button {
+  margin: 20px;
+  display: block;
+  width: 10em;
+  clear: left;
+}
+
+#create-sidenote-button {
+  margin-top: 15rem;
+  display: block;
+  width: 10em;
+  clear: left;
+}
+
+#create-note-button {
+  margin-top: 5rem;
+  text-align: center;
+  width: 10em;
+}
+#create-calendar-button {
+  margin: 20px;
+  display: block;
+  width: 10em;
+  clear: left;
+}
+
+#create-client-button {
+  margin: 20px;
+  display: block;
+  clear: left;
+}

@@ -1,6 +1,16 @@
 @import "bootstrap";
 @import "./removeButton";
 @import "./userTables";
+@import "./formCreation";
+@import "./medicalHistory";
+@import "./medicalRecord";
+@import "./login";
+@import "./fileUpload";
+@import "./userCreation";
+@import "./userTableYellowGrey";
+@import "./patientInfoComponent";
+@import "./viewPatient";
+@import "./contact";
 @import url(https://fonts.googleapis.com/css?family=Lato:300,300italic,400,700,700italic);
 
 /**
@@ -16,8 +26,8 @@ body {
 }
 
 * {
-  margin: 0; // margin-left: 1%;
-  // padding: .5%;
+  margin: 0; 
+ // padding: .5%;
   box-sizing: border-box;
 }
 
@@ -59,15 +69,15 @@ p {
   max-width: 1024px;
   min-height: 100vh;
   padding: 0;
-  padding-top: 6em;
+  
   background: #ededed;
   margin: 0 auto;
 }
 
-.login {
-  top: 8em;
-  height: 100%;
-  position: relative;
+@media (min-width: 768px){
+  .container{
+    padding-top: 6em;
+  }
 }
 
 .ember-application {
@@ -88,14 +98,6 @@ p {
 }
 
 
-/*user-creation page textarea*/
-
-.usertextarea {
-  margin-top: 5%;
-  margin-right: 1%;
-}
-
-
 /*inputboxes*/
 
 .nonalignbox {
@@ -106,8 +108,7 @@ p {
   padding: 15px;
 }
 
-
-/*new-client&new-patient*/
+@media (min-width: 768px){
 
 .nav {
   width: 100%;
@@ -131,554 +132,20 @@ p {
   height: 7 em;
   z-index: 100
 }
-
-
-/* form creation/submission */
-
-.inputLabel {
-  display: inline-block;
-  float: left;
-  clear: left;
-  text-align: left;
-  width: 15em;
 }
-
-.inputBox {
-  display: inline-block;
-  float: left;
-}
-
-.inputGroup {
-  margin: 10px;
-  display: block;
-  clear: left;
-}
-
-
-/*inputboxes*/
-
-.nonalignbox {
-  margin-left: 10%;
-}
-
-.status {
-  padding: 15px;
-}
-
-
-/* form creation/submission */
-
-#create-patient-button {
-  margin: 20px;
-  display: block;
-  width: 10em;
-  clear: left;
-}
-
-#reset-patient-button {
-  margin: 20px;
-  display: block;
-  width: 10em;
-  clear: left;
-}
-
-#create-sidenote-button {
-  margin: 20px;
-  display: block;
-  width: 10em;
-  clear: left;
-}
-
-#create-calendar-button {
-  margin: 20px;
-  display: block;
-  width: 10em;
-  clear: left;
-}
-
-
-/*view-patient*/
-
-.viewLabel {
-  display: inline-block;
-  float: left;
-  clear: left;
-  text-align: left;
-  width: 20em;
-}
-
-.inputBox {
-  display: inline-block;
-  float: left;
-}
-
-.inputGroup {
-  margin: 10px;
-  display: block;
-  clear: left;
-}
-
-#create-client-button {
-  margin: 20px;
-}
-
-
-/* login specific input stylings */
-
-.inputLoginGroup {
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-.inputLoginLabel {
-  display: inline-block;
-  float: left;
-  clear: left;
-  text-align: left;
-  width: 5em;
-}
-
-.viewInfo {
-  display: inline-block;
-  float: left;
-}
-
-.viewGroup {
-  margin: 10px;
-  display: block;
-  clear: left;
-}
-
-#edit-patient-button {
-  margin: 20px;
-  display: block;
-  width: 10em;
-  clear: left;
-}
-
-#create-client-button {
-  margin: 20px;
-  display: block;
-  clear: left;
-}
-
-#login-button {
-  margin-left: 90px;
-  margin-top: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.createUserPrompt {
-  margin-top: 20px;
-}
-
-
-/*  create user styling  */
-
-#create-user-button {
-  margin-left: 80px;
-  margin-top: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.inputUserLabel {
-  display: inline-block;
-  float: left;
-  clear: left;
-  text-align: left;
-  width: 10em;
-}
-
-
-/* display list of names*/
-
-.nameList {
-  display: block;
-  /*height: 80%;
-    width: 40%;*/
-  height: 550px;
-  width: 300px;
-  margin: 10px;
-}
-
-.nameListItem {
-  background: #ffc863;
-}
-
-.nameListItem:nth-child(odd) {
-  /*background: #E6FBFF;*/
-  background: #c0c5c6;
-}
-
 
 /* view client-info */
+
 
 .infoBlock {
   display: inline-block;
   vertical-align: top;
   width: 44%;
+
+}
+
+.leftAlignGroup{
+  margin-left: .5rem;
 }
 
 
-/* medical history */
-
-.history-selector-button {
-  display: inline-block;
-}
-
-.new-entry-button-wrapper {
-  text-align: center;
-}
-
-.new-entry-button {
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.history-list {
-  height: 300px;
-  padding: 0;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.infoBlockComponent {
-  width: 75%;
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-/* medical record */
-
-textarea {
-  resize: none;
-}
-
-canvas {
-  background: #fff
-}
-
-.medical-button {
-  margin: 5px;
-  margin-top: 15px;
-  width: 180px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-.status {
-  padding: 15px;
-}
-
-.radioButton {
-  display: inline;
-  width: 50%;
-  padding: 0;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.checkboxMed {
-  display: inline;
-  padding-left: 0;
-  padding-right: 0;
-  margin-left: 3px;
-  margin-right: 3px;
-}
-
-.labelForRadio {
-  font-weight: normal;
-}
-
-.medicalTextInput {
-  width: 100px;
-}
-
-.addButton {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-top: 10px;
-}
-
-.removeButton {
-  line-height: 25px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#alert_placeholder_med {
-  margin-top: 10px;
-  width: 250px;
-}
-
-.allMedGroup {
-  text-align: left;
-}
-
-.medHeading {
-  text-align: center;
-}
-
-.medicalRecord {
-  margin-left: 20px;
-}
-
-.bcsSelect {
-  width: 75px;
-}
-
-
-/*  patient-info component          */
-
-.patientInfoHeading {
-  margin-top: 0;
-}
-
-.patientViewGroup {
-  margin-bottom: 50px;
-  display: block;
-  clear: left;
-}
-
-.patientViewLabel {
-  display: inline-block;
-  float: left;
-  clear: left;
-  text-align: left;
-  width: 12em;
-}
-
-
-/* form creation/submission */
-
-#create-patient-button {
-  margin: 20px;
-  display: block;
-  width: 10em;
-  clear: left;
-}
-
-#reset-patient-button {
-  margin: 20px;
-  display: block;
-  width: 10em;
-  clear: left;
-}
-
-#create-sidenote-button {
-  margin: 20px;
-  display: block;
-  width: 10em;
-  clear: left;
-}
-
-
-/*view-patient*/
-
-.viewLabel {
-  display: inline-block;
-  float: left;
-  clear: left;
-  text-align: left;
-  width: 20em;
-}
-
-.inputBox {
-  display: inline-block;
-  float: left;
-}
-
-.inputGroup {
-  margin: 10px;
-  display: block;
-  clear: left;
-}
-
-#create-client-button {
-  margin: 20px;
-}
-
-
-/* login specific input stylings */
-
-.inputLoginGroup {
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-.inputLoginLabel {
-  display: inline-block;
-  float: left;
-  clear: left;
-  text-align: left;
-  width: 5em;
-}
-
-.viewInfo {
-  display: inline-block;
-  float: left;
-}
-
-.viewGroup {
-  margin: 10px;
-  display: block;
-  clear: left;
-}
-
-#edit-patient-button {
-  margin: 20px;
-  display: block;
-  width: 10em;
-  clear: left;
-}
-
-#create-client-button {
-  margin: 20px;
-  display: block;
-  clear: left;
-}
-
-#login-button {
-  margin-left: 90px;
-  margin-top: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.createUserPrompt {
-  margin-top: 20px;
-}
-
-
-/*  create user styling  */
-
-#create-user-button {
-  margin-left: 80px;
-  margin-top: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.inputUserLabel {
-  display: inline-block;
-  float: left;
-  clear: left;
-  text-align: left;
-  width: 10em;
-}
-
-
-/* display list of names*/
-
-
-/* <--- Horrible name, names of what for what? where? */
-
-.nameList {
-  display: block;
-  /*height: 80%;
-    width: 40%;*/
-  height: 550px;
-  width: 300px;
-}
-
-.nameListItem {
-  cursor: pointer;
-  padding: 5px;
-  margin: 0px;
-  background: #ffc863;
-}
-
-.nameListItem:nth-child(odd) {
-  /*background: #E6FBFF;*/
-  background: #c0c5c6;
-}
-
-
-/* view client-info */
-
-.infoBlock {
-  display: inline-block;
-  vertical-align: top;
-  width: 44%;
-}
-
-
-/*  create contact */
-
-#create-contact-button {
-  margin-left: 10px;
-  margin-top: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.inputContactLabel {
-  display: inline-block;
-  float: left;
-  clear: left;
-  margin-left: 100px;
-  margin-right: auto;
-  text-align: left;
-  width: 10em;
-}
-
-.inputContactBox {
-  display: inline-block;
-  float: left;
-  width: 10em;
-}
-
-.inputContactGroup {
-  width: 500px;
-  margin-right: auto;
-  margin-left: auto;
-  display: block;
-}
-
-
-/*  search contacts  */
-
-#search-button {
-  margin-top: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-
-/* display list of contact names*/
-
-.contactnameList {
-  overflow-y: scroll;
-  display: block;
-  height: 550px;
-}
-
-
-/* file upload*/
-
-.fileDropZone {
-  display: block;
-  height: 100px;
-}
-
-.fileDatePicker {
-  display: block;
-  width: 30%;
-  vertical-align: left;
-}
-
-.saveFileButton {
-  display: block;
-  width: 10%;
-  vertical-align: left;
-  margin: 15px;
-}

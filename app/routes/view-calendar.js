@@ -13,18 +13,18 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 				Ember.run.later(function() {
        			 resolve({ events: convertUnix(data.schedules)
 				});
-				console.log("we getdont here");
 				//this.get('ajax').request('/api/client/1');
 
     		  });
-                console.log("status is " + JSON.stringify(data));
 				//console.log("status is " + JSON.stringify(data.patient.name));
 			},
 			function(data){
-				if (data === false){
-				self.transitionTo('/unauthorized');
-				console.log("status is " + JSON.stringify(data));
-				}
+			if (data === false){
+					if (self.get('session.isAuthenticated')){
+						self.get('session').invalidate();
+					}
+				self.transitionTo('/login');
+			}
 		}));
 		return(ajaxGet);
 

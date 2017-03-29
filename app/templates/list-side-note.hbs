@@ -1,4 +1,5 @@
-<button  {{action "createSideNote" model}}>New Side Note</button>
+<div>
+<button  id="create-note-button" {{action "createSideNote" model}}>New Side Note</button>
 <div class = "nameList" >
     {{#ember-scrollable autoHide=false}}
             {{#each model.notesW as |note|}}
@@ -10,4 +11,5 @@
     {{/ember-scrollable}}
     <br>
     
+</div>
 </div>

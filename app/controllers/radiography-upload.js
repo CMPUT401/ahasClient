@@ -37,12 +37,10 @@ export default Ember.Controller.extend({
 					date: Date.parse(imageDate)/1000
 				}},
 			}).then(function(response){
-				console.log("status is " +JSON.stringify(response));
 				self.transitionToRoute('/view-patient/' + patientId);
 
 			}, function(response){
 				document.getElementById("saveRadiography").disabled = false;
-				console.log("status is " + JSON.stringify(response));
 				if(response === false){
 					if(self.get('session.isAuthenticated')){
 						self.get('session').invalidate();

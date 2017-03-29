@@ -19,7 +19,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						  contactsVeterinarian: deserialAttributesVeterinarian(data.contacts),
 						  contactsFilteredVeterinarian: deserialAttributesVeterinarian(data.contacts),
 						  contactsLaboratory: deserialAttributesLaboratory(data.contacts),
-						  contactsFilteredLaboratory: deserialAttributesLaboratory(data.contacts)
+						  contactsFilteredLaboratory: deserialAttributesLaboratory(data.contacts),
+						  contactsTechnician: deserialAttributesTechnician(data.contacts),
+						  contactsFilteredTechnician: deserialAttributesTechnician(data.contacts)
 
 				});
     		  });
@@ -78,6 +80,22 @@ function deserialAttributesLaboratory(contacts){
 	for(var i = 0; i < contacts.length; i++) {
 
 		if(contacts[i].contact_type === 'Laboratory'){
+		var contact= contacts[i];
+		contact.id = contacts[i].id;
+		contact.first_name = JSON.stringify(contacts[i].first_name).replace(/\"/g, "");
+		contact.last_name = "";
+		contact.contact_type = JSON.stringify(contacts[i].contact_type).replace(/\"/g, "");
+		deserial.push(contact);
+	}
+  }
+	return(deserial);
+}
+
+function deserialAttributesTechnician(contacts){
+	var deserial = [];
+	for(var i = 0; i < contacts.length; i++) {
+
+		if(contacts[i].contact_type === 'Technician'){
 		var contact= contacts[i];
 		contact.id = contacts[i].id;
 		contact.first_name = JSON.stringify(contacts[i].first_name).replace(/\"/g, "");

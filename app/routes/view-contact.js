@@ -10,11 +10,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/contacts/' + params.contact_id
 			).then(function(data){
-				console.log(JSON.stringify(data));
 				Ember.run(function() {
        			 resolve({ 
+						   contact_type:  JSON.stringify(data.contact.contact_type).replace(/\"/g, ""),
 						   first_name: JSON.stringify(data.contact.first_name).replace(/\"/g, ""),
-						   last_name: JSON.stringify(data.contact.last_name).replace(/\"/g, ""),
+						   last_name: checkType(data.contact.contact_type, JSON.stringify(data.contact.last_name).replace(/\"/g, "")),
 						   phone_number: JSON.stringify(data.contact.phone_number).replace(/\"/g, ""),
 						   email: JSON.stringify(data.contact.email).replace(/\"/g, ""),
 						   fax_number: JSON.stringify(data.contact.fax_number).replace(/\"/g, ""),
@@ -38,3 +38,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	},
 	
 });
+
+function checkType(type, lastname){
+
+	if (type === "Laboratory"){
+		return("");
+	}
+	return(lastname);
+
+}

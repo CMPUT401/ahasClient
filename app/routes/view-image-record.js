@@ -10,7 +10,6 @@ export default Ember.Route.extend({
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/patients/' + param.patientID + "/images/" + param.imageID
 			).then(function(data){
-				console.log("data is " + JSON.stringify(data));
 				Ember.run(function() {
 				resolve({
 					name: deserialName(data.image),
@@ -27,7 +26,6 @@ export default Ember.Route.extend({
 					self.get('session').invalidate();
 					}
 				self.transitionTo('/login');
-					console.log("status is " + JSON.stringify(data));
 				}
 		}));
 		return ajaxGet;

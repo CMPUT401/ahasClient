@@ -18,7 +18,6 @@ export default Ember.Controller.extend({
 			// console.log("size is " + file.size + " bytes");
 		},
 		sendPatientPortrait: function(patientId){
-			console.log(patientId);
 			document.getElementById("savePicture").disabled = true;
 			var partialDate = this.get('datePicker');
 			var partialDate2 = partialDate.toString().split(' ');
@@ -34,13 +33,11 @@ export default Ember.Controller.extend({
 					date: Date.parse(imageDate)/1000
 				}},
 			}).then(function(response){
-				console.log("status is " +JSON.stringify(response));
 
 				self.transitionToRoute('/view-patient/' + patientId);
 
 			}, function(response){
 				document.getElementById("savePicture").disabled = false;
-				console.log("status is " + JSON.stringify(response));
 				if(response === false){
 					if(self.get('session.isAuthenticated')){
 						self.get('session').invalidate();

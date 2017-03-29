@@ -18,7 +18,6 @@ export default Ember.Controller.extend({
 	*/
 		submitNewNote()
 		{
-			console.log(this.get('r_ID'));
 			var self = this;
 				let ajaxPost = this.get('ajax').request('/api/patients/'+this.get('p_ID')+'/medical_records/'+this.get('r_ID')+'/notes',
 			{
@@ -38,7 +37,6 @@ export default Ember.Controller.extend({
 			});
 			ajaxPost.then(function(data){
 				//console.log(this.c_ID);
-				console.log("status is " + JSON.stringify(data));
 				self.transitionToRoute('search-patient');
 			},
 			function(response){

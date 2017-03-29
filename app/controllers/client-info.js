@@ -13,7 +13,6 @@ export default Ember.Controller.extend({
 		* @param {int} clientID The ID of the client 
 		*/
 		newPatient: function(clientID){
-			console.log(clientID);
 			this.transitionToRoute("/new-patient/").then(function(newRoute){
 				newRoute.controller.set("c_ID",clientID);
 			});
@@ -26,7 +25,6 @@ export default Ember.Controller.extend({
 		* @param {int} petID The ID of the patient
 		*/
 		viewPatient: function(petId){
-			console.log(petId);
 			this.transitionToRoute("/view-patient/" + petId);
 		},
 		/**
@@ -45,7 +43,6 @@ export default Ember.Controller.extend({
 		* @param {int} clientID The ID of the client
 		*/
 		newAppointment: function(clientID){
-			console.log(clientID);
 			this.transitionToRoute("/new-calendar/").then(function(newRoute){
 				newRoute.controller.set("c_ID",clientID);
 			});

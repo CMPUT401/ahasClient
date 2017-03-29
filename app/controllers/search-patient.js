@@ -14,7 +14,6 @@ export default Ember.Controller.extend({
         * @params {int} patient id from model passed in
         */
         getPatient(patient){
-            console.log("we get here", patient);
             this.transitionToRoute('/view-patient/'+patient);
         },
         /**

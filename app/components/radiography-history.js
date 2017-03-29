@@ -24,19 +24,19 @@ export default Ember.Component.extend({
 		* @method viewEntry
 		*/
 		viewEntry: function(radiographyID){
-			console.log('view radiograph ' + radiographyID);
+		
 			// TODO transition to lab result
 			this.get('router').transitionTo('view-image-record', [this.patientId, radiographyID]);
 		}
 	},
 	init(){
 		this._super(...arguments);
-		console.log("calling ajax for lab results list");
+		
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 			this.get('ajax').request('api/patients/' + this.patientId + '/images'
 				).then(function(data){
-					console.log("data is" + JSON.stringify(data));
+					
 					Ember.run(function(){
 						resolve({
 							// radiographs: deserialAttributes(data.images)
@@ -49,7 +49,7 @@ export default Ember.Component.extend({
 					if (data === false){
 						// self.transitionTo('/unauthorized');
 						// self.get('router').transitionTo('unauthorized'); //not sure if this works
-						console.log("status is " + JSON.stringify(data));
+					
 					}		
 				})
 		);

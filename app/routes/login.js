@@ -1,6 +1,7 @@
 import Ember from 'ember';  
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
+
 export default Ember.Route.extend(ApplicationRouteMixin, {  
   actions: {
     invalidateSession: function() {
@@ -12,9 +13,9 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     // Call _super for default behavior
     this._super(controller, model);
    
-    //if we transition to this route we simply want to invalidate session
+    //if we transition to this route we simply want to transition away
     if (this.get('session.isAuthenticated')){
-		this.get('session').invalidate();
+		this.transitionTo('/client-list');
 	}
   }
 });
