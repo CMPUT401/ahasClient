@@ -34,7 +34,8 @@ export default Ember.Controller.extend({
 					name: this.loadedFile.name,
 					data: this.loadedFile.data,
 					picture_type: "radiograph",
-					date: Date.parse(imageDate)/1000
+					date: Date.parse(imageDate)/1000,
+					file_type: this.loadedFile.type
 				}},
 			}).then(function(response){
 				self.transitionToRoute('/view-patient/' + patientId);
