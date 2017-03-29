@@ -164,7 +164,6 @@ export default Ember.Controller.extend({
         * @param {id} id the id of the patient to include in the objects we are sending
 		*/  
 function gatherMedications(id, self){
-    console.log("here");
     var medications = [];
     var formattedMedicine = formatReminders(self.get('model.medicine'));
     var formattedVaccine = formatReminders(self.get('model.vaccine'));
@@ -172,6 +171,7 @@ function gatherMedications(id, self){
     medications.push.apply(medications, formattedMedicine);
     medications.push.apply(medications, formattedVaccine);
     medications.push.apply(medications, formattedOther);
+    //console log for now while we are still debugging this -kristy
      console.log(medications);
     return(medications);
     
@@ -189,11 +189,11 @@ function formatReminders(items){
     for(var i =0 ; i<items.length; i++){
         if (items[i].reminder !== ""){
             var newObjectReminder = formatDate(items[i].reminder);
-            var newObject1 = {name: items[i].name, med_type: items[i].med_type, reminder: newObjectReminder, medical_record_id: items[i].medical_record_id};
+            var newObject1 = {name: items[i].name, med_type: items[i].med_type, reminder: newObjectReminder, id: items[i].id};
             newList.push(newObject1);
         }
         else{
-            var newObject2 = {name: items[i].name, med_type: items[i].med_type, reminder: '', medical_record_id: items[i].medical_record_id};
+            var newObject2 = {name: items[i].name, med_type: items[i].med_type, reminder: '', id: items[i].id};
             newList.push(newObject2);
         }
     }
