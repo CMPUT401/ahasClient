@@ -11,6 +11,7 @@ export default Ember.Controller.extend({
 	actions: {
 		fileLoaded: function(file){
 			this.set('loadedFile', file);
+			console.log("file type is " + file.type);
 		},
 		/**
 		* makes an ajax POST request to save the lab result
@@ -23,6 +24,7 @@ export default Ember.Controller.extend({
 			var partialDate2 = partialDate.toString().split(' ');
 			var imageDate = partialDate2[2] + "/" + partialDate2[1] + "/" + partialDate2[3];
 			var self = this;
+
 			let ajaxPost = this.get('ajax').post('api/patients/' + patientId + "/images", {
 				type: 'application/json',
 				data: {image: {
@@ -31,7 +33,7 @@ export default Ember.Controller.extend({
 					data: this.loadedFile.data,
 					picture_type: "lab result",
 					date: Date.parse(imageDate)/1000,
-					file_type: this.loadedFile.type
+					data_type: this.loadedFile.type
 				}},
 			}).then(function(response){
 				self.transitionToRoute('/view-patient/' + patientId);
