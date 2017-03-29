@@ -135,7 +135,7 @@
         </label> 
     <label class="labelForRadio"> 
        {{#if model.mmTacky }}
-        <input type="checkbox"  id="mmTacky" checked="true"> disabled Tacky   
+        <input type="checkbox"  id="mmTacky" disabled checked="true"> Tacky   
          {{else}}
            <input type="checkbox"  id="mmTacky" disabled> Tacky 
            {{/if}} 
@@ -270,7 +270,7 @@
          {{/if}}
         </label> 
     </div>
-    <div class="col-sm-1 col-md-1"> <input  id="urogentialText" class="medicalTextInput" disabled value={{model.urogential}}>  </div>
+    <div class="col-sm-1 col-md-1"> <input  id="urogenitalText" class="medicalTextInput" disabled value={{model.urogenital}}>  </div>
 </div>
 <div class="row">
     <div class="col-sm-3 col-md-2">Nervous System </div>
@@ -520,7 +520,7 @@
                 <div  class="col-sm-7 col-md-7 ">
                     <label for="notes">Notes: </label>
                     <br>
-                    <textarea id="notes" rows="22" cols="50" value=""> </textarea>
+                    <textarea id="notes" rows="22" disabled cols="50" value={{model.exam_notes}}> </textarea>
                     <br>
                     <div>
         <label for="medications">Medications: </label>
@@ -575,22 +575,18 @@
                   <div >
                 <label for="followUpNotes">Follow up notes: </label>
                 <br>
-                <textarea id="followUpNotes" rows="5" cols="35" value=""> </textarea>
+                <textarea id="followUpNotes" disabled rows="5" cols="35"value={{model.followUpNotes}}> </textarea>
             </div>
 
             <div>
                 <label for="summary">Short summary: </label>
                 <br>
-                <textarea id="summary" rows="5" cols="35" value=""> </textarea>
+                <textarea id="summary" rows="5" cols="35" disabled value={{model.summary}}> </textarea>
             </div>
 
             <div>
                 <h4> Veterinarian Signature: </h4>
-
-                {{signature-pad color=color height=height value=signature weight=weight width=width id='signature' }}
-                <button type="submit" class="medical-button" id="clear-signature-button" {{action 'clearSignature'}}>Clear Signature</button>
-
-                <button type="submit" class="medical-button" id="create-medical-button" {{action 'createMedicalRecord'}}>Create medical record</button>
+              <img src={{model.signature}} alt="Cannot display" />
             </div>
             </div>
             </div>
