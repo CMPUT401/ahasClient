@@ -4,7 +4,7 @@
 	<div class = "nameList" >
     {{#ember-scrollable autoHide=false}}
             {{#each model.alerts as |alert|}}
-                    <div class = "nameListItem" {{action "getNote" model alert.id}}>
+                    <div class = "nameListItem">
                             <p>{{alert.body}} </p>
                             <p>Active till: {{alert.end}} </p>
                     </div>
