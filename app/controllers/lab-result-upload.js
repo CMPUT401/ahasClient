@@ -11,7 +11,6 @@ export default Ember.Controller.extend({
 	actions: {
 		fileLoaded: function(file){
 			this.set('loadedFile', file);
-			console.log("file type is " + file.type);
 		},
 		/**
 		* makes an ajax POST request to save the lab result

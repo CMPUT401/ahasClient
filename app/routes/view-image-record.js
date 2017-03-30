@@ -43,10 +43,9 @@ function deserialName(img){
 
 function deserialData(img){
 	var data = img.data;
-	console.log("image type is " + JSON.stringify(img.data_type));
 	if(data != null){
 		var image = JSON.stringify(data).replace(/\"/g, "");
-		if(JSON.stringify(img.data_type) == "application/pdf"){
+		if(img.data_type === "application/pdf"){
 			return pdfBuilder(image);
 		}else{
 			return '<img class="recordImage" src="' + image + '"/>';

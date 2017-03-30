@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
 			// console.log("name is " + file.name);
 			// console.log("type is " + file.type);
 			// console.log("data is ");
-			// //console.log(file.data);
+			// console.log(file.data);
 			// console.log("size is " + file.size + " bytes");
 		},
 		/**
