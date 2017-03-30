@@ -60,6 +60,8 @@
 	<h4>Created: </h4>{{model.created_at}}<br>
 	<h4>Last modified: </h4>{{model.updated_at}}<br>
 	<button {{action "newPatient" model.clientID}}>Add A Patient</button>
+	<button {{action "newAppointment" model.clientID}}>Add An Appointment</button>
+	<button {{action "editClient" model.clientID}}>Edit Client</button>
 </div>
 
 

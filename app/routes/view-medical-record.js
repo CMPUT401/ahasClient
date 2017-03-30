@@ -3,29 +3,27 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend( AuthenticatedRouteMixin , {
     ajax: Ember.inject.service(),
-	model(params) { //params as param
+    index : 1,
+	model(params) { 
 
-
-     
-		
         var self = this;
 
-        //undefined because the promise in the routes tranistion to method resolves after all of the below....
-        console.log('our id', self.get('model'), self.get('model.patientId'));
 
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 
-		this.get('ajax').request('/api/patients/1/medical_records/1' //  + params.contact_id
+		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/'+params.recordID 
 			).then(function(data){
-				
-              
+
+                self.set('index' , 1);
             
 				Ember.run(function() {
        			 resolve({ 
 						   
-
+                            medID: params.recordID,
+                            patID: params.patientID,
+                            date: parseDate(new Date(data.medical_record.date * 1000)),
                             date_created: data.medical_record.created_at, 
-                            patient_id: data.medical_record.id, 
+                            patient_id: data.medical_record.patient_id, 
                             
                             signature: data.medical_record.signature, 
 
@@ -36,7 +34,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             glands: data.medical_record.glands,
                             skin: data.medical_record.skin,
                             abdomen: data.medical_record.abdomen,
-                            urogential: data.medical_record.urogentials,
+                            urogenital: data.medical_record.urogenital,
                             nervousSystem: data.medical_record.nervousSystem,
                             musculoskeletal: data.medical_record.musculoskeletal,
                             cardiovascular: data.medical_record.cardiovascular,
@@ -68,8 +66,8 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             skinA: data.medical_record.skinA,   
                             abdomenN: data.medical_record.abdomenN,
                             abdomenA: data.medical_record.abdomenA, 
-                            urogentialN: data.medical_record.urogentialN,
-                            urogentialA: data.medical_record.urogentialA,
+                            urogenitalN: data.medical_record.urogenitalN,
+                            urogenitalA: data.medical_record.urogenitalA,
                             nervousSystemN: data.medical_record.nervousSystemN,
                             nervousSystemA: data.medical_record.nervousSystemA,
                             musculoskeletalN: data.medical_record.musculoskeletalN,
@@ -79,13 +77,33 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             respiratoryN: data.medical_record.respiratoryN,
                             respiratoryA: data.medical_record.respiratoryA,
 
+                            mcsN: data.medical_record.mcsN,
+                            mcsMild: data.medical_record.mcsMild,
+                            mcsMod: data.medical_record.mcsMod,
+                            mcsSevere: data.medical_record.mcsSevere,
+                            weight: data.medical_record.weight,
+
+                            //dropdowns
+                            weightUnit: setDropdowns(data.medical_record.weightUnit), 
+                            bcsVal1: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal2: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal3: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal4: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal5: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal6: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal7: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal8: setDropdownBCS(data.medical_record.bcsVal, self),
+                            bcsVal9: setDropdownBCS(data.medical_record.bcsVal, self),
 
 
                             exam_notes: data.medical_record.exam_notes, 
-                            medications: data.medical_record.medications,
                             followUpNotes: data.medical_record.follow_up_instructions,
-                            //vaccines: data.medical_record.vaccines, //currently not implemented back end i think as per api
-                            summary: data.medical_record.summary 
+                            summary: data.medical_record.summary ,
+
+                            //medications
+                            medications: deserialAttributesMedicines(data.medications), 
+                            vaccines: deserialAttributesVaccines(data.medications),
+                            others:deserialAttributesOthers(data.medications) 
 
                           
 				
@@ -95,12 +113,91 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 			},
 			function(data){
 				if (data === false){
-				self.transitionTo('/unauthorized');
-				console.log("status is " + JSON.stringify(data));
-				}
+						if (self.get('session.isAuthenticated')){
+							self.get('session').invalidate();
+							}
+						self.transitionTo('/login');
+					}
 		}));
 		return(ajaxGet);
 	},
 
 });
 
+function parseDate(date){
+        var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        var months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
+        var day = date.getDay() ;
+        var month = date.getMonth()  ;
+        var year = date.getFullYear();
+        var hours = date.getHours();
+        var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
+        var whole = days[day] +" "+ months[month] +" "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
+        return(whole);
+}
+
+
+function setDropdowns(value){
+    if (value === "kg"){
+        return(true);
+    }
+    return(false);
+}
+
+function setDropdownBCS(value, self){
+    if(value === self.get('index') ){
+        self.set('index' , self.get('index')+1);
+        return(true);
+    }
+    self.set('index' , self.get('index')+1);
+    return(false);
+}
+
+function deserialAttributesMedicines(medications){
+	var deserial = [];
+	for(var i = 0; i < medications.length; i++) {
+
+		if(medications[i].med_type === 'medicine' || medications[i].med_type === 'Medicine'){
+		var medication = medications[i];
+		medication.name = medication.name;
+        medication.reminderToDisplay = format(medication.reminder);
+		deserial.push(medication);
+	}
+  }
+	return(deserial);
+}
+
+function deserialAttributesVaccines(vaccines){
+	var deserial = [];
+	for(var i = 0; i < vaccines.length; i++) {
+
+		if(vaccines[i].med_type === 'vaccine' || vaccines[i].med_type === 'Vaccine'){
+		var vaccine = vaccines[i];
+		vaccine.name = vaccine.name;
+        vaccine.reminderToDisplay = format(vaccine.reminder);
+		deserial.push(vaccine);
+	}
+  }
+	return(deserial);
+}
+
+function deserialAttributesOthers(others){
+	var deserial = [];
+	for(var i = 0; i < others.length; i++) {
+
+		if(others[i].med_type === 'other'||others[i].med_type === 'Other'){
+		var other = others[i];
+		other.name = other.name;
+        other.reminderToDisplay = format(other.reminder);
+		deserial.push(other);
+	}
+  }
+	return(deserial);
+}
+
+function format(date){
+    var partialDate = new Date(date * 1000);
+    var day = (partialDate.getDate()<10?'0':'' )+ partialDate.getDate();
+    var month = (partialDate.getMonth()<10?'0':'' )+ (partialDate.getMonth()+1);
+    return(month+"/"+ day +"/"+partialDate.getFullYear());
+}

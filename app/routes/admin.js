@@ -10,12 +10,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 		this.get('ajax').request('/api/users'
 			).then(function(data){
 				Ember.run(function() {
+					var users = deserialAttributes(data.users);
 					resolve({ 
-						users: deserialAttributes(data.users)
+						users: users
 					});
-
 				});
-				
 			},
 			function(response){
 				if (response === false){

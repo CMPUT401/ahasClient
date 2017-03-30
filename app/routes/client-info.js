@@ -2,7 +2,6 @@ import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin , {
-	// TODO: load from /api/client/{id}
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
 	model(param) {
@@ -11,73 +10,32 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/client/' + param.clientID
 			).then(function(data){
-				console.log("data is " + JSON.stringify(data));
 				Ember.run(function() {
-				if(JSON.stringify(data.client.alternativeContact2ndPhone != null)){
-					resolve({
-						firstName: JSON.stringify(data.client.firstName).replace(/\"/g, ""),
-						lastName: JSON.stringify(data.client.lastName).replace(/\"/g, ""),
-						phoneNumber: JSON.stringify(data.client.phoneNumber).replace(/\"/g, ""),
-						email: JSON.stringify(data.client.email).replace(/\"/g, ""),
-						address: JSON.stringify(data.client.address).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
+				resolve({
+					firstName: deserialFirstName(data.client),
+					lastName: deserialLastName(data.client),
+					phoneNumber: deserialPhoneNumber(data.client),
+					email: deserialEmail(data.client),
+					address: deserialAddress(data.client),
 
-						licos: JSON.stringify(data.client.licos).replace(/\"/g, ""),
-						aish: JSON.stringify(data.client.aish).replace(/\"/g, ""),
-						socialAssistance: JSON.stringify(data.client.socialAssistance).replace(/\"/g, ""),
-						pets: JSON.stringify(data.client.pets).replace(/\"/g, ""),
-						
-						created_at: JSON.stringify(data.client.created_at).replace(/\"/g, "").slice(0, 10),
-						updated_at: JSON.stringify(data.client.updated_at).replace(/\"/g, "").slice(0, 10),
-						notes: JSON.stringify(data.client.notes).replace(/\"/g, "").replace(/\\n/g, ' <br> ' ),
+					licos: deserialLICOS(data.client),
+					aish: deserialAISH(data.client),
+					socialAssistance: deserialSA(data.client),
+					
+					created_at: deserialCreateAt(data.client),
+					updated_at: deserialUpdatedAt(data.client),
+					notes: deserialNotes(data.client),
 
-						alternativeContactFirstName: JSON.stringify(
-							data.client.alternativeContactFirstName).replace(/\"/g, ""),
-						alternativeContactLastName: JSON.stringify(
-							data.client.alternativeContactLastName).replace(/\"/g, ""),
-						alternativeContactPhoneNumber: JSON.stringify(
-							data.client.alternativeContactPhoneNumber).replace(/\"/g, ""),
-						alternativeContact2ndPhone: JSON.stringify(
-							data.client.alternativeContact2ndPhone).replace(/\"/g, ""),
-						alternativeContactAddress: JSON.stringify(
-							data.client.alternativeContactAddress).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
-						alternativeContactEmail: JSON.stringify(
-								data.client.alternativeContactEmail).replace(/\"/g, ""),
+					alternativeContactFirstName: deserialAltFirstName(data.client),
+					alternativeContactLastName: deserialAltLastName(data.client),
+					alternativeContactPhoneNumber: deserialAltPhoneNumber(data.client),
+					alternativeContact2ndPhone: deserialAlt2ndPhone(data.client),
+					alternativeContactAddress: deserialAltAddress(data.client),
+					alternativeContactEmail: deserialAltEmail(data.client),
 
-						clientID: JSON.stringify(data.client.id).replace(/\"/g, ""),
-						patients: deserialAttributes(data.client.patients)
-					});
-				}else{
-		   			resolve({ 
-						firstName: JSON.stringify(data.client.firstName).replace(/\"/g, ""),
-						lastName: JSON.stringify(data.client.lastName).replace(/\"/g, ""),
-						phoneNumber: JSON.stringify(data.client.phoneNumber).replace(/\"/g, ""),
-						email: JSON.stringify(data.client.email).replace(/\"/g, ""),
-						address: JSON.stringify(data.client.address).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
-
-						licos: JSON.stringify(data.client.licos).replace(/\"/g, ""),
-						aish: JSON.stringify(data.client.aish).replace(/\"/g, ""),
-						socialAssistance: JSON.stringify(data.client.socialAssistance).replace(/\"/g, ""),
-						pets: JSON.stringify(data.client.pets).replace(/\"/g, ""),
-						
-						created_at: JSON.stringify(data.client.created_at).replace(/\"/g, "").slice(0, 10),
-						updated_at: JSON.stringify(data.client.updated_at).replace(/\"/g, "").slice(0, 10),
-						notes: JSON.stringify(data.client.notes).replace(/\"/g, "").replace(/\\n/g, ' <br> ' ),
-
-						alternativeContactFirstName: JSON.stringify(
-							data.client.alternativeContactFirstName).replace(/\"/g, ""),
-						alternativeContactLastName: JSON.stringify(
-							data.client.alternativeContactLastName).replace(/\"/g, ""),
-						alternativeContactPhoneNumber: JSON.stringify(
-							data.client.alternativeContactPhoneNumber).replace(/\"/g, ""),
-						alternativeContactAddress: JSON.stringify(
-							data.client.alternativeContactAddress).replace(/\\n/g, " <br> " ).replace(/\"/g, ""),
-						alternativeContactEmail: JSON.stringify(
-								data.client.alternativeContactEmail).replace(/\"/g, ""),
-
-						clientID: JSON.stringify(data.client.id).replace(/\"/g, ""),
-						patients: deserialAttributes(data.client.patients)
-					});
-				}
+					clientID: deserialClientId(data.client),
+					patients: deserialPatients(data.client.patients)
+				});
 			  });
 			
 			},
@@ -87,13 +45,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
 					self.get('session').invalidate();
 					}
 				self.transitionTo('/login');
-					console.log("status is " + JSON.stringify(data));
 				}
 		}));
 		return ajaxGet;
 	},
 });
-function deserialAttributes(patients){
+function deserialPatients(patients){
 	var deserial = [];
 	for(var i = 0; i < patients.length; i++) {
 		var patient = patients[i];
@@ -106,3 +63,167 @@ function deserialAttributes(patients){
 	}
 	return(deserial);
 }
+
+function deserialFirstName(client){
+	var fName = client.firstName;
+	if(fName != null){
+		return JSON.stringify(fName).replace(/\"/g, "");
+	}else{
+		return "";
+	}
+}
+
+function deserialLastName(client){
+	var lName = client.lastName;
+	if(lName != null){
+		return JSON.stringify(lName).replace(/\"/g, "");
+	}else{
+		return "";
+	}
+}
+
+function deserialPhoneNumber(client){
+	var phoneNumber = client.phoneNumber;
+	if(phoneNumber != null){
+		return JSON.stringify(phoneNumber).replace(/\"/g, "");
+	}else{
+		return "";
+	}
+}
+
+function deserialEmail(client){
+	var email = client.email;
+	if(email != null){
+		return JSON.stringify(email).replace(/\"/g, "");
+	}else{
+		return "";
+	}
+}
+
+function deserialAddress(client){
+	var address = client.address;
+	if(address != null){
+		return JSON.stringify(address).replace(/\\n/g, " <br> " ).replace(/\"/g, "");
+	}else{
+		return "";
+	}
+}
+
+function deserialLICOS(client){
+	var lico = client.licos;
+	if(lico != null){
+		return JSON.stringify(lico).replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
+
+function deserialAISH(client){
+	var aish = client.aish;
+	if(aish != null){
+		return JSON.stringify(aish).replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
+
+function deserialSA(client){
+	var socialAssistance = client.socialAssistance;
+	if(socialAssistance != null){
+		return JSON.stringify(socialAssistance).replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
+
+function deserialCreateAt(client){
+	var createdAt = client.created_at;
+	if(createdAt != null){
+		return JSON.stringify(createdAt).replace(/\"/g, "").slice(0,10);
+	} else{
+		return "";
+	}
+}
+
+function deserialUpdatedAt(client){
+	var updatedAt = client.updated_at;
+	if(updatedAt != null){
+		return JSON.stringify(updatedAt).replace(/\"/g, "").slice(0,10);
+	} else{
+		return "";
+	}
+}
+
+function deserialNotes(client){
+	var notes = client.notes;
+	if(notes != null){
+		return JSON.stringify(notes).replace(/\\n/g, " <br> " ).replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
+
+function deserialAltFirstName(client){
+	var altFName = client.alternativeContactFirstName;
+	if(altFName != null){
+		return JSON.stringify(altFName).replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
+
+function deserialAltLastName(client){
+	var altLName = client.alternativeContactLastName;
+	if(altLName != null){
+		return JSON.stringify(altLName).replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
+
+function deserialAltPhoneNumber(client){
+	var altPhoneNumber = client.alternativeContactPhoneNumber;
+	if(altPhoneNumber != null){
+		return JSON.stringify(altPhoneNumber).replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
+
+function deserialAlt2ndPhone(client){
+	var altPhone = client.alternativeContact2ndPhone;
+	if(altPhone != null){
+		return JSON.stringify(altPhone).replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
+
+function deserialAltAddress(client){
+	var altAddress = client.alternativeContactAddress;
+	if(altAddress != null){
+		return JSON.stringify(altAddress).replace(/\\n/g, " <br> " ).replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
+
+function deserialAltEmail(client){
+	var altEmail = client.alternativeContactEmail;
+	if(altEmail != null){
+		return JSON.stringify(altEmail).replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
+
+function deserialClientId(client){
+	var clientId = client.id;
+	if(clientId != null){
+		return JSON.stringify(clientId).replace(/\"/g, "");
+	} else{
+		return "";
+	}
+}
+
+

@@ -1,12 +1,32 @@
 import Ember from 'ember';
 
+/**
+* Controller for search-contacts
+* @class SearchContactController
+*/
+
 
 export default Ember.Controller.extend({
     actions: {
+
+        /** 
+		* action for clicking on a contact in the displayed list
+        * takes us to the view-contact page for that contact
+		* @method getContact
+		* @param {id} contact The contact id for the contact we wish to view
+		*/
+        
         getContact(contact){
-            console.log("we get here", contact);
+
             this.transitionToRoute('/view-contact/'+contact);
         },
+         /** 
+		* action for clicking on te search-contacts-button or pressing enter while in the searchbar
+        * if input is none we reset the search
+        * else we filter the displayed lists based on input
+		* @method filterContact
+        */
+
         filterContact(){
             var input = document.getElementById('search-bar').value.trim();
             if (input === "" || input === undefined ){
@@ -16,6 +36,7 @@ export default Ember.Controller.extend({
                 this.set('model.contactsFilteredVeterinarian', this.get('model.contactsVeterinarian'));
                 this.set('model.contactsFilteredVolunteer', this.get('model.contactsVolunteer'));
                 this.set('model.contactsFilteredLaboratory', this.get('model.contactsLaboratory'));
+                this.set('model.contactsFilteredTechnician', this.get('model.contactsTechnician'));
             
         }
             else{
@@ -29,11 +50,19 @@ export default Ember.Controller.extend({
         }
     }
 });
+ /** 
+		* used to filter the lists for searching for contacts
+        * sets model attributes to the list to display which is contructed
+        * from objects in the full model list which match the input criteria
+		* @method filter
+		* @param {string} input The searchbar input
+        * @param {model} model The model for this controller
+        * @param {self} controller the search-contact controller
+		*/   
 
 function filter(input, model, self){
 
     var reg = new RegExp( input );
-    console.log(reg);
     
     //filter volunteers
     var resultVolunteer = [];
@@ -81,7 +110,7 @@ function filter(input, model, self){
         var lastNameLaboratory = model.contactsLaboratory[j].last_name.toLowerCase();
         var LaboratoryFullName = firstNameLaboratory + " " + lastNameLaboratory;
         
-        if (input === firstNameLaboratory || input === lastNameLaboratory || input === LaboratoryFullName || reg.test(LaboratoryFullName)){
+        if (input === firstNameLaboratory || input === LaboratoryFullName || reg.test(LaboratoryFullName)){
 
             var contactLaboratory = { first_name : model.contactsLaboratory[j].first_name , last_name : model.contactsLaboratory[j].last_name , id: model.contactsLaboratory[j].id};
             resultLaboratory.push(contactLaboratory);
@@ -89,6 +118,23 @@ function filter(input, model, self){
 
     }
      self.set('model.contactsFilteredLaboratory', resultLaboratory);
+
+     //filter technicians
+    var resultTechnician = [];
+    for (var n = 0; n<model.contactsTechnician.length; n++){
+
+        var firstNameTechnician = model.contactsTechnician[n].first_name.toLowerCase();
+        var lastNameTechnician = model.contactsTechnician[n].last_name.toLowerCase();
+        var TechnicianFullName = firstNameTechnician + " " + lastNameTechnician;
+        
+        if (input === firstNameTechnician || input === lastNameTechnician || input === TechnicianFullName || reg.test(TechnicianFullName)){
+
+            var contactTechnician = { first_name : model.contactsTechnician[n].first_name , last_name : model.contactsTechnician[n].last_name , id: model.contactsTechnician[n].id};
+            resultTechnician.push(contactTechnician);
+        }
+
+    }
+     self.set('model.contactsFilteredTechnician', resultTechnician);
 }
 
 

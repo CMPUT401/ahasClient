@@ -1,27 +1,53 @@
 import Ember from 'ember';
 
+/**
+* Controller for create-contact
+* @class CreateContactController
+*/
+
 export default Ember.Controller.extend({
     session: Ember.inject.service(),
     ajax: Ember.inject.service(),
     actions: {
-
+ /** 
+		* handles action called when user changes the option selected in the dropdown
+		* if option is Laboratory only display name input, else display both first and last name inputs
+		* @method showLastName
+		*/
     showLastName: function(){
         var type= document.getElementById('type');
         var typeval = type.options[type.selectedIndex].text;
 
         if (typeval == "Laboratory" ){
-        this.set('model.laboratory', false);
-        }
-        else{
         this.set('model.laboratory', true);
         }
+        else{
+        this.set('model.laboratory', false);
+        }
     },
+
+     /** 
+		* handles action called when user clicks create-contact-button
+		* sends a post to server after doing some checks for input content
+        * displays error message upon failure 
+        * briefly displays confirmation upon success and then transitions to search-contacts
+        * if input validation works and it gets to the request we disable the create button so that duplicate contacts
+        * cannot be created
+		* @method createContact
+		*/
 
     createContact: function(){
 
     //this is to get the value in the dropdown specifically
     var type= document.getElementById('type');
     var typeval = type.options[type.selectedIndex].text;
+
+    if (typeval === "Laboratory"){
+        var last_name = "laboratorytype";
+    }
+    else{
+        var last_name = this.get('last_name');
+    }
     var self = this;
  
 
@@ -49,7 +75,7 @@ export default Ember.Controller.extend({
         type: 'application/json',
         data: { contact: {
           first_name: this.get('first_name'),
-          last_name: this.get('last_name'),
+          last_name: last_name,
           address: this.get('address'),
           email: this.get('email'),
           phone_number: this.get('phoneNumber'),
@@ -83,6 +109,13 @@ export default Ember.Controller.extend({
     }
 });
    
+ /** 
+		* used to provide feedback to user on success condition as well as fail condition
+        * only displayed very briefly on success condition however before transition
+		* @method  showAlert
+		* @param {string} message The message to display in the alert
+        * @param {boolean} bool Determines if this is a warning alert or confirmation alert
+		*/   
 
 function showAlert(message, bool) {
         if(bool){
@@ -93,6 +126,11 @@ function showAlert(message, bool) {
         }
  }
 
+ /**
+* clears the page's input fields
+* @param {object} page the controller
+* @method clearFields
+*/
 function clearFields(page){
 	page.set('first_name', '');
 	page.set('last_name', '');

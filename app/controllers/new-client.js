@@ -1,12 +1,22 @@
 import Ember from 'ember';
 
-
+/**
+* Controller for new-client
+* @class NewClientController
+*/
 export default Ember.Controller.extend({
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
 	//let cName, let cAddress, let cPhone,
 	actions: {
-		submitNewCient(){
+		/**
+		* makes an ajax POST request to save the new client
+		* @method submitNewClient
+		*/
+		submitNewClient: function(){
+			//disable button
+			document.getElementById("create-client-button").disabled = true; 
+			//make asynch post request
 			var self = this;
 			//let cName = this.get('clientName');
 			//TODO check inputs
@@ -24,7 +34,6 @@ export default Ember.Controller.extend({
 					pets: "",
 					created_at: new Date(),
 					updated_at: "",
-					clientId: this.get('clientID'),
 					alternativeContactFirstName: this.get('alternativeFirstName'),
 					alternativeContactLastName: this.get('alternativeLastName'),
 					alternativeContactPhoneNumber: this.get('alternativePrimaryPhone'),
@@ -37,17 +46,18 @@ export default Ember.Controller.extend({
 					//console.log("name is " + cName);
 					// TODO display confrimation page
 					// TODO prevent user from going back into this page
-					console.log("status is " + JSON.stringify(data));
+					clearFields(self);
 					self.transitionToRoute('client-list');
 				},
 				function(response){
-					console.log("status is " + JSON.stringify(response));
+					document.getElementById("create-client-button").disabled = false;
 					if (response === false){
 						if (self.get('session.isAuthenticated')){
-						self.get('session').invalidate();
+							self.get('session').invalidate();
+						}
+						clearFields(self);
+						self.transitionToRoute('/login');
 					}
-				self.transitionToRoute('/login');
-			}
 				});
 			//createNewCLient();
 			//this.transitionToRoute('/login');
@@ -55,3 +65,26 @@ export default Ember.Controller.extend({
 		}
 	}
 });
+
+/**
+* clears the page's input fields
+* @param {object} page the controller
+* @method clearFields
+*/
+function clearFields(page){
+	page.set('clientFirstName', '');
+	page.set('clientLastName', '');
+	page.set('clientAddress', '');
+	page.set('clientPhone', '');
+	page.set('clientEmail', '');
+	page.set('clientLICO', '');
+	page.set('clientAISH', '');
+	page.set('clientAS', '');
+	page.set('alternativeFirstName', '');
+	page.set('alternativeLastName', '');
+	page.set('alternativePrimaryPhone', '');
+	page.set('alternativeAddress', '');
+	page.set('clientNotes', '');
+	page.set('alternativeSecondaryPhone', '');
+	page.set('alternativeEmail', '');
+}

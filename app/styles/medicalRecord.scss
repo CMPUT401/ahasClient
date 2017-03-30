@@ -1,0 +1,95 @@
+
+textarea {
+  resize: none;
+}
+
+canvas {
+  background: #fff
+}
+
+.medical-button {
+  margin: 5px;
+  margin-top: 15px;
+  width: 180px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.status {
+  padding: 15px;
+}
+
+.radioButton {
+  display: inline;
+  width: 50%;
+  padding: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.checkboxMed {
+  display: inline;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.labelForRadio {
+  font-weight: normal;
+}
+
+.medicalTextInput {
+  width: 100px;
+  margin-right:.5rem;
+}
+
+.addButton {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
+}
+
+.removeButton {
+  line-height: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#alert_placeholder_med {
+  margin-top: 10px;
+  width: 250px;
+}
+
+.allMedGroup {
+  text-align: left;
+}
+
+.medHeading {
+  text-align: center;
+}
+
+.medicalRecord {
+  margin-left: 20px;
+}
+
+.bcsSelect {
+  width: 75px;
+}
+
+.notesGroup{
+margin-top: 5rem;
+}
+
+.row{
+  margin-top: 1rem;
+}
+
+.medications{
+  margin-top:1rem;
+  margin-bottom:1rem;
+}
+
+#side-note-button{
+  margin-top:2rem;
+}

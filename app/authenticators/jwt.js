@@ -2,6 +2,13 @@ import Ember from 'ember';
 import Base from 'ember-simple-auth/authenticators/base';  
 import config from '../config/environment';
 const { RSVP: { Promise } } = Ember;
+
+/**
+* jwt authenticator
+* @class authenticator
+*/
+
+
 export default Base.extend({  
   ajax: Ember.inject.service(),
   tokenEndpoint: `${config.server}/api/user_token`,
@@ -14,6 +21,12 @@ export default Base.extend({
       }
     });
   },
+  /** 
+	* handles call from login file
+  * makes a post request to the server with authentication items
+  * if this is success , gets a jwt back and ember-simple-auth addon handles method that stores it
+	* @method authenticate
+	*/
   authenticate(creds) {
     const { username, password } = creds;
 
@@ -42,10 +55,21 @@ export default Base.extend({
         });
     }));
   }, 
+  
+  /** 
+	* used to invalidate a session
+	* @method invalidate
+	*/
   invalidate(data) {
     return Promise.resolve(data);
   }
 });
+
+/** 
+		* used to provide feedback to user on fail condition
+		* @method  showAlert
+		* @param {string} message The message to display in the alert
+		*/  
 
 function showAlert(message) {
 

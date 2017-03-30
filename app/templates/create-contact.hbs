@@ -7,16 +7,23 @@
         <option value="Veterinarian" > Veterinarian </option>
         <option value="Volunteer" > Volunteer </option>
         <option value="Laboratory" > Laboratory </option>
+         <option value="Laboratory" >Technician </option>
   </select>
 <form > 
   <br>
   <br>    
+  {{#if model.laboratory}}
+  <label for="first_name" class = "inputContactLabel">Name:</label>
+ 
+  {{input id='first_name' class = "inputContactBox" value=first_name }}
+  <br>
+  <br> 
+  {{else}}
   <label for="first_name" class = "inputContactLabel">First Name:</label>
  
   {{input id='first_name' class = "inputContactBox" value=first_name }}
   <br>
   <br> 
-  {{#if model.laboratory}}
   <label for="last_name" class="inputContactLabel">Last Name:</label>
  
   {{input id='last_name' class="inputContactBox" value=last_name }}

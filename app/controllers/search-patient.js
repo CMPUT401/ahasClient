@@ -1,12 +1,25 @@
 import Ember from 'ember';
-
+/**
+* Controller for the search patient
+* This shows all the patients in the backend
+* @class search-patient Controller
+*/
 
 export default Ember.Controller.extend({
     actions: {
+
+        /**
+        * Redirects to a patient
+        * @method getPatient
+        * @params {int} patient id from model passed in
+        */
         getPatient(patient){
-            console.log("we get here", patient);
             this.transitionToRoute('/view-patient/'+patient);
         },
+        /**
+        * Filters patient search bar
+        * @method filterPatient
+        */
         filterPatient: function(){
             var input = document.getElementById('search-bar').value.trim();
             if(input === "" || input === undefined){
@@ -19,7 +32,10 @@ export default Ember.Controller.extend({
     }
 });
 
-
+        /**
+        * Filters patient search bar
+        * @method filterPatient
+        */
 function filter(input, model, self){
     var results = [];
     for(var i = 0; i < model.patients.length; i++){

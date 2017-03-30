@@ -1,8 +1,8 @@
-<div class= "container" >
+<div >
     <br>
     <br>
     <br>
-    <div>
+    <div >
         <div class="col-sm-7 col-sm-offset-1 col-md-7  col-md-offset-1">
         <form {{action "filterContact" on="submit" }} > 
         <input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
@@ -14,15 +14,9 @@
     </div>
     <br>
     <br>
-    <div >
-
-        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="veterinariansHeading"><h3>Veterinarians</h3></div>
-        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="volunteersHeading"><h3>Volunteers</h3></div>
-        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1" id="laboratoryHeading"><h3>Laboratory</h3></div>
-
-    </div>
- <div class=" col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1 contactNameList" >
-     
+    <div class="row leftAlignGroup">
+ <div class=" col-sm-2 col-md-2 contactNameList" >
+        <h3 id="veterinariansHeading" >Veterinarians</h3>
                  {{#each  model.contactsFilteredVeterinarian as |contact|}}
                            
                                 <p{{action "getContact" contact.id on="click"}} class=' nameListItem  veterinariansContact'>{{contact.first_name}} {{contact.last_name}}</p>
@@ -31,7 +25,8 @@
                     {{/each}}
         </div >
       
-         <div class=" col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1 contactNameList" >
+         <div class=" col-sm-2  col-sm-offset-1 col-md-2 contactNameList" >
+             <h3 id="volunteersHeading" >Volunteers</h3>
                       {{#each  model.contactsFilteredVolunteer as |contact|}}
                            
                                 <p{{action "getContact" contact.id on="click"}} class=' nameListItem  volunteersContact' >{{contact.first_name}} {{contact.last_name}}</p>
@@ -40,12 +35,22 @@
                     {{/each}}
         </div >
      
-        <div class="col-sm-3  col-sm-offset-1 col-md-3 col-md-offset-1 contactNameList" >
+        <div class="col-sm-2  col-sm-offset-1 col-md-2 contactNameList" >
+            <h3 id="technicianHeading">Technicians</h3>
+                      {{#each  model.contactsFilteredTechnician as |technician|}}
+                            
+                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  technician Contact'>{{contact.first_name}} {{contact.last_name}}</p>
+
+                    {{/each}}
+        </div >
+         <div class="col-sm-2  col-sm-offset-1 col-md-2 contactNameList" >
+             <h3 id="laboratoryHeading">Laboratory</h3>
                       {{#each  model.contactsFilteredLaboratory as |contact|}}
                             
                                 <p{{action "getContact" contact.id on="click"}} class=' nameListItem  laboratoryContact'>{{contact.first_name}} {{contact.last_name}}</p>
 
                     {{/each}}
         </div >
+        </div>
                     
 </div>
