@@ -12,6 +12,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/patients/' + param.patientID
 			).then(function(data){
+				data.patient = fixNulls(data.patient);
+				data.patient.client = fixNulls(data.patient.client);
 				Ember.run.later(function() 
 					{
        			 resolve({ id: JSON.stringify(data.patient.id).replace(/\"/g, ""),
@@ -87,4 +89,19 @@ function format(date){
     var day = (partialDate.getDate()<10?'0':'' )+ partialDate.getDate();
     var month = (partialDate.getMonth()<10?'0':'' )+ (partialDate.getMonth()+1);
     return(month+"/"+ day +"/"+partialDate.getFullYear());
+}
+
+function fixNulls(data){
+	var fixed = {};
+
+	for(var key in data){
+		if(data[key] === null || data[key] === undefined || data[key] === 'null'){
+			fixed[key] = '';
+		}
+		else{
+			fixed[key] = data[key];
+		}
+	}
+
+	return fixed;
 }
