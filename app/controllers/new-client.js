@@ -47,7 +47,7 @@ export default Ember.Controller.extend({
 					// TODO display confrimation page
 					// TODO prevent user from going back into this page
 					clearFields(self);
-					self.transitionToRoute('client-list');
+					self.transitionToRoute('search-client');
 				},
 				function(response){
 					document.getElementById("create-client-button").disabled = false;
@@ -59,8 +59,6 @@ export default Ember.Controller.extend({
 						self.transitionToRoute('/login');
 					}
 				});
-			//createNewCLient();
-			//this.transitionToRoute('/login');
 			return ajaxPost;
 		}
 	}

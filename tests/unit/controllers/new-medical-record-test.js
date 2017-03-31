@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('controller:client-list', 'Unit | Controller | client list', {
+moduleFor('controller:new-medical-record', 'Unit | Controller | medical record', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

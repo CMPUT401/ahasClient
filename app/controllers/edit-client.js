@@ -45,7 +45,7 @@ export default Ember.Controller.extend({
 					patients: client.patients
 				}},
 			}).then(function(data){
-				self.transitionToRoute('/client-info/' + self.clientId);
+				self.transitionToRoute('/view-client/' + self.clientId);
 			},function(response){
 				document.getElementById("create-client-button").disabled = false;
 				if (response === false){

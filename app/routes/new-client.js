@@ -3,7 +3,5 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(AuthenticatedRouteMixin , {
 	model() {
-		//pretty sure this shouldnt be there.... -kristy
-		return this.store.createRecord('newClient');
 	}
 });

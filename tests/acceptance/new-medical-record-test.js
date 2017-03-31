@@ -2,21 +2,21 @@ import { test } from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
 import { authenticateSession} from '../helpers/ember-simple-auth';
 
-moduleForAcceptance('Acceptance | create medical record');
+moduleForAcceptance('Acceptance | new medical record');
 
-test('visiting /view-patient/1/medical-record', function(assert) {
+test('visiting /view-patient/1/new-medical-record', function(assert) {
   authenticateSession(this.application);
-  visit('/view-patient/1/medical-record');
+  visit('/view-patient/1/new-medical-record');
 
   andThen(function() {
-    assert.equal(currentURL(), '/view-patient/1/medical-record');
+    assert.equal(currentURL(), '/view-patient/1/new-medical-record');
   });
 });
 
 
 test('create medical record success', function(assert) {
   authenticateSession(this.application);
-  visit('/view-patient/1/medical-record');
+  visit('/view-patient/1/new-medical-record');
 
  //any touch to the signature pad should count as signature....
  //also dont really need to fill in any of the fields just for this test
@@ -31,7 +31,7 @@ test('create medical record success', function(assert) {
 
 test('create medical record without signature', function(assert) {
   authenticateSession(this.application);
-  visit('/view-patient/1/medical-record');
+  visit('/view-patient/1/new-medical-record');
 
  fillIn("#summary","some summary");
  click('#create-medical-button');
@@ -43,7 +43,7 @@ test('create medical record without signature', function(assert) {
 
 test('create medical record without summary', function(assert) {
   authenticateSession(this.application);
-  visit('/view-patient/1/medical-record');
+  visit('/view-patient/1/new-medical-record');
 
  click('#create-medical-button');
 

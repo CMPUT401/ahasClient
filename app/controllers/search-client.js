@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
 		* @param {int} clientID The ID of the client
 		*/
 		viewClient: function(clientID){
-            this.transitionToRoute("/client-info/" + clientID);
+            this.transitionToRoute("/view-client/" + clientID);
         },
         /**
         * handles action called when user clicks New Client button. 

@@ -15,7 +15,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
    
     //if we transition to this route we simply want to transition away
     if (this.get('session.isAuthenticated')){
-		this.transitionTo('/client-list');
+		this.transitionTo('/search-client');
 	}
   }
 });

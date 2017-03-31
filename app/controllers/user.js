@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
                 if (response.success) {
                     showAlert("User deleted!", true);
                     clearFields(self);
-                    self.transitionToRoute('search-contacts');
+                    self.transitionToRoute('search-contact');
                 }
                 //this is error from server condition
             }, function (response) {

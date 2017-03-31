@@ -15,7 +15,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 						patientID : param.patientID,
 						recordID: param.recordID
 					});
-					//console.log(data.notes instanceof String);
 				});
 				
 			},
@@ -24,7 +23,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 					if (self.get('session.isAuthenticated')){
 						self.get('session').invalidate();
 					}
-					self.transitionTo('/unauthorized');
+					self.transitionTo('/login');
             	}
             }));
 

@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:medical-record', 'Unit | Route | medical record', {
+moduleFor('route:search-client', 'Unit | Route | client list', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });
