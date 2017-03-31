@@ -86,3 +86,30 @@ function clearFields(page){
 	page.set('alternativeSecondaryPhone', '');
 	page.set('alternativeEmail', '');
 }
+
+
+/** 
+* used to provide feedback to user on success condition as well as fail condition
+* only displayed very briefly on success condition however before transition
+* @method  showAlert
+* @param {string} message The message to display in the alert
+* @param {boolean} isGood Determines if this is a warning alert or confirmation alert. true for good, false for bad
+*/   
+
+function showAlert(message, isGood) {
+        if(bool){
+            Ember.$('#alert_placeholder').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
+        }
+        else{
+             Ember.$('#alert_placeholder').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
+        }
+}
+
+function checkInputs(self){
+	if (self.get('clientFirstName') === undefined ) {
+        showAlert("First name cannot be blank", false);
+    }
+    else if (self.get('clientLastName') === undefined ) {
+        showAlert("Last name cannot be blank", false);
+    }
+}
