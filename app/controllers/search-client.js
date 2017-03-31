@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 /**
-* Controller for client-list
-* @class ClientListController
+* Controller for search client
+* @class searchClientController
 */
 export default Ember.Controller.extend({
 	actions: {

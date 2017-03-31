@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('controller:create-contact', 'Unit | Controller | create contact', {
+moduleFor('controller:new-contact', 'Unit | Controller | new contact', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });
