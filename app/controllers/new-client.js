@@ -15,13 +15,14 @@ export default Ember.Controller.extend({
 		*/
 		submitNewClient: function(){
 			//disable button
-			document.getElementById("create-client-button").disabled = true; 
+			
 			//make asynch post request
 			var self = this;
 			checkInputs(self);
 			//let cName = this.get('clientName');
 			//TODO check inputs
 			if(checkInputs(self)){
+				document.getElementById("create-client-button").disabled = true; 
 				let ajaxPost = this.get('ajax').post('/api/client' , {
 					type: 'application/json',
 					data: {client: {
