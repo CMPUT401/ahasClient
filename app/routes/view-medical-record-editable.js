@@ -190,6 +190,8 @@ function deserialAttributesMedicines(medications){
 		var medication = medications[i];
 		medication.name = medication.name;
         medication.id = medication.id;
+        medication.patient_id = medication.patient_id;
+        medication.medical_record_id = medication.medical_record_id;
         medication.reminder = format(medication.reminder);
 		deserial.push(medication);
 	}
@@ -206,6 +208,8 @@ function deserialAttributesVaccines(vaccines){
 		vaccine.name = vaccine.name;
         vaccine.reminder= format(vaccine.reminder);
         vaccine.id = vaccine.id;
+        vaccine.patient_id = vaccine.patient_id;
+        vaccine.medical_record_id = vaccine.medical_record_id;
 		deserial.push(vaccine);
 	}
   }
@@ -220,6 +224,8 @@ function deserialAttributesOthers(others){
 		var other = others[i];
 		other.name = other.name;
         other.id = other.id;
+        other.patient_id = other.patient_id;
+        other.medical_record_id = other.medical_record_id;
         other.reminder = format(other.reminder);
 		deserial.push(other);
 	}
