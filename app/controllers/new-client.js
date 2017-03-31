@@ -100,22 +100,22 @@ function clearFields(page){
 * @param {boolean} isGood Determines if this is a warning alert or confirmation alert. true for good, false for bad
 */   
 
-function showAlert(message, isGood) {
-        if(bool){
-            Ember.$('#alert_placeholder').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
+function showAlert(message, isGood, divID) {
+        if(isGood){
+            Ember.$('#alert_placeholder_' + divID).html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
         }
         else{
-             Ember.$('#alert_placeholder').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
+             Ember.$('#alert_placeholder_' + divID).html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
         }
 }
 
 function checkInputs(self){
 	if (self.get('clientFirstName') === undefined ) {
-        showAlert("First name cannot be blank", false);
+        showAlert("First name cannot be blank", false, "firstName");
         return false;
     }
     else if (self.get('clientLastName') === undefined ) {
-        showAlert("Last name cannot be blank", false);
+        showAlert("Last name cannot be blank", false, "lastName");
         return false;
     }
     else{
