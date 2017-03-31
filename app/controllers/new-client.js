@@ -18,48 +18,52 @@ export default Ember.Controller.extend({
 			document.getElementById("create-client-button").disabled = true; 
 			//make asynch post request
 			var self = this;
+			checkInputs(self);
 			//let cName = this.get('clientName');
 			//TODO check inputs
-			let ajaxPost = this.get('ajax').post('/api/client' , {
-				type: 'application/json',
-				data: {client: {
-					firstName: this.get('clientFirstName'),
-					lastName: this.get('clientLastName'),
-					address: this.get('clientAddress'),
-					phoneNumber: this.get('clientPhone'),
-					email: this.get('clientEmail'),
-					licos: this.get('clientLICO'),
-					aish: this.get('clientAISH'),
-					socialAssistance: this.get('clientAS'),
-					pets: "",
-					created_at: new Date(),
-					updated_at: "",
-					alternativeContactFirstName: this.get('alternativeFirstName'),
-					alternativeContactLastName: this.get('alternativeLastName'),
-					alternativeContactPhoneNumber: this.get('alternativePrimaryPhone'),
-					alternativeContactAddress: this.get('alternativeAddress'),
-					notes: this.get('clientNotes'),
-					alternativeContact2ndPhone: this.get('alternativeSecondaryPhone'),
-					alternativeContactEmail: this.get('alternativeEmail')
-				}}, 
-			}).then(function(data){
-					//console.log("name is " + cName);
-					// TODO display confrimation page
-					// TODO prevent user from going back into this page
-					clearFields(self);
-					self.transitionToRoute('search-client');
-				},
-				function(response){
-					document.getElementById("create-client-button").disabled = false;
-					if (response === false){
-						if (self.get('session.isAuthenticated')){
-							self.get('session').invalidate();
-						}
+			if(checkInputs(self)){
+				let ajaxPost = this.get('ajax').post('/api/client' , {
+					type: 'application/json',
+					data: {client: {
+						firstName: this.get('clientFirstName'),
+						lastName: this.get('clientLastName'),
+						address: this.get('clientAddress'),
+						phoneNumber: this.get('clientPhone'),
+						email: this.get('clientEmail'),
+						licos: this.get('clientLICO'),
+						aish: this.get('clientAISH'),
+						socialAssistance: this.get('clientAS'),
+						pets: "",
+						created_at: new Date(),
+						updated_at: "",
+						alternativeContactFirstName: this.get('alternativeFirstName'),
+						alternativeContactLastName: this.get('alternativeLastName'),
+						alternativeContactPhoneNumber: this.get('alternativePrimaryPhone'),
+						alternativeContactAddress: this.get('alternativeAddress'),
+						notes: this.get('clientNotes'),
+						alternativeContact2ndPhone: this.get('alternativeSecondaryPhone'),
+						alternativeContactEmail: this.get('alternativeEmail')
+					}}, 
+				}).then(function(data){
+						//console.log("name is " + cName);
+						// TODO display confrimation page
+						// TODO prevent user from going back into this page
 						clearFields(self);
-						self.transitionToRoute('/login');
-					}
-				});
-			return ajaxPost;
+						self.transitionToRoute('search-client');
+					},
+					function(response){
+						document.getElementById("create-client-button").disabled = false;
+						if (response === false){
+							if (self.get('session.isAuthenticated')){
+								self.get('session').invalidate();
+							}
+							clearFields(self);
+							self.transitionToRoute('/login');
+						}
+					});
+				return ajaxPost;
+			}
+			
 		}
 	}
 });
@@ -108,8 +112,13 @@ function showAlert(message, isGood) {
 function checkInputs(self){
 	if (self.get('clientFirstName') === undefined ) {
         showAlert("First name cannot be blank", false);
+        return false;
     }
     else if (self.get('clientLastName') === undefined ) {
         showAlert("Last name cannot be blank", false);
+        return false;
+    }
+    else{
+    	return true;
     }
 }

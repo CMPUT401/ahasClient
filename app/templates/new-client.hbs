@@ -7,11 +7,13 @@
 			<label class = "inputLabel" for = "clientFirstName">Client's First Name</label>
 			<div class = "inputBox">
 				{{input id='clientFirstName' value=clientFirstName required='true'}}
+				<div id = "alert_placeholder_firstName"></div>
 			</div>
 			<br>
 			<label class = "inputLabel" for = "clientLastName">Client's Last Name</label>
 			<div class = "inputBox">
 				{{input id='clientLastName' value=clientLastName required='true'}}
+				<div id = "alert_placeholder_lastName"></div>
 			</div>
 			<br>
 			<label class = "inputLabel" for = "clientAddress">Client's Address</label>
@@ -95,6 +97,7 @@
 			
 		</div>
 		<br>
+		<div id = "alert_placeholder"></div>
 		<button type = "submit" id="create-client-button">Create Client</button>
 
 	</form>
