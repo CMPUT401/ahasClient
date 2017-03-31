@@ -1,6 +1,11 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
+/**
+* Route for new medical record
+* @class NewMedicalRecordRoute
+*/
+
 export default Ember.Route.extend(AuthenticatedRouteMixin , {
     model(params) {
         return {
@@ -9,6 +14,13 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
         };
     }
 });
+
+/**  
+  * returns new Date parsed in a nice way to display at the top of the medical record
+  * format example: Monday January 21, 2017 5:12
+  * where time is in twenty four hour clock
+  * @method parseDate
+  */ 
 
 function parseDate(){
         var date = new Date();
@@ -19,6 +31,6 @@ function parseDate(){
         var year = date.getFullYear();
         var hours = date.getHours();
         var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
-        var whole = days[day] +" "+ months[month] +" "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
+        var whole = days[day] + " " + months[month] + " " + date.getDate().toString() +", "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
         return(whole);
 }

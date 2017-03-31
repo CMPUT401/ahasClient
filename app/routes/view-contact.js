@@ -1,6 +1,11 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
+/**
+* Route for view contact
+* @class ViewContactRoute
+*/
+
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
 	session: Ember.inject.service(),
@@ -40,6 +45,16 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	
 });
 
+/**  
+  * checks to see what type of contact this is, since Laboratory type will not have a last name
+  * we need to return an empty string if we find this type
+  * this is because we store contacts generically and even Laboratory type store a lastname
+  * we just dont want to display a null or whatever may be stored in that attribute
+  * @method checkType
+  * @param {string} type is the type of contact of this specific contact
+  * @param {string} lastname is the lastname of the contact
+  */ 
+
 function checkType(type, lastname){
 
 	if (type === "Laboratory"){
@@ -48,6 +63,13 @@ function checkType(type, lastname){
 	return(lastname);
 
 }
+
+/** 
+ * Used to remove nulls in returned object from server for formatting purposes
+ * if it finds nulls it replaces them with empty string
+ * @method fixNulls
+ * @param {object} data json object which is returned from request
+ */
 
 function fixNulls(data){
 	var fixed = {};

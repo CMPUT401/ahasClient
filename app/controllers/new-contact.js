@@ -43,7 +43,7 @@ export default Ember.Controller.extend({
     var typeval = type.options[type.selectedIndex].text;
 
     if (typeval === "Laboratory"){
-        var last_name = "laboratorytype";
+        var last_name = "labtype";
     }
     else{
         var last_name = this.get('last_name');

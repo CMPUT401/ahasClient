@@ -1,6 +1,11 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
+/**
+* Route for view medical record
+* @class ViewMedicalRecordRoute
+*/
+
 export default Ember.Route.extend( AuthenticatedRouteMixin , {
     ajax: Ember.inject.service(),
     index : 1,
@@ -14,6 +19,9 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 		this.get('ajax').request('/api/patients/'+params.patientID+'/medical_records/'+params.recordID 
 			).then(function(data){
 
+                //to assure that the index attribute is reset for each display of the medical record
+                //otherwise we may encounter an out of range value, since we increment it on each 
+                //generation of this route's model
                 self.set('index' , 1);
             
 				Ember.run(function() {
@@ -124,6 +132,14 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 
 });
 
+/**  
+  * returns new Date parsed in a nice way to display at the top of the medical record
+  * format example: Monday January 21, 2017 5:12
+  * where time is in twenty four hour clock
+  * @method parseDate
+  * @param {Date} date to parse
+  */ 
+
 function parseDate(date){
         var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         var months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
@@ -132,10 +148,15 @@ function parseDate(date){
         var year = date.getFullYear();
         var hours = date.getHours();
         var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
-        var whole = days[day] +" "+ months[month] +" "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
+        var whole = days[day] +" "+ months[month] +" " + date.getDate().toString() +", "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
         return(whole);
 }
 
+/**  
+  * sets a boolean to determine the load state of the dropdown for weight unit
+  * @method setDropdowns
+  * @param {string} value the string that is the weight unit 
+  */ 
 
 function setDropdowns(value){
     if (value === "kg"){
@@ -143,6 +164,16 @@ function setDropdowns(value){
     }
     return(false);
 }
+
+/**  
+  * used to determine the load state of the dropdown for the BCS value
+  * when it finds the value between 1 and 9 that is stored it returns true else false
+  * this uses the index attribute of the route which is incremented with each iteration
+  * the attribute is used so that this function is generic, the attribute is reset on each route load
+  * @method setDropdownBCS
+  * @param {string} value the string that is the weight unit
+  * @param {route} self the route
+  */ 
 
 function setDropdownBCS(value, self){
     if(value === self.get('index') ){
@@ -152,6 +183,14 @@ function setDropdownBCS(value, self){
     self.set('index' , self.get('index')+1);
     return(false);
 }
+
+/**  
+  * iterates through the array of medications and sorts into types
+  * assigns the inner attributes of a medication to the inner attributes of the object that is
+  * created so that the list of objects can be accessed in the route
+  * @method deserialAttributesMedicines
+  * @param {array} medications
+  */ 
 
 function deserialAttributesMedicines(medications){
 	var deserial = [];
@@ -167,6 +206,14 @@ function deserialAttributesMedicines(medications){
 	return(deserial);
 }
 
+/**  
+  * iterates through the array of medications and sorts into types
+  * assigns the inner attributes of a medication to the inner attributes of the object that is
+  * created so that the list of objects can be accessed in the route
+  * @method deserialAttributesVaccines
+  * @param {array} vaccines
+  */ 
+
 function deserialAttributesVaccines(vaccines){
 	var deserial = [];
 	for(var i = 0; i < vaccines.length; i++) {
@@ -181,6 +228,14 @@ function deserialAttributesVaccines(vaccines){
 	return(deserial);
 }
 
+/**  
+  * iterates through the array of medications and sorts into types
+  * assigns the inner attributes of a medication to the inner attributes of the object that is
+  * created so that the list of objects can be accessed in the route
+  * @method deserialAttributesOthers
+  * @param {array} others
+  */ 
+
 function deserialAttributesOthers(others){
 	var deserial = [];
 	for(var i = 0; i < others.length; i++) {
@@ -194,6 +249,13 @@ function deserialAttributesOthers(others){
   }
 	return(deserial);
 }
+
+/** 
+ * used to format the dates that we display in the medications
+ * converts from unix time in seconds to format of mm/dd/yyyy
+ * @method   formatDate
+ * @param {date} date the date to be formatted
+ */ 
 
 function format(date){
     var partialDate = new Date(date * 1000);
