@@ -10,6 +10,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/contacts/' + params.contact_id
 			).then(function(data){
+				data.contact = fixNulls(data.contact);
 				Ember.run(function() {
        			 resolve({ 
 						   contact_type:  JSON.stringify(data.contact.contact_type).replace(/\"/g, ""),
@@ -46,4 +47,19 @@ function checkType(type, lastname){
 	}
 	return(lastname);
 
+}
+
+function fixNulls(data){
+	var fixed = {};
+
+	for(var key in data){
+		if(data[key] === null || data[key] === undefined || data[key] === 'null'){
+			fixed[key] = '';
+		}
+		else{
+			fixed[key] = data[key];
+		}
+	}
+
+	return fixed;
 }

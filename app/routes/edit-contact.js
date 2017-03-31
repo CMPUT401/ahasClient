@@ -8,6 +8,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/contacts/' + params.contact_id
 			).then(function(data){
+                data.contact = fixNulls(data.contact);
 				Ember.run(function() {
        			 resolve({ 
 						   first_name: JSON.stringify(data.contact.first_name).replace(/\"/g, ""),
@@ -79,4 +80,20 @@ function checkTechnician(contact){
     }
     return(false);
 
+}
+
+
+function fixNulls(data){
+	var fixed = {};
+
+	for(var key in data){
+		if(data[key] === null || data[key] === undefined || data[key] === 'null'){
+			fixed[key] = '';
+		}
+		else{
+			fixed[key] = data[key];
+		}
+	}
+
+	return fixed;
 }
