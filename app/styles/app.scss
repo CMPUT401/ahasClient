@@ -1,6 +1,5 @@
 @import "bootstrap";
 @import "./removeButton";
-@import "./userTables";
 @import "./formCreation";
 @import "./medicalHistory";
 @import "./medicalRecord";
@@ -11,6 +10,8 @@
 @import "./patientInfoComponent";
 @import "./viewPatient";
 @import "./contact";
+@import "./userTables";
+@import "./inviteUser";
 @import url(https://fonts.googleapis.com/css?family=Lato:300,300italic,400,700,700italic);
 
 /**
@@ -23,6 +24,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+  font-size: 16px;
 }
 
 * {
@@ -68,7 +70,7 @@ p {
 .container {
   max-width: 1024px;
   min-height: 100vh;
-  padding: 0;
+  padding: 10px;
   
   background: #ededed;
   margin: 0 auto;

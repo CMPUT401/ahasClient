@@ -2,52 +2,6 @@ import Ember from 'ember';
 import config from './config/environment';
 import AuthConfig from 'ember-simple-auth/configuration';
 
-Ember.Route.reopen({
-  // By default, all routes are authenticated. i.e. they will need to be signed in
-  // To make a route non authenticated, set authenticated to false.
-  //
-  // If a user tries entering an non authenticated route and they are authenticated,
-  // they will be redirected to the route which is displayed after authentication.
-  // This is useful for login pages and pages you don't want the user to see when they
-  // are signed in.
-  //
-  // This creates a strict dichotomy of pages which the user can see when they are
-  // signed in and signed out which may not be appropriate. It might be worth separating
-  // out unauthenticated route into its own flag.
-
-  authenticated: true,
-
-  beforeModel(transition) {
-    // TODO Double check this
-
-    this._super(transition);
-    // We don't want to authenticate the application route as this gets called before every route.
-
-    if (this.routeName === 'application') {
-      return;
-    }
-    const sessionAuthenticated = this.get('session.isAuthenticated');
-
-    // Authenticated route and currently not authenticated
-
-    if (this.get('authenticated') && !sessionAuthenticated) {
-      transition.abort();
-      this.get('session').set('attemptedTransition', transition);
-      transition.send('authenticateSession');
-
-    // Unauthenticated route and currently authenticated
-
-    } else if (!this.get('authenticated') && sessionAuthenticated) {
-      transition.abort();
-
-      // Direct them back to the route after authentication
-
-      this.transitionTo(AuthConfig.routeAfterAuthentication);
-    }
-  }
-});
-
-
 const Router = Ember.Router.extend({
   location: config.locationType,
   rootURL: config.rootURL
@@ -82,13 +36,15 @@ Router.map(function() {
   this.route('edit-client', {path: 'edit-client/:clientID'});
   this.route('lab-result-upload', {path: '/lab-result-upload/:patientID'});
   this.route('radiography-upload', {path: '/radiography-upload/:patientID'});
-  this.route('admin');
-  this.route('user', {path: '/admin/users/:id'});
+  
   this.route('view-appointment', {path: '/view-appointment/:appointmentid'});
   this.route('view-image-record', {path: 'view-patient/:patientID/view-image-record/:imageID'});
   this.route('view-appointment', {path: '/view-appointment/:appointmentid'});
   this.route('upload-patient' , {path: '/upload-patient/:patientID'});
-  
+
+  this.route('admin');
+  this.route('user', {path: '/admin/users/:id'});
+  this.route('invite-user' , {path: '/admin/invite-user'});
   this.route('not-found', { path: '/*path' });
 });
 

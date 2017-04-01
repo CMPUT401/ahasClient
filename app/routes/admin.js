@@ -4,6 +4,11 @@ import Ember from 'ember';
 export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
+	beforeMode(transition){
+		if(localStorage.getItem('role') !== 'Admin'){
+			transition.abort();
+		}
+	},
 	model(){
 		var self = this;
 		let ajaxGet = new Ember.RSVP.Promise((resolve) =>

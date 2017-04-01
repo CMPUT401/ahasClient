@@ -1,0 +1,7 @@
+Hello
+<form class="users">
+    <h2>New User </h2>
+    <div><label>Name {{input type="name" class="invite input" value=name}}</label></div>
+    <div><label>Email {{input type="email" class="invite input" value=email keyUp=(action 'validEmail')}}</label></div>
+    <button disabled id="inviteButton" class="button" type="button" {{action 'sendInvite'}}>Invite User</button>
+</form>
