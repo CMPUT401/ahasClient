@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
 			//make ajax put request
 
 			var self = this;
-			if(checkInputs(self)){
+			if(checkInputs(client)){
 				let ajaxPut = this.get('ajax').put('api/client/' + this.clientId, {
 					type: 'application/json',
 					data: {client: {
@@ -73,27 +73,29 @@ export default Ember.Controller.extend({
 */   
 
 function showAlert(message, isGood, divID) {
-        if(isGood){
-            Ember.$('#alert_placeholder_' + divID).html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
-        }
-        else{
-             Ember.$('#alert_placeholder_' + divID).html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
-        }
+    if(isGood){
+        Ember.$('#alert_placeholder_' + divID).html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
+    }
+    else{
+         Ember.$('#alert_placeholder_' + divID).html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
+    }
 }
 
-function checkInputs(self){
+function checkInputs(model){
 
-    var validEmail = testEmail(self.get('clientEmail')) || (self.get('clientEmail') === undefined) ||
-    					(self.get('clientEmail') === "");
-    return validEmail;
+    var validEmail = testEmail(model.email, "clientEmail");
+    var validAltEmail = testEmail(model.alternativeContactEmail, "altEmail");
+    return validEmail && validAltEmail;
 }
 
-function testEmail(email){
+function testEmail(email, divID){
 	var emailRegEx =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	if(emailRegEx.test(email)){
+	if(emailRegEx.test(email) || email===undefined || email===""){
+		console.log(email +" is valid");
 		return true;
 	} else{
-		showAlert("Invalid email address", false, "clientEmail");
+		console.log(email +" is invalid");
+		showAlert("Invalid email address", false, divID);
 		return false;
 	}
 }
