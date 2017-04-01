@@ -88,7 +88,8 @@ function checkInputs(model){
 	var validLastName = testName(model.lastName, "lastName");
     var validEmail = testEmail(model.email, "clientEmail");
     var validAltEmail = testEmail(model.alternativeContactEmail, "altEmail");
-    return validEmail && validAltEmail && validFirstName && validLastName;
+    var validClientPhone = testPhoneNumber(model.phoneNumber, "clientPhone");
+    return validEmail && validAltEmail && validFirstName && validLastName && validClientPhone;
 }
 
 function testName(name, divID){
@@ -102,10 +103,22 @@ function testName(name, divID){
 
 function testEmail(email, divID){
 	var emailRegEx =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	if(emailRegEx.test(email) || email===undefined || email===""){
+	if(emailRegEx.test(email) || (email === undefined) ||( email === "")){
 		return true;
 	} else{
 		showAlert("Invalid email address", false, divID);
+		return false;
+	}
+}
+
+function testPhoneNumber(phone, divID){
+	//of format xxx-xxx-xxxx, or xxx.xxx.xxxx or xxx xxx xxxx
+	var phoneRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+	if(phoneRegEx.test(phone) || (phone === undefined) || (phone === "")){
+		return true;
+	} else{
+		showAlert("Phone number must be of format xxx-xxx-xxxx, or xxx.xxx.xxxx or xxx xxx xxxx",
+		 false, divID);
 		return false;
 	}
 }
