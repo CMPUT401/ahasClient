@@ -21,42 +21,79 @@ export default Ember.Controller.extend({
 			//make ajax put request
 
 			var self = this;
-			let ajaxPut = this.get('ajax').put('api/client/' + this.clientId, {
-				type: 'application/json',
-				data: {client: {
-					firstName: client.firstName,
-					lastName: client.lastName,
-					address: client.address,
-					phoneNumber: client.phoneNumber,
-					email: client.email,
-					licos: client.licos,
-					aish: client.aish,
-					socialAssistance: client.socialAssistance,
-					pets: "",
-					created_at: client.created_at,
-					updated_at: new Date(),
-					alternativeContactFirstName: client.alternativeContactFirstName,
-					alternativeContactLastName: client.alternativeContactLastName,
-					alternativeContactPhoneNumber: client.alternativeContactPhoneNumber,
-					alternativeContactAddress: client.alternativeContactAddress,
-					notes: client.notes,
-					alternativeContact2ndPhone: client.alternativeContact2ndPhone,
-					alternativeContactEmail: client.alternativeContactEmail,
-					patients: client.patients
-				}},
-			}).then(function(data){
-				self.transitionToRoute('/view-client/' + self.clientId);
-			},function(response){
-				document.getElementById("create-client-button").disabled = false;
-				if (response === false){
-					if (self.get('session.isAuthenticated')){
-						self.get('session').invalidate();
+			if(checkInputs(self)){
+				let ajaxPut = this.get('ajax').put('api/client/' + this.clientId, {
+					type: 'application/json',
+					data: {client: {
+						firstName: client.firstName,
+						lastName: client.lastName,
+						address: client.address,
+						phoneNumber: client.phoneNumber,
+						email: client.email,
+						licos: client.licos,
+						aish: client.aish,
+						socialAssistance: client.socialAssistance,
+						pets: "",
+						created_at: client.created_at,
+						updated_at: new Date(),
+						alternativeContactFirstName: client.alternativeContactFirstName,
+						alternativeContactLastName: client.alternativeContactLastName,
+						alternativeContactPhoneNumber: client.alternativeContactPhoneNumber,
+						alternativeContactAddress: client.alternativeContactAddress,
+						notes: client.notes,
+						alternativeContact2ndPhone: client.alternativeContact2ndPhone,
+						alternativeContactEmail: client.alternativeContactEmail,
+						patients: client.patients
+					}},
+				}).then(function(data){
+					self.transitionToRoute('/view-client/' + self.clientId);
+				},function(response){
+					document.getElementById("create-client-button").disabled = false;
+					if (response === false){
+						if (self.get('session.isAuthenticated')){
+							self.get('session').invalidate();
+						}
+						clearFields(self);
+						self.transitionToRoute('/login');
 					}
-					clearFields(self);
-					self.transitionToRoute('/login');
-				}
-			});
-			return ajaxPut;
+				});
+				return ajaxPut;
+			}
+			
 		}
 	}
 });
+
+/** 
+* used to provide feedback to user on success condition as well as fail condition
+* only displayed very briefly on success condition however before transition
+* @method  showAlert
+* @param {string} message The message to display in the alert
+* @param {boolean} isGood Determines if this is a warning alert or confirmation alert. true for good, false for bad
+*/   
+
+function showAlert(message, isGood, divID) {
+        if(isGood){
+            Ember.$('#alert_placeholder_' + divID).html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
+        }
+        else{
+             Ember.$('#alert_placeholder_' + divID).html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
+        }
+}
+
+function checkInputs(self){
+
+    var validEmail = testEmail(self.get('clientEmail')) || (self.get('clientEmail') === undefined) ||
+    					(self.get('clientEmail') === "");
+    return validEmail;
+}
+
+function testEmail(email){
+	var emailRegEx =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	if(emailRegEx.test(email)){
+		return true;
+	} else{
+		showAlert("Invalid email address", false, "clientEmail");
+		return false;
+	}
+}

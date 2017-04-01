@@ -20,7 +20,6 @@ export default Ember.Controller.extend({
 			var self = this;
 			checkInputs(self);
 			//let cName = this.get('clientName');
-			//TODO check inputs
 			if(checkInputs(self)){
 				document.getElementById("create-client-button").disabled = true; 
 				let ajaxPost = this.get('ajax').post('/api/client' , {
