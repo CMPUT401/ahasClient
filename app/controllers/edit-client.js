@@ -89,7 +89,10 @@ function checkInputs(model){
     var validEmail = testEmail(model.email, "clientEmail");
     var validAltEmail = testEmail(model.alternativeContactEmail, "altEmail");
     var validClientPhone = testPhoneNumber(model.phoneNumber, "clientPhone");
-    return validEmail && validAltEmail && validFirstName && validLastName && validClientPhone;
+    var validAltPrimaryPhone = testPhoneNumber(model.alternativeContactPhoneNumber, "altPrimaryPhone");
+    var validAltSecondaryPhone = testPhoneNumber(model.alternativeContact2ndPhone, "altSecondaryPhone");
+    return validEmail && validAltEmail && validFirstName && validLastName && validClientPhone &&
+    		validAltPrimaryPhone && validAltSecondaryPhone;
 }
 
 function testName(name, divID){
@@ -112,6 +115,7 @@ function testEmail(email, divID){
 }
 
 function testPhoneNumber(phone, divID){
+
 	//of format xxx-xxx-xxxx, or xxx.xxx.xxxx or xxx xxx xxxx
 	var phoneRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 	if(phoneRegEx.test(phone) || (phone === undefined) || (phone === "")){
