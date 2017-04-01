@@ -15,13 +15,14 @@ export default Ember.Controller.extend({
 		* @method saveClient
 		*/
 		saveClient: function(client){
-			//disable button
-			document.getElementById("create-client-button").disabled = true; 
+			
 			this.clientId = client.clientID;
 			//make ajax put request
 
 			var self = this;
 			if(checkInputs(client)){
+				//disable button
+				document.getElementById("create-client-button").disabled = true; 
 				let ajaxPut = this.get('ajax').put('api/client/' + this.clientId, {
 					type: 'application/json',
 					data: {client: {
