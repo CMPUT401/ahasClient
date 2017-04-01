@@ -6,12 +6,14 @@
 
 			<label class = "inputLabel" for = "clientFirstName">Client's First Name</label>
 			<div class = "inputBox">
-				{{input id='clientFirstName' value=model.firstName required='true'}}
+				{{input id='clientFirstName' value=model.firstName required=false}}
+				<div id = "alert_placeholder_firstName"></div>
 			</div>
 			<br>
 			<label class = "inputLabel" for = "clientLastName">Client's Last Name</label>
 			<div class = "inputBox">
-				{{input id='clientLastName' value=model.lastName required='true'}}
+				{{input id='clientLastName' value=model.lastName required=false}}
+				<div id = "alert_placeholder_lastName"></div>
 			</div>
 			<br>
 			<label class = "inputLabel" for = "clientAddress">Client's Address</label>

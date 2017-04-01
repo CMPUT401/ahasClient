@@ -83,18 +83,27 @@ function showAlert(message, isGood, divID) {
 
 function checkInputs(model){
 
+	var validFirstName = testName(model.firstName, "firstName");
+	var validLastName = testName(model.lastName, "lastName");
     var validEmail = testEmail(model.email, "clientEmail");
     var validAltEmail = testEmail(model.alternativeContactEmail, "altEmail");
-    return validEmail && validAltEmail;
+    return validEmail && validAltEmail && validFirstName && validLastName;
+}
+
+function testName(name, divID){
+	if(name === undefined || name === ""){
+		showAlert("Name cannot be blank", false, divID);
+		return false;
+	}else{
+		return true;
+	}
 }
 
 function testEmail(email, divID){
 	var emailRegEx =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	if(emailRegEx.test(email) || email===undefined || email===""){
-		console.log(email +" is valid");
 		return true;
 	} else{
-		console.log(email +" is invalid");
 		showAlert("Invalid email address", false, divID);
 		return false;
 	}
