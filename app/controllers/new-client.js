@@ -110,18 +110,6 @@ function showAlert(message, isGood, divID) {
 }
 
 function checkInputs(self){
-	// if (self.get('clientFirstName') === undefined ) {
- //        showAlert("First name cannot be blank", false, "firstName");
- //        return false;
- //    }
- //    else if (self.get('clientLastName') === undefined ) {
- //        showAlert("Last name cannot be blank", false, "lastName");
- //        return false;
- //    }
-    // else{
-    // 	testEmail()
-    // 	return true;
-    // }
     var validFirstName = testName(self.get('clientFirstName'), "firstName");
 	var validLastName = testName(self.get('clientLastName'), "lastName");
     var validEmail = testEmail(self.get('clientEmail'), "clientEmail");
