@@ -111,15 +111,29 @@ function showAlert(message, isGood, divID) {
 }
 
 function checkInputs(self){
-	if (self.get('clientFirstName') === undefined ) {
-        showAlert("First name cannot be blank", false, "firstName");
-        return false;
-    }
-    else if (self.get('clientLastName') === undefined ) {
-        showAlert("Last name cannot be blank", false, "lastName");
-        return false;
-    }
-    else{
-    	return true;
-    }
+	// if (self.get('clientFirstName') === undefined ) {
+ //        showAlert("First name cannot be blank", false, "firstName");
+ //        return false;
+ //    }
+ //    else if (self.get('clientLastName') === undefined ) {
+ //        showAlert("Last name cannot be blank", false, "lastName");
+ //        return false;
+ //    }
+    // else{
+    // 	testEmail()
+    // 	return true;
+    // }
+    var validEmail = testEmail(self.get('clientEmail')) || (self.get('clientEmail') === undefined) ||
+    					(self.get('clientEmail') === "");
+    return validEmail;
+}
+
+function testEmail(email){
+	var emailRegEx =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	if(emailRegEx.test(email)){
+		return true;
+	} else{
+		showAlert("Invalid email address", false, "clientEmail");
+		return false;
+	}
 }
