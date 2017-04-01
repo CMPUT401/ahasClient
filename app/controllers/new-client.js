@@ -122,17 +122,28 @@ function checkInputs(self){
     // 	testEmail()
     // 	return true;
     // }
-    var validEmail = testEmail(self.get('clientEmail')) || (self.get('clientEmail') === undefined) ||
-    					(self.get('clientEmail') === "");
-    return validEmail;
+    var validFirstName = testName(self.get('clientFirstName'), "firstName");
+	var validLastName = testName(self.get('clientLastName'), "lastName");
+    var validEmail = testEmail(self.get('clientEmail'), "clientEmail");
+    var validAltEmail = testEmail(self.get('alternativeEmail'), "altEmail");
+    return validFirstName && validLastName && validEmail && validAltEmail;
 }
 
-function testEmail(email){
+function testName(name, divID){
+	if(name === undefined || name === ""){
+		showAlert("Name cannot be blank", false, divID);
+		return false;
+	}else{
+		return true;
+	}
+}
+
+function testEmail(email, divID){
 	var emailRegEx =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	if(emailRegEx.test(email)){
+	if(emailRegEx.test(email) || email===undefined || email===""){
 		return true;
 	} else{
-		showAlert("Invalid email address", false, "clientEmail");
+		showAlert("Invalid email address", false, divID);
 		return false;
 	}
 }

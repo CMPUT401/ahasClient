@@ -6,12 +6,14 @@
 
 			<label class = "inputLabel" for = "clientFirstName">Client's First Name</label>
 			<div class = "inputBox">
-				{{input id='clientFirstName' value=clientFirstName required=true}} <div id = "alert_placeholder_firstName"></div>
+				{{input id='clientFirstName' value=clientFirstName required=false}} 
+				<div id = "alert_placeholder_firstName"></div>
 			</div>
 			<br>
 			<label class = "inputLabel" for = "clientLastName">Client's Last Name</label>
 			<div class = "inputBox">
-				{{input id='clientLastName' value=clientLastName required=true}} <div id = "alert_placeholder_lastName"></div>
+				{{input id='clientLastName' value=clientLastName required=false}} 
+				<div id = "alert_placeholder_lastName"></div>
 			</div>
 			<br>
 			<label class = "inputLabel" for = "clientAddress">Client's Address</label>
@@ -26,7 +28,8 @@
 			<br>
 			<label class = "inputLabel" for = "clientEmail">Client's Email</label>
 			<div class = "inputBox">
-				{{input id='clientEmail' value=clientEmail}} <div id = "alert_placeholder_clientEmail"></div>
+				{{input id='clientEmail' value=clientEmail}} 
+				<div id = "alert_placeholder_clientEmail"></div>
 			</div>
 			<br>
 			
@@ -90,6 +93,7 @@
 			<label class = "inputLabel" for = "alternativeEmail">Alternative Contact's Email</label>
 			<div class = "inputBox">
 				{{input id='alternativeEmail' value=alternativeEmail}}
+				<div id = "alert_placeholder_altEmail"></div>
 			</div>
 			<br>
 			
