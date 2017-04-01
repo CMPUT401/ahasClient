@@ -114,7 +114,11 @@ function checkInputs(self){
 	var validLastName = testName(self.get('clientLastName'), "lastName");
     var validEmail = testEmail(self.get('clientEmail'), "clientEmail");
     var validAltEmail = testEmail(self.get('alternativeEmail'), "altEmail");
-    return validFirstName && validLastName && validEmail && validAltEmail;
+    var validClientPhone = testPhoneNumber(self.get('clientPhone'), "clientPhone");
+    var validAltPrimaryPhone = testPhoneNumber(self.get('alternativePrimaryPhone'), "altPrimaryPhone");
+    var validAltSecondaryPhone = testPhoneNumber(self.get('alternativeSecondaryPhone'), "altSecondaryPhone");
+    return validEmail && validAltEmail && validFirstName && validLastName && validClientPhone &&
+    		validAltPrimaryPhone && validAltSecondaryPhone;
 }
 
 function testName(name, divID){
@@ -132,6 +136,19 @@ function testEmail(email, divID){
 		return true;
 	} else{
 		showAlert("Invalid email address", false, divID);
+		return false;
+	}
+}
+
+function testPhoneNumber(phone, divID){
+
+	//of format xxx-xxx-xxxx, or xxx.xxx.xxxx or xxx xxx xxxx
+	var phoneRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+	if(phoneRegEx.test(phone) || (phone === undefined) || (phone === "")){
+		return true;
+	} else{
+		showAlert("Phone number must be of format xxx-xxx-xxxx, or xxx.xxx.xxxx or xxx xxx xxxx",
+		 false, divID);
 		return false;
 	}
 }
