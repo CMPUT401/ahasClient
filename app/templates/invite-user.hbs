@@ -1,7 +1,10 @@
 Hello
-<form class="users">
+<form>
     <h2>New User </h2>
-    <div><label>Name {{input type="name" class="invite input" value=name}}</label></div>
-    <div><label>Email {{input type="email" class="invite input" value=email keyUp=(action 'validEmail')}}</label></div>
-    <button disabled id="inviteButton" class="button" type="button" {{action 'sendInvite'}}>Invite User</button>
+    <div class="formGroup"><label for="name">Name</label>{{input type="name" id="name" class="form-control" value=name}}</div>
+    <div class="formGroup"><label for="email">Email</label> {{input type="email" id="email" class="form-control" value=email keyUp=(action 'validEmail')}}</div>
+    <div class="formGroup"><label for="user-type">Type</label> 
+    
+    </div>
+    <button disabled id="inviteButton" class="btn btn-default" type="button" {{action 'sendInvite'}}>Invite User</button>
 </form>
