@@ -50,7 +50,11 @@ export default Ember.Controller.extend({
 function filter(input, model, self){
 	var results = [];
 	for(var i = 0; i < model.clients.length; i++){
-		if(input === model.clients[i].firstName || input === model.clients[i].lastName){
+
+		var firstName = model.clients[i].firstName.toLowerCase();
+		var lastName = model.clients[i].lastName.toLowerCase();
+		var fullName = firstName + " " + lastName;
+		if(input === firstName || input === lastName || input === fullName){
 			var client = {
 							firstName: model.clients[i].firstName,
 							lastName: model.clients[i].lastName,
