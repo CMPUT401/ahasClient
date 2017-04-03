@@ -20,9 +20,6 @@ export default Ember.Controller.extend({
 		* @method createUser
 		*/    
      createUser: function() { 
-
-        var name= document.getElementById('name').value;
-        var email= document.getElementById('username').value;
         var password = document.getElementById('password').value;
         var passwordConfirm = document.getElementById('passwordConfirm').value;
         
@@ -32,8 +29,8 @@ export default Ember.Controller.extend({
         var user = this.get('ajax').post('/api/signup', {
         type: 'application/json',
         data: { user: {
-          name: name, 
-          email: email,
+          name: this.model.user.name, 
+          email: this.model.user.email,
           password: password,
           password_confirmation: passwordConfirm
         }
