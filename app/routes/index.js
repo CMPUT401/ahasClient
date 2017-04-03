@@ -1,8 +1,15 @@
 import Ember from 'ember';
 
+/**
+* Route for index
+* @class IndexRoute
+*/
+
 export default Ember.Route.extend({
-     beforeModel() {
-    this.replaceWith('login');
+ 
+    //this route just defaults to login route
+    beforeModel() {
+       this.replaceWith('login');
   }
 });
 

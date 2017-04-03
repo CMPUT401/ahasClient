@@ -7,8 +7,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	model(params){
 		var self = this;
 		let ajaxGet = new Ember.RSVP.Promise((resolve) =>
-		this.get('ajax').request(`/api/users/${params.id}`
+		this.get('ajax').request(`/api/admin/users/${params.id}`
 			).then(function(data){
+				console.log(data);
 				Ember.run(function() {
 					resolve({ 
 						user: data.user
@@ -24,6 +25,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 					}
 					self.transitionTo('/login');
             	}
+				self.transitionTo('/admin');
             }));
 		return ajaxGet;
 	}

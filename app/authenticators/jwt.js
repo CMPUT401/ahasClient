@@ -1,6 +1,7 @@
 import Ember from 'ember';  
 import Base from 'ember-simple-auth/authenticators/base';  
 import config from '../config/environment';
+import jwt_decode from 'npm:jwt-decode';
 const { RSVP: { Promise } } = Ember;
 
 /**
@@ -40,6 +41,8 @@ export default Base.extend({
     }
     }).then((response) => {
     const { jwt } = response;
+    let decoded = jwt_decode(jwt);
+    localStorage.setItem('role', decoded.role);
     Ember.run(() => {
       resolve({
         token: jwt
@@ -61,6 +64,7 @@ export default Base.extend({
 	* @method invalidate
 	*/
   invalidate(data) {
+    localStorage.setItem('role', null)
     return Promise.resolve(data);
   }
 });

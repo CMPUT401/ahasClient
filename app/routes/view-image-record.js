@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
 	model(param){
@@ -45,7 +45,11 @@ function deserialData(img){
 	var data = img.data;
 	if(data != null){
 		var image = JSON.stringify(data).replace(/\"/g, "");
-		return '<img class="recordImage" src="' + image + '"/>';
+		if(img.data_type === "application/pdf"){
+			return pdfBuilder(image);
+		}else{
+			return '<img class="recordImage" src="' + image + '"/>';
+		}
 	}else{
 		return "Image not found!!";
 	}
@@ -68,4 +72,17 @@ function deserialType(img){
 	} else{
 		return "";
 	}
+}
+
+
+function pdfBuilder(data){
+	var objBuilder = '';
+	objBuilder += ('<object width="100%" height="100%"      data="');
+    objBuilder += (data);
+    objBuilder += ('" type="application/pdf" class="internal">');
+    objBuilder += ('<embed src="');
+    objBuilder += (data);
+    objBuilder += ('" type="application/pdf" />');
+    objBuilder += ('</object>');
+    return objBuilder
 }

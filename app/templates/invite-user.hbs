@@ -1,0 +1,15 @@
+<form>
+    <h2>New User </h2>
+    <div id = "alert_placeholder"></div>
+    <div class="formGroup"><label for="name">Name</label>{{input type="name" id="name" class="form-control" value=name}}</div>
+    <div class="formGroup"><label for="email">Email</label> {{input type="email" id="email" class="form-control" value=email keyUp=(action 'validEmail')}}</div>
+    <div class="formGroup"><label for="user-type">User type</label>
+        <div class="dropdown">
+        <select id="userType" name="select" {{action 'changeUserType'}}>
+            <option value="Admin">Admin</option> 
+            <option value="User" selected>User</option>
+        </select>
+        </div>
+    </div>
+    <button disabled id="inviteButton" class="btn btn-default" type="button" {{action 'sendInvite'}}>Invite User</button>
+</form>

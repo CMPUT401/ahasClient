@@ -57,12 +57,22 @@ export default Ember.Controller.extend({
     var type= document.getElementById('type');
     var typeval = type.options[type.selectedIndex].text;
     var self = this;
+
+   
+
+    if (typeval === "Laboratory"){
+        var last_name = "labtype";
+    }
+    else{
+        var last_name = document.getElementById('last_name').value;
+    }
+     console.log(typeval, last_name);
     
     var user = this.get('ajax').put('/api/contacts/' + id, {
         type: 'application/json',
         data: { contact: {
           first_name: document.getElementById('first_name').value,
-          last_name: document.getElementById('last_name').value,
+          last_name: last_name,
           address: document.getElementById('address').value,
           email: document.getElementById('email').value,
           phone_number: document.getElementById('phoneNumber').value,
