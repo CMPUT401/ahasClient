@@ -1,109 +1,106 @@
-<div class = "container">
+<form {{action "submitNewClient" on="submit"}}>
+	<div class = "inputGroup">
+		<h3>Please fill in the client's contact information</h3>
 
-	<form {{action "submitNewClient" on="submit"}}>
-		<div class = "inputGroup">
-			<h3>Please fill in the client's contact information</h3>
-
-			<label class = "inputLabel" for = "clientFirstName">Client's First Name</label>
-			<div class = "inputBox">
-				{{input id='clientFirstName' value=clientFirstName required=false}} 
-				<div id = "alert_placeholder_firstName"></div>
-			</div>
-			<br>
-			<label class = "inputLabel" for = "clientLastName">Client's Last Name</label>
-			<div class = "inputBox">
-				{{input id='clientLastName' value=clientLastName required=false}} 
-				<div id = "alert_placeholder_lastName"></div>
-			</div>
-			<br>
-			<label class = "inputLabel" for = "clientAddress">Client's Address</label>
-			<div class = "inputBox">
-				{{textarea id='clientAddress' value=clientAddress cols="50" rows="4"}}
-			</div>
-			<br>
-			<label class = "inputLabel" for = "clientPhone">Client's Phone Number</label>
-			<div class = "inputBox">
-				{{input id='clientPhone' value=clientPhone}}
-				<div id = "alert_placeholder_clientPhone"></div>
-			</div>
-			<br>
-			<label class = "inputLabel" for = "clientEmail">Client's Email</label>
-			<div class = "inputBox">
-				{{input id='clientEmail' value=clientEmail}} 
-				<div id = "alert_placeholder_clientEmail"></div>
-			</div>
-			<br>
-			
+		<label class = "inputLabel" for = "clientFirstName">Client's First Name</label>
+		<div class = "inputBox">
+			{{input id='clientFirstName' value=clientFirstName required=false}} 
+			<div id = "alert_placeholder_firstName"></div>
 		</div>
 		<br>
-
-		<div class = "inputGroup">
-			<h3>Please fill in the client's documentation</h3>
-
-			<label class = "inputLabel" for = "licoDocumentation">LICO</label>
-			<div class = "inputBox">
-				{{input id='clientLICO' value=clientLICO}}
-			</div>
-			<br>
-			<label class = "inputLabel" for = "aishDocumentation">AISH</label>
-			<div class = "inputBox">
-				{{input id='clientAISH' value=clientAISH}}
-			</div>
-			<br>
-			<label class = "inputLabel" for = "saDocumentation">SA</label>
-			<div class = "inputBox">
-				{{input id='clientSA' value=clientSA}}
-			</div>
-			<br>
-			<label class = "inputLabel" for = "notesDocumentation">Notes</label>
-			<div class = "inputBox">
-				{{textarea id='clientNotes' value=clientNotes cols="80" rows="6"}}
-			</div>
-			<br>
+		<label class = "inputLabel" for = "clientLastName">Client's Last Name</label>
+		<div class = "inputBox">
+			{{input id='clientLastName' value=clientLastName required=false}} 
+			<div id = "alert_placeholder_lastName"></div>
 		</div>
 		<br>
-
-		<div class = "inputGroup">
-			<h3>Please fill in the alternative contact's contact information</h3>
-
-			<label class = "inputLabel" for = "alternativeFirstName">Alternative Contact's First Name</label>
-			<div class = "inputBox">
-				{{input id='alternativeFirstName' value=alternativeFirstName }}
-			</div>
-			<br>
-			<label class = "inputLabel" for = "alternativeLastName">Alternative Contact's Last Name</label>
-			<div class = "inputBox">
-				{{input id='alternativeLastName' value=alternativeLastName }}
-			</div>
-			<br>
-			<label class = "inputLabel" for = "alternativeAddress">Alternative Contact's Address</label>
-			<div class = "inputBox">
-				{{textarea id='alternativeAddress' value=alternativeAddress   cols="50" rows="4"}}
-			</div>
-			<br>
-			<label class = "inputLabel" for = "alternativePrimaryPhone">Alternative Contact's Primary Phone Number</label>
-			<div class = "inputBox">
-				{{input id='alternativePrimaryPhone' value=alternativePrimaryPhone}}
-				<div id = "alert_placeholder_altPrimaryPhone"></div>
-			</div>
-			<br>
-			<label class = "inputLabel" for = "alternativeSecondaryPhone">Alternative Contact's Secondary Phone Number</label>
-			<div class = "inputBox">
-				{{input id='alternativeSecondaryPhone' value=alternativeSecondaryPhone}}
-				<div id = "alert_placeholder_altSecondaryPhone"></div>
-			</div>
-			<br>
-			<label class = "inputLabel" for = "alternativeEmail">Alternative Contact's Email</label>
-			<div class = "inputBox">
-				{{input id='alternativeEmail' value=alternativeEmail}}
-				<div id = "alert_placeholder_altEmail"></div>
-			</div>
-			<br>
-			
+		<label class = "inputLabel" for = "clientAddress">Client's Address</label>
+		<div class = "inputBox">
+			{{textarea id='clientAddress' value=clientAddress cols="50" rows="4"}}
 		</div>
 		<br>
-		<div id = "alert_placeholder"></div>
-		<button type = "submit" id="create-client-button">Create Client</button>
+		<label class = "inputLabel" for = "clientPhone">Client's Phone Number</label>
+		<div class = "inputBox">
+			{{input id='clientPhone' value=clientPhone}}
+			<div id = "alert_placeholder_clientPhone"></div>
+		</div>
+		<br>
+		<label class = "inputLabel" for = "clientEmail">Client's Email</label>
+		<div class = "inputBox">
+			{{input id='clientEmail' value=clientEmail}} 
+			<div id = "alert_placeholder_clientEmail"></div>
+		</div>
+		<br>
+		
+	</div>
+	<br>
 
-	</form>
-</div>
+	<div class = "inputGroup">
+		<h3>Please fill in the client's documentation</h3>
+
+		<label class = "inputLabel" for = "licoDocumentation">LICO</label>
+		<div class = "inputBox">
+			{{input id='clientLICO' value=clientLICO}}
+		</div>
+		<br>
+		<label class = "inputLabel" for = "aishDocumentation">AISH</label>
+		<div class = "inputBox">
+			{{input id='clientAISH' value=clientAISH}}
+		</div>
+		<br>
+		<label class = "inputLabel" for = "saDocumentation">SA</label>
+		<div class = "inputBox">
+			{{input id='clientSA' value=clientSA}}
+		</div>
+		<br>
+		<label class = "inputLabel" for = "notesDocumentation">Notes</label>
+		<div class = "inputBox">
+			{{textarea id='clientNotes' value=clientNotes cols="80" rows="6"}}
+		</div>
+		<br>
+	</div>
+	<br>
+
+	<div class = "inputGroup">
+		<h3>Please fill in the alternative contact's contact information</h3>
+
+		<label class = "inputLabel" for = "alternativeFirstName">Alternative Contact's First Name</label>
+		<div class = "inputBox">
+			{{input id='alternativeFirstName' value=alternativeFirstName }}
+		</div>
+		<br>
+		<label class = "inputLabel" for = "alternativeLastName">Alternative Contact's Last Name</label>
+		<div class = "inputBox">
+			{{input id='alternativeLastName' value=alternativeLastName }}
+		</div>
+		<br>
+		<label class = "inputLabel" for = "alternativeAddress">Alternative Contact's Address</label>
+		<div class = "inputBox">
+			{{textarea id='alternativeAddress' value=alternativeAddress   cols="50" rows="4"}}
+		</div>
+		<br>
+		<label class = "inputLabel" for = "alternativePrimaryPhone">Alternative Contact's Primary Phone Number</label>
+		<div class = "inputBox">
+			{{input id='alternativePrimaryPhone' value=alternativePrimaryPhone}}
+			<div id = "alert_placeholder_altPrimaryPhone"></div>
+		</div>
+		<br>
+		<label class = "inputLabel" for = "alternativeSecondaryPhone">Alternative Contact's Secondary Phone Number</label>
+		<div class = "inputBox">
+			{{input id='alternativeSecondaryPhone' value=alternativeSecondaryPhone}}
+			<div id = "alert_placeholder_altSecondaryPhone"></div>
+		</div>
+		<br>
+		<label class = "inputLabel" for = "alternativeEmail">Alternative Contact's Email</label>
+		<div class = "inputBox">
+			{{input id='alternativeEmail' value=alternativeEmail}}
+			<div id = "alert_placeholder_altEmail"></div>
+		</div>
+		<br>
+		
+	</div>
+	<br>
+	<div id = "alert_placeholder"></div>
+	<button type = "submit" id="create-client-button">Create Client</button>
+
+</form>
