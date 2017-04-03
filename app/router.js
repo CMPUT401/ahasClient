@@ -13,7 +13,7 @@ Router.map(function() {
 
   this.route('new-patient');
 
-  this.route('create-user', {path: '/create-user/:token'});
+  this.route('new-user', {path: '/new-user/:inviteToken'});
   this.route('new-client');
   this.route('new-side-note');
   this.route('new-calendar');

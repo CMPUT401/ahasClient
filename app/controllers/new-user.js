@@ -23,8 +23,8 @@ export default Ember.Controller.extend({
         var password = document.getElementById('password').value;
         var passwordConfirm = document.getElementById('passwordConfirm').value;
         
-
-        if (checkFormat(password, email, passwordConfirm, name) === true ){
+        let self = this;
+        if (checkFormat(password, passwordConfirm)){
          
         var user = this.get('ajax').post('/api/signup', {
         type: 'application/json',
@@ -32,7 +32,8 @@ export default Ember.Controller.extend({
           name: this.model.user.name, 
           email: this.model.user.email,
           password: password,
-          password_confirmation: passwordConfirm
+          password_confirmation: passwordConfirm,
+          invite_token: this.model.inviteToken
         }
     }
     });
@@ -40,6 +41,7 @@ export default Ember.Controller.extend({
         user.then(function(response){
             if(response.success){
                 showAlert("Account created!", true);
+                window.setTimeout(self.transitionToRoute('login', 3000));
             }
         //this is error from server condition
         }, function(response) {
@@ -61,21 +63,9 @@ export default Ember.Controller.extend({
         * @param {string} name The user's name
 		*/
 
-function checkFormat(password, email, passwordConfirm, name) {
-
-       var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-
-        if (name === undefined || name === ""){
-            showAlert("Name cannot be blank", false);
-            return false;
-        }
-
-        else if ( ! re.test(email)) {
-            showAlert("Incorrect email format", false);
-            return false;
-        }
+function checkFormat(password, passwordConfirm) {
        
-        else if (password.length < 7){
+        if (password.length < 7){
             showAlert("Password too short, must be at least 7 characters!", false);
             return false;
         }   
@@ -83,9 +73,6 @@ function checkFormat(password, email, passwordConfirm, name) {
             showAlert("Password and password confirmation do not match", false);
             return false;
         }
-
-        
-
         return true;
     }
  /** 
