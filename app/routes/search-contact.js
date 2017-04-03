@@ -1,6 +1,11 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
+/**
+* Route for search contact
+* @class SearchContactRoute
+*/
+
 export default Ember.Route.extend(AuthenticatedRouteMixin,
 	{
     session: Ember.inject.service(),
@@ -13,7 +18,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 				Ember.run(function() {
        			 resolve({ 
 						  
-
+						  //we keep two copies of each array as attributes of the model here
+						  //this is so that we can filter in search and results will be in one array
+						  //while the other array always contains all
 						  contactsVolunteer: deserialAttributesVolunteer(data.contacts),
 						  contactsFilteredVolunteer: deserialAttributesVolunteer(data.contacts),
 						  contactsVeterinarian: deserialAttributesVeterinarian(data.contacts),
@@ -41,6 +48,14 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 	
 });
 
+/**  
+  * iterates through the array of contacts and sorts into types
+  * assigns the inner attributes of a contact to the inner attributes of the object that is
+  * created so that the list of objects can be accessed in the route
+  * @method deserialAttributesVolunteer
+  * @param {array} contacts
+  */ 
+
 
 function deserialAttributesVolunteer(contacts){
 	var deserial = [];
@@ -57,6 +72,14 @@ function deserialAttributesVolunteer(contacts){
   }
 	return(deserial);
 }
+
+/**  
+  * iterates through the array of contacts and sorts into types
+  * assigns the inner attributes of a contact to the inner attributes of the object that is
+  * created so that the list of objects can be accessed in the route
+  * @method deserialAttributesVeterinarian
+  * @param {array} contacts
+  */ 
 
 function deserialAttributesVeterinarian(contacts){
 	var deserial = [];
@@ -75,6 +98,14 @@ function deserialAttributesVeterinarian(contacts){
 	return(deserial);
 }
 
+/**  
+  * iterates through the array of contacts and sorts into types
+  * assigns the inner attributes of a contact to the inner attributes of the object that is
+  * created so that the list of objects can be accessed in the route
+  * @method deserialAttributesLaboratory
+  * @param {array} contacts
+  */ 
+
 function deserialAttributesLaboratory(contacts){
 	var deserial = [];
 	for(var i = 0; i < contacts.length; i++) {
@@ -90,6 +121,14 @@ function deserialAttributesLaboratory(contacts){
   }
 	return(deserial);
 }
+
+/**  
+  * iterates through the array of contacts and sorts into types
+  * assigns the inner attributes of a contact to the inner attributes of the object that is
+  * created so that the list of objects can be accessed in the route
+  * @method deserialAttributesTechnician
+  * @param {array} contacts
+  */ 
 
 function deserialAttributesTechnician(contacts){
 	var deserial = [];

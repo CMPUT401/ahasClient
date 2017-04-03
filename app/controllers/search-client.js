@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 /**
-* Controller for client-list
-* @class ClientListController
+* Controller for search client
+* @class searchClientController
 */
 export default Ember.Controller.extend({
 	actions: {
@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
 		* @param {int} clientID The ID of the client
 		*/
 		viewClient: function(clientID){
-            this.transitionToRoute("/client-info/" + clientID);
+            this.transitionToRoute("/view-client/" + clientID);
         },
         /**
         * handles action called when user clicks New Client button. 
@@ -48,9 +48,15 @@ export default Ember.Controller.extend({
 * @method filter
 */
 function filter(input, model, self){
+
+	var reg = processSearch(input)
 	var results = [];
 	for(var i = 0; i < model.clients.length; i++){
-		if(input === model.clients[i].firstName || input === model.clients[i].lastName){
+
+		var firstName = model.clients[i].firstName.toLowerCase();
+		var lastName = model.clients[i].lastName.toLowerCase();
+		var fullName = firstName + " " + lastName;
+		if(input === firstName || input === lastName || input === fullName || reg.test(fullName)){
 			var client = {
 							firstName: model.clients[i].firstName,
 							lastName: model.clients[i].lastName,
@@ -60,4 +66,23 @@ function filter(input, model, self){
 		}
 	}
 	self.set('model.clientsFiltered', results);
+}
+
+/** 
+ * used to build a regular expression pattern that can match full and partial
+ * for example an input of alc for the possible client alice will find this result
+ * @method processSearch
+ * @param {string} input The searchbar input
+ */  
+function processSearch(input){
+   
+    var partialParsed = input[0];
+
+    for (var i=1; i < input.length; i++){
+        partialParsed = partialParsed + "[a-z]*" + input[i];
+    }
+
+    var parsed = new RegExp( partialParsed );
+
+    return(parsed);
 }

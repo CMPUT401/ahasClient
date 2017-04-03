@@ -1,6 +1,11 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
+/**
+* Route for view medical record editable
+* @class ViewMedicalRecordEditableRoute
+*/
+
 export default Ember.Route.extend( AuthenticatedRouteMixin , {
     ajax: Ember.inject.service(),
     index : 1,
@@ -122,16 +127,17 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
 					}
 		}));
 		return(ajaxGet);
-	},
-
-    setupController(controller, model) {
-    // Call _super for default behavior
-    this._super(controller, model);
-    //going to try to use this to fix nulls displaying problem
-    //console.log(model.glands);
-  }
+	}
 
 });
+
+/**  
+  * returns new Date parsed in a nice way to display at the top of the medical record
+  * format example: Monday January 21, 2017 5:12
+  * where time is in twenty four hour clock
+  * @method parseDate
+  * @param {Date} date to parse
+  */ 
 
 function parseDate(date){
         var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -141,9 +147,15 @@ function parseDate(date){
         var year = date.getFullYear();
         var hours = date.getHours();
         var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
-        var whole = days[day] +" "+ months[month] +" "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
+        var whole = days[day] +" "+ months[month]+ " " + date.getDate().toString() +", "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
         return(whole);
 }
+
+/**  
+  * sets a boolean to determine the load state of the dropdown for weight unit
+  * @method setDropdowns
+  * @param {string} value the string that is the weight unit 
+  */ 
 
 function setDropdowns(value){
     if (value === "kg"){
@@ -151,6 +163,16 @@ function setDropdowns(value){
     }
     return(false);
 }
+
+/**  
+  * used to determine the load state of the dropdown for the BCS value
+  * when it finds the value between 1 and 9 that is stored it returns true else false
+  * this uses the index attribute of the route which is incremented with each iteration
+  * the attribute is used so that this function is generic, the attribute is reset on each route load
+  * @method setDropdownBCS
+  * @param {string} value the string that is the weight unit
+  * @param {route} self the route
+  */ 
 
 function setDropdownBCS(value, self){
     if(value === self.get('index') ){
@@ -160,6 +182,17 @@ function setDropdownBCS(value, self){
     self.set('index' , self.get('index')+1);
     return(false);
 }
+
+/**  
+  * checks to see if we can update this particular medical record
+  * if it the same month year day and hours for the day are before midnight we can update
+  * this boolean will set whether the button on this page is disabled or not
+  * this check is actually only a second precaution on update ability
+  * the idea is that we wont get to this route if its not updateable, but if they navigate
+  * there manually with a url we still need precautions
+  * @method checkUpdate
+  * @param {Date} date
+  */ 
 
 function checkUpdate(date){
 
@@ -181,6 +214,14 @@ function checkUpdate(date){
     return(false);
 }
 
+/**  
+  * iterates through the array of medications and sorts into types
+  * assigns the inner attributes of a medication to the inner attributes of the object that is
+  * created so that the list of objects can be accessed in the route
+  * @method deserialAttributesMedicines
+  * @param {array} medications
+  */ 
+
 function deserialAttributesMedicines(medications){
 	var deserial = [];
 	for(var i = 0; i < medications.length; i++) {
@@ -189,12 +230,21 @@ function deserialAttributesMedicines(medications){
 		if(medications[i].med_type === 'medicine' || medications[i].med_type === 'Medicine'  ){
 		var medication = medications[i];
 		medication.name = medication.name;
+        medication.id = medication.id;
         medication.reminder = format(medication.reminder);
 		deserial.push(medication);
 	}
   }
 	return(deserial);
 }
+
+/**  
+  * iterates through the array of medications and sorts into types
+  * assigns the inner attributes of a medication to the inner attributes of the object that is
+  * created so that the list of objects can be accessed in the route
+  * @method deserialAttributesVaccines
+  * @param {array} vaccines
+  */ 
 
 function deserialAttributesVaccines(vaccines){
 	var deserial = [];
@@ -204,11 +254,20 @@ function deserialAttributesVaccines(vaccines){
 		var vaccine = vaccines[i];
 		vaccine.name = vaccine.name;
         vaccine.reminder= format(vaccine.reminder);
+        vaccine.id = vaccine.id;
 		deserial.push(vaccine);
 	}
   }
 	return(deserial);
 }
+
+/**  
+  * iterates through the array of medications and sorts into types
+  * assigns the inner attributes of a medication to the inner attributes of the object that is
+  * created so that the list of objects can be accessed in the route
+  * @method deserialAttributesOthers
+  * @param {array} others
+  */ 
 
 function deserialAttributesOthers(others){
 	var deserial = [];
@@ -217,12 +276,20 @@ function deserialAttributesOthers(others){
 		if(others[i].med_type === 'other'|| others[i].med_type === 'Other'){
 		var other = others[i];
 		other.name = other.name;
+        other.id = other.id;
         other.reminder = format(other.reminder);
 		deserial.push(other);
 	}
   }
 	return(deserial);
 }
+
+/** 
+ * used to format the dates that we display in the medications
+ * converts from unix time in seconds to format of mm/dd/yyyy
+ * @method   formatDate
+ * @param {date} date the date to be formatted
+ */ 
 
 function format(date){
     var partialDate = new Date(date * 1000);

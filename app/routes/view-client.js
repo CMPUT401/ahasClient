@@ -6,7 +6,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
 	ajax: Ember.inject.service(),
 	model(param) {
 		var self = this;
-		// console.log("param is " + param.clientID);
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/client/' + param.clientID
 			).then(function(data){

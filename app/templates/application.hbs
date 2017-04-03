@@ -3,13 +3,13 @@
 	{{#if session.isAuthenticated}}
 	<nav class = "navbar navbar-inverse">
 		<li class = "nav navbar-nav">
-			{{#nav-link-to 'client-list'}}
+			{{#nav-link-to 'search-client'}}
 				<h5 class = "navItem">Clients</h5>
 			{{/nav-link-to}}
 			{{#nav-link-to 'search-patient'}}
 				<h5 class = "navItem">Patients</h5>
 			{{/nav-link-to}}
-			{{#nav-link-to 'search-contacts'}}
+			{{#nav-link-to 'search-contact'}}
 				<h5 class = "navItem">Contacts</h5>
 			{{/nav-link-to}}
 			{{#nav-link-to 'view-calendar'}}

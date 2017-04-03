@@ -2,20 +2,20 @@ import { test } from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
 import { authenticateSession} from '../helpers/ember-simple-auth';
 
-moduleForAcceptance('Acceptance | create contact');
+moduleForAcceptance('Acceptance | new contact');
 
-test('visiting /create-contact', function(assert) {
+test('visiting /new-contact', function(assert) {
   authenticateSession(this.application);
-  visit('/create-contact');
+  visit('/new-contact');
 
   andThen(function() {
-    assert.equal(currentURL(), '/create-contact');
+    assert.equal(currentURL(), '/new-contact');
   });
 });
 
 test('creating new contact successful', function(assert) {
   authenticateSession(this.application);
-  visit('/create-contact');
+  visit('/new-contact');
   
   fillIn('#first_name', "Kristy");
   fillIn('#last_name', "Newbury");
@@ -26,14 +26,14 @@ test('creating new contact successful', function(assert) {
   click('#create-contact-button');
 
   andThen(function(){
-    assert.equal(currentURL(), '/search-contacts');
+    assert.equal(currentURL(), '/search-contact');
     
   });
 });
 
 test('creating new contact no first name', function(assert) {
   authenticateSession(this.application);
-  visit('/create-contact');
+  visit('/new-contact');
   
   fillIn('#last_name', "Newbury");
   fillIn('#phoneNumber', "123-123-1234");
