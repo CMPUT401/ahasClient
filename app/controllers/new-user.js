@@ -41,7 +41,7 @@ export default Ember.Controller.extend({
         user.then(function(response){
             if(response.success){
                 showAlert("Account created!", true);
-                window.setTimeout(self.transitionToRoute('login', 3000));
+                window.setTimeout(self.transitionToRoute('login'), 3000);
             }
         //this is error from server condition
         }, function(response) {

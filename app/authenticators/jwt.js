@@ -42,7 +42,6 @@ export default Base.extend({
     }).then((response) => {
     const { jwt } = response;
     let decoded = jwt_decode(jwt);
-    console.log(decoded.role);
     localStorage.setItem('role', decoded.role);
     Ember.run(() => {
       resolve({
@@ -65,6 +64,7 @@ export default Base.extend({
 	* @method invalidate
 	*/
   invalidate(data) {
+    localStorage.setItem('role', null)
     return Promise.resolve(data);
   }
 });
