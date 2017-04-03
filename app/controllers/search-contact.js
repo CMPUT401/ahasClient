@@ -62,7 +62,7 @@ export default Ember.Controller.extend({
 
 function filter(input, model, self){
 
-    var reg = new RegExp( input );
+    var reg = processSearch(input);
     
     //filter volunteers
     var resultVolunteer = [];
@@ -137,4 +137,23 @@ function filter(input, model, self){
      self.set('model.contactsFilteredTechnician', resultTechnician);
 }
 
+/** 
+ * used to build a regular expression pattern that can match full and partial
+ * for example an input of alc for the possible volunteer alice will find this result
+ * @method processSearch
+ * @param {string} input The searchbar input
+ */  
 
+
+function processSearch(input){
+   
+    var partialParsed = input[0];
+
+    for (var i=1; i < input.length; i++){
+        partialParsed = partialParsed + "[a-z]*" + input[i];
+    }
+
+    var parsed = new RegExp( partialParsed );
+
+    return(parsed);
+}

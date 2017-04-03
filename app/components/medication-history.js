@@ -16,7 +16,7 @@ export default Ember.Component.extend({
 		* @method newEntry
 		*/
 		newEntry: function(){
-			this.get('router').transitionTo('medical-record', [this.patientId]);
+			this.get('router').transitionTo('new-medical-record', [this.patientId]);
 		},
 		/**
 		* Redirects to the medical record page when the user clicks on it in the list

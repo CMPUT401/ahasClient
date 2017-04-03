@@ -5,8 +5,6 @@ import Ember from 'ember';
 * @class new side note Controller
 */
 export default Ember.Controller.extend({
-	
-	//currently commented out because backend isn't implemented
 	ajax: Ember.inject.service(),
 	session: Ember.inject.service(),
 	actions: 
@@ -36,7 +34,6 @@ export default Ember.Controller.extend({
 		
 			});
 			ajaxPost.then(function(data){
-				//console.log(this.c_ID);
 				self.transitionToRoute('search-patient');
 			},
 			function(response){
@@ -44,7 +41,7 @@ export default Ember.Controller.extend({
 					if (self.get('session.isAuthenticated')){
 						self.get('session').invalidate();
 					}
-				self.transitionTo('/login');
+				self.transitionToRoute('/login');
 			}
 			});
 		return ajaxPost;

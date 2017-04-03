@@ -16,7 +16,7 @@ export default Ember.Component.extend({
 		* @method newEntry
 		*/
 		newEntry: function(){
-           	this.get('router').transitionTo('medical-record', [this.patientId]);
+           	this.get('router').transitionTo('new-medical-record', [this.patientId]);
 		},
 		toggleVisibility: function(){
 			// console.log("show medication, the id is " + patientId);

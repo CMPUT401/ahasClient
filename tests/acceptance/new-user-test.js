@@ -1,19 +1,19 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | create user');
+moduleForAcceptance('Acceptance | new user');
 
-test('visiting /create-user', function(assert) {
-  visit('/create-user');
+test('visiting /new-user', function(assert) {
+  visit('/new-user');
 
   andThen(function() {
-    assert.equal(currentURL(), '/create-user');
+    assert.equal(currentURL(), '/new-user');
   });
   
 });
 
 test('adding new user valid', function(assert){
-  visit('/create-user');
+  visit('/new-user');
 
   fillIn('#name', "kristy");
   fillIn('#username', "user@gmail.ca");
@@ -27,7 +27,7 @@ test('adding new user valid', function(assert){
 });
 
   test('adding invalid user, too short password', function(assert){
-  visit('/create-user');
+  visit('/new-user');
 
   var pass = 'pass';
   
@@ -43,7 +43,7 @@ test('adding new user valid', function(assert){
   });
 
   test('adding invalid user, incorrect format email', function(assert){
-  visit('/create-user');
+  visit('/new-user');
 
 
   fillIn('#name', "kristy");
@@ -58,7 +58,7 @@ test('adding new user valid', function(assert){
 
 
   test('adding invalid user, name is blank', function(assert){
-  visit('/create-user');
+  visit('/new-user');
   
   fillIn('#username', "usermail@gmail.ca");
   fillIn('#password', "password");

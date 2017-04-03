@@ -4,18 +4,18 @@ import { authenticateSession} from '../helpers/ember-simple-auth';
 
 moduleForAcceptance('Acceptance | search contact');
 
-test('visiting /search-contacts', function(assert) {
+test('visiting /search-contact', function(assert) {
   authenticateSession(this.application);
-  visit('/search-contacts');
+  visit('/search-contact');
 
   andThen(function() {
-    assert.equal(currentURL(), '/search-contacts');
+    assert.equal(currentURL(), '/search-contact');
   });
 });
 
 test('checking search info rendered before search', function(assert) {
   authenticateSession(this.application);
-  visit('/search-contacts');
+  visit('/search-contact');
 
   andThen(function() {
     assert.equal(find('#veterinariansHeading').text(), 'Veterinarians');
@@ -26,7 +26,7 @@ test('checking search info rendered before search', function(assert) {
 
 test('checking we can search', function(assert) {
   authenticateSession(this.application);
-  visit('/search-contacts');
+  visit('/search-contact');
 
   fillIn('#search-bar', 'Justin');
   click('#search-button');

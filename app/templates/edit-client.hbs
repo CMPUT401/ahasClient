@@ -6,27 +6,31 @@
 
 			<label class = "inputLabel" for = "clientFirstName">Client's First Name</label>
 			<div class = "inputBox">
-				{{input id='clientFirstName' value=model.firstName required='true'}}
+				{{input id='clientFirstName' value=model.firstName required=false}}
+				<div id = "alert_placeholder_firstName"></div>
 			</div>
 			<br>
 			<label class = "inputLabel" for = "clientLastName">Client's Last Name</label>
 			<div class = "inputBox">
-				{{input id='clientLastName' value=model.lastName required='true'}}
+				{{input id='clientLastName' value=model.lastName required=false}}
+				<div id = "alert_placeholder_lastName"></div>
 			</div>
 			<br>
 			<label class = "inputLabel" for = "clientAddress">Client's Address</label>
 			<div class = "inputBox">
-				{{textarea id='clientAddress' value=model.address required='true' cols="50" rows="4"}}
+				{{textarea id='clientAddress' value=model.address required=false cols="50" rows="4"}}
 			</div>
 			<br>
 			<label class = "inputLabel" for = "clientPhone">Client's Phone Number</label>
 			<div class = "inputBox">
 				{{input id='clientPhone' value=model.phoneNumber}}
+				<div id = "alert_placeholder_clientPhone"></div>
 			</div>
 			<br>
 			<label class = "inputLabel" for = "clientEmail">Client's Email</label>
 			<div class = "inputBox">
-				{{input id='clientEmail' value=model.email}}
+				{{input id='clientEmail' value=model.email}} 
+				<div id = "alert_placeholder_clientEmail"></div>
 			</div>
 			<br>
 			
@@ -80,16 +84,19 @@
 			<label class = "inputLabel" for = "alternativePrimaryPhone">Alternative Contact's Primary Phone Number</label>
 			<div class = "inputBox">
 				{{input id='alternativePrimaryPhone' value=model.alternativeContactPhoneNumber}}
+				<div id = "alert_placeholder_altPrimaryPhone"></div>
 			</div>
 			<br>
 			<label class = "inputLabel" for = "alternativeSecondaryPhone">Alternative Contact's Secondary Phone Number</label>
 			<div class = "inputBox">
 				{{input id='alternativeSecondaryPhone' value=model.alternativeContact2ndPhone}}
+				<div id = "alert_placeholder_altSecondaryPhone"></div>
 			</div>
 			<br>
 			<label class = "inputLabel" for = "alternativeEmail">Alternative Contact's Email</label>
 			<div class = "inputBox">
 				{{input id='alternativeEmail' value=model.alternativeContactEmail}}
+				<div id = "alert_placeholder_altEmail"></div>
 			</div>
 			<br>
 			
