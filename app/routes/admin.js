@@ -12,7 +12,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	model(){
 		var self = this;
 		let ajaxGet = new Ember.RSVP.Promise((resolve) =>
-		this.get('ajax').request('/api/users'
+		this.get('ajax').request('/api/admin/users'
 			).then(function(data){
 				Ember.run(function() {
 					var users = deserialAttributes(data.users);

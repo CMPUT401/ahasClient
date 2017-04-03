@@ -2,7 +2,12 @@
     <h2> Users </h2>
     <div class="search row">
         {{input type="text" class="searchInput col-md-8" keyUp=(action 'filterUsers') value=filterOn }}
-        <button class="col-md-2 searchButton"{{action 'filterUsers'}}>Search </button>
+        <button class="col-md-2 searchButton" {{action 'filterUsers'}}>Search </button>
+    </div>
+    <div class="buttonContainer">
+    <button class="inviteUser" {{action 'inviteUser'}}>
+        Invite User
+    </button>
     </div>
     <div class="row">
         <div class="col-md-2 col-md-offset-1">

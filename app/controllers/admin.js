@@ -13,6 +13,9 @@ export default Ember.Controller.extend({
         this.set('users', this.get('model.users'));
     },
     actions: {
+        inviteUser: function(){
+            this.transitionToRoute('invite-user');
+        },
         filterUsers: function () {
             let results;
             var options = {
