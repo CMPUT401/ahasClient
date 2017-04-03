@@ -37,11 +37,17 @@ canvas {
 
 .labelForRadio {
   font-weight: normal;
+ 
+}
+
+.medRowGroup{
+ margin-top: 1rem;
 }
 
 .medicalTextInput {
   width: 100px;
   margin-right:.5rem;
+  margin-top: 1rem;
 }
 
 .addButton {
@@ -69,9 +75,6 @@ canvas {
   text-align: center;
 }
 
-.medicalRecord {
-  margin-left: 20px;
-}
 
 .bcsSelect {
   width: 75px;
@@ -81,9 +84,6 @@ canvas {
 margin-top: 5rem;
 }
 
-.row{
-  margin-top: 1rem;
-}
 
 .medications{
   margin-top:1rem;
