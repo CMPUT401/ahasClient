@@ -106,7 +106,7 @@ export default Ember.Route.extend( AuthenticatedRouteMixin , {
                             summary: data.medical_record.summary ,
 
                             //to determine if edit button is disabled or not
-                            editable: checkUpdate( new Date(data.medical_record.date * 1000)) ,
+                            editable: checkUpdate( new Date(data.medical_record.date * 1000), self, data.medical_record.patient_id) ,
 
                             //medications
                             medicine: deserialAttributesMedicines(data.medications), 
@@ -194,7 +194,7 @@ function setDropdownBCS(value, self){
   * @param {Date} date
   */ 
 
-function checkUpdate(date){
+function checkUpdate(date, self, patientId){
 
     var day = date.getDay() ;
     var month = date.getMonth()  ;
@@ -211,6 +211,8 @@ function checkUpdate(date){
     if (currentDay === day && currentMonth === month && currentYear === year && currentHours <= 24 ){
         return(true);
     }
+    //actually dont even want them to view it as editable if it is not editable.
+    self.transitionTo('/view-patient/'+patientId);
     return(false);
 }
 
