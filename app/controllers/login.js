@@ -15,6 +15,7 @@ export default Ember.Controller.extend({
 		* @method authenticate
 		*/
     authenticate: function() {
+      self = this;
       var credentials = this.getProperties('username', 'password');
       const { username, password } = credentials;
       var inputFilled = checkFields(username, password);
@@ -27,12 +28,13 @@ export default Ember.Controller.extend({
       else if(inputFilled){
         var authenticator = 'authenticator:jwt';
       this.get('session').authenticate(authenticator, 
-        credentials).catch((reason)=>{
-        this.set('errorMessage', reason.error || reason);
-      });     
+        credentials).then(
+          function(response) {
+            self.transitionToRoute('search-client');
+        });
+      }
     }
   }
-}
 });
 
 /** 

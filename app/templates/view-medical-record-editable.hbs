@@ -1,4 +1,4 @@
-<div class="container">
+<div class="medicalRecord">
 <div class="row allMedGroup" >
 
 <div class="medHeading">
@@ -7,139 +7,143 @@
 <h4> Created at: {{model.date}} </h4>
 </div>
 </div>
-<div class="col-sm-7 col-md-7">
 
-<div >
-  {{patient-info patientID=model.patient_id}}
- 
-</div>
+<div class="row  leftAlignGroup">
+  <div class="col-sm-10 col-md-12 ">
 
-<div >
+
+            <div  >
+                {{patient-info patientID=model.patient_id}}
+
+            </div>
+<div>
 <div class="row">
-    <div class="col-sm-2 col-md-2">Attitude </div>
-    <div class="col-sm-4 col-md-3">
+    <div class="col-sm-3 col-md-2">Attitude </div>
+   <div class="col-sm-3 col-md-2">
     <label class="radioButton labelForRadio" for="attitudeBAR">
          {{#if model.attitudeBAR }}
-        <input type="radio" id="attitudeBAR"  class="norm" name="attitude" checked="true"> BAR 
+        <input type="radio"  class="norm" id="attitudeBAR"  name="attitude" checked="true"> BAR 
         {{else}}
-         <input type="radio" id="attitudeBAR" class="norm" name="attitude" > BAR 
+         <input type="radio"  class="norm" id="attitudeBAR" name="attitude" > BAR 
          {{/if}}
          </label> 
     <label class="radioButton labelForRadio" for="attitudeQAR">
         {{#if model.attitudeQAR }}
-        <input type="radio" id="attitudeQAR"  name="attitude" checked="true"> QAR 
+        <input type="radio" id="attitudeQAR" name="attitude" checked="true"> QAR 
         {{else}}
          <input type="radio" id="attitudeQAR" name="attitude" > QAR 
          {{/if}}
          </label> 
     </div>
-    <label class="col-sm-3 col-md-3 labelForRadio"> 
+    <label class="col-sm-3 col-md-2 labelForRadio"> 
         {{#if model.attitudeDepressed }}
-        <input type="checkbox" id="attitudeDepressed" checked="true"> Depressed
+        <input type="checkbox" id="attitudeDepressed"  checked="true"> Depressed
          {{else}}
            <input type="checkbox" id="attitudeDepressed" > Depressed 
            {{/if}} </label>
     <div class="col-sm-1 col-md-1"> Temp </div>
-    <div class="col-sm-1 col-md-1"> <input id="temperatureText" class="medicalTextInput" value={{model.temperature}}>  </div>
+    <div class="col-sm-1 col-md-1"> <input id="temperatureText"class="medicalTextInput" value={{model.temperature}}>  </div>
 </div>
 <div class="row">
-    <div class="col-sm-2 col-md-2">Eyes </div>
+    <div class="col-sm-3 col-md-2">Eyes </div>
     <div class="col-sm-2 col-md-2">
     <label class="radioButton labelForRadio ">
         {{#if model.eyesN }}
-        <input type="radio" id="eyesN"  class="norm" name="eyes" checked="true"> N 
+        <input type="radio"  class="norm" id="eyesN" name="eyes" checked="true"> N 
         {{else}}
-         <input type="radio" id="eyesN" class="norm" name="eyes" >N
+         <input type="radio"  class="norm" id="eyesN" name="eyes" >N
          {{/if}}
          </label> 
     <label class="radioButton labelForRadio"> 
         {{#if model.eyesA }}
         <input type="radio" id="eyesA"  name="eyes" checked="true"> A 
         {{else}}
-         <input type="radio" id="eyesA" name="eyes" >A
+         <input type="radio" id="eyesA"  name="eyes" >A
          {{/if}}
          </label> 
     </div>
-    <label class="col-sm-2 col-md-2 labelForRadio"> 
+     <div class="col-sm-5 col-md-3">
+    <label class="labelForRadio"> 
        {{#if model.eyesOU }}
         <input type="checkbox" id="eyesOU" checked="true"> OU
          {{else}}
            <input type="checkbox" id="eyesOU" > OU
            {{/if}} 
         </label>
-     <label class="col-sm-2 col-md-2 labelForRadio"> 
+     <label class="labelForRadio"> 
          {{#if model.eyesOD }}
         <input type="checkbox" id="eyesOD" checked="true"> OD
          {{else}}
-           <input type="checkbox" id="eyesOD" > OD
+           <input type="checkbox" id="eyesOD"> OD
            {{/if}} 
          </label>
-    <label class="col-sm-2 col-md-2 labelForRadio"> 
+    <label class="labelForRadio"> 
         {{#if model.eyesOS }}
         <input type="checkbox" id="eyesOS" checked="true"> OS
          {{else}}
            <input type="checkbox" id="eyesOS" > OS
            {{/if}} 
          </label>
-    <div class="col-sm-1 col-md-1"> <input id="eyesText" class="medicalTextInput" value={{model.eyes}}>  </div>
+    </div>
+    <div class="col-sm-1 col-md-2"> <input id="eyesText" class="medicalTextInput"value={{model.eyes}}>  </div>
 </div>
 <div class="row">
-    <div class="col-sm-2 col-md-2">Oral </div>
+    <div class="col-sm-3 col-md-2">Oral </div>
     <div class="col-sm-2 col-md-2">
     <label class="radioButton labelForRadio"> 
        {{#if model.oralN }}
-        <input type="radio" id="oralN"  class="norm" name="oral" checked="true"> N 
+        <input type="radio"  class="norm" id="oralN" name="oral" checked="true"> N 
         {{else}}
-         <input type="radio" id="oralN" class="norm" name="oral" >N
+         <input type="radio" class="norm" id="oralN" name="oral" >N
          {{/if}}
         </label> 
     <label class="radioButton labelForRadio">
          {{#if model.oralA }}
         <input type="radio" id="oralA"  name="oral" checked="true"> A
         {{else}}
-         <input type="radio" id="oralA" name="oral" >A
+         <input type="radio" id="oralA"  name="oral" >A
          {{/if}}
           </label> 
     </div>
-    <div class="col-sm-1 col-md-1"> <input id="oralText" class="medicalTextInput" value={{model.oral}}>  </div>
+    <div class="col-sm-1 col-md-1"> <input id="oralText" class="medicalTextInput"  value={{model.oral}}>  </div>
 </div>
 <div class="row">
-    <div class="col-sm-2 col-md-2">MM </div>
-    <div class="col-sm-3 col-md-3">
+    <div class="col-sm-3 col-md-2">MM </div>
+    <div class="col-sm-3 col-md-2">
     <label class="radioButton labelForRadio"> 
         {{#if model.mmN }}
-        <input type="checkbox"  class="norm" id="mmN" checked="true"> N 
+        <input type="checkbox" class="norm" id="mmN" checked="true"> N 
          {{else}}
-           <input type="checkbox" class="norm"  id="mmN"> N
+           <input type="checkbox" class="norm" id="mmN"> N
            {{/if}} 
         </label> 
     <label class="radioButton labelForRadio">
          {{#if model.mmPale }}
-        <input type="checkbox" id="mmPale" checked="true"> Pale 
+        <input type="checkbox" id="mmPale" checked="true" > Pale 
          {{else}}
-           <input type="checkbox" id="mmPale"> Pale
+           <input type="checkbox" id="mmPale" > Pale
            {{/if}} 
           </label>
     </div>
-    <div class="col-sm-6 col-md-6"> 
+    <div class="col-sm-4 col-md-4"> 
     <label class="labelForRadio"> 
          {{#if model.mmJaundiced }}
-        <input type="checkbox"  id="mmJaundiced" checked="true">  Jaundiced  
+        <input type="checkbox"  id="mmJaundiced" checked="true" >  Jaundiced  
          {{else}}
-           <input type="checkbox"  id="mmJaundiced">  Jaundiced 
+           <input type="checkbox"  id="mmJaundiced" >  Jaundiced 
            {{/if}} 
         </label> 
     <label class="labelForRadio"> 
        {{#if model.mmTacky }}
-        <input type="checkbox"  id="mmTacky" checked="true"> Tacky   
+        <input type="checkbox"  id="mmTacky" checked="true">  Tacky   
          {{else}}
-           <input type="checkbox"  id="mmTacky"> Tacky 
+           <input type="checkbox"  id="mmTacky" > Tacky 
            {{/if}} 
         </label> 
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-1 col-md-2 ">Ears </div>
+    <div class="col-sm-3 col-md-2 ">Ears </div>
     <div class="col-sm-2 col-md-2">
     <label class="radioButton labelForRadio">
          {{#if model.earsN }}
@@ -156,37 +160,37 @@
          {{/if}}
          </label>
     </div> 
-    <div class="col-sm-7 col-md-7 ">
+    <div class="col-sm-5 col-md-3 ">
     <label class="checkboxMed labelForRadio"> 
         {{#if model.earsEarMites }}
-        <input type="checkbox"  id="earsEarMites" checked="true"> Ear Mites   
+        <input type="checkbox"  id="earsEarMites" checked="true" > Ear Mites   
          {{else}}
-           <input type="checkbox"  id="earsEarMites"> Ear Mites 
+           <input type="checkbox"  id="earsEarMites" > Ear Mites 
            {{/if}}  
         </label> 
     <label class="checkboxMed labelForRadio"> 
         {{#if model.earsAU }}
-        <input type="checkbox"  id="earsAU" checked="true"> AU 
+        <input type="checkbox"  id="earsAU" checked="true" >  AU 
          {{else}}
-           <input type="checkbox"  id="earsAU"> AU  
+           <input type="checkbox"  id="earsAU" > AU  
            {{/if}}   
         </label> 
     <label class="checkboxMed labelForRadio"> 
          {{#if model.earsAD }}
-        <input type="checkbox"  id="earsAD" checked="true"> AD 
+        <input type="checkbox"  id="earsAD" checked="true" > AD 
          {{else}}
-           <input type="checkbox"   id="earsAD"> AD  
+           <input type="checkbox"   id="earsAD" > AD  
            {{/if}}  
         </label> 
     <label class=" checkboxMed labelForRadio"> 
         {{#if model.earsAS }}
         <input type="checkbox"   id="earsAS" checked="true"> AS 
          {{else}}
-           <input type="checkbox"   id="earsAS"> AS  
+           <input type="checkbox"   id="earsAS" > AS  
            {{/if}}  
-        </label> 
-    <div class="checkboxMed"> <input id="earsText" class="medicalTextInput" value={{model.ears}}>  </div>
+        </label>
     </div>
+    <div class="col-sm-1 col-md-1"> <input id="earsText" class="medicalTextInput" value={{model.ears}}>  </div>
 </div>
 <div class="row">
     <div class="col-sm-3 col-md-2">Glands/Nodes </div>
@@ -209,7 +213,7 @@
     <div class="col-sm-1 col-md-1"> <input  id="glandsText" class="medicalTextInput" value={{model.glands}}>  </div>
 </div>
 <div class="row">
-    <div class="col-sm-2 col-md-2">Skin </div>
+    <div class="col-sm-3 col-md-2">Skin </div>
     <div class="col-sm-2 col-md-2">
     <label class="radioButton labelForRadio"> 
         {{#if model.skinN }}
@@ -220,7 +224,7 @@
         </label> 
     <label class="radioButton labelForRadio">
          {{#if model.skinA }}
-        <input type="radio" id="skinA"  name="skin" checked="true"> A
+        <input type="radio" id="skinA"  name="skin" checked="true"  > A
         {{else}}
          <input type="radio" id="skinA" name="skin" >A
          {{/if}}
@@ -229,7 +233,7 @@
     <div class="col-sm-1 col-md-1"> <input id="skinText" class="medicalTextInput" value={{model.skin}}>  </div>
 </div>
 <div class="row">
-    <div class="col-sm-2 col-md-2">Abdomen </div>
+    <div class="col-sm-3 col-md-2">Abdomen </div>
     <div class="col-sm-2 col-md-2">
     <label class="radioButton labelForRadio"> 
         {{#if model.abdomenN }}
@@ -253,27 +257,27 @@
     <div class="col-sm-2 col-md-2">
     <label class="radioButton labelForRadio"> 
         {{#if model.urogenitalN }}
-        <input type="radio" id="urogenitalN" class="norm"  name="urogenital" checked="true"> N 
+        <input type="radio" id="urogenitalN" class="norm" name="urogenital" checked="true"> N 
         {{else}}
-         <input type="radio" id="urogenitalN" class="norm" name="urogenital" >N
+         <input type="radio" id="urogenitalN"  class="norm" name="urogenital" >N
          {{/if}}
         </label> 
     <label class="radioButton labelForRadio">
          {{#if model.urogenitalA }}
-        <input type="radio" id="urogenitalA"  name="urogenital" checked="true"> A
+        <input type="radio" id="urogenitalA"  name="urogenital" checked="true" > A
         {{else}}
          <input type="radio" id="urogenitalA" name="urogenital" >A
          {{/if}}
         </label> 
     </div>
-    <div class="col-sm-1 col-md-1"> <input  id="urogentialText" class="medicalTextInput" value={{model.urogential}}>  </div>
+    <div class="col-sm-1 col-md-1"> <input  id="urogenitalText" class="medicalTextInput" value={{model.urogenital}}>  </div>
 </div>
 <div class="row">
-    <div class="col-sm-2 col-md-2">Nervous System </div>
+    <div class="col-sm-3 col-md-2">Nervous System </div>
     <div class="col-sm-2 col-md-2">
     <label class="radioButton labelForRadio"> 
          {{#if model.nervousSystemN }}
-        <input type="radio" id="nervousSystemN" class="norm"  name="nervous" checked="true"> N 
+        <input type="radio" id="nervousSystemN" class="norm" name="nervous" checked="true"> N 
         {{else}}
          <input type="radio" id="nervousSystemN" class="norm" name="nervous" >N
          {{/if}}
@@ -286,52 +290,52 @@
          {{/if}}
          </label> 
     </div>
-    <div class="col-sm-1 col-md-1"> <input id="nervousSystemText" class="medicalTextInput" value={{model.nervousSystem}}>  </div>
+    <div class="col-sm-1 col-md-1"> <input id="nervousSystemText" class="medicalTextInput"  value={{model.nervousSystem}}>  </div>
 </div>
 <div class="row">
-    <div class="col-sm-4 col-md-2">Musculoskeletal </div>
+    <div class="col-sm-3 col-md-2">Musculoskeletal </div>
     <div class="col-sm-2 col-md-2">
     <label class="radioButton labelForRadio"> 
        {{#if model.musculoskeletalN }}
-        <input type="radio" id="musculoskeletalN" class="norm"  name="musculoskeletal" checked="true"> N 
+        <input type="radio" id="musculoskeletalN" class="norm" name="musculoskeletal" checked="true"> N 
         {{else}}
-         <input type="radio" id="musculoskeletalN"class="norm"  name="musculoskeletal" >N
+         <input type="radio" id="musculoskeletalN" class="norm" name="musculoskeletal" >N
          {{/if}}
         </label> 
     <label class="radioButton labelForRadio">
          {{#if model.musculoskeletalA }}
-        <input type="radio" id="musculoskeletalA"  name="musculoskeletal" checked="true"> A
+        <input type="radio" id="musculoskeletalA"  name="musculoskeletal" checked="true" > A
         {{else}}
-         <input type="radio" id="musculoskeletalA" name="musculoskeletal" >A
+         <input type="radio" id="musculoskeletalA" name="musculoskeletal">A
          {{/if}}
         </label> 
     </div>
     <div class="col-sm-1 col-md-1"> <input id="musculoskeletalText" class="medicalTextInput" value={{model.musculoskeletal}}>  </div>
 </div>
 <div class="row">
-    <div class="col-sm-4 col-md-2">Cardiovascular </div>
+    <div class="col-sm-3 col-md-2">Cardiovascular </div>
     <div class="col-sm-2 col-md-2">
     <label class="radioButton labelForRadio">
          {{#if model.cardiovascularN }}
-        <input type="radio" id="cardiovascularN"  class="norm" name="cardiovascular" checked="true"> N 
+        <input type="radio" id="cardiovascularN" class="norm"  name="cardiovascular" checked="true"> N 
         {{else}}
-         <input type="radio" id="cardiovascularN" class="norm" name="cardiovascular" >N
+         <input type="radio" id="cardiovascularN"  class="norm" name="cardiovascular" >N
          {{/if}}
         </label> 
     <label class="radioButton labelForRadio">
          {{#if model.cardiovascularA }}
-        <input type="radio" id="cardiovascularA"  name="cardiovascular" checked="true"> A
+        <input type="radio" id="cardiovascularA"  name="cardiovascular" checked="true" > A
         {{else}}
-         <input type="radio" id="cardiovascularA" name="cardiovascular" >A
+         <input type="radio" id="cardiovascularA" name="cardiovascular"  >A
          {{/if}}
         </label> 
     </div>
-    <div class="col-sm-3 col-md-3"> <input id="cardiovascularText" class="medicalTextInput" value={{model.cardiovascular}}>  </div>
+    <div class="col-sm-3 col-md-2"> <input id="cardiovascularText" class="medicalTextInput" value={{model.cardiovascular}}>  </div>
     <div class="col-sm-2 col-md-1"> HR </div>
     <div class="col-sm-1 col-md-1"> <input id="hrText" class="medicalTextInput" value={{model.heart_rate}}>  </div>
 </div>
 <div class="row">
-    <div class="col-sm-2 col-md-2 ">Respiratory </div>
+    <div class="col-sm-3 col-md-2 ">Respiratory </div>
     <div class="col-sm-2 col-md-2">
     <label class="radioButton labelForRadio"> 
         {{#if model.respiratoryN }}
@@ -342,21 +346,21 @@
         </label> 
     <label class="radioButton labelForRadio">
          {{#if model.respiratoryA }}
-        <input type="radio" id="respiratoryA"  name="respiratory" checked="true"> A
+        <input type="radio" id="respiratoryA"  name="respiratory" checked="true" > A
         {{else}}
-         <input type="radio" id="respiratoryA" name="respiratory" >A
+         <input type="radio" id="respiratoryA" name="respiratory"  >A
          {{/if}}
         </label> 
     </div>
-    <div class="col-sm-3 col-md-3"> <input id="respiratoryText1" class="medicalTextInput" value={{model.respiratory}}>  </div>
+    <div class="col-sm-3 col-md-2"> <input id="respiratoryText1" class="medicalTextInput" value={{model.respiratory}}>  </div>
     <div class="col-sm-2 col-md-1"> RR </div>
-    <div class="col-sm-3 col-md-1 "> <input id="respiratoryText2" class="medicalTextInput" value={{model.respiratory_rate}}>  </div>
+    <div class="col-sm-1 col-md-1 "> <input id="respiratoryText2" class="medicalTextInput" value={{model.respiratory_rate}}>  </div>
 </div>
 <div class="row">
     <div class="col-sm-2 col-md-2">BCS  </div>
     <div class="col-sm-2 col-md-2 bcsSelect">
     <select id="bcsvalue" >
-        {{#if model.bcsVal1}}
+       {{#if model.bcsVal1}}
         <option value="1" selected="selected"> 1</option>
         <option value="2"> 2</option>
         <option value="3"> 3</option>
@@ -458,33 +462,34 @@
   </select>
   </div>
     <div class="col-sm-1 col-md-1" >/9</div>
-    <div class="col-sm-7 col-md-7">MCS 
+    <div class="col-sm-7 col-md-7">
+        <div class="col-sm-2 col-md-1"> MCS </div>
     <label class=" labelForRadio">
          {{#if model.mcsN }}
        <input class="norm" type="checkbox" class="norm" id="mcsN" checked="true" > N 
          {{else}}
-          <input class="norm" type="checkbox" class="norm" id="mcsN"> N 
+          <input class="norm" type="checkbox" class="norm"  id="mcsN"> N 
            {{/if}}  
          </label>
     <label class=" labelForRadio">
         {{#if model.mcsMild }}
-       <input type="checkbox" id="mcsMild" checked="true">Mild 
+       <input type="checkbox" id="mcsMild" checked="true" >Mild 
          {{else}}
-          <input type="checkbox" id="mcsMild">Mild 
+          <input type="checkbox" id="mcsMild" >Mild 
            {{/if}} 
          </label>
     <label class="labelForRadio"> 
          {{#if model.mcsMod }}
-       <input type="checkbox" id="mcsMod" checked="true">Mod
+       <input type="checkbox" id="mcsMod" checked="true" >Mod
          {{else}}
-          <input type="checkbox" id="mcsMod">Mod
+          <input type="checkbox" id="mcsMod" >Mod
            {{/if}} 
          </label>
     <label class=" labelForRadio"> 
          {{#if model.mcsMild }}
-        <input type="checkbox" id="mcsSevere" checked="true"> Severe
+        <input type="checkbox" id="mcsSevere" checked="true" > Severe
          {{else}}
-          <input type="checkbox" id="mcsSevere"> Severe
+          <input type="checkbox" id="mcsSevere" > Severe
            {{/if}} 
          </label>
     </div>
@@ -495,7 +500,7 @@
     <div class="col-sm-3 col-md-2 "> <input id="weight" class="medicalTextInput" value={{model.weight}}>  </div>
     <div class="col-sm-5 col-md-4">Unit 
     <select id="unit" >
-        {{#if model.weightUnit}}
+         {{#if model.weightUnit}}
         <option value="kg" selected="selected"> kg</option>
         <option value="lbs"> lbs</option>
         {{else}}
@@ -505,18 +510,22 @@
     </select>
     </div>
 </div>
-
-<button type="submit" class="addButton" id="check-button"{{action 'checkAll'}}>Check all</button>
-<button type="submit" class="addButton" id="uncheck-button"{{action 'uncheckAll'}}>Uncheck all</button>
-
-<div class="row">
-<label for="notes">Notes: </label>
-<br>
-<textarea id="notes" rows="10" cols="70" value={{model.exam_notes}}> </textarea>
-<br>
+ <button type="submit" class="addButton" id="check-button" {{action 'checkAll'}}>Check all</button>
+ <button type="submit" class="addButton" id="uncheck-button" {{action 'uncheckAll'}}>Uncheck all</button>
 </div>
 
-<div class="row">
+</div>
+</div>
+
+
+<div class="row leftAlignGroup notesGroup">
+                <div  class="col-sm-7 col-md-7 ">
+                    <label for="notes">Notes: </label>
+                    <br>
+                    <textarea id="notes" rows="22" cols="50" value={{model.exam_notes}}> </textarea>
+                    <br>
+                    <div>
+     <div> 
 <div>
   Medicine
 {{medications-container medType="Medicine" medicationList=model.medicine}}
@@ -532,46 +541,54 @@
 {{medications-container medType="Other" medicationList=model.other}}
 </div>
 </div>
-</div>
-</div>
 
 
-<div class="col-sm-3 col-md-3 col-sm-offset-1 col-md-offset-1">
-
-
-<div >
-<label for="followUpNotes">Follow up notes: </label>
-<br>
-<textarea id="followUpNotes" rows="5" cols="35" value={{model.followUpNotes}}> </textarea>
 </div>
 
-<div >
-<label for="summary">Short summary: </label>
-<br>
-<textarea id="summary" rows="5" cols="35" value={{model.summary}}> </textarea>
-</div>
+                </div>
+                <div  class="col-sm-2 col-md-3 col-md-offset-1">
+                  <div >
+                <label for="followUpNotes">Follow up notes: </label>
+                <br>
+                <textarea id="followUpNotes" rows="5" cols="35"value={{model.followUpNotes}}> </textarea>
+            </div>
 
-<div >
-  <h4> Veterinarian Signature: </h4>
+            <div>
+                <label for="summary">Short summary: </label>
+                <br>
+                <textarea id="summary" rows="5" cols="35" value={{model.summary}}> </textarea>
+            </div>
 
-<img src={{model.signature}} alt="Cannot display" />
-
-  {{#if model.editable}}
+            <div>
+                <h4> Veterinarian Signature: </h4>
+              <img src={{model.signature}} alt="Cannot display" />
+{{#if model.editable}}
   <button type="submit" class= "medical-button" id="update-medical-button"{{action 'updateMedicalRecord' model.patient_id model.id}}>Update medical record</button>
   {{else}}
-  <button type="submit" disabled class= "medical-button" id="update-medical-button">Update medical record</button>
+  <button type="submit"  class= "medical-button" disabled id="update-medical-button">Update medical record</button>
   {{/if}}
-  <div id = "alert_placeholder_med"></div>
-
-</div>
-
-
-</div>
+  <div id = "alert_placeholder_med"></div><div class="row">
+            </div>
+            </div>
+            </div>
 
 
   
 </div>
 </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

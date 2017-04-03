@@ -55,6 +55,7 @@
     "ember-source": "^2.11.0",
     "ember-welcome-page": "^2.0.2",
     "fuse.js": "2.6.2",
+    "jwt-decode": "^2.2.0", 
     "loader.js": "^4.0.10"
   },
   "engines": {
@@ -62,6 +63,5 @@
   },
   "private": true,
   "dependencies": {
-    "fuse.js": "^2.6.2"
   }
 }

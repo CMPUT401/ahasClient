@@ -14,6 +14,9 @@
   margin: 0;
 }
 
+.row {
+  margin:0;
+}
 .striped {
   padding: 0;
   margin: 0;
@@ -32,4 +35,10 @@
     &:active{
       background:#F0F0F0;
   }
+}
+.buttonContainer{
+  text-align: left;
+}
+.inviteUser{
+  margin-top: 10px;
 }
