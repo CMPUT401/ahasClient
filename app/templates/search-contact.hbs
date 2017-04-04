@@ -1,21 +1,20 @@
+
 <div >
     <br>
     <br>
     <br>
     <div >
-        <div class="col-sm-7 col-sm-offset-1 col-md-7  col-md-offset-1">
-        <form {{action "filterContact" on="submit" }} > 
-        <input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
-        </form>
+        <div class="col-sm-7 col-sm-offset-1 col-md-7  ">
+        <input  {{action "filterContact" on='keyUp' }} class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
         </div>
         <div class="col-sm-2 col-md-2">
-        <button  {{action "filterContact"  }} type="submit" id="search-button">Search</button>
+        <button  {{action "filterContact"  }} type='submit' id="search-button">Search</button>
         </div>
     </div>
     <br>
     <br>
     <div class="row leftAlignGroup">
- <div class=" col-sm-2 col-md-2 contactNameList" >
+ <div class=" col-sm-3 col-md-3 contactNameList" >
         <h3 id="veterinariansHeading" >Veterinarians</h3>
                  {{#each  model.contactsFilteredVeterinarian as |contact|}}
                            
@@ -25,7 +24,7 @@
                     {{/each}}
         </div >
       
-         <div class=" col-sm-2  col-sm-offset-1 col-md-2 contactNameList" >
+         <div class=" col-sm-3 col-md-3 contactNameList" >
              <h3 id="volunteersHeading" >Volunteers</h3>
                       {{#each  model.contactsFilteredVolunteer as |contact|}}
                            
@@ -35,7 +34,7 @@
                     {{/each}}
         </div >
      
-        <div class="col-sm-2  col-sm-offset-1 col-md-2 contactNameList" >
+        <div class="col-sm-3  col-md-3 contactNameList" >
             <h3 id="technicianHeading">Technicians</h3>
                       {{#each  model.contactsFilteredTechnician as |technician|}}
                             
@@ -43,7 +42,7 @@
 
                     {{/each}}
         </div >
-         <div class="col-sm-2  col-sm-offset-1 col-md-2 contactNameList" >
+         <div class="col-sm-3  col-md-3 contactNameList" >
              <h3 id="laboratoryHeading">Laboratory</h3>
                       {{#each  model.contactsFilteredLaboratory as |contact|}}
                             
@@ -52,5 +51,12 @@
                     {{/each}}
         </div >
         </div>
-                    
+
+        
+
+{{#if model.admin}}
+        <button {{action "newContact"  model.admin}} type="submit" id="new-contact-button">New Contact</button>
+{{/if}}
+
 </div>
+

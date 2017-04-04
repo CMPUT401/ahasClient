@@ -10,6 +10,20 @@ export default Ember.Controller.extend({
     actions: {
 
         /** 
+		* action for clicking on new Contact button , only displayed for admin roles, but will do extra check here jsut in case
+        * takes us to the new-contact page if we are admin
+		* @method newContact
+		* @param {string} role the role that this user is
+		*/
+        
+        newContact(role){
+
+            if(role){
+            this.transitionToRoute('/new-contact');
+            }
+        },
+
+        /** 
 		* action for clicking on a contact in the displayed list
         * takes us to the view-contact page for that contact
 		* @method getContact
@@ -28,6 +42,7 @@ export default Ember.Controller.extend({
         */
 
         filterContact(){
+
             var input = document.getElementById('search-bar').value.trim();
             if (input === "" || input === undefined ){
                 
