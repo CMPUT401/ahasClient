@@ -73,12 +73,12 @@ export default Ember.Controller.extend({
 * @param {boolean} isGood Determines if this is a warning alert or confirmation alert. true for good, false for bad
 * @param {string} divID a partial name to the div id in which the allert is displayed. the div id is alert_placeholder_'divID'
 */   
-function showAlert(message, isGood) {
+function showAlert(message, isGood, divID) {
     if(isGood){
-        Ember.$('#alert_placeholder').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
+        Ember.$('#alert_placeholder_' + divID).html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
     }
     else{
-         Ember.$('#alert_placeholder').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
+         Ember.$('#alert_placeholder_' + divID).html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
     }
 }
 
@@ -88,13 +88,14 @@ function showAlert(message, isGood) {
 * @param {object} self the controller
 */
 function checkInputs(model){
-    var validEmail = testEmail(model.email);
-    var validAltEmail = testEmail(model.alternativeContactEmail);
-    var validClientPhone = testPhoneNumber(model.phoneNumber);
-    var validAltPrimaryPhone = testPhoneNumber(model.alternativeContactPhoneNumber);
-    var validAltSecondaryPhone = testPhoneNumber(model.alternativeContact2ndPhone);
-	var validLastName = testName(model.lastName);
-	var validFirstName = testName(model.firstName);
+
+	var validFirstName = testName(model.firstName, "firstName");
+	var validLastName = testName(model.lastName, "lastName");
+    var validEmail = testEmail(model.email, "clientEmail");
+    var validAltEmail = testEmail(model.alternativeContactEmail, "altEmail");
+    var validClientPhone = testPhoneNumber(model.phoneNumber, "clientPhone");
+    var validAltPrimaryPhone = testPhoneNumber(model.alternativeContactPhoneNumber, "altPrimaryPhone");
+    var validAltSecondaryPhone = testPhoneNumber(model.alternativeContact2ndPhone, "altSecondaryPhone");
     return validEmail && validAltEmail && validFirstName && validLastName && validClientPhone &&
     		validAltPrimaryPhone && validAltSecondaryPhone;
 }
@@ -105,9 +106,9 @@ function checkInputs(model){
 * @param {string} name The name to be tested
 * @param {string} divID a partial name to the div id in which the allert is displayed. the div id is alert_placeholder_'divID'
 */
-function testName(name){
+function testName(name, divID){
 	if(name === undefined || name === ""){
-		showAlert("Name cannot be blank", false);
+		showAlert("Name cannot be blank", false, divID);
 		return false;
 	}else{
 		return true;
@@ -120,12 +121,12 @@ function testName(name){
 * @param {string} name The email to be tested
 * @param {string} divID a partial name to the div id in which the allert is displayed. the div id is alert_placeholder_'divID'
 */
-function testEmail(email){
+function testEmail(email, divID){
 	var emailRegEx =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	if(emailRegEx.test(email) || (email === undefined) ||( email === "")){
 		return true;
 	} else{
-		showAlert("Invalid email address", false);
+		showAlert("Invalid email address", false, divID);
 		return false;
 	}
 }
@@ -136,7 +137,7 @@ function testEmail(email){
 * @param {string} name The phone number to be tested
 * @param {string} divID a partial name to the div id in which the allert is displayed. the div id is alert_placeholder_'divID'
 */
-function testPhoneNumber(phone){
+function testPhoneNumber(phone, divID){
 
 	//of format xxx-xxx-xxxx, or xxx.xxx.xxxx or xxx xxx xxxx
 	var phoneRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
@@ -144,7 +145,7 @@ function testPhoneNumber(phone){
 		return true;
 	} else{
 		showAlert("Phone number must be of format xxx-xxx-xxxx, or xxx.xxx.xxxx or xxx xxx xxxx",
-		 false);
+		 false, divID);
 		return false;
 	}
 }
