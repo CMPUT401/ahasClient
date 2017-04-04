@@ -2,13 +2,18 @@
 	<!-- <div class = "panel panel-default">
 		<div class = "panel-body"> -->
 			<h3>Client: </h3><br>
-			<h4>{{model.lastName}}, {{model.firstName}}</h4>  
-			<h4>Address:</h4>
-			{{{model.address}}} 
-			<h4>Phone Number: </h4>
-			{{model.phoneNumber}} 
-			<h4>Email: </h4>
-			{{model.email}} 
+			<div class = "viewLabel"><h4>Client's name: </h4></div>
+			<div class = "viewInfo"><h4>{{model.firstName}} {{model.lastName}}</h4> </div>
+			<br>
+			<div class = "viewLabel"><h4>Address:</h4></div>
+			<div class = "viewInfo"> <h4>{{{model.address}}} </h4></div>
+			<br>
+			<div class = "viewLabel"><h4>Phone Number: </h4></div>
+			<div class = "viewInfo"> <h4>{{model.phoneNumber}} </h4></div>
+			<br>
+			<div class = "viewLabel"><h4>Email: </h4></div>
+			<div class = "viewInfo"><h4>{{model.email}} </h4></div>
+			<br>
 		<!-- </div>
 	</div> -->
 </div>
