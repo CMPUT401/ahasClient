@@ -47,8 +47,10 @@ export default Ember.Controller.extend({
 						patients: client.patients
 					}},
 				}).then(function(data){
+					showAlert("Client info updated. ", true, "success");
 					self.transitionToRoute('/view-client/' + self.clientId);
 				},function(response){
+					showAlert("Could not update. ", false, "success");
 					document.getElementById("create-client-button").disabled = false;
 					if (response === false){
 						if (self.get('session.isAuthenticated')){
