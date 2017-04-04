@@ -45,6 +45,7 @@ export default Ember.Controller.extend({
 						alternativeContactEmail: this.get('alternativeEmail')
 					}}, 
 				}).then(function(data){
+						showAlert("Client created. ", true, "success");
 						//console.log("name is " + cName);
 						// TODO display confrimation page
 						// TODO prevent user from going back into this page
@@ -52,6 +53,7 @@ export default Ember.Controller.extend({
 						self.transitionToRoute('search-client');
 					},
 					function(response){
+						showAlert("Could not create. ", false, "success");
 						document.getElementById("create-client-button").disabled = false;
 						if (response === false){
 							if (self.get('session.isAuthenticated')){
