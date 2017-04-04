@@ -1,5 +1,14 @@
-<button  {{action "filterClient"  }} type="submit" id="search-button">Search</button>
-<input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
+<div >
+    <div class="col-sm-7 col-sm-offset-1 col-md-7  col-md-offset-1">
+	    <form {{action "filterClient" on="submit" }} > 
+	    	<input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
+	    </form>
+    </div>
+    <div class="col-sm-2 col-md-2">
+    	<button  {{action "filterClient"  }} type="submit" id="search-button">Search</button>
+    </div>
+</div>
+
 <div class = "nameList" >
 	<!-- TODO: filter client list -->
 	{{#ember-scrollable autoHide=false}}
