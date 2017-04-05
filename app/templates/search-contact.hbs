@@ -13,7 +13,7 @@
     </div>
     <br>
     <br>
-    <div class="row leftAlignGroup">
+    <div class="row ">
  <div class=" col-sm-3 col-md-3 contactNameList" >
         <h3 id="veterinariansHeading" >Veterinarians</h3>
                  {{#each  model.contactsFilteredVeterinarian as |contact|}}
@@ -52,11 +52,15 @@
         </div >
         </div>
 
+</div>
         
 
 {{#if model.admin}}
         <button {{action "newContact"  model.admin}} type="submit" id="new-contact-button">New Contact</button>
 {{/if}}
 
-</div>
+
+
+
+
 
