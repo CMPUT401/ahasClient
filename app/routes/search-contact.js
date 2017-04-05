@@ -29,7 +29,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						  contactsFilteredLaboratory: deserialAttributesLaboratory(data.contacts),
 						  contactsTechnician: deserialAttributesTechnician(data.contacts),
 						  contactsFilteredTechnician: deserialAttributesTechnician(data.contacts), 
-						  admin: checkAdmin(localStorage.getItem('role'))
+						  admin: checkAdmin(self.get('session.data.authenticated.role'))
 
 				});
     		  });
@@ -150,7 +150,7 @@ function deserialAttributesTechnician(contacts){
 /**  
   * checks if the role is Admin, and returns true if so , this bool used to allow a button to either appear or not
   * @method checkAdmin
-  * @param {String} role the role of the user, fetched from the local storage
+  * @param {String} role the role of the user
   */ 
 
 function checkAdmin(role){
