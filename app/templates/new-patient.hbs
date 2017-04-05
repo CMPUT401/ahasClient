@@ -21,15 +21,15 @@
 			</div>
 			<br>
 
-			<label class = "inputLabel" for ="patientGender">Gender</label>
+			<label class = "inputLabel" for ="patientGender">Sex</label>
 			<div class = "inputBox">
-			{{input id = "patientGender" value=patientGender required='true'}}
-			</div>
-			<br>
-
-			<label class = "inputLabel"  for ="patientStatus">Reproduction Status</label>
-			<div class = "inputBox">
-			{{input id = "patientStatus" value=patientStatus required='true'}}
+			<select id="patientGender" {{action "showGender" on="change"}} >
+        		<option value="male" >Male </option>
+        		<option value="maleN" >Male Neutered </option>
+        		<option value="female" >Female </option>
+         		<option value="femaleN" >Female Spayed </option>
+         		<option value="unknown" >Unknown </option>
+  			</select>
 			</div>
 			<br>
 
