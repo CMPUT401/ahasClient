@@ -6,10 +6,11 @@ export default Ember.Controller.extend({
      isAdmin: "",
      init(){
          this._super(...arguments);
-         console.log(this.get('session.data.authenticated.role'));
+         // Observe role , for inital log in.
          this.addObserver('session.data.authenticated.role', function(){ 
              this.set('isAdmin', this.get('session.data.authenticated.role')==='Admin');
          });
+         // Set initial isAdmin status, if user is all ready logged in and refreshing
          this.set('isAdmin', this.get('session.data.authenticated.role')==='Admin');
      }
 });
