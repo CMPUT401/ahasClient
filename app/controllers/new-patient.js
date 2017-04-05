@@ -37,9 +37,7 @@ export default Ember.Controller.extend({
 					tattoo: 	this.get('patientTatoo'),
 					microchip: 	this.get('patientMicrochip'),
 					gender: 	val
-				
 				}
-			
 			}, 
 		
 			});
