@@ -21,28 +21,33 @@ export default Ember.Controller.extend({
 			checkInputs(self);
 			//let cName = this.get('clientName');
 			if(checkInputs(self)){
+				console.log(this.get('clientFirstName'));
+				console.log(this.get('clientLastName'));
+				console.log(this.get('clientAddress'));
+				console.log(checkUndefined(this.get('clientPhone')));
+				console.log(this.get('clientEmail'));
 				document.getElementById("create-client-button").disabled = true; 
 				let ajaxPost = this.get('ajax').post('/api/client' , {
 					type: 'application/json',
 					data: {client: {
 						firstName: this.get('clientFirstName'),
 						lastName: this.get('clientLastName'),
-						address: this.get('clientAddress'),
-						phoneNumber: this.get('clientPhone'),
-						email: this.get('clientEmail'),
-						licos: this.get('clientLICO'),
-						aish: this.get('clientAISH'),
-						socialAssistance: this.get('clientAS'),
+						address: checkUndefined(this.get('clientAddress')),
+						phoneNumber: checkUndefined(this.get('clientPhone')),
+						email: checkUndefined(this.get('clientEmail')),
+						licos: checkUndefined(this.get('clientLICO')),
+						aish: checkUndefined(this.get('clientAISH')),
+						socialAssistance: checkUndefined(this.get('clientAS')),
 						pets: "",
 						created_at: new Date(),
 						updated_at: "",
-						alternativeContactFirstName: this.get('alternativeFirstName'),
-						alternativeContactLastName: this.get('alternativeLastName'),
-						alternativeContactPhoneNumber: this.get('alternativePrimaryPhone'),
-						alternativeContactAddress: this.get('alternativeAddress'),
-						notes: this.get('clientNotes'),
-						alternativeContact2ndPhone: this.get('alternativeSecondaryPhone'),
-						alternativeContactEmail: this.get('alternativeEmail')
+						alternativeContactFirstName: checkUndefined(this.get('alternativeFirstName')),
+						alternativeContactLastName: checkUndefined(this.get('alternativeLastName')),
+						alternativeContactPhoneNumber: checkUndefined(this.get('alternativePrimaryPhone')),
+						alternativeContactAddress: checkUndefined(this.get('alternativeAddress')),
+						notes: checkUndefined(this.get('clientNotes')),
+						alternativeContact2ndPhone: checkUndefined(this.get('alternativeSecondaryPhone')),
+						alternativeContactEmail: checkUndefined(this.get('alternativeEmail'))
 					}}, 
 				}).then(function(data){
 						showAlert("Client created. ", true, "success");
@@ -175,5 +180,13 @@ function testPhoneNumber(phone, divID){
 		showAlert("Phone number must be of format xxx-xxx-xxxx, or xxx.xxx.xxxx or xxx xxx xxxx",
 		 false, divID);
 		return false;
+	}
+}
+
+function checkUndefined(value){
+	if(value === undefined){
+		return "";
+	} else{
+		return value;
 	}
 }
