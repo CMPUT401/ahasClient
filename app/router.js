@@ -49,6 +49,7 @@ Router.map(function() {
   this.route('invite-user' , {path: '/admin/invite-user'});
   this.route('not-found', { path: '/*path' });
   this.route('edit-patient');
+  this.route('edit-appointment');
 });
 
 export default Router;
