@@ -21,11 +21,6 @@ export default Ember.Controller.extend({
 			checkInputs(self);
 			//let cName = this.get('clientName');
 			if(checkInputs(self)){
-				console.log(this.get('clientFirstName'));
-				console.log(this.get('clientLastName'));
-				console.log(this.get('clientAddress'));
-				console.log(checkUndefined(this.get('clientPhone')));
-				console.log(this.get('clientEmail'));
 				document.getElementById("create-client-button").disabled = true; 
 				let ajaxPost = this.get('ajax').post('/api/client' , {
 					type: 'application/json',
