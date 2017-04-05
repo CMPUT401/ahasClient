@@ -5,7 +5,7 @@
 	<div class = "panel panel-default">
 		<div class="history-list" style="overflow:auto">
 				{{#each medicalRecord as |entry|}}
-					<div class = "nameListItem" {{action 'viewEntry' entry.recordId entry.date}}>
+					<div class = "list-group-item clickable" {{action 'viewEntry' entry.recordId entry.date}}>
 						<p>{{entry.summary}}  {{entry.dateToDisplay}}</p>
 					</div>
 				{{/each}}

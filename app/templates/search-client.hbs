@@ -17,7 +17,7 @@
 <div class = "nameList">
 	<div class = "list-group" >
 		{{#each model.clientsFiltered as |client|}}
-			<div class = "row list-group-item" {{action "viewClient" client.id}}>
+			<div class = "row list-group-item clickable" {{action "viewClient" client.id}}>
 				<p>{{client.firstName}} {{client.lastName}}</p>
 			</div>
 		{{/each}}

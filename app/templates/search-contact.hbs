@@ -18,7 +18,7 @@
         <h3 id="veterinariansHeading" >Veterinarians</h3>
                  {{#each  model.contactsFilteredVeterinarian as |contact|}}
                            
-                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  veterinariansContact'>{{contact.first_name}} {{contact.last_name}}</p>
+                                <div{{action "getContact" contact.id on="click"}} class=' list-group-item veterinariansContact clickable'>{{contact.first_name}} {{contact.last_name}}</div>
                           
 
                     {{/each}}
@@ -28,7 +28,7 @@
              <h3 id="volunteersHeading" >Volunteers</h3>
                       {{#each  model.contactsFilteredVolunteer as |contact|}}
                            
-                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  volunteersContact' >{{contact.first_name}} {{contact.last_name}}</p>
+                                <div{{action "getContact" contact.id on="click"}} class=' list-group-item  volunteersContact clickable' >{{contact.first_name}} {{contact.last_name}}</div>
                            
 
                     {{/each}}
@@ -38,7 +38,7 @@
             <h3 id="technicianHeading">Technicians</h3>
                       {{#each  model.contactsFilteredTechnician as |technician|}}
                             
-                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  technician Contact'>{{contact.first_name}} {{contact.last_name}}</p>
+                                <div{{action "getContact" contact.id on="click"}} class=' list-group-item  technicianContact clickable'>{{contact.first_name}} {{contact.last_name}}</div>
 
                     {{/each}}
         </div >
@@ -46,7 +46,7 @@
              <h3 id="laboratoryHeading">Laboratory</h3>
                       {{#each  model.contactsFilteredLaboratory as |contact|}}
                             
-                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  laboratoryContact'>{{contact.first_name}} {{contact.last_name}}</p>
+                                <div{{action "getContact" contact.id on="click"}} class=' list-group-item laboratoryContact clickable'>{{contact.first_name}} {{contact.last_name}}</div>
 
                     {{/each}}
         </div >
