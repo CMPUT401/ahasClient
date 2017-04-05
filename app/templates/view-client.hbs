@@ -1,5 +1,5 @@
 <div class = "infoBlock">
-	<h3>Client: </h3><br>
+	<h3 class = "clientHeader">Client: </h3><br>
 	<div class = "viewLabel"><h4>Name: </h4></div>
 	<div class = "viewInfo"><h4>{{model.firstName}} {{model.lastName}}</h4> </div>
 	<br>
@@ -14,7 +14,7 @@
 	<br>
 </div>
 <div class = "infoBlock">
-	<h3>Documentation Information: </h3>
+	<h3 class = "clientHeader">Documentation Information: </h3>
 	<div class = "viewLabel"><h4>LICO: </h4></div>
 	<div class = "viewInfo"><h4>{{model.licos}}</h4></div>
 	<br>
@@ -29,7 +29,7 @@
 	<br>
 </div>
 <div class = "infoBlock">
-	<h3>Alternate Contact: </h3>
+	<h3 class = "clientHeader">Alternate Contact: </h3>
 	<div class = "viewLabel"><h4>Name: </h4></div>
 	<div class = "viewInfo"><h4>{{model.alternativeContactFirstName}} {{model.alternativeContactLastName}}</h4></div>
 	<br>
@@ -47,7 +47,7 @@
 	<br>
 </div>
 <div class = "infoBlock">
-	<h3>Pet: </h3>
+	<h3 class = "clientHeader">Pet: </h3>
 	<div class="list-group">
 		{{#each model.patients as |pet|}}
 			<div class = "petNameContainer" {{action "viewPatient" pet.id}}>
