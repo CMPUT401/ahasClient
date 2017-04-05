@@ -178,6 +178,12 @@ function testPhoneNumber(phone, divID){
 	}
 }
 
+
+/**
+* Checks that a value isn't undefined. if it is, return and empty string instead. 
+* @method checkUndefined
+* @param value  can be any value. main use is for calling this.get("id of input") in the controller. 
+*/
 function checkUndefined(value){
 	if(value === undefined){
 		return "";
