@@ -27,7 +27,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 						   address: JSON.stringify(data.contact.address).replace(/\"/g, ""),
 						   id: JSON.stringify(data.contact.id).replace(/\"/g, ""),
 						   type: JSON.stringify(data.contact.contact_type).replace(/\"/g, ""), 
-						   admin: checkAdmin(localStorage.getItem('role'))
+						   admin: checkAdmin(self.get('session.data.authenticated.role'))
 				
 				});
     		  });
@@ -90,7 +90,7 @@ function fixNulls(data){
 /**  
   * checks if the role is Admin, and returns true if so , this bool used to allow a button to either appear or not
   * @method checkAdmin
-  * @param {String} role the role of the user, fetched from the local storage
+  * @param {String} role the role of the user
   */ 
 
 function checkAdmin(role){
