@@ -1,25 +1,27 @@
 <div >
+	<br>
+    <br>
+    <br>
     <div class="col-sm-7 col-sm-offset-1 col-md-7  col-md-offset-1">
-	    <form {{action "filterClient" on="submit" }} > 
+	    <form {{action "filterClient" on="keyUp" }} > 
 	    	<input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
 	    </form>
     </div>
     <div class="col-sm-2 col-md-2">
     	<button  {{action "filterClient"  }} type="submit" id="search-button">Search</button>
     </div>
+    <br>
+    <br>
 </div>
 
-<div class = "nameList" >
-	<!-- TODO: filter client list -->
-	{{#ember-scrollable autoHide=false}}
-			{{#each model.clientsFiltered as |client|}}
-					<div class = "nameListItem" {{action "viewClient" client.id}}>
-							<p>{{client.firstName}} {{client.lastName}}</p>
-					</div>
-
-			{{/each}}
-	{{/ember-scrollable}}
-	<br>
-	
+<div class = "nameList">
+	<div class = "list-group" >
+		{{#each model.clientsFiltered as |client|}}
+			<div class = "row list-group-item" {{action "viewClient" client.id}}>
+				<p>{{client.firstName}} {{client.lastName}}</p>
+			</div>
+		{{/each}}
+	<br>	
+	</div>
 </div>
 <button id = "newClientLinkButton" {{action "newClient"}}>Create New Client</button>
