@@ -14,6 +14,7 @@ Router.map(function() {
   this.route('new-patient');
 
   this.route('new-user', {path: '/new-user/:inviteToken'});
+  this.route('reset-password', {path:'/reset-password/:resetToken'});
   this.route('new-client');
   this.route('new-side-note');
   this.route('new-calendar');
@@ -34,7 +35,7 @@ Router.map(function() {
   this.route('search-contact');
   this.route('search-patient');
   this.route('search-client');
- 
+
   this.route('view-client', {path: '/view-client/:clientID'});
   this.route('view-medical-record-editable', {path: '/view-patient/:patientID/view-medical-record-editable/:recordID'});
   this.route('view-medical-record', {path: '/view-patient/:patientID/view-medical-record/:recordID'});
@@ -47,7 +48,7 @@ Router.map(function() {
   this.route('admin');
   this.route('user', {path: '/admin/users/:id'});
   this.route('invite-user' , {path: '/admin/invite-user'});
-    this.route('not-found', { path: '/*path' });
+  this.route('not-found', { path: '/*path' });
 });
 
 export default Router;
