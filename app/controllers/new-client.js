@@ -7,20 +7,18 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
-	//let cName, let cAddress, let cPhone,
 	actions: {
 		/**
 		* makes an ajax POST request to save the new client
 		* @method submitNewClient
 		*/
 		submitNewClient: function(){
-			//disable button
 			
 			//make asynch post request
 			var self = this;
 			checkInputs(self);
-			//let cName = this.get('clientName');
 			if(checkInputs(self)){
+				//disable button
 				document.getElementById("create-client-button").disabled = true; 
 				let ajaxPost = this.get('ajax').post('/api/client' , {
 					type: 'application/json',
@@ -115,8 +113,8 @@ function showAlert(message, isGood, divID) {
 * @param {object} self the controller
 */
 function checkInputs(self){
-    var validFirstName = testName(self.get('clientFirstName'), "firstName");
-	var validLastName = testName(self.get('clientLastName'), "lastName");
+    var validFirstName = testName(self.get('clientFirstName'), "firstName",true);
+	var validLastName = testName(self.get('clientLastName'), "lastName", false);
     var validEmail = testEmail(self.get('clientEmail'), "clientEmail");
     var validAltEmail = testEmail(self.get('alternativeEmail'), "altEmail");
     var validClientPhone = testPhoneNumber(self.get('clientPhone'), "clientPhone");
@@ -131,10 +129,15 @@ function checkInputs(self){
 * @method testName
 * @param {string} name The name to be tested
 * @param {string} divID a partial name to the div id in which the allert is displayed. the div id is alert_placeholder_'divID'
+* @param {boolean} isFirst true if the name in question is a first name, false if it is a last name 
 */
-function testName(name, divID){
+function testName(name, divID, isFirst){
 	if(name === undefined || name === ""){
-		showAlert("Name cannot be blank", false, divID);
+		if(isFirst){
+			showAlert("First name cannot be blank", false, divID);
+		}else{
+			showAlert("Last name cannot be blank", false, divID);
+		}
 		return false;
 	}else{
 		return true;
