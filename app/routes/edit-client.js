@@ -11,6 +11,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/client/' + param.clientID
 			).then(function(data){
+				console.log(data.client)
 				Ember.run(function() {
 				resolve({
 					firstName: deserialAttribute(data.client.firstName),
