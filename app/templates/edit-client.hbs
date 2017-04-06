@@ -11,19 +11,27 @@
 
 		<label class = "inputLabel" for = "clientFirstName">Client's First Name</label>
 		<div class = "inputBox">
-			{{input id='clientFirstName' value=model.firstName required=false}}
-			
+			{{input id='clientFirstName' value=model.firstName required=false}}<p style="color:red; display:inline;">    *</p>		
 		</div>
 		<br>
 		<label class = "inputLabel" for = "clientLastName">Client's Last Name</label>
 		<div class = "inputBox">
-			{{input id='clientLastName' value=model.lastName required=false}}
-			
+			{{input id='clientLastName' value=model.lastName required=false}}<p style="color:red; display:inline;">    *</p>	
 		</div>
 		<br>
-		<label class = "inputLabel" for = "clientAddress">Client's Address</label>
+		<label class = "inputLabel" for = "clientAddressLine1">Client's Address Line 1</label>
 		<div class = "inputBox">
-			{{textarea id='clientAddress' value=model.address required=false cols="50" rows="4"}}
+			{{input id='clientAddressLine1' value=model.addressLine1 required=false cols="50" rows="4"}}
+		</div>
+		<br>
+		<label class = "inputLabel" for = "clientAddressLine2">Client's Address Line 2</label>
+		<div class = "inputBox">
+			{{input id='clientAddressLine2' value=model.addressLine2 required=false cols="50" rows="4"}}
+		</div>
+		<br>
+		<label class = "inputLabel" for = "clientAddressLine3">Client's Address Line 3</label>
+		<div class = "inputBox">
+			{{input id='clientAddressLine3' value=model.addressLine3 required=false cols="50" rows="4"}}
 		</div>
 		<br>
 		<label class = "inputLabel" for = "clientPhone">Client's Phone Number</label>
@@ -81,9 +89,19 @@
 			{{input id='alternativeLastName' value=model.alternativeContactLastName }}
 		</div>
 		<br>
-		<label class = "inputLabel" for = "alternativeAddress">Alternative Contact's Address</label>
+		<label class = "inputLabel" for = "alternativeAddressLine1">Alternative Contact's Address Line 1</label>
 		<div class = "inputBox">
-			{{textarea id='alternativeAddress' value=model.alternativeContactAddress   cols="50" rows="4"}}
+			{{input id='alternativeAddressLine1' value=model.alternativeContactAddressLine1   cols="50" rows="4"}}
+		</div>
+		<br>
+		<label class = "inputLabel" for = "alternativeAddressLine2">Alternative Contact's Address Line 2</label>
+		<div class = "inputBox">
+			{{input id='alternativeAddressLine2' value=model.alternativeContactAddressLine2   cols="50" rows="4"}}
+		</div>
+		<br>
+		<label class = "inputLabel" for = "alternativeAddressLine3">Alternative Contact's Address Line 3</label>
+		<div class = "inputBox">
+			{{input id='alternativeAddressLine3' value=model.alternativeContactAddressLine3   cols="50" rows="4"}}
 		</div>
 		<br>
 		<label class = "inputLabel" for = "alternativePrimaryPhone">Alternative Contact's Primary Phone Number</label>

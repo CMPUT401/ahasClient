@@ -7,53 +7,53 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
-	//let cName, let cAddress, let cPhone,
 	actions: {
 		/**
 		* makes an ajax POST request to save the new client
 		* @method submitNewClient
 		*/
 		submitNewClient: function(){
-			//disable button
 			
 			//make asynch post request
 			var self = this;
 			checkInputs(self);
-			//let cName = this.get('clientName');
 			if(checkInputs(self)){
+				//disable button
 				document.getElementById("create-client-button").disabled = true; 
 				let ajaxPost = this.get('ajax').post('/api/client' , {
 					type: 'application/json',
 					data: {client: {
 						firstName: this.get('clientFirstName'),
 						lastName: this.get('clientLastName'),
-						address: this.get('clientAddress'),
-						phoneNumber: this.get('clientPhone'),
-						email: this.get('clientEmail'),
-						licos: this.get('clientLICO'),
-						aish: this.get('clientAISH'),
-						socialAssistance: this.get('clientAS'),
+						addressLine1: checkUndefined(this.get('clientAddressLine1')),
+						addressLine2: checkUndefined(this.get('clientAddressLine2')),
+						addressLine3: checkUndefined(this.get('clientAddressLine3')),
+						phoneNumber: checkUndefined(this.get('clientPhone')),
+						email: checkUndefined(this.get('clientEmail')),
+						licos: checkUndefined(this.get('clientLICO')),
+						aish: checkUndefined(this.get('clientAISH')),
+						socialAssistance: checkUndefined(this.get('clientSA')),
 						pets: "",
 						created_at: new Date(),
 						updated_at: "",
-						alternativeContactFirstName: this.get('alternativeFirstName'),
-						alternativeContactLastName: this.get('alternativeLastName'),
-						alternativeContactPhoneNumber: this.get('alternativePrimaryPhone'),
-						alternativeContactAddress: this.get('alternativeAddress'),
-						notes: this.get('clientNotes'),
-						alternativeContact2ndPhone: this.get('alternativeSecondaryPhone'),
-						alternativeContactEmail: this.get('alternativeEmail')
+						alternativeContactFirstName: checkUndefined(this.get('alternativeFirstName')),
+						alternativeContactLastName: checkUndefined(this.get('alternativeLastName')),
+						alternativeContactPhoneNumber: checkUndefined(this.get('alternativePrimaryPhone')),
+						alternativeContactAddressLine1: checkUndefined(this.get('alternativeAddressLine1')),
+						alternativeContactAddressLine2: checkUndefined(this.get('alternativeAddressLine2')),
+						alternativeContactAddressLine3: checkUndefined(this.get('alternativeAddressLine3')),
+						notes: checkUndefined(this.get('clientNotes')),
+						alternativeContact2ndPhone: checkUndefined(this.get('alternativeSecondaryPhone')),
+						alternativeContactEmail: checkUndefined(this.get('alternativeEmail'))
 					}}, 
 				}).then(function(data){
 						showAlert("Client created. ", true, "success");
-						//console.log("name is " + cName);
-						// TODO display confrimation page
 						// TODO prevent user from going back into this page
 						clearFields(self);
 						self.transitionToRoute('search-client');
 					},
 					function(response){
-						showAlert("Could not create. ", false, "success");
+						showAlert("Could not create. ", false, "failure");
 						document.getElementById("create-client-button").disabled = false;
 						if (response === false){
 							if (self.get('session.isAuthenticated')){
@@ -78,7 +78,9 @@ export default Ember.Controller.extend({
 function clearFields(page){
 	page.set('clientFirstName', '');
 	page.set('clientLastName', '');
-	page.set('clientAddress', '');
+	page.set('clientAddressLine1', '');
+	page.set('clientAddressLine2', '');
+	page.set('clientAddressLine3', '');
 	page.set('clientPhone', '');
 	page.set('clientEmail', '');
 	page.set('clientLICO', '');
@@ -87,7 +89,7 @@ function clearFields(page){
 	page.set('alternativeFirstName', '');
 	page.set('alternativeLastName', '');
 	page.set('alternativePrimaryPhone', '');
-	page.set('alternativeAddress', '');
+	page.set('alternativeAddressLine1', '');
 	page.set('clientNotes', '');
 	page.set('alternativeSecondaryPhone', '');
 	page.set('alternativeEmail', '');
@@ -117,8 +119,8 @@ function showAlert(message, isGood, divID) {
 * @param {object} self the controller
 */
 function checkInputs(self){
-    var validFirstName = testName(self.get('clientFirstName'), "firstName");
-	var validLastName = testName(self.get('clientLastName'), "lastName");
+    var validFirstName = testName(self.get('clientFirstName'), "firstName",true);
+	var validLastName = testName(self.get('clientLastName'), "lastName", false);
     var validEmail = testEmail(self.get('clientEmail'), "clientEmail");
     var validAltEmail = testEmail(self.get('alternativeEmail'), "altEmail");
     var validClientPhone = testPhoneNumber(self.get('clientPhone'), "clientPhone");
@@ -133,10 +135,15 @@ function checkInputs(self){
 * @method testName
 * @param {string} name The name to be tested
 * @param {string} divID a partial name to the div id in which the allert is displayed. the div id is alert_placeholder_'divID'
+* @param {boolean} isFirst true if the name in question is a first name, false if it is a last name 
 */
-function testName(name, divID){
+function testName(name, divID, isFirst){
 	if(name === undefined || name === ""){
-		showAlert("Name cannot be blank", false, divID);
+		if(isFirst){
+			showAlert("First name cannot be blank", false, divID);
+		}else{
+			showAlert("Last name cannot be blank", false, divID);
+		}
 		return false;
 	}else{
 		return true;
@@ -175,5 +182,19 @@ function testPhoneNumber(phone, divID){
 		showAlert("Phone number must be of format xxx-xxx-xxxx, or xxx.xxx.xxxx or xxx xxx xxxx",
 		 false, divID);
 		return false;
+	}
+}
+
+
+/**
+* Checks that a value isn't undefined. if it is, return and empty string instead. 
+* @method checkUndefined
+* @param value  can be any value. main use is for calling this.get("id of input") in the controller. 
+*/
+function checkUndefined(value){
+	if(value === undefined){
+		return "";
+	} else{
+		return value;
 	}
 }
