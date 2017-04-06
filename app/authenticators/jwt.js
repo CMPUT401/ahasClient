@@ -45,7 +45,8 @@ export default Base.extend({
     localStorage.setItem('role', decoded.role);
     Ember.run(() => {
       resolve({
-        token: jwt
+        token: jwt,
+        role: decoded.role
       });
     });
     }, function() {

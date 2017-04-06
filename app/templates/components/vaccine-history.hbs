@@ -5,7 +5,7 @@
 	<div class = "panel panel-default">
 		<div class="history-list" style="overflow:auto">
 				{{#each vaccineList as |entry|}}
-					<div class = "nameListItem vaccineList" {{action 'viewEntry' entry.medical_record_id entry.date}}>
+					<div class = "list-group-item clickable vaccineList" {{action 'viewEntry' entry.medical_record_id entry.date}}>
 						<p> {{entry.name}} {{entry.dateToDisplay}}</p>
 					</div>
 				{{/each}}

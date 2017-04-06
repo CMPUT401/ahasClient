@@ -37,7 +37,11 @@
   padding-right: 15px;
 }
 
+#new-contact-button{
+  text-align: center;
+  margin-top: 13rem;
 
+}
 /* display list of contact names*/
 
 .contactnameList {
@@ -45,3 +49,8 @@
   display: block;
   height: 550px;
 }
+
+.clickable{
+  cursor: pointer; 
+}
+

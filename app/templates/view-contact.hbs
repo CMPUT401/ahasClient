@@ -10,5 +10,7 @@
     <p id="contactAddress">Address: {{model.address}}</p>
     <br>
     <br>
-    <button type="submit" id="edit-button"{{action 'gotoEditContact' model.id }}>Edit Info</button>
+    {{#if model.admin}}
+    <button type="submit" id="edit-button"{{action 'gotoEditContact' model.id model.admin}}>Edit Info</button>
+    {{/if}}
 </div>

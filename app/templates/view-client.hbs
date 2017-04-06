@@ -1,63 +1,82 @@
 <div class = "infoBlock">
-	<div class = "panel panel-default">
-		<div class = "panel-body">
+	<!-- <div class = "panel panel-default">
+		<div class = "panel-body"> -->
 			<h3>Client: </h3><br>
-			<h4>{{model.lastName}}, {{model.firstName}}</h4>  <br>
-			<h4>Address:</h4><br>
-			{{{model.address}}} <br>
-			<h4>Phone Number: </h4><br>
-			{{model.phoneNumber}} <br>
-			<h4>Email: </h4><br>
-			{{model.email}} <br>
-		</div>
-	</div>
+			<div class = "viewLabel"><h4>Name: </h4></div>
+			<div class = "viewInfo"><h4>{{model.firstName}} {{model.lastName}}</h4> </div>
+			<br>
+			<div class = "viewLabel"><h4>Address:</h4></div>
+			<div class = "viewInfo"> <h4>{{{model.address}}} </h4></div>
+			<br>
+			<div class = "viewLabel"><h4>Phone Number: </h4></div>
+			<div class = "viewInfo"> <h4>{{model.phoneNumber}} </h4></div>
+			<br>
+			<div class = "viewLabel"><h4>Email: </h4></div>
+			<div class = "viewInfo"><h4>{{model.email}} </h4></div>
+			<br>
+		<!-- </div>
+	</div> -->
 </div>
 <div class = "infoBlock">
-	<div class = "panel panel-default">
-		<div class = "panel-body">
-			<h3>Documentation Information: </h3><br>
-			<h4>LICO: </h4><br>
-			{{model.licos}}<br>
-			<h4>AISH: </h4><br>
-			{{model.aish}}<br>
-			<h4>SA: </h4><br>
-			{{model.socialAssistance}}<br>
-			<h4>Notes: </h4><br>
-			{{{model.notes}}}<br>
-		</div>
-	</div>
+	<!-- <div class = "panel panel-default">
+		<div class = "panel-body"> -->
+			<h3>Documentation Information: </h3>
+			<div class = "viewLabel"><h4>LICO: </h4></div>
+			<div class = "viewInfo"><h4>{{model.licos}}</h4></div>
+			<br>
+			<div class = "viewLabel"><h4>AISH: </h4></div>
+			<div class = "viewInfo"><h4>{{model.aish}}</h4></div>
+			<br>
+			<div class = "viewLabel"><h4>SA: </h4></div>
+			<div class = "viewInfo"><h4>{{model.socialAssistance}}</h4></div>
+			<br>
+			<div class = "viewLabel"><h4>Notes: </h4></div>
+			<div class = "viewInfo"><h4>{{{model.notes}}}</h4></div>
+			<br>
+		<!-- </div>
+	</div> -->
 </div>
 <div class = "infoBlock">
-	<div class = "panel panel-default">
-		<div class = "panel-body">
-			<h3>Alternate Contact: </h3><br>
-			<h4>{{model.alternativeContactLastName}}, {{model.alternativeContactFirstName}}</h4><br>
-			<h4>Address: </h4><br>
-			{{{model.alternativeContactAddress}}}<br>
-			<h4>Phone Number: </h4><br>
-			{{model.alternativeContactPhoneNumber}}<br>
-			<h4>Second Phone Number: </h4>
-			{{model.alternativeContact2ndPhone}}<br>
-			<h4>Email: </h4><br>
-			{{model.alternativeContactEmail}}<br>
-		</div>
-	</div>
+	<!-- <div class = "panel panel-default">
+		<div class = "panel-body"> -->
+			<h3>Alternate Contact: </h3>
+			<div class = "viewLabel"><h4>Name: </h4></div>
+			<div class = "viewInfo"><h4>{{model.alternativeContactFirstName}} {{model.alternativeContactLastName}}</h4></div>
+			<br>
+			<div class = "viewLabel"><h4>Address: </h4></div>
+			<div class = "viewInfo"><h4>{{{model.alternativeContactAddress}}}</h4></div>
+			<br>
+			<div class = "viewLabel"><h4>Phone Number: </h4></div>
+			<div class = "viewInfo"><h4>{{model.alternativeContactPhoneNumber}}</h4></div>
+			<br>
+			<div class = "viewLabel"><h4>Second Phone Number: </h4></div>
+			<div class = "viewInfo"><h4>{{model.alternativeContact2ndPhone}}</h4></div>
+			<br>
+			<div class = "viewLabel"><h4>Email: </h4></div>
+			<div class = "viewInfo"><h4>{{model.alternativeContactEmail}}</h4></div>
+			<br>
+		<!-- </div>
+	</div> -->
 </div>
 <div class = "infoBlock">
-	<div class = "panel panel-default">
-		<div class = "panel-body">
+	<!-- <div class = "panel panel-default">
+		<div class = "panel-body"> -->
 			<h3>Pet: </h3>
 			<!-- TODO loop through list of pets -->
 			{{#each model.patients as |pet|}}
-				<div {{action "viewPatient" pet.id}}>
-					<h4>{{pet.firstName}} {{pet.lastName}}</h4><br>
+				<div class = "petNameContainer clickable" {{action "viewPatient" pet.id}}>
+					<div class = "panel panel-default">
+						<div class = "panel-body">
+							<h4 >{{pet.firstName}} {{pet.lastName}}</h4>
+						</div>
+					</div>
 				</div>
 			{{/each}}
-		</div>
-	</div>
+		<!-- </div>
+	</div> -->
 </div>
 <div class = "infoBlock">
-	<h4>Created: </h4>{{model.created_at}}<br>
+	<h4>Created: </h4>{{model.created_at}}
 	<h4>Last modified: </h4>{{model.updated_at}}<br>
 	<button {{action "newPatient" model}}>Add A Patient</button>
 	<button {{action "editClient" model.clientID}}>Edit Client</button>

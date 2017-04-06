@@ -54,7 +54,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.locationType = 'hash';
+    ENV.locationType = 'history';
+    ENV.server = 'https://ahas.herokuapp.com';
   }
 
   return ENV;

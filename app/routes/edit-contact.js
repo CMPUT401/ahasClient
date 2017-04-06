@@ -42,7 +42,20 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
             }
 		}));
 		return(ajaxGet);
-       }
+       },
+/**  
+  * handles case where someone tries to visit edit contact route manually as a user not admin 
+  * in that case we transition back to search-contact
+  * @method setupController
+  */ 
+ setupController(controller, model) {
+    // Call _super for default behavior
+    this._super(controller, model);
+
+    if (this.get('session.data.authenticated.role')!=='Admin'){
+		  this.transitionTo('/search-contact');
+	}
+  }
 });
 
  /** 

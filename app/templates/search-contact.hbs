@@ -1,56 +1,66 @@
+
 <div >
     <br>
     <br>
     <br>
     <div >
-        <div class="col-sm-7 col-sm-offset-1 col-md-7  col-md-offset-1">
-        <form {{action "filterContact" on="submit" }} > 
-        <input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
-        </form>
+        <div class="col-sm-8 col-md-8  ">
+        <input  {{action "filterContact" on='keyUp' }} class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
         </div>
         <div class="col-sm-2 col-md-2">
-        <button  {{action "filterContact"  }} type="submit" id="search-button">Search</button>
+        <button  {{action "filterContact"  }} type='submit' id="search-button">Search</button>
         </div>
     </div>
     <br>
     <br>
-    <div class="row leftAlignGroup">
- <div class=" col-sm-2 col-md-2 contactNameList" >
+    <div class="row ">
+ <div class=" col-sm-3 col-md-3 contactNameList" >
         <h3 id="veterinariansHeading" >Veterinarians</h3>
                  {{#each  model.contactsFilteredVeterinarian as |contact|}}
                            
-                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  veterinariansContact'>{{contact.first_name}} {{contact.last_name}}</p>
+                                <div{{action "getContact" contact.id on="click"}} class=' list-group-item veterinariansContact clickable'>{{contact.first_name}} {{contact.last_name}}</div>
                           
 
                     {{/each}}
         </div >
       
-         <div class=" col-sm-2  col-sm-offset-1 col-md-2 contactNameList" >
+         <div class=" col-sm-3 col-md-3 contactNameList" >
              <h3 id="volunteersHeading" >Volunteers</h3>
                       {{#each  model.contactsFilteredVolunteer as |contact|}}
                            
-                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  volunteersContact' >{{contact.first_name}} {{contact.last_name}}</p>
+                                <div{{action "getContact" contact.id on="click"}} class=' list-group-item  volunteersContact clickable' >{{contact.first_name}} {{contact.last_name}}</div>
                            
 
                     {{/each}}
         </div >
      
-        <div class="col-sm-2  col-sm-offset-1 col-md-2 contactNameList" >
+        <div class="col-sm-3  col-md-3 contactNameList" >
             <h3 id="technicianHeading">Technicians</h3>
                       {{#each  model.contactsFilteredTechnician as |technician|}}
                             
-                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  technician Contact'>{{contact.first_name}} {{contact.last_name}}</p>
+                                <div{{action "getContact" contact.id on="click"}} class=' list-group-item  technicianContact clickable'>{{contact.first_name}} {{contact.last_name}}</div>
 
                     {{/each}}
         </div >
-         <div class="col-sm-2  col-sm-offset-1 col-md-2 contactNameList" >
+         <div class="col-sm-3  col-md-3 contactNameList" >
              <h3 id="laboratoryHeading">Laboratory</h3>
                       {{#each  model.contactsFilteredLaboratory as |contact|}}
                             
-                                <p{{action "getContact" contact.id on="click"}} class=' nameListItem  laboratoryContact'>{{contact.first_name}} {{contact.last_name}}</p>
+                                <div{{action "getContact" contact.id on="click"}} class=' list-group-item laboratoryContact clickable'>{{contact.first_name}} {{contact.last_name}}</div>
 
                     {{/each}}
         </div >
         </div>
-                    
+
 </div>
+        
+
+{{#if model.admin}}
+        <button {{action "newContact"  model.admin}} type="submit" id="new-contact-button">New Contact</button>
+{{/if}}
+
+
+
+
+
+

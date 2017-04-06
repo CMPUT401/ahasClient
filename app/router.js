@@ -10,10 +10,12 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login');
+  this.route('logout');
 
   this.route('new-patient');
 
   this.route('new-user', {path: '/new-user/:inviteToken'});
+  this.route('reset-password', {path:'/reset-password/:resetToken'});
   this.route('new-client');
   this.route('new-side-note');
   this.route('new-calendar');

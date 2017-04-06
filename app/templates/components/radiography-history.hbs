@@ -6,7 +6,7 @@
 		<div class="history-list" style="overflow:auto">
 		
 				{{#each radiographyList as |radiograph|}}
-					<div class = "nameListItem" {{action 'viewEntry' radiograph.imageId}}>
+					<div class = "list-group-item clickable" {{action 'viewEntry' radiograph.imageId}}>
 						
 							<p>{{radiograph.name}} {{radiograph.date}}</p>
 						

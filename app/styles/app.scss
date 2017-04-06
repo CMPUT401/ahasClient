@@ -6,7 +6,6 @@
 @import "./login";
 @import "./fileUpload";
 @import "./userCreation";
-@import "./userTableYellowGrey";
 @import "./patientInfoComponent";
 @import "./viewPatient";
 @import "./contact";
@@ -14,6 +13,7 @@
 @import "./new-user";
 @import "./userTables";
 @import "./inviteUser";
+@import "./viewClient";
 @import url(https://fonts.googleapis.com/css?family=Lato:300,300italic,400,700,700italic);
 
 /**
@@ -112,6 +112,16 @@ p {
   padding: 15px;
 }
 
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+  height: 7 em;
+  z-index: 100
+}
 @media (min-width: 768px){
 
 .nav {
@@ -144,15 +154,7 @@ p {
 }
 }
 
-/* view client-info */
 
-
-.infoBlock {
-  display: inline-block;
-  vertical-align: top;
-  width: 44%;
-
-}
 
 .leftAlignGroup{
   margin-left: .5rem;

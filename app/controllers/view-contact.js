@@ -14,8 +14,10 @@ export default Ember.Controller.extend({
 		* @method gotoEditContact
     * @param {string} id The id to use to transition
 		*/
-     gotoEditContact: function(id) {
+     gotoEditContact: function(id, role) {
+        if(role){
         this.transitionToRoute('/edit-contact/'+id );
+        }
      }
   }
 });
