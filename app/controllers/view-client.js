@@ -12,9 +12,10 @@ export default Ember.Controller.extend({
 		* @method newPatient
 		* @param {int} clientID The ID of the client 
 		*/
-		newPatient: function(clientID){
+		newPatient: function(model){
 			this.transitionToRoute("/new-patient/").then(function(newRoute){
-				newRoute.controller.set("c_ID",clientID);
+				newRoute.controller.set("c_ID",model.clientID);
+				newRoute.controller.set("l_Name",model.lastName);
 			});
 			//this.transitionTo('new-patient', { queryParams: { clientID: '1' }});
 		},
