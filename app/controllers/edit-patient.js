@@ -1,13 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	ajax: Ember.inject.service(),
+	//queryParams: ['clientID'],
+	session: Ember.inject.service(),
 	actions: {
-	submitNewPatient: function()
+	submitNewPatient: function(model)
 		{
 			var self = this;
+			console.log(model.id);
 			var value= document.getElementById('value');
             var val = value.options[value.selectedIndex].text;
-			let ajaxPost = this.get('ajax').request('/api/patients',
+			let ajaxPost = this.get('ajax').request('/api/patients/'+model.id,
 			{
 				method: 'PATCH',
 				type: 'application/json',
@@ -15,12 +19,12 @@ export default Ember.Controller.extend({
 					{
 
 					client: this.get('c_ID'),
-					species: 	this.get('patientSpecies'),
-					first_name: this.get('patientFirstName'),
+					species: 	document.getElementById('patientSpecies').value,
+					first_name: document.getElementById('patientFirstName').value,
 					age: 		formatDate(document.getElementById('patientAge').value),
-					colour: 	this.get('patientColor'),
-					tattoo: 	this.get('patientTatoo'),
-					microchip: 	this.get('patientMicrochip'),
+					colour: 	document.getElementById('patientColor').value,
+					tattoo: 	document.getElementById('patientTatoo').value,
+					microchip: 	document.getElementById('patientMicrochip').value,
 					gender: 	val
 				}
 			}, 
