@@ -14,16 +14,15 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 				Ember.run.later(function() 
 					{
        			 resolve({ id: JSON.stringify(data.patient.id).replace(/\"/g, ""),
-						   first_name: JSON.stringify(data.patient.first_name).replace(/\"/g, ""),
+       			 		   first_name: JSON.stringify(data.patient.first_name).replace(/\"/g, ""),
 						   last_name: JSON.stringify(data.patient.last_name).replace(/\"/g, ""),
 						   species: JSON.stringify(data.patient.species).replace(/\"/g, ""),
-						   age: JSON.stringify(data.patient.age).replace(/\"/g, ""),
+						   age: parseDate(new Date(data.patient.dateOfBirth * 1000)),
 						   colour: JSON.stringify(data.patient.colour).replace(/\"/g, ""),
 						   tattoo: JSON.stringify(data.patient.tattoo).replace(/\"/g, ""),
 						   microchip: JSON.stringify(data.patient.microchip).replace(/\"/g, ""),
-						   status: JSON.stringify(data.patient.reproductive_status).replace(/\"/g, ""),
 						   client_id: JSON.stringify(data.patient.client_id).replace(/\"/g, ""),
-						   gender: JSON.stringify(data.patient.gender).replace(/\"/g, "")
+						   gender: JSON.stringify(data.patient.sex).replace(/\"/g, ""),
 						});
 				//this.get('ajax').request('/api/client/1');
 
