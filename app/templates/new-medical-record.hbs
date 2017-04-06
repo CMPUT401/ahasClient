@@ -143,8 +143,8 @@
                     <div class="col-sm-1 col-md-1 "> <input id="respiratoryText2" class="medicalTextInput" value=""> </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-3 col-md-2 medRowGroup">BCS </div>
-                    <div class="col-sm-1 col-md-2">
+                    <div class="col-sm-2 col-md-2 medRowGroup">BCS </div>
+                    <div class="col-sm-2 col-md-1">
                         <select id="bcsvalue" class='medRowGroup bcsInput'>
         <option value="1"> 1</option>
         <option value="1"> 2</option>
@@ -157,9 +157,9 @@
         <option value="1"> 9</option>
   </select>
                     </div>
-                    <div class="col-sm-1 col-md-1 medRowGroup ">/9</div>
-                    <div class="col-sm-6 col-md-6 medRowGroup">
-                        <div class="col-sm-2 col-md-2 "> MCS </div>
+                    <div class="col-sm-1 col-md-1 medRowGroup denominator">/9</div>
+                    <div class="col-sm-7 col-md-5 medRowGroup">
+                        <div class="col-sm-3 col-md-2 "> MCS </div>
                         <label class=" labelForRadio"> <input class="norm" type="checkbox" id="mcsN"> N </label>
                         <label class=" labelForRadio"> <input type="checkbox" id="mcsMild">Mild </label>
                         <label class="labelForRadio"> <input type="checkbox" id="mcsMod"> Mod </label>
@@ -168,8 +168,8 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-2 col-md-2 medRowGroup"> Weight </div>
-                    <div class="col-sm-2 col-md-2 "> <input id="weight" class="medicalTextInput" value=""> </div>
+                    <div class="col-sm-3 col-md-2 medRowGroup"> Weight </div>
+                    <div class="col-sm-3 col-md-2 "> <input id="weight" class="medicalTextInput" value=""> </div>
                     <div class="col-sm-4 col-md-4 medRowGroup">Unit
                         <select id="unit" >
         <option value="kg"> kg</option>
@@ -187,23 +187,23 @@
         </div>
 
  <div class="row leftAlignGroup notesGroup">
-                <div  class="col-sm-7 col-md-7 ">
+                <div  class="col-sm-6 col-md-7 ">
                     <label for="notes">Notes: </label>
                     <br>
-                    <textarea id="notes" rows="22" cols="50" value=""> </textarea>
+                    <textarea id="notes" rows="17" cols="50" value=""> </textarea>
                     <br>
                 </div>
-                <div  class="col-sm-2 col-md-3 col-md-offset-1">
+                <div  class="col-sm-2 col-sm-offset-2 col-md-3 col-md-offset-0">
                   <div >
                 <label for="followUpNotes">Follow up notes: </label>
                 <br>
-                <textarea id="followUpNotes" rows="5" cols="35" value=""> </textarea>
+                <textarea id="followUpNotes" rows="5" cols="25" value=""> </textarea>
             </div>
 
             <div>
                 <label for="summary">Short summary: </label>
                 <br>
-                <textarea id="summary" rows="5" cols="35" value=""> </textarea>
+                <input id="summary" class="summaryInput" value=""> 
             </div>
 
             <div>

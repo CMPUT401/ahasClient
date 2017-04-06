@@ -358,7 +358,7 @@
 </div>
 <div class="row">
     <div class="col-sm-2 col-md-2 medRowGroup">BCS  </div>
-    <div class="col-sm-2 col-md-2 bcsSelect medRowGroup">
+    <div class="col-sm-2 col-md-1 bcsSelect medRowGroup">
     <select id="bcsvalue" disabled>
        {{#if model.bcsVal1}}
         <option value="1" selected="selected"> 1</option>
@@ -461,9 +461,9 @@
         {{/if}}
   </select>
   </div>
-    <div class="col-sm-1 col-md-1 medRowGroup" >/9</div>
+    <div class="col-sm-1 col-md-1 medRowGroup denominator" >/9</div>
     <div class="col-sm-7 col-md-7 medRowGroup">
-        <div class="col-sm-2 col-md-1"> MCS </div>
+        <div class="col-sm-3 col-md-2"> MCS </div>
     <label class=" labelForRadio">
          {{#if model.mcsN }}
        <input class="norm" type="checkbox" disabled id="mcsN" checked="true" > N 
@@ -496,7 +496,7 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-2 col-md-2 medRowGroup"> Weight </div>
+    <div class="col-sm-3 col-md-2 medRowGroup"> Weight </div>
     <div class="col-sm-3 col-md-2 "> <input id="weight" class="medicalTextInput" disabled value={{model.weight}}>  </div>
     <div class="col-sm-5 col-md-4 medRowGroup">Unit 
     <select id="unit" disabled>
@@ -520,7 +520,7 @@
                 <div  class="col-sm-7 col-md-7 ">
                     <label for="notes">Notes: </label>
                     <br>
-                    <textarea id="notes" rows="22" disabled cols="50" value={{model.exam_notes}}> </textarea>
+                    <textarea id="notes" rows="17" disabled cols="50" value={{model.exam_notes}}> </textarea>
                     <br>
                     <div>
         <label for="medications">Medications: </label>
@@ -571,17 +571,17 @@
 </div>
 
                 </div>
-                <div  class="col-sm-2 col-md-3 col-md-offset-1">
+                <div  class="col-sm-2 col-sm-offset-1 col-md-3 col-md-offset-0">
                   <div >
                 <label for="followUpNotes">Follow up notes: </label>
                 <br>
-                <textarea id="followUpNotes" disabled rows="5" cols="35"value={{model.followUpNotes}}> </textarea>
+                <textarea id="followUpNotes" disabled rows="5" cols="25"value={{model.followUpNotes}}> </textarea>
             </div>
 
             <div>
                 <label for="summary">Short summary: </label>
                 <br>
-                <textarea id="summary" rows="5" cols="35" disabled value={{model.summary}}> </textarea>
+                <input id="summary" class="summaryInput"disabled value={{model.summary}}> 
             </div>
 
             <div>

@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
     color: '#000',  // default
     height: 68,     // default
     weight: 1,      // default
-    width: 250,     // default
+    width: 220,     // default
     
 
     signature: Ember.computed(function () {
