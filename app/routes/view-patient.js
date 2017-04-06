@@ -22,7 +22,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						   first_name: JSON.stringify(data.patient.first_name).replace(/\"/g, ""),
 						   last_name: JSON.stringify(data.patient.last_name).replace(/\"/g, ""),
 						   species: JSON.stringify(data.patient.species).replace(/\"/g, ""),
-						   age: parseDate(new Date(data.patient.age * 1000)),
+						   age: parseDate(new Date(data.patient.dateOfBirth * 1000)),
 						   colour: JSON.stringify(data.patient.colour).replace(/\"/g, ""),
 						   tattoo: JSON.stringify(data.patient.tattoo).replace(/\"/g, ""),
 						   microchip: JSON.stringify(data.patient.microchip).replace(/\"/g, ""),
@@ -48,7 +48,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 
     		  });
 				//var self = this;
-				console.log(data.patient);
+				console.log(data);
 			},
 			function(response){
 				if (response === false){
@@ -115,6 +115,9 @@ function fixNulls(data){
   */ 
 
 function parseDate(date){
+		if (date == ""){
+			return("");
+		}
         var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         var months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
         var day = date.getDay() ;

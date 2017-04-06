@@ -33,7 +33,7 @@ export default Ember.Controller.extend({
 					species: 	this.get('patientSpecies'),
 					first_name: this.get('patientFirstName'),
 					last_name:  this.get('patientLastName'),
-					age: 		JSON.stringify(formatDate(document.getElementById('patientAge').value)),
+					dateOfBirth: 		JSON.stringify(formatDate(document.getElementById('patientAge').value)),
 					colour: 	this.get('patientColor'),
 					tattoo: 	this.get('patientTatoo'),
 					microchip: 	this.get('patientMicrochip'),
