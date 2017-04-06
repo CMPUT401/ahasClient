@@ -1,6 +1,11 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
+
+/**
+* Route for view image record. This route is used to view both radiographies and lab results. Makes a get request for the base64 image when loaded.  
+* @class ViewImageRecordRoute
+*/
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
@@ -32,6 +37,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	}
 });
 
+/**
+* deserializes the name attribute in the JSON object and converts it to a string.
+* @method deserialName
+* @param {object} img The image JSON object (data.image). 
+*/
 function deserialName(img){
 	var name = img.name;
 	if(name != null){
@@ -41,6 +51,11 @@ function deserialName(img){
 	}
 }
 
+/**
+* deserializes the data attribute in the JSON object. If it is a pdf, then it build a pdf viewer, otherwise, it makes an img HTML tag in the view to view the base64 encoded image. 
+* @method ddeserialData
+* @param {object} img The image JSON object (data.image). 
+*/
 function deserialData(img){
 	var data = img.data;
 	if(data != null){
@@ -55,6 +70,11 @@ function deserialData(img){
 	}
 }
 
+/**
+* deserializes the date attribute in the JSON object and converts from unix time into a readable string.
+* @method deserialDate
+* @param {object} img The image JSON object (data.image). 
+*/
 function deserialDate(img){
 	var unixDate = img.date;
 	if(unixDate != null){
@@ -65,6 +85,11 @@ function deserialDate(img){
 	}
 }
 
+/**
+* deserializes the picture_type attribute in the JSON object and converts it to a string. Called by deserialData to determine if an image is a pdf or not
+* @method deserialName
+* @param {object} img The image JSON object (data.image). 
+*/
 function deserialType(img){
 	var type = img.picture_type;
 	if(type != null){
@@ -74,7 +99,11 @@ function deserialType(img){
 	}
 }
 
-
+/**
+* builds an HTML pdf viewer for the view
+* @method pdfBuilder
+* @param {object} data The base64 ecoded data (data.image.data)
+*/
 function pdfBuilder(data){
 	var objBuilder = '';
 	objBuilder += ('<object width="100%" height="100%"      data="');
