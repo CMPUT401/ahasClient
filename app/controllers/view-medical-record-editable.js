@@ -18,6 +18,7 @@ export default Ember.Controller.extend({
 		* makes a put to the server with all updated information
 		* @method createMedicalRecord
         * @param {id} patientid The id of the patient whose medical record we are updating
+        * @param {id} id The id of the medical record we are updating
 		*/
           updateMedicalRecord(patientid, id){
 
@@ -110,7 +111,7 @@ export default Ember.Controller.extend({
 
            
         },
-         medications: gatherMedications(id, self),
+         medications: gatherMedications(patientid, self, id),
         
     }
                });
@@ -161,13 +162,14 @@ export default Ember.Controller.extend({
         * delegates to formatReminders to handle each type of reminder
 		* @method  gatherMedications
         * @param {controller} self the controller for medical-record, used to store and gather attributes of medication lists
-        * @param {id} id the id of the patient to include in the objects we are sending
+        * @param {id} patientid the id of the patient to include in the objects we are sending
+        * @param {id} medical_record_id the id of the medical record to include in the objects we are sending
 		*/  
-function gatherMedications(id, self){
+function gatherMedications(patientid, self, medical_record_id){
     var medications = [];
-    var formattedMedicine = formatReminders(self.get('model.medicine'));
-    var formattedVaccine = formatReminders(self.get('model.vaccine'));
-    var formattedOther = formatReminders(self.get('model.other'));
+    var formattedMedicine = formatReminders(self.get('model.medicine'), patientid,  medical_record_id);
+    var formattedVaccine = formatReminders(self.get('model.vaccine'), patientid,  medical_record_id);
+    var formattedOther = formatReminders(self.get('model.other'), patientid,  medical_record_id);
     medications.push.apply(medications, formattedMedicine);
     medications.push.apply(medications, formattedVaccine);
     medications.push.apply(medications, formattedOther);
@@ -180,20 +182,22 @@ function gatherMedications(id, self){
 		* used to format the objects we will send in request
 		* @method   formatReminders
         * @param {array} items the array of reminders to be formatted
+        * @param {id} patientid the id of the patient to include in the objects we are sending
+        * @param {id} medical_record_id the id of the medical record to include in the objects we are sending
 		*/  
 
-function formatReminders(items){
+function formatReminders(items, patientid,  medical_record_id){
 
     var newList = [];
 
     for(var i =0 ; i<items.length; i++){
         if (items[i].reminder !== ""){
             var newObjectReminder = formatDate(items[i].reminder);
-            var newObject1 = {name: items[i].name, med_type: items[i].med_type, reminder: newObjectReminder, id: items[i].id};
+            var newObject1 = {name: items[i].name, med_type: items[i].med_type, reminder: newObjectReminder, id: items[i].id, patient_id:patientid, medical_record_id: medical_record_id};
             newList.push(newObject1);
         }
         else{
-            var newObject2 = {name: items[i].name, med_type: items[i].med_type, reminder: '', id: items[i].id};
+            var newObject2 = {name: items[i].name, med_type: items[i].med_type, reminder: '', id: items[i].id,  patient_id:patientid, medical_record_id: medical_record_id};
             newList.push(newObject2);
         }
     }

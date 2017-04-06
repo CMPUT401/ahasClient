@@ -145,6 +145,7 @@ export default Ember.Controller.extend({
         medicalRecord.then(function(response){
             if(response.success){
                 showAlert("Record created, record is editable until 12pm tonight", true);
+                clearFields(self);
             }
         //this is error from server condition
         }, function(response) {
@@ -285,4 +286,18 @@ function formatDate(date){
   var half = new Date(date);
   var formatted = Math.floor(half.getTime() / 1000);
   return(formatted);
+}
+
+/**
+* clears the page's input fields, only clears the medications list and the signature
+* because these were the only things that will not clear auto since they are attributes of the controller
+* @param {object} self the controller
+* @method clearFields
+*/
+function clearFields(self){
+    self.set('signature', Ember.A());
+    self.set('medicine', []);
+    self.set('vaccine', []);
+    self.set('other', []);
+	
 }
