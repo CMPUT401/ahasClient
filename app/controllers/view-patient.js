@@ -7,6 +7,16 @@ import Ember from 'ember';
 */
 export default Ember.Controller.extend({
 	 actions: {
+	 			/**
+		*Controller for edit patient
+		*This changes the page to edit patient and transitions it away
+		*@method editPatient()
+		*/
+
+		editPatient: function(patientID){
+			this.transitionToRoute("/edit-patient/" + patientID);
+		},
+	 	
         uploadPicture(patientID){
             this.transitionToRoute("/upload-patient/"+patientID);
         },

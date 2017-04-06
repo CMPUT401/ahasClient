@@ -10,15 +10,7 @@ export default Ember.Controller.extend({
 	session: Ember.inject.service(),
 	actions: 
 	{
-		/**
-		*Controller for edit patient
-		*This changes the page to edit patient and transitions it away
-		*@method editPatient()
-		*/
 
-		editPatient: function(patientID){
-			this.transitionToRoute("/edit-patient/" + patientID);
-		},
 
 		/**
 	* Controller for the submitnewpatient
