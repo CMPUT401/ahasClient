@@ -25,7 +25,9 @@ export default Ember.Controller.extend({
 					data: {client: {
 						firstName: this.get('clientFirstName'),
 						lastName: this.get('clientLastName'),
-						address: checkUndefined(this.get('clientAddress')),
+						addressLine1: checkUndefined(this.get('clientAddressLine1')),
+						addressLine2: checkUndefined(this.get('clientAddressLine2')),
+						addressLine3: checkUndefined(this.get('clientAddressLine3')),
 						phoneNumber: checkUndefined(this.get('clientPhone')),
 						email: checkUndefined(this.get('clientEmail')),
 						licos: checkUndefined(this.get('clientLICO')),
@@ -37,7 +39,7 @@ export default Ember.Controller.extend({
 						alternativeContactFirstName: checkUndefined(this.get('alternativeFirstName')),
 						alternativeContactLastName: checkUndefined(this.get('alternativeLastName')),
 						alternativeContactPhoneNumber: checkUndefined(this.get('alternativePrimaryPhone')),
-						alternativeContactAddress: checkUndefined(this.get('alternativeAddress')),
+						alternativeContactAddressLine1: checkUndefined(this.get('alternativeAddressLine1')),
 						notes: checkUndefined(this.get('clientNotes')),
 						alternativeContact2ndPhone: checkUndefined(this.get('alternativeSecondaryPhone')),
 						alternativeContactEmail: checkUndefined(this.get('alternativeEmail'))
