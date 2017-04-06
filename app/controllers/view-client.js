@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 /**
-* Controller for client-info
-* @class ClientInfoController
+* Controller for view client
+* @class ViewClientController
 */
 export default Ember.Controller.extend({
 	actions: {

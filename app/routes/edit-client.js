@@ -1,6 +1,10 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
+/**
+* Route for edit client
+* @class EditClientRoute
+*/
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
@@ -56,11 +60,17 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	}
 });
 
-
+/**
+* clears the page's input fields
+* @param {object} page the controller
+* @method clearFields
+*/
 function clearFields(page){
 	page.set('clientFirstName', '');
 	page.set('clientLastName', '');
-	page.set('clientAddress', '');
+	page.set('clientAddressLine1', '');
+	page.set('clientAddressLine2', '');
+	page.set('clientAddressLine3', '');
 	page.set('clientPhone', '');
 	page.set('clientEmail', '');
 	page.set('clientLICO', '');
@@ -69,7 +79,9 @@ function clearFields(page){
 	page.set('alternativeFirstName', '');
 	page.set('alternativeLastName', '');
 	page.set('alternativePrimaryPhone', '');
-	page.set('alternativeAddress', '');
+	page.set('alternativeAddressLine1', '');
+	page.set('alternativeAddressLine2', '');
+	page.set('alternativeAddressLine3', '');
 	page.set('clientNotes', '');
 	page.set('alternativeSecondaryPhone', '');
 	page.set('alternativeEmail', '');
