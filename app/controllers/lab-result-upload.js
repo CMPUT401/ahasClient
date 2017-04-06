@@ -10,6 +10,16 @@ export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
 	actions: {
 		fileLoaded: function(file){
+			if(file.type.toString() === "image/jpg"){
+				console.log("we have a jpg");
+			} else if (file.type.toString() === "image/png"){
+				console.log("we have a png");
+			} else if (file.type.toString() === "application/pdf"){
+				console.log("we have a pdf");
+			} else{
+				console.log("invalid file type");
+			}
+			console.log(file.type.toString());
 			this.set('loadedFile', file);
 		},
 		/**
@@ -23,6 +33,7 @@ export default Ember.Controller.extend({
 			var partialDate2 = partialDate.toString().split(' ');
 			var imageDate = partialDate2[2] + "/" + partialDate2[1] + "/" + partialDate2[3];
 			var self = this;
+
 
 			let ajaxPost = this.get('ajax').post('api/patients/' + patientId + "/images", {
 				type: 'application/json',
@@ -67,4 +78,21 @@ function showAlert(message, isGood, divID) {
         else{
              Ember.$('#alert_placeholder_' + divID).html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
         }
+}
+
+
+/**
+* Checks that the file type is valid. shows alert and return false if it not, true otherwise
+* @method checkFileType
+* @param {object} self The controller
+* @param {string} divID a partial name to the div id in which the allert is displayed. the div id is alert_placeholder_'divID'
+*/
+function checkFileType(self, divID){
+	var fType = self.loadedFile.type.toString();
+	if(fType != "image/jpg" || fType != "application/pdf"){
+		showAlert("First name cannot be blank", false, divID);
+		return false;
+	}else{
+		return true;
+	}
 }
