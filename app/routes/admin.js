@@ -4,7 +4,7 @@ import Ember from 'ember';
 export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
-	beforeMode(transition){
+	beforeModel(transition){
 		if(localStorage.getItem('role') !== 'Admin'){
 			transition.abort();
 		}
