@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
 		{
 			var self = this;
 			var value= document.getElementById('value');
-			console.log(JSON.stringify(formatDate(document.getElementById('patientAge').value)));
+			console.log(this.get('l_Name'));
             var val = value.options[value.selectedIndex].text;
 			let ajaxPost = this.get('ajax').request('/api/patients',
 			{
@@ -32,7 +32,7 @@ export default Ember.Controller.extend({
 					client: this.get('c_ID'),
 					species: 	this.get('patientSpecies'),
 					first_name: this.get('patientFirstName'),
-					last_name:  this.get('patientLastName'),
+					last_name:  this.get('l_Name'),
 					dateOfBirth: 		JSON.stringify(formatDate(document.getElementById('patientAge').value)),
 					colour: 	this.get('patientColor'),
 					tattoo: 	this.get('patientTatoo'),

@@ -13,6 +13,7 @@ export default Ember.Controller.extend({
 		* @param {int} clientID The ID of the client 
 		*/
 		newPatient: function(model){
+			console.log(model.clientID,model.lastName);
 			this.transitionToRoute("/new-patient/").then(function(newRoute){
 				newRoute.controller.set("c_ID",model.clientID);
 				newRoute.controller.set("l_Name",model.lastName);
