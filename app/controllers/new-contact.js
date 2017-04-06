@@ -63,7 +63,13 @@ export default Ember.Controller.extend({
         showAlert("Email cannot be blank", false);
     }
 
-    else if ( this.get('address') === undefined){
+    else if ( this.get('addressLine1') === undefined){
+        showAlert("Address cannot be blank", false);
+    }
+    else if ( this.get('addressLine2') === undefined){
+        showAlert("Address cannot be blank", false);
+    }
+    else if ( this.get('addressLine3') === undefined){
         showAlert("Address cannot be blank", false);
     }
 
@@ -76,7 +82,9 @@ export default Ember.Controller.extend({
         data: { contact: {
           first_name: this.get('first_name'),
           last_name: last_name,
-          address: this.get('address'),
+          addressLine1: this.get('addressLine1'),
+          addressLine2: this.get('addressLine2'),
+          addressLine3: this.get('addressLine3'),
           email: this.get('email'),
           phone_number: this.get('phoneNumber'),
           fax_number: this.get('faxNumber'),

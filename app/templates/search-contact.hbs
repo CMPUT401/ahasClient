@@ -36,7 +36,7 @@
      
         <div class="col-sm-3  col-md-3 contactNameList" >
             <h3 id="technicianHeading">Technicians</h3>
-                      {{#each  model.contactsFilteredTechnician as |technician|}}
+                      {{#each  model.contactsFilteredTechnician as |contact|}}
                             
                                 <div{{action "getContact" contact.id on="click"}} class=' list-group-item  technicianContact clickable'>{{contact.first_name}} {{contact.last_name}}</div>
 

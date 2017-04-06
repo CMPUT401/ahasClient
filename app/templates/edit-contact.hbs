@@ -31,49 +31,52 @@
         {{/if}}
   </select>
   {{#if model.laboratory}}
-  <br>
-  <br> 
+
   <label for="first_name" class="inputContactLabel">Name:</label>
   
-  <input id='first_name' value={{model.first_name}} >
-  <br>
-  <br> 
+  <input id='first_name' class="inputContactBox" value={{model.first_name}} >
+ 
   {{else}}  
-   <br>
-  <br>   
+   
   <label for="first_name" class="inputContactLabel">First Name:</label>
   
-  <input id='first_name' value={{model.first_name}} >
-  <br>
-  <br> 
+  <input id='first_name' class="inputContactBox" value={{model.first_name}} >
+  
   <label for="last_name" class="inputContactLabel">Last Name:</label>
  
-  <input id='last_name' value={{model.last_name}}>
-  <br>
-  <br> 
+  <input id='last_name' class="inputContactBox" value={{model.last_name}}>
+ 
   {{/if}}
   <label for="phoneNumber" class="inputContactLabel">Phone Number: </label>
 
-  <input id='phoneNumber' value={{model.phone_number}}>
-  <br>
-  <br>
+  <input id='phoneNumber' class="inputContactBox" value={{model.phone_number}}>
+ 
   <label for="faxNumber" class="inputContactLabel">Fax Number: </label>
   
-  <input type="faxNumber" id='faxNumber' value={{model.fax_number}}>
-  <br>
-  <br>
+  <input type="faxNumber" class="inputContactBox" id='faxNumber' value={{model.fax_number}}>
+  
   <label for="email" class="inputContactLabel">Email: </label>
 
-  <input type="email" id='email' value={{model.email}}>
+  <input type="email" class="inputContactBox" id='emailContact' value={{model.email}}>
   <br>
   <br>
-  <label for="address" class="inputContactLabel">Address: </label>
+  <label for="addressLine1" class="inputContactLabel">Address Line 1: </label>
   
-  <input type="address" id='address' value={{model.address}}>
+  <input type="addressLine1" class="inputContactBox" id='addressLine1' value={{model.addressLine1}}>
+  
+  <label for="addressLine2" class="inputContactLabel">Address Line 2: </label>
+  
+  <input type="addressLine2" class="inputContactBox" id='addressLine2' value={{model.addressLine2}}>
+  
+  <label for="addressLine3" class="inputContactLabel">City: </label>
+  
+  <input type="addressLine3" class="inputContactBox" id='addressLine3' value={{model.addressLine3}}>
   <br>
   <br>
-  <button type="submit" {{action 'doneEditContact' model.id}} id="done-edit-button" class="centeredButton">Done Editing</button>
-  <button type="submit" {{action 'deleteContact' model.id}} id="delete-contact-button" class="centeredButton">Delete Contact</button>
+  <br>
+  <br>
+  <button type="submit" {{action 'doneEditContact' model.id}} id="done-edit-button" class="edit-contact-button">Done Editing</button>
+  <button type="submit" {{action 'deleteContact' model.id}} id="delete-contact-button" class="edit-contact-button">Delete Contact</button>
  </form>
  </div>
  <br>

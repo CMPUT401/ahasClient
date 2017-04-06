@@ -66,15 +66,16 @@ export default Ember.Controller.extend({
     else{
         var last_name = document.getElementById('last_name').value;
     }
-     console.log(typeval, last_name);
     
     var user = this.get('ajax').put('/api/contacts/' + id, {
         type: 'application/json',
         data: { contact: {
           first_name: document.getElementById('first_name').value,
           last_name: last_name,
-          address: document.getElementById('address').value,
-          email: document.getElementById('email').value,
+          addresseLine1: document.getElementById('addressLine1').value,
+          addressLine2: document.getElementById('addressLine2').value,
+          addressLine3: document.getElementById('addressLine3').value,
+          email: document.getElementById('emailContact').value,
           phone_number: document.getElementById('phoneNumber').value,
           fax_number: document.getElementById('faxNumber').value,
           contact_type: typeval
