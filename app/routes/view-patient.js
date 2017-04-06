@@ -70,7 +70,7 @@ function concatAlerts(general,medical){
 	for(var i = 0; i < general.length; i++) {
 		var alert = general[i];
 		alert.id = alert.id;
-		alert.body = alert.body;
+		alert.body = 'By '+alert.initials + ': ' +alert.body;
 		alert.end = "Forever";
 		both.push(alert);
 	}
