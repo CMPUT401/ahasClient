@@ -12,5 +12,10 @@ export default Ember.Controller.extend({
          });
          // Set initial isAdmin status, if user is all ready logged in and refreshing
          this.set('isAdmin', this.get('session.data.authenticated.role')==='Admin');
+     }, 
+     actions:{
+         backToTop(){
+             Ember.$('html,body').scrollTop(0);
+         }
      }
 });

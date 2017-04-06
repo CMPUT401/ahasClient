@@ -24,7 +24,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 						   phone_number: JSON.stringify(data.contact.phone_number).replace(/\"/g, ""),
 						   email: JSON.stringify(data.contact.email).replace(/\"/g, ""),
 						   fax_number: JSON.stringify(data.contact.fax_number).replace(/\"/g, ""),
-						   address: JSON.stringify(data.contact.address).replace(/\"/g, ""),
+						   addressLine1: JSON.stringify(data.contact.addressLine1).replace(/\"/g, ""),
+						   addressLine2: JSON.stringify(data.contact.addressLine2).replace(/\"/g, ""),
+						   addressLine3: JSON.stringify(data.contact.addressLine3).replace(/\"/g, ""),
 						   id: JSON.stringify(data.contact.id).replace(/\"/g, ""),
 						   type: JSON.stringify(data.contact.contact_type).replace(/\"/g, ""), 
 						   admin: checkAdmin(self.get('session.data.authenticated.role'))
