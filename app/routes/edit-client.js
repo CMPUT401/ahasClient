@@ -22,7 +22,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 					addressLine3: deserialAttribute(data.client.addressLine3),
 
 					licos: deserialAttribute(data.client.licos),
-					aish: deserialAttribute(data.client).aish,
+					aish: deserialAttribute(data.client.aish),
 					socialAssistance: deserialAttribute(data.client.socialAssistance),
 					
 					created_at: deserialCreateAt(data.client),
