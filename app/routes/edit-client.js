@@ -87,6 +87,11 @@ function clearFields(page){
 	page.set('alternativeEmail', '');
 }
 
+/**
+* deserializes the patient attribute in the JSON object and converts it to an array of strings.
+* @method deserialPatients
+* @param {object} patients patient attribute from the JSON. example: data.client.patients
+*/
 function deserialPatients(patients){
 	var deserial = [];
 	for(var i = 0; i < patients.length; i++) {
@@ -101,6 +106,11 @@ function deserialPatients(patients){
 	return(deserial);
 }
 
+/**
+* deserializes an attribute in the JSON object and converts it to a string.
+* @method deserialAttribute
+* @param {object} attribute An attribute attribute from the JSON.
+*/
 function deserialAttribute(attribute){
 	if(attribute != null){
 		return JSON.stringify(attribute).replace(/\"/g, "");
@@ -109,7 +119,11 @@ function deserialAttribute(attribute){
 	}
 }
 
-
+/**
+* deserializes the created_at attribute in the JSON object and converts it to a string.
+* @method deserialCreateAt
+* @param {object} client. the client JSON object
+*/
 function deserialCreateAt(client){
 	var createdAt = client.created_at;
 	if(createdAt != null){
@@ -119,6 +133,11 @@ function deserialCreateAt(client){
 	}
 }
 
+/**
+* deserializes the updated_at attribute in the JSON object and converts it to a string.
+* @method deserialUpdatedAt
+* @param {object} client. the client JSON object
+*/
 function deserialUpdatedAt(client){
 	var updatedAt = client.updated_at;
 	if(updatedAt != null){
@@ -128,6 +147,11 @@ function deserialUpdatedAt(client){
 	}
 }
 
+/**
+* deserializes the notes attribute in the JSON object and converts it to a string.
+* @method deserialNotes
+* @param {object} client. the client JSON object
+*/
 function deserialNotes(client){
 	var notes = client.notes;
 	if(notes != null){
