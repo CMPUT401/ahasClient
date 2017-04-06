@@ -10,16 +10,6 @@ export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
 	actions: {
 		fileLoaded: function(file){
-			// if(file.type.toString() === "image/jpeg"){
-			// 	console.log("we have a jpg");
-			// } else if (file.type.toString() === "image/png"){
-			// 	console.log("we have a png");
-			// } else if (file.type.toString() === "application/pdf"){
-			// 	console.log("we have a pdf");
-			// } else{
-			// 	console.log("invalid file type");
-			// }
-			// console.log(file.type.toString());
 			this.set('loadedFile', file);
 		},
 		/**
