@@ -43,6 +43,8 @@ export default Ember.Controller.extend({
 						alternativeContactLastName: client.alternativeContactLastName,
 						alternativeContactPhoneNumber: client.alternativeContactPhoneNumber,
 						alternativeContactAddressLine1: client.alternativeContactAddressLine1,
+						alternativeContactAddressLine2: client.alternativeContactAddressLine2,
+						alternativeContactAddressLine3: client.alternativeContactAddressLine3,
 						notes: client.notes,
 						alternativeContact2ndPhone: client.alternativeContact2ndPhone,
 						alternativeContactEmail: client.alternativeContactEmail,

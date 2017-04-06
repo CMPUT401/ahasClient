@@ -11,7 +11,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/client/' + param.clientID
 			).then(function(data){
-				console.log(data.client)
+				console.log(data.client);
 				Ember.run(function() {
 				resolve({
 					firstName: deserialAttribute(data.client.firstName),
@@ -34,7 +34,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 					alternativeContactLastName: deserialAttribute(data.client.alternativeContactLastName),
 					alternativeContactPhoneNumber: deserialAttribute(data.client.alternativeContactPhoneNumber),
 					alternativeContact2ndPhone: deserialAttribute(data.client.alternativeContact2ndPhone),
-					alternativeContactAddress: deserialAltAddress(data.client.alternativeContactAddressLine1),
+					alternativeContactAddressLine1: deserialAttribute(data.client.alternativeContactAddressLine1),
+					alternativeContactAddressLine2: deserialAttribute(data.client.alternativeContactAddressLine2),
+					alternativeContactAddressLine3: deserialAttribute(data.client.alternativeContactAddressLine2),
 					alternativeContactEmail: deserialAttribute(data.client.alternativeContactEmail),
 
 					clientID: deserialAttribute(data.client.id),
@@ -124,13 +126,5 @@ function deserialNotes(client){
 	}
 }
 
-function deserialAltAddress(client){
-	var altAddress = client.alternativeContactAddress;
-	if(altAddress != null){
-		return JSON.stringify(altAddress).replace(/\\n/g, " <br> " ).replace(/\"/g, "");
-	} else{
-		return "";
-	}
-}
 
 
