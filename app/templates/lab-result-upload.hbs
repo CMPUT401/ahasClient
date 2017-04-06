@@ -1,7 +1,4 @@
-<!-- <div {{action 'clickChooseFile'}}>
-	<input  type = "file" id = "files" name = "files[]" mulitple />
-</div>
-<output id = "list"></output> -->
+<div id = "alert_placeholder_fileType"></div>
 <form {{action "sendLabResults" model.patientId on="submit"}}>
 	<div class = "panel panel-default">
 		{{#file-picker fileLoaded="fileLoaded" readAs="readAsDataURL"}}
