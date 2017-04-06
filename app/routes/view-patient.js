@@ -30,7 +30,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						   gender: JSON.stringify(data.patient.sex).replace(/\"/g, ""),
 						   firstName: JSON.stringify(data.patient.client.firstName).replace(/\"/g, ""),
 						   lastName: JSON.stringify(data.patient.client.lastName).replace(/\"/g, ""),
-						   address: JSON.stringify(data.patient.client.addressLine1).replace(/\"/g, "").replace(/\\n/g, " <br> "),
+						   address: JSON.stringify(data.patient.client.addressLine1).replace(/\"/g, "").replace(/\\n/g, " <br> ")
+						   +"<br>"+JSON.stringify(data.patient.client.addressLine2).replace(/\"/g, "").replace(/\\n/g, " <br> ")
+						   +"<br>"+JSON.stringify(data.patient.client.addressLine3).replace(/\"/g, "").replace(/\\n/g, " <br> "),
 						   phoneNumber: JSON.stringify(data.patient.client.phoneNumber).replace(/\"/g, ""),
 						   email: JSON.stringify(data.patient.client.email).replace(/\"/g, ""),
 						   licos: JSON.stringify(data.patient.client.licos).replace(/\"/g, ""),
