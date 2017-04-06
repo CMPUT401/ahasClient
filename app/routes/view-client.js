@@ -11,11 +11,13 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
 			).then(function(data){
 				Ember.run(function() {
 				resolve({
-					firstName: deserialFirstName(data.client),
+					firstName: deserialAttribute(data.client.firstName),
 					lastName: deserialLastName(data.client),
 					phoneNumber: deserialPhoneNumber(data.client),
 					email: deserialEmail(data.client),
-					address: deserialAddress(data.client),
+					addressLine1: deserialAddress(data.client.addressLine1),
+					addressLine2: deserialAddress(data.client.addressLine2),
+					addressLine3: deserialAddress(data.client.addressLine3),
 
 					licos: deserialLICOS(data.client),
 					aish: deserialAISH(data.client),
@@ -63,6 +65,14 @@ function deserialPatients(patients){
 	return(deserial);
 }
 
+function deserialAttribute(attribute){
+	if(attribute != null){
+		return JSON.stringify(attribute).replace(/\"/g, "");
+	}else{
+		return "";
+	}
+}
+
 function deserialFirstName(client){
 	var fName = client.firstName;
 	if(fName != null){
@@ -99,10 +109,9 @@ function deserialEmail(client){
 	}
 }
 
-function deserialAddress(client){
-	var address = client.address;
+function deserialAddress(address){
 	if(address != null){
-		return JSON.stringify(address).replace(/\\n/g, " <br> " ).replace(/\"/g, "");
+		return JSON.stringify(address).replace(/\"/g, "");
 	}else{
 		return "";
 	}
