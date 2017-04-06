@@ -6,7 +6,13 @@
 			<div class = "viewInfo"><h4>{{model.firstName}} {{model.lastName}}</h4> </div>
 			<br>
 			<div class = "viewLabel"><h4>Address:</h4></div>
-			<div class = "viewInfo"> <h4>{{{model.address}}} </h4></div>
+			<div class = "viewInfo"> 
+				<h4>
+					{{model.addressLine1}}<br>
+					{{model.addressLine2}}<br>
+					{{model.addressLine3}}
+				</h4>
+			</div>
 			<br>
 			<div class = "viewLabel"><h4>Phone Number: </h4></div>
 			<div class = "viewInfo"> <h4>{{model.phoneNumber}} </h4></div>
