@@ -2,8 +2,8 @@ import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 /**
-* Route for view client
-* @class ViewClientRoute
+* Route for lab result upload
+* @class LabResultUploadRoute
 */
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	init(){
