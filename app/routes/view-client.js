@@ -1,6 +1,10 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
+/**
+* Route for client-info
+* @class ClientInfoRoute
+*/
 export default Ember.Route.extend(AuthenticatedRouteMixin , {
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
@@ -11,28 +15,32 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
 			).then(function(data){
 				Ember.run(function() {
 				resolve({
-					firstName: deserialFirstName(data.client),
-					lastName: deserialLastName(data.client),
-					phoneNumber: deserialPhoneNumber(data.client),
-					email: deserialEmail(data.client),
-					address: deserialAddress(data.client),
+					firstName: deserialAttribute(data.client.firstName),
+					lastName: deserialAttribute(data.client.lastName),
+					phoneNumber: deserialAttribute(data.client.phoneNumber),
+					email: deserialAttribute(data.client.email),
+					addressLine1: deserialAttribute(data.client.addressLine1),
+					addressLine2: deserialAttribute(data.client.addressLine2),
+					addressLine3: deserialAttribute(data.client.addressLine3),
 
-					licos: deserialLICOS(data.client),
-					aish: deserialAISH(data.client),
-					socialAssistance: deserialSA(data.client),
+					licos: deserialAttribute(data.client.licos),
+					aish: deserialAttribute(data.client.aish),
+					socialAssistance: deserialAttribute(data.client.socialAssistance),
 					
 					created_at: deserialCreateAt(data.client),
 					updated_at: deserialUpdatedAt(data.client),
 					notes: deserialNotes(data.client),
 
-					alternativeContactFirstName: deserialAltFirstName(data.client),
-					alternativeContactLastName: deserialAltLastName(data.client),
-					alternativeContactPhoneNumber: deserialAltPhoneNumber(data.client),
-					alternativeContact2ndPhone: deserialAlt2ndPhone(data.client),
-					alternativeContactAddress: deserialAltAddress(data.client),
-					alternativeContactEmail: deserialAltEmail(data.client),
+					alternativeContactFirstName: deserialAttribute(data.client.alternativeContactFirstName),
+					alternativeContactLastName: deserialAttribute(data.client.alternativeContactLastName),
+					alternativeContactPhoneNumber: deserialAttribute(data.client.alternativeContactPhoneNumber),
+					alternativeContact2ndPhone: deserialAttribute(data.client.alternativeContact2ndPhone),
+					alternativeContactAddressLine1: deserialAttribute(data.client.alternativeContactAddressLine1),
+					alternativeContactAddressLine2: deserialAttribute(data.client.alternativeContactAddressLine2),
+					alternativeContactAddressLine3: deserialAttribute(data.client.alternativeContactAddressLine3),
+					alternativeContactEmail: deserialAttribute(data.client.alternativeContactEmail),
 
-					clientID: deserialClientId(data.client),
+					clientID: deserialAttribute(data.client.id),
 					patients: deserialPatients(data.client.patients)
 				});
 			  });
@@ -49,6 +57,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
 		return ajaxGet;
 	},
 });
+
+/**
+* deserializes the patient attribute in the JSON object and converts it to an array of strings.
+* @method deserialPatients
+* @param {object} patients patient attribute from the JSON. example: data.client.patients
+*/
 function deserialPatients(patients){
 	var deserial = [];
 	for(var i = 0; i < patients.length; i++) {
@@ -63,78 +77,24 @@ function deserialPatients(patients){
 	return(deserial);
 }
 
-function deserialFirstName(client){
-	var fName = client.firstName;
-	if(fName != null){
-		return JSON.stringify(fName).replace(/\"/g, "");
+/**
+* deserializes an attribute in the JSON object and converts it to a string.
+* @method deserialAttribute
+* @param {object} attribute An attribute attribute from the JSON.
+*/
+function deserialAttribute(attribute){
+	if(attribute != null){
+		return JSON.stringify(attribute).replace(/\"/g, "");
 	}else{
 		return "";
 	}
 }
 
-function deserialLastName(client){
-	var lName = client.lastName;
-	if(lName != null){
-		return JSON.stringify(lName).replace(/\"/g, "");
-	}else{
-		return "";
-	}
-}
-
-function deserialPhoneNumber(client){
-	var phoneNumber = client.phoneNumber;
-	if(phoneNumber != null){
-		return JSON.stringify(phoneNumber).replace(/\"/g, "");
-	}else{
-		return "";
-	}
-}
-
-function deserialEmail(client){
-	var email = client.email;
-	if(email != null){
-		return JSON.stringify(email).replace(/\"/g, "");
-	}else{
-		return "";
-	}
-}
-
-function deserialAddress(client){
-	var address = client.address;
-	if(address != null){
-		return JSON.stringify(address).replace(/\\n/g, " <br> " ).replace(/\"/g, "");
-	}else{
-		return "";
-	}
-}
-
-function deserialLICOS(client){
-	var lico = client.licos;
-	if(lico != null){
-		return JSON.stringify(lico).replace(/\"/g, "");
-	} else{
-		return "";
-	}
-}
-
-function deserialAISH(client){
-	var aish = client.aish;
-	if(aish != null){
-		return JSON.stringify(aish).replace(/\"/g, "");
-	} else{
-		return "";
-	}
-}
-
-function deserialSA(client){
-	var socialAssistance = client.socialAssistance;
-	if(socialAssistance != null){
-		return JSON.stringify(socialAssistance).replace(/\"/g, "");
-	} else{
-		return "";
-	}
-}
-
+/**
+* deserializes the created_at attribute in the JSON object and converts it to a string.
+* @method deserialCreateAt
+* @param {object} client. the client JSON object
+*/
 function deserialCreateAt(client){
 	var createdAt = client.created_at;
 	if(createdAt != null){
@@ -144,6 +104,11 @@ function deserialCreateAt(client){
 	}
 }
 
+/**
+* deserializes the updated_at attribute in the JSON object and converts it to a string.
+* @method deserialUpdatedAt
+* @param {object} client. the client JSON object
+*/
 function deserialUpdatedAt(client){
 	var updatedAt = client.updated_at;
 	if(updatedAt != null){
@@ -153,6 +118,11 @@ function deserialUpdatedAt(client){
 	}
 }
 
+/**
+* deserializes the notes attribute in the JSON object and converts it to a string.
+* @method deserialNotes
+* @param {object} client. the client JSON object
+*/
 function deserialNotes(client){
 	var notes = client.notes;
 	if(notes != null){
@@ -162,59 +132,17 @@ function deserialNotes(client){
 	}
 }
 
-function deserialAltFirstName(client){
-	var altFName = client.alternativeContactFirstName;
-	if(altFName != null){
-		return JSON.stringify(altFName).replace(/\"/g, "");
+
+
+
+function deserialAltAddress(addr){
+	if(addr != null){
+		return JSON.stringify(addr).replace(/\\n/g, " <br> " ).replace(/\"/g, "");
 	} else{
 		return "";
 	}
 }
 
-function deserialAltLastName(client){
-	var altLName = client.alternativeContactLastName;
-	if(altLName != null){
-		return JSON.stringify(altLName).replace(/\"/g, "");
-	} else{
-		return "";
-	}
-}
-
-function deserialAltPhoneNumber(client){
-	var altPhoneNumber = client.alternativeContactPhoneNumber;
-	if(altPhoneNumber != null){
-		return JSON.stringify(altPhoneNumber).replace(/\"/g, "");
-	} else{
-		return "";
-	}
-}
-
-function deserialAlt2ndPhone(client){
-	var altPhone = client.alternativeContact2ndPhone;
-	if(altPhone != null){
-		return JSON.stringify(altPhone).replace(/\"/g, "");
-	} else{
-		return "";
-	}
-}
-
-function deserialAltAddress(client){
-	var altAddress = client.alternativeContactAddress;
-	if(altAddress != null){
-		return JSON.stringify(altAddress).replace(/\\n/g, " <br> " ).replace(/\"/g, "");
-	} else{
-		return "";
-	}
-}
-
-function deserialAltEmail(client){
-	var altEmail = client.alternativeContactEmail;
-	if(altEmail != null){
-		return JSON.stringify(altEmail).replace(/\"/g, "");
-	} else{
-		return "";
-	}
-}
 
 function deserialClientId(client){
 	var clientId = client.id;
