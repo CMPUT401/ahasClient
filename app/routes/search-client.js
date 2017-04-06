@@ -1,6 +1,11 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
+
+/**
+* Route for search client. Makes a get request for clients when loaded.  
+* @class SearchClientRoute
+*/
 export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
@@ -31,6 +36,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	}
 });
 
+/**
+* deserializes the attributes in the JSON object and converts it to an array of strings.
+* @method deserialAttributes
+* @param {object} client Client object from the JSON, data.clients
+*/
 function deserialAttributes(clients){
 	var deserial = [];
 	for(var i = 0; i < clients.length; i++) {

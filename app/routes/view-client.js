@@ -2,7 +2,7 @@ import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 /**
-* Route for view client
+* Route for view client. Makes a get request for a client when loaded. 
 * @class ViewClientRoute
 */
 export default Ember.Route.extend(AuthenticatedRouteMixin , {
