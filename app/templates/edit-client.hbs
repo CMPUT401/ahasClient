@@ -11,14 +11,12 @@
 
 		<label class = "inputLabel" for = "clientFirstName">Client's First Name</label>
 		<div class = "inputBox">
-			{{input id='clientFirstName' value=model.firstName required=false}}
-			
+			{{input id='clientFirstName' value=model.firstName required=false}}<p style="color:red; display:inline;">    *</p>		
 		</div>
 		<br>
 		<label class = "inputLabel" for = "clientLastName">Client's Last Name</label>
 		<div class = "inputBox">
-			{{input id='clientLastName' value=model.lastName required=false}}
-			
+			{{input id='clientLastName' value=model.lastName required=false}}<p style="color:red; display:inline;">    *</p>	
 		</div>
 		<br>
 		<label class = "inputLabel" for = "clientAddressLine1">Client's Address Line 1</label>
