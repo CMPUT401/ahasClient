@@ -11,4 +11,18 @@
 .petNameContainer {
   display: block;
   width: 40%;
+  padding: 8px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  background: #FFFFFF;
+  &:hover{
+        background: #F5F5F5;
+    }
+    &:active{
+      background:#F0F0F0;
+  }
+}
+
+.clientHeader{text-align: center
+
 }
