@@ -32,7 +32,7 @@ export default Ember.Controller.extend({
 						email: checkUndefined(this.get('clientEmail')),
 						licos: checkUndefined(this.get('clientLICO')),
 						aish: checkUndefined(this.get('clientAISH')),
-						socialAssistance: checkUndefined(this.get('clientAS')),
+						socialAssistance: checkUndefined(this.get('clientSA')),
 						pets: "",
 						created_at: new Date(),
 						updated_at: "",
@@ -40,6 +40,8 @@ export default Ember.Controller.extend({
 						alternativeContactLastName: checkUndefined(this.get('alternativeLastName')),
 						alternativeContactPhoneNumber: checkUndefined(this.get('alternativePrimaryPhone')),
 						alternativeContactAddressLine1: checkUndefined(this.get('alternativeAddressLine1')),
+						alternativeContactAddressLine2: checkUndefined(this.get('alternativeAddressLine2')),
+						alternativeContactAddressLine3: checkUndefined(this.get('alternativeAddressLine3')),
 						notes: checkUndefined(this.get('clientNotes')),
 						alternativeContact2ndPhone: checkUndefined(this.get('alternativeSecondaryPhone')),
 						alternativeContactEmail: checkUndefined(this.get('alternativeEmail'))
