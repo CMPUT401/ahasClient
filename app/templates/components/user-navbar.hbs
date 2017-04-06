@@ -1,19 +1,25 @@
-<nav class = "navbar navbar-inverse">
-		<li class = "nav navbar-nav">
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+	<div class="navbar-header">	
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-hamburger">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	</div>
+	<div class="collapse navbar-collapse" id='main-hamburger'>
+		<ul class="nav navbar-nav ">
 			{{#nav-link-to 'search-client'}}
-				<h5 class = "navItem">Clients</h5>
+			<h5 class="navItem">Clients</h5>
+			{{/nav-link-to}} {{#nav-link-to 'search-patient'}}
+			<h5 class="navItem">Patients</h5>
+			{{/nav-link-to}} {{#nav-link-to 'search-contact'}}
+			<h5 class="navItem">Contacts</h5>
+			{{/nav-link-to}} {{#nav-link-to 'view-calendar'}}
+			<h5 class="navItem">Calendar</h5>
+			{{/nav-link-to}} {{#nav-link-to 'logout'}}
+			<h5 class="navItem" href="#" >Logout</h5>
 			{{/nav-link-to}}
-			{{#nav-link-to 'search-patient'}}
-				<h5 class = "navItem">Patients</h5>
-			{{/nav-link-to}}
-			{{#nav-link-to 'search-contact'}}
-				<h5 class = "navItem">Contacts</h5>
-			{{/nav-link-to}}
-			{{#nav-link-to 'view-calendar'}}
-				<h5 class = "navItem">Calendar</h5>
-			{{/nav-link-to}}
-			{{#nav-link-to 'logout'}}
-				<h5 class = "navItem" href="#" >Logout</h5>
-			{{/nav-link-to}}	
-		</li>
+		</ul>
+	</div>
 </nav>

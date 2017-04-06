@@ -17,9 +17,9 @@ export default Ember.Controller.extend({
       }
     },
     sendInvite: function () {
-      self = this;
+      let self = this;
       document.getElementById('inviteButton').disable = false;
-      var user = this.get('ajax').post('/api/admin/invite', {
+      this.get('ajax').post('/api/admin/invite', {
         type: 'application/json',
         data: {
           user: {
