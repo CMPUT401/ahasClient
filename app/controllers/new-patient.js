@@ -36,7 +36,7 @@ export default Ember.Controller.extend({
 					colour: 	this.get('patientColor'),
 					tattoo: 	this.get('patientTatoo'),
 					microchip: 	this.get('patientMicrochip'),
-					gender: 	val
+					sex: 	val
 				}
 			}, 
 		
