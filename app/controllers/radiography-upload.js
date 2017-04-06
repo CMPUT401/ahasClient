@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
 		},
 		/**
 		* makes an ajax POST request to save the radiography
-		* @param {int} the patient's id
+		* @param {int} patientId the patient's id
 		* @method sendRadiographyResults
 		*/
 		sendRadiographyResults: function(patientId){

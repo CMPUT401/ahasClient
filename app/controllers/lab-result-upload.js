@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
 		},
 		/**
 		* makes an ajax POST request to save the lab result
-		* @param {int} the patient's id
+		* @param {int} patientId the patient's id
 		* @method sendLabResults
 		*/
 		sendLabResults: function(patientId){
