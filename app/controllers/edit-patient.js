@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
             var val = value.options[value.selectedIndex].text;
 			let ajaxPost = this.get('ajax').request('/api/patients',
 			{
-				method: 'PUT',
+				method: 'PATCH',
 				type: 'application/json',
 				data: { patient:
 					{
@@ -17,7 +17,6 @@ export default Ember.Controller.extend({
 					client: this.get('c_ID'),
 					species: 	this.get('patientSpecies'),
 					first_name: this.get('patientFirstName'),
-					last_name:  this.get('patientLastName'),
 					age: 		formatDate(document.getElementById('patientAge').value),
 					colour: 	this.get('patientColor'),
 					tattoo: 	this.get('patientTatoo'),
