@@ -9,6 +9,7 @@ export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
 	actions: {
 		fileLoaded: function(file){
+			//console.log(file.size);
 			this.set('loadedFile', file);
 		},
 		/**
@@ -22,7 +23,7 @@ export default Ember.Controller.extend({
 			var partialDate2 = partialDate.toString().split(' ');
 			var imageDate = partialDate2[2] + "/" + partialDate2[1] + "/" + partialDate2[3];
 			var self = this;
-			if(checkFileType(self)){
+			if(checkFile(self)){
 				document.getElementById("saveRadiography").disabled = true;
 				let ajaxPost = this.get('ajax').post('api/patients/' + patientId + "/images", {
 					type: 'application/json',
@@ -71,6 +72,17 @@ function showAlert(message, isGood, divID) {
         }
 }
 
+/**
+* checks the file type and size. returns true if they are valid
+* @method checkFile
+* @param {object} self the controller
+*/
+function checkFile(self){
+    var validFileType = checkFileType(self);
+    var validFileSize = checkFileSize(self);
+    return validFileType;
+}
+
 
 /**
 * Checks that the file type is valid. shows alert and return false if it not, true otherwise
@@ -83,6 +95,22 @@ function checkFileType(self){
 		return true;
 	}else{
 		showAlert("Invalid file type. File must be jpg, png, or pdf", false, "fileType");
+		return false;
+	}
+}
+
+/**
+* Checks that the file size is valid (less than 5MB). shows alert and return false if it not, true otherwise
+* @method checkFileType
+* @param {object} self The controller
+*/
+function checkFileSize(self){
+	var maxSize = 5 * 1024 * 1024; //5MB
+	var fSize = self.loadedFile.size;
+	if(fSize <= maxSize){
+		return true;
+	}else{
+		showAlert("Invalid file size. File must be less than 5MB", false, "fileSize");
 		return false;
 	}
 }
