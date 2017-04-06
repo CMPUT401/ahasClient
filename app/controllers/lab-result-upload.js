@@ -10,16 +10,16 @@ export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
 	actions: {
 		fileLoaded: function(file){
-			if(file.type.toString() === "image/jpg"){
-				console.log("we have a jpg");
-			} else if (file.type.toString() === "image/png"){
-				console.log("we have a png");
-			} else if (file.type.toString() === "application/pdf"){
-				console.log("we have a pdf");
-			} else{
-				console.log("invalid file type");
-			}
-			console.log(file.type.toString());
+			// if(file.type.toString() === "image/jpeg"){
+			// 	console.log("we have a jpg");
+			// } else if (file.type.toString() === "image/png"){
+			// 	console.log("we have a png");
+			// } else if (file.type.toString() === "application/pdf"){
+			// 	console.log("we have a pdf");
+			// } else{
+			// 	console.log("invalid file type");
+			// }
+			// console.log(file.type.toString());
 			this.set('loadedFile', file);
 		},
 		/**
@@ -28,36 +28,39 @@ export default Ember.Controller.extend({
 		* @method sendLabResults
 		*/
 		sendLabResults: function(patientId){
-			document.getElementById("saveLabResults").disabled = true;
+			
 			var partialDate = this.get('datePicker');
 			var partialDate2 = partialDate.toString().split(' ');
 			var imageDate = partialDate2[2] + "/" + partialDate2[1] + "/" + partialDate2[3];
 			var self = this;
 
+			if(checkFileType(self)){
+				document.getElementById("saveLabResults").disabled = true;
+				let ajaxPost = this.get('ajax').post('api/patients/' + patientId + "/images", {
+					type: 'application/json',
+					data: {image: {
+						patient_id: patientId,
+						name: this.loadedFile.name,
+						data: this.loadedFile.data,
+						picture_type: "lab result",
+						date: Date.parse(imageDate)/1000,
+						data_type: this.loadedFile.type
+					}},
+				}).then(function(response){
+					self.transitionToRoute('/view-patient/' + patientId);
 
-			let ajaxPost = this.get('ajax').post('api/patients/' + patientId + "/images", {
-				type: 'application/json',
-				data: {image: {
-					patient_id: patientId,
-					name: this.loadedFile.name,
-					data: this.loadedFile.data,
-					picture_type: "lab result",
-					date: Date.parse(imageDate)/1000,
-					data_type: this.loadedFile.type
-				}},
-			}).then(function(response){
-				self.transitionToRoute('/view-patient/' + patientId);
-
-			}, function(response){
-				document.getElementById("saveLabResults").disabled = false;
-				if(response === false){
-					if(self.get('session.isAuthenticated')){
-						self.get('session').invalidate();
+				}, function(response){
+					document.getElementById("saveLabResults").disabled = false;
+					if(response === false){
+						if(self.get('session.isAuthenticated')){
+							self.get('session').invalidate();
+						}
+						self.transitionToRoute('/login');
 					}
-					self.transitionToRoute('/login');
-				}
-			});
-			return ajaxPost;
+				});
+				return ajaxPost;
+			}
+			
 		}
 	}
 });
@@ -85,14 +88,13 @@ function showAlert(message, isGood, divID) {
 * Checks that the file type is valid. shows alert and return false if it not, true otherwise
 * @method checkFileType
 * @param {object} self The controller
-* @param {string} divID a partial name to the div id in which the allert is displayed. the div id is alert_placeholder_'divID'
 */
-function checkFileType(self, divID){
+function checkFileType(self){
 	var fType = self.loadedFile.type.toString();
-	if(fType != "image/jpg" || fType != "application/pdf"){
-		showAlert("First name cannot be blank", false, divID);
-		return false;
-	}else{
+	if(fType === "image/jpeg" || fType === "application/pdf" || fType === "image/png" ){
 		return true;
+	}else{
+		showAlert("Invalid file type. File must be jpg, png, or pdf", false, "fileType");
+		return false;
 	}
 }
