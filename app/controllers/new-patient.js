@@ -10,6 +10,11 @@ export default Ember.Controller.extend({
 	session: Ember.inject.service(),
 	actions: 
 	{
+
+		editPatient: function(patientID){
+			this.transitionToRoute("/edit-patient/" + patientID);
+		},
+
 		/**
 	* Controller for the submitnewpatient
 	* THis method does a post on the back end to create a new patient
