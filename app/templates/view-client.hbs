@@ -50,7 +50,13 @@
 			<div class = "viewInfo"><h4>{{model.alternativeContactFirstName}} {{model.alternativeContactLastName}}</h4></div>
 			<br>
 			<div class = "viewLabel"><h4>Address: </h4></div>
-			<div class = "viewInfo"><h4>{{{model.alternativeContactAddress}}}</h4></div>
+			<div class = "viewInfo">
+				<h4>
+					{{model.alternativeContactAddressLine1}}<br>
+					{{model.alternativeContactAddressLine2}}<br>
+					{{model.alternativeContactAddressLine3}}
+				</h4>
+			</div>
 			<br>
 			<div class = "viewLabel"><h4>Phone Number: </h4></div>
 			<div class = "viewInfo"><h4>{{model.alternativeContactPhoneNumber}}</h4></div>

@@ -35,7 +35,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin , {
 					alternativeContactLastName: deserialAttribute(data.client.alternativeContactLastName),
 					alternativeContactPhoneNumber: deserialAttribute(data.client.alternativeContactPhoneNumber),
 					alternativeContact2ndPhone: deserialAttribute(data.client.alternativeContact2ndPhone),
-					alternativeContactAddress: deserialAltAddress(data.client.alternativeContactAddressLine1),
+					alternativeContactAddressLine1: deserialAttribute(data.client.alternativeContactAddressLine1),
+					alternativeContactAddressLine2: deserialAttribute(data.client.alternativeContactAddressLine2),
+					alternativeContactAddressLine3: deserialAttribute(data.client.alternativeContactAddressLine3),
 					alternativeContactEmail: deserialAttribute(data.client.alternativeContactEmail),
 
 					clientID: deserialAttribute(data.client.id),
