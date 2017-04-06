@@ -9,7 +9,13 @@ export default Ember.Controller.extend({
 	 actions: {
         uploadPicture(patientID){
             this.transitionToRoute("/upload-patient/"+patientID);
-        }
+        },
+
+        newAppointment: function(clientID){
+			this.transitionToRoute("/new-calendar/").then(function(newRoute){
+				newRoute.controller.set("c_ID",clientID);
+			});
+		}
 
 }
 

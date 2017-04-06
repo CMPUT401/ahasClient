@@ -10,7 +10,8 @@ export default Ember.Controller.extend({
 		* handles action called when user clicks New Patient button. 
 		* redirects to the client's new patient page
 		* @method newPatient
-		* @param {int} clientID The ID of the client 
+		* @param {int} clientID The ID of the client
+		* @param {str} lastName the last name of the client 
 		*/
 		newPatient: function(model){
 			console.log(model.clientID,model.lastName);
