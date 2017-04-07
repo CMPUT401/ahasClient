@@ -56,7 +56,7 @@ export default Ember.Controller.extend({
 		* @method  deleteAppointment
 		* @param {int} id The id of the appointment to delete
 		*/
-    deleteAppointment: function(id) {
+    deleteAppointment: function(aid) {
 
     var self = this;
 
