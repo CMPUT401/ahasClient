@@ -49,7 +49,40 @@ export default Ember.Controller.extend({
 				}
 			});
 		return ajaxPost;
-	}
+	},
+	         /** 
+		* handles action called when user clicks delete-contact-button
+        * sends a put request to the server to delete the contact that we are currently on
+		* @method  deleteContact
+		* @param {int} id The id of the contact to delete
+		*/
+    deleteContact: function(id) {
+
+    var self = this;
+
+    var user = this.get('ajax').delete('/api/schedules/' + aid, {
+    
+     });
+     user.then(function(response){
+    
+            if(response.success){
+            
+                showAlert("Appointment deleted", true);
+                self.transitionToRoute('/view-calendar');
+            }
+
+        //this is error from server condition
+        }, function(response) {
+            showAlert("Could not delete", false);
+					if (response === false){
+						if (self.get('session.isAuthenticated')){
+							self.get('session').invalidate();
+							}
+						self.transitionToRoute('/login');
+					}
+				});
+
+     }
 }
 	
 });
