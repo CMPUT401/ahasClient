@@ -10,17 +10,17 @@ moduleForAcceptance('Acceptance | user',{
 });
 
 test('visiting /user', function(assert) {
-  visit('admin/user/:id');
+  visit('admin/users/:id');
 
   andThen(function() {
-    assert.equal(currentURL(), 'admin/user/:id');
+    assert.equal(currentURL(), 'admin/users/:id');
   });
 });
 
 
 
 test('reset /user password', function(assert) {
-  visit('admin/user/:id');
+  visit('admin/users/:id');
   click('#reset');
   andThen(function() {
     assert.equal(currentURL(), 'admin/user/:id');
@@ -29,7 +29,7 @@ test('reset /user password', function(assert) {
 });
 
 test('delete /user', function(assert) {
-  visit('admin/user/:id');
+  visit('admin/users/:id');
   click('#delete');
   andThen(function() {
     assert.equal(currentURL(), 'admin');

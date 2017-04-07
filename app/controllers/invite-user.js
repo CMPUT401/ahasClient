@@ -1,5 +1,9 @@
 import Ember from 'ember';
 
+/**
+ * Controller for reset-password
+ * @class InviteUserController
+ */
 export default Ember.Controller.extend({
   ajax: Ember.inject.service(),
   name: "",
@@ -10,16 +14,27 @@ export default Ember.Controller.extend({
     changeUserType: function () {
       this.set('userType', document.getElementById('userType').value);
     },
+
+    /**
+     * Function that checks to make sure the inpute in #email is a, roughly, valid email.
+     * @method validEmail
+     */
     validEmail: function () {
       var emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
       if (emailRegex.test(this.email)) {
         document.getElementById('inviteButton').disabled = false;
       }
     },
+
+    /**
+     * Function that parses the entered email and sends the name and email off to the server. THe server then should send an invite email
+     * to the above email
+     * @method sendInvite
+     */
     sendInvite: function () {
       let self = this;
       var emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-      if(!emailRegex.test(this.email)){
+      if (!emailRegex.test(this.email)) {
         showAlert('Please enter a valid email', false);
         return;
       }
@@ -52,6 +67,13 @@ export default Ember.Controller.extend({
   }
 });
 
+/** 
+ * used to provide feedback to user on success condition as well as fail condition
+ * only displayed very briefly on success condition however before transition
+ * @method  showAlert
+ * @param {string} message The message to display in the alert
+ * @param {boolean} bool Determines if this is a warning alert or confirmation alert
+ */
 function showAlert(message, bool) {
   if (bool) {
     Ember.$('#alert_placeholder').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">' + message + '</span></div>');

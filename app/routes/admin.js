@@ -1,6 +1,10 @@
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 import Ember from 'ember';
 
+/**
+* Route for view contact
+* @class AdminRoute
+*/
 export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
@@ -33,6 +37,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	}
 });
 
+/**
+* deserializes the attributes in the JSON object and converts it to an array of strings.
+* @method deserialAttributes
+* @param {object} user User object from the JSON, data.users
+*/
 function deserialAttributes(users){
 	var deserial = [];
 	for(var i = 0; i < users.length; i++) {
