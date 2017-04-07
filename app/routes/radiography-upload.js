@@ -1,10 +1,12 @@
 import Ember from 'ember';
 
+/**
+* Route for radiography upload
+* @class RadiographyUploadRoute
+*/
 export default Ember.Route.extend({
 	init(){
 		checkFileApiSupport();
-		//document.getElementById('files').addEventListener('change', handleFileSelect, false);
-		//console.log(document.getElementById('files'));
 	},
 	model(param){
 		return {
@@ -13,6 +15,10 @@ export default Ember.Route.extend({
 	}
 });
 
+/**
+* checks that File API is supported on the browser. Called on page initialization.  
+* @method checkFileApiSupport
+*/
 function checkFileApiSupport(){
 	if (window.File && window.FileReader && window.FileList && window.Blob){
 		return true;
