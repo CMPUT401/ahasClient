@@ -10,6 +10,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/schedules/' + params.appointmentid
 			).then(function(data){
+				data.schedule = FixNulls(data.schedule);
 				//console.log(data, data.success, data.contacts);
 				Ember.run(function() {
        			 resolve({ 
@@ -47,4 +48,19 @@ function parseDate(date){
         var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
         var whole = days[day] +" "+ months[month] +" "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
         return(whole);
+}
+
+function fixNulls(data){
+	var fixed = {};
+
+	for(var key in data){
+		if(data[key] === null || data[key] === undefined || data[key] === 'null'){
+			fixed[key] = '';
+		}
+		else{
+			fixed[key] = data[key];
+		}
+	}
+
+	return fixed;
 }
