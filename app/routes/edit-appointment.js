@@ -15,7 +15,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 				//console.log(data, data.success, data.contacts);
 				Ember.run(function() {
        			 resolve({ 
-						   start: parseDate(new Date(data.schedule.appointmentStartDate * 1000)),
+						   startdate: parseDate(new Date(data.schedule.appointmentStartDate * 1000)),
+						   starttime: parseTime(new Date(data.schedule.appointmentStartDate * 1000)),
 						   reason: JSON.stringify(data.schedule.reason).replace(/\"/g, ""),
 						   notes: JSON.stringify(data.schedule.notes).replace(/\"/g, ""),
 						   location: JSON.stringify(data.schedule.location).replace(/\"/g, ""),
@@ -47,9 +48,22 @@ function parseDate(date){
         var year = date.getFullYear();
         var hours = date.getHours();
         var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
-        var whole = days[day] +" "+ months[month] +" "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
+        var whole = days[day] +" "+ months[month] +" "+ year.toString();
         return(whole);
 }
+
+function parseTime(date){
+        var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        var months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
+        var day = date.getDay() ;
+        var month = date.getMonth()  ;
+        var year = date.getFullYear();
+        var hours = date.getHours();
+        var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
+        var whole = hours.toString() + ":" + mins.toString();
+        return(whole);
+}
+
 
 function FixNulls(data){
 	var fixed = {};
