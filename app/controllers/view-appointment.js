@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
         * @method submitNewCalendar
         */
 		editAppointment:function(a_id){
-			this.transitionToRoute("edit-appointment/" +a_id);
+			this.transitionToRoute("/edit-appointment/" +a_id);
 		}
 	}
 });

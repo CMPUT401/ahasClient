@@ -8,7 +8,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 		//console.log(this.get("a_ID"));
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-		this.get('ajax').request('/api/schedules/' + params.appointmentid
+		this.get('ajax').request('/api/schedules/' + params.aID
 			).then(function(data){
 				data.schedule = FixNulls(data.schedule);
 				console.log(data);
