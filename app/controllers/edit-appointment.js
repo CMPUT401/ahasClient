@@ -1,67 +1,87 @@
 import Ember from 'ember';
-import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
-
-export default Ember.Route.extend(AuthenticatedRouteMixin, {
+/**
+* Controller for the new calendar page
+* This shows all of the appointments stuff for the user to enter
+* @class new-calendar Controller
+*/
+export default Ember.Controller.extend({
+	ajax: Ember.inject.service(),
 	session: Ember.inject.service(),
-    ajax: Ember.inject.service(),
-	model(params) {
-		//console.log(this.get("a_ID"));
-		var self = this;
-		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-		this.get('ajax').request('/api/schedules/' + params.appointmentid
-			).then(function(data){
-				data.schedule = FixNulls(data.schedule);
-				console.log(data);
-				//console.log(data, data.success, data.contacts);
-				Ember.run(function() {
-       			 resolve({ 
-						   start: parseDate(new Date(data.schedule.appointmentStartDate * 1000)),
-						   reason: JSON.stringify(data.schedule.reason).replace(/\"/g, ""),
-						   notes: JSON.stringify(data.schedule.notes).replace(/\"/g, ""),
-						   location: JSON.stringify(data.schedule.location).replace(/\"/g, ""),
-						   end: JSON.stringify(data.schedule.duration).replace(/\"/g,"")
-
-				
-				});
-    		  });
+	actions: 
+	{
+		/**
+        * Does a post on the backend with the fields passed in
+        * @method submitNewCalendar
+        */
+		submitNewCalendar()
+		{
+			document.getElementById("create-appointment-button").disabled = true;
+			var self = this;
+			let ajaxPost = this.get('ajax').request('/api/schedules',
+			{
+				method: 'POST',
+				type: 'application/json',
+				data: { schedule:
+					{
+					appointmentStartDate: 	JSON.stringify(formatDate(document.getElementById("appointmentStart").value, this.get('appointmentStartTime'))),
+					patient_id: 				this.get('c_ID'),
+					reason: 				this.get('appointmentReason'),
+					notes: 					this.get('appointmentNote'),
+					location: 				this.get('appointmentLocation'),
+					duration: 	this.get('appointmentEndTime')
+				}
 			
+			}, 
+		
+			});
+			ajaxPost.then(function(data){
+				//console.log("status is " + model.clientid);
+				showAlert("Appointment created!", true);
+				self.transitionToRoute('view-calendar');
 			},
-			function(response){
-				if (response === false){
+			function(data){
+				document.getElementById("create-appointment-button").disabled = false;
+				if (data === false){
 					if (self.get('session.isAuthenticated')){
 						self.get('session').invalidate();
-					}
-				self.transitionTo('/login');
-			}
-		}));
-		return(ajaxGet);
-	},
+							}
+					self.transitionToRoute('/login');
+				}
+			});
+		return ajaxPost;
+	}
+}
 	
 });
+		/**
+        * Should show up with an alert if something went wrong
+        * @method showAlert
+        * @params {?,bool} 
+        */
+ function showAlert(message, bool) {
+        if(bool){
+            Ember.$('#alert_placeholder').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
+        }
+        else{
+             Ember.$('#alert_placeholder').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
+        }
+ }
+/**
+* Formate Date, changes the date from unix time to human readable one
+* @method formatDate
+* @params {date, object} date in unix, time in time
+*/
 
-function parseDate(date){
-        var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-        var months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
-        var day = date.getDay() ;
-        var month = date.getMonth()  ;
-        var year = date.getFullYear();
-        var hours = date.getHours();
-        var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
-        var whole = days[day] +" "+ months[month] +" "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
-        return(whole);
-}
-
-function FixNulls(data){
-	var fixed = {};
-
-	for(var key in data){
-		if(data[key] === null || data[key] === undefined || data[key] === 'null'){
-			fixed[key] = '';
-		}
-		else{
-			fixed[key] = data[key];
-		}
-	}
-
-	return fixed;
+function formatDate(date,time){
+	var splitdate = date.split("/");
+	var splittime = time.split(":");
+  	var newdate = [];
+  	newdate.push(splitdate[2]);
+  	newdate.push(splitdate[0] -1);
+  	newdate.push(splitdate[1]);
+  	var rightdate = newdate.concat(splittime);
+  	var formatted = moment(rightdate).unix();
+  	//var half = new Date(date);
+  	//var formatted = Math.floor(half.getTime() / 1000);
+  	return(formatted);
 }
