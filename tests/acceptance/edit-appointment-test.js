@@ -4,25 +4,25 @@ import { authenticateSession, invalidateSession } from '../helpers/ember-simple-
 
 
 
-moduleForAcceptance('Acceptance | view patient');
+moduleForAcceptance('Acceptance | edit appointment');
 
 //these are commented out because they will break all tests, becuase fake model is not correct for it is not correct in mirage/config atm
 
-test('visiting /view-patient/ before login', function(assert) {
+test('visiting /edit-appointment/ before login', function(assert) {
 	invalidateSession(this.application);
-	visit('/view-patient/1');
+	visit('/edit-appointment/1');
 
 	andThen(function(){
-		assert.notEqual(currentURL(), '/view-patient/1');
+		assert.notEqual(currentURL(), '/edit-appointment/1');
 	});
 });
 
 
-test('visiting /view-patient', function(assert) {
+test('visiting /edit-appointment', function(assert) {
    authenticateSession(this.application);
-  visit('/view-patient/1');
+  visit('/edit-appointment/1');
 
   andThen(function() {
-    assert.equal(currentURL(), '/view-patient/1');
+    assert.equal(currentURL(), '/edit-appointment/1');
   });
 });
