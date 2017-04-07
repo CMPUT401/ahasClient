@@ -1,9 +1,19 @@
 
-	<h1>{{model.first_name}} {{model.lastName}}</h1>
 	
 	<div class="row  leftAlignGroup">
- 	 <div class="col-sm-6">
-	<div class = "nameLabel">
+ 	 <div class="col-sm-4 text-left">
+ 	 <h1>{{model.first_name}} {{model.lastName}}</h1>
+	<div class = "pictureShow" >
+    {{patient-picture modelID=model}}
+    <br>
+    <button  {{action "uploadPicture" model.id}}>Upload A New Picture</button>
+    </div>
+	
+	</div>
+ 	 <div class="col-sm-6 text-left">
+ 	 <br>
+
+ 	 <div class = "nameLabel">
 	<h3>ALERTS</h3>
 	</div>
 	<div class = "alertList" >
@@ -18,12 +28,6 @@
             {{/each}}
     {{/ember-scrollable}}
 	</div>
-	</div>
- 	 <div class="col-sm-3">
-	<div class = "pictureShow" >
-    {{patient-picture modelID=model}}
-    <button  {{action "uploadPicture" model.id}}>Upload A New Picture</button>
-    </div>
     </div>
     </div>
     <br>
