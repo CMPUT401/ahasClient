@@ -19,32 +19,32 @@ export default Ember.Controller.extend({
         	this.set('model.unknown', false);
         	}
         else if(typeval === "Male Neutered") {
-        	this.set('model.male', true);
-        	this.set('model.maleN', false);
+        	this.set('model.male', false);
+        	this.set('model.maleN', true);
         	this.set('model.female', false);
         	this.set('model.femaleS', false);
         	this.set('model.unknown', false);
         	}
          else if(typeval === "Female") {
-        	this.set('model.male', true);
+        	this.set('model.male', false);
         	this.set('model.maleN', false);
-        	this.set('model.female', false);
+        	this.set('model.female', true);
         	this.set('model.femaleS', false);
         	this.set('model.unknown', false);
         	}
         else if (typeval === "Female Spayed"){
-        	this.set('model.male', true);
+        	this.set('model.male', false);
         	this.set('model.maleN', false);
         	this.set('model.female', false);
-        	this.set('model.femaleS', false);
+        	this.set('model.femaleS', true);
         	this.set('model.unknown', false);
         }
          else {
-        	this.set('model.male', true);
+        	this.set('model.male', false);
         	this.set('model.maleN', false);
         	this.set('model.female', false);
         	this.set('model.femaleS', false);
-        	this.set('model.unknown', false);
+        	this.set('model.unknown', true);
         	}
     	},
 	submitNewPatient: function(model)
@@ -68,7 +68,7 @@ export default Ember.Controller.extend({
 					colour: 	document.getElementById('patientColor').value,
 					tattoo: 	document.getElementById('patientTatoo').value,
 					microchip: 	document.getElementById('patientMicrochip').value,
-					gender: 	val
+					sex: 	val
 				}
 			}, 
 		
