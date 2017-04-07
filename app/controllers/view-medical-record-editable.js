@@ -125,6 +125,7 @@ export default Ember.Controller.extend({
                 medicalRecord.then(function(response){
             if(response.success){
                 showAlert("Record updated, record is editable until 12pm tonight", true, "success");
+                self.transitionToRoute('/view-patient/'+patientid);
             }
         //this is error from server condition
         }, function(response) {
@@ -181,8 +182,6 @@ function gatherMedications(patientid, self, medical_record_id){
     medications.push.apply(medications, formattedMedicine);
     medications.push.apply(medications, formattedVaccine);
     medications.push.apply(medications, formattedOther);
-    //console log for now while we are still debugging this -kristy
-     console.log(medications);
     return(medications);
     
 }

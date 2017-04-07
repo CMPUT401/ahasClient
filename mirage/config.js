@@ -114,7 +114,9 @@ export default function () {
       contact: {
         first_name: "Justin",
         last_name: "Barclay",
-        address: "116 St & 85 Ave, Edmonton, AB T6G 2R3",
+        addressLine1: "116 St & 85 Ave",
+        addressLine2: "T6G 2R3",
+        addressLine3: "Edmonton",
         email: "fakejustin@ualberta.ca",
         phone_number: "555-555-5555",
         fax_number: "555-555-5556",
@@ -191,7 +193,9 @@ export default function () {
         id: 1,
         firstName: "Johny",
         lastName: "Bravo",
-        address: "123 Office dr Edmonton, AB A6S 1F3",
+        addressLine1: "116 St & 85 Ave",
+        addressLine2: "T6G 2R3",
+        addressLine3: "Edmonton",
         phoneNumber: "780-555-1122",
         email: "jbravo@email.ca",
         licos: "123",
@@ -206,7 +210,7 @@ export default function () {
         alternativeContactEmail: "bmackenzie@email.com",
         alternativeContactPhoneNumber: "780-555-2211",
         alternativeContact2ndPhone: "780-555-3321",
-        alternativeContactAddress: "4142 Office ave Edmonton, AB V2F 4A1",
+        alternativeContactAddressLine1: "4142 Office ave Edmonton, AB V2F 4A1",
         patients: [{
           "id": 40,
           "first_name": "Dinkle",
@@ -302,7 +306,6 @@ export default function () {
     };
   });
 
-  //this is wrong/broken at the moment/ just wrong format
   this.get('patients/:id', () => {
     return {
       success: true,
@@ -314,17 +317,16 @@ export default function () {
         first_name: '',
         last_name: '',
         species: '',
-        age: 1,
+        dateOfBirth: 1,
         colour: '',
         tattoo: 2,
         microchip: 3,
-        reproductive_status: '',
         client_id: 1,
-        gender: '',
+        sex: '',
         client: {
           firstName: 'Fred',
           lastName: 'Bobbertson',
-          address: '',
+          addressLine1: '',
           phoneNumber: '',
           email: '',
           licos: '',
@@ -336,7 +338,7 @@ export default function () {
           alternativeContactLastName: '',
           alternativeContactPhoneNumber: '',
           alternativeContact2ndPhone: '',
-          alternativeContactAddress: ''
+          alternativeContactAddressLine1: ''
 
         }
       }
@@ -367,7 +369,7 @@ export default function () {
         email: "lajeunesse@ualberta.ca",
         name: "Marc-Oliver Lajenuesse"
       }]
-    }
+    };
   });
 
   this.post('/admin/invite', {

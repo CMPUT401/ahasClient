@@ -65,7 +65,7 @@ export default Base.extend({
 	* @method invalidate
 	*/
   invalidate(data) {
-    localStorage.setItem('role', null)
+    localStorage.setItem('role', null);
     return Promise.resolve(data);
   }
 });
