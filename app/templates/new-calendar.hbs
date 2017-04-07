@@ -4,22 +4,22 @@
 
 			<label class = "inputLabel" for ="appointmentStart">Start Date:</label>
 			<div class = "inputBox">
-			<input id = "appointmentStart" data-provide="datepicker">
+			<input id = "appointmentStart" data-provide="datepicker"><p style="color:red; display:inline;">    *</p>
 			</div>
 			<br>
 			<label class = "inputLabel" for ="appointmentStartTime">Start Time:</label>
 			<div class = "inputBox">
-			{{input id = "appointmentStartTime" value=appointmentStartTime required='true'}}
+			{{input id = "appointmentStartTime" value=appointmentStartTime required='true'}}<p style="color:red; display:inline;">    *</p>
 			</div>
 			<br>
 			<label class = "inputLabel" for ="appointmentEndTime">Duration:</label>
 			<div class = "inputBox">
-			{{input id = "appointmentEndTime" value=appointmentEndTime required='true'}}
+			{{input id = "appointmentEndTime" value=appointmentEndTime required='true'}}<p style="color:red; display:inline;">    *</p>
 			</div>
 			<br>
 			<label class = "inputLabel" for ="appointmentReason">Reason:</label>
 			<div class = "inputBox">
-			{{textarea id = "appointmentReason" value=appointmentReason required='true' cols="50" rows="4"}}
+			{{textarea id = "appointmentReason" value=appointmentReason required='true' cols="50" rows="4"}}<p style="color:red; display:inline;">    *</p>
 			</div>
 			<br>
 			<label class = "inputLabel" for ="appointmentNote">Note:</label>
@@ -29,7 +29,7 @@
 			<br>
 			<label class = "inputLabel" for ="appointmentLocation">Location:</label>
 			<div class = "inputBox">
-			{{input id = "appointmentLocation" value=appointmentLocation required='true'}}
+			{{input id = "appointmentLocation" value=appointmentLocation required='true'}}<p style="color:red; display:inline;">    *</p>
 			</div>
 			<br>
 			<div class = "inputGroup">
