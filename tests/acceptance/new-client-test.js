@@ -3,10 +3,14 @@ import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
 import { authenticateSession } from '../helpers/ember-simple-auth';
 
 
- moduleForAcceptance('Acceptance | new client');
+ moduleForAcceptance('Acceptance | new client',{
+  beforeEach: function() {
+    authenticateSession(this.application);
+    window.localStorage.setItem('role', 'Admin');
+  }
+});
  
  test('visiting /new-client', function(assert) {
-	 authenticateSession(this.application);
    visit('/new-client');
 
    andThen(function() {

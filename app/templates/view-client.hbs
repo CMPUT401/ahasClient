@@ -1,7 +1,7 @@
 <div class = "infoBlock">
 	<h3 class = "clientHeader">Client: </h3><br>
 	<div class = "viewLabel"><h4>Name: </h4></div>
-	<div class = "viewInfo"><h4>{{model.firstName}} {{model.lastName}}</h4> </div>
+	<div class = "viewInfo"><h4 id="clientNameHeader">{{model.firstName}} {{model.lastName}}</h4> </div>
 	<br>
 	<div class = "viewLabel"><h4>Address:</h4></div>
 	<div class = "viewInfo"> 
@@ -73,7 +73,7 @@
 <div class = "infoBlock">
 	<h4>Created: </h4>{{model.created_at}}
 	<h4>Last modified: </h4>{{model.updated_at}}<br>
-	<button {{action "newPatient" model}}>Add A Patient</button>
+	<button id="add-patient-button" {{action "newPatient" model}}>Add A Patient</button>
 	<button {{action "editClient" model.clientID}}>Edit Client</button>
 </div>
 

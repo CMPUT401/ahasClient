@@ -22,6 +22,5 @@ test('checking info added correctly', function(assert) {
     assert.equal(find('#contactPhoneNumber').text(), 'Phone Number: 555-555-5555');
     assert.equal(find('#contactEmail').text(), 'Email: fakejustin@ualberta.ca');
     assert.equal(find('#contactFaxNumber').text(), 'Fax Number: 555-555-5556');
-    assert.equal(find('#contactAddress').text(), 'Address: 116 St & 85 Ave, Edmonton, AB T6G 2R3');
   });
 });

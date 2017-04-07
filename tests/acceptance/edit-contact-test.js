@@ -2,10 +2,14 @@ import { test } from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
 import { authenticateSession} from '../helpers/ember-simple-auth';
 
-moduleForAcceptance('Acceptance | edit contact');
+moduleForAcceptance('Acceptance | edit contact', {
+  beforeEach: function() {
+    authenticateSession(this.application);
+    window.localStorage.setItem('role', 'Admin');
+  }
+});
 
 test('visiting /edit-contact/1', function(assert) {
-  authenticateSession(this.application);
   visit('/edit-contact/1');
 
   andThen(function() {
@@ -14,7 +18,6 @@ test('visiting /edit-contact/1', function(assert) {
 });
 
 test('checking info added correctly', function(assert) {
-  authenticateSession(this.application);
   visit('/edit-contact/1');
 
   andThen(function() {
@@ -24,7 +27,6 @@ test('checking info added correctly', function(assert) {
 });
 
 test('checking we can click done button', function(assert) {
-  authenticateSession(this.application);
   visit('/edit-contact/1');
 
   fillIn('#phoneNumber', '780-555-5555');

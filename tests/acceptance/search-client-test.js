@@ -27,8 +27,7 @@ test('client list contains an item', function(assert){
 	visit('/search-client');
 
 	andThen(function(){
-		// let item = document.getElements("div.div.p").textContent;
-		let item = find(".nameListItem").first().text().trim();
+		let item = find(".list-group-item").first().text().trim();
 		assert.equal(item, "Johny Bravo");
 	});
 	
@@ -38,7 +37,7 @@ test('should transition to /search-client/1', function(assert){
 	authenticateSession(this.application);
 	visit('/search-client');
 	
-	click(".nameListItem");
+	click(".list-group-item");
 	andThen(function(){
 		assert.equal(currentURL(), '/view-client/1');
 	});

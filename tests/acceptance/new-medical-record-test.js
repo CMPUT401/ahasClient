@@ -25,7 +25,7 @@ test('create medical record success', function(assert) {
   click('#create-medical-button');
 
   andThen(function() {
-    assert.equal(find('#statusGood').text(), 'Record created, record is editable until 12pm tonight');
+    assert.equal(currentURL(), '/view-patient/1');
   });
 });
 

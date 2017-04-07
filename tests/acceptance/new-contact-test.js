@@ -2,10 +2,14 @@ import { test } from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
 import { authenticateSession} from '../helpers/ember-simple-auth';
 
-moduleForAcceptance('Acceptance | new contact');
+moduleForAcceptance('Acceptance | new contact',{
+  beforeEach: function() {
+    authenticateSession(this.application);
+    window.localStorage.setItem('role', 'Admin');
+  }
+});
 
 test('visiting /new-contact', function(assert) {
-  authenticateSession(this.application);
   visit('/new-contact');
 
   andThen(function() {
@@ -14,7 +18,6 @@ test('visiting /new-contact', function(assert) {
 });
 
 test('creating new contact successful', function(assert) {
-  authenticateSession(this.application);
   visit('/new-contact');
   
   fillIn('#first_name', "Kristy");
@@ -32,7 +35,6 @@ test('creating new contact successful', function(assert) {
 });
 
 test('creating new contact no first name', function(assert) {
-  authenticateSession(this.application);
   visit('/new-contact');
   
   fillIn('#last_name', "Newbury");

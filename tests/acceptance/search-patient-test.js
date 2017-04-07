@@ -26,7 +26,8 @@ test('checking search info rendered before search', function(assert) {
   visit('/search-patient');
 
   andThen(function() {
-    assert.equal(find('#patientHeading').text(), 'Patients');
+    let item = find(".list-group-item").first().text().trim();
+		assert.equal(item, "Chairman Meow");
    
   });
 });

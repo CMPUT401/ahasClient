@@ -27,8 +27,8 @@ test('last name, first name is present', function(assert) {
 	visit('/view-client/1');
 
 	andThen(function(){
-		let item = find(".panel-body h4:first").text().trim();
-		assert.equal(item, "Bravo, Johny");
+		let item = find("#clientNameHeader").text().trim();
+		assert.equal(item, "Johny Bravo");
 	});
 });
 
@@ -36,7 +36,7 @@ test('transitions to new-patient after clicking Add A Patient button', function(
 	authenticateSession(this.application);
 	visit('/view-client/1');
 
-	click('button');
+	click('#add-patient-button');
 	andThen(function(){
 		assert.equal(currentURL(), '/new-patient');
 	});
