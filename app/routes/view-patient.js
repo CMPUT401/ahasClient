@@ -22,16 +22,17 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						   first_name: JSON.stringify(data.patient.first_name).replace(/\"/g, ""),
 						   last_name: JSON.stringify(data.patient.last_name).replace(/\"/g, ""),
 						   species: JSON.stringify(data.patient.species).replace(/\"/g, ""),
-						   age: JSON.stringify(data.patient.age).replace(/\"/g, ""),
+						   age: parseDate(new Date(data.patient.dateOfBirth * 1000)),
 						   colour: JSON.stringify(data.patient.colour).replace(/\"/g, ""),
 						   tattoo: JSON.stringify(data.patient.tattoo).replace(/\"/g, ""),
 						   microchip: JSON.stringify(data.patient.microchip).replace(/\"/g, ""),
-						   status: JSON.stringify(data.patient.reproductive_status).replace(/\"/g, ""),
 						   client_id: JSON.stringify(data.patient.client_id).replace(/\"/g, ""),
-						   gender: JSON.stringify(data.patient.gender).replace(/\"/g, ""),
+						   gender: JSON.stringify(data.patient.sex).replace(/\"/g, ""),
 						   firstName: JSON.stringify(data.patient.client.firstName).replace(/\"/g, ""),
 						   lastName: JSON.stringify(data.patient.client.lastName).replace(/\"/g, ""),
-						   address: JSON.stringify(data.patient.client.address).replace(/\"/g, "").replace(/\\n/g, " <br> "),
+						   address: JSON.stringify(data.patient.client.addressLine1).replace(/\"/g, "").replace(/\\n/g, " <br> ")
+						   +"<br>"+JSON.stringify(data.patient.client.addressLine2).replace(/\"/g, "").replace(/\\n/g, " <br> ")
+						   +"<br>"+JSON.stringify(data.patient.client.addressLine3).replace(/\"/g, "").replace(/\\n/g, " <br> "),
 						   phoneNumber: JSON.stringify(data.patient.client.phoneNumber).replace(/\"/g, ""),
 						   email: JSON.stringify(data.patient.client.email).replace(/\"/g, ""),
 						   licos: JSON.stringify(data.patient.client.licos).replace(/\"/g, ""),
@@ -43,12 +44,13 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						   alternativeContactLastName: JSON.stringify(data.patient.client.alternativeContactLastName).replace(/\"/g, ""),
 						   alternativeContactPhoneNumber:JSON.stringify(data.patient.client.alternativeContactPhoneNumber).replace(/\"/g, ""),
 						   alternativeContact2ndPhone: JSON.stringify(data.patient.client.alternativeContact2ndPhone).replace(/\"/g, ""),
-						   alternativeContactAddress: JSON.stringify(data.patient.client.alternativeContactAddress).replace(/\"/g, "").replace(/\\n/g, " <br> ")
+						   alternativeContactAddress: JSON.stringify(data.patient.client.alternativeContactAddressLine1).replace(/\"/g, "").replace(/\\n/g, " <br> ")
 						});
 				//this.get('ajax').request('/api/client/1');
 
     		  });
 				//var self = this;
+				console.log(data);
 			},
 			function(response){
 				if (response === false){
@@ -70,7 +72,7 @@ function concatAlerts(general,medical){
 	for(var i = 0; i < general.length; i++) {
 		var alert = general[i];
 		alert.id = alert.id;
-		alert.body = alert.body;
+		alert.body = 'By '+alert.initials + ': ' +alert.body;
 		alert.end = "Forever";
 		both.push(alert);
 	}
@@ -104,4 +106,27 @@ function fixNulls(data){
 	}
 
 	return fixed;
+}
+
+/**  
+  * returns new Date parsed in a nice way to display at the top of the medical record
+  * format example: Monday January 21, 2017 5:12
+  * where time is in twenty four hour clock
+  * @method parseDate
+  * @param {Date} date to parse
+  */ 
+
+function parseDate(date){
+		if (date == ""){
+			return("");
+		}
+        var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        var months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
+        var day = date.getDay() ;
+        var month = date.getMonth()  ;
+        var year = date.getFullYear();
+        var hours = date.getHours();
+        var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
+        var whole = days[day] +" "+ months[month] +" " + date.getDate().toString() +", "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
+        return(whole);
 }

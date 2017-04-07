@@ -90,6 +90,8 @@ function clearFields(page){
 	page.set('alternativeLastName', '');
 	page.set('alternativePrimaryPhone', '');
 	page.set('alternativeAddressLine1', '');
+	page.set('alternativeAddressLine2', '');
+	page.set('alternativeAddressLine3', '');
 	page.set('clientNotes', '');
 	page.set('alternativeSecondaryPhone', '');
 	page.set('alternativeEmail', '');

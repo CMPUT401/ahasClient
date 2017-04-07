@@ -1,0 +1,90 @@
+<div class ="container">
+	<form {{action "submitNewPatient" model on="submit"}}>
+		<div class = "inputGroup">
+			<h3>Patient's current status</h3>
+
+			<label class = "inputLabel" for ="patientFirstName">First Name</label>
+			<div class = "inputBox">
+			<input id='patientFirstName' value={{model.first_name}} required='true'>
+  			</div>
+			<br>
+
+			<label class = "inputLabel" for ="patientSpecies">Species</label>
+			<div class = "inputBox">
+			<input id='patientSpecies' value={{model.species}} required='true'>
+			</div>
+			<br>
+
+			<label class = "inputLabel" for ="patientGender">Sex</label>
+			<div class = "inputBox">
+
+			<select id="value" {{action "showLastName" on="change"}}>
+        	{{#if model.male}}
+        	<option value="Male" selected='selected'>Male</option>
+        	<option value="MaleN">Male Neutered</option>
+        	<option value="Female">Female</option>
+         	<option value="FemaleS">Female Spayed</option>
+         	<option value="Unknown">Unknown</option>
+        	{{/if}}
+        	{{#if model.maleN}}
+        	<option value="Male">Male</option>
+        	<option value="MaleN" selected='selected'>Male Neutered</option>
+        	<option value="Female">Female</option>
+         	<option value="FemaleS">Female Spayed</option>
+         	<option value="Unknown">Unknown</option>
+        	{{/if}}
+        	{{#if model.female}}
+        	<option value="Male">Male</option>
+        	<option value="MaleN">Male Neutered</option>
+        	<option value="Female" selected='selected'>Female</option>
+         	<option value="FemaleS">Female Spayed</option>
+         	<option value="Unknown">Unknown</option>
+        	{{/if}}
+        	{{#if model.femaleS}}
+        	<option value="Male">Male</option>
+        	<option value="MaleN">Male Neutered</option>
+        	<option value="Female">Female</option>
+         	<option value="FemaleS" selected='selected'>Female Spayed</option>
+         	<option value="Unknown">Unknown</option>
+        	{{/if}}
+        	{{#if model.unknown}}
+        	<option value="Male">Male</option>
+        	<option value="MaleN">Male Neutered</option>
+        	<option value="Female">Female</option>
+         	<option value="FemaleS">Female Spayed</option>
+         	<option value="Unknown" selected='selected'>Unknown</option>
+        	{{/if}}
+  			</select>
+			</div>
+			<br>
+
+			<label class = "inputLabel"  for ="patientAge">Date of Birth</label>
+			<div class = "inputBox">
+			<input id = "patientAge" value= {{model.age}} data-provide="datepicker">
+			</div>
+			<br>
+
+			<label class = "inputLabel"  for ="patientColor">Color</label>
+			<div class = "inputBox">
+			<input id='patientColor' value={{model.colour}} required='true'>
+			</div>
+			<br>
+
+			<label class = "inputLabel"  for ="patientTatoo">Tatoo ID</label>
+			<div class = "inputBox">
+			<input id='patientTatoo' value={{model.tattoo}}>
+			</div>
+			<br>
+
+			<label class = "inputLabel"  for ="patientMicrochip">Microchip Number</label>
+			<div class = "inputBox">
+			<input id='patientMicrochip' value={{model.microchip}}>
+			</div>
+			<br>
+			<br>
+			<button type = "submit" id="create-patient-button">Save Patient Edits</button>
+			<button type = "reset" id="reset-patient-button">Reset Form</button>
+			
+		</div>
+	</form>
+</div>

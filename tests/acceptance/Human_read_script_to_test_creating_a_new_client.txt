@@ -1,0 +1,70 @@
+Human read script to test creating a new client
+
+
+//////////////////
+/// BAD INPUTS ///
+//////////////////
+
+Navigate to /new-client
+
+Click on the button labeled "Create Client"
+
+CHECK: There should be two red alert boxes at the top of the page. One that warns the user about a blank first name, and the other warns the user about a blank last name. 
+
+Click on the x in the alerts to close them. 
+
+Fill in the Client's first and last name. Take note
+
+Fill in the client's phone number with 8 numbers.
+
+Fill in the client's email with random numbers and letters. 
+
+Click on the button labeled "Create Client"
+
+CHECK: there should be two red alert boxes at the top of the page. One warning of invalid phone number format, and one of invalid email address format. 
+
+Click on the x in the alerts to close them. 
+
+Fill in the client's phone number with the correct format, but using letters. 
+
+Click on the button labeled "Create Client"
+
+CHECK: there should be two red alert boxes at the top of the page. One warning of invalid phone number format, and one of invalid email address format. 
+
+Click on the x in the alerts to close them.
+
+Navigate to /search-client.
+
+CHECK: The client has not been created, and so the client's name does not appear in the list. (assuming the name was unique)
+
+/////////////////////
+/// Vallid INPUTS ///
+/////////////////////
+
+Navigate to /new-client
+
+Fill the form with vallid data. Take note. 
+
+Click on the button labeled "Create Client"
+
+CHECK: the page should navigate to /search-client.
+
+CHECK: the new client's name appears in the list.
+
+click on the client's name
+
+CHECK: should navigate to /view-client/{client_id}
+
+CHECK: the correct client information is displayed
+
+Navigate to /new-client
+
+CHECK: the input fields are empty. 
+
+
+
+
+
+
+
+
