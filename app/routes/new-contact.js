@@ -24,9 +24,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
     // Call _super for default behavior
     this._super(controller, model);
 
-    if (this.get('session.data.authenticated.role')!=='Admin'){
+   // if (this.get('session.data.authenticated.role')!=='Admin'){
+  if ( localStorage.getItem('role') !== 'Admin'){
 		  this.transitionTo('/search-contact');
-	}
   }
+ }
   
 });

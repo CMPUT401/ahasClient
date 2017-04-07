@@ -382,7 +382,7 @@ export default function () {
     success: true
   }, 201);
 
-  this.post('/admin/reset_password', {
+  this.post('/reset_password', {
     success: true
   }, 201);
 
