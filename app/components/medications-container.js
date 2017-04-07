@@ -38,7 +38,7 @@ export default Ember.Component.extend({
     * @param {int} index The index within the medicationList for the element to be removed
 		*/
     deleteMed: function (index) {
-      self = this; 
+      var self = this; 
 
       var id = this.get('medicationList').objectAt(index).id;
 
@@ -47,9 +47,7 @@ export default Ember.Component.extend({
     }
     else{
       var ajaxGet = new Ember.RSVP.Promise((resolve) =>
-			 this.get('ajax').delete('api/patients/'+ this.patientID+'/medications/'+ id, {
-
-       }
+			 this.get('ajax').delete('api/patients/'+ this.patientID+'/medications/'+ id
 				).then(function(data){
           self.get('medicationList').removeAt(index);
 				})

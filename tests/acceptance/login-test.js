@@ -5,14 +5,14 @@ import { authenticateSession, invalidateSession } from '../helpers/ember-simple-
 
 moduleForAcceptance('Acceptance | login');
 
-/*test('visiting /search-patient while authenticated', function(assert) {
+test('visiting /search-patient while authenticated', function(assert) {
   authenticateSession(this.application);
   visit('/search-patient');
 
   andThen(function() {
     assert.equal(currentURL(), '/search-patient');
   });
-});*/
+});
 
 test('visiting /search-patient while not authenticated', function(assert) {
   invalidateSession(this.application);
@@ -24,7 +24,8 @@ test('visiting /search-patient while not authenticated', function(assert) {
 });
 
 
-/*test('login with valid user, correct password', function(assert) {
+test('login with valid user, correct password', function(assert) {
+  invalidateSession(this.application);
   visit('/login');
 
   fillIn('#username','valid@email.ca');
@@ -35,4 +36,4 @@ test('visiting /search-patient while not authenticated', function(assert) {
     assert.notEqual(currentURL(), '/login');
     assert.equal(currentURL(), '/search-contact');
   });
-});*/
+});

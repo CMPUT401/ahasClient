@@ -18,7 +18,7 @@ export default Ember.Component.extend({
 	init(){
 		this._super(...arguments);
 		var self = this;
-		if (this.modelID.imageid == ""){
+		if (this.modelID.imageid === ""){
 			return;
 		}
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
@@ -43,7 +43,6 @@ export default Ember.Component.extend({
 					}		
 				})
 		);
-		//console.log(this.picture);
 		return(ajaxGet);
 	}  
 });
