@@ -113,5 +113,5 @@ function pdfBuilder(data){
     objBuilder += (data);
     objBuilder += ('" type="application/pdf" />');
     objBuilder += ('</object>');
-    return objBuilder
+    return objBuilder;
 }

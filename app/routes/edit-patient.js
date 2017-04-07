@@ -74,7 +74,7 @@ function fixNulls(data){
 */
 
 function parseDate(date){
-		if (date == ""){
+		if (date === ""){
 			return("");
 		}
         //var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];

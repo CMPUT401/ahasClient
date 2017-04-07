@@ -50,8 +50,7 @@ export default Ember.Component.extend({
 			 this.get('ajax').delete('api/patients/'+ this.patientID+'/medications/'+ id
 				).then(function(data){
           self.get('medicationList').removeAt(index);
-				})
-		);
+				}));
     }
     }
   }
