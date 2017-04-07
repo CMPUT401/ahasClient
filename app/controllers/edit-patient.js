@@ -8,32 +8,43 @@ export default Ember.Controller.extend({
 
 		showLastName: function()
 		{
-        var type= document.getElementById('type');
+        var type= document.getElementById('value');
         var typeval = type.options[type.selectedIndex].text;
 
-        if (typeval === "Laboratory" ){
-        this.set('model.laboratory', true);
-        this.set('model.veterinarian', false);
-        this.set('model.volunteer', false);
-        this.set('model.technician', false);
+        if (typeval === "Male" ){
+        	this.set('model.male', true);
+        	this.set('model.maleN', false);
+        	this.set('model.female', false);
+        	this.set('model.femaleS', false);
+        	this.set('model.unknown', false);
         	}
-        else if(typeval === "Veterinarian") {
-          this.set('model.laboratory', false);
-          this.set('model.veterinarian', true);
-          this.set('model.volunteer', false);
-          this.set('model.technician', false);
+        else if(typeval === "Male Neutered") {
+        	this.set('model.male', true);
+        	this.set('model.maleN', false);
+        	this.set('model.female', false);
+        	this.set('model.femaleS', false);
+        	this.set('model.unknown', false);
         	}
-         else if(typeval === "Volunteer") {
-          this.set('model.laboratory', false);
-          this.set('model.veterinarian', false);
-          this.set('model.volunteer', true);
-          this.set('model.technician', false);
+         else if(typeval === "Female") {
+        	this.set('model.male', true);
+        	this.set('model.maleN', false);
+        	this.set('model.female', false);
+        	this.set('model.femaleS', false);
+        	this.set('model.unknown', false);
         	}
+        else if (typeval === "Female Spayed"){
+        	this.set('model.male', true);
+        	this.set('model.maleN', false);
+        	this.set('model.female', false);
+        	this.set('model.femaleS', false);
+        	this.set('model.unknown', false);
+        }
          else {
-          this.set('model.laboratory', false);
-          this.set('model.veterinarian', false);
-          this.set('model.volunteer', false);
-          this.set('model.technician', true);
+        	this.set('model.male', true);
+        	this.set('model.maleN', false);
+        	this.set('model.female', false);
+        	this.set('model.femaleS', false);
+        	this.set('model.unknown', false);
         	}
     	},
 	submitNewPatient: function(model)
@@ -42,6 +53,7 @@ export default Ember.Controller.extend({
 			console.log(model.id);
 			var value= document.getElementById('value');
             var val = value.options[value.selectedIndex].text;
+            console.log(val);
 			let ajaxPost = this.get('ajax').request('/api/patients/'+model.id,
 			{
 				method: 'PATCH',

@@ -54,14 +54,6 @@
          	<option value="FemaleS">Female Spayed</option>
          	<option value="Unknown" selected='selected'>Unknown</option>
         	{{/if}}
-
-
-			<select id="value" >
-        		<option value="male" >Male </option>
-        		<option value="maleN" >Male Neutered </option>
-        		<option value="female" >Female </option>
-         		<option value="femaleN" >Female Spayed </option>
-         		<option value="unknown" >Unknown </option>
   			</select>
 			</div>
 			<br>
@@ -80,13 +72,13 @@
 
 			<label class = "inputLabel"  for ="patientTatoo">Tatoo ID</label>
 			<div class = "inputBox">
-			<input id='patientTatoo' value={{model.tattoo}} required='true'>
+			<input id='patientTatoo' value={{model.tattoo}}>
 			</div>
 			<br>
 
 			<label class = "inputLabel"  for ="patientMicrochip">Microchip Number</label>
 			<div class = "inputBox">
-			<input id='patientMicrochip' value={{model.microchip}} required='true'>
+			<input id='patientMicrochip' value={{model.microchip}}>
 			</div>
 			<br>
 			<br>
