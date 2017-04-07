@@ -16,6 +16,7 @@ export default Ember.Controller.extend({
 	*/
 		submitNewNote()
 		{
+			console.log(this.get('medSignature'))
 			var self = this;
 				let ajaxPost = this.get('ajax').request('/api/patients/'+this.get('p_ID')+'/medical_records/'+this.get('r_ID')+'/notes',
 			{
@@ -25,7 +26,7 @@ export default Ember.Controller.extend({
 					{
 					medical_record_id: this.get('r_ID'),
 					body: 	this.get('medNotes'),
-					initials: 		this.get('medSignature'),
+					initials: 		document.getElementById('medSignature').value,
 					is_alert: document.getElementById('isAlert').checked
 				
 				}
