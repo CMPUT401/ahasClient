@@ -50,6 +50,8 @@ Router.map(function() {
   this.route('user', {path: '/admin/users/:id'});
   this.route('invite-user' , {path: '/admin/invite-user'});
   this.route('not-found', { path: '/*path' });
+  this.route('edit-patient',{ path: '/edit-patient/:patientID'});
+  this.route('edit-appointment');
 });
 
 export default Router;

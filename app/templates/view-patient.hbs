@@ -1,7 +1,10 @@
 
 	<h1>{{model.first_name}} {{model.lastName}}</h1>
+	<div class = "nameLabel">
 	<h3>ALERTS</h3>
+	</div>
 	<div class = "nameList" >
+    
     {{#ember-scrollable autoHide=false}}
             {{#each model.alerts as |alert|}}
                     <div class = "list-group-item">
@@ -14,8 +17,10 @@
 
 	</div>
 	<br>
+	<div class = "pictureShow" >
     {{patient-picture modelID=model}}
     <button  {{action "uploadPicture" model.id}}>Upload A New Picture</button>
+    </div>
     <br>
     <br>
 
@@ -80,11 +85,8 @@
 		<div class = "viewLabel">Patient Species:</div>
 		<div class = "viewInfo">{{model.species}}</div>
 		<br>
-		<div class = "viewLabel">Patient Gender:</div>
+		<div class = "viewLabel">Patient Sex:</div>
 		<div class = "viewInfo">{{model.gender}}</div>
-		<br>
-		<div class = "viewLabel">Patient Reproduction Status:</div>
-		<div class = "viewInfo">{{model.status}}</div>
 		<br>
 		<div class = "viewLabel">Patient Age:</div>
 		<div class = "viewInfo">{{model.age}}</div>
@@ -101,7 +103,9 @@
 		<br>
 	</div>
 	<br>
-	<button type = "button" id= "edit-patient-button">Edit Info</button>
+	<button {{action "editPatient" model.id}}>Edit Info</button>
+	<button {{action "newAppointment" model.id}}>Add An Appointment</button>
+
 	<br>
 	<br>
 	{{history-container patientID=model.id}}

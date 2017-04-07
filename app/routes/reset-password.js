@@ -6,6 +6,6 @@ export default Ember.Route.extend(UnauthenticatedRouteMixin, {
       model(params) {
         return {
           resetToken: params.resetToken
-        }
+        };
       }
 });

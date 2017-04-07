@@ -10,6 +10,8 @@ export default Ember.Controller.extend({
 	session: Ember.inject.service(),
 	actions: 
 	{
+
+
 		/**
 	* Controller for the submitnewpatient
 	* THis method does a post on the back end to create a new patient
@@ -19,6 +21,9 @@ export default Ember.Controller.extend({
 		submitNewPatient()
 		{
 			var self = this;
+			var value= document.getElementById('value');
+			console.log(this.get('l_Name'));
+            var val = value.options[value.selectedIndex].text;
 			let ajaxPost = this.get('ajax').request('/api/patients',
 			{
 				method: 'POST',
@@ -29,16 +34,13 @@ export default Ember.Controller.extend({
 					client: this.get('c_ID'),
 					species: 	this.get('patientSpecies'),
 					first_name: this.get('patientFirstName'),
-					last_name:  this.get('patientLastName'),
-					age: 		this.get('patientAge'),
+					last_name:  this.get('l_Name'),
+					dateOfBirth: 		JSON.stringify(formatDate(document.getElementById('patientAge').value)),
 					colour: 	this.get('patientColor'),
 					tattoo: 	this.get('patientTatoo'),
 					microchip: 	this.get('patientMicrochip'),
-					gender: 	this.get('patientGender'),
-					reproductive_status: 	this.get('patientStatus')
-				
+					sex: 	val
 				}
-			
 			}, 
 		
 			});
@@ -59,3 +61,16 @@ export default Ember.Controller.extend({
 }
 	
 });
+
+ /** 
+		* used to format the date to we will send in request
+        * converts from format in datepicker to unix time in seconds
+		* @method   formatDate
+        * @param {date} date the date to be formatted
+		*/   
+
+function formatDate(date){
+  var half = new Date(date);
+  var formatted = Math.floor(half.getTime() / 1000);
+  return(formatted);
+}

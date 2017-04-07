@@ -1,3 +1,5 @@
+<div id = "alert_placeholder_fileType"></div>
+<div id = "alert_placeholder_fileSize"></div>
 <form {{action "sendRadiographyResults" model.patientId on="submit"}}>
 	<div class = "panel panel-default">
 		{{#file-picker fileLoaded="fileLoaded" readAs="readAsDataURL"}}

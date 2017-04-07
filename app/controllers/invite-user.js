@@ -18,7 +18,11 @@ export default Ember.Controller.extend({
     },
     sendInvite: function () {
       let self = this;
-      document.getElementById('inviteButton').disable = false;
+      var emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      if(!emailRegex.test(this.email)){
+        showAlert('Please enter a valid email', false);
+        return;
+      }
       this.get('ajax').post('/api/admin/invite', {
         type: 'application/json',
         data: {

@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 /**
-* Controller for client-info
-* @class ClientInfoController
+* Controller for view client
+* @class ViewClientController
 */
 export default Ember.Controller.extend({
 	actions: {
@@ -10,11 +10,14 @@ export default Ember.Controller.extend({
 		* handles action called when user clicks New Patient button. 
 		* redirects to the client's new patient page
 		* @method newPatient
-		* @param {int} clientID The ID of the client 
+		* @param {int} clientID The ID of the client
+		* @param {str} lastName the last name of the client 
 		*/
-		newPatient: function(clientID){
+		newPatient: function(model){
+			console.log(model.clientID,model.lastName);
 			this.transitionToRoute("/new-patient/").then(function(newRoute){
-				newRoute.controller.set("c_ID",clientID);
+				newRoute.controller.set("c_ID",model.clientID);
+				newRoute.controller.set("l_Name",model.lastName);
 			});
 			//this.transitionTo('new-patient', { queryParams: { clientID: '1' }});
 		},

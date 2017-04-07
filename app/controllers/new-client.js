@@ -90,6 +90,8 @@ function clearFields(page){
 	page.set('alternativeLastName', '');
 	page.set('alternativePrimaryPhone', '');
 	page.set('alternativeAddressLine1', '');
+	page.set('alternativeAddressLine2', '');
+	page.set('alternativeAddressLine3', '');
 	page.set('clientNotes', '');
 	page.set('alternativeSecondaryPhone', '');
 	page.set('alternativeEmail', '');
@@ -132,7 +134,7 @@ function checkInputs(self){
 }
 
 /**
-* Checks that a name is valid. shows alert and return false if it is blank, tre otherwise
+* Checks that a name is valid. shows alert and return false if it is blank, true otherwise
 * @method testName
 * @param {string} name The name to be tested
 * @param {string} divID a partial name to the div id in which the allert is displayed. the div id is alert_placeholder_'divID'

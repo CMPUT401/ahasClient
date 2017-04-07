@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
 				data: { schedule:
 					{
 					appointmentStartDate: 	JSON.stringify(formatDate(document.getElementById("appointmentStart").value, this.get('appointmentStartTime'))),
-					clientId: 				this.get('c_ID'),
+					patient_id: 				this.get('c_ID'),
 					reason: 				this.get('appointmentReason'),
 					notes: 					this.get('appointmentNote'),
 					location: 				this.get('appointmentLocation'),
