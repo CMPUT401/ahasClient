@@ -1,9 +1,18 @@
 import Ember from 'ember';
 
+/**
+ * Controller for reset-password
+ * @class UserController
+ */
 export default Ember.Controller.extend({
   session: Ember.inject.service(),
   ajax: Ember.inject.service(),
   actions: {
+
+     /** 
+     * Sends message to the server to generate a resetToken and send an email to the client
+     * @method resetPassword
+     */
     resetPassword: function () {
       let button = document.getElementById("reset");
       button.disable = true;
@@ -24,6 +33,11 @@ export default Ember.Controller.extend({
         button.disable = false;
       });
     },
+
+     /** 
+     * Deletes a user from the database
+     * @method deleteUser
+     */
     deleteUser: function () {
       var self = this;
       let deleteButton = document.getElementById("delete");
@@ -53,6 +67,14 @@ export default Ember.Controller.extend({
   }
 });
 
+
+/** 
+ * used to provide feedback to user on success condition as well as fail condition
+ * only displayed very briefly on success condition however before transition
+ * @method  showAlert
+ * @param {string} message The message to display in the alert
+ * @param {boolean} bool Determines if this is a warning alert or confirmation alert
+ */
 function showAlert(message, bool) {
   if (bool) {
     Ember.$('#alert_placeholder').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">' + message + '</span></div>');
