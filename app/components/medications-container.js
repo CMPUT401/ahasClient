@@ -6,6 +6,9 @@ import Ember from 'ember';
 * @class MedicationInputContainerComponentController
 */
 export default Ember.Component.extend({
+  patientID: 0,
+  id:0,
+  ajax: Ember.inject.service(),
   actions: {
     /** 
 		*  Push an empty object to medicationList
@@ -35,7 +38,23 @@ export default Ember.Component.extend({
     * @param {int} index The index within the medicationList for the element to be removed
 		*/
     deleteMed: function (index) {
-      this.get('medicationList').removeAt(index);
+      self = this; 
+
+      var id = this.get('medicationList').objectAt(index).id;
+
+      if(id === null || id === undefined){
+        self.get('medicationList').removeAt(index);
+    }
+    else{
+      var ajaxGet = new Ember.RSVP.Promise((resolve) =>
+			 this.get('ajax').delete('api/patients/'+ this.patientID+'/medications/'+ id, {
+
+       }
+				).then(function(data){
+          self.get('medicationList').removeAt(index);
+				})
+		);
+    }
     }
   }
 });
