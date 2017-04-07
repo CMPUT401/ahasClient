@@ -30,7 +30,8 @@ export default Ember.Controller.extend({
 					name: this.loadedFile.name,
 					data: this.loadedFile.data,
 					picture_type: "portrait",
-					date: Date.parse(imageDate)/1000
+					date: Date.parse(imageDate)/1000,
+					data_type: this.loadedFile.type
 				}},
 			}).then(function(response){
 
