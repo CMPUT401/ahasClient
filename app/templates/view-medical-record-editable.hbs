@@ -531,17 +531,17 @@
      <div> 
 <div>
   Medicine
-{{medications-container medType="Medicine" medicationList=model.medicine}}
+{{medications-container medType="Medicine" medicationList=model.medicine patientID=model.patient_id}}
 </div>
 
 <div>
   Vaccines
-{{medications-container medType="Vaccine" medicationList=model.vaccine}}
+{{medications-container medType="Vaccine" medicationList=model.vaccine  patientID=model.patient_id}}
 </div>
 
 <div>
   Other
-{{medications-container medType="Other" medicationList=model.other}}
+{{medications-container medType="Other" medicationList=model.other  patientID=model.patient_id}}
 </div>
 </div>
 
