@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
 	*/
 		submitNewNote()
 		{
-			console.log(this.get('medSignature'))
+			//console.log(model.pID)
 			var self = this;
 				let ajaxPost = this.get('ajax').request('/api/patients/'+this.get('p_ID')+'/medical_records/'+this.get('r_ID')+'/notes',
 			{

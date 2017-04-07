@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({ 
 	/*model(param) {
-		pID: param.patientID
-		rID: param.recordID
-	}	*/
+		pID: param.p_ID
+		rID: param.r_ID
+	}*/
 });

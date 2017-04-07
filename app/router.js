@@ -17,7 +17,7 @@ Router.map(function() {
   this.route('new-user', {path: '/new-user/:inviteToken'});
   this.route('reset-password', {path:'/reset-password/:resetToken'});
   this.route('new-client');
-  this.route('new-side-note',{path:'/new-side-note/:p_ID/:r_ID'});
+  this.route('new-side-note');
   this.route('new-calendar');
   this.route('new-contact');
   this.route('new-medical-record', {path: '/view-patient/:patientID/new-medical-record'});
