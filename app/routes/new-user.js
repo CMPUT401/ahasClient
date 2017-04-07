@@ -9,7 +9,6 @@ export default Ember.Route.extend(UnauthenticatedRouteMixin,{
 		let ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request(`/api/users/${params.inviteToken}`
 			).then(function(data){
-                console.log(data)
 				Ember.run(function() {
 					resolve({ 
 						user: data.user,

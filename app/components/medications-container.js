@@ -38,7 +38,7 @@ export default Ember.Component.extend({
     * @param {int} index The index within the medicationList for the element to be removed
 		*/
     deleteMed: function (index) {
-      self = this; 
+      var self = this; 
 
       var id = this.get('medicationList').objectAt(index).id;
 
@@ -52,8 +52,7 @@ export default Ember.Component.extend({
        }
 				).then(function(data){
           self.get('medicationList').removeAt(index);
-				})
-		);
+				}));
     }
     }
   }
