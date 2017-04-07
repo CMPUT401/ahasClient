@@ -26,6 +26,7 @@ export default Ember.Controller.extend({
                 this.set('model.patientFiltered', this.get(model.patients));
             }
             else {
+                var lowerCaseInput = input.toLowerCase();
                 filter(input, this.get('model'), this);
             }
         },
@@ -37,9 +38,13 @@ export default Ember.Controller.extend({
         * @method filterPatient
         */
 function filter(input, model, self){
+    var reg = processSearch(input)
     var results = [];
     for(var i = 0; i < model.patients.length; i++){
-        if(input === model.patients[i].first_name || input === model.patients[i].last_name){
+        var firstName = model.patients[i].first_name.toLowerCase();
+        var lastName = model.patients[i].last_name.toLowerCase();
+        var fullName = firstName + " " + lastName;
+        if(input === firstName || input === lastName || input === fullName || reg.test(fullName)){
             var patient = {
                             first_name: model.patients[i].first_name,
                             last_name: model.patients[i].last_name,
@@ -49,4 +54,23 @@ function filter(input, model, self){
         }
     }
     self.set('model.patientFiltered', results);
+}
+
+/** 
+ * used to build a regular expression pattern that can match full and partial
+ * for example an input of alc for the possible client alice will find this result
+ * @method processSearch
+ * @param {string} input The searchbar input
+ */  
+function processSearch(input){
+   
+    var partialParsed = input[0];
+
+    for (var i=1; i < input.length; i++){
+        partialParsed = partialParsed + "[a-z]*" + input[i];
+    }
+
+    var parsed = new RegExp( partialParsed );
+
+    return(parsed);
 }
