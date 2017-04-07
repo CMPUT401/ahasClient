@@ -48,7 +48,7 @@ function parseDate(date){
         var year = date.getFullYear();
         var hours = date.getHours();
         var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
-        var whole = days[day] +" "+ months[month] +" "+ year.toString();
+        var whole = day +"/"+ month +"/"+ year.toString();
         return(whole);
 }
 

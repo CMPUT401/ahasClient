@@ -13,18 +13,17 @@ export default Ember.Controller.extend({
         * Does a post on the backend with the fields passed in
         * @method submitNewCalendar
         */
-		submitNewCalendar()
+		submitNewCalendar(aid)
 		{
 			document.getElementById("create-appointment-button").disabled = true;
 			var self = this;
-			let ajaxPost = this.get('ajax').request('/api/schedules',
+			let ajaxPost = this.get('ajax').request('/api/schedules/'+aid,
 			{
-				method: 'PUT',
+				method: 'PATCH',
 				type: 'application/json',
 				data: { schedule:
 					{
 					appointmentStartDate: 	JSON.stringify(formatDate(document.getElementById("appointmentStart").value, this.get('appointmentStartTime'))),
-					patient_id: 				this.get('c_ID'),
 					reason: 				this.get('appointmentReason'),
 					notes: 					this.get('appointmentNote'),
 					location: 				this.get('appointmentLocation'),
