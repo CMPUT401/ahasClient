@@ -16,7 +16,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 				//this.get('ajax').request('/api/client/1');
 
     		  });
-				//console.log("status is " + JSON.stringify(data.patient.name));
+				console.log(data);
 			},
 			function(data){
 			if (data === false){
@@ -47,7 +47,7 @@ function convertUnix(schedules){
 	for(var i = 0; i < schedules.length; i++) {
 		var schedule = schedules[i];
 		schedule.start = new Date(schedules[i].appointmentStartDate* 1000);
-		schedule.title = schedules[i].reason;
+		schedule.title = schedules[i].patientFirstName +" "+ schedules[i].patientLastName;
 		newsched.push(schedule);
 	}
 	return (newsched);
