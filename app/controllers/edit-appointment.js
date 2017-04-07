@@ -51,12 +51,12 @@ export default Ember.Controller.extend({
 		return ajaxPost;
 	},
 	         /** 
-		* handles action called when user clicks delete-contact-button
-        * sends a put request to the server to delete the contact that we are currently on
-		* @method  deleteContact
-		* @param {int} id The id of the contact to delete
+		* handles action called when user clicks delete-appointment-button
+        * sends a put request to the server to delete the appointment that we are currently on
+		* @method  deleteAppointment
+		* @param {int} id The id of the appointment to delete
 		*/
-    deleteContact: function(id) {
+    deleteAppointment: function(id) {
 
     var self = this;
 
