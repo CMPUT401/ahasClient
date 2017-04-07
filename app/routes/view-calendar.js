@@ -16,7 +16,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 				//this.get('ajax').request('/api/client/1');
 
     		  });
-				console.log(data);
+				//console.log(data);
 			},
 			function(data){
 			if (data === false){

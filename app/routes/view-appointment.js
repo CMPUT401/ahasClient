@@ -11,6 +11,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 		this.get('ajax').request('/api/schedules/' + params.appointmentid
 			).then(function(data){
 				data.schedule = FixNulls(data.schedule);
+				console.log(data);
 				//console.log(data, data.success, data.contacts);
 				Ember.run(function() {
        			 resolve({ 
@@ -50,7 +51,7 @@ function parseDate(date){
         return(whole);
 }
 
-function fixNulls(data){
+function FixNulls(data){
 	var fixed = {};
 
 	for(var key in data){
