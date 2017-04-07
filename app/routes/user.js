@@ -1,6 +1,9 @@
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 import Ember from 'ember';
-
+/**
+* Route for view a user
+* @class UserRoute
+*/
 export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	session: Ember.inject.service(),
 	ajax: Ember.inject.service(),
