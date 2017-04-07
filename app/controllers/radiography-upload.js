@@ -9,7 +9,6 @@ export default Ember.Controller.extend({
 	ajax: Ember.inject.service(),
 	actions: {
 		fileLoaded: function(file){
-			//console.log(file.size);
 			this.set('loadedFile', file);
 		},
 		/**
