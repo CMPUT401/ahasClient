@@ -1,9 +1,12 @@
 
 	<h1>{{model.first_name}} {{model.lastName}}</h1>
+	
+	<div class="row  leftAlignGroup">
+ 	 <div class="col-sm-6">
 	<div class = "nameLabel">
 	<h3>ALERTS</h3>
 	</div>
-	<div class = "nameList" >
+	<div class = "alertList" >
     
     {{#ember-scrollable autoHide=false}}
             {{#each model.alerts as |alert|}}
@@ -14,12 +17,14 @@
 
             {{/each}}
     {{/ember-scrollable}}
-
 	</div>
-	<br>
+	</div>
+ 	 <div class="col-sm-3">
 	<div class = "pictureShow" >
     {{patient-picture modelID=model}}
     <button  {{action "uploadPicture" model.id}}>Upload A New Picture</button>
+    </div>
+    </div>
     </div>
     <br>
     <br>
