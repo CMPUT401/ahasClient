@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
 			var self = this;
 			let ajaxPost = this.get('ajax').request('/api/schedules',
 			{
-				method: 'POST',
+				method: 'PUT',
 				type: 'application/json',
 				data: { schedule:
 					{
