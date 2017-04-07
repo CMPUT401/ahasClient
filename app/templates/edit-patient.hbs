@@ -17,10 +17,10 @@
 
 			<label class = "inputLabel" for ="patientGender">Sex</label>
 			<div class = "inputBox">
-selected='selected'
+
 			<select id="value" {{action "showLastName" on="change"}}>
         	{{#if model.male}}
-        	<option value="Male">Male</option>
+        	<option value="Male" selected='selected'>Male</option>
         	<option value="MaleN">Male Neutered</option>
         	<option value="Female">Female</option>
          	<option value="FemaleS">Female Spayed</option>
@@ -28,7 +28,7 @@ selected='selected'
         	{{/if}}
         	{{#if model.maleN}}
         	<option value="Male">Male</option>
-        	<option value="MaleN">Male Neutered</option>
+        	<option value="MaleN" selected='selected'>Male Neutered</option>
         	<option value="Female">Female</option>
          	<option value="FemaleS">Female Spayed</option>
          	<option value="Unknown">Unknown</option>
@@ -36,7 +36,7 @@ selected='selected'
         	{{#if model.female}}
         	<option value="Male">Male</option>
         	<option value="MaleN">Male Neutered</option>
-        	<option value="Female">Female</option>
+        	<option value="Female" selected='selected'>Female</option>
          	<option value="FemaleS">Female Spayed</option>
          	<option value="Unknown">Unknown</option>
         	{{/if}}
@@ -44,7 +44,7 @@ selected='selected'
         	<option value="Male">Male</option>
         	<option value="MaleN">Male Neutered</option>
         	<option value="Female">Female</option>
-         	<option value="FemaleS">Female Spayed</option>
+         	<option value="FemaleS" selected='selected'>Female Spayed</option>
          	<option value="Unknown">Unknown</option>
         	{{/if}}
         	{{#if model.unknown}}
@@ -52,7 +52,7 @@ selected='selected'
         	<option value="MaleN">Male Neutered</option>
         	<option value="Female">Female</option>
          	<option value="FemaleS">Female Spayed</option>
-         	<option value="Unknown">Unknown</option>
+         	<option value="Unknown" selected='selected'>Unknown</option>
         	{{/if}}
 
 
