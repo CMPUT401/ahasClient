@@ -17,7 +17,6 @@ export default Ember.Controller.extend({
       user.then(function (response) {
         if (response.success) {
           showAlert("Password Reset!", true);
-          window.setTimeout(self.transitionToRoute('/admin'), 3000);
         }
         //this is error from server condition
       }, function (response) {

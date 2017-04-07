@@ -16,7 +16,8 @@ export default Ember.Controller.extend({
 				this.set('model.clientsFiltered', this.get('model.clients'));
 			}
 			else {
-				filter(input, this.get('model'), this);
+				var lowerCaseInput = input.toLowerCase();
+				filter(lowerCaseInput, this.get('model'), this);
 			}
 		},
 		/**
