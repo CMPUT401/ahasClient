@@ -5,6 +5,37 @@ export default Ember.Controller.extend({
 	//queryParams: ['clientID'],
 	session: Ember.inject.service(),
 	actions: {
+
+		showLastName: function()
+		{
+        var type= document.getElementById('type');
+        var typeval = type.options[type.selectedIndex].text;
+
+        if (typeval === "Laboratory" ){
+        this.set('model.laboratory', true);
+        this.set('model.veterinarian', false);
+        this.set('model.volunteer', false);
+        this.set('model.technician', false);
+        	}
+        else if(typeval === "Veterinarian") {
+          this.set('model.laboratory', false);
+          this.set('model.veterinarian', true);
+          this.set('model.volunteer', false);
+          this.set('model.technician', false);
+        	}
+         else if(typeval === "Volunteer") {
+          this.set('model.laboratory', false);
+          this.set('model.veterinarian', false);
+          this.set('model.volunteer', true);
+          this.set('model.technician', false);
+        	}
+         else {
+          this.set('model.laboratory', false);
+          this.set('model.veterinarian', false);
+          this.set('model.volunteer', false);
+          this.set('model.technician', true);
+        	}
+    	},
 	submitNewPatient: function(model)
 		{
 			var self = this;
@@ -59,4 +90,8 @@ function formatDate(date){
   var half = new Date(date);
   var formatted = Math.floor(half.getTime() / 1000);
   return(formatted);
+}
+
+function checkSex(sex){
+
 }

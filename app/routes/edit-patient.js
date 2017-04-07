@@ -22,7 +22,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						   tattoo: JSON.stringify(data.patient.tattoo).replace(/\"/g, ""),
 						   microchip: JSON.stringify(data.patient.microchip).replace(/\"/g, ""),
 						   client_id: JSON.stringify(data.patient.client_id).replace(/\"/g, ""),
-						   gender: JSON.stringify(data.patient.sex).replace(/\"/g, ""),
+						   		male: checkMale(JSON.stringify(data.patient.sex).replace(/\"/g, "")),
+						   		maleN: checkMaleN(JSON.stringify(data.patient.sex).replace(/\"/g, "")),
+						   		female: checkFeMale(JSON.stringify(data.patient.sex).replace(/\"/g, "")),
+						   		femaleS: checkFeMaleS(JSON.stringify(data.patient.sex).replace(/\"/g, "")),
+						   		unknown: checkUnknown(JSON.stringify(data.patient.sex).replace(/\"/g, "")),
+
 						});
 				//this.get('ajax').request('/api/client/1');
 
@@ -75,3 +80,98 @@ function parseDate(date){
         var whole = day.toString() +"/"+ month.toString() +"/" + year.toString();
         return(whole);
 }
+
+ /** 
+ * Used for the initial setting of the dropdown in edit patient route so that it loads
+ * correct type for what the gender is
+ * Checks if the gender type is Male , if so return true
+ * @method checkMale
+ * @param {string} gender male type string from the gender json object
+ */
+
+function checkMale(gender){
+
+    if(gender === 'Male'){
+
+        return(true);
+
+    }
+    return(false);
+
+}
+
+ /** 
+ * Used for the initial setting of the dropdown in edit patient route so that it loads
+ * correct type for what the gender is
+ * Checks if the gender type is Male , if so return true
+ * @method checkMale
+ * @param {string} gender male type string from the gender json object
+ */
+
+function checkMaleN(gender){
+
+    if(gender === 'Male Neutered'){
+
+        return(true);
+
+    }
+    return(false);
+
+}
+
+ /** 
+ * Used for the initial setting of the dropdown in edit patient route so that it loads
+ * correct type for what the gender is
+ * Checks if the gender type is Male , if so return true
+ * @method checkMale
+ * @param {string} gender male type string from the gender json object
+ */
+function checkFeMale(gender){
+
+    if(gender === 'Female'){
+
+        return(true);
+
+    }
+    return(false);
+
+}
+
+ /** 
+ * Used for the initial setting of the dropdown in edit patient route so that it loads
+ * correct type for what the gender is
+ * Checks if the gender type is Male , if so return true
+ * @method checkMale
+ * @param {string} gender male type string from the gender json object
+ */
+function checkFeMaleS(gender){
+
+    if(gender === 'Female Spayed'){
+
+        return(true);
+
+    }
+    return(false);
+
+}
+
+
+ /** 
+ * Used for the initial setting of the dropdown in edit patient route so that it loads
+ * correct type for what the gender is
+ * Checks if the gender type is Male , if so return true
+ * @method checkMale
+ * @param {string} gender male type string from the gender json object
+ */
+function checkUnknown(gender){
+
+    if(gender === 'Unknown'){
+
+        return(true);
+
+    }
+    return(false);
+
+}
+
+

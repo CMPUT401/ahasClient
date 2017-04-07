@@ -17,7 +17,46 @@
 
 			<label class = "inputLabel" for ="patientGender">Sex</label>
 			<div class = "inputBox">
-			<select id="value" {{action "showGender" on="change"}} >
+selected='selected'
+			<select id="value" {{action "showLastName" on="change"}}>
+        	{{#if model.male}}
+        	<option value="Male">Male</option>
+        	<option value="MaleN">Male Neutered</option>
+        	<option value="Female">Female</option>
+         	<option value="FemaleS">Female Spayed</option>
+         	<option value="Unknown">Unknown</option>
+        	{{/if}}
+        	{{#if model.maleN}}
+        	<option value="Male">Male</option>
+        	<option value="MaleN">Male Neutered</option>
+        	<option value="Female">Female</option>
+         	<option value="FemaleS">Female Spayed</option>
+         	<option value="Unknown">Unknown</option>
+        	{{/if}}
+        	{{#if model.female}}
+        	<option value="Male">Male</option>
+        	<option value="MaleN">Male Neutered</option>
+        	<option value="Female">Female</option>
+         	<option value="FemaleS">Female Spayed</option>
+         	<option value="Unknown">Unknown</option>
+        	{{/if}}
+        	{{#if model.femaleS}}
+        	<option value="Male">Male</option>
+        	<option value="MaleN">Male Neutered</option>
+        	<option value="Female">Female</option>
+         	<option value="FemaleS">Female Spayed</option>
+         	<option value="Unknown">Unknown</option>
+        	{{/if}}
+        	{{#if model.unknown}}
+        	<option value="Male">Male</option>
+        	<option value="MaleN">Male Neutered</option>
+        	<option value="Female">Female</option>
+         	<option value="FemaleS">Female Spayed</option>
+         	<option value="Unknown">Unknown</option>
+        	{{/if}}
+
+
+			<select id="value" >
         		<option value="male" >Male </option>
         		<option value="maleN" >Male Neutered </option>
         		<option value="female" >Female </option>
