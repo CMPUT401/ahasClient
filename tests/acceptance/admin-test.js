@@ -25,9 +25,8 @@ test('visiting /admin displays a list of users', function(assert) {
   });
 });
 
-test('searching for a user displays that user', function(assert) {
+test('searching for a user displays that user in admin', function(assert) {
   visit('/admin');
-  
   fillIn('#userSearch', "Justin");  
   click('.searchButton');
   andThen(function() {
@@ -39,8 +38,7 @@ test('searching for a user displays that user', function(assert) {
 // test('clicking on a user transitions to a new route', function(assert) {
 //   visit('/admin');
   
-//   click('.list-group-item');
-//   andThen(function() {
+//   click('.list-group-item').then(function() {
 //     assert.equal(currentURL(), '/admin/users/:id');
 //   });
 // });
