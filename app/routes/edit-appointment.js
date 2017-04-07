@@ -44,7 +44,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 function parseDate(date){
         var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         var months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
-        var day = date.getDay() ;
+        var day = date.getDate() ;
         var month = date.getMonth()  ;
         var year = date.getFullYear();
         var hours = date.getHours();
