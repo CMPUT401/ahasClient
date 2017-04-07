@@ -1,3 +1,6 @@
+<div id = "alert_placeholder_summary"></div>
+ <div id = "alert_placeholder_success"></div>
+ <div id = "alert_placeholder_failure"></div>
 <div >
 <div class="row allMedGroup" >
 
@@ -554,7 +557,7 @@
             </div>
 
             <div>
-                <label for="summary">Short summary: </label>
+                <label for="summary">Short summary: </label><p class="requiredStar">*</p>
                 <br>
                 <input id="summary" class="summaryInput" value={{model.summary}}> 
             </div>
@@ -567,7 +570,6 @@
   {{else}}
   <button type="submit"  class= "medical-button" disabled id="update-medical-button">Update medical record</button>
   {{/if}}
-  <div id = "alert_placeholder_med"></div><div class="row">
             </div>
             </div>
             </div>
@@ -577,18 +579,3 @@
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

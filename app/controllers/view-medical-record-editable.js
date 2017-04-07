@@ -24,6 +24,13 @@ export default Ember.Controller.extend({
 
              var self = this;
 
+             var summary = document.getElementById('summary').value.trim();
+
+             var check = checkInputs(summary);
+
+             if(check){
+
+
              var bcsvalue= document.getElementById('bcsvalue');
              var bcsVal = bcsvalue.options[bcsvalue.selectedIndex].text;
 
@@ -117,11 +124,11 @@ export default Ember.Controller.extend({
                });
                 medicalRecord.then(function(response){
             if(response.success){
-                showAlert("Record updated, record is editable until 12pm tonight", true);
+                showAlert("Record updated, record is editable until 12pm tonight", true, "success");
             }
         //this is error from server condition
         }, function(response) {
-            showAlert("Could not update", false);
+            showAlert("Could not update", false, "failure");
 					if (response === false){
 						if (self.get('session.isAuthenticated')){
 							self.get('session').invalidate();
@@ -129,6 +136,7 @@ export default Ember.Controller.extend({
 						self.transitionToRoute('/login');
 					}
 				});
+            }
 
         },
     /** 
@@ -223,13 +231,29 @@ function formatDate(date){
 		* @method  showAlert
 		* @param {string} message The message to display in the alert
         * @param {boolean} bool Determines if this is a warning alert or confirmation alert
-		*/  
-
-function showAlert(message, bool) {
+         * @param {string} divID a partial name to the div id in which the allert is displayed. the div id is alert_placeholder_'divID'
+		*/
+function showAlert(message, bool, divID) {
         if(bool){
-            Ember.$('#alert_placeholder_med').html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
+            Ember.$('#alert_placeholder_'+ divID).html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
         }
         else{
-             Ember.$('#alert_placeholder_med').html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
+             Ember.$('#alert_placeholder_'+divID).html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
         }
- }
+          Ember.$('html,body').scrollTop(0);
+
+}
+
+/**
+* validates the summary and signature of med red
+* @method checkInputs
+* @param {string} summary the summary field
+*/
+
+function checkInputs(summary){
+    var sumCheck = !(summary === null || summary === undefined || summary === "");
+    if( !sumCheck ){
+        showAlert("Must enter a summary for the patients medical record history list", false, "summary");
+     }
+   return(sumCheck);
+}

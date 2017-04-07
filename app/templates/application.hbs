@@ -10,5 +10,7 @@
 	<div class="body">
 		{{outlet}}
 	</div>
+	{{#if session.isAuthenticated}} 
 	 <a class="clickable"{{action 'backToTop'}} >Back to top </a>
+	 {{/if}} 
 </div>

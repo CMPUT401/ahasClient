@@ -1,3 +1,9 @@
+ <div id = "alert_placeholder_firstName"></div>
+ <div id = "alert_placeholder_email"></div>
+ <div id = "alert_placeholder_phoneNumber"></div>
+ <div id = "alert_placeholder_addressLine1"></div>
+ <div id = "alert_placeholder_addressLine3"></div>
+ <div id = "alert_placeholder_failure"></div>
  <div class="inputContactGroup">
  <h2> New contact: </h2>
  <label for="type" >What type of volunteer is this?</label>
@@ -13,12 +19,14 @@
   {{#if model.laboratory}}
   <label for="first_name" class = "inputContactLabel">Name:</label>
  
-  {{input id='first_name' class = "inputContactBox" value=first_name }}
+  {{input id='first_name' class = "inputContactBox" value=first_name }}<p class="requiredStarTopMargin">*</p>
   
   {{else}}
   <label for="first_name" class = "inputContactLabel">First Name:</label>
  
-  {{input id='first_name' class = "inputContactBox" value=first_name }}
+ <div>
+  {{input id='first_name' class = "inputContactBox"  value=first_name }}<p class="requiredStarTopMargin">*</p>
+  </div>
   
   <label for="last_name" class="inputContactLabel">Last Name:</label>
  
@@ -27,7 +35,7 @@
   {{/if}}
   <label for="phoneNumber" class="inputContactLabel">Phone Number: </label>
   
-  {{input id='phoneNumber' class="inputContactBox" value=phoneNumber }}
+  {{input id='phoneNumber' class="inputContactBox" value=phoneNumber }}<p class="requiredStarTopMargin">*</p>
   
   <label for="faxNumber" class="inputContactLabel">Fax Number: </label>
 
@@ -35,11 +43,11 @@
   
   <label for="email" class="inputContactLabel">Email: </label>
  
-  {{input type="email" id='emailContact' class="inputContactBox" value=email }}
+  {{input type="email" id='emailContact' class="inputContactBox" value=email }}<p class="requiredStarTopMargin">*</p>
   
   <label for="addressLine1" class="inputContactLabel">Address Line 1: </label>
  
-  {{input type="addressLine1" id='addressLine1' class="inputContactBox" value=addressLine1 }}
+  {{input type="addressLine1" id='addressLine1' class="inputContactBox" value=addressLine1 }}<p class="requiredStarTopMargin">*</p>
 
   <label for="addressLine2" class="inputContactLabel">Address Line 2: </label>
  
@@ -47,10 +55,8 @@
 
   <label for="addressLine3" class="inputContactLabel">City: </label>
  
-  {{input type="addressLine3" id='addressLine3' class="inputContactBox" value=addressLine3 }}
+  {{input type="addressLine3" id='addressLine3' class="inputContactBox" value=addressLine3 }}<p class="requiredStarTopMargin">*</p>
   
   <button type="submit" {{action 'createContact'}} id="create-contact-button">Create</button>
  </form>
- <br>
- <div id = "alert_placeholder"></div>
  </div>

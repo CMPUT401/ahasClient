@@ -1,3 +1,6 @@
+ <div id = "alert_placeholder_summary"></div>
+ <div id = "alert_placeholder_signature"></div>
+ <div id = "alert_placeholder_success"></div>
 <div >
     <div class="allMedGroup">
 
@@ -201,7 +204,7 @@
             </div>
 
             <div>
-                <label for="summary">Short summary: </label>
+                <label for="summary">Short summary: </label><p class="requiredStar">*</p>
                 <br>
                 <input id="summary" class="summaryInput" value=""> 
             </div>
@@ -213,7 +216,6 @@
                 <button type="submit" class="medical-button" id="clear-signature-button" {{action 'clearSignature'}}>Clear Signature</button>
 
                 <button type="submit" class="medical-button" id="create-medical-button" {{action 'createMedicalRecord'}}>Create medical record</button>
-                <div id="alert_placeholder_med"></div>
             </div>
             </div>
             </div>

@@ -86,6 +86,7 @@ function showAlert(message, isGood, divID) {
     else{
          Ember.$('#alert_placeholder_' + divID).html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
     }
+	Ember.$('html,body').scrollTop(0);
 }
 
 /**
