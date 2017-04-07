@@ -50,7 +50,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 
     		  });
 				//var self = this;
-				console.log(data);
+				//console.log(data);
 			},
 			function(response){
 				if (response === false){

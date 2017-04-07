@@ -28,7 +28,7 @@ export default Ember.Controller.extend({
 					reason: 				this.get('appointmentReason'),
 					notes: 					this.get('appointmentNote'),
 					location: 				this.get('appointmentLocation'),
-					appointmentEndDate: 	JSON.stringify(formatDate(document.getElementById("appointmentEnd").value, this.get('appointmentEndTime')))
+					duration: 	this.get('appointmentEndTime')
 				}
 			
 			}, 
