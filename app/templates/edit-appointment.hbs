@@ -1,4 +1,4 @@
-	<form {{action "submitNewCalendar" model.id on="submit"}}>
+	<form {{action "doAppointment" model.id on="submit"}}>
 		<div class = "inputGroup">
 			<h3>Please fill in the appointment</h3>
 
@@ -32,9 +32,10 @@
 			{{input id = "appointmentLocation" value=model.location required='true'}}
 			</div>
 			<br>
+			<div class = "inputGroup">
+			<button type = "submit" id="create-appointment-button">Save Edited Appointment</button>
+			<button {{action "newAppointment" model.id}}>Delete Appointment</button>
+			</div>
 		</div>
 	</form>
-	<div class = "inputGroup">
-	<button type = "submit" id="create-appointment-button">Save Edited Appointment</button>
-	<button {{action "newAppointment" model.id}}>Delete Appointment</button>
-	</div>
+

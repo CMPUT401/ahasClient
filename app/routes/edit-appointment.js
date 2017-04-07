@@ -15,6 +15,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 				//console.log(data, data.success, data.contacts);
 				Ember.run(function() {
        			 resolve({ 
+       			 			id:params.aID,
 						   startdate: parseDate(new Date(data.schedule.appointmentStartDate * 1000)),
 						   starttime: parseTime(new Date(data.schedule.appointmentStartDate * 1000)),
 						   reason: JSON.stringify(data.schedule.reason).replace(/\"/g, ""),
