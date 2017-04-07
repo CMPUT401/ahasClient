@@ -1,7 +1,7 @@
 <div class = "container">
 	<form {{action "submitNewNote" on = "submit"}}>
 		<div class = "inputGroup">
-			<h3> Please Enter your new side note </h3>
+			<h3>Enter your new side note </h3>
   			<label class = "inputLabel" for="medNotes">Side Note:</label>
   			<div class = "inputBox">
   				{{textarea id = 'medNotes' value = medNotes cols = "80" rows = "6"}}
@@ -11,10 +11,13 @@
         <label class = "inputLabel" for="medSig">Signature:</label>
         <br>
         <div class = "inputBox">
-          {{input id = "medSignature" value=medSignature required='true'}}
+        <input id='medSignature' required='true'><p style="color:red; display:inline;">    *</p>
+
         </div>
-        <label class="radioButton labelForRadio">
-        <input class="norm" type="checkbox" id="isAlert"> IsAlert? </label> 
+        <label class="inputLabel" for="isAlert">Is Alert:</label> 
+        <div class = "inputBox">
+        <input type="checkbox" id="isAlert">
+        </div>
   		</div>
   		<br>
   		<button type = "submit" id = "create-sidenote-button">Create Note</button>

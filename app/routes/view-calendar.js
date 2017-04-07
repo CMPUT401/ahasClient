@@ -5,6 +5,10 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Ember.Route.extend(AuthenticatedRouteMixin,{
 	
 	ajax: Ember.inject.service(),
+	        /**
+    *model of the calendar route, assigns stuff from the get to the calendar
+    *@class model
+    */
 	model() {
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
@@ -16,7 +20,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 				//this.get('ajax').request('/api/client/1');
 
     		  });
-				//console.log("status is " + JSON.stringify(data.patient.name));
+				//console.log(data);
 			},
 			function(data){
 			if (data === false){
@@ -41,26 +45,19 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
     };
   }*/
 });
+/**
+*this method converts the unix time into data usable by calendar
+*@class convertUnix
+*/
+
 
 function convertUnix(schedules){
 	var newsched = [];
 	for(var i = 0; i < schedules.length; i++) {
 		var schedule = schedules[i];
 		schedule.start = new Date(schedules[i].appointmentStartDate* 1000);
-		schedule.title = schedules[i].reason;
+		schedule.title = schedules[i].patientFirstName +" "+ schedules[i].patientLastName;
 		newsched.push(schedule);
 	}
 	return (newsched);
-}
-
-function parseDate(date){
-        var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-        var months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
-        var day = date.getDay() ;
-        var month = date.getMonth()  ;
-        var year = date.getFullYear();
-        var hours = date.getHours();
-        var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
-        var whole = months[month] +" "+ days[day] +" "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
-        return(whole);
 }

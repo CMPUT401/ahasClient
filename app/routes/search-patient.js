@@ -3,6 +3,10 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	ajax: Ember.inject.service(),
+	    /**
+    *model of the search-patient route, assigns stuff from the get to the patient
+    *@class model
+    */
 	model(){
 		var self = this;
 
@@ -29,6 +33,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 		return ajaxGet;
 	}
 });
+
+/**
+* deserializes an attribute in the JSON object and converts it to a string.
+* @method deserialAttribute
+* @param {object} attribute An attribute attribute from the JSON.
+*/
 
 function deserialAttributes(patients){
 

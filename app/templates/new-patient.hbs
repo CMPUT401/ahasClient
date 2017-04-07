@@ -5,7 +5,7 @@
 
 			<label class = "inputLabel" for ="patientFirstName">First Name</label>
 			<div class = "inputBox">
-			{{input id = "patientFirstName" value=patientFirstName required='true'}}
+			{{input id = "patientFirstName" value=patientFirstName required='true'}}<p style="color:red; display:inline;">    *</p>
 			</div>
 			<br>
 
@@ -13,7 +13,7 @@
 
 			<label class = "inputLabel" for ="patientSpecies">Species</label>
 			<div class = "inputBox">
-			{{input id = "patientSpecies" value=patientSpecies required='true'}}
+			{{input id = "patientSpecies" value=patientSpecies required='true'}}<p style="color:red; display:inline;">    *</p>
 			</div>
 			<br>
 
@@ -25,13 +25,13 @@
         		<option value="female" >Female</option>
          		<option value="femaleN" >Female Spayed</option>
          		<option value="unknown" >Unknown</option>
-  			</select>
+  			</select><p style="color:red; display:inline;">    *</p>
 			</div>
 			<br>
 
 			<label class = "inputLabel"  for ="patientAge">Date of Birth</label>
 			<div class = "inputBox">
-			<input id = "patientAge" data-provide="datepicker">
+			<input id = "patientAge" data-provide="datepicker"><p style="color:red; display:inline;">    *</p>
 			</div>
 			<br>
 

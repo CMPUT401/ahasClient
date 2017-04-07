@@ -7,6 +7,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 	{
 	session: Ember.inject.service(),
     ajax: Ember.inject.service(),
+            /**
+    *model of the patient view route, assigns stuff from the get to the patient
+    *@class model
+    */
 	model(param) {
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
@@ -50,7 +54,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 
     		  });
 				//var self = this;
-				console.log(data);
+				//console.log(data);
 			},
 			function(response){
 				if (response === false){
@@ -66,7 +70,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 	
 
 });
-
+/**
+*this method adds the two alerts together and makes changes to the body of the alert so it displays what we want
+*@class concatAlerts
+*/
 function concatAlerts(general,medical){
 	var both = [];
 	for(var i = 0; i < general.length; i++) {
@@ -86,6 +93,10 @@ function concatAlerts(general,medical){
 	return(both);
 }
 
+/**
+*this method formats the date and returns it properly in the view patient
+*@class Format
+*/
 function format(date){
     var partialDate = new Date(date * 1000);
     var day = (partialDate.getDate()<10?'0':'' )+ partialDate.getDate();
@@ -93,6 +104,10 @@ function format(date){
     return(month+"/"+ day +"/"+partialDate.getFullYear());
 }
 
+/**
+*this method check for any nulls in the data and replaces it with blanks
+*@class FixNulls
+*/
 function fixNulls(data){
 	var fixed = {};
 
