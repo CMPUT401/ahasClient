@@ -53,12 +53,10 @@ export default Ember.Controller.extend({
 });
 
  /** 
-		* used to check the input fields on the create user page
+		* used to check the input fields on the reset-password page
 		* @method  checkFormat
 		* @param {string} password The user's password
-        * @param {string} email The user's email
         * @param {string} passwordConfirm The user's password confirmation
-        * @param {string} name The user's name
 		*/
 
 function checkFormat(password, passwordConfirm) {
