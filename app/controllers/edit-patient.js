@@ -5,7 +5,10 @@ export default Ember.Controller.extend({
 	//queryParams: ['clientID'],
 	session: Ember.inject.service(),
 	actions: {
-
+		/**
+		*handles action called when user changes the option selected in the dropdown
+		*@method showLastName
+		*/
 		showLastName: function()
 		{
         var type= document.getElementById('value');
@@ -47,6 +50,12 @@ export default Ember.Controller.extend({
         	this.set('model.unknown', true);
         	}
     	},
+
+    	/**
+    	*handles the users submit button
+    	*does a put patch request to update the info
+    	*@method submitNewPatient
+    	*/
 	submitNewPatient: function(model)
 		{
 			var self = this;
@@ -102,8 +111,4 @@ function formatDate(date){
   var half = new Date(date);
   var formatted = Math.floor(half.getTime() / 1000);
   return(formatted);
-}
-
-function checkSex(sex){
-
 }

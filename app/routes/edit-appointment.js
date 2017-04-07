@@ -4,6 +4,10 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	session: Ember.inject.service(),
     ajax: Ember.inject.service(),
+    /**
+    *model of the appointment route, assigns stuff from the get to the appointment
+    *@class model
+    */
 	model(params) {
 		//console.log(params.aID);
 		var self = this;
@@ -40,7 +44,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	},
 	
 });
-
+/**
+*this method parses the date and yields back the day/month/year in that format
+*@class parseDate
+*/
 function parseDate(date){
         var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         var months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
@@ -52,7 +59,10 @@ function parseDate(date){
         var whole = day +"/"+ month +"/"+ year.toString();
         return(whole);
 }
-
+/**
+* this method parese the date and yeilds back the hours and minutes
+* @class parseTime
+*/
 function parseTime(date){
         var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         var months = ["January","February","March","April","May","June","July", "August", "September", "October", "November", "December"];
@@ -65,6 +75,10 @@ function parseTime(date){
         return(whole);
 }
 
+/**
+*this method check for any nulls in the data and replaces it with blanks
+*@class FixNulls
+*/
 
 function FixNulls(data){
 	var fixed = {};

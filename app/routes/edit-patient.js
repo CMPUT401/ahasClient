@@ -49,7 +49,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 
 });
 
-
+/**
+*this method check for any nulls in the data and replaces it with blanks
+*@class FixNulls
+*/
 
 function fixNulls(data){
 	var fixed = {};
@@ -65,6 +68,10 @@ function fixNulls(data){
 
 	return fixed;
 }
+/**
+*this method parses the date and yields back the day/month/year in that format
+*@class parseDate
+*/
 
 function parseDate(date){
 		if (date == ""){
