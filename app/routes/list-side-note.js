@@ -3,6 +3,10 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Ember.Route.extend(AuthenticatedRouteMixin ,{
 	ajax: Ember.inject.service(),
+	    /**
+    *model of the side note route, assigns stuff from the get to the list of side notes
+    *@class model
+    */
 	model(param){
 		var self = this;
 

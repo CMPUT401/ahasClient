@@ -5,6 +5,10 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Ember.Route.extend(AuthenticatedRouteMixin,{
 	
 	ajax: Ember.inject.service(),
+	        /**
+    *model of the calendar route, assigns stuff from the get to the calendar
+    *@class model
+    */
 	model() {
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
@@ -41,6 +45,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
     };
   }*/
 });
+/**
+*this method converts the unix time into data usable by calendar
+*@class convertUnix
+*/
+
 
 function convertUnix(schedules){
 	var newsched = [];

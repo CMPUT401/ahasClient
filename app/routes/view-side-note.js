@@ -9,6 +9,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 	
 	session: Ember.inject.service(),
     ajax: Ember.inject.service(),
+            /**
+    *model of the sidenote route, assigns stuff from the get to the sidenote
+    *@class model
+    */
 	model(param) {
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
