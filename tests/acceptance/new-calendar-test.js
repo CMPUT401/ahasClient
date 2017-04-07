@@ -27,7 +27,7 @@ test('creating new calendar unsuccessful', function(assert) {
   visit('/new-calendar/');
   
   fillIn('#appointmentStart', "tttt");
-  fillIn('#appointmentEnd', "sssy");
+  fillIn('#appointmentStartTime', "sssy");
   click('#create-appointment-button');
     andThen(function(){
     assert.equal(currentURL(), '/new-calendar/');

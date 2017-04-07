@@ -27,7 +27,7 @@ export default Ember.Controller.extend({
             }
             else {
                 var lowerCaseInput = input.toLowerCase();
-                filter(input, this.get('model'), this);
+                filter(lowerCaseInput, this.get('model'), this);
             }
         },
     }
