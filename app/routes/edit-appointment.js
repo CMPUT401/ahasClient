@@ -5,7 +5,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	session: Ember.inject.service(),
     ajax: Ember.inject.service(),
 	model(params) {
-		//console.log(this.get("a_ID"));
+		console.log(params.aID);
 		var self = this;
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
 		this.get('ajax').request('/api/schedules/' + params.aID

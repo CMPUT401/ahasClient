@@ -51,7 +51,7 @@ Router.map(function() {
   this.route('invite-user' , {path: '/admin/invite-user'});
   this.route('not-found', { path: '/*path' });
   this.route('edit-patient',{ path: '/edit-patient/:patientID'});
-  this.route('edit-appointment',{ path: '/edit-patient/:aID'});
+  this.route('edit-appointment',{ path: '/edit-appointment/:aID'});
 });
 
 export default Router;
