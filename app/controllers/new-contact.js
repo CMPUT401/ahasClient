@@ -125,7 +125,9 @@ function clearFields(page){
 	page.set('phoneNumber', '');
     page.set('faxNumber', '');
     page.set('email', '');
-    page.set('address', '');
+    page.set('addressLine1', '');
+    page.set('addressLine2', '');
+    page.set('addressLine3', '');
 	
 }
 

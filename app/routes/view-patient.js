@@ -138,8 +138,6 @@ function parseDate(date){
         var day = date.getDay() ;
         var month = date.getMonth()  ;
         var year = date.getFullYear();
-        var hours = date.getHours();
-        var mins = (date.getMinutes()<10?'0':'') + date.getMinutes();
-        var whole = days[day] +" "+ months[month] +" " + date.getDate().toString() +", "+ year.toString() + " "+ hours.toString() + ":" + mins.toString();
+        var whole = days[day] +" "+ months[month] +" " + date.getDate().toString() +", "+ year.toString();
         return(whole);
 }
