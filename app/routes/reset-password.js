@@ -2,7 +2,7 @@ import Ember from 'ember';
 import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-route-mixin';
 
 /**
-* Route for view contact
+* Route for reset password
 * @class ResetPasswordRoute
 */
 

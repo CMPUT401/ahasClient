@@ -6,7 +6,6 @@ import { authenticateSession, invalidateSession } from '../helpers/ember-simple-
 
 moduleForAcceptance('Acceptance | view patient');
 
-//these are commented out because they will break all tests, becuase fake model is not correct for it is not correct in mirage/config atm
 
 test('visiting /view-patient/ before login', function(assert) {
 	invalidateSession(this.application);

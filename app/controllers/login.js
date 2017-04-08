@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
 		* @method authenticate
 		*/
     authenticate: function() {
-      self = this;
+      var self = this;
       var credentials = this.getProperties('username', 'password');
       const { username, password } = credentials;
       var inputFilled = checkFields(username, password);

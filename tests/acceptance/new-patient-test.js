@@ -23,22 +23,19 @@ test('visiting /new-patient/ before login', function(assert) {
   });
 });
 
-/*
-test('adding new user valid', function(assert){
-   authenticateSession(this.application);
-  visit('/new-patient/1');
 
-  fillIn('#patientName', "Bob");
+test('adding new patient valid', function(assert){
+   authenticateSession(this.application);
+  visit('/new-patient');
+
+  fillIn('#patientFirstName', "Bob");
   fillIn('#patientSpecies', "Fred");
-  fillIn('#patientGender', "M");
-  fillIn('#patientStatus', "N");
   fillIn('#patientAge', "13");
   fillIn('#patientColor', "Brown");
   fillIn('#patientTatoo', "123");
   fillIn('#patientMicrochip', "111");
   click('#create-patient-button');
   andThen(function(){
-    assert.equal(find('#statusGood').text());
+    assert.equal(currentURL(), '/search-patient');
   });
 });
-*/

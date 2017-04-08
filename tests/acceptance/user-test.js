@@ -19,11 +19,11 @@ test('visiting /user', function(assert) {
 
 
 
-/*test('reset /user password', function(assert) {
+test('reset /user password', function(assert) {
   visit('admin/users/:id');
   click('#reset');
   andThen(function() {
-    assert.equal(currentURL(), 'admin/user/:id');
+    assert.equal(currentURL(), 'admin/users/:id');
     assert.equal(find('#statusGood').text(), "Password Reset!");
   });
 });
@@ -32,6 +32,6 @@ test('delete /user', function(assert) {
   visit('admin/users/:id');
   click('#delete');
   andThen(function() {
-    assert.equal(currentURL(), 'admin');
+    assert.equal(currentURL(), '/admin');
   });
-});*/
+});

@@ -1,5 +1,6 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'ahasweb/tests/helpers/module-for-acceptance';
+import { invalidateSession } from '../helpers/ember-simple-auth';
 
 moduleForAcceptance('Acceptance | new user', { 
   beforeEach: function() {
@@ -8,16 +9,18 @@ moduleForAcceptance('Acceptance | new user', {
 });
 
 test('visiting /new-user', function(assert) {
-  visit('/new-user');
+   invalidateSession(this.application);
+  visit('/new-user/:inviteToken');
 
   andThen(function() {
-    assert.equal(currentURL(), '/new-user');
+    assert.equal(currentURL(), '/new-user/:inviteToken');
   });
   
 });
 
-/*test('adding new user valid', function(assert){
-  visit('/new-user');
+test('adding new user valid', function(assert){
+   invalidateSession(this.application);
+  visit('/new-user/:inviteToken');
 
   fillIn('#userName', "Kristy");
   fillIn('#userEmail', "user@gmail.ca");
@@ -25,13 +28,13 @@ test('visiting /new-user', function(assert) {
   fillIn('#passwordConfirm', "password");
   click('#create-user-button');
   andThen(function(){
-    assert.equal(find('#statusGood').text(), 'Account created!');
-    assert.notEqual(find('#statusBad').text(), "Incorrect email format");
+    assert.equal(currentURL(), '/login');
   });
 });
 
   test('adding invalid user, too short password', function(assert){
-  visit('/new-user');
+     invalidateSession(this.application);
+  visit('/new-user/:inviteToken');
 
   var pass = 'pass';
 
@@ -43,32 +46,6 @@ test('visiting /new-user', function(assert) {
   andThen(function(){
     assert.equal(find('#statusBad').text(), "Password too short, must be at least 7 characters!");
     assert.notEqual(find('#statusGood').text(), "Password too short, must be at least 7 characters!");
+    assert.notEqual(currentURL(), '/login');
   });
   });
-
-  test('adding invalid user, incorrect format email', function(assert){
-  visit('/new-user');
-
-  fillIn('#userName', "Kristy");
-  fillIn('#userEmail', "usermail.ca");
-  fillIn('#password', "password");
-  fillIn('#passwordConfirm', "password");
-  click('#create-user-button');
-  andThen(function(){
-    assert.equal(find('#statusBad').text(), "Incorrect email format");
-  });
-  });
-
-
-  test('adding invalid user, name is blank', function(assert){
-  visit('/new-user');
-  
-  fillIn('#userEmail', "usermail@gmail.ca");
-  fillIn('#password', "password");
-  fillIn('#passwordConfirm', "password");
-  click('#create-user-button');
-  andThen(function(){
-    assert.equal(find('#statusBad').text(), "Name cannot be blank");
-  });
-
-});*/

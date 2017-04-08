@@ -1,12 +1,5 @@
 export default function () {
 
-  // These comments are here to help you get started. Feel free to delete them.
-
-  /*
-    Config (with defaults).
-
-    Note: these only affect routes defined *after* them!
-  */
 
   this.urlPrefix = 'https://ahas.herokuapp.com'; // make this `http://localhost:8080`, for example, if your API is on a different server
   this.namespace = '/api'; // make this `/api`, for example, if your API is namespaced
@@ -94,10 +87,11 @@ export default function () {
 
   //for the login
   this.post('/user_token', {
-    "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"
+    token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9",
+    role: 'Admin'
   });
 
-  //ontact creation
+  //contact creation
   this.post('/contacts', {
     success: true
   }, 201);
@@ -149,30 +143,7 @@ export default function () {
     };
   });
 
-  //this is for get all patients
-  this.get('/patients', () => {
-    return {
-      success: true,
-      patients: [{
-        first_name: "Chairman",
-        last_name: "Meow",
-        id: 1
-      }]
-    };
-  });
-  /*
-    Shorthand cheatsheet:
 
-    this.get('/posts');
-    this.post('/posts');
-    this.get('/posts/:id');
-    this.put('/posts/:id'); // or this.patch
-    this.del('/posts/:id');
-
-    http://www.ember-cli-mirage.com/docs/v0.2.x/shorthands/
-  */
-
-  // this.get('/client', 'new-client');
   //this is for getting one client
   this.get('/client', () => {
     return {
@@ -221,7 +192,13 @@ export default function () {
   });
 
 
+  //creating one note 
+  this.post('/patients/:id/medical_records/:id/notes/:id', {
+    success: true
+  }, 201);
 
+
+ //getting one note
   this.get('/patients/:id/medical_records/:id/notes/:id', () => {
     return {
       success: true,
@@ -306,6 +283,36 @@ export default function () {
     };
   });
 
+  //schedule, might be wrong format
+this.get('/schedules/:id', () => {
+    return {
+      success: true,
+  schedule: [{
+    id: 1,
+   appointmentStartDate: 1, 
+   duration: 1, 
+   patientFirstName: "string",   
+  patientLastName: "String"}]
+
+   //this is for get all patients
+  this.get('/patients', () => {
+    return {
+      success: true,
+      patients: [{
+        first_name: "Chairman",
+        last_name: "Meow",
+        id: 1
+      }]
+    };
+  });
+
+  //patient creation
+  this.post('/patients', {
+    success: true
+  }, 201);
+
+
+  //get one patient
   this.get('patients/:id', () => {
     return {
       success: true,
@@ -382,11 +389,25 @@ export default function () {
     success: true
   }, 201);
 
-  this.post('/reset_password', {
+  this.post('admin/reset_password', {
+    success: true
+  }, 201);
+
+  this.post('reset_password', {
     success: true
   }, 201);
 
 this.get('/admin/users/:id', () => {
+    return {
+      success: true,
+      user: {
+        id: 3,
+        email: "bligh@ualberta.ca",
+        name: "Mackenzie Bligh"
+      }
+    };
+  });
+  this.get('/users/:inviteToken', () => {
     return {
       success: true,
       user: {

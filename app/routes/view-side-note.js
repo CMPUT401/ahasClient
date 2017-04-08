@@ -21,7 +21,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 				Ember.run.later(function() {
        			 resolve({ id: JSON.stringify(data.note.id).replace(/\"/g, ""),
 						   body: JSON.stringify(data.note.body).replace(/\"/g, "").replace(/\\n/g, " <br> "),
-						   initials: JSON.stringify(data.note.initials).replace(/\"/g, ""),
+						   initials: JSON.stringify(data.note.initials).replace(/\"/g, "")
 				});
 			
 
@@ -38,7 +38,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 		}));
 		return(ajaxGet);
 
-	},
+	}
 	
 
 });

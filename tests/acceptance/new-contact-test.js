@@ -35,7 +35,7 @@ test('creating new contact successful', function(assert) {
   });
 });
 
-/*test('creating new contact no first name', function(assert) {
+test('creating new contact no first name', function(assert) {
   visit('/new-contact');
   
   fillIn('#last_name', "Newbury");
@@ -47,4 +47,4 @@ test('creating new contact successful', function(assert) {
   andThen(function(){
     assert.equal(find('#statusBad').text(), 'First name cannot be blank');
   });
-});*/
+});
