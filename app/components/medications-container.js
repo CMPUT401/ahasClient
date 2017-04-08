@@ -52,6 +52,8 @@ export default Ember.Component.extend({
           self.get('medicationList').removeAt(index);
 				}));
     }
-    }
+  }
+
+
   }
 });

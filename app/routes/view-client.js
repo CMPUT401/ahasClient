@@ -133,7 +133,11 @@ function deserialNotes(client){
 }
 
 
-
+/**
+* deserializes the notes attribute in the JSON object and converts it to a string.
+* @method deserialAltAddress
+* @param {string} addr the address in question
+*/
 
 function deserialAltAddress(addr){
 	if(addr != null){
@@ -143,6 +147,11 @@ function deserialAltAddress(addr){
 	}
 }
 
+/**
+* deserializes the notes attribute in the JSON object and converts it to a string.
+* @method deserialClientId
+* @param {int} id the client id
+*/
 
 function deserialClientId(client){
 	var clientId = client.id;

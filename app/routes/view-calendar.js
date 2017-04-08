@@ -15,12 +15,13 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 		this.get('ajax').request('/api/schedules'
 			).then(function(data){
 				Ember.run.later(function() {
-       			 resolve({ events: convertUnix(data.schedules)
+       			 resolve({ 
+								events: convertUnix(data.schedules)
 				});
-				//this.get('ajax').request('/api/client/1');
+		
 
     		  });
-				//console.log(data);
+		
 			},
 			function(data){
 			if (data === false){
@@ -34,16 +35,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,{
 
 	},
 	
-	
-	//weee splitter
-	/*
-  	model: function() {
-    return {
-      events: Ember.A([
-        {title: "Hackathon \n ayelmao \n ayelmao2", start: Date.now()},
-      ])
-    };
-  }*/
 });
 /**
 *this method converts the unix time into data usable by calendar

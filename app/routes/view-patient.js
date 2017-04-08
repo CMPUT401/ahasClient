@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
-//import RSVP from 'rsvp';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin,
 
@@ -50,11 +49,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						   alternativeContact2ndPhone: JSON.stringify(data.patient.client.alternativeContact2ndPhone).replace(/\"/g, ""),
 						   alternativeContactAddress: JSON.stringify(data.patient.client.alternativeContactAddressLine1).replace(/\"/g, "").replace(/\\n/g, " <br> ")
 						});
-				//this.get('ajax').request('/api/client/1');
+			
 
     		  });
-				//var self = this;
-				//console.log(data);
+			
 			},
 			function(response){
 				if (response === false){

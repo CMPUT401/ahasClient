@@ -24,7 +24,7 @@ export default Ember.Component.extend({
 		* @method viewEntry
 		*/
 		viewEntry: function(recordID){
-			//this.get('router').transitionTo('view-medical-record', [this.patientId, recordID]);
+	
 			this.get('router').transitionTo('view-medical-record', [this.patientId, recordID]);
 		}
 	},
@@ -36,16 +36,15 @@ export default Ember.Component.extend({
 				).then(function(data){
 					Ember.run(function(){
 						resolve({
-							// medications: deserialAttributes(data.medications)
+						
 						});
-						// console.log(deserialAttributes(data.medical_records));
+		
 						self.set('medicationList', deserialAttributes(data.medications));
 					});
 				},
 				function(data){
 					if (data === false){
-						// self.transitionTo('/unauthorized');
-						// self.get('router').transitionTo('unauthorized'); //not sure if this works
+
 					}		
 				})
 		);
@@ -80,9 +79,6 @@ function deserialAttributes(meds){
 			deserial.push(entry);
 		}
 		
-		// }else{
-		// 	console.log(JSON.stringify(meds[i].med_type));
-		// }
 	}
 	return(deserial);
 }

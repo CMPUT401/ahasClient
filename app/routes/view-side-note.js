@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
-//import RSVP from 'rsvp';
+
 
 export default Ember.Route.extend(AuthenticatedRouteMixin,
 
@@ -23,10 +23,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin,
 						   body: JSON.stringify(data.note.body).replace(/\"/g, "").replace(/\\n/g, " <br> "),
 						   initials: JSON.stringify(data.note.initials).replace(/\"/g, ""),
 				});
-				//this.get('ajax').request('/api/client/1');
+			
 
     		  });
-				//console.log("status is " + JSON.stringify(data.appointment.sig));
+			
 			},
 			function(response){
 				if (response === false){
