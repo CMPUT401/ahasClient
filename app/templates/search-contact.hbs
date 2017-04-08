@@ -3,13 +3,9 @@
     <br>
     <br>
     <br>
-    <div >
-        <div class="col-sm-8 col-md-8  ">
-        <input  {{action "filterContact" on='keyUp' }} class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
-        </div>
-        <div class="col-sm-2 col-md-2">
-        <button  {{action "filterContact"  }} type='submit' id="search-button">Search</button>
-        </div>
+    <div class="row">
+        <input  {{action "filterContact" on='keyUp' }} class="searchInput col-sm-8 col-md-8 " placeholder="Search" autofocus="autofocus" id='search-bar' />
+        <button  {{action "filterContact"  }} class="col-sm-2 col-md-2 searchButton" type='submit' id="search-button">Search</button>
     </div>
     <br>
     <br>

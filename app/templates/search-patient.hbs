@@ -2,14 +2,11 @@
 	<br>
     <br>
     <br>
-    <div class="col-sm-7 col-sm-offset-1 col-md-7  col-md-offset-1">
-	    <form {{action "filterPatient" on="keyUp" }} > 
-	    	<input class="form-control" placeholder="Search" autofocus="autofocus" id='search-bar' />
-	    </form>
-    </div>
-    <div class="col-sm-2 col-md-2">
-    	<button  {{action "filterPatient"  }} type="submit" id="search-button">Search</button>
-    </div>
+    <div class="row">
+	    <input {{action "filterPatient" on="keyUp" }} class="searchInput col-sm-8 col-md-8 " placeholder="Search" autofocus="autofocus" id='search-bar' />
+		<button  class=" searchButton col-sm-2 col-md-2" {{action "filterPatient"  }} type="submit" id="search-button">Search</button>
+	</div>
+
     <br>
     <br>
 </div>

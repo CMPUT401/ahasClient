@@ -3,7 +3,7 @@
 <div class = "nameList" >
     {{#ember-scrollable autoHide=false}}
             {{#each model.notesW as |note|}}
-                    <div class = "nameListItem" {{action "getNote" model note.id}}>
+                    <div class = "nameListItem clickable" {{action "getNote" model note.id}}>
                             <p>{{note.body}}</p>
                     </div>
 

@@ -62,7 +62,7 @@
 	<h3 class = "clientHeader">Pet: </h3>
 	<div class="list-group">
 		{{#each model.patients as |pet|}}
-			<div class = "petNameContainer" {{action "viewPatient" pet.id}}>
+			<div class = "petNameContainer clickable" {{action "viewPatient" pet.id}}>
 				
 						<h4>{{pet.firstName}} {{pet.lastName}}</h4>
 					

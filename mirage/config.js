@@ -293,6 +293,8 @@ this.get('/schedules/:id', () => {
    duration: 1, 
    patientFirstName: "string",   
   patientLastName: "String"}]
+    };
+});
 
    //this is for get all patients
   this.get('/patients', () => {

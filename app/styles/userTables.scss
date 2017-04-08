@@ -8,7 +8,20 @@
 }
 .searchButton{
   margin-left: 10px;
+
 }
+.searchInput{
+    display: block;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
 .table-body {
   padding: 0;
   margin: 0;
