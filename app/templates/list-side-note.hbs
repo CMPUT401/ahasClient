@@ -1,15 +1,11 @@
-<div>
-<button  id="create-note-button" {{action "createSideNote" model}}>New Side Note</button>
 <div class = "nameList" >
-    {{#ember-scrollable autoHide=false}}
+	<div class = "list-group">
             {{#each model.notesW as |note|}}
-                    <div class = "nameListItem clickable" {{action "getNote" model note.id}}>
+                    <div class = "row list-group-item clickable" {{action "getNote" model note.id}}>
                             <p>{{note.body}}</p>
                     </div>
-
             {{/each}}
-    {{/ember-scrollable}}
-    <br>
-    
+    </div>
 </div>
-</div>
+
+<button  id="create-note-button" {{action "createSideNote" model}}>New Side Note</button>
