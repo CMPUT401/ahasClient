@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
         filterPatient: function(){
             var input = document.getElementById('search-bar').value.trim();
             if(input === "" || input === undefined){
-                this.set('model.patientFiltered', this.get(model.patients));
+                this.set('model.patientFiltered', this.get('model.patients'));
             }
             else {
                 var lowerCaseInput = input.toLowerCase();
