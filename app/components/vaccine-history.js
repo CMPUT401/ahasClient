@@ -30,7 +30,7 @@ export default Ember.Component.extend({
 		* Redirects to the medical record page when the user clicks on it in the list. Medical record
 		* may be editable depending on the date
 		* @param {int} recordID The ID of the medical record that has been clicked
-		* @param {Date} date Date of the medical record. In Unix time.
+		* @param {Date} date Date of the medical record. 
 		* @method viewEntry
 		*/
 		viewEntry: function(recordID, date){
@@ -55,14 +55,11 @@ export default Ember.Component.extend({
 						resolve({
 							vaccines: deserialAttributes(data.medications)
 						});
-						// console.log(deserialAttributes(data.medical_records));
 						self.set('vaccineList', deserialAttributes(data.medications));
 					});
 				},
 				function(data){
 					if (data === false){
-						// self.transitionTo('/unauthorized');
-						// self.get('router').transitionTo('unauthorized'); //not sure if this works
 					
 					}		
 				})
@@ -87,7 +84,6 @@ function deserialAttributes(meds){
 		if(JSON.stringify(meds[i].medical_record_id) != null){
 			entry.medical_record_id = JSON.stringify(meds[i].medical_record_id).replace(/\"/g, "");
 		}
-		// if(JSON.stringify(meds[i].med_type) === "medicine"){
 		if(JSON.stringify(meds[i].name) != null){
 			entry.name = JSON.stringify(meds[i].name).replace(/\"/g, "");
 		}
@@ -96,7 +92,6 @@ function deserialAttributes(meds){
 			var parital1 = JSON.stringify(meds[i].created_at).replace(/\"/g, "").slice(0, 10);
 			var parital2 = parital1.split("-");
 			entry.dateToDisplay = parital2[1] + "/" +parital2[2] + "/" +parital2[0]; 
-			//entry.dateToDisplay =meds[i].created_at;
 			entry.date = parital2;
           
 		}
@@ -108,7 +103,7 @@ function deserialAttributes(meds){
 
 /**
 * checks to see if the medical record can still be edited
-* @param {date} olddate Date of the medical record. In Unix time.
+* @param {date} date Date of the medical record. not in unix time for once, was parsed from created_at field 
 * @method checkUpdate
 */
 function checkUpdate(date){
@@ -119,11 +114,17 @@ function checkUpdate(date){
 
     var current = new Date();
 
-    var currentDay = current.getDate() ;
     var currentMonth = current.getMonth()  ;
     var currentYear = current.getFullYear();
 
-    if (currentDay.toString() === day.toString() && currentMonth.toString() === month.toString() && currentYear.toString() === year.toString() ){
+	if(current.getDate() < 10){
+		var currentDay =  '0'+ current.getDate().toString();
+	}
+	else{
+		var currentDay =  current.getDate().toString();
+	}
+
+    if (currentDay === day.toString() && currentMonth.toString() === month.toString() && currentYear.toString() === year.toString() ){
         return(true);
     }
     return(false);
