@@ -18,7 +18,7 @@ export default Ember.Component.extend({
 	init(){
 		this._super(...arguments);
 		var self = this;
-		if (this.modelID.imageid === ""){
+		if ((this.modelID.imageid === "") || (this.modelID.imageid === "0")){
 			return;
 		}
 		var ajaxGet = new Ember.RSVP.Promise((resolve) =>
