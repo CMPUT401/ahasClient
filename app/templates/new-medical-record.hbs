@@ -1,6 +1,7 @@
  <div id = "alert_placeholder_summary"></div>
  <div id = "alert_placeholder_signature"></div>
  <div id = "alert_placeholder_success"></div>
+ <div id = "alert_placeholder_failure"></div>
 <div >
     <div class="allMedGroup">
 
@@ -210,9 +211,11 @@
             </div>
 
             <div>
-                <h4> Veterinarian Signature: </h4>
+           
+                <p class="requiredStar">*</p><h4 > Veterinarian Signature: </h4> 
+               
 
-                {{signature-pad color=color height=height value=signature weight=weight width=width id='signature' }}
+                {{signature-pad color=color height=height value=signature weight=weight width=width id='signature' }} 
                 <button type="submit" class="medical-button" id="clear-signature-button" {{action 'clearSignature'}}>Clear Signature</button>
 
                 <button type="submit" class="medical-button" id="create-medical-button" {{action 'createMedicalRecord'}}>Create medical record</button>

@@ -155,6 +155,9 @@ export default Ember.Controller.extend({
 							}
 						self.transitionToRoute('/login');
 					}
+                    else{
+                        showAlert(response.errors[0].title, false, "failure");
+                    }
 				});
         }
         

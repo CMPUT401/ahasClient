@@ -54,6 +54,9 @@ export default Ember.Controller.extend({
 					}
 				self.transitionToRoute('/login');
 			}
+			else{
+                showAlert(response.errors[0].title, false, "failure");
+                    }
 			});
 		return ajaxPost;
 	}
@@ -73,3 +76,23 @@ function formatDate(date){
   var formatted = Math.floor(half.getTime() / 1000);
   return(formatted);
 }
+
+
+/** 
+		* used to provide feedback to user on success condition as well as fail condition
+        * only displayed very briefly on success condition however before transition
+		* @method  showAlert
+		* @param {string} message The message to display in the alert
+        * @param {boolean} bool Determines if this is a warning alert or confirmation alert
+        * @param {string} divID a partial name to the div id in which the allert is displayed. the div id is alert_placeholder_'divID'
+		*/   
+
+function showAlert(message, bool, divID) {
+        if(bool){
+            Ember.$('#alert_placeholder_'+divID).html('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><span  id="statusGood">'+message+'</span></div>');
+        }
+        else{
+             Ember.$('#alert_placeholder_'+divID).html('<div class="alert alert-danger" ><a class="close" data-dismiss="alert">×</a><span id="statusBad">'+message+'</span></div>');
+        }
+        Ember.$('html,body').scrollTop(0);
+ }
